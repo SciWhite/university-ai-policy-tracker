@@ -4291,6 +4291,391 @@
           ]
         }
       }
+    },
+    "university-of-pennsylvania": {
+      "slug": "university-of-pennsylvania",
+      "name": "University of Pennsylvania",
+      "recordSha256": "cc8e43ee12495a05a52b018248457e95ccea159879f561c0948d0ab7e6c2b567",
+      "schoolFingerprint": "cc8e43ee12495a05a52b018248457e95ccea159879f561c0948d0ab7e6c2b567",
+      "universityRevisionId": "upenn-v6-20261016",
+      "experience": "compact_evidence",
+      "presentationRevision": "upenn-v6-20261016",
+      "images": [],
+      "scope": {
+        "en": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+        "zh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+      },
+      "topics": {
+        "coursework": {
+          "en": "AI use depends on the instructor and assignment. Penn has no standardized student AI-use policy; without other guidance, treat AI as assistance from another person. Wharton Academy examples apply only to that program and require instructor permission.",
+          "zh": "AI 使用由教师及作业要求决定，宾大没有统一的学生 AI 使用政策；无其他指导时按他人协助处理。Wharton Academy 许可示例只适用于该项目，并以教师允许为前提。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "exams": {
+          "en": "No uniform university-wide AI exam permission was established. Follow the specific assessment rules; Wharton Academy expressly prohibits AI cheating in its exams and tests. Tool availability grants no exam permission.",
+          "zh": "未建立全校统一 AI 考试许可；须核对具体考核规则。Wharton Academy 明确禁止在其考试中用 AI 作弊；工具开放不构成考试许可。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "disclosure": {
+          "en": "Community guidance directs transparency and disclosure, while stating it is not a final policy. Instructors may impose specific citation/disclosure requirements; Wharton Academy treats uncredited AI work as plagiarism.",
+          "zh": "社区指导要求透明说明 AI 使用，同时声明并非最终政策。教师可规定具体引用与披露要求；Wharton Academy 将未注明来源的 AI 内容视为抄袭。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "privacy_data": {
+          "en": "Protect student, patient and research data. Unlicensed tools must not receive identifiable student information; student work requires permission even if anonymized. Do not require personal information or IP in unlicensed tools. Licensed-tool data conditions differ.",
+          "zh": "保护学生、患者及研究数据。未许可工具不得接收可识别学生信息；上传学生作品即使匿名也须获许可。不得要求学生向未许可工具输入个人信息或知识产权；许可工具数据条件各异。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "approved_tools": {
+          "en": "Institutional tools have product-specific audience, account, cost and data conditions. PennChat requires PennKey and campus/VPN access; verify current entitlements with IT. Tool access is separate from assessment permission.",
+          "zh": "机构工具各有人员资格、账号、费用与数据条件。PennChat 须用 PennKey 并在校园网络或 VPN 访问；具体资格向 IT 核对。工具可获取与考核许可分别判断。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "research_publication": {
+          "en": "Consult department leadership and discipline publication standards about AI authorship. Research-participant data requires appropriate consent and prior IRB approval; data/IP safeguards and Penn Center for Innovation consultation apply.",
+          "zh": "研究署名须咨询部门及学科发表标准；研究参与者数据须遵守知情同意并事先取得 IRB 批准，还须遵守数据与知识产权条件，涉及知识产权咨询 Penn Center for Innovation。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "academic_integrity": {
+          "en": "Course rules determine unauthorized AI assistance. Wharton Academy has its own restrictions. CETLI advises discussing suspected misuse with students and consulting CSA; it says not to upload work into AI detectors and rejects their accuracy as misconduct evidence. Formal hearing/appeal procedures remain a gap.",
+          "zh": "未经许可的 AI 协助由课程规则判断，Wharton Academy 另有项目限制。CETLI 建议与学生沟通并可咨询 CSA，明确不要向 AI 检测器上传作品，检测结果不足以作为不端证据。正式听证与申诉程序仍待补证。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "teaching_guidance": {
+          "en": "Instructors set and communicate course/assignment expectations. Unlicensed tools must not require student personal information or IP; consider licensed tools for mandatory coursework. Investigate suspected misuse through conversation and appropriate consultation.",
+          "zh": "教师制定并说明课程或作业要求；不得要求向未许可工具输入学生个人信息或知识产权，必修活动可考虑许可工具。疑似误用先沟通并咨询适当部门。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        },
+        "security_procurement": {
+          "en": "Moderate/high-risk data involves Privacy Office review and Information Security consultation coordinated by Procurement; IP involves Penn Center for Innovation. University business AI processes should have oversight and output verification.",
+          "zh": "中高风险数据涉及隐私办公室审查及采购协调的信息安全咨询；知识产权涉及创新中心。校务 AI 流程应有监督和输出核验。",
+          "meaningEn": "Course, assignment, data and Wharton Academy conditions have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "课程、作业、数据和 Wharton Academy 项目条件各有范围；工具获取不代表考核许可。"
+        }
+      },
+      "topicBasis": {
+        "coursework": "AI use depends on the instructor and assignment. Penn has no standardized student AI-use policy; without other guidance, treat AI as assistance from another person. Wharton Academy examples apply only to that program and require instructor permission.",
+        "exams": "No uniform university-wide AI exam permission was established. Follow the specific assessment rules; Wharton Academy expressly prohibits AI cheating in its exams and tests. Tool availability grants no exam permission.",
+        "disclosure": "Community guidance directs transparency and disclosure, while stating it is not a final policy. Instructors may impose specific citation/disclosure requirements; Wharton Academy treats uncredited AI work as plagiarism.",
+        "privacy_data": "Protect student, patient and research data. Unlicensed tools must not receive identifiable student information; student work requires permission even if anonymized. Do not require personal information or IP in unlicensed tools. Licensed-tool data conditions differ.",
+        "approved_tools": "Institutional tools have product-specific audience, account, cost and data conditions. PennChat requires PennKey and campus/VPN access; verify current entitlements with IT. Tool access is separate from assessment permission.",
+        "research_publication": "Consult department leadership and discipline publication standards about AI authorship. Research-participant data requires appropriate consent and prior IRB approval; data/IP safeguards and Penn Center for Innovation consultation apply.",
+        "academic_integrity": "Course rules determine unauthorized AI assistance. Wharton Academy has its own restrictions. CETLI advises discussing suspected misuse with students and consulting CSA; it says not to upload work into AI detectors and rejects their accuracy as misconduct evidence. Formal hearing/appeal procedures remain a gap.",
+        "teaching_guidance": "Instructors set and communicate course/assignment expectations. Unlicensed tools must not require student personal information or IP; consider licensed tools for mandatory coursework. Investigate suspected misuse through conversation and appropriate consultation.",
+        "security_procurement": "Moderate/high-risk data involves Privacy Office review and Information Security consultation coordinated by Procurement; IP involves Penn Center for Innovation. University business AI processes should have oversight and output verification."
+      },
+      "do": [
+        {
+          "en": "Check the instructor’s rules for this course and assignment.",
+          "zh": "核对本课程及作业的教师要求。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-university-of-pennsylvania-14",
+            "claim-university-of-pennsylvania-8"
+          ]
+        },
+        {
+          "en": "Disclose AI assistance under the applicable course rules.",
+          "zh": "按适用课程要求说明 AI 协助。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-university-of-pennsylvania-1",
+            "claim-university-of-pennsylvania-7"
+          ]
+        },
+        {
+          "en": "Check the tool’s account, data and access conditions.",
+          "zh": "核对工具账号、数据及获取条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-university-of-pennsylvania-15",
+            "claim-university-of-pennsylvania-3"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not enter identifiable student information into unlicensed AI tools.",
+          "zh": "不得向未许可 AI 工具输入可识别学生的信息。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-university-of-pennsylvania-11"
+          ]
+        },
+        {
+          "en": "Do not require student personal information or IP in an unlicensed AI tool.",
+          "zh": "不得要求学生向未许可 AI 工具输入个人信息或知识产权。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-university-of-pennsylvania-13"
+          ]
+        },
+        {
+          "en": "Wharton Academy: do not submit AI answers as your own or use AI to cheat.",
+          "zh": "Wharton Academy：不得将 AI 答案冒充己作或用 AI 作弊。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-university-of-pennsylvania-17",
+            "claim-university-of-pennsylvania-18"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "cl-upenn-cetli-investigation-conversation-20261016",
+          "cl-upenn-cetli-ai-detector-ban-20260919"
+        ],
+        "outcomes": [],
+        "appeal": []
+      },
+      "claims": {
+        "claim-university-of-pennsylvania-8": {
+          "id": "claim-university-of-pennsylvania-8",
+          "text": "In the absence of other guidance, Penn students should treat the use of AI as they would treat assistance from another person — if it is unacceptable to have another person substantially complete a task like writing an essay, it is also unacceptable to have AI complete the task.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "In the absence of other guidance, treat the use of AI as you would treat assistance from another person.  For example, this means if it is unacceptable to have another person substantially complete a task like writing an essay, it is also unacceptable to have AI to complete the task.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "In the absence of other guidance,; character chunk 0; extracted text lines 103–103"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-15": {
+          "id": "claim-university-of-pennsylvania-15",
+          "text": "Penn offers institutionally licensed AI tools with different eligibility, costs, account requirements and permitted data categories. CETLI directs users to the current ISC directory for access and costs; a listing does not establish coursework or examination permission.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "This information is subject to frequent changes and was last updated on October 7, 2026.\nFor the most up-to-date information, including costs and instructions for access to AI tools, visit the Information Systems & Computing (ISC) page on\nGenerative AI Tools & Resources\n.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+              "language": "en",
+              "hash": "fd62df3d3006cf7b1f768b9c44b8fc881375ead6085c8114dcf57f2272df6363",
+              "location": "Update notice dated October 7, 2026; character chunk 0; extracted text lines 204–207"
+            },
+            {
+              "quote": "Penn offers access to a number of AI tools. The guidelines for protecting student privacy  while using these tools are informed by the\ndata risk classification\nand the privacy agreements of the tool being used.\nWhile these Penn-licensed tools provide some added privacy protections, it is important to be aware of which tools are acceptable to use for different types of student data.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+              "language": "en",
+              "hash": "fd62df3d3006cf7b1f768b9c44b8fc881375ead6085c8114dcf57f2272df6363",
+              "location": "Penn-Licensed AI Tools; privacy context; character chunk 0; extracted text lines 209–212"
+            },
+            {
+              "quote": "Individual courses may have different or more narrow guidance on the use of AI that should be adhered to within the context of that course.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Course-specific rules; character chunk 0; extracted text lines 102–102"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-14": {
+          "id": "claim-university-of-pennsylvania-14",
+          "text": "CETLI states that Penn does not have a standardized policy on student AI use: each instructor is responsible for setting guidelines, and departments or programs may offer recommendations. Instructors determine acceptable AI use in coursework and may set assignment-specific policies.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Penn does not have a standardized policy on student AI use, and each instructor\nis responsible for\nsetting their own guidelines. Your department or program may have recommendations or resources for developing your policies in addition to the considerations provided here.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/creating-ai-policies/",
+              "language": "en",
+              "hash": "01b5064acb726653d2109a4449f3328bcfe3560798491cec25b0e060e3685070",
+              "location": "Creating AI Policies > introduction; character chunk 0; extracted text lines 204–206"
+            },
+            {
+              "quote": "Individual instructors determine their own policies related to acceptable student use of generative AI in coursework. For more information about setting expectations for student AI use, visit the\nCourse Policies & Expectations\npage.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+              "language": "en",
+              "hash": "fd62df3d3006cf7b1f768b9c44b8fc881375ead6085c8114dcf57f2272df6363",
+              "location": "Additional Guidance on AI Use; character chunk 0; extracted text lines 284–286"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-1": {
+          "id": "claim-university-of-pennsylvania-1",
+          "text": "Penn's university-community generative AI guidance directs members to be transparent about AI use and disclose when a work product was created wholly or partially using AI, including how it was used when appropriate. The statement is guidance, not a final policy; instructors may set course-specific disclosure and citation requirements.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Be transparent about the use of AI.  Disclose when a work product was created wholly or partially using an AI tool and, if appropriate, how AI was used to create the work product.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "General Guidance > Transparency; character chunk 0; extracted text lines 58–58"
+            },
+            {
+              "quote": "This statement is not intended as legal advice or an exhaustive set of best practices and should not be viewed as a final policy. The AI field is rapidly evolving in terms of technology, deployment models, third-party relationships, terms of service, regulatory landscape, and academic-industry partnership structures. It is anticipated that this document will be updated regularly and interact with other sources of policy, ethics, and governing legal authority.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Scope; character chunk 0; extracted text lines 55–55"
+            },
+            {
+              "quote": "Educators may have requirements and guidance for citing the use of generative AI output and for attributing AI created content to the specific AI tool and parameters used.\nIndividual courses may have different or more narrow guidance on the use of AI that should be adhered to within the context of that course.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Guidance for Students; character chunk 0; extracted text lines 101–102"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-3": {
+          "id": "claim-university-of-pennsylvania-3",
+          "text": "Penn's guidance says users should avoid sharing personal or sensitive data and should not input moderate/high-risk Penn data or intellectual property without considering the provider's data rights and a protective contract. Moderate/high-risk data involves Privacy Office review and Information Security consultation coordinated by Procurement; intellectual property involves consultation with the Penn Center for Innovation.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "Most AI tools and services use input and data from users of the tool to train the model.  Additionally, existing tools may incorporate AI features in their service offerings. For this reason, users of AI should avoid sharing personal or sensitive data with the tool and should not  input moderate or high-risk Penn data as defined by the\nPenn Data Risk Classification\n, or intellectual property, without:\nCareful consideration and understanding of the tool’s use of Penn data and the service provider’s stated rights to the data, including, but not limited to whether the service provider offers the option to opt-out of using customer’s data to train the AI;\nA contract in place ",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Privacy & Contracts; distinct data/IP consultation routes; character chunk 0; extracted text lines 64–68"
+            },
+            {
+              "quote": "to protect Penn data; and\nReview by Penn’s Privacy Office and consultation with the Office of Information Security as coordinated by Procurement when moderate or high-risk data is involved.\nConsultation with the Penn Center for Innovation, where intellectual property is involved.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Privacy & Contracts; distinct data/IP consultation routes; character chunk 680; extracted text lines 68–70"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-11": {
+          "id": "claim-university-of-pennsylvania-11",
+          "text": "CETLI reports that Penn's Office of Audit, Compliance & Privacy mandates that unlicensed AI tools must not receive information that could identify a student, including names, ID numbers, email addresses or identifiable descriptions of class work or engagement.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "Do not enter any information that could identify a student.\nThis includes names, ID numbers, or email addresses, as well as detailed descriptions of student work or engagement in class that could be identifiable to others.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+              "language": "en",
+              "hash": "fd62df3d3006cf7b1f768b9c44b8fc881375ead6085c8114dcf57f2272df6363",
+              "location": "Publicly Available AI Tools; character chunk 0; extracted text lines 274–275"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-17": {
+          "id": "claim-university-of-pennsylvania-17",
+          "text": "Wharton Academy prohibits students from using AI to complete personal reflection or opinion-based tasks, from using AI to complete group assignments instead of collaborating with peers, and from using AI to cheat on exams or tests.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "DON'TS\nDon’t paste your homework/exam questions directly as prompts.\nIrresponsible prompt: “Solve this: 3x + 5 = 14”\nIrresponsible prompt: “Write a 5-paragraph essay on the causes of World War II.”\nDon’t directly copy answers from generative AI tools and submit as your own.\nDon’t use AI for personal reflection or opinion-based tasks. We are interested in hearing\nyour\nopinions,\nyour\nstories and\nyour\nthoughts. In our classrooms, your fellow students hope to learn from you, your background, your understanding on the course materials and your thought process, not from a machine.\nDon’t rely on AI for group assignments. Using AI to complete your portion of a group project inste",
+              "url": "https://academy.wharton.upenn.edu/ai-policy/",
+              "language": "en",
+              "hash": "31346c43ca701f09b5a43c3fb915fc60883e38a5522a52e83e1061b3ea27028e",
+              "location": "Wharton Academy > Don'ts; character chunk 0; extracted text lines 82–94"
+            },
+            {
+              "quote": "ad of collaborating with your peers is considered academic dishonesty. Your peers hope to work with you as a team member, not with a machine.\nDon’t use AI to cheat on exams or tests.\nDon’t use AI to paraphrase or rewrite plagiarized content.\nDon’t use AI to fake research or sources.\nDon’t post AI-generated discussion posts within the course community forum.",
+              "url": "https://academy.wharton.upenn.edu/ai-policy/",
+              "language": "en",
+              "hash": "31346c43ca701f09b5a43c3fb915fc60883e38a5522a52e83e1061b3ea27028e",
+              "location": "Wharton Academy > Don'ts; character chunk 680; extracted text lines 94–98"
+            }
+          ]
+        },
+        "cl-upenn-cetli-investigation-conversation-20261016": {
+          "id": "cl-upenn-cetli-investigation-conversation-20261016",
+          "text": "If instructors suspect AI use that violates their course policy, CETLI advises discussing the student's drafting and reasoning process. Instructors may consult the Center for Community Standards & Accountability, which handles academic integrity violations, whether or not they intend to refer the student for further investigation.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "In other cases, student AI use may not be as clear. Often, faculty suspect a student has used AI if the language in their writing is bland or vague, but sometimes those qualities reflect the student’s own work. If you suspect a student has used AI in a way that violates your course policy, have a conversation with the student. You can begin the conversation with questions or statements like:\nI’m interested in understanding how you reached this conclusion.\nCan you talk to me about the process you used to draft this?\nHow did you think about the organization of your work?\nYou may discuss suspected student misuse of AI with the\nCenter for Community Standards & Accountability\n",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/",
+              "language": "en",
+              "hash": "47bcb206e1a80cb362cddf216feeb7c3d736b6f67e1f5ad742d8935b3e46d681",
+              "location": "FAQ > suspected inappropriate AI use; conversation and CSA consultation; character chunk 0; extracted text lines 359–365"
+            },
+            {
+              "quote": ", which handles academic integrity violations. Their staff can consult with you about your concerns and help you plan next steps, whether or not you intend to refer the student for further investigation.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/",
+              "language": "en",
+              "hash": "47bcb206e1a80cb362cddf216feeb7c3d736b6f67e1f5ad742d8935b3e46d681",
+              "location": "FAQ > suspected inappropriate AI use; conversation and CSA consultation; character chunk 680; extracted text lines 365–365"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-13": {
+          "id": "claim-university-of-pennsylvania-13",
+          "text": "Instructors must not require students to enter personal information or intellectual property into an unlicensed AI tool. Students may use unlicensed tools optionally at the instructor's discretion; CETLI says to consider a Penn-licensed tool for mandatory coursework components to protect student data.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "Do not require students to enter personal information or intellectual property into an unlicensed AI tool.\nUnlicensed tools may be used optionally by students at the instructor’s discretion but consider using a Penn-licensed tool for mandatory components of coursework to protect student data.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+              "language": "en",
+              "hash": "fd62df3d3006cf7b1f768b9c44b8fc881375ead6085c8114dcf57f2272df6363",
+              "location": "Publicly Available AI Tools; character chunk 0; extracted text lines 280–281"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-18": {
+          "id": "claim-university-of-pennsylvania-18",
+          "text": "Wharton Academy prohibits students from directly copying answers from generative AI tools and submitting them as their own, from using AI to paraphrase or rewrite plagiarized content, and from posting AI-generated discussion posts within course community forums.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "DON'TS\nDon’t paste your homework/exam questions directly as prompts.\nIrresponsible prompt: “Solve this: 3x + 5 = 14”\nIrresponsible prompt: “Write a 5-paragraph essay on the causes of World War II.”\nDon’t directly copy answers from generative AI tools and submit as your own.\nDon’t use AI for personal reflection or opinion-based tasks. We are interested in hearing\nyour\nopinions,\nyour\nstories and\nyour\nthoughts. In our classrooms, your fellow students hope to learn from you, your background, your understanding on the course materials and your thought process, not from a machine.\nDon’t rely on AI for group assignments. Using AI to complete your portion of a group project inste",
+              "url": "https://academy.wharton.upenn.edu/ai-policy/",
+              "language": "en",
+              "hash": "31346c43ca701f09b5a43c3fb915fc60883e38a5522a52e83e1061b3ea27028e",
+              "location": "Wharton Academy > Don'ts; character chunk 0; extracted text lines 82–94"
+            },
+            {
+              "quote": "ad of collaborating with your peers is considered academic dishonesty. Your peers hope to work with you as a team member, not with a machine.\nDon’t use AI to cheat on exams or tests.\nDon’t use AI to paraphrase or rewrite plagiarized content.\nDon’t use AI to fake research or sources.\nDon’t post AI-generated discussion posts within the course community forum.",
+              "url": "https://academy.wharton.upenn.edu/ai-policy/",
+              "language": "en",
+              "hash": "31346c43ca701f09b5a43c3fb915fc60883e38a5522a52e83e1061b3ea27028e",
+              "location": "Wharton Academy > Don'ts; character chunk 680; extracted text lines 94–98"
+            }
+          ]
+        },
+        "cl-upenn-cetli-ai-detector-ban-20260919": {
+          "id": "cl-upenn-cetli-ai-detector-ban-20260919",
+          "text": "CETLI tells instructors not to upload student work into an AI detector in all cases. It states that uploading without consent violates FERPA and Penn privacy policies, and that detectors are not accurate enough to be treated as evidence of misconduct because of frequent bias.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "In all cases, you should\nnot\nupload the student’s work into an “AI detector.” Uploading a student’s work without their consent is a violation of FERPA and\nPenn’s privacy policies.\nThese tools are also\nnot accurate enough\nto be treated as evidence of misconduct as they\nexhibit frequent bias.",
+              "url": "https://cetli.upenn.edu/resources/generative-ai/",
+              "language": "en",
+              "hash": "47bcb206e1a80cb362cddf216feeb7c3d736b6f67e1f5ad742d8935b3e46d681",
+              "location": "FAQ > suspected inappropriate AI use; character chunk 0; extracted text lines 366–373"
+            }
+          ]
+        },
+        "claim-university-of-pennsylvania-7": {
+          "id": "claim-university-of-pennsylvania-7",
+          "text": "Penn educators should provide students with clear guidelines on the use of AI within coursework and should disclose to students when course materials have been created with AI or when AI detection software will be used.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "Guidance for Educators\nUse of AI should always be in alignment with Penn’s\nPrinciples of Responsible Conduct\n.\nAs expectations may vary between classes and instructors, it is important for instructors to provide students with clear guidelines similar to the\nguidelines on collaboration\n, on the use of AI within coursework, and when and how the use of AI within a course should be cited.\nDisclose to students when course materials have been created with the use of AI and when AI detection software will be used in the course.\nBe aware of how AI tools may impact assignments and exams in your discipline. Penn's Center for Excellence in Teaching, Learning and Innovation (CETLI) p",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Guidance for Educators\nUse; character chunk 0; extracted text lines 84–92"
+            },
+            {
+              "quote": "rovides useful\nguidance\nin this space.",
+              "url": "https://isc.upenn.edu/security/AI-guidance",
+              "language": "en",
+              "hash": "3a7089b53406b330c8b7e55b5441be3ee039013abc4fe472e83dbb7b7aa91ea6",
+              "location": "Guidance for Educators\nUse; character chunk 680; extracted text lines 92–94"
+            }
+          ]
+        }
+      }
     }
   }
 }

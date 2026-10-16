@@ -9,7 +9,8 @@ process.env.NEXT_PUBLIC_UAPT_V6_PUBLISHED_PAGES='1';
 process.env.UAPT_DISABLE_INTERNAL_FETCH='1';
 test('all published V6 schools bind independent actions and full original evidence; stale projections fail closed',async()=>{
  const pointer=JSON.parse(await readFile('data/public-v6-pages/current.json','utf8'));
- const records=JSON.parse(await readFile('data/public-v6-records/revisions/pku-v5-20261014-r3.json','utf8'));
+ const recordPointer=JSON.parse(await readFile('data/public-v6-records/current.json','utf8'));
+ const records=JSON.parse(await readFile('data/public-v6-records/'+recordPointer.path,'utf8'));
  for(const slug of pointer.slugs){
   for(const locale of ['en','zh'] as const){
    const data=await getPolicyV6Data(locale,slug),school=data.schools.find(s=>s.slug===slug)!,guide=data.studentActions;

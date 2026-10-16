@@ -6,7 +6,7 @@ import pointer from '../../../data/public-v6-records/current.json';
 import revisions from '../../../data/public-v6-records/revisions.json';
 import {publishedV6Enabled} from './policy-v6-published-gate';
 import {readPublishedV6Revision} from './policy-v6-published';
-export interface RecordRevision {universityRevisionId:string;datasetReleaseId:string;recordSha256:string;publishedAt:string}
+export interface RecordRevision {universityRevisionId:string;datasetReleaseId:string;recordSha256:string;publishedAt:string;baselineRevisionId?:string}
 interface Package {schemaVersion:string;revision:string;publishedAt:string;datasetReleaseId:string;publicationApproved:true;parentRevisionId?:string;changeSummary?:{en:string;zh:string};summaries:PublicEntitySummary[];snapshots:Record<string,PolicySnapshot>;toolsBySlug:Record<string,UniversityToolRecord[]>;recordRevisions:Record<string,RecordRevision>;heldBySlug:Record<string,PublicEntitySummary['claims']>;historical:Record<string,{baseline:PublicEntitySummary;snapshot:PolicySnapshot|null;heldClaims:PublicEntitySummary['claims']}>;aliasesBySlug:Record<string,string[]>;changesBySlug:Record<string,{addedClaimIds:string[];updatedClaimIds:string[];heldClaimIds:string[]}>}
 const cached=new Map<string,Package>();
 export function readV6RecordCorrections(){return readV6RecordCorrectionRevision(pointer.revision);}
@@ -27,3 +27,6 @@ export function v6CorrectedSummary(slug:string){const s=readV6RecordCorrections(
 export function v6RecordRevision(slug:string){return readV6RecordCorrections()?.recordRevisions[slug];}
 export function v6CorrectedSnapshot(slug:string){const s=readV6RecordCorrections()?.snapshots[slug];return s?structuredClone(s):undefined;}
 export function applyV6RecordCorrections(summaries:PublicEntitySummary[]){const c=readV6RecordCorrections();if(!c)return summaries;const bySlug=new Map(c.summaries.map(s=>[s.entity.slug,s]));return summaries.map(s=>bySlug.get(s.entity.slug)??s);}
+
+/** Frozen baseline identity belongs to a school record, not its presentation cohort. */
+export function v6BaselineRevision(slug:string,selected=readV6RecordCorrections()){return selected?.recordRevisions[slug]?.baselineRevisionId??(slug==='peking-university'?'baseline-pku-v5-20261014':'baseline-v6-pages-20261013');}
