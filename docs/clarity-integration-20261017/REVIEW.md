@@ -53,3 +53,9 @@ Production acceptance is still pending at this source freeze. Final results will
 - [Masking/client API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api)
 - [Data retention](https://learn.microsoft.com/en-us/clarity/setup-and-installation/data-retention)
 - [Citation domain verification](https://learn.microsoft.com/en-us/clarity/ai-visibility/ai-citations-overview)
+
+## Public consent QA found and corrected before acceptance
+
+The first candidate `8a47e8a9` passed the route matrix (539 checks), 119 browser page renders and 85 MCP calls covering 555 claims. A deliberately consented single-document browser probe loaded the hosted tag/SDK (200) and received `https://u.clarity.ms/collect` 204. However, withdrawing on the SDK-free privacy page left existing `_clck`/`_clsk` cookies. The lifecycle transaction was recovered to the previous active before acceptance; this attempt is not a completed release.
+
+Cookie expiration now runs on withdrawal even when no SDK has been loaded in that document, and runs after SDK stop. Excluded surfaces and initial effective opt-out also clear residual first-party Clarity cookies. A regression assertion covers withdrawal without any SDK. Source revision, build, candidate and public acceptance are repeated for the corrected artifact; prior evidence is preserved separately.

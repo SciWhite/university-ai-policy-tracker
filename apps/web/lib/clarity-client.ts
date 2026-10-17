@@ -1,5 +1,5 @@
 import { analyticsOptedOut } from "./analytics-preference";
-import { clarityAllowed, CLARITY_PREFERENCE_EVENT } from "./clarity-preference";
+import { clarityAllowed, clearClarityCookies, CLARITY_PREFERENCE_EVENT } from "./clarity-preference";
 import { publishedV6Slugs } from "./policy-v6-published-gate";
 
 type Clarity = ((...args: unknown[]) => void) & { q?: unknown[][] };
@@ -28,15 +28,14 @@ export function installClarity(projectId = CLARITY_PROJECT_ID) {
   let stopped = false;
   const eligible = () => isClarityPageEligible(location.href, document.referrer);
   const stop = () => {
-    if (!requested) return;
-    window.clarity?.("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
-    for (const name of ["_clck", "_clsk"]) {
-      for (const domain of ["", "; Domain=eduaipolicy.org", "; Domain=.eduaipolicy.org"]) {
-        document.cookie = `${name}=; Max-Age=0; Path=/${domain}; SameSite=Lax; Secure`;
-      }
+    if (requested) {
+      window.clarity?.("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+      window.clarity?.("stop");
+      stopped = true;
     }
-    window.clarity?.("stop");
-    stopped = true;
+    // Privacy pages intentionally have no SDK. Clear cookies there too, and
+    // after stopping an existing SDK so its final flush cannot restore them.
+    clearClarityCookies();
   };
   const update = () => {
     if (!clarityAllowed() || !eligible()) {
@@ -91,5 +90,5 @@ export function installClarity(projectId = CLARITY_PROJECT_ID) {
   });
   window.addEventListener("storage", update);
   // First-party analytics remain governed by their existing preference.
-  if (!analyticsOptedOut()) update();
+  update();
 }
