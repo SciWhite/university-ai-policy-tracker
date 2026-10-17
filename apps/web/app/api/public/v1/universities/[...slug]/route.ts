@@ -1,3 +1,4 @@
+import {withSourceHashContract} from "@/lib/source-hash-contract";
 import { buildPublicEntitySummaryResponse } from "@uapt/shared";
 import { NextResponse } from "next/server";
 import {
@@ -62,6 +63,6 @@ export async function GET(_request: Request, { params }: PublicUniversityRoutePr
     : summary;
 
   return NextResponse.json(
-    buildPublicEntitySummaryResponse(summaryWithOptionalSnapshot, getSiteBaseUrl())
+    withSourceHashContract(buildPublicEntitySummaryResponse(summaryWithOptionalSnapshot, getSiteBaseUrl()), summary)
   );
 }

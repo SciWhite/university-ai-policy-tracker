@@ -46,3 +46,11 @@
 - [ ] 每校 changes presentation note 与 GitHub 同步；政策数据、日期、正式快照/审计状态未因 UI 发布变化。
 
 - [ ] 标题校徽有本校正式首页 href 和明确无障碍名称，点击导航正确；键盘焦点可见，对比卡片无嵌套链接。
+
+2026-10-16 统一打包与 SEO 合同：
+
+- [ ] 页面/记录包配对，验收文件绑定两包与同步 ledger 的原始字节 SHA-256；新包经 `pnpm v6:pack` 输出到全新隔离目录。
+- [ ] `pnpm validate:v6-release` 全校/语言合同通过；全部工具含独立范围表格，不以普通卡片数代替完整集合。
+- [ ] 每个来源 URL＋版本 hash 明确 raw_captured_bytes / extracted_text_utf8 / unknown_legacy；未知项保留原因，不从 locator 推断。
+- [ ] WebPage/Dataset JSON-LD 唯一且可解析，canonical/description/API 链接一致；中文 metadata 已本地化，hreflang 未越过翻译审核边界。
+- [ ] 输出分片以实际 loader 回读还原；receipt 绑定 provenance hash；打包成功不代表语义审核、快照提升或发布完成。

@@ -5,11 +5,12 @@ import {readV6RecordCorrections} from "@/lib/v6-effective-records";
 import { UniversityMark } from "@/components/university-mark";
 import { PolicyV6HeaderLocation } from "@/components/policy-v6-header-location";
 import { getPolicyV6UniversityTitle } from "@/lib/policy-v6-university-title";
-import { getLocalV6Bundle } from "@/lib/policy-v6-bundle";
+import {getV6PageInput} from "@/lib/policy-v6-page-input";
+import {universityPolicySeo, universityPolicyStructuredData} from "@/lib/university-policy-seo";
+import {publishedV6Enabled, publishedV6Slugs} from "@/lib/policy-v6-published-gate";
 import { PolicyV6BundlePage } from "@/components/policy-v6-bundle-page";
 import { PolicyV6Sources } from "@/components/policy-v6-sources";
 import { PolicyV6ClaimGroups } from "@/components/policy-v6-claim-groups";
-import { getLocalV6Evidence } from '@/lib/policy-v6-local-evidence';
 import { PolicyV6LocalPage } from '@/components/policy-v6-local-page';
 import { policyV6AgentReviewLabel } from '@/lib/policy-v6-review';
 import { getPolicyV6IllustratedScene } from '@/lib/policy-v6-illustrated-scene';
@@ -115,6 +116,13 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
   }
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
+  if (university && publicSummary && isPolicyV6Preview(slug, (await searchParams)?.layout)) {
+    const seo = universityPolicySeo(publicSummary, locale);
+    return {...seo,
+      ...(process.env.NODE_ENV === "development" ? {robots: {index: false, follow: false}} : {}),
+      openGraph: {title: seo.title, description: seo.description, images: [getSiteOgImageUrl(locale)], url: String(seo.alternates.canonical), type: "article"}
+    };
+  }
   const displayName = university
     ? getLocalizedInstitutionName(university.slug, university.name, locale)
     : undefined;
@@ -199,17 +207,20 @@ export default async function UniversityPage({
 
   const pageQuery = await searchParams;
   const uiLab = isPolicyV6Preview(slug, pageQuery?.layout);
-  const localBundle = uiLab ? getLocalV6Bundle(slug, locale) : undefined;
+  const v6Input = uiLab ? getV6PageInput(slug, locale) : undefined;
+  const localBundle = v6Input?.bundle;
+  const v6PublicSummary = uiLab && publishedV6Enabled() && publishedV6Slugs.includes(slug) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
+  const v6JsonLd = v6PublicSummary ? <JsonLd data={universityPolicyStructuredData(v6PublicSummary, locale)} /> : null;
   if (localBundle) {
     const [identity, data, catalog, summaries] = await Promise.all([getCatalogUniversityBySlug(slug), getPolicyV6Data(locale, slug), getCatalogUniversities(), getStagedPublicSummaries()]);
     if (!identity) notFound();
-    return <PolicyV6BundlePage university={identity} data={data} view={localBundle} locale={locale} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} />;
+    return <>{v6JsonLd}<PolicyV6BundlePage university={identity} data={data} view={localBundle} locale={locale} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} /></>;
   }
-  const localEvidence = uiLab ? getLocalV6Evidence(slug) : undefined;
+  const localEvidence = v6Input?.evidence;
   if (localEvidence) {
     const [localUniversity, localData, localCatalog, localSummaries] = await Promise.all([getCatalogUniversityBySlug(slug), getPolicyV6Data(locale, slug), getCatalogUniversities(), getStagedPublicSummaries()]);
     if (!localUniversity) notFound();
-    return <PolicyV6LocalPage university={localUniversity} data={localData} evidence={localEvidence} locale={locale} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/>;
+    return <>{v6JsonLd}<PolicyV6LocalPage university={localUniversity} data={localData} evidence={localEvidence} locale={locale} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/></>;
   }
 
   const [university, publicSummary, loadedSnapshot] = await Promise.all([
@@ -310,7 +321,7 @@ export default async function UniversityPage({
 
   return (
     <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab?'compact-evidence':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
-      <JsonLd
+      {uiLab ? v6JsonLd : <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
@@ -343,7 +354,7 @@ export default async function UniversityPage({
             }
           }
         }}
-      />
+      />}
 
       <LabProvider {...(labData ? { data: labData } : {})}>
       <PolicyReferenceLayout uiLab={uiLab} studentActions={Boolean(labData?.studentActionsPilot)} enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot && !uiLab} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements}>

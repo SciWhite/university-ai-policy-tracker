@@ -86,14 +86,16 @@ For conversion of existing public artifacts:
 pnpm v6:shards --all-public
 ```
 
-For a new already-reviewed public package prepared outside tracked `revisions/`:
+Historical single-family conversion (new page/record packages now use the paired
+`pnpm v6:pack` input described in `v6-input-hash-seo-contract.md`):
 
 ```sh
 pnpm v6:shards --family public-v6-pages --revision <new-id> \
   --input <frozen-public-package> --sha256 <exact-input-byte-hash>
 ```
 
-The same command supports `public-v6-records` and `public-v6-history`. Keep the
+The single-family CLI only accepts frozen legacy page/record revisions, or public history.
+New page/record revisions require the paired packer. Keep the
 exact input in the acceptance/recovery bundle; publish only public fields.
 Export validates identity and applicable record schemas, writes immutable blobs
 and a local registry, and never updates current pointers. It does not establish

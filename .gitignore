@@ -69,3 +69,6 @@ packages/db/generated/
 
 # MCP frozen runtime catalog and anonymous aggregates
 apps/mcp/.runtime-data/
+
+# Python diagnostics (retain locally, never publish).
+__pycache__/

@@ -10,6 +10,23 @@ V6 已有发布实现；早期 `policy-v6-local` 是历史开发位置。进入�
 
 这份规范描述现有行为；UCL 试点首次补出了通用的本地资料适配入口。它支持 `uapt-private-repaired-evidence-bundle-v1` 形状的修复包，**尚非任意爬虫 JSON 一键导入器**。不同格式应先做一次格式适配，不能削弱证据与审核门槛。
 
+## 统一输入与验收入口（2026-10-16）
+
+三种既有输入（record、bundle、evidence）保留为数据适配器；运行时由
+`lib/policy-v6-page-input.ts` 选择，并经 `lib/policy-v6-input.ts` 的同一合同校验，
+不再在路由中自行按顺序猜选。页面 SEO/JSON-LD 共用
+`lib/university-policy-seo.ts`。Harvard 的 HMS 工具表等有依据的模块保留；
+工具完整性核对包含普通工具和独立表格，不只比较卡片数量。
+
+新公开包统一使用 `pnpm v6:pack`，输入、验收文件、同步事件均绑定实际字节哈希。
+见 [统一打包与来源哈希合同](v6-input-hash-seo-contract.md)。
+`pnpm validate:v6-release` 已进入 `pnpm check`，对当前配对包检查全部学校、启用语言、
+Claim、工具、held 与记录指纹。新增已发布 V6 学校的工具模块从当前发布指针派生，
+无需再补另一份工具白名单；历史非 V6 名单及六校审核边界继续保留。
+
+私有修复包的 Python 转换器仍是格式适配工具，不是另一个发布入口。
+历史一次性脚本保留用于追溯，不能作为新包的打包/提升流程。
+
 ## 页面固定骨架
 
 | 区域 | 固定行为 | 学校需要提供 |

@@ -1,3 +1,4 @@
+import {publishedV6Slugs, publishedV6Enabled} from "./policy-v6-published-gate";
 import { isPolicyV6Preview } from './policy-v6-gate';
 import type { PolicyScenePilot, PolicySceneStoryCard } from "@/lib/policy-scene-pilot";
 
@@ -52,7 +53,7 @@ export function isPublishedPolicyReferencePage(slug: string): boolean {
 }
 
 export function isPublishedUniversityAiToolsModule(slug: string): boolean {
-  return publishedUniversityAiToolsSlugs.some(candidate => candidate === slug);
+  return (publishedV6Enabled() && publishedV6Slugs.includes(slug)) || publishedUniversityAiToolsSlugs.some(candidate => candidate === slug);
 }
 
 /** Local comparisons remain noindex; published cohorts also remain usable as development comparisons. */

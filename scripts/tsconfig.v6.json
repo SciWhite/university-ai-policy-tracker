@@ -1,0 +1,18 @@
+{
+  "extends": "../apps/web/tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "paths": {
+      "@/*": ["../apps/web/*"],
+      "@uapt/db": ["../packages/db/src/index.ts"],
+      "@uapt/shared": ["../packages/shared/src/index.ts"]
+    }
+  },
+  "include": [
+    "pack-v6-release.ts",
+    "lib/v6-release-contract.ts",
+    "validate-v6-release.ts",
+    "../tests/v6-contract-seo.test.ts"
+  ],
+  "exclude": ["../node_modules"]
+}

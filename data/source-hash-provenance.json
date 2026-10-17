@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "uapt-source-hash-registry-v1",
+  "entries": [
+    {
+      "sourceUrl": "https://innovationhub.ai.cornell.edu/tool/adobe-firefly/",
+      "snapshotHash": "f13b0a7c67f9699e0f66091a3cdfb520c86068d0b82fc5d5ac66025031416af1",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "10d91bdc00084824606b8fd6767eb8fbac9266b40b8499c5d1f34dc8f4485dd3",
+      "textSha256": "f13b0a7c67f9699e0f66091a3cdfb520c86068d0b82fc5d5ac66025031416af1",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+      "snapshotHash": "82a51e299a8322ff3ad705b1379eac5bc86d068f34d5d9e814fa83cbd709b829",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "083ab9a611d8805162287db4b46d9f8de8f7140b75ea99e674c68b34ad1f0d9a",
+      "textSha256": "82a51e299a8322ff3ad705b1379eac5bc86d068f34d5d9e814fa83cbd709b829",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://innovationhub.ai.cornell.edu/tool/cornell-ai-platform/",
+      "snapshotHash": "95c81e6d649b2070ac788757ed5b0e7d33946cdd3b459a8f07bbc9fbac97522a",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "403ed787675b0dc4a51731507ef7d7ceb336e0e03c5c32851c0596257c1bb12b",
+      "textSha256": "95c81e6d649b2070ac788757ed5b0e7d33946cdd3b459a8f07bbc9fbac97522a",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://innovationhub.ai.cornell.edu/tool/microsoft-365-copilot-chat/",
+      "snapshotHash": "872db9af7c873b0f8b4106bf989e7c1e6d34ace1d8a6df4df60e556ba697efc6",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "7197082eb2733f186e445003cac6a0fc05c1bb993a4a3ae6fe1e2a50d73ee750",
+      "textSha256": "872db9af7c873b0f8b4106bf989e7c1e6d34ace1d8a6df4df60e556ba697efc6",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+      "snapshotHash": "90d6b31f5c02b17695cbadd295a9f8214b515fa39fa651c8f4a4698123633da3",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "c9cef43908cde1ef75aedaf4bfb4ca890d3b815cdd5303f31a8ddc129f27d9b7",
+      "textSha256": "90d6b31f5c02b17695cbadd295a9f8214b515fa39fa651c8f4a4698123633da3",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+      "snapshotHash": "2a1ceabd212be55344e3a296d15727e687c5507b39ec6901cba002bd695d5044",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "480cf09bba7cbe2c869001d99123552e9ace5bf5103a6091a2a52b3e4227d491",
+      "textSha256": "2a1ceabd212be55344e3a296d15727e687c5507b39ec6901cba002bd695d5044",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+      "snapshotHash": "7e376dd5a4baa2e9f76bdb9eb11c39df86b566d74ab6942a41173eafc9a3361c",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "d2a8551a495fa123b4f48425108fa24aeb6bdbece5996eb87abeb5bc91b657f3",
+      "textSha256": "7e376dd5a4baa2e9f76bdb9eb11c39df86b566d74ab6942a41173eafc9a3361c",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+      "snapshotHash": "fd43ec00e8c03584dd81775c8be2c02ecc3910bd5064f22e49a014704497d029",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "3c453209d28bda3cfed9944588b71fe21998bb22562fa19404e401ad5e907a1b",
+      "textSha256": "fd43ec00e8c03584dd81775c8be2c02ecc3910bd5064f22e49a014704497d029",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+      "snapshotHash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "54115b98388abef7d42695c4fcd620b14124b4be705a56d5c8147d4eb4f6fb33",
+      "textSha256": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+      "snapshotHash": "dadca3cf1b9111e1055897eba5c139506828463c17dd0819bcd955915cc34d9d",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "10fac7d33f1729aa10aa9dfbe3fc0127bf992682968452515c25274b65b789a9",
+      "textSha256": "dadca3cf1b9111e1055897eba5c139506828463c17dd0819bcd955915cc34d9d",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+      "snapshotHash": "6114eab16d93b1ee4b21e09574564c19bd3a3ea7bd812e06d7c11e407d6997da",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "5b99c1649bfc836ada250d4fabe16329cb9906b44ed0c618f493b208b11ef036",
+      "textSha256": "6114eab16d93b1ee4b21e09574564c19bd3a3ea7bd812e06d7c11e407d6997da",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://research-and-innovation.cornell.edu/generative-ai-in-academic-research/",
+      "snapshotHash": "aa5763136d76224159562c2a09e543aeac4917cbb3084246862df08a3f8e4f71",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "ab7fa67815ec8a56a52fe91dcbe1b410f299cd6f05efc24b24bdca27d77ac4ba",
+      "textSha256": "aa5763136d76224159562c2a09e543aeac4917cbb3084246862df08a3f8e4f71",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://undergrad.cornell.edu/students/academic-integrity/essential-guide-academic-integrity-undergraduate-students",
+      "snapshotHash": "29dba69ffdbd27df417381706b630e5aefed4f3da763cf936aa69f9ba7a12a16",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "fdcf3927da04c13a699f433711c6c346f9dcc44742aada994230429d1548bf6b",
+      "textSha256": "29dba69ffdbd27df417381706b630e5aefed4f3da763cf936aa69f9ba7a12a16",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://cals.cornell.edu/communication/graduate/phd-program-manual/genai-policy",
+      "snapshotHash": "66790a22b1fe2b1d76e8efb7b2d9aa1aa3ae684aeddad98809dfb3839e55872b",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "06cade26d98e2d5bbd640fa83e470c6f825a6a48b6c6a84947bade2fedd5fea6",
+      "textSha256": "66790a22b1fe2b1d76e8efb7b2d9aa1aa3ae684aeddad98809dfb3839e55872b",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://innovationhub.ai.cornell.edu/tool/zoom-ai-companion/",
+      "snapshotHash": "c6842cdaae6cd7c93f84b1f95449ec004bd763e4e89bd0b175c154c15a61d404",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "cd8212e5ff5a1265855737adf5f0e99f5e6f61e17be25bdb6787200fa7423421",
+      "textSha256": "c6842cdaae6cd7c93f84b1f95449ec004bd763e4e89bd0b175c154c15a61d404",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://undergrad.cornell.edu/academic-intregrity-updates-august-2026",
+      "snapshotHash": "27b6e3f0c0d465759654bf423cd79a488f5188e8a67592f3788868c76f481854",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "ae30612054687245d4492e01bd1e0678d8e7d7dd71442d6dc3d8f4f7c18ff03d",
+      "textSha256": "27b6e3f0c0d465759654bf423cd79a488f5188e8a67592f3788868c76f481854",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://undergrad.cornell.edu/faculty/teaching",
+      "snapshotHash": "f8d4b234c69906a568ef98b7f5cd7887d906e2b21685b03841560c883a592b7f",
+      "hashKind": "extracted_text_utf8",
+      "rawSha256": "44574792a6c37456ac92bf7bc15b2a77fce2313ec57c6e27bca0c3b9feab319d",
+      "textSha256": "f8d4b234c69906a568ef98b7f5cd7887d906e2b21685b03841560c883a592b7f",
+      "verification": "frozen_artifact_bytes"
+    }
+  ]
+}

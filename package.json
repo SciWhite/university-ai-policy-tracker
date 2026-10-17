@@ -27,7 +27,7 @@
     "dev:worker": "pnpm --filter @uapt/worker dev",
     "build": "pnpm db:generate && pnpm -r build",
     "lint": "pnpm -r lint",
-    "check": "pnpm db:generate && pnpm validate:i18n && pnpm validate:entity-aliases && pnpm validate:public-contract && pnpm validate:tool-records && pnpm validate:analysis-contract && pnpm validate:policy-snapshot && pnpm audit:policy-analysis && pnpm smoke:analysis-pages && pnpm smoke:entity-search && pnpm smoke:source-diffs && pnpm validate:openclaw-artifacts && pnpm validate:dataset-release && pnpm validate:v6-shards && pnpm audit:public-data && pnpm typecheck && pnpm lint",
+    "check": "pnpm db:generate && pnpm validate:i18n && pnpm validate:entity-aliases && pnpm validate:public-contract && pnpm validate:tool-records && pnpm validate:analysis-contract && pnpm validate:policy-snapshot && pnpm audit:policy-analysis && pnpm smoke:analysis-pages && pnpm smoke:entity-search && pnpm smoke:source-diffs && pnpm validate:openclaw-artifacts && pnpm validate:dataset-release && pnpm validate:v6-shards && pnpm validate:v6-release && pnpm audit:public-data && pnpm typecheck && pnpm lint",
     "smoke:universities-index": "tsx scripts/smoke-universities-index.ts",
     "smoke:reference-pages": "tsx scripts/smoke-reference-pages.ts",
     "smoke:pilot-pages": "tsx --tsconfig apps/web/tsconfig.json scripts/smoke-pilot-pages-http.ts",
@@ -82,7 +82,9 @@
     "infra:down": "docker compose -f infra/docker/docker-compose.yml down",
     "mcp:export": "tsx --tsconfig apps/web/tsconfig.json scripts/export-mcp-catalog.ts",
     "mcp:start": "pnpm --filter @uapt/mcp start",
-    "test:mcp": "pnpm --filter @uapt/mcp test"
+    "test:mcp": "pnpm --filter @uapt/mcp test",
+    "v6:pack": "tsx --tsconfig apps/web/tsconfig.json scripts/pack-v6-release.ts",
+    "validate:v6-release": "tsc --noEmit -p scripts/tsconfig.v6.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-v6-release.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

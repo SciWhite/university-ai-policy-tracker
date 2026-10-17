@@ -1,3 +1,4 @@
+import {sourceHashBinding} from "@/lib/source-hash-contract";
 import {policySourceRole,policyV6EvidenceLabel} from "@/lib/policy-v6-evidence-labels";
 import React from "react";
 import type { PublicEntitySummary } from "@uapt/shared";
@@ -25,6 +26,7 @@ export function PolicyV6Sources({
     >
       {sources.map((source) => {
         const domain = new URL(source.sourceUrl).hostname;
+        const binding = sourceHashBinding(source);
         return (
           <article
             className="policy-v6-sourceCard"
@@ -50,6 +52,16 @@ export function PolicyV6Sources({
                   : "Historical source previously recorded HTTP 404; subsequent access may also be restricted. Not evidence of current policy validity."}
               </p>
             ) : null}
+            <details className="policy-v6-muted">
+              <summary>{locale === "zh" ? "哈希与捕获版本" : "Hash and captured version"}</summary>
+              <p>{binding.hashKind === 'extracted_text_utf8'
+                ? locale === 'zh' ? 'SHA-256：所保留提取文本的 UTF-8 字节，不是 HTML/PDF 原始文件。' : 'SHA-256 of retained extracted UTF-8 text; not the original HTML/PDF file.'
+                : binding.hashKind === 'raw_captured_bytes'
+                  ? locale === 'zh' ? 'SHA-256：所保留捕获文件的字节。' : 'SHA-256 of the retained capture file bytes.'
+                  : locale === 'zh' ? '历史记录未明确哈希对应的表示形式；不能据此认定是原始文件哈希。' : 'Representation unspecified in this historical record; do not assume an original-file hash.'}</p>
+              <p data-i18n="preserve" style={{overflowWrap:'anywhere'}}>{source.snapshotHash}</p>
+              <p>{locale === 'zh' ? '哈希确认版本身份，不代表政策仍然有效或审核已获批准。' : 'Hashes identify a captured version; they do not establish current policy or review approval.'}</p>
+            </details>
             <a
               href={source.sourceUrl}
               target="_blank"

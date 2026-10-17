@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFile
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { publicEntitySummarySchema, policySnapshotSchema, universityToolRecordSchema } from "@uapt/shared";
+import legacy from "../data/v6-legacy-package-baseline.json";
 import type { ShardIndex, ShardManifest, ShardNode } from "../apps/web/lib/v6-artifact-store";
 
 export const digest = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
@@ -90,6 +91,7 @@ function main() {
   }
   const options = Object.fromEntries(args.reduce<string[][]>((pairs, item, i) => i % 2 === 0 ? [...pairs, [item, args[i + 1]]] : pairs, []));
   if (args.length !== 8 || !options["--family"] || !options["--revision"] || !options["--input"] || !options["--sha256"]) throw new Error("Use --all-public, or --family <public-v6-pages|public-v6-records|public-v6-history> --revision <id> --input <approved-public-package> --sha256 <frozen-byte-hash>");
+  if (options["--family"] !== "public-v6-history" && !Object.hasOwn(legacy.files, `data/${options["--family"]}/revisions/${options["--revision"]}.json`)) throw Error("New page/record revisions require paired input and acceptance: use pnpm v6:pack");
   const raw = readFileSync(options["--input"]);
   if (digest(raw) !== options["--sha256"]) throw new Error("Export input changed");
   exportV6Revision(resolve("data", options["--family"]), options["--family"], options["--revision"], raw);
