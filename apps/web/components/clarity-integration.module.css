@@ -1,0 +1,21 @@
+.banner {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 100;
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-canvas-default, #fff);
+  color: var(--color-text);
+  box-shadow: 0 4px 24px #0002;
+}
+.banner p { margin: 0 0 12px; font-size: var(--text-sm); line-height: 1.6; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions button { min-height: 44px; }
+.banner :is(a, button):focus-visible { outline: 2px solid var(--color-accent-emphasis); outline-offset: 4px; }
+@media (max-width: 480px) { .banner { padding: 16px; } .actions button { flex: 1; } }
+@media print { .banner { display: none; } }

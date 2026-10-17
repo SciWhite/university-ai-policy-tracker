@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AnalyticsPreferenceControl } from "./analytics-preference-control";
+import { ClarityPrivacyControl } from "./clarity-integration";
+import { clarityCopy } from "@/lib/clarity-copy";
 import { PluginInstallLink } from "./plugin-install-link";
 import { SupportMailboxDetails } from "./support-mailbox-details";
 import { getTrustContent, trustIntroductions, type TrustPageKind } from "@/lib/trust-content";
@@ -29,6 +31,10 @@ export function TrustPage({ kind, locale = "en" }: { kind: TrustPageKind; locale
         {kind === "privacy" && index === 3 ? <SupportMailboxDetails locale={locale} /> : null}
       </section>;
     })}
+    {kind === "privacy" ? <section><h2>Microsoft Clarity</h2><p>{clarityCopy[locale].disclosure}</p>
+      <p><a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a> · <a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/data-retention">Microsoft Clarity — data retention</a></p>
+      <ClarityPrivacyControl locale={locale} />
+    </section> : null}
     <div className={styles.actions}>
       {(kind === "contact" || kind === "support" || kind === "privacy" || kind === "terms") && <p><a href="mailto:support@eduaipolicy.org">support@eduaipolicy.org</a></p>}
       {(kind === "mcp" || kind === "support") && <PluginInstallLink labels={text.labels} />}
