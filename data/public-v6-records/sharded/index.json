@@ -76,6 +76,11 @@
       "path": "sharded/revisions/berkeley-v6-r1-20261017-4f60955f970f468fcef8c1bd9c34423dee161458d4401f2c82beaa531e1d7f12.json",
       "sha256": "4f60955f970f468fcef8c1bd9c34423dee161458d4401f2c82beaa531e1d7f12",
       "sourceSha256": "9f0be508ed5c1ec71c8c0f7e6e83aeca8b79d1a1b22d95ec5695d570a920663a"
+    },
+    "berkeley-v6-r2-20261017": {
+      "path": "sharded/revisions/berkeley-v6-r2-20261017-8a7ddf56cacb4a7c5256d4be0623189c5dec1f592ae5de9e272b7b18994f63e3.json",
+      "sha256": "8a7ddf56cacb4a7c5256d4be0623189c5dec1f592ae5de9e272b7b18994f63e3",
+      "sourceSha256": "5a13e534e94ed24aa556df5a7b39939b39755e93293a491d4274842475af8c4b"
     }
   }
 }

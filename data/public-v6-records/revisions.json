@@ -71,5 +71,9 @@
   "berkeley-v6-r1-20261017": {
     "path": "revisions/berkeley-v6-r1-20261017.json",
     "sha256": "9f0be508ed5c1ec71c8c0f7e6e83aeca8b79d1a1b22d95ec5695d570a920663a"
+  },
+  "berkeley-v6-r2-20261017": {
+    "path": "revisions/berkeley-v6-r2-20261017.json",
+    "sha256": "5a13e534e94ed24aa556df5a7b39939b39755e93293a491d4274842475af8c4b"
   }
 }
