@@ -1,4 +1,9 @@
-export { proxy } from "../web/proxy";
+import type { NextRequest } from "next/server";
+import { proxy as webProxy } from "../web/proxy";
+
+export function proxy(request: NextRequest) {
+  return webProxy(request);
+}
 
 export const config = {
   matcher: [
