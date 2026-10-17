@@ -1,7 +1,7 @@
 {
-  "path": "revisions/cornell-v6-r2-20261016.json",
-  "sha256": "3659a6e11670430a8521e13eb3e200b5694346897be29c3388015e13f1a128a0",
-  "releaseId": "cornell-v6-r2-20261016",
+  "path": "revisions/tsinghua-v6-r2-20261017.json",
+  "sha256": "8539b54557b1a0361664fcd6ff92b4933821fc86c70f7dfe79c091c0571c5938",
+  "releaseId": "tsinghua-v6-r2-20261017",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -18,7 +18,8 @@
     "university-of-chicago",
     "peking-university",
     "university-of-pennsylvania",
-    "cornell-university"
+    "cornell-university",
+    "tsinghua-university"
   ],
   "v5Slugs": []
 }
