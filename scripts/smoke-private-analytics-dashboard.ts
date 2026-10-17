@@ -1,11 +1,23 @@
 import assert from "node:assert/strict";
+import { mkdtemp, rm, utimes, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 import type { AnalyticsEventRow } from "@uapt/db";
 import { aggregateBingDetailRows } from "../apps/web/lib/bing-webmaster.ts";
 import {
+  getBingAiPerformanceSnapshot,
   parseBingAiOverviewCsv,
   parseBingAiPagesCsv,
-  parseBingAiQueriesCsv
+  parseBingAiQueriesCsv,
+  parseBingAiTopicPortfolioCsv,
+  parseBingAiOpportunityQueriesCsv,
+  resolveOptionalSnapshotFile
 } from "../apps/web/lib/bing-ai-performance.ts";
+import {
+  clearClarityInsightsMemoryCache,
+  getClarityLiveInsightsSnapshot,
+  parseClarityLiveInsights
+} from "../apps/web/lib/clarity-insights.ts";
 import type { GscSummary } from "../apps/web/lib/google-search-console.ts";
 import {
   buildComparisonEligibility,
@@ -99,6 +111,94 @@ assert.deepEqual(
   parseBingAiQueriesCsv('"Grounding Query","Intent","Topic","Citations","Citation Share"\n"ai policy","Informational","AI, Policy","5","12.5%"\n'),
   [{ citationShare: 0.125, citations: 5, intent: "Informational", key: "ai policy", topic: "AI, Policy" }]
 );
+assert.deepEqual(
+  parseBingAiTopicPortfolioCsv('"Topic","Volume Range","Queries Range","Sites Range"\n"Education","1B-5B","1M-5M","100K-500K"\n'),
+  [{ queriesRange: "1M-5M", sitesRange: "100K-500K", topic: "Education", volumeRange: "1B-5B" }]
+);
+assert.deepEqual(
+  parseBingAiOpportunityQueriesCsv('Query,Topic,Citation Range\n"ai whistleblower","AI Ethics & Regulation","1K-5K"\n'),
+  [{ citationRange: "1K-5K", query: "ai whistleblower", topic: "AI Ethics & Regulation" }]
+);
+
+const clarityParsed = parseClarityLiveInsights(
+  [
+    {
+      metricName: "Traffic",
+      information: [
+        {
+          totalSessionCount: "1",
+          totalBotSessionCount: "0",
+          distinctUserCount: "1",
+          pagesPerSessionPercentage: 1,
+          Url: "https://eduaipolicy.org/zh/universities/tsinghua-university",
+          Device: "PC"
+        },
+        {
+          totalSessionCount: "1",
+          totalBotSessionCount: "0",
+          distinctUserCount: "1",
+          pagesPerSessionPercentage: 1,
+          Url: "https://eduaipolicy.org/zh/universities/cornell-university",
+          Device: "PC"
+        }
+      ]
+    },
+    {
+      metricName: "EngagementTime",
+      information: [
+        {
+          totalTime: "50",
+          activeTime: "50",
+          Url: "https://eduaipolicy.org/zh/universities/tsinghua-university",
+          Device: "PC"
+        },
+        {
+          totalTime: "13",
+          activeTime: "13",
+          Url: "https://eduaipolicy.org/zh/universities/cornell-university",
+          Device: "PC"
+        }
+      ]
+    },
+    {
+      metricName: "ScrollDepth",
+      information: [
+        {
+          averageScrollDepth: 13,
+          Url: "https://eduaipolicy.org/zh/universities/tsinghua-university",
+          Device: "PC"
+        },
+        {
+          averageScrollDepth: 100,
+          Url: "https://eduaipolicy.org/zh/universities/cornell-university",
+          Device: "PC"
+        }
+      ]
+    },
+    {
+      metricName: "DeadClickCount",
+      information: [
+        {
+          sessionsCount: "1",
+          sessionsWithMetricPercentage: 0,
+          sessionsWithoutMetricPercentage: 100,
+          pagesViews: "0",
+          subTotal: "0",
+          Url: "https://eduaipolicy.org/zh/universities/tsinghua-university",
+          Device: "PC"
+        }
+      ]
+    }
+  ],
+  { cached: true, fetchedAt: "2026-10-17T13:55:00.000Z", numOfDays: 3 }
+);
+assert.equal(clarityParsed.available, true);
+assert.equal(clarityParsed.totals.sessions, 2);
+assert.equal(clarityParsed.totals.distinctUsers, 2);
+assert.equal(clarityParsed.totals.avgActiveTimeSec, 31.5);
+assert.equal(clarityParsed.totals.avgScrollDepth, 56.5);
+assert.equal(clarityParsed.totals.frustrationEvents, 0);
+assert.equal(clarityParsed.pageRows.length, 2);
 
 const baselineComparison = buildComparisonEligibility(
   {
@@ -147,7 +247,80 @@ const insights = buildAnalyticsInsights({
 assert.ok(insights.length <= 5);
 assert.ok(!JSON.stringify(insights).includes("Infinity"));
 
-console.log("private analytics dashboard smoke: ok");
+async function verifyBingAiAndClaritySnapshotResolution() {
+  const tempSnapshotDir = await mkdtemp(path.join(os.tmpdir(), "uapt-bing-ai-smoke-"));
+  try {
+    const oldTopicPath = path.join(tempSnapshotDir, "topic-portfolio.csv");
+    const newTopicPath = path.join(tempSnapshotDir, "eduaipolicy.org_AITopicsOverallPortfolio_11_01_2026.csv");
+    await writeFile(oldTopicPath, '"Topic","Volume Range","Queries Range","Sites Range"\n"Old Topic","1M-5M","1K-5K","1K-5K"\n', "utf8");
+    await writeFile(newTopicPath, '"Topic","Volume Range","Queries Range","Sites Range"\n"New Topic","10M-50M","10K-50K","10K-50K"\n', "utf8");
+    const oldTime = new Date("2026-10-01T00:00:00Z");
+    const newTime = new Date("2026-11-01T00:00:00Z");
+    await utimes(oldTopicPath, oldTime, oldTime);
+    await utimes(newTopicPath, newTime, newTime);
+
+    const selected = await resolveOptionalSnapshotFile(
+      tempSnapshotDir,
+      ["topic-portfolio.csv", "topics.csv"],
+      /AITopicsOverallPortfolio/i
+    );
+    assert.equal(selected?.path, newTopicPath);
+
+    const previousDir = process.env.BING_AI_PERFORMANCE_SNAPSHOT_DIR;
+    const previousClarityDir = process.env.CLARITY_CACHE_DIR;
+    process.env.BING_AI_PERFORMANCE_SNAPSHOT_DIR = tempSnapshotDir;
+    process.env.CLARITY_CACHE_DIR = tempSnapshotDir;
+    try {
+      const partialSnapshot = await getBingAiPerformanceSnapshot();
+      assert.equal(partialSnapshot.available, true);
+      assert.equal(partialSnapshot.topicPortfolioRows[0]?.topic, "New Topic");
+      assert.equal(partialSnapshot.importedAt, newTime.toISOString());
+
+      await writeFile(
+        path.join(tempSnapshotDir, "live-insights-cache.json"),
+        JSON.stringify({
+          fetchedAt: new Date().toISOString(),
+          numOfDays: 3,
+          raw: [
+            {
+              metricName: "Traffic",
+              information: [
+                {
+                  totalSessionCount: "2",
+                  totalBotSessionCount: "0",
+                  distinctUserCount: "2",
+                  pagesPerSessionPercentage: 1,
+                  Url: "https://eduaipolicy.org/zh/universities/cornell-university",
+                  Device: "PC"
+                }
+              ]
+            }
+          ]
+        }),
+        "utf8"
+      );
+      clearClarityInsightsMemoryCache();
+      const claritySnapshot = await getClarityLiveInsightsSnapshot();
+      assert.equal(claritySnapshot.available, true);
+      assert.equal(claritySnapshot.cached, true);
+      assert.equal(claritySnapshot.totals.sessions, 2);
+    } finally {
+      clearClarityInsightsMemoryCache();
+      if (previousDir === undefined) delete process.env.BING_AI_PERFORMANCE_SNAPSHOT_DIR;
+      else process.env.BING_AI_PERFORMANCE_SNAPSHOT_DIR = previousDir;
+      if (previousClarityDir === undefined) delete process.env.CLARITY_CACHE_DIR;
+      else process.env.CLARITY_CACHE_DIR = previousClarityDir;
+    }
+  } finally {
+    await rm(tempSnapshotDir, { force: true, recursive: true });
+  }
+  console.log("private analytics dashboard smoke: ok");
+}
+
+void verifyBingAiAndClaritySnapshotResolution().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
 
 function event(
   id: string,

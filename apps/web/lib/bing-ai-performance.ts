@@ -1,4 +1,4 @@
-import { readFile, stat } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 
 export interface BingAiPerformanceDateRow {
@@ -20,6 +20,19 @@ export interface BingAiPerformanceQueryRow {
   topic?: string;
 }
 
+export interface BingAiTopicPortfolioRow {
+  queriesRange: string;
+  sitesRange: string;
+  topic: string;
+  volumeRange: string;
+}
+
+export interface BingAiOpportunityQueryRow {
+  citationRange: string;
+  query: string;
+  topic: string;
+}
+
 export interface BingAiPerformanceSnapshot {
   available: boolean;
   coverageEnd?: string;
@@ -27,13 +40,17 @@ export interface BingAiPerformanceSnapshot {
   dateRows: BingAiPerformanceDateRow[];
   error?: string;
   importedAt?: string;
+  opportunityQueryRows: BingAiOpportunityQueryRow[];
   pageRows: BingAiPerformancePageRow[];
   queryRows: BingAiPerformanceQueryRow[];
   sampled: true;
   source: "bing-webmaster-csv";
+  topicPortfolioRows: BingAiTopicPortfolioRow[];
   totals: {
     averageCitedPages: number;
     citations: number;
+    opportunityQueriesCount: number;
+    topicsCount: number;
   };
 }
 
@@ -49,33 +66,98 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
     const paths = Object.fromEntries(
       Object.entries(SNAPSHOT_FILES).map(([key, file]) => [key, path.join(directory, file)])
     ) as Record<keyof typeof SNAPSHOT_FILES, string>;
-    const [overviewCsv, pagesCsv, queriesCsv, ...fileStats] = await Promise.all([
-      readFile(paths.overview, "utf8"),
-      readFile(paths.pages, "utf8"),
-      readFile(paths.queries, "utf8"),
-      stat(paths.overview),
-      stat(paths.pages),
-      stat(paths.queries)
+
+    const [topicPortfolioMatch, opportunityQueriesMatch] = await Promise.all([
+      resolveOptionalSnapshotFile(
+        directory,
+        ["topic-portfolio.csv", "topics.csv"],
+        /AITopicsOverallPortfolio/i
+      ),
+      resolveOptionalSnapshotFile(
+        directory,
+        ["opportunity-queries.csv", "opportunities.csv"],
+        /AITopicsTopOpportunityQueries/i
+      )
     ]);
-    const dateRows = parseBingAiOverviewCsv(overviewCsv);
-    const pageRows = parseBingAiPagesCsv(pagesCsv);
-    const queryRows = parseBingAiQueriesCsv(queriesCsv);
-    if (!dateRows.length) throw new Error("Bing AI overview snapshot is empty.");
+
+    let topicPortfolioRows: BingAiTopicPortfolioRow[] = [];
+    if (topicPortfolioMatch) {
+      try {
+        const topicCsv = await readFile(topicPortfolioMatch.path, "utf8");
+        topicPortfolioRows = parseBingAiTopicPortfolioCsv(topicCsv);
+      } catch {
+        // Continue with empty topic portfolio on read/parse error
+      }
+    }
+
+    let opportunityQueryRows: BingAiOpportunityQueryRow[] = [];
+    if (opportunityQueriesMatch) {
+      try {
+        const oppCsv = await readFile(opportunityQueriesMatch.path, "utf8");
+        opportunityQueryRows = parseBingAiOpportunityQueriesCsv(oppCsv);
+      } catch {
+        // Continue with empty opportunity queries on read/parse error
+      }
+    }
+
+    let dateRows: BingAiPerformanceDateRow[] = [];
+    let pageRows: BingAiPerformancePageRow[] = [];
+    let queryRows: BingAiPerformanceQueryRow[] = [];
+    let coreMtimes: number[] = [];
+    let coreError: string | undefined;
+
+    try {
+      const [overviewCsv, pagesCsv, queriesCsv, ...fileStats] = await Promise.all([
+        readFile(paths.overview, "utf8"),
+        readFile(paths.pages, "utf8"),
+        readFile(paths.queries, "utf8"),
+        stat(paths.overview),
+        stat(paths.pages),
+        stat(paths.queries)
+      ]);
+      dateRows = parseBingAiOverviewCsv(overviewCsv);
+      pageRows = parseBingAiPagesCsv(pagesCsv);
+      queryRows = parseBingAiQueriesCsv(queriesCsv);
+      if (!dateRows.length) throw new Error("Bing AI overview snapshot is empty.");
+      coreMtimes = fileStats.map((value) => value.mtimeMs);
+    } catch (error) {
+      coreError = error instanceof Error ? error.message : String(error);
+    }
+
+    const mtimes = [
+      ...coreMtimes,
+      ...(topicPortfolioMatch ? [topicPortfolioMatch.mtimeMs] : []),
+      ...(opportunityQueriesMatch ? [opportunityQueriesMatch.mtimeMs] : [])
+    ];
+
+    if (!dateRows.length && !topicPortfolioRows.length && !opportunityQueryRows.length) {
+      return emptyBingAiPerformanceSnapshot(coreError ?? "Bing AI snapshot is unavailable.");
+    }
+
     const citations = dateRows.reduce((sum, row) => sum + row.citations, 0);
-    const averageCitedPages = dateRows.reduce((sum, row) => sum + row.citedPages, 0) /
-      dateRows.length;
+    const averageCitedPages = dateRows.length
+      ? dateRows.reduce((sum, row) => sum + row.citedPages, 0) / dateRows.length
+      : 0;
 
     return {
-      available: true,
+      available: dateRows.length > 0 || topicPortfolioRows.length > 0 || opportunityQueryRows.length > 0,
       coverageEnd: dateRows.at(-1)?.key,
       coverageStart: dateRows[0]?.key,
       dateRows,
-      importedAt: new Date(Math.max(...fileStats.map((value) => value.mtimeMs))).toISOString(),
+      error: dateRows.length ? undefined : coreError,
+      importedAt: mtimes.length ? new Date(Math.max(...mtimes)).toISOString() : undefined,
+      opportunityQueryRows,
       pageRows,
       queryRows,
       sampled: true,
       source: "bing-webmaster-csv",
-      totals: { averageCitedPages, citations }
+      topicPortfolioRows,
+      totals: {
+        averageCitedPages,
+        citations,
+        opportunityQueriesCount: opportunityQueryRows.length,
+        topicsCount: topicPortfolioRows.length
+      }
     };
   } catch (error) {
     return emptyBingAiPerformanceSnapshot(
@@ -115,16 +197,39 @@ export function parseBingAiQueriesCsv(csv: string): BingAiPerformanceQueryRow[] 
   })).filter((row) => row.key).sort((a, b) => b.citations - a.citations);
 }
 
+export function parseBingAiTopicPortfolioCsv(csv: string): BingAiTopicPortfolioRow[] {
+  const rows = parseCsv(csv);
+  assertHeaders(rows[0], ["Topic", "Volume Range", "Queries Range", "Sites Range"]);
+  return rows.slice(1).map((row) => ({
+    queriesRange: row[2]?.trim() ?? "",
+    sitesRange: row[3]?.trim() ?? "",
+    topic: row[0]?.trim() ?? "",
+    volumeRange: row[1]?.trim() ?? ""
+  })).filter((row) => row.topic);
+}
+
+export function parseBingAiOpportunityQueriesCsv(csv: string): BingAiOpportunityQueryRow[] {
+  const rows = parseCsv(csv);
+  assertHeaders(rows[0], ["Query", "Topic", "Citation Range"]);
+  return rows.slice(1).map((row) => ({
+    citationRange: row[2]?.trim() ?? "",
+    query: row[0]?.trim() ?? "",
+    topic: row[1]?.trim() ?? ""
+  })).filter((row) => row.query);
+}
+
 function emptyBingAiPerformanceSnapshot(error: string): BingAiPerformanceSnapshot {
   return {
     available: false,
     dateRows: [],
     error,
+    opportunityQueryRows: [],
     pageRows: [],
     queryRows: [],
     sampled: true,
     source: "bing-webmaster-csv",
-    totals: { averageCitedPages: 0, citations: 0 }
+    topicPortfolioRows: [],
+    totals: { averageCitedPages: 0, citations: 0, opportunityQueriesCount: 0, topicsCount: 0 }
   };
 }
 
@@ -144,6 +249,48 @@ async function resolveSnapshotDirectory() {
     }
   }
   return candidates[0];
+}
+
+export async function resolveOptionalSnapshotFile(
+  directory: string,
+  preferredNames: string[],
+  fallbackPattern: RegExp
+): Promise<{ mtimeMs: number; path: string } | undefined> {
+  try {
+    const entries = await readdir(directory);
+    const preferredOrder = new Map(
+      preferredNames.map((name, index) => [name.toLowerCase(), index])
+    );
+    const matchingNames = entries.filter(
+      (entry) => preferredOrder.has(entry.toLowerCase()) || fallbackPattern.test(entry)
+    );
+    const candidates: Array<{ mtimeMs: number; name: string; path: string; preferredRank: number }> = [];
+    for (const name of matchingNames) {
+      const candidatePath = path.join(directory, name);
+      try {
+        const info = await stat(candidatePath);
+        if (info.isFile()) {
+          candidates.push({
+            mtimeMs: info.mtimeMs,
+            name,
+            path: candidatePath,
+            preferredRank: preferredOrder.get(name.toLowerCase()) ?? Number.MAX_SAFE_INTEGER
+          });
+        }
+      } catch {
+        // Ignore unreadable file candidate
+      }
+    }
+    if (!candidates.length) return undefined;
+    candidates.sort((a, b) => {
+      if (b.mtimeMs !== a.mtimeMs) return b.mtimeMs - a.mtimeMs;
+      if (a.preferredRank !== b.preferredRank) return a.preferredRank - b.preferredRank;
+      return b.name.localeCompare(a.name);
+    });
+    return { mtimeMs: candidates[0].mtimeMs, path: candidates[0].path };
+  } catch {
+    return undefined;
+  }
 }
 
 function parseCsv(csv: string): string[][] {

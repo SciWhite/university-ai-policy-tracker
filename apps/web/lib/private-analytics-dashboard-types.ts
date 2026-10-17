@@ -1,5 +1,6 @@
 import type { BingMetricRow, BingSummary } from "@/lib/bing-webmaster";
 import type { BingAiPerformanceSnapshot } from "@/lib/bing-ai-performance";
+import type { ClarityLiveInsightsSnapshot } from "@/lib/clarity-insights";
 import type { GscMetricRow, GscSummary } from "@/lib/google-search-console";
 import type {
   AnalyticsPeriod,
@@ -129,6 +130,7 @@ export interface AnalyticsDashboardResponse {
     };
     previous: BingSummary;
   };
+  clarity: ClarityLiveInsightsSnapshot;
   detail?: AnalyticsDashboardDetail;
   filterOptions: AnalyticsDashboardFilterOptions;
   gsc: {
@@ -155,6 +157,7 @@ export interface AnalyticsDashboardResponse {
     };
     dataStatus: {
       bing: "connected" | "unavailable";
+      clarity: "connected" | "unavailable";
       gsc: "connected" | "unavailable";
       onsite: "connected" | "unavailable";
       rpc: "fallback" | "ready";

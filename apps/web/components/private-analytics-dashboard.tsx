@@ -15,6 +15,7 @@ import {
   DashboardSparkline
 } from "@/components/private-analytics-charts";
 import type { BingMetricRow } from "@/lib/bing-webmaster";
+import type { ClaritySignalMetricName } from "@/lib/clarity-insights";
 import type { GscMetricRow } from "@/lib/google-search-console";
 import type {
   AnalyticsDashboardFocus,
@@ -58,6 +59,19 @@ const copy = {
     citationShare: "Citation share",
     citations: "AI citations",
     citedPages: "Cited pages",
+    clarityActiveTime: "Avg active / total time",
+    clarityAffectedSessions: "Affected sessions",
+    clarityCaveat: "Clarity Data Export API (rolling 72h window, consented V6 sessions only; cached 3h on disk to respect the 10 calls/day quota).",
+    clarityExplorer: "Clarity page UX & diagnostics (last 3 days)",
+    clarityFetched: "Clarity synced",
+    clarityFrustration: "Frustration & JS errors",
+    clarityLive: "Clarity 72h UX & engagement snapshot",
+    clarityPageEngagement: "Per-page engagement (72h)",
+    clarityScrollDepth: "Avg scroll depth",
+    claritySessions: "Consented sessions (72h)",
+    claritySignalEvents: "Events",
+    claritySignals: "UX & health signals",
+    clarityUsers: "Distinct users (72h)",
     clicks: "GSC clicks",
     close: "Close",
     compare: "Compare previous period",
@@ -114,12 +128,59 @@ const copy = {
     title: "Search visibility and acquisition",
     topic: "Topic",
     to: "To",
+    aiOpportunityQueries: "Top opportunity queries for citations",
+    aiTopicsAndOpportunities: "Bing AI topics & opportunity queries",
+    aiTopicsCaveat: "Bing Copilot domain macro portfolio and top external citation opportunity queries.",
+    aiTopicsPortfolio: "AI topics portfolio",
+    allRanges: "All potential ranges",
+    allTopics: "All topics",
+    citationRange: "Citation potential",
+    filterByRange: "Filter by potential",
+    filterByTopic: "Filter by topic",
+    opportunityQueriesCount: "Top opportunity queries",
+    queriesRange: "Queries range",
+    query: "Query",
+    resetFilters: "Clear filters",
+    searchQuery: "Search query",
+    sitesRange: "Sites range",
+    topicsCount: "Identified AI topics",
+    volumeRange: "Volume range",
     unavailable: "Unavailable",
     visitors: "Visitors",
     week: "Weekly"
   },
   zh: {
     ai: "AI",
+    aiOpportunityQueries: "AI 引用高潜机会词 (Top Opportunities)",
+    aiTopicsAndOpportunities: "Bing AI 检索主题大盘与高潜机会词",
+    aiTopicsCaveat: "Bing Copilot 依据领域主题评估的全网检索量级与 Top 50 高频引用机会词。",
+    aiTopicsPortfolio: "AI 检索主题大盘 (Topic Portfolio)",
+    allRanges: "全部潜力区间",
+    allTopics: "全部主题",
+    citationRange: "引用潜力区间",
+    clarityActiveTime: "平均有效 / 总停留",
+    clarityAffectedSessions: "受影响会话占比",
+    clarityCaveat: "Clarity Data Export API（近 72 小时滚动窗口，仅统计已显式同意的 V6 页面会话；落盘缓存 3 小时以严格遵守每日 10 次调用配额）。",
+    clarityExplorer: "Clarity 页面交互与体验诊断 (近 3 天)",
+    clarityFetched: "Clarity 同步",
+    clarityFrustration: "异常交互与脚本错误",
+    clarityLive: "Clarity 72h 体验与互动快照",
+    clarityPageEngagement: "页面互动明细 (72h)",
+    clarityScrollDepth: "平均滚动深度",
+    claritySessions: "同意录制会话 (72h)",
+    claritySignalEvents: "触发次数",
+    claritySignals: "体验与健康信号",
+    clarityUsers: "独立用户 (72h)",
+    filterByRange: "按潜力区间筛选",
+    filterByTopic: "按主题筛选",
+    opportunityQueriesCount: "高潜机会词数",
+    queriesRange: "相关查询词量级",
+    query: "查询词",
+    resetFilters: "重置筛选",
+    searchQuery: "搜索查询词",
+    sitesRange: "竞争站点量级",
+    topicsCount: "识别大盘主题数",
+    volumeRange: "全网检索量区间",
     apiUsage: "API 使用",
     allCountries: "全部国家",
     allDevices: "全部设备",
@@ -268,6 +329,7 @@ export function PrivateAnalyticsDashboard({
   const bing = data.bing.current;
   const previousBing = data.bing.previous;
   const bingAi = data.bingAi;
+  const clarity = data.clarity;
   const engagedRate = safeRate(current.summary.engagedSessions, current.summary.sessions);
   const previousEngagedRate = safeRate(previous.summary.engagedSessions, previous.summary.sessions);
   const sourceLabels = {
@@ -288,6 +350,28 @@ export function PrivateAnalyticsDashboard({
     : moverTab === "sources"
       ? data.meta.comparison.sources
       : data.meta.comparison.onsite;
+
+  const [oppTopicFilter, setOppTopicFilter] = useState<string>("");
+  const [oppRangeFilter, setOppRangeFilter] = useState<string>("");
+  const [oppSearchQuery, setOppSearchQuery] = useState<string>("");
+
+  const availableTopics = useMemo(() => {
+    return Array.from(new Set((bingAi.opportunityQueryRows ?? []).map((r) => r.topic))).filter(Boolean);
+  }, [bingAi.opportunityQueryRows]);
+
+  const availableRanges = useMemo(() => {
+    return Array.from(new Set((bingAi.opportunityQueryRows ?? []).map((r) => r.citationRange))).filter(Boolean);
+  }, [bingAi.opportunityQueryRows]);
+
+  const filteredOpportunityRows = useMemo(() => {
+    const q = oppSearchQuery.trim().toLowerCase();
+    return (bingAi.opportunityQueryRows ?? []).filter((row) => {
+      if (oppTopicFilter && row.topic !== oppTopicFilter) return false;
+      if (oppRangeFilter && row.citationRange !== oppRangeFilter) return false;
+      if (q && !row.query.toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }, [bingAi.opportunityQueryRows, oppTopicFilter, oppRangeFilter, oppSearchQuery]);
 
   function updateQuery(patch: Partial<AnalyticsDashboardQuery>) {
     setQuery((value) => ({ ...value, ...patch }));
@@ -453,10 +537,12 @@ export function PrivateAnalyticsDashboard({
         <StatusPill label="GSC" status={data.meta.dataStatus.gsc} t={t} />
         <StatusPill label="Bing" status={data.meta.dataStatus.bing} t={t} />
         <span className={bingAi.available ? "is-connected" : "is-warning"}><i />Bing AI: {bingAi.available ? t.snapshot : t.unavailable}</span>
+        <StatusPill label="Clarity" status={data.meta.dataStatus.clarity} t={t} />
         <span>{query.from} → {query.to}</span>
         <span>{t.generated}: {formatDateTime(data.meta.generatedAt, locale)}</span>
         {bingAi.coverageStart && bingAi.coverageEnd ? <span>{t.coverage}: {bingAi.coverageStart} → {bingAi.coverageEnd}</span> : null}
         {bingAi.importedAt ? <span>{t.imported}: {formatDateTime(bingAi.importedAt, locale)}</span> : null}
+        {clarity.fetchedAt ? <span>{t.clarityFetched}: {formatDateTime(clarity.fetchedAt, locale)}</span> : null}
         {data.meta.gscCompleteThrough ? <span>{t.gscFinal}: {data.meta.gscCompleteThrough}</span> : null}
         {data.meta.partialDay ? <span className="is-warning">{t.partial}</span> : null}
       </section>
@@ -552,7 +638,7 @@ export function PrivateAnalyticsDashboard({
         <DashboardPanel
           className="analytics-panel--wide"
           index="03C"
-          meta={bingAi.available ? `${t.coverage}: ${bingAi.coverageStart} → ${bingAi.coverageEnd}` : t.unavailable}
+          meta={bingAi.available ? (bingAi.coverageStart && bingAi.coverageEnd ? `${t.coverage}: ${bingAi.coverageStart} → ${bingAi.coverageEnd}` : t.snapshot) : t.unavailable}
           title={t.bingAiSnapshot}
         >
           {bingAi.available ? (
@@ -560,6 +646,12 @@ export function PrivateAnalyticsDashboard({
               <div className="analytics-ai-summary">
                 <MetricSummary label={t.citations} value={formatCount(bingAi.totals.citations)} />
                 <MetricSummary label={t.avgCitedPages} value={formatDecimal(bingAi.totals.averageCitedPages)} />
+                {bingAi.totals.topicsCount ? (
+                  <MetricSummary label={t.topicsCount} value={formatCount(bingAi.totals.topicsCount)} />
+                ) : null}
+                {bingAi.totals.opportunityQueriesCount ? (
+                  <MetricSummary label={t.opportunityQueriesCount} value={formatCount(bingAi.totals.opportunityQueriesCount)} />
+                ) : null}
               </div>
               <DashboardLineChart
                 emptyLabel={t.noData}
@@ -571,6 +663,44 @@ export function PrivateAnalyticsDashboard({
               />
             </>
           ) : <p className="analytics-empty">{bingAi.error ?? t.noData}</p>}
+        </DashboardPanel>
+        <DashboardPanel
+          className="analytics-panel--wide"
+          index="03D"
+          meta={clarity.available ? `Microsoft Clarity · ${clarity.projectId} · ${clarity.numOfDays}D` : t.unavailable}
+          title={t.clarityLive}
+        >
+          {clarity.available ? (
+            <>
+              <div className="analytics-ai-summary">
+                <MetricSummary
+                  label={t.claritySessions}
+                  value={`${formatCount(clarity.totals.sessions)}${clarity.totals.botSessions ? ` (Bot: ${formatCount(clarity.totals.botSessions)})` : ""}`}
+                />
+                <MetricSummary label={t.clarityUsers} value={formatCount(clarity.totals.distinctUsers)} />
+                <MetricSummary
+                  label={t.clarityActiveTime}
+                  value={`${formatDecimal(clarity.totals.avgActiveTimeSec)}s / ${formatDecimal(clarity.totals.avgTotalTimeSec)}s`}
+                />
+                <MetricSummary label={t.clarityScrollDepth} value={`${formatDecimal(clarity.totals.avgScrollDepth)}%`} />
+                <MetricSummary label={t.clarityFrustration} value={formatCount(clarity.totals.frustrationEvents)} />
+              </div>
+              <DataTable
+                headers={[t.pages, t.device, t.sessions, t.clarityActiveTime, t.clarityScrollDepth, t.clarityFrustration]}
+                rows={clarity.pageRows.slice(0, 8).map((row) => ({
+                  key: `${row.url}:${row.device}:${row.country ?? ""}`,
+                  values: [
+                    shortPath(row.url),
+                    row.device,
+                    formatCount(row.sessions),
+                    `${formatDecimal(row.avgActiveTimeSec)}s / ${formatDecimal(row.avgTotalTimeSec)}s`,
+                    `${formatDecimal(row.avgScrollDepth)}%`,
+                    formatCount(row.rageClicks + row.deadClicks + row.quickbacks + row.scriptErrors + row.errorClicks)
+                  ]
+                }))}
+              />
+            </>
+          ) : <p className="analytics-empty">{clarity.error ?? t.noData}</p>}
         </DashboardPanel>
         <DashboardPanel index="04" meta={t.onsite} title={t.sourceComposition}>
           <DashboardSourceChart emptyLabel={t.noData} labels={sourceLabels} onSelect={(source) => openSourceDrawer(source, data, locale, openDrawer)} rows={current.sourceTrend} />
@@ -605,10 +735,10 @@ export function PrivateAnalyticsDashboard({
           </div>
         </DetailSection>
         <DetailSection index="07C" open title={t.bingAiExplorer}>
-          {bingAi.available ? (
+          {bingAi.dateRows.length ? (
             <>
               <p className="analytics-comparison-note">
-                {t.bingAiCaveat} {t.coverage}: {bingAi.coverageStart} → {bingAi.coverageEnd} · {t.imported}: {bingAi.importedAt ? formatDateTime(bingAi.importedAt, locale) : "—"}
+                {t.bingAiCaveat} {bingAi.coverageStart && bingAi.coverageEnd ? `${t.coverage}: ${bingAi.coverageStart} → ${bingAi.coverageEnd} · ` : ""}{t.imported}: {bingAi.importedAt ? formatDateTime(bingAi.importedAt, locale) : "—"}
               </p>
               <div className="analytics-detail-grid">
                 <DataTable headers={[t.queries, t.intent, t.topic, t.citations, t.citationShare]} rows={bingAi.queryRows.map((row) => ({ key: row.key, values: [row.key, row.intent ?? "—", row.topic ?? "—", formatCount(row.citations), formatPercent(row.citationShare)] }))} />
@@ -616,6 +746,128 @@ export function PrivateAnalyticsDashboard({
               </div>
             </>
           ) : <p className="analytics-empty">{bingAi.error ?? t.noData}</p>}
+        </DetailSection>
+        {(bingAi.topicPortfolioRows?.length > 0 || bingAi.opportunityQueryRows?.length > 0) ? (
+          <DetailSection index="07D" open title={t.aiTopicsAndOpportunities}>
+            <p className="analytics-comparison-note">
+              {t.aiTopicsCaveat}
+            </p>
+            {bingAi.topicPortfolioRows?.length > 0 ? (
+              <div className="analytics-subsection">
+                <h3 className="analytics-subheading">{t.aiTopicsPortfolio}</h3>
+                <DataTable
+                  headers={[t.topic, t.volumeRange, t.queriesRange, t.sitesRange]}
+                  rows={bingAi.topicPortfolioRows.map((row) => ({
+                    key: row.topic,
+                    values: [row.topic, row.volumeRange, row.queriesRange, row.sitesRange]
+                  }))}
+                />
+              </div>
+            ) : null}
+            {bingAi.opportunityQueryRows?.length > 0 ? (
+              <div>
+                <div className="analytics-subheading-row">
+                  <h3 className="analytics-subheading">{t.aiOpportunityQueries}</h3>
+                  <span className="analytics-subheading-count">
+                    {filteredOpportunityRows.length} / {bingAi.opportunityQueryRows.length}
+                  </span>
+                </div>
+                <div className="analytics-table-controls">
+                  <input
+                    aria-label={t.searchQuery}
+                    onChange={(e) => setOppSearchQuery(e.target.value)}
+                    placeholder={`${t.searchQuery}…`}
+                    type="search"
+                    value={oppSearchQuery}
+                  />
+                  <select
+                    aria-label={t.filterByTopic}
+                    onChange={(e) => setOppTopicFilter(e.target.value)}
+                    value={oppTopicFilter}
+                  >
+                    <option value="">{t.allTopics}</option>
+                    {availableTopics.map((topic) => (
+                      <option key={topic} value={topic}>{topic}</option>
+                    ))}
+                  </select>
+                  <select
+                    aria-label={t.filterByRange}
+                    onChange={(e) => setOppRangeFilter(e.target.value)}
+                    value={oppRangeFilter}
+                  >
+                    <option value="">{t.allRanges}</option>
+                    {availableRanges.map((range) => (
+                      <option key={range} value={range}>{range}</option>
+                    ))}
+                  </select>
+                  {(oppTopicFilter || oppRangeFilter || oppSearchQuery) ? (
+                    <button
+                      className="analytics-reset-btn"
+                      onClick={() => {
+                        setOppTopicFilter("");
+                        setOppRangeFilter("");
+                        setOppSearchQuery("");
+                      }}
+                      type="button"
+                    >
+                      {t.resetFilters}
+                    </button>
+                  ) : null}
+                </div>
+                <DataTable
+                  headers={[t.query, t.topic, t.citationRange]}
+                  rows={filteredOpportunityRows.map((row) => ({
+                    key: `${row.topic}:${row.query}`,
+                    values: [row.query, row.topic, row.citationRange]
+                  }))}
+                />
+              </div>
+            ) : null}
+          </DetailSection>
+        ) : null}
+        <DetailSection index="07E" open title={t.clarityExplorer}>
+          {clarity.available ? (
+            <>
+              <p className="analytics-comparison-note">
+                {t.clarityCaveat} Project: {clarity.projectId} · {t.clarityFetched}: {clarity.fetchedAt ? formatDateTime(clarity.fetchedAt, locale) : "—"}
+              </p>
+              <div className="analytics-detail-grid">
+                <div>
+                  <h3 className="analytics-subheading">{t.clarityPageEngagement}</h3>
+                  <DataTable
+                    headers={[t.pages, t.device, t.sessions, t.visitors, t.clarityActiveTime, t.clarityScrollDepth, t.clarityFrustration]}
+                    rows={clarity.pageRows.map((row) => ({
+                      key: `${row.url}:${row.device}:${row.country ?? ""}`,
+                      values: [
+                        shortPath(row.url),
+                        row.device,
+                        formatCount(row.sessions),
+                        formatCount(row.distinctUsers),
+                        `${formatDecimal(row.avgActiveTimeSec)}s / ${formatDecimal(row.avgTotalTimeSec)}s`,
+                        `${formatDecimal(row.avgScrollDepth)}%`,
+                        formatCount(row.rageClicks + row.deadClicks + row.quickbacks + row.scriptErrors + row.errorClicks)
+                      ]
+                    }))}
+                  />
+                </div>
+                <div>
+                  <h3 className="analytics-subheading">{t.claritySignals}</h3>
+                  <DataTable
+                    headers={[t.claritySignals, t.claritySignalEvents, t.sessions, t.clarityAffectedSessions]}
+                    rows={clarity.signalRows.map((row) => ({
+                      key: row.metricName,
+                      values: [
+                        formatClaritySignal(row.metricName, locale),
+                        formatCount(row.subTotal),
+                        formatCount(row.sessionsCount),
+                        `${formatDecimal(row.affectedSessionsPercentage)}%`
+                      ]
+                    }))}
+                  />
+                </div>
+              </div>
+            </>
+          ) : <p className="analytics-empty">{clarity.error ?? t.noData}</p>}
         </DetailSection>
         <DetailSection index="08" title={t.behavior}>
           <div className="analytics-detail-grid">
@@ -740,4 +992,15 @@ function shortPath(value: string) { try { return new URL(value).pathname; } catc
 function shiftDate(value: string, days: number) { const date = new Date(`${value}T12:00:00Z`); date.setUTCDate(date.getUTCDate() + days); return date.toISOString().slice(0, 10); }
 function differenceInDays(from: string, to: string) { return Math.round((new Date(`${to}T12:00:00Z`).getTime() - new Date(`${from}T12:00:00Z`).getTime()) / 86400000); }
 function formatSource(value: string, locale: DashboardLocale) { const labels: Record<string, [string, string]> = { ai: ["AI", "AI"], direct: ["直接访问", "Direct"], other: ["其他", "Other"], referral: ["引荐", "Referral"], search: ["搜索", "Search"], unknown: ["未知", "Unknown"] }; return labels[value]?.[locale === "zh" ? 0 : 1] ?? value; }
+function formatClaritySignal(value: ClaritySignalMetricName, locale: DashboardLocale) {
+  const labels: Record<ClaritySignalMetricName, [string, string]> = {
+    DeadClickCount: ["无效点击 (Dead clicks)", "Dead clicks"],
+    ErrorClickCount: ["报错点击 (Error clicks)", "Error clicks"],
+    ExcessiveScroll: ["过度滚动 (Excessive scroll)", "Excessive scroll"],
+    QuickbackClick: ["快速返回 (Quickback clicks)", "Quickback clicks"],
+    RageClickCount: ["暴怒连击 (Rage clicks)", "Rage clicks"],
+    ScriptErrorCount: ["脚本错误 (Script errors)", "Script errors"]
+  };
+  return labels[value]?.[locale === "zh" ? 0 : 1] ?? value;
+}
 function translateBehavior(value: string, locale: DashboardLocale) { if (locale === "en") return value; const labels: Record<string, string> = { "API / JSON discovery": "API / JSON 探索", "Citation copies": "复制引用", "Record / source opens": "打开记录 / 来源", "Result clicks": "点击搜索结果", "Search submits": "提交搜索" }; return labels[value] ?? value; }
