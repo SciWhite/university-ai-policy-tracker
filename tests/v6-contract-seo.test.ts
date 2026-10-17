@@ -92,3 +92,18 @@ test('packaging cannot carry an unapproved or stale snapshot as strong',()=>{
   snapshot.review.agreement='agree';snapshot.basisFingerprint='0'.repeat(64);
   assert.throws(()=>acceptV6Release(pages,records),/snapshot marked strong/);
 });
+
+test('registry append preserves old versions and URLs, resolves gaps and refuses conflicting provenance',async()=>{
+  const {mergeSourceHashRegistry}=await import('../apps/web/lib/source-hash-registry');
+  const old={sourceUrl:'https://example.edu/ai',snapshotHash:'a'.repeat(64),hashKind:'extracted_text_utf8' as const,textSha256:'a'.repeat(64),rawSha256:'b'.repeat(64)};
+  const original={schemaVersion:'uapt-source-hash-registry-v1' as const,entries:[old]};
+  const next={...old,snapshotHash:'c'.repeat(64),textSha256:'c'.repeat(64),rawSha256:'d'.repeat(64)};
+  const registry=mergeSourceHashRegistry(original,[next,{...next,sourceUrl:'https://example.edu/other'}]);
+  assert.equal(registry.entries.length,3);assert.deepEqual(registry.entries[0],old);
+  assert.deepEqual(mergeSourceHashRegistry(registry,[{sourceUrl:old.sourceUrl,snapshotHash:old.snapshotHash,hashKind:'unknown_legacy',unresolvedReason:'legacy input'}]).entries[0],old);
+  assert.throws(()=>mergeSourceHashRegistry(original,[{...old,rawSha256:'e'.repeat(64)}]),/Conflicting/);
+  assert.throws(()=>mergeSourceHashRegistry(original,[{...old,hashKind:'raw_captured_bytes',rawSha256:old.snapshotHash}]),/Conflicting/);
+  assert.deepEqual(original.entries,[old]);
+  const gap={schemaVersion:'uapt-source-hash-registry-v1' as const,entries:[{sourceUrl:old.sourceUrl,snapshotHash:old.snapshotHash,hashKind:'unknown_legacy' as const,unresolvedReason:'pending'}]};
+  assert.deepEqual(mergeSourceHashRegistry(gap,[old]).entries,[old]);
+});

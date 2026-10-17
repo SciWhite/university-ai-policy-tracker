@@ -1,11 +1,7 @@
 import type {PublicEntitySummary, SourceAttribution} from '@uapt/shared';
 import registry from '../../../data/source-hash-provenance.json';
-
-export type SourceHashKind = 'raw_captured_bytes' | 'extracted_text_utf8' | 'unknown_legacy';
-export interface SourceHashBinding {
-  sourceUrl: string; snapshotHash: string; hashKind: SourceHashKind;
-  rawSha256?: string; textSha256?: string;
-}
+import type {SourceHashKind, SourceHashBinding} from './source-hash-registry';
+export type {SourceHashKind, SourceHashBinding} from './source-hash-registry';
 export function sourceHashBinding(source: Pick<SourceAttribution, 'sourceUrl' | 'snapshotHash'>): SourceHashBinding {
   const entry = registry.entries.find(e => e.sourceUrl === source.sourceUrl && e.snapshotHash === source.snapshotHash);
   return entry ? {...entry, hashKind: entry.hashKind as SourceHashKind} : {...source, hashKind: 'unknown_legacy'};

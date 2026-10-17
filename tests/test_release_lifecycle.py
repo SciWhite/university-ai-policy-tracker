@@ -27,4 +27,16 @@ class LifecycleTests(unittest.TestCase):
    root=Path(d);target=root/'route';backup=root/'backup';backup.write_text('old accepted routing');target.write_text('partially selected routing');policy=root/'policy.json';m.write(policy,{'activeUnits':['new']});tx={'retireUnits':['old'],'files':[{'target':str(target),'backup':str(backup),'beforeSha256':m.digest(backup)}],'beforePolicy':{'activeUnits':['old']},'plan':{'candidateUnits':['new'],'candidateEndpoints':{'new':['127.0.0.1:9999']}}}
    with patch.object(m,'STATE',root),patch.object(m,'POLICY',policy),patch.object(m,'run',return_value='')as run:m.recover(tx,False)
    self.assertEqual(target.read_text(),'old accepted routing');self.assertEqual(json.loads(policy.read_text())['activeUnits'],['old']);self.assertEqual(json.loads((root/'transaction.json').read_text())['stage'],'rolled_back');self.assertEqual(run.call_args_list[0].args,('systemctl','enable','--now','old'));self.assertIn(('systemctl','disable','--now','new'),[c.args for c in run.call_args_list])
+
+class CapacityPhaseTests(unittest.TestCase):
+ def test_provisional_budget_never_satisfies_cutover(self):
+  plan={'candidatePeakBytes':100};provisional={'schemaVersion':'uapt-prebuild-budget-v1','measured':False,'buildScope':'uapt-build.scope','buildMemoryMaxBytes':100}
+  m.validate_capacity(plan,provisional,True)
+  with self.assertRaisesRegex(ValueError,'Measured'):m.validate_capacity(plan,provisional)
+  with self.assertRaisesRegex(ValueError,'budget'):m.validate_capacity(plan,{**provisional,'buildMemoryMaxBytes':101},True)
+ def test_actual_measurements_are_required_in_all_stages(self):
+  plan={'candidatePeakBytes':100};measured={'peakBytesByStage':{'build':90,'startup':10,'cold_history':80,'steady':20}}
+  m.validate_capacity(plan,measured)
+  with self.assertRaisesRegex(ValueError,'understates'):m.validate_capacity({'candidatePeakBytes':50},measured)
+
 if __name__=='__main__':unittest.main()

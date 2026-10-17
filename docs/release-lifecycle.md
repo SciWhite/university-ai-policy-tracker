@@ -46,3 +46,17 @@ MemoryHigh 用于提前回收，MemoryMax 是最后隔离边界，不能代替�
 - `/usr/local/libexec/uapt-release-lifecycle.py` 为 root 拥有的安装副本。`uapt-release-recovery.service` 已启用，`uapt-release-ttl.timer` 每五分钟检查。两个固定候选槽位已安装但 disabled/inactive；没有为部署门禁新增常驻应用。
 
 本次实际执行与剩余依赖见 [治理结果](release-lifecycle-20261016-result.md)。
+
+
+## 首次产物的构建前准入（2026-10-17）
+
+同一控制器新增 `prebuild plan.json`。构建前使用明确 `measured:false` 的
+`uapt-prebuild-budget-v1` capacity receipt，声明 `buildScope:uapt-build.scope`
+及 `buildMemoryMaxBytes`；它必须不超过计划的候选峰值预算。
+执行者必须在该固定 transient scope 中以 MemoryMax 强制预算，并保存实际采样。
+prebuild 继续检查固定槽位、全局容量、同步凭据和未完成事务，但不启动候选、不切路由。
+它不把尚不存在的 startup/cold_history/steady 数据冒充实测。
+
+构建后更新 capacity receipt，补齐真实 build/startup/cold_history/steady 峰值及原始采样，
+再执行原 `gate` 和 `cutover`。这两个入口仍拒绝 provisional receipt；四阶段实测要求不变。
+构建 scope 结束后才可启动固定候选，候选运行资源上限不得超过已准入预算。

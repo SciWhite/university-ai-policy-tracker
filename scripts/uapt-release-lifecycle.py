@@ -58,7 +58,20 @@ def validate_plan(plan, policy, observed):
     if not plan.get('staticArchiveReceipt') or not plan.get('publicChecks'): raise ValueError('Static archive and exact public readback checks required')
     return True
 
-def load_plan(path):
+def validate_capacity(plan, capacity, prebuild=False):
+    if prebuild:
+        if capacity.get('schemaVersion') != 'uapt-prebuild-budget-v1' or capacity.get('measured') is not False:
+            raise ValueError('Explicit provisional prebuild budget required; do not label estimates as measurements')
+        budget = capacity.get('buildMemoryMaxBytes')
+        if not isinstance(budget, int) or budget <= 0 or budget > plan['candidatePeakBytes'] or capacity.get('buildScope') != 'uapt-build.scope':
+            raise ValueError('Build must use the fixed scope within the admitted candidate budget')
+        return
+    peaks = capacity.get('peakBytesByStage', {})
+    if not {'build', 'startup', 'cold_history', 'steady'} <= set(peaks) or any(not isinstance(v, int) or v <= 0 for v in peaks.values()):
+        raise ValueError('Measured build/startup/cold-history/steady peak receipt required')
+    if max(peaks.values()) > plan['candidatePeakBytes']: raise ValueError('Candidate budget understates measured peak')
+
+def load_plan(path, prebuild=False):
     path = Path(path).resolve(); plan = json.loads(path.read_text()); policy = json.loads(POLICY.read_text()); policy['_sha256'] = digest(POLICY)
     validate_plan(plan, policy, audit())
     for unit in plan['candidateUnits']:
@@ -70,9 +83,7 @@ def load_plan(path):
         proof = plan[key]
         if digest(proof['path']) != proof['sha256']: raise ValueError('Changed ' + key)
     capacity = json.loads(Path(plan['capacityReceipt']['path']).read_text())
-    peaks = capacity.get('peakBytesByStage', {})
-    if not {'build', 'startup', 'cold_history', 'steady'} <= set(peaks) or any(not isinstance(v, int) or v <= 0 for v in peaks.values()): raise ValueError('Measured build/startup/cold-history/steady peak receipt required')
-    if max(peaks.values()) > plan['candidatePeakBytes']: raise ValueError('Candidate budget understates measured peak')
+    validate_capacity(plan, capacity, prebuild)
     return plan, policy
 
 def check_urls(checks):
@@ -109,7 +120,7 @@ def recover(tx, reload_nginx=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['audit', 'gate', 'cutover', 'complete', 'recover', 'expire'])
+    parser.add_argument('action', choices=['audit', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire'])
     parser.add_argument('plan', nargs='?'); parser.add_argument('--boot', action='store_true'); parser.add_argument('--completion-ledger'); args = parser.parse_args()
     LOCK.parent.mkdir(parents=True, exist_ok=True)
     with LOCK.open('w') as lock:
@@ -150,9 +161,10 @@ def main():
                 if s['ActiveState'] != 'inactive' or s['UnitFileState'] != 'disabled': raise ValueError('Retirement failed')
             policy = json.loads(POLICY.read_text()); policy['activeUnits'] = plan['keepActiveUnits'] + plan['candidateUnits']; policy['candidateSlots'] = list(set(policy['candidateSlots']) - set(plan['candidateUnits']) | set(tx['retireUnits']))
             write(POLICY, policy); tx.update(stage='complete', completedAt=now(), finalAudit=audit()); write(pending, tx); print('Complete; previous units cold'); return
-        plan, policy = load_plan(args.plan)
+        plan, policy = load_plan(args.plan, args.action == 'prebuild')
         if pending.exists() and json.loads(pending.read_text())['stage'] not in ['complete', 'rolled_back']: raise ValueError('Unfinished deployment: recover before another release')
         run('node', plan['releaseHelper'], 'verify-sync', plan['syncLedger']['path'], plan['basis']['path'], 'candidate')
+        if args.action == 'prebuild': print('Prebuild admission passed; enforce uapt-build.scope budget and collect measurements before gate/cutover'); return
         if args.action == 'gate': print('Lifecycle + synchronization admission passed'); return
         if not re.fullmatch(r'[a-z0-9][a-z0-9-]{0,79}', plan.get('id', '')): raise ValueError('Invalid transaction identity')
         txdir = STATE / 'transactions' / plan['id']; txdir.mkdir(parents=True, exist_ok=False)

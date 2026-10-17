@@ -8,6 +8,7 @@ import {acceptV6Release} from './lib/v6-release-contract';
 import type {PublishedV6Package} from '../apps/web/lib/policy-v6-published';
 import type {V6RecordPackage} from '../apps/web/lib/v6-effective-records';
 import type {SourceHashBinding} from '../apps/web/lib/source-hash-contract';
+import {mergeSourceHashRegistry, type SourceHashRegistry} from '../apps/web/lib/source-hash-registry';
 
 type Ref = {path: string; sha256: string};
 export interface V6ReleaseInput {
@@ -65,6 +66,8 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
     }
   }
   if (keys.length !== required.size || keys.some(k => !required.has(k))) throw Error('Incomplete source hash contract coverage');
+  const previousProvenance = readFileSync(resolve('data/source-hash-provenance.json'));
+  const mergedProvenance = mergeSourceHashRegistry(JSON.parse(previousProvenance.toString()) as SourceHashRegistry, bindings);
   if (ledger.value.syncContractVersion !== '2.0.0') throw Error('Synchronization contract 2.0.0 required');
   execFileSync('python3', [resolve('scripts/policy-inventory.py'), 'sync-gate', ledger.path, '--phase', 'candidate'], {stdio: 'pipe'});
   if (digest(readFileSync(ledger.path)) !== input.syncLedger.sha256) throw Error('Synchronization ledger changed during validation');
@@ -81,9 +84,9 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
     const restored = new V6ArtifactStore(root, index).view(records.value.revision);
     if (JSON.stringify(restored) !== JSON.stringify(original.value)) throw Error('Packed V6 readback differs');
   }
-  const provenance = JSON.stringify({schemaVersion:'uapt-source-hash-registry-v1',entries:bindings},null,2)+'\n';
+  const provenance = JSON.stringify(mergedProvenance,null,2)+'\n';
   writeFileSync(resolve(target,'source-hash-provenance.json'), provenance, {flag:'wx'});
-  const receipt = {sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
+  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
   writeFileSync(resolve(target,'receipt.json'), JSON.stringify(receipt,null,2)+'\n', {flag:'wx'});
   return receipt;
 }

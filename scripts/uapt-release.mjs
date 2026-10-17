@@ -14,7 +14,7 @@ const help = `UAPT release helpers (no build or deployment commands)
     Read-only OCI build identity check. Run from the frozen release checkout.
   node scripts/uapt-release.mjs verify-sync <event.json> <basis-file> <candidate|complete>
     Check contract 2.0.0 receipts before cutover or after actual public readback.
-  node scripts/uapt-release.mjs lifecycle <audit|gate|cutover|complete|recover> [plan.json] [--completion-ledger event.json]
+  node scripts/uapt-release.mjs lifecycle <audit|prebuild|gate|cutover|complete|recover> [plan.json] [--completion-ledger event.json]
     Host lifecycle admission, bounded slots, recovery and mandatory retirement.
   node scripts/uapt-release.mjs --help
 Choose docs/release-routing-policy.md first: small updates use docs/oci-small-release.md; full builds are reserved for large/global releases.`;
