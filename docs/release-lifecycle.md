@@ -60,3 +60,8 @@ prebuild 继续检查固定槽位、全局容量、同步凭据和未完成事�
 构建后更新 capacity receipt，补齐真实 build/startup/cold_history/steady 峰值及原始采样，
 再执行原 `gate` 和 `cutover`。这两个入口仍拒绝 provisional receipt；四阶段实测要求不变。
 构建 scope 结束后才可启动固定候选，候选运行资源上限不得超过已准入预算。
+
+
+公网语义 readback 对相同 URL 和相同验收条件最多重试四次，间隔 1/2/3 秒，
+记录先前失败尝试的时间及响应 hash。Nginx graceful reload 与既有边缘连接可能短暂
+命中旧 worker；持续失败仍自动回滚，不以 HTTP 200 或删除断言放行。

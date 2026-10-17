@@ -39,4 +39,15 @@ class CapacityPhaseTests(unittest.TestCase):
   m.validate_capacity(plan,measured)
   with self.assertRaisesRegex(ValueError,'understates'):m.validate_capacity({'candidatePeakBytes':50},measured)
 
+
+class ReadbackPropagationTests(unittest.TestCase):
+ def test_identical_check_retries_previous_worker_and_records_it(self):
+  with patch.object(m.subprocess,'check_output',side_effect=[b'old release',b'accepted release']),patch.object(m.time,'sleep')as sleep:
+   result=m.check_urls([{'url':'https://eduaipolicy.org/target','contains':['accepted release']}])
+   self.assertEqual(len(result[0]['previousAttempts']),1);sleep.assert_called_once_with(1)
+ def test_persistent_semantic_failure_still_rejects(self):
+  with patch.object(m.subprocess,'check_output',return_value=b'wrong release')as fetch,patch.object(m.time,'sleep'):
+   with self.assertRaisesRegex(ValueError,'missing required'):m.check_urls([{'url':'https://eduaipolicy.org/target','contains':['accepted release']}])
+   self.assertEqual(fetch.call_count,4)
+
 if __name__=='__main__':unittest.main()

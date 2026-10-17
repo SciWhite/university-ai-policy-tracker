@@ -2,7 +2,7 @@
 """Host-side release admission and crash-recoverable routing selection.
 No build, install, deletion, or policy approval. See docs/release-lifecycle.md.
 """
-import argparse, datetime, fcntl, hashlib, json, os, re, shutil, subprocess, sys
+import argparse, datetime, fcntl, hashlib, json, os, re, shutil, subprocess, sys, time
 from pathlib import Path
 STATE = Path('/srv/uapt/operations/release-lifecycle')
 POLICY = Path('/srv/uapt/operations/release-lifecycle/policy.json')
@@ -92,12 +92,23 @@ def check_urls(checks):
     for check in checks:
         url = check['url']
         if not url.startswith(('http://127.0.0.1:', 'https://eduaipolicy.org/')): raise ValueError('Outside allowed readback origin')
-        body = subprocess.check_output(['curl', '-fLsS', '--max-time', '45', url])
-        for text in check.get('contains', []):
-            if text.encode() not in body: raise ValueError('Readback missing required text: ' + url)
         if not check.get('contains') and not check.get('sha256'): raise ValueError('HTTP 200 alone is not acceptance')
-        if check.get('sha256') and hashlib.sha256(body).hexdigest() != check['sha256']: raise ValueError('Readback hash differs: ' + url)
-        results.append({'url': url, 'sha256': hashlib.sha256(body).hexdigest()})
+        attempts = []
+        # nginx reload is graceful: established edge connections can briefly reach
+        # the previous worker. Retry the identical semantic check, never weaken it.
+        for attempt in range(4):
+            try:
+                body = subprocess.check_output(['curl', '-fLsS', '--max-time', '45', url])
+                observed = hashlib.sha256(body).hexdigest()
+                if any(text.encode() not in body for text in check.get('contains', [])):
+                    raise ValueError('Readback missing required text: ' + url + ' body=' + observed)
+                if check.get('sha256') and observed != check['sha256']: raise ValueError('Readback hash differs: ' + url)
+                results.append({'url': url, 'sha256': observed, 'previousAttempts': attempts})
+                break
+            except (subprocess.CalledProcessError, ValueError) as error:
+                attempts.append({'attempt': attempt + 1, 'error': str(error), 'at': now()})
+                if attempt == 3: raise
+                time.sleep(attempt + 1)
     return results
 
 def recover(tx, reload_nginx=True):
