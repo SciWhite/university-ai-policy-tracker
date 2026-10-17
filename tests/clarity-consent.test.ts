@@ -41,6 +41,8 @@ test('all locale variants exclude internal, search, contribution, query and quer
   assert.equal(isClarityPageEligible(`https://eduaipolicy.org${prefix}/universities/imperial-college-london`),true);
   for(const path of ['/internal/analytics','/%69nternal/analytics','/search','/review/queue','/contribute','/api/public/v1','/account','/universities?q=private']) assert.equal(isClarityPageEligible(`https://eduaipolicy.org${prefix}${path}`),false,`${locale}${path}`);
   assert.equal(isClarityPageEligible(`https://eduaipolicy.org${prefix}/privacy`,'https://example.org/?q=private'),false);
+  for(const path of ['/','/privacy','/universities','/universities/unpublished-school','/universities/tsinghua-university/changes']) assert.equal(isClarityPageEligible(`https://eduaipolicy.org${prefix}${path}`),false);
+  assert.equal(isClarityPageEligible(`https://eduaipolicy.org${prefix}/universities/tsinghua-university`),true);
   assert(clarityCopy[locale].description && clarityCopy[locale].disclosure && clarityCopy[locale].reject);
  }
  assert.equal(isClarityPageEligible('not a url'),false);
