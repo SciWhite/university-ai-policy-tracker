@@ -1,5 +1,6 @@
+import {BoundedAsyncCache} from './bounded-cache';
 import {v6FrozenHistory} from "./v6-history-cache";
-import {readV6RecordCorrections,readV6RecordCorrectionRevision} from "./v6-effective-records";
+import {readV6RecordCorrections,readV6RecordCorrectionRevision,v6SummaryAtRevision} from "./v6-effective-records";
 import {
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   PUBLIC_API_VERSION,
@@ -209,23 +210,21 @@ export interface EntityChangeHistory {
   releaseRecords: ChangeRecord[];
 }
 
-let aggregateChangeRecordsPromise: Promise<ChangeRecord[]> | undefined;
-let allReleaseChangedRecordsPromise: Promise<ChangeRecord[]> | undefined;
-let changeIndexPromise: Promise<ChangeIndexData> | undefined;
+const aggregateChangeRecordsCache = new BoundedAsyncCache<ChangeRecord[]>(1, 8*1024*1024, 1, 32);
+const allReleaseChangedRecordsCache = new BoundedAsyncCache<ChangeRecord[]>(1, 8*1024*1024, 1, 32);
+const changeIndexCache = new BoundedAsyncCache<ChangeIndexData>(1, 4*1024*1024, 1, 32);
+
+export function changeHistoryCacheStats(){return {aggregate:aggregateChangeRecordsCache.stats(),releases:allReleaseChangedRecordsCache.stats(),index:changeIndexCache.stats()};}
 
 export async function getChangeRecords(): Promise<ChangeRecord[]> {
-  aggregateChangeRecordsPromise ??= buildAggregatedChangeRecords();
-
-  const rows = await aggregateChangeRecordsPromise;
+  const rows = await aggregateChangeRecordsCache.get("current", buildAggregatedChangeRecords);
   const correction = readV6RecordCorrections();
   if (!correction) return rows;
   return [...correction.summaries.map(v6ChangeRecord), ...rows.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
 }
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
-  changeIndexPromise ??= readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData());
-
-  const cached = await changeIndexPromise;
+  const cached = await changeIndexCache.get("current", () => readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData()));
   const correction = readV6RecordCorrections();
   if (!correction) return cached;
   const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
@@ -283,13 +282,13 @@ export async function getEntityChangeHistory(
 ): Promise<EntityChangeHistory | undefined> {
   const frozen = v6FrozenHistory(slug);
   if (frozen) {
-    const corrected = readV6RecordCorrections()!.summaries.find(s => s.entity.slug === slug)!;
+    const corrected = v6SummaryAtRevision(slug)!;
     const current = v6ChangeRecord(corrected);
     return {record:current,releaseRecords:[current,...frozen.filter(row => row.releaseId !== current.releaseId)]};
   }
   if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
     const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);
-    if (cached) {const corrected=readV6RecordCorrections()?.summaries.find(s=>s.entity.slug===slug);return corrected?{record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...cached.releaseRecords]}:cached;}
+    if (cached) {const corrected=v6SummaryAtRevision(slug);return corrected?{record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...cached.releaseRecords]}:cached;}
   }
   const dataset = await getStagedPublicDataset();
   const summary = dataset.publicSummaries.find((item) => item.entity.slug === slug);
@@ -303,14 +302,12 @@ export async function getEntityChangeHistory(
     ? buildAggregateChangeRecord(summary, releaseRecords)
     : buildDiffOnlyAggregateChangeRecord(slug, releaseRecords);
 
-  const corrected=readV6RecordCorrections()?.summaries.find(s=>s.entity.slug===slug);
+  const corrected=v6SummaryAtRevision(slug);
   return corrected?{record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...releaseRecords]}:{record,releaseRecords};
 }
 
 async function getAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
-  allReleaseChangedRecordsPromise ??= buildAllReleaseChangedRecords();
-
-  return allReleaseChangedRecordsPromise;
+  return allReleaseChangedRecordsCache.get("history", buildAllReleaseChangedRecords);
 }
 
 async function buildAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
@@ -1089,7 +1086,7 @@ function v6ChangeRecord(summary:PublicEntitySummary):ChangeRecord {
  const recordRevision=selected.recordRevisions[slug].universityRevisionId;
  const p=recordRevision===selected.revision?selected:readV6RecordCorrectionRevision(recordRevision)??selected;
  const diff=p.changesBySlug[slug];
- const previous=(p.parentRevisionId?readV6RecordCorrectionRevision(p.parentRevisionId)?.summaries.find(s=>s.entity.slug===slug):undefined)??p.historical[slug]?.baseline;
+ const previous=(p.parentRevisionId?v6SummaryAtRevision(slug,p.parentRevisionId):undefined)??p.historical[slug]?.baseline;
  const before=new Map(previous?.officialSources.map(s=>[s.sourceUrl,s.snapshotHash])??[]),after=new Map(summary.officialSources.map(s=>[s.sourceUrl,s.snapshotHash]));
  const sourceAdded=[...after.keys()].filter(u=>!before.has(u)).length,sourceRemoved=[...before.keys()].filter(u=>!after.has(u)).length,sourceSnapshotChanged=[...after].filter(([u,h])=>before.has(u)&&before.get(u)!==h).length;
  return {slug,name:summary.entity.name,releaseId:p.revision,previousReleaseId:p.parentRevisionId??"baseline-v6-pages-20261013",publicationKind:"scoped_record_correction",recordSha256:p.recordRevisions[slug].recordSha256,changeSummary:"Reviewed scoped record correction; historical held claims remain excluded from current policy conclusions.",summary:summary.summary,canonicalUrl:`${getSiteBaseUrl()}/changes/${p.revision}/${slug}`,changeUrl:`/changes/${p.revision}/${slug}`,universityUrl:`/universities/${slug}`,publicJsonUrl:summary.apiUrl!,claimCount:summary.claims.length,reviewedClaimCount:summary.claims.length,candidateClaimCount:0,sourceCount:summary.officialSources.length,reviewState:summary.reviewState,lastCheckedAt:summary.lastCheckedAt,lastChangedAt:p.publishedAt,added:diff.addedClaimIds.length,modified:diff.updatedClaimIds.length,removed:diff.heldClaimIds.length,newlyExtractedClaims:diff.addedClaimIds.length,trackerRemovedClaims:diff.heldClaimIds.length,claimMetadataChanged:diff.updatedClaimIds.length,evidenceChanged:diff.updatedClaimIds.length,policyTextChanged:0,unchanged:summary.claims.length-diff.addedClaimIds.length-diff.updatedClaimIds.length,sourceAdded,sourceRemoved,sourceSnapshotChanged,sourceTextChanged:0,diffLines:[],diffRows:[],claimChanges:summary.claims.map(c=>({claimId:c.id,claimText:c.claimText,claimType:c.claimType,confidence:c.confidence,evidenceCount:c.evidence.length,lastCheckedAt:c.lastCheckedAt,lastChangedAt:c.lastChangedAt,reviewState:c.reviewState,sourceLanguages:[...new Set(c.evidence.map(e=>e.sourceLanguage??"en"))]})),sourceChanges:summary.officialSources,releaseCount:1};

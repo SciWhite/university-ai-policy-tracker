@@ -3,7 +3,12 @@ import createNextIntlPlugin from "next-intl/plugin";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const publicDataTraceFiles = [".runtime-data/**/*"];
+const publicDataTraceFiles = [
+  ".runtime-data/**/*",
+  "../../data/public-v6-pages/sharded/**/*.json",
+  "../../data/public-v6-records/sharded/**/*.json",
+  "../../data/public-v6-history/sharded/**/*.json",
+];
 const appRoot = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(appRoot, "../..");
 

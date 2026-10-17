@@ -419,7 +419,7 @@ export function PolicyV6Provider({
                           {ui.sourceDate}: {s.checkedAt.slice(0, 10)}
                         </small>
                         <a
-                          href={`${schoolPath(s.slug, data.locale)}${data.schools.some((known) => known.slug === s.slug) || ["local_reviewed_bundle_not_public_snapshot","published_reviewed_page_supplement"].includes(s.snapshotStatus) ? "?layout=v6" : ""}`}
+                          href={`${schoolPath(s.slug, data.locale)}${data.schools.some((known) => known.slug === s.slug) || Boolean(data.schoolNames?.[s.slug]) || ["local_reviewed_bundle_not_public_snapshot","published_reviewed_page_supplement"].includes(s.snapshotStatus) ? "?layout=v6" : ""}`}
                         >
                           {ui.openRecord} ↗
                         </a>
@@ -509,7 +509,7 @@ export function PolicyV6Provider({
             {ui.selected}: {selected.length}/4
           </span>
           <span className={v6Classes.trayNames}>
-            {schools.map((s) => s.name).join(" · ")}
+            {selected.map(slug => knownSchools.find(s => s.slug === slug)?.name ?? data.schoolNames?.[slug] ?? slug).join(" · ")}
           </span>
           <button onClick={openCompare}>{ui.compare} →</button>
           <button

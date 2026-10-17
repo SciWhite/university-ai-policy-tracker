@@ -1,4 +1,4 @@
-import {publishedV6Enabled,publishedV6Locale,publishedV6School} from "./policy-v6-published";
+import {publishedV6Enabled,publishedV6SchoolNames,publishedV6School} from "./policy-v6-published";
 import { createHash } from "node:crypto";
 import type { PolicyClaim, PolicyAnalysisDimensionKey } from "@uapt/shared";
 import { getPublicUniversitySummaryBySlug } from "./catalog";
@@ -205,15 +205,14 @@ export async function getPolicyV6Data(
     throw new Error(
       "V6 published-basis preview must not activate a private candidate loader",
     );
-  const published = publishedV6Locale(locale);
-  if(published && published.schools.some(s=>s.slug===currentSlug)) {
-    const current=published.schools.find(s=>s.slug===currentSlug)!;
+  const current = publishedV6School(currentSlug, locale);
+  if(current) {
     const studentActionsPilot=true;
     return {
       locale,
       currentSlug,
       schools: [structuredClone(current)],
-      schoolNames: Object.fromEntries(published.schools.map(s => [s.slug, s.name])),
+      schoolNames: publishedV6SchoolNames(locale),
       published: true,
       ...(studentActionsPilot ? {studentActionsPilot, studentActions:getV6StudentActions(current)} : {}),
     };

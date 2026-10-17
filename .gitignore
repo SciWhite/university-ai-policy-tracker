@@ -11,6 +11,7 @@ node_modules/
 dist/
 build/
 .next/
+apps/tulsa-zone/next-env.d.ts
 apps/web/.runtime-data/
 out/
 .turbo/

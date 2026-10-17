@@ -17,6 +17,8 @@
     "node": ">=20"
   },
   "scripts": {
+    "validate:v6-shards": "tsx scripts/validate-v6-shards.ts",
+    "v6:shards": "tsx scripts/export-v6-shards.ts",
     "release:local-check": "node scripts/uapt-release.mjs local-check",
     "release:inspect": "node scripts/uapt-release.mjs inspect",
     "dev": "pnpm --parallel --filter @uapt/web --filter @uapt/api dev",
@@ -25,7 +27,7 @@
     "dev:worker": "pnpm --filter @uapt/worker dev",
     "build": "pnpm db:generate && pnpm -r build",
     "lint": "pnpm -r lint",
-    "check": "pnpm db:generate && pnpm validate:i18n && pnpm validate:entity-aliases && pnpm validate:public-contract && pnpm validate:tool-records && pnpm validate:analysis-contract && pnpm validate:policy-snapshot && pnpm audit:policy-analysis && pnpm smoke:analysis-pages && pnpm smoke:entity-search && pnpm smoke:source-diffs && pnpm validate:openclaw-artifacts && pnpm validate:dataset-release && pnpm audit:public-data && pnpm typecheck && pnpm lint",
+    "check": "pnpm db:generate && pnpm validate:i18n && pnpm validate:entity-aliases && pnpm validate:public-contract && pnpm validate:tool-records && pnpm validate:analysis-contract && pnpm validate:policy-snapshot && pnpm audit:policy-analysis && pnpm smoke:analysis-pages && pnpm smoke:entity-search && pnpm smoke:source-diffs && pnpm validate:openclaw-artifacts && pnpm validate:dataset-release && pnpm validate:v6-shards && pnpm audit:public-data && pnpm typecheck && pnpm lint",
     "smoke:universities-index": "tsx scripts/smoke-universities-index.ts",
     "smoke:reference-pages": "tsx scripts/smoke-reference-pages.ts",
     "smoke:pilot-pages": "tsx --tsconfig apps/web/tsconfig.json scripts/smoke-pilot-pages-http.ts",

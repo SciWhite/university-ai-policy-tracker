@@ -1,3 +1,4 @@
+import {BoundedAsyncCache} from './bounded-cache';
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import {
@@ -21,7 +22,7 @@ import { readRecordCorrectionChanges, readRecordCorrectionSummary } from "./reco
 import { reviewedClaimsFingerprint } from "./index-recovery-basis";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
-import { readV6RecordCorrectionRevision } from "./v6-effective-records";
+import { readV6RecordCorrectionRevision, v6SummaryAtRevision } from "./v6-effective-records";
 
 export type ReleaseDiffChangeType =
   | "claim_added"
@@ -229,12 +230,11 @@ type PrivateSourceTextDiffIndex = Map<string, PrivateSourceTextDiffRow>;
 const FUZZY_MATCH_THRESHOLD = 0.82;
 
 let knownReleaseManifestsPromise: Promise<PublicReleaseManifest[]> | undefined;
-const releaseDiffPromises = new Map<string, Promise<ReleaseDiff | undefined>>();
-const manifestDatasetPromises = new Map<string, ReturnType<typeof getStagedPublicDataset>>();
-const privateSourceTextDiffPromises = new Map<
-  string,
-  Promise<PrivateSourceTextDiffIndex>
->();
+const releaseDiffPromises = new BoundedAsyncCache<ReleaseDiff | undefined>(8, 24*1024*1024, 2, 32);
+const manifestDatasetPromises = new BoundedAsyncCache<Awaited<ReturnType<typeof getStagedPublicDataset>>>(2, 24*1024*1024, 1, 32);
+const privateSourceTextDiffPromises = new BoundedAsyncCache<PrivateSourceTextDiffIndex>(8, 4*1024*1024, 2, 32);
+
+export function releaseHistoryCacheStats(){return {diffs:releaseDiffPromises.stats(),datasets:manifestDatasetPromises.stats(),sourceDiffs:privateSourceTextDiffPromises.stats()};}
 
 export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
   const currentManifest = await getRequiredCurrentManifest();
@@ -242,20 +242,15 @@ export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
   if (!diff) throw new Error(`Unknown release: ${currentManifest.releaseId}`);
 
   const entries = await readRecordCorrectionChanges();
-  const scopedCorrections = await Promise.all(entries.map(entry => getReleaseDiff(entry.revision)));
+  const scopedCorrections = [];
+  for (const entry of entries) scopedCorrections.push(await getReleaseDiff(entry.revision));
   return {...diff, scopedCorrections: scopedCorrections.filter((item): item is ReleaseDiff => !!item)};
 }
 
 export async function getReleaseDiff(
   releaseId: string
 ): Promise<ReleaseDiff | undefined> {
-  const cached = releaseDiffPromises.get(releaseId);
-  if (cached) return cached;
-
-  const promise = buildCachedReleaseDiff(releaseId);
-  releaseDiffPromises.set(releaseId, promise);
-
-  return promise;
+  return releaseDiffPromises.get(releaseId, () => buildCachedReleaseDiff(releaseId));
 }
 
 export async function getLatestEntityReleaseDiff(
@@ -280,7 +275,7 @@ export async function getV5RecordReleaseDiff(releaseId: string): Promise<Release
   if (!/^pku-v5-[a-z0-9-]+$/.test(releaseId)) return undefined;
   const correction = readV6RecordCorrectionRevision(releaseId);
   if (!correction) return undefined;
-  const summary = correction.summaries.find(item => item.entity.slug === "peking-university");
+  const summary = v6SummaryAtRevision("peking-university",releaseId);
   const baseline = correction.historical["peking-university"]?.baseline;
   if (!summary || !baseline || correction.recordRevisions[summary.entity.slug]?.universityRevisionId !== releaseId) return undefined;
   const manifest = await getManifestByReleaseId(correction.datasetReleaseId);
@@ -960,13 +955,7 @@ function getEntityDiff(
 
 async function getDatasetForManifest(manifest: PublicReleaseManifest) {
   // Historical manifests must never inherit later per-university repair overlays.
-  const cached = manifestDatasetPromises.get(manifest.releaseId);
-  if (cached) return cached;
-
-  const promise = getStagedPublicDatasetForManifest(manifest);
-  manifestDatasetPromises.set(manifest.releaseId, promise);
-
-  return promise;
+  return manifestDatasetPromises.get(manifest.releaseId, () => getStagedPublicDatasetForManifest(manifest));
 }
 
 async function getRequiredCurrentManifest(): Promise<PublicReleaseManifest> {
@@ -1039,16 +1028,7 @@ async function getPrivateSourceTextDiffIndex(
   currentReleaseId: string
 ): Promise<PrivateSourceTextDiffIndex> {
   const cacheKey = `${previousReleaseId}__${currentReleaseId}`;
-  const cached = privateSourceTextDiffPromises.get(cacheKey);
-  if (cached) return cached;
-
-  const promise = buildPrivateSourceTextDiffIndex(
-    previousReleaseId,
-    currentReleaseId
-  );
-  privateSourceTextDiffPromises.set(cacheKey, promise);
-
-  return promise;
+  return privateSourceTextDiffPromises.get(cacheKey, () => buildPrivateSourceTextDiffIndex(previousReleaseId, currentReleaseId));
 }
 
 async function buildPrivateSourceTextDiffIndex(
@@ -1335,12 +1315,12 @@ function entitySlugToName(slug: string): string {
 /** Compare a scoped correction with its immutable school baseline. */
 export async function getScopedRecordReleaseDiff(releaseId:string):Promise<ReleaseDiff|undefined>{
  const correction=readV6RecordCorrectionRevision(releaseId);if(!correction)return undefined;
- const summaries=correction.summaries.filter(s=>correction.recordRevisions[s.entity.slug].universityRevisionId===releaseId&&correction.historical[s.entity.slug]?.baseline);
+ const summaries=Object.keys(correction.recordRevisions).filter(slug=>correction.recordRevisions[slug].universityRevisionId===releaseId&&correction.historical[slug]?.baseline).map(slug=>v6SummaryAtRevision(slug,releaseId)!);
  if(!summaries.length)return undefined;
  const manifest=await getManifestByReleaseId(correction.datasetReleaseId);if(!manifest)throw Error('Scoped correction dataset basis unavailable');
  const entities=summaries.map(summary=>{
  const slug=summary.entity.slug,previousReleaseId=correction.recordRevisions[slug].previousRevisionId??correction.recordRevisions[slug].baselineRevisionId??'baseline-v6-pages-20261013';
- const previous=readV6RecordCorrectionRevision(previousReleaseId)?.summaries.find(s=>s.entity.slug===slug)??correction.historical[slug].baseline;
+ const previous=v6SummaryAtRevision(slug,previousReleaseId)??correction.historical[slug].baseline;
  const entity=buildEntityDiff({...manifest,releaseId,publishedAt:correction.publishedAt},{...manifest,releaseId:previousReleaseId},previous,summary,new Map());
  entity.lastChangedAt=correction.publishedAt;entity.publicationKind='scoped_record_correction';entity.changeSummary=correction.changeSummary?.en;entity.recordSha256=correction.recordRevisions[slug].recordSha256;
  for(const row of entity.rows){row.changeExplanation=`Tracker audit correction, not a new university policy publication. ${row.changeExplanation}`;row.limitations=[...row.limitations,'Previous record is the frozen prior school revision or baseline; correction timestamps are not university effective dates.'];}
