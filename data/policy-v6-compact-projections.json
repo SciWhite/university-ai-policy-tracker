@@ -6198,11 +6198,11 @@
     "university-of-california-berkeley": {
       "slug": "university-of-california-berkeley",
       "name": "University of California, Berkeley (UCB)",
-      "recordSha256": "fe601c802d6e75752881342955f92676a9f0332d54222e1f8d6cd5ac43f26e7c",
-      "schoolFingerprint": "fe601c802d6e75752881342955f92676a9f0332d54222e1f8d6cd5ac43f26e7c",
-      "universityRevisionId": "berkeley-v6-r2-20261017",
+      "recordSha256": "ebd874c6276b4f998fef3b35ab9a5f37aa7d649f54d4ba11a433dce7c1ef663d",
+      "schoolFingerprint": "ebd874c6276b4f998fef3b35ab9a5f37aa7d649f54d4ba11a433dce7c1ef663d",
+      "universityRevisionId": "berkeley-v6-r3-20261017",
       "experience": "compact_evidence",
-      "presentationRevision": "berkeley-v6-r2-20261017",
+      "presentationRevision": "berkeley-v6-r3-20261017",
       "images": [],
       "scope": {
         "en": "Campus appropriate-use advisory; Academic Senate instructor recommendations; Student Conduct Code July 1, 2026; Graduate GAMP; 2026 Research Misconduct Policy.",
@@ -6216,8 +6216,8 @@
           "meaningZh": "区分校级合规使用指引、学术参议院大纲建议、2026 年 7 月 1 日学生行为准则、研究生 GAMP 及 2026 年研究不端制度。"
         },
         "exams": {
-          "en": "No universal exam permission or prohibition is established by reviewed policy. AI use on exams requires explicit instructor authorization; unauthorized use of materials or assistance is defined as cheating under Appendix II of the Student Conduct Code. Tool access is not exam permission.",
-          "zh": "本记录未建立全校统一考试许可或禁令。考试中由任课教师明确规定；未经许可使用材料依据《学生行为准则》附录二属于作弊。工具可用不代表考试获准。",
+          "en": "No universal campus-wide AI exam permission or prohibition is established by reviewed policy; whether AI is permitted on specific examinations is governed by instructor authorization in individual course syllabi or exam instructions rather than central campus policy. Tool access does not constitute exam permission.",
+          "zh": "已审核公开政策未建立全校统一的考试 AI 许可或禁令；具体考试是否允许使用 AI 取决于任课教师在课程大纲或考试指引中的明确规定，而非校级统一规定。校内工具授权不构成考试许可。",
           "meaningEn": "Campus appropriate-use advisory; Academic Senate instructor recommendations; Student Conduct Code July 1, 2026; Graduate GAMP; 2026 Research Misconduct Policy.",
           "meaningZh": "区分校级合规使用指引、学术参议院大纲建议、2026 年 7 月 1 日学生行为准则、研究生 GAMP 及 2026 年研究不端制度。"
         },
@@ -6240,14 +6240,14 @@
           "meaningZh": "区分校级合规使用指引、学术参议院大纲建议、2026 年 7 月 1 日学生行为准则、研究生 GAMP 及 2026 年研究不端制度。"
         },
         "research_publication": {
-          "en": "Effective January 1, 2026, research misconduct allegations follow standardized assessment, inquiry, and investigation stages. Researchers are responsible for AI-assisted research and should ensure human verification of facts and citations; Library database scraping/training requires license compliance.",
-          "zh": "2026 年 1 月 1 日生效的研究不端制度设立评估、初查与正式调查三阶段。研究人员对 AI 辅助研究负全责并应人工核实事实与文献引用；图书馆授权资源的使用必须遵守数据库许可。",
+          "en": "Effective January 1, 2026, research misconduct allegations follow standardized assessment, inquiry, and investigation stages evaluated against a three-part standard, with a 7-year record retention requirement. Researchers are responsible for AI-assisted research and should ensure human verification of facts and citations; Library database scraping/training requires license compliance.",
+          "zh": "2026 年 1 月 1 日生效的研究不端制度设立评估、初查与正式调查三阶段，依据三要素标准认定，并要求案卷记录妥善保存 7 年。研究人员对 AI 辅助研究负全责并应人工核实事实与文献引用；图书馆授权资源的使用必须遵守数据库许可。",
           "meaningEn": "Campus appropriate-use advisory; Academic Senate instructor recommendations; Student Conduct Code July 1, 2026; Graduate GAMP; 2026 Research Misconduct Policy.",
           "meaningZh": "区分校级合规使用指引、学术参议院大纲建议、2026 年 7 月 1 日学生行为准则、研究生 GAMP 及 2026 年研究不端制度。"
         },
         "academic_integrity": {
-          "en": "Undergraduate and general student conduct is governed by the Berkeley Campus Code of Student Conduct revised July 1, 2026 (PACAOS 100.00 / Appendix H). Graduate academic misconduct is adjudicated separately under Graduate Division GAMP with early resolution, formal committee hearings, and a 10-day appeal right.",
-          "zh": "本科生及一般学生行为受 2026 年 7 月 1 日修订的《伯克利分校学生行为准则》（PACAOS 100.00 / 附录 H）管辖。研究生学术不端由研究生院 GAMP 独立管辖，设早期调解、委员会听证及 10 天申诉权。",
+          "en": "Undergraduate and general student conduct is governed by the Berkeley Campus Code of Student Conduct revised July 1, 2026 (PACAOS 100.00 / Appendix H) with a 10-day appeal window. Graduate academic misconduct is adjudicated separately under Graduate Division GAMP with early resolution, formal committee hearings under a preponderance standard, and a 10-day appeal right.",
+          "zh": "本科生及一般学生行为受 2026 年 7 月 1 日修订的《伯克利分校学生行为准则》（PACAOS 100.00 / 附录 H）管辖并设 10 天申诉期。研究生学术不端由研究生院 GAMP 独立管辖，设早期调解、按优势证据标准的委员会听证及 10 天申诉权。",
           "meaningEn": "Campus appropriate-use advisory; Academic Senate instructor recommendations; Student Conduct Code July 1, 2026; Graduate GAMP; 2026 Research Misconduct Policy.",
           "meaningZh": "区分校级合规使用指引、学术参议院大纲建议、2026 年 7 月 1 日学生行为准则、研究生 GAMP 及 2026 年研究不端制度。"
         },
@@ -6266,12 +6266,12 @@
       },
       "topicBasis": {
         "coursework": "Coursework use is conditioned on explicit instructor permission in the syllabus; unauthorized use of AI on academic assignments is prohibited by campus guidance and constitutes academic misconduct under Section 102.01.",
-        "exams": "No universal exam permission or prohibition is established by reviewed policy. AI use on exams requires explicit instructor authorization; unauthorized use of materials or assistance is defined as cheating under Appendix II of the Student Conduct Code. Tool access is not exam permission.",
+        "exams": "No universal campus-wide AI exam permission or prohibition is established by reviewed policy; whether AI is permitted on specific examinations is governed by instructor authorization in individual course syllabi or exam instructions rather than central campus policy. Tool access does not constitute exam permission.",
         "disclosure": "Academic Senate guidance provides optional syllabus frameworks for instructors to require tool acknowledgment and prompt descriptions on permitted assignments. Researchers should disclose generative AI use in research reports, manuscripts, and publications where appropriate (specifying tools, scope, and human verification); for grant proposals, researchers should follow applicable funding agency disclosure requirements.",
         "privacy_data": "Public Protection Level P1 data may be entered into AI tools. Entering confidential, personal, or proprietary information (including FERPA student records, unpublished research, or P2–P4 data) is generally prohibited, unless specifically permitted under UC enterprise license agreements and approved protection levels. Instructors are advised not to upload student materials to third-party AI tools lacking a university MOU.",
         "approved_tools": "Berkeley licenses tools including ChatGPT Edu, Gemini, Copilot, BearGPT, and Campus AI Sandbox via CalNet authentication, with varying user eligibility, recharge fees, and P1–P3 data levels. Institutional licensing does not establish course or examination permission.",
-        "research_publication": "Effective January 1, 2026, research misconduct allegations follow standardized assessment, inquiry, and investigation stages. Researchers are responsible for AI-assisted research and should ensure human verification of facts and citations; Library database scraping/training requires license compliance.",
-        "academic_integrity": "Undergraduate and general student conduct is governed by the Berkeley Campus Code of Student Conduct revised July 1, 2026 (PACAOS 100.00 / Appendix H). Graduate academic misconduct is adjudicated separately under Graduate Division GAMP with early resolution, formal committee hearings, and a 10-day appeal right.",
+        "research_publication": "Effective January 1, 2026, research misconduct allegations follow standardized assessment, inquiry, and investigation stages evaluated against a three-part standard, with a 7-year record retention requirement. Researchers are responsible for AI-assisted research and should ensure human verification of facts and citations; Library database scraping/training requires license compliance.",
+        "academic_integrity": "Undergraduate and general student conduct is governed by the Berkeley Campus Code of Student Conduct revised July 1, 2026 (PACAOS 100.00 / Appendix H) with a 10-day appeal window. Graduate academic misconduct is adjudicated separately under Graduate Division GAMP with early resolution, formal committee hearings under a preponderance standard, and a 10-day appeal right.",
         "teaching_guidance": "The Academic Senate recommends clear syllabus expectations, notes that AI detectors are unvalidated, and reminds instructors to ensure student computing access for required tools. Turnitin AI writing detection is not enabled for general bCourses use.",
         "security_procurement": "UC Berkeley requires unit-procured tools to adhere to approved protection levels and warns against personal liability from unapproved click-through terms. AI pre-screening questions evaluate organizational risk before committee review."
       },
@@ -6338,15 +6338,19 @@
           "claim-university-of-california-berkeley-student-conduct-2026-framework",
           "claim-university-of-california-berkeley-student-conduct-academic-misconduct",
           "claim-university-of-california-berkeley-grad-academic-misconduct-scope",
-          "claim-university-of-california-berkeley-research-misconduct-three-stages"
+          "claim-university-of-california-berkeley-grad-misconduct-proof-and-resolution-phases",
+          "claim-university-of-california-berkeley-research-misconduct-three-stages",
+          "claim-university-of-california-berkeley-research-misconduct-finding-standards"
         ],
         "outcomes": [
           "claim-university-of-california-berkeley-student-conduct-academic-misconduct",
           "claim-university-of-california-berkeley-student-conduct-cheating-definition",
-          "claim-university-of-california-berkeley-research-ai-responsibility"
+          "claim-university-of-california-berkeley-research-ai-responsibility",
+          "claim-university-of-california-berkeley-research-misconduct-record-retention"
         ],
         "appeal": [
           "claim-university-of-california-berkeley-student-conduct-2026-framework",
+          "claim-university-of-california-berkeley-student-conduct-hearing-and-appeal-window",
           "claim-university-of-california-berkeley-grad-misconduct-appeal-rights",
           "claim-university-of-california-berkeley-research-misconduct-three-stages"
         ]
@@ -6644,7 +6648,7 @@
           "scope": "Office of Ethics, Risk and Compliance Services guidance",
           "evidence": [
             {
-              "quote": "Use of AI tools procured by units separately from the campus or systemwide agreements mentioned above must also adhere to the approved Protection Level limitations advised by the unit to ensure compliance with the agreement and appropriate protections relative to the safety features of the tool.  Units offering such tools should clearly advise staff and users as to the appropriate use and Protection Level limitations of the AI (and all) tools that they offer. Units are encouraged to use and refer people to the campus Data Classification Standard and Guidelines for assistance with determining the Protection Level of data being contemplated for use in unit-provided AI tools.",
+              "quote": "Use of AI tools procured by units separately from the campus or systemwide agreements mentioned above must also adhere to the approved Protection Level limitations advised by the unit to ensure compliance with the agreement and appropriate protections relative to the safety features of the tool.",
               "url": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
               "language": "en",
               "hash": "2f60a78edd63a4fbe4a41de386c49b6f199a2c74ecef9c6f13985969357f9757",
@@ -6684,7 +6688,7 @@
         },
         "claim-university-of-california-berkeley-7": {
           "id": "claim-university-of-california-berkeley-7",
-          "text": "UC Berkeley prohibits entering FERPA-protected student records, non-public instructional materials, and proprietary or unpublished research into generative AI tools.",
+          "text": "UC Berkeley prohibits entering FERPA-protected student records, non-public instructional materials, and proprietary or unpublished research into generative AI tools, except where specific institutional agreements or university-licensed tools explicitly permit it under approved data protection levels.",
           "claimType": "privacy",
           "scope": "Office of Ethics, Risk and Compliance Services guidance",
           "evidence": [
@@ -6764,7 +6768,7 @@
           "scope": "Office of Ethics, Risk and Compliance Services guidance",
           "evidence": [
             {
-              "quote": "Be sure to take the AI Essentials Training and consult CERC-AIR, a committee that  assesses and offers guidance for mitigating AI risks",
+              "quote": "Be sure to take the AI Essentials Training and consult CERC-AIR",
               "url": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
               "language": "en",
               "hash": "2f60a78edd63a4fbe4a41de386c49b6f199a2c74ecef9c6f13985969357f9757",
@@ -6884,7 +6888,7 @@
           "scope": "University research activities and sponsored scholarship",
           "evidence": [
             {
-              "quote": "This policy describes the framework UC Berkeley uses to receive, assess, and resolve allegations of research misconduct. It outlines clear definitions, roles, responsibilities, and the three procedural stages—assessment, inquiry, and investigation—designed to ensure thorough, objective, and timely review consistent with federal law and University policy.  By setting forth transparent and standardized processes, this policy aims to support a culture of integrity, accountability, and fairness across Berkeley’s research enterprise.",
+              "quote": "This policy describes the framework UC Berkeley uses to receive, assess, and resolve allegations of research misconduct. It outlines clear definitions, roles, responsibilities, and the three procedural stages—assessment, inquiry, and investigation—designed to ensure thorough, objective, and timely review consistent with federal law and University policy.",
               "url": "https://vcresearch.berkeley.edu/how/ensure-compliance/research-compliance/research-misconduct",
               "language": "en",
               "hash": "60bcdb2d49facf23920ca5cafd41cc61d2250f4aa494113a6917c9fcf7e355d4",
@@ -6949,6 +6953,66 @@
               "language": "en",
               "hash": "a1e476c6e9597a138cf478d3befcda07682556e7f70c51bf40023b8bdc36bb36",
               "location": "GenAI Detection Tools and Privacy Concerns; extracted text lines 115-115"
+            }
+          ]
+        },
+        "claim-university-of-california-berkeley-student-conduct-hearing-and-appeal-window": {
+          "id": "claim-university-of-california-berkeley-student-conduct-hearing-and-appeal-window",
+          "text": "Under the Berkeley Campus Code of Student Conduct, written appeals must be submitted within 10 days of the Administrative Resolution Letter (or within 5 days for intent to appeal and 10 days for appeal if separation status is involved); sanctions are deferred during a timely appeal.",
+          "claimType": "academic_integrity",
+          "scope": "Berkeley Campus Code of Student Conduct (PACAOS 100.00 / Appendix H)",
+          "evidence": [
+            {
+              "quote": "The timelines for a written appeal are as follows:\n(1) If the administrative resolution does not include a separation status sanction,\nthe student must submit the written appeal within ten (10) days of the issuance\nof the Administrative Resolution Letter.\n(2) If the Administrative Resolution includes a separation status sanction, and the\nstudent does not request a formal hearing but wishes to appeal the sanctions,\nthe student must submit a written intent to appeal the sanctions within five (5)\ndays of issuance of the Administrative Resolution Letter and must submit their\nwritten appeal within ten (10) days of the issuance of the Administrative\nResolution",
+              "url": "https://conduct.berkeley.edu/wp-content/uploads/2026/08/Berkeley-Campus-Code-of-Student-Conduct_July-2026_Remediated.pdf",
+              "language": "en",
+              "hash": "316bea45f0d92476feb8def1f854f2f6e675c36abfc72958b73c715c59ead142",
+              "location": "Section V.b: Appeal Submission Procedure and Timeline; extracted text lines 978-987"
+            }
+          ]
+        },
+        "claim-university-of-california-berkeley-grad-misconduct-proof-and-resolution-phases": {
+          "id": "claim-university-of-california-berkeley-grad-misconduct-proof-and-resolution-phases",
+          "text": "The Graduate Student Academic Misconduct Policy establishes two resolution phases (early resolution and committee-led investigation) evaluated under the preponderance of the evidence standard (51% likelihood), with a presumption of non-responsibility throughout the process.",
+          "claimType": "academic_integrity",
+          "scope": "Graduate Division and school-specific GAMP",
+          "evidence": [
+            {
+              "quote": "The Graduate Student Academic Misconduct Policy describes two phases for addressing suspected academic misconduct by graduate and professional students: An early resolution phase and a committee-led investigation phase. Throughout both phases, the Graduate Division serves as an impartial consultant to ensure consistency, equity, and adherence to due process.\nAll information related to a case is evaluated through the preponderance standard, which means more likely than not, or a 51% likelihood.",
+              "url": "https://grad.berkeley.edu/policies-and-procedures/graduate-academic-integrity/",
+              "language": "en",
+              "hash": "159cf5e8a6ffefd19bc05a50d49608db73016712b4fef74ee886d59b00bace0d",
+              "location": "Graduate Academic Misconduct Policy: Overview & Resolution Phases; extracted text lines 135-136"
+            }
+          ]
+        },
+        "claim-university-of-california-berkeley-research-misconduct-finding-standards": {
+          "id": "claim-university-of-california-berkeley-research-misconduct-finding-standards",
+          "text": "A finding of research misconduct under UC Berkeley policy requires establishing three criteria: a significant departure from accepted practices of the relevant research community, committed intentionally, knowingly, or recklessly, proven by a preponderance of the evidence.",
+          "claimType": "research",
+          "scope": "University research activities and sponsored scholarship",
+          "evidence": [
+            {
+              "quote": "III. REQUIREMENTS FOR FINDINGS OF RESEARCH MISCONDUCT (§ 93.103).\nFinding of research misconduct requires:\nThere be a significant departure from accepted practices of the relevant research community; and\nThe misconduct be committed intentionally, knowingly, or recklessly; and\nThe allegation be proven by a preponderance of the evidence standard.",
+              "url": "https://vcresearch.berkeley.edu/how/ensure-compliance/research-compliance/research-misconduct",
+              "language": "en",
+              "hash": "60bcdb2d49facf23920ca5cafd41cc61d2250f4aa494113a6917c9fcf7e355d4",
+              "location": "Section III: Requirements for Findings of Research Misconduct; extracted text lines 141-145"
+            }
+          ]
+        },
+        "claim-university-of-california-berkeley-research-misconduct-record-retention": {
+          "id": "claim-university-of-california-berkeley-research-misconduct-record-retention",
+          "text": "All collected data, evidence, records, and reports from research misconduct proceedings must be securely maintained for seven (7) years following completion, unless transferred to a research sponsor or released by ORI.",
+          "claimType": "research",
+          "scope": "University research activities and sponsored scholarship",
+          "evidence": [
+            {
+              "quote": "C. All collected data and evidence, as well as the records and reports of the assessment, inquiry, and investigation, will be securely maintained for seven (7) years after the completion of a UCB research misconduct proceeding, unless custody of the records has been transferred to a research sponsor or ORI has notified UCB that the records are no longer needed.",
+              "url": "https://vcresearch.berkeley.edu/how/ensure-compliance/research-compliance/research-misconduct",
+              "language": "en",
+              "hash": "60bcdb2d49facf23920ca5cafd41cc61d2250f4aa494113a6917c9fcf7e355d4",
+              "location": "Section V.C: Confidentiality and Records Retention; extracted text lines 179-179"
             }
           ]
         }
