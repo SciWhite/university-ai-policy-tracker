@@ -1,6 +1,6 @@
-# Microsoft Clarity integration — candidate, 2026-10-17
+# Microsoft Clarity integration — V6 production acceptance, 2026-10-17
 
-Status: account configured; source candidate locally verified; production deployment and AI Citations acceptance pending.
+Status: corrected V6 integration deployed and independently accepted; lifecycle complete and previous web retired. AI Citations dashboard activation remains pending in Microsoft’s UI.
 
 ## Account readback
 
@@ -59,3 +59,26 @@ Production acceptance is still pending at this source freeze. Final results will
 The first candidate `8a47e8a9` passed the route matrix (539 checks), 119 browser page renders and 85 MCP calls covering 555 claims. A deliberately consented single-document browser probe loaded the hosted tag/SDK (200) and received `https://u.clarity.ms/collect` 204. However, withdrawing on the SDK-free privacy page left existing `_clck`/`_clsk` cookies. The lifecycle transaction was recovered to the previous active before acceptance; this attempt is not a completed release.
 
 Cookie expiration now runs on withdrawal even when no SDK has been loaded in that document, and runs after SDK stop. Excluded surfaces and initial effective opt-out also clear residual first-party Clarity cookies. A regression assertion covers withdrawal without any SDK. Source revision, build, candidate and public acceptance are repeated for the corrected artifact; prior evidence is preserved separately.
+
+
+## Corrected production acceptance
+
+- Deployed source: `eb0139d876f7b867699126751ff4dd64c5a94f72` (PRs #19 and #20); BUILD_ID `xTzvZFPkLfwN-1JHik3zS`. Only the shared zone was built. This documentation closeout is not another application release.
+- Coverage: 17 schools × 7 languages = 119 V6 detail pages, plus seven existing privacy routes. The shared published-school registry provides the same opt-in integration to future formally published V6 schools.
+- Candidate: 539 route/data checks passed; all 119 school pages and seven privacy pages rendered in Edge. Explicit consent/withdrawal regression tests: 5 passed; `pnpm check`, zone typecheck and diff check passed.
+- Public: 539 route/data checks passed; all 126 affected HTML routes returned the frozen code release header. Seventeen school pages and seven privacy pages received additional browser readback. All 1,110 frozen build files were still byte-identical after acceptance.
+- MCP: candidate and public each ran 85 calls covering all 555 Claim IDs across 17 schools, with exact claim/evidence comparison and no remaining IDs. The MCP service and catalog were retained unchanged. Tsinghua remains 48 claims, 15 sources and one tool; its snapshot is unavailable with `pending_review`, and `needs_review` is preserved. This integration does not upgrade PARTIAL audit status.
+- Real SDK probe: default DNT=1 had no hosted SDK or residual Clarity cookies. In one controlled test document only, DNT was simulated as 0, then the visible adult opt-in was clicked. The hosted tag and SDK returned 200; `i.clarity.ms/collect` returned 204. This establishes endpoint receipt, not dashboard processing or recorded-session availability.
+- Real withdrawal: navigation from Cornell to privacy unloaded the SDK and cleared both `_clck` and `_clsk`. Clicking withdrawal kept both cookies absent. Website analytics opt-out removed the Clarity grant; a granted preference on a query-bearing Tsinghua page still did not load an SDK. Test preference keys were restored to their original absent state, cookies cleared, document DNT restored to 1 by navigation, and viewport overrides reset. No browser-wide privacy setting was changed.
+- Responsive proof: the public Chinese Tsinghua consent prompt at a measured 390px viewport has 390px scrollWidth and no horizontal overflow; [screenshot](public-consent-mobile.png). No application warnings/errors were captured during the public browser checks.
+- Capacity: fixed build scope peak 1,270,476,800 bytes; startup 183,906,304; cold history 231,571,456; steady 1,015,361,536. All within the admitted 2 GiB candidate budget; no OOM kills or candidate restarts. Historical cold/warm requests were serialized.
+- Static compatibility: 24 retiring-release files and 25 new files passed individual SHA256, production TLS, MIME and immutable-cache checks; all 49 passed again after retirement. Prior unsuccessful candidate static files remain available through the same controlled prefix for already-open documents.
+- Lifecycle: contract 2.0.0 candidate and completion ledgers passed. Transaction completed at `2026-10-17T06:14:00.917365+00:00`; previous shared web `uapt-shared-v6-r2.service` is inactive/disabled; replacement fixed slot `uapt-shared-v6-candidate.service` is active/enabled, NRestarts=0. Main and MCP were not restarted; the legacy set did not grow. Full loaded Nginx has no retiring `127.0.0.1:3161` endpoint.
+- After retirement: six exact semantic public checks, six unrelated controls and all 49 static files passed. Cold rollback retains prior release, unit/env and Nginx bytes without rebuilding.
+- No policy mutation, snapshot re-pin, inventory promotion, IndexNow, advertising integration, paid CDN logging or API token was performed.
+
+Server evidence is preserved under `/srv/uapt/operations/clarity-v6-r2-20261017/`: `release-plan.json`, `capacity.json`, `sync-candidate/`, `sync-public/`, public and browser proofs, and `final-acceptance.json`. The first rolled-back attempt remains separately under `/srv/uapt/operations/clarity-v6-20261017/`. Local private evidence is in the isolated worktree’s `.local/clarity-v6-release-r2-20261017/`.
+
+## Remaining Microsoft-side acceptance
+
+Bing Webmaster previously confirmed **Your site is added to Clarity**. The final AI Visibility → Citation navigation still shows the first-install welcome screen and “It may take up to two hours.” The SDK’s successful 204 collection receipt does not establish that the Citations dashboard is enabled or that any citations exist. No duplicate project, extra credentials or speculative account change was used to bypass this state. Website integration is accepted; AI Citations activation/data visibility remains unverified until Microsoft exposes the dashboard.
