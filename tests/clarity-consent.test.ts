@@ -31,6 +31,9 @@ test('consent fails closed for missing, malformed, expired, future or blocked st
   f.navigator.globalPrivacyControl=false; f.navigator.doNotTrack='1'; assert.equal(clarityAllowed(),false);
   f.navigator.doNotTrack='0'; f.storage.setItem('uapt.analytics.opt_out','1'); assert.equal(clarityAllowed(),false);
   f.storage.setItem('uapt.analytics.opt_out','0'); setClarityChoice('denied'); assert.equal(clarityAllowed(),false);
+  // A direct visit to privacy has no SDK; withdrawal still expires both cookies.
+  assert.equal(f.window.clarity,undefined);
+  for (const name of ['_clck','_clsk']) assert(f.cookies.some(cookie=>cookie.startsWith(`${name}=; Max-Age=0`)&&cookie.includes('Domain=.eduaipolicy.org')));
   f.storage.getItem=()=>{throw new Error('blocked');}; assert.equal(clarityAllowed(),false);
  }finally{f.restore();}
 });

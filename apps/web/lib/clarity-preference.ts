@@ -25,8 +25,18 @@ export function clarityAllowed(): boolean {
   return !analyticsOptedOut() && !browserRejectsClarity() && clarityChoice() === "granted";
 }
 
+export function clearClarityCookies() {
+  if (typeof document === "undefined") return;
+  for (const name of ["_clck", "_clsk"]) {
+    for (const domain of ["", "; Domain=eduaipolicy.org", "; Domain=.eduaipolicy.org"]) {
+      document.cookie = `${name}=; Max-Age=0; Path=/${domain}; SameSite=Lax; Secure`;
+    }
+  }
+}
+
 export function setClarityChoice(choice: ClarityChoice) {
   try { window.localStorage.setItem(CLARITY_CONSENT_KEY, JSON.stringify({choice, at: Date.now()})); }
   catch { /* A blocked preference store never grants tracking permission. */ }
+  if (choice === "denied") clearClarityCookies();
   window.dispatchEvent(new Event(CLARITY_PREFERENCE_EVENT));
 }
