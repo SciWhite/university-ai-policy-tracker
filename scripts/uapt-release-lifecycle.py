@@ -80,10 +80,21 @@ def validate_candidate_identity(plan, basis, prebuild=False):
         if current_data.get('path') != expected['path'] or current_data.get('sha256') != expected['sha256']:
             raise ValueError(f'Pointer {key} in current.json differs from basis: {current_data.get("sha256")} != {expected["sha256"]}')
         target_revision = release_path / rel_subdir / expected['path']
-        if not target_revision.is_file():
-            raise ValueError(f'Revision file missing: {target_revision}')
-        if digest(target_revision) != expected['sha256']:
-            raise ValueError(f'Revision file hash mismatch for {key}: {digest(target_revision)} != {expected["sha256"]}')
+        if target_revision.is_file():
+            if digest(target_revision) != expected['sha256']:
+                raise ValueError(f'Revision file hash mismatch for {key}: {digest(target_revision)} != {expected["sha256"]}')
+        else:
+            idx_file = release_path / rel_subdir / 'sharded/index.json'
+            if not idx_file.is_file():
+                raise ValueError(f'Revision file missing and no sharded index for {key}: {target_revision}')
+            idx_data = json.loads(idx_file.read_text())
+            rev_id = current_data.get('releaseId') or current_data.get('revision') or current_data.get('basisRevision')
+            rev_entry = idx_data.get('revisions', {}).get(rev_id)
+            if not rev_entry or rev_entry.get('sourceSha256') != expected['sha256']:
+                raise ValueError(f'Sharded index missing or sourceSha256 mismatch for {key}: {rev_id}')
+            sharded_file = release_path / rel_subdir / rev_entry['path']
+            if not sharded_file.is_file() or digest(sharded_file) != rev_entry['sha256']:
+                raise ValueError(f'Sharded revision file missing or hash mismatch for {key}: {sharded_file}')
 
     # 2. Verify source manifest & codeSha
     if basis.get('sourceManifestSha256'):
