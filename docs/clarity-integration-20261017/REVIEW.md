@@ -82,3 +82,12 @@ Server evidence is preserved under `/srv/uapt/operations/clarity-v6-r2-20261017/
 ## Remaining Microsoft-side acceptance
 
 Bing Webmaster previously confirmed **Your site is added to Clarity**. The final AI Visibility → Citation navigation still shows the first-install welcome screen and “It may take up to two hours.” The SDK’s successful 204 collection receipt does not establish that the Citations dashboard is enabled or that any citations exist. No duplicate project, extra credentials or speculative account change was used to bypass this state. Website integration is accepted; AI Citations activation/data visibility remains unverified until Microsoft exposes the dashboard.
+
+
+## Installation guide follow-up and actual live-session readback
+
+On the user’s follow-up, the existing project’s manual installation page was opened and its Project ID matched `ye6c4h9822`. It offers a code snippet and processing notice; there is no manual “complete installation” button. The 1/7 Clarity tour is optional feature discovery, including GA integration, team invitations, IP blocking, demo and blog; it is not a required installation checklist.
+
+After a full project reload and entering Recordings → Live recordings, Clarity visibly listed two test sessions: the Cornell and Tsinghua public URLs used during consent QA. This upgrades the previous endpoint-only evidence to actual Microsoft UI receipt of those test sessions. The standard completed-recordings list remains empty, and Overview/Heatmaps remain disabled during initial processing. It does not establish citation data.
+
+The AI Visibility → Citation menu was also tried directly and still displayed the welcome/tracking-code wait screen. No additional mandatory installation field was exposed, and no optional advertising/GA/team integration was added. The project was left open on the two live-session rows. Private screenshots, UI text and a contract 2.0.0 account-audit event are preserved in `.local/clarity-guide-20261017/`; no application deployment was performed for this follow-up.
