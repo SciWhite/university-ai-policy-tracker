@@ -1420,6 +1420,110 @@
       "rawSha256": "b5ff02a5e2b17c935d47d35ecdc593a91d3c5d531cdd89d874a986c6acd928d7",
       "textSha256": "59ac1729693a512179b9d2646b8244c65a7dda11cf647e5b463ebe2daa624159",
       "verification": "Retained HTML raw bytes and extracted-text digest checked; quotes bound by exact text offsets; 2026-10-17 capture."
+    },
+    {
+      "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+      "snapshotHash": "2f60a78edd63a4fbe4a41de386c49b6f199a2c74ecef9c6f13985969357f9757",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2f60a78edd63a4fbe4a41de386c49b6f199a2c74ecef9c6f13985969357f9757",
+      "textSha256": "4bb23fdd4b7f836f517077745fe41a9a954d211ad2e73b036fa8240ca4a16368",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+      "snapshotHash": "2690a03b6f8e25018799ec9a6945f80ea22d21a645f584957ff1862c65809982",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2690a03b6f8e25018799ec9a6945f80ea22d21a645f584957ff1862c65809982",
+      "textSha256": "d1253ccdd634dad88ecaad770c3b356644aace3a7f964feaefa870b4eff12b9a",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+      "snapshotHash": "22ec9c393d24c05f187d5fd94839a7ef06c6c726ff3c1f5126f798859f84832e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "22ec9c393d24c05f187d5fd94839a7ef06c6c726ff3c1f5126f798859f84832e",
+      "textSha256": "6b3df7410d1ba2cbd9a19a5cfc533fee041dab483be8ba8006eec7dd3cc3f0f6",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://ai.berkeley.edu/guidance-use-ai",
+      "snapshotHash": "27a8083188490f904f16bcad9b846246e0f0d9ca6d82f4d3ffa1e7f9140a35e7",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "27a8083188490f904f16bcad9b846246e0f0d9ca6d82f4d3ffa1e7f9140a35e7",
+      "textSha256": "093b86e8bcafdd9e0324964dafa4f816de7ede326119213256708fab9eaabdf6",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://ai.berkeley.edu/tools-training/licensed-ai-tools",
+      "snapshotHash": "6ce2f5e820da43ab2b15192179e64ded43d4137731d145400ae5bca61e2aaccb",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6ce2f5e820da43ab2b15192179e64ded43d4137731d145400ae5bca61e2aaccb",
+      "textSha256": "9daddd62bda1de7675257695fa67c71e79477f07d84bed37436d254b333eb989",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://re-ai.berkeley.edu/sites/default/files/responsible_use_of_generative_ai_uc_berkeley_2025.pdf",
+      "snapshotHash": "0ac95fef6fbfb0ecafa3c4476290af90e245e517cb04137b6500eaaa8b02fa59",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0ac95fef6fbfb0ecafa3c4476290af90e245e517cb04137b6500eaaa8b02fa59",
+      "textSha256": "6b06565bac37cbc771f69747091c0f7ad5abd59af0cf00699755adbd8cd3f07d",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://conduct.berkeley.edu/code-of-conduct/",
+      "snapshotHash": "f5450ad2e44202ec8b8f77545950b4efb53db798c3ac18428f24bd4182a383b5",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f5450ad2e44202ec8b8f77545950b4efb53db798c3ac18428f24bd4182a383b5",
+      "textSha256": "8e97146e488ce69660aba709dc0fde01435457f768d5e5e0d3628d0f622016db",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://conduct.berkeley.edu/wp-content/uploads/2026/08/Berkeley-Campus-Code-of-Student-Conduct_July-2026_Remediated.pdf",
+      "snapshotHash": "316bea45f0d92476feb8def1f854f2f6e675c36abfc72958b73c715c59ead142",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "316bea45f0d92476feb8def1f854f2f6e675c36abfc72958b73c715c59ead142",
+      "textSha256": "d725289beb0b57c1e7a96beeed269527f0f249cb8265eed5a7b7bc325c5e16c9",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://grad.berkeley.edu/policies-and-procedures/graduate-academic-integrity/",
+      "snapshotHash": "159cf5e8a6ffefd19bc05a50d49608db73016712b4fef74ee886d59b00bace0d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "159cf5e8a6ffefd19bc05a50d49608db73016712b4fef74ee886d59b00bace0d",
+      "textSha256": "a1b01be1bceb5c31b62e252f010e4ac932fab6f92537f70d49d41696569f25d5",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://grad.berkeley.edu/academics/graduate-academic-integrity/procedures-resources/",
+      "snapshotHash": "25311ba8d907ca62800cd8d2fb29f0d35e5ae200bb4a9b1a2e70fce7c8b39f4b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "25311ba8d907ca62800cd8d2fb29f0d35e5ae200bb4a9b1a2e70fce7c8b39f4b",
+      "textSha256": "c44de92056b27e062b0eed815038aac2fb74e1aa41aeb1d3c84958a6e0858147",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://grad.berkeley.edu/academics/graduate-academic-integrity/resources-for-faculty-and-staff/",
+      "snapshotHash": "a1e476c6e9597a138cf478d3befcda07682556e7f70c51bf40023b8bdc36bb36",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a1e476c6e9597a138cf478d3befcda07682556e7f70c51bf40023b8bdc36bb36",
+      "textSha256": "ce5476ad0d311337bf4b7d98bcad42a15cf095eff0bd0797a72fe8d5e05f5eb9",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://vcresearch.berkeley.edu/how/ensure-compliance/research-compliance/research-misconduct",
+      "snapshotHash": "60bcdb2d49facf23920ca5cafd41cc61d2250f4aa494113a6917c9fcf7e355d4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "60bcdb2d49facf23920ca5cafd41cc61d2250f4aa494113a6917c9fcf7e355d4",
+      "textSha256": "ad60f175ed50f623339cab6641a934d4d746a331ffafba52f2ff4d602d0f9b95",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://vcresearch.berkeley.edu/key-points-new-federal-guidance-generative-ai",
+      "snapshotHash": "3fd248caf1eda4e94f5c7100bcd6ee56b8c684fe52ee6632238b5889e38a7237",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3fd248caf1eda4e94f5c7100bcd6ee56b8c684fe52ee6632238b5889e38a7237",
+      "textSha256": "1000e55dfc14714c2438e0dd3ccce70dfb06fb3296bdc0a61f00282549cb35ba",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
     }
   ]
 }

@@ -81,6 +81,11 @@
       "path": "sharded/revisions/tsinghua-v6-r2-20261017-a80d6d19b5789f9117641a64bb0af8414f1da784e732b6c59d57545bae0254ef.json",
       "sha256": "a80d6d19b5789f9117641a64bb0af8414f1da784e732b6c59d57545bae0254ef",
       "sourceSha256": "8539b54557b1a0361664fcd6ff92b4933821fc86c70f7dfe79c091c0571c5938"
+    },
+    "berkeley-v6-r1-20261017": {
+      "path": "sharded/revisions/berkeley-v6-r1-20261017-8f830c155ad854e30eeef3286fdd3a4e64541bc68d2d449f669d105d48c7a5f5.json",
+      "sha256": "8f830c155ad854e30eeef3286fdd3a4e64541bc68d2d449f669d105d48c7a5f5",
+      "sourceSha256": "9ccc09a002d085eb231fea019ea9da4834bedc59bf059539327d876cf23c43e4"
     }
   }
 }
