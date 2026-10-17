@@ -31,3 +31,10 @@ test("an assessment claim passes structure only, retaining independent semantic 
   });
   assert.throws(() => validateAssessmentEvidence(tools, { dimensions: [empty, empty] }), /Missing or duplicate/);
 });
+
+
+test('insufficient public evidence needs an assessment basis and never a tool-only basis', () => {
+  const exam = {key:'exams',status:'insufficient_public_evidence',evidenceClaimIds:['general-exam-rule']};
+  validateAssessmentEvidence([...tools,{id:'general-exam-rule',claimType:'academic_integrity'}],{dimensions:[{key:'coursework',status:'not_mentioned',evidenceClaimIds:[]},exam]});
+  assert.throws(()=>validateAssessmentEvidence(tools,{dimensions:[{key:'coursework',status:'not_mentioned',evidenceClaimIds:[]},{...exam,evidenceClaimIds:['tool']}]}),/Tool-only assessment basis/);
+});

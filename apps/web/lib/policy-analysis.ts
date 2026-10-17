@@ -737,7 +737,7 @@ function buildCoverageScore(dimensions: PolicyAnalysisDimension[]) {
   const byKey = new Map(dimensions.map((dimension) => [dimension.key, dimension]));
   const components = COVERAGE_COMPONENTS.map((component) => {
     const dimension = byKey.get(component.key);
-    const hasEvidence = Boolean(dimension?.evidenceClaimIds.length);
+    const hasEvidence = Boolean(dimension?.evidenceClaimIds.length) && dimension?.status !== "insufficient_public_evidence";
 
     return {
       key: component.key,

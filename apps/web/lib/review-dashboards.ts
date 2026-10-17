@@ -669,8 +669,7 @@ async function buildDashboardContext(): Promise<DashboardContext> {
   };
 }
 
-function buildCoverageRows(context: DashboardContext): CoverageRow[] {
-  const publicByRank = new Map<number, PublicEntitySummary>();
+export function buildCoverageRows(context: DashboardContext): CoverageRow[] {
   const publicByName = new Map<string, PublicEntitySummary>();
   const publicBySlug = new Map(
     context.publicSummaries.map((summary) => [summary.entity.slug, summary])
@@ -681,10 +680,6 @@ function buildCoverageRows(context: DashboardContext): CoverageRow[] {
     if (!summary) continue;
     publicByName.set(normalizeName(university.name), summary);
     publicByName.set(normalizeName(summary.entity.name), summary);
-    const ranking = university.rankings.find(
-      (item) => item.systemId === "qs" && Number(item.rankingYear) === 2026
-    );
-    if (ranking?.rankNumber) publicByRank.set(ranking.rankNumber, summary);
   }
 
   const unpromotedBySlug = new Map<string, StagingRunSummary>();
@@ -693,6 +688,7 @@ function buildCoverageRows(context: DashboardContext): CoverageRow[] {
     for (const slug of run.detectedSlugs) unpromotedBySlug.set(slug, run);
   }
 
+  const seenPublicSlugs = new Set<string>();
   return context.ranking.universities.map((university) => {
     const guessedSlug = slugify(university.name);
     const aliases = new Set([
@@ -702,13 +698,21 @@ function buildCoverageRows(context: DashboardContext): CoverageRow[] {
     const registrySlug = context.aliasNameToSlug.get(
       normalizeEntityAliasName(university.name)
     );
+    // Rankings are attributes, not identities: tied ranks must never select another school.
     const publicSummary =
       (registrySlug ? publicBySlug.get(registrySlug) : undefined) ??
-      publicByRank.get(university.rankNumber) ??
       publicByName.get(normalizeName(university.name)) ??
       Array.from(aliases)
         .map((alias) => publicBySlug.get(alias))
         .find(Boolean);
+    if (publicSummary) {
+      const identity = context.catalogUniversities.find(item => item.slug === publicSummary.entity.slug);
+      if (!identity || normalizeName(identity.country) !== normalizeName(university.countryOrRegion) ||
+          !publicSummary.apiUrl?.endsWith(`/universities/${publicSummary.entity.slug}.json`) || seenPublicSlugs.has(publicSummary.entity.slug)) {
+        throw new Error(`QS public identity mismatch: ${university.name}`);
+      }
+      seenPublicSlugs.add(publicSummary.entity.slug);
+    }
     const stagingRun = Array.from(aliases)
       .map((alias) => unpromotedBySlug.get(alias))
       .find(Boolean);
