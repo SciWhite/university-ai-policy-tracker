@@ -67,6 +67,8 @@ export interface PolicyV6Data {
   locale: SupportedLocale;
   published?: boolean;
   currentSlug: string;
+  /** Names only; other schools' evidence is fetched when selected for comparison. */
+  schoolNames?: Record<string, string>;
   schools: LabSchool[];
   studentActions?: V6StudentActions;
   studentActionsPilot?: boolean;
@@ -207,7 +209,14 @@ export async function getPolicyV6Data(
   if(published && published.schools.some(s=>s.slug===currentSlug)) {
     const current=published.schools.find(s=>s.slug===currentSlug)!;
     const studentActionsPilot=true;
-    return {locale,currentSlug,schools:structuredClone(published.schools),published:true,...(studentActionsPilot?{studentActionsPilot,studentActions:getV6StudentActions(current)}:{})};
+    return {
+      locale,
+      currentSlug,
+      schools: [structuredClone(current)],
+      schoolNames: Object.fromEntries(published.schools.map(s => [s.slug, s.name])),
+      published: true,
+      ...(studentActionsPilot ? {studentActionsPilot, studentActions:getV6StudentActions(current)} : {}),
+    };
   }
   const slugs: string[] = [...policyV6Slugs];
   if (policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug)) slugs.push(currentSlug);

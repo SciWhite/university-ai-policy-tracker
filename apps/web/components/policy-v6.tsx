@@ -335,7 +335,10 @@ export function PolicyV6Provider({
         <PolicyV6SearchPicker
           locale={data.locale}
           selected={selected}
-          names={Object.fromEntries(knownSchools.map((s) => [s.slug, s.name]))}
+          names={{
+            ...data.schoolNames,
+            ...Object.fromEntries(knownSchools.map((s) => [s.slug, s.name])),
+          }}
           onToggle={toggle}
         />
       ) : null}
