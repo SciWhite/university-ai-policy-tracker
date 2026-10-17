@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { ThemeScript } from "@/components/theme-script";
+import { ClarityIntegration } from "@/components/clarity-integration";
 import type { SupportedLocale } from "@/lib/i18n";
 
 interface RootDocumentProps {
@@ -17,8 +18,9 @@ export function RootDocument({ children, locale }: RootDocumentProps) {
         <link href="/feeds/recent-changes.xml" rel="alternate" title="University AI Policy Tracker recent changes RSS" type="application/rss+xml" />
         <link href="/feeds/atom.xml" rel="alternate" title="University AI Policy Tracker Atom feed" type="application/atom+xml" />
       </head>
-      <body>
+      <body data-clarity-mask="true">
         <SiteShell>{children}</SiteShell>
+        <ClarityIntegration />
       </body>
     </html>
   );
