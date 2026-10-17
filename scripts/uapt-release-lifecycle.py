@@ -21,7 +21,7 @@ def write(path, value):
 def now():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def state(unit):
-    return dict(line.split('=', 1) for line in run('systemctl', 'show', unit, '-p', 'ActiveState,UnitFileState,MemoryCurrent,MemoryHigh,MemoryMax,WorkingDirectory').splitlines() if '=' in line)
+    return dict(line.split('=', 1) for line in run('systemctl', 'show', unit, '-p', 'ActiveState,UnitFileState,MemoryCurrent,MemoryHigh,MemoryMax,WorkingDirectory,MainPID,InvocationID').splitlines() if '=' in line)
 def running():
     return [line.split()[0] for line in run('systemctl', 'list-units', '--type=service', '--state=running', 'uapt*', '--no-legend', '--no-pager', '--plain').splitlines() if line.split()]
 def audit():
@@ -58,7 +58,132 @@ def validate_plan(plan, policy, observed):
     if not plan.get('staticArchiveReceipt') or not plan.get('publicChecks'): raise ValueError('Static archive and exact public readback checks required')
     return True
 
-def validate_capacity(plan, capacity, prebuild=False):
+def validate_candidate_identity(plan, basis, prebuild=False):
+    release_path = Path(basis.get('release', ''))
+    if not release_path.is_dir():
+        raise ValueError('Candidate release directory does not exist: ' + str(release_path))
+
+    # 1. Verify data pointers (pages, records, history)
+    pointers = [
+        ('pagePointer', 'data/public-v6-pages'),
+        ('recordPointer', 'data/public-v6-records'),
+        ('historyPointer', 'data/public-v6-history'),
+    ]
+    for key, rel_subdir in pointers:
+        expected = basis.get(key)
+        if not expected or not expected.get('path') or not expected.get('sha256'):
+            raise ValueError(f'Missing or malformed {key} in basis')
+        current_file = release_path / rel_subdir / 'current.json'
+        if not current_file.is_file():
+            raise ValueError(f'Missing {current_file}')
+        current_data = json.loads(current_file.read_text())
+        if current_data.get('path') != expected['path'] or current_data.get('sha256') != expected['sha256']:
+            raise ValueError(f'Pointer {key} in current.json differs from basis: {current_data.get("sha256")} != {expected["sha256"]}')
+        target_revision = release_path / rel_subdir / expected['path']
+        if not target_revision.is_file():
+            raise ValueError(f'Revision file missing: {target_revision}')
+        if digest(target_revision) != expected['sha256']:
+            raise ValueError(f'Revision file hash mismatch for {key}: {digest(target_revision)} != {expected["sha256"]}')
+
+    # 2. Verify source manifest & codeSha
+    if basis.get('sourceManifestSha256'):
+        source_manifest_path = None
+        candidates = [
+            release_path / 'source-manifest.json',
+            Path(plan['basis']['path']).parent / 'source-manifest.json',
+            Path(plan['basis']['path']).parent / 'raw/source-manifest.json',
+            Path(plan['basis']['path']).parents[1] / 'source-manifest.json',
+        ]
+        for p in candidates:
+            if p.is_file():
+                source_manifest_path = p
+                break
+        if not source_manifest_path or digest(source_manifest_path) != basis['sourceManifestSha256']:
+            raise ValueError('Source manifest missing or hash does not match basis.sourceManifestSha256')
+        manifest_data = json.loads(source_manifest_path.read_text())
+        if manifest_data.get('codeSha') != basis.get('codeSha'):
+            raise ValueError(f'Source manifest codeSha ({manifest_data.get("codeSha")}) != basis codeSha ({basis.get("codeSha")})')
+        for entry in manifest_data.get('files', [])[:50]:
+            f_path = release_path / entry['path']
+            if not (f_path.is_file() or f_path.is_symlink()):
+                raise ValueError(f'Tracked file missing from release: {entry["path"]}')
+            if entry.get('sha256') and f_path.is_file() and digest(f_path) != entry['sha256']:
+                raise ValueError(f'Tracked file content hash mismatch in release: {entry["path"]}')
+
+    if prebuild:
+        return True
+
+    # 3. Verify BUILD_ID in candidate directory
+    build_id = basis.get('BUILD_ID')
+    if not build_id:
+        raise ValueError('Missing BUILD_ID in basis')
+    build_id_candidates = [
+        release_path / 'apps/tulsa-zone/.next/BUILD_ID',
+        release_path / 'apps/web/.next/BUILD_ID',
+        release_path / '.next/BUILD_ID',
+    ]
+    found_build_id = None
+    for bp in build_id_candidates:
+        if bp.is_file():
+            found_build_id = bp.read_text().strip()
+            break
+    if not found_build_id or found_build_id != build_id:
+        raise ValueError(f'Candidate BUILD_ID ({found_build_id}) does not match basis ({build_id})')
+
+    # 4. Verify build artifact manifest if present
+    if basis.get('buildArtifactSha256'):
+        build_manifest_path = None
+        for p in [
+            release_path / 'build-artifact-manifest.json',
+            Path(plan['basis']['path']).parent / 'build-artifact-manifest.json',
+            Path(plan['basis']['path']).parent / 'raw/server/build-artifact-manifest.json',
+            Path(plan['basis']['path']).parents[1] / 'build-artifact-manifest.json',
+        ]:
+            if p.is_file():
+                build_manifest_path = p
+                break
+        if not build_manifest_path or digest(build_manifest_path) != basis['buildArtifactSha256']:
+            raise ValueError('Build artifact manifest missing or hash does not match basis.buildArtifactSha256')
+        bm = json.loads(build_manifest_path.read_text())
+        if bm.get('BUILD_ID') != build_id:
+            raise ValueError(f'Build artifact manifest BUILD_ID ({bm.get("BUILD_ID")}) does not match basis ({build_id})')
+
+    # 5. Verify MCP catalog if present
+    if basis.get('mcpCatalogSha256'):
+        mcp_catalog_path = None
+        for p in [
+            release_path / 'mcp-catalog.json',
+            Path(plan['basis']['path']).parent / 'mcp-catalog.json',
+            Path(plan['basis']['path']).parent / 'raw/mcp-catalog.json',
+            Path(plan['basis']['path']).parents[1] / 'mcp-catalog.json',
+        ]:
+            if p.is_file():
+                mcp_catalog_path = p
+                break
+        if not mcp_catalog_path or digest(mcp_catalog_path) != basis['mcpCatalogSha256']:
+            raise ValueError('MCP catalog missing or hash does not match basis.mcpCatalogSha256')
+
+    # 6. Verify candidate services, working directories, active state, and PIDs
+    candidate_units = plan.get('candidateUnits', [])
+    for unit in candidate_units:
+        s = state(unit)
+        if s.get('ActiveState') != 'active':
+            raise ValueError(f'Candidate unit {unit} is not active ({s.get("ActiveState")})')
+        main_pid = s.get('MainPID')
+        if not main_pid or not main_pid.isdigit() or int(main_pid) <= 0:
+            raise ValueError(f'Candidate unit {unit} has invalid MainPID: {main_pid}')
+        if not s.get('InvocationID'):
+            raise ValueError(f'Candidate unit {unit} missing InvocationID')
+        wd = s.get('WorkingDirectory')
+        if not wd or (Path(wd).resolve() != release_path.resolve() and release_path.resolve() not in Path(wd).resolve().parents):
+            raise ValueError(f'Candidate unit {unit} WorkingDirectory ({wd}) is not within release ({release_path})')
+
+    return True
+
+def validate_capacity(plan, capacity, prebuild=False, basis=None):
+    if isinstance(prebuild, dict) and basis is None:
+        basis = prebuild
+        prebuild = False
     if prebuild:
         if capacity.get('schemaVersion') != 'uapt-prebuild-budget-v1' or capacity.get('measured') is not False:
             raise ValueError('Explicit provisional prebuild budget required; do not label estimates as measurements')
@@ -70,6 +195,20 @@ def validate_capacity(plan, capacity, prebuild=False):
     if not {'build', 'startup', 'cold_history', 'steady'} <= set(peaks) or any(not isinstance(v, int) or v <= 0 for v in peaks.values()):
         raise ValueError('Measured build/startup/cold-history/steady peak receipt required')
     if max(peaks.values()) > plan['candidatePeakBytes']: raise ValueError('Candidate budget understates measured peak')
+    if basis and capacity.get('BUILD_ID') and capacity['BUILD_ID'] != basis.get('BUILD_ID'):
+        raise ValueError(f'Capacity receipt BUILD_ID ({capacity["BUILD_ID"]}) does not match basis ({basis.get("BUILD_ID")})')
+    if capacity.get('invocationIds'):
+        for u in plan.get('candidateUnits', []):
+            if u in capacity['invocationIds']:
+                s = state(u)
+                if s.get('InvocationID') != capacity['invocationIds'][u]:
+                    raise ValueError(f'Candidate unit {u} InvocationID changed since sampling: {s.get("InvocationID")} != {capacity["invocationIds"][u]}')
+    if capacity.get('mainPids'):
+        for u in plan.get('candidateUnits', []):
+            if u in capacity['mainPids']:
+                s = state(u)
+                if s.get('MainPID') != str(capacity['mainPids'][u]):
+                    raise ValueError(f'Candidate unit {u} MainPID changed since sampling: {s.get("MainPID")} != {capacity["mainPids"][u]}')
 
 def load_plan(path, prebuild=False):
     path = Path(path).resolve(); plan = json.loads(path.read_text()); policy = json.loads(POLICY.read_text()); policy['_sha256'] = digest(POLICY)
@@ -82,8 +221,10 @@ def load_plan(path, prebuild=False):
     for key in ['basis', 'syncLedger', 'staticArchiveReceipt', 'capacityReceipt']:
         proof = plan[key]
         if digest(proof['path']) != proof['sha256']: raise ValueError('Changed ' + key)
+    basis = json.loads(Path(plan['basis']['path']).read_text())
+    validate_candidate_identity(plan, basis, prebuild=prebuild)
     capacity = json.loads(Path(plan['capacityReceipt']['path']).read_text())
-    validate_capacity(plan, capacity, prebuild)
+    validate_capacity(plan, capacity, prebuild=prebuild, basis=basis)
     return plan, policy
 
 def check_urls(checks):
@@ -160,6 +301,11 @@ def main():
             if not args.completion_ledger: raise ValueError('Fresh public synchronization completion required')
             proof = {'path': str(Path(args.completion_ledger).resolve()), 'sha256': digest(args.completion_ledger)}
             if digest(plan['basis']['path']) != plan['basis']['sha256'] or digest(plan['releaseHelper']) != plan['releaseHelperSha256']: raise ValueError('Frozen completion basis/helper changed')
+            basis = json.loads(Path(plan['basis']['path']).read_text())
+            validate_candidate_identity(plan, basis, prebuild=False)
+            event = json.loads(Path(args.completion_ledger).read_text())
+            if event.get('basisSha256') != plan['basis']['sha256']:
+                raise ValueError('Completion ledger basisSha256 does not match plan.basis.sha256')
             run('node', plan['releaseHelper'], 'verify-sync', proof['path'], plan['basis']['path'], 'complete')
             tx['completionLedger'] = proof
             tx['publicChecks'] = check_urls(plan['publicChecks'])
@@ -190,6 +336,8 @@ def main():
             # Durable journal precedes even candidate enable/start, so reboot cannot orphan a candidate.
             for unit in plan['candidateUnits']: run('systemctl', 'enable', '--now', unit)
             check_urls(plan['candidateChecks'])
+            basis = json.loads(Path(plan['basis']['path']).read_text())
+            validate_candidate_identity(plan, basis, prebuild=False)
             validate_plan(plan, policy, audit())
             for item in files:
                 target = Path(item['target']); tmp = target.with_suffix('.select-tmp'); shutil.copy2(item['source'], tmp); os.replace(tmp, target)

@@ -50,4 +50,137 @@ class ReadbackPropagationTests(unittest.TestCase):
    with self.assertRaisesRegex(ValueError,'missing required'):m.check_urls([{'url':'https://eduaipolicy.org/target','contains':['accepted release']}])
    self.assertEqual(fetch.call_count,4)
 
+class CandidateIdentityTests(unittest.TestCase):
+ def setUp(self):
+  self.td = tempfile.TemporaryDirectory()
+  self.root = Path(self.td.name)
+  self.release = self.root / 'release-r3'
+  self.release.mkdir(parents=True)
+
+  # Set up Next build directory and BUILD_ID
+  next_dir = self.release / 'apps/tulsa-zone/.next'
+  next_dir.mkdir(parents=True)
+  (next_dir / 'BUILD_ID').write_text('build-r3-xyz\n')
+
+  # Set up data pointers
+  for sub, rev in [('data/public-v6-pages', 'rev-pages.json'), ('data/public-v6-records', 'rev-records.json'), ('data/public-v6-history', 'rev-history.json')]:
+   d = self.release / sub
+   (d / 'revisions').mkdir(parents=True)
+   rev_file = d / 'revisions' / rev
+   rev_file.write_text(f'{{"revision": "{rev}"}}\n')
+   rev_hash = m.digest(rev_file)
+   (d / 'current.json').write_text(json.dumps({'path': f'revisions/{rev}', 'sha256': rev_hash}) + '\n')
+
+  # Source manifest
+  tracked = self.release / 'tracked.txt'
+  tracked.write_text('hello\n')
+  tracked_hash = m.digest(tracked)
+  source_manifest = {
+   'codeSha': 'sha-r3-1234567890abcdef1234567890abcdef1234',
+   'files': [{'path': 'tracked.txt', 'kind': 'file', 'sha256': tracked_hash}]
+  }
+  sm_path = self.release / 'source-manifest.json'
+  sm_path.write_text(json.dumps(source_manifest) + '\n')
+  self.source_manifest_hash = m.digest(sm_path)
+
+  # Build manifest
+  bm_path = self.release / 'build-artifact-manifest.json'
+  bm_path.write_text(json.dumps({'BUILD_ID': 'build-r3-xyz', 'files': {'BUILD_ID': 'abc'}}) + '\n')
+  self.bm_hash = m.digest(bm_path)
+
+  # MCP catalog
+  mcp_path = self.release / 'mcp-catalog.json'
+  mcp_path.write_text('{"catalog": "r3"}\n')
+  self.mcp_hash = m.digest(mcp_path)
+
+  # Basis file
+  self.basis = {
+   'schemaVersion': 'uapt-policy-zone-release-basis-v1',
+   'codeSha': 'sha-r3-1234567890abcdef1234567890abcdef1234',
+   'BUILD_ID': 'build-r3-xyz',
+   'release': str(self.release),
+   'pagePointer': {'path': 'revisions/rev-pages.json', 'sha256': m.digest(self.release / 'data/public-v6-pages/revisions/rev-pages.json')},
+   'recordPointer': {'path': 'revisions/rev-records.json', 'sha256': m.digest(self.release / 'data/public-v6-records/revisions/rev-records.json')},
+   'historyPointer': {'path': 'revisions/rev-history.json', 'sha256': m.digest(self.release / 'data/public-v6-history/revisions/rev-history.json')},
+   'sourceManifestSha256': self.source_manifest_hash,
+   'buildArtifactSha256': self.bm_hash,
+   'mcpCatalogSha256': self.mcp_hash
+  }
+  self.basis_path = self.root / 'basis.json'
+  self.basis_path.write_text(json.dumps(self.basis) + '\n')
+
+  self.plan = {
+   'candidateUnits': ['candidate-web', 'candidate-mcp'],
+   'basis': {'path': str(self.basis_path), 'sha256': m.digest(self.basis_path)}
+  }
+
+ def tearDown(self):
+  self.td.cleanup()
+
+ def test_valid_identity_passes(self):
+  with patch.object(m, 'state', side_effect=lambda u: {
+   'ActiveState': 'active', 'MainPID': '4321', 'InvocationID': 'inv-123', 'WorkingDirectory': str(self.release)
+  }):
+   self.assertTrue(m.validate_candidate_identity(self.plan, self.basis, prebuild=False))
+   self.assertTrue(m.validate_candidate_identity(self.plan, self.basis, prebuild=True))
+
+ def test_reject_r2_credentials_with_r3_artifact(self):
+  # 1. R2 credentials have old BUILD_ID; candidate artifact has R3 BUILD_ID
+  r2_basis = dict(self.basis, BUILD_ID='build-r2-old-id')
+  with patch.object(m, 'state', side_effect=lambda u: {
+   'ActiveState': 'active', 'MainPID': '4321', 'InvocationID': 'inv-123', 'WorkingDirectory': str(self.release)
+  }):
+   with self.assertRaisesRegex(ValueError, 'BUILD_ID'):
+    m.validate_candidate_identity(self.plan, r2_basis, prebuild=False)
+
+  # 2. R2 credentials have old pagePointer
+  r2_basis_pointer = dict(self.basis, pagePointer={'path': 'revisions/old.json', 'sha256': '00000000'})
+  with patch.object(m, 'state', side_effect=lambda u: {
+   'ActiveState': 'active', 'MainPID': '4321', 'InvocationID': 'inv-123', 'WorkingDirectory': str(self.release)
+  }):
+   with self.assertRaisesRegex(ValueError, 'Pointer pagePointer in current.json differs from basis'):
+    m.validate_candidate_identity(self.plan, r2_basis_pointer, prebuild=False)
+
+  # 3. R2 credentials have old codeSha / sourceManifest
+  r2_basis_code = dict(self.basis, codeSha='sha-r2-old', sourceManifestSha256='000000000000')
+  with patch.object(m, 'state', side_effect=lambda u: {
+   'ActiveState': 'active', 'MainPID': '4321', 'InvocationID': 'inv-123', 'WorkingDirectory': str(self.release)
+  }):
+   with self.assertRaisesRegex(ValueError, 'Source manifest missing or hash does not match'):
+    m.validate_candidate_identity(self.plan, r2_basis_code, prebuild=False)
+
+  # 4. Candidate service running from wrong working directory
+  with patch.object(m, 'state', side_effect=lambda u: {
+   'ActiveState': 'active', 'MainPID': '4321', 'InvocationID': 'inv-123', 'WorkingDirectory': '/srv/uapt/releases/wrong-release'
+  }):
+   with self.assertRaisesRegex(ValueError, 'WorkingDirectory'):
+    m.validate_candidate_identity(self.plan, self.basis, prebuild=False)
+
+  # 5. Candidate service inactive or missing MainPID
+  with patch.object(m, 'state', side_effect=lambda u: {
+   'ActiveState': 'inactive', 'MainPID': '0', 'InvocationID': '', 'WorkingDirectory': str(self.release)
+  }):
+   with self.assertRaisesRegex(ValueError, 'not active'):
+    m.validate_candidate_identity(self.plan, self.basis, prebuild=False)
+
+  # 6. Capacity receipt bound to changed BUILD_ID or InvocationID
+  capacity = {
+   'peakBytesByStage': {'build': 100, 'startup': 50, 'cold_history': 80, 'steady': 60},
+   'BUILD_ID': 'build-r2-old-id',
+   'invocationIds': {'candidate-web': 'inv-123'},
+   'mainPids': {'candidate-web': 4321}
+  }
+  with self.assertRaisesRegex(ValueError, 'Capacity receipt BUILD_ID'):
+   m.validate_capacity({'candidatePeakBytes': 200, 'candidateUnits': ['candidate-web']}, capacity, basis=self.basis)
+
+  capacity_diff_inv = {
+   'peakBytesByStage': {'build': 100, 'startup': 50, 'cold_history': 80, 'steady': 60},
+   'BUILD_ID': 'build-r3-xyz',
+   'invocationIds': {'candidate-web': 'inv-different'},
+   'mainPids': {'candidate-web': 4321}
+  }
+  with patch.object(m, 'state', return_value={'InvocationID': 'inv-123', 'MainPID': '4321'}):
+   with self.assertRaisesRegex(ValueError, 'InvocationID changed since sampling'):
+    m.validate_capacity({'candidatePeakBytes': 200, 'candidateUnits': ['candidate-web']}, capacity_diff_inv, basis=self.basis)
+
 if __name__=='__main__':unittest.main()
