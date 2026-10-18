@@ -89,5 +89,13 @@
   "berkeley-v6-r3-20261017": {
     "path": "revisions/berkeley-v6-r3-20261017.json",
     "sha256": "15daffa69c2ac94acec2b28c91b82cd4db04627b620740009b7065dc136dbe8c"
+  },
+  "melbourne-v6-r1-20261018": {
+    "path": "revisions/melbourne-v6-r1-20261018.json",
+    "sha256": "cdba1a26d682ff17327f122a23fb00b012d6fede10d0a03b7d203e09020c401c"
+  },
+  "melbourne-v6-r2-20261018": {
+    "path": "revisions/melbourne-v6-r2-20261018.json",
+    "sha256": "40bda17d04a1700fb5da1c77f31f672baeb0e3f4ee4697277156a9c96e645eaa"
   }
 }

@@ -96,6 +96,16 @@
       "path": "sharded/revisions/berkeley-v6-r3-20261017-736e8b961514157a399dc94a046834518ee32131e18010eebe4c74076e923219.json",
       "sha256": "736e8b961514157a399dc94a046834518ee32131e18010eebe4c74076e923219",
       "sourceSha256": "15daffa69c2ac94acec2b28c91b82cd4db04627b620740009b7065dc136dbe8c"
+    },
+    "melbourne-v6-r1-20261018": {
+      "path": "sharded/revisions/melbourne-v6-r1-20261018-b0ef7e77f360f961350d5b124eb3da98bacef2e466b579ff3a856258d377ec1b.json",
+      "sha256": "b0ef7e77f360f961350d5b124eb3da98bacef2e466b579ff3a856258d377ec1b",
+      "sourceSha256": "cdba1a26d682ff17327f122a23fb00b012d6fede10d0a03b7d203e09020c401c"
+    },
+    "melbourne-v6-r2-20261018": {
+      "path": "sharded/revisions/melbourne-v6-r2-20261018-a8a61a251b33c3fb6dcfab42600e8f3aeed89c3fbd71d7f297beb96b432b657a.json",
+      "sha256": "a8a61a251b33c3fb6dcfab42600e8f3aeed89c3fbd71d7f297beb96b432b657a",
+      "sourceSha256": "40bda17d04a1700fb5da1c77f31f672baeb0e3f4ee4697277156a9c96e645eaa"
     }
   }
 }

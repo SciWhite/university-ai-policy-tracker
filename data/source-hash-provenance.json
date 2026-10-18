@@ -1524,6 +1524,210 @@
       "rawSha256": "3fd248caf1eda4e94f5c7100bcd6ee56b8c684fe52ee6632238b5889e38a7237",
       "textSha256": "1000e55dfc14714c2438e0dd3ccce70dfb06fb3296bdc0a61f00282549cb35ba",
       "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-17."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+      "snapshotHash": "abcf41948894b2245f1d8e574b503b05b140de1cac8365fd05e164adc4c152a0",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+      "snapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+      "snapshotHash": "85d1ab63d2ca08727bfaed10d2234e93c5facb3b022ef5ddaf344a61e47d3aac",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+      "snapshotHash": "54286d0127fc2d6826311ee036d374fc42248d2986de9de0cee50029e6ef2bc0",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+      "snapshotHash": "421a0ca355f40fe34ecb48c739eff84060043e6ce998ffc2f00f6fd87503f419",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/academic-integrity",
+      "snapshotHash": "affe311d2493f8106db7b3a58238c1c920661b01a8226de1abed167498895ed2",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://academicintegrity.unimelb.edu.au/plagiarism-and-collusion/advice-for-students-regarding-turnitin-and-ai-writing-detection",
+      "snapshotHash": "8d8f83c8672eaaa579a486019907abd31e00d066f606de9fe252d22f4fdc34b8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://policy.unimelb.edu.au/MPF1310/",
+      "snapshotHash": "ac2ef66c206c06f2e61d6bdf4802bcb7202e18b97ff01c266f9549d771db0b50",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://studentit.unimelb.edu.au/software/microsoft-365",
+      "snapshotHash": "5c27ba3646b0e8702f852c55300c991ad2b77feb3aabb420565e306db53bba6a",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://policy.unimelb.edu.au/MPF1323/",
+      "snapshotHash": "0b3f252fefe73cd63060602b3632eea481d64382751a4e4b1dbef61d10487cd2",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained historic public snapshot; verified extracted text and character offsets in current review."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/your-course/manage-your-course/exams-assessments-and-results/exams/open-book-exams",
+      "snapshotHash": "4c8e324245bfbd1a340d2141bc39d40c2e87c5e2902ac12381bb4456948fc3b4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4c8e324245bfbd1a340d2141bc39d40c2e87c5e2902ac12381bb4456948fc3b4",
+      "textSha256": "4c8e324245bfbd1a340d2141bc39d40c2e87c5e2902ac12381bb4456948fc3b4",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://policy.unimelb.edu.au/MPF1318/",
+      "snapshotHash": "f7be82d1bd0d1a212ad1f6e481e1ea3fa5a45a31e62899fbcb06557bde8c1ed9",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f7be82d1bd0d1a212ad1f6e481e1ea3fa5a45a31e62899fbcb06557bde8c1ed9",
+      "textSha256": "f7be82d1bd0d1a212ad1f6e481e1ea3fa5a45a31e62899fbcb06557bde8c1ed9",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/strategy/artificial-intelligence",
+      "snapshotHash": "9ac9516d225b00a01b1f190577eb8892f1604f013a265ddc1dfb6ced9cbba301",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9ac9516d225b00a01b1f190577eb8892f1604f013a265ddc1dfb6ced9cbba301",
+      "textSha256": "9ac9516d225b00a01b1f190577eb8892f1604f013a265ddc1dfb6ced9cbba301",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+      "snapshotHash": "21aa00d7cd52d1d54ccbe90e120c97e007fbada8a044df8d8f431ea69b65cdf1",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "21aa00d7cd52d1d54ccbe90e120c97e007fbada8a044df8d8f431ea69b65cdf1",
+      "textSha256": "be5b7d1a47947a735e8e5fa9a099e10cdd776db354306ed8dd96c5b9f90454ea",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+      "snapshotHash": "5483d7a12c29a086e5573afc1dc6847677337700b3433df7de7065bde7c51951",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5483d7a12c29a086e5573afc1dc6847677337700b3433df7de7065bde7c51951",
+      "textSha256": "b705a19191d3eda59c7ce09e09135172f3e98f7803eaa364033dc9f975b03d66",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+      "snapshotHash": "d99bff55d35c72e3bade539482d434d21a73ecdd2c812ad967eb48e84bbf624f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d99bff55d35c72e3bade539482d434d21a73ecdd2c812ad967eb48e84bbf624f",
+      "textSha256": "f4bb5914e9c9bc4ee9b21168cdd6a64659fdccfb9c23e12d8724024c1f95f167",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+      "snapshotHash": "909a6dd0283b713c9ee62d17bd1108ede4b8e110e624d820fc76f1009ec69c27",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "909a6dd0283b713c9ee62d17bd1108ede4b8e110e624d820fc76f1009ec69c27",
+      "textSha256": "516562d2e86a8b6e23740abdb0ded73342133367c055d2205509edfd0602b7ac",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+      "snapshotHash": "4ee5236ba6826aa999cbed208baf9da384fd3b7b7adbc7cfd5d6083426aed286",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4ee5236ba6826aa999cbed208baf9da384fd3b7b7adbc7cfd5d6083426aed286",
+      "textSha256": "ff2efc3ea22793668994f8046b858ebf3251f5a06694b26ca6e6e0dbbd1157c8",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/academic-integrity",
+      "snapshotHash": "8e04e2a3eb4bab50429a46cf0d8b8acc9bdb7f5babdf5dcf90ad8285e1f5170a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8e04e2a3eb4bab50429a46cf0d8b8acc9bdb7f5babdf5dcf90ad8285e1f5170a",
+      "textSha256": "a59b48c388c9f6f83054921b29c1986bf9ce783390813d0f4dd2a808b3bb8332",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://academicintegrity.unimelb.edu.au/plagiarism-and-collusion/advice-for-students-regarding-turnitin-and-ai-writing-detection",
+      "snapshotHash": "1fcff778b6a2fbec4d5934f678ef18012121890f7c0ab15ef8e2139c3b43fce4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1fcff778b6a2fbec4d5934f678ef18012121890f7c0ab15ef8e2139c3b43fce4",
+      "textSha256": "a008658f6fdcefcf498e224288f075c34c0147c51d3a05cb357817e5c7f9a12f",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://studentit.unimelb.edu.au/software/microsoft-365",
+      "snapshotHash": "4d5c559032ae3eb1ade5863cd59c7cfc6eb78a1dee6cedf456f112c08518c05b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4d5c559032ae3eb1ade5863cd59c7cfc6eb78a1dee6cedf456f112c08518c05b",
+      "textSha256": "df4a5f4fffa62d9e9e9f3ff8955563d5584c54b27b2397acfc9fb7a250ea3f77",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0039/449886/MPF1310-Schedule1-v1_1.pdf",
+      "snapshotHash": "b789bcde7cdcb10405d74e1a2d7aa5aa448f4d01b7ff96df64d6b8a3b4e0075c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "b789bcde7cdcb10405d74e1a2d7aa5aa448f4d01b7ff96df64d6b8a3b4e0075c",
+      "textSha256": "7c1b40e12f2c2f447f2140e564482d0060351faee24751d321cd89c34a76660c",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://academicintegrity.unimelb.edu.au/staff-resources/student-academic-integrity-whats-changing-in-2025",
+      "snapshotHash": "c0c1540963ac89d35b53d040641d193e50ce5524fb3dda85f655654a0e237a32",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c0c1540963ac89d35b53d040641d193e50ce5524fb3dda85f655654a0e237a32",
+      "textSha256": "51dce9cd4bd9a3a469f69c710e33197904dddf30718c506167f1e905a1ebb36a",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/strategy/governance/peak-bodies-structures/academic-board/student-appeals",
+      "snapshotHash": "7ead11188d33151bc145399912868ebbe170991d4bdeff60f8adf4d085b34d88",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "7ead11188d33151bc145399912868ebbe170991d4bdeff60f8adf4d085b34d88",
+      "textSha256": "18b882ac28060e3218c40d2ca1bc545bf3b789161cfb150c622c25dec9dda05b",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0022/474016/2025-11-21-Explanatory-Memorandum-Responsible-Conduct-of-Research-Policy.pdf",
+      "snapshotHash": "bb272cca2d094e25b37411dba615d2634f8a1e687e4cb9ea87e7f17c42db0a85",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "bb272cca2d094e25b37411dba615d2634f8a1e687e4cb9ea87e7f17c42db0a85",
+      "textSha256": "af33111f2a5a8ae9b55ac50bdf42fb3edaf8e0b939610257a84ca762c1de057f",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://www.unimelb.edu.au/ai/university-of-melbourne-ai-principles",
+      "snapshotHash": "fe5c4e073af35c5a10f0ce70804e2d37b63afc31334c37e873f1a4c81308f0af",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "fe5c4e073af35c5a10f0ce70804e2d37b63afc31334c37e873f1a4c81308f0af",
+      "textSha256": "eb1380d1517a1d065c23cc87a3b2587e4217b27b6a74f30789ca39cbd94bf6bb",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/education-melbourne/assuring-learning-at-melbourne/secure-assessment",
+      "snapshotHash": "aa7a6a2b58f2bd8e294fd41655e4717b33e66c873fc0cab8b85432c6d39144e4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "aa7a6a2b58f2bd8e294fd41655e4717b33e66c873fc0cab8b85432c6d39144e4",
+      "textSha256": "efffd1b3ab5ed420abd8543c23c27e0c552ea35e2be4e7cbb60750ee7f586653",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0027/460863/Assuring-learning-in-the-age-of-Generative-Artificial-Intelligence-.pdf",
+      "snapshotHash": "a7a3346b0d0d4f5eeee041286fe18062eca20db304def4b7952ae9bafff9d083",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a7a3346b0d0d4f5eeee041286fe18062eca20db304def4b7952ae9bafff9d083",
+      "textSha256": "0a3c2b4e107f2446aa80b3a89c56c71717e8d475cc73b71673be98f0b3cad877",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
     }
   ]
 }
