@@ -1728,6 +1728,46 @@
       "rawSha256": "a7a3346b0d0d4f5eeee041286fe18062eca20db304def4b7952ae9bafff9d083",
       "textSha256": "0a3c2b4e107f2446aa80b3a89c56c71717e8d475cc73b71673be98f0b3cad877",
       "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://msd.unimelb.edu.au/belt/home/practices/preparation/t/generative-ai/what-is-this-guide",
+      "snapshotHash": "c22e73100bc983cabada9e565712d1ab02601743a820b151844f4a8f8ec159a0",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c22e73100bc983cabada9e565712d1ab02601743a820b151844f4a8f8ec159a0",
+      "textSha256": "ff2efc3ea22793668994f8046b858ebf3251f5a06694b26ca6e6e0dbbd1157c8",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://studentit.unimelb.edu.au/software/microsoft-365",
+      "snapshotHash": "57163adaedc013bb356d4c68600255e8288521f7b877b78ac191f4da9b0f5387",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "57163adaedc013bb356d4c68600255e8288521f7b877b78ac191f4da9b0f5387",
+      "textSha256": "df4a5f4fffa62d9e9e9f3ff8955563d5584c54b27b2397acfc9fb7a250ea3f77",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/study-skills/exam-preparation/open-book-exams",
+      "snapshotHash": "2b50d9d0a964d0c73c56a71b50198c01f6ee60fbd2f6021db3e3b9803f0e94cf",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2b50d9d0a964d0c73c56a71b50198c01f6ee60fbd2f6021db3e3b9803f0e94cf",
+      "textSha256": "5c58f232bfa8a13af4072ae466ebce94dd9f57c67a6cce0574fa20476970ebbc",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://research.unimelb.edu.au/strengths/responsible-research/trusted-research/responsible-use-of-AI-in-research",
+      "snapshotHash": "0d78ffb0dd1692fe7c14147282cc31310ac0e0ff6d5d198c1eaf7c083e027bf4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0d78ffb0dd1692fe7c14147282cc31310ac0e0ff6d5d198c1eaf7c083e027bf4",
+      "textSha256": "bfa88fe384fa7753b3fb4bc26f26ca571429f31883e75af6e863831fc684c58f",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://lms.unimelb.edu.au/canvas-privacy-collection-notice",
+      "snapshotHash": "685ec5cf985c86f25ed5a2db826c7e91e8f3e816f8993ef7de2629d75375766a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "685ec5cf985c86f25ed5a2db826c7e91e8f3e816f8993ef7de2629d75375766a",
+      "textSha256": "53526f4a4ca358f5cff5b2d9d13ecdd3c140a01c7fb0a28b1317bf4634d2d013",
+      "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
     }
   ]
 }

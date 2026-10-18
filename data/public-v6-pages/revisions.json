@@ -97,5 +97,9 @@
   "melbourne-v6-r2-20261018": {
     "path": "revisions/melbourne-v6-r2-20261018.json",
     "sha256": "40bda17d04a1700fb5da1c77f31f672baeb0e3f4ee4697277156a9c96e645eaa"
+  },
+  "melbourne-v6-r3-20261018": {
+    "path": "revisions/melbourne-v6-r3-20261018.json",
+    "sha256": "db566ca6afba805db485048a12354868475c4c1d9b30d1960c0d485dafb09946"
   }
 }
