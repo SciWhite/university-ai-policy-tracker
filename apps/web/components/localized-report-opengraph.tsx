@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import React from "react";
 import type { SupportedLocale } from "@/lib/i18n";
 import type { MonthlyReportSlug } from "@/lib/monthly-report-registry";
 
@@ -100,8 +101,8 @@ export function createLocalizedReportImage(
           </div>
         </div>
         <div style={{ alignItems: "center", display: "flex", gap: 20, justifyContent: "space-between" }}>
-          <div style={{ color: "#57606a", fontSize: 27 }}>
-            eduaipolicy.org/{locale}/reports/monthly/{month}
+          <div style={{ color: "#57606a", display: "flex", fontSize: 27 }}>
+            {`eduaipolicy.org/${locale}/reports/monthly/${month}`}
           </div>
           <div style={{ background: "#0969da", borderRadius: 8, color: "#ffffff", fontSize: 27, fontWeight: 700, padding: "14px 20px" }}>
             {strings.badge}

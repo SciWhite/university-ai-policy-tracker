@@ -1,4 +1,5 @@
 import { xmlEscape, xmlResponse } from "@/lib/feed";
+import { uniqueSitemapEntries } from "@/lib/sitemap-entries";
 import {
   SITEMAP_SECTION_IDS,
   buildSitemapSection,
@@ -23,7 +24,7 @@ export async function GET(
   }
 
   const entries = await buildSitemapSection(sectionId);
-  const urls = entries
+  const urls = uniqueSitemapEntries(entries)
     .map(
       (entry) => `<url>
   <loc>${xmlEscape(entry.url)}</loc>
