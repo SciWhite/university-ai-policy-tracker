@@ -4,6 +4,14 @@
 
 ## 先读这一段
 
+### V6 SEO 标题统一合同（2026-10-18）
+
+V6 metadata 使用 `lib/policy-v6-seo-title.ts` 的统一生成器；默认仅学校名称和本地语言 AI 政策主题，不加品牌。中文用「AI 政策」，七语言主题词分别定义，未登记的学校译名回退 canonical 名称，不把 UI 标题翻译当政策译文审核。
+
+SEO 名称映射附学校官方身份页面，正文 H1、catalog/API identity、引用标题不随之缩短。已有语言别名仅用于 SEO 标题；不要修改 `getLocalizedInstitutionName` 的 canonical 展示合同。可选来源说明及正式品牌 `University AI Policy Tracker` 在 70 字符内部预算内才使用；先去可选文字再考虑明确登记的短名，不发明新的品牌或机械截断校名。未知超长校名保留全名，由发布矩阵报错并补核实映射。
+
+`<title>`、OG、Twitter 及 JSON-LD `WebPage.name` 使用同一生成结果；`WebSite.name`、Dataset citation name、description、H1、canonical/hreflang、Claim IDs、政策/审核/快照/历史不变。共享函数仅在 V6 分支调用；实际线上全部 V6 学校×七语言检查标题预算、语言、唯一性、字段同步和正文/链接一致，加非 V6 与旧历史对照。只构建共享 zone，通过生命周期和同步合同后上线；元数据修复不制造大学政策修订或刷新取证日期。
+
 新增学校采用 **已审核资料 → 显式字段映射 → 脚本生成本地 view → 共享 V6 组件 → 验收**。不要让 AI 对照 Harvard 截图重新写 JSX/CSS，也不要复制一份学校专用页面。AI 的职责是核对范围、状态、关键例外、翻译和图文对应；脚本负责重复转换、哈希、证据引用及格式检查。
 
 V6 已有发布实现；早期 `policy-v6-local` 是历史开发位置。进入任何线程先核对实际 checkout、代码 SHA、文件、选定内容包和公开版本；本地旧 checkout 可能仍只有文档。不要以目录名判断能力，不重置共享脏工作树或覆盖其他线程文件。公开记录与本地候选不可互换。

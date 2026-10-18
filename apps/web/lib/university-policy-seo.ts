@@ -4,12 +4,13 @@ import {getLocalizedAlternates} from './i18n-metadata';
 import {getIndexRecoveryPilotLocaleRestriction} from './index-recovery-pilot';
 import {getLocalizedInstitutionName} from './institution-localization';
 import {getAbsoluteSiteUrl} from './site-url';
+import {buildPolicyV6SeoTitle} from './policy-v6-seo-title';
 
 /** UI metadata only; does not assert approved policy translations or snapshot status. */
 export function universityPolicySeo(summary: PublicEntitySummary, locale: SupportedLocale) {
   const slug = summary.entity.slug;
   const name = getLocalizedInstitutionName(slug, summary.entity.name, locale);
-  const title = locale === 'zh' ? `${name} AI 使用政策与官方证据 | University AI Policy Tracker` : `${name} AI policy and official evidence | University AI Policy Tracker`;
+  const title = buildPolicyV6SeoTitle(slug, summary.entity.name, locale);
   const description = locale === 'zh'
     ? `查看${name}的 AI 使用政策记录、已审核条款及官方来源。课程、考试和院系的具体要求以原始证据为准；工具可用不代表获准用于考核。`
     : `Explore ${name}'s AI policy record, reviewed claims and official sources. Course, assessment and unit conditions remain distinct; tool access does not grant assessment permission.`;

@@ -120,6 +120,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
     const seo = universityPolicySeo(publicSummary, locale);
     return {...seo,
       ...(process.env.NODE_ENV === "development" ? {robots: {index: false, follow: false}} : {}),
+      twitter: {card: "summary_large_image", title: seo.title, description: seo.description, images: [getSiteOgImageUrl(locale)]},
       openGraph: {title: seo.title, description: seo.description, images: [getSiteOgImageUrl(locale)], url: String(seo.alternates.canonical), type: "article"}
     };
   }
