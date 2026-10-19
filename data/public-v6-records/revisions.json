@@ -91,5 +91,10 @@
   "melbourne-v6-r3-20261018": {
     "path": "revisions/melbourne-v6-r3-20261018.json",
     "sha256": "1015c20b2b6a51b826914d7ff39096bb107b881684628de88c84998715e5cda3"
+  },
+  "qs20-22-v6-r1-20261018": {
+    "path": "revisions/qs20-22-v6-r1-20261018.json",
+    "sha256": "1fa85d0b9e799978445f4315294d97723b19ef2946935a8b01f087af800b25d0",
+    "revision": "qs20-22-v6-r1-20261018"
   }
 }

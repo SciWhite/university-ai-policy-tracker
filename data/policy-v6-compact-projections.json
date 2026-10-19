@@ -1,6 +1,6 @@
 {
   "schemaVersion": "uapt-v6-compact-projections-v1",
-  "presentationRevision": "melbourne-v6-r3-20261018",
+  "presentationRevision": "qs20-22-v6-r1-20261018",
   "schools": {
     "massachusetts-institute-of-technology": {
       "slug": "massachusetts-institute-of-technology",
@@ -7726,6 +7726,1471 @@
               "language": "en",
               "hash": "fe5c4e073af35c5a10f0ce70804e2d37b63afc31334c37e873f1a4c81308f0af",
               "location": "Section: University of Melbourne AI Principles - Academic and Research Integrity; extracted text lines 8-8"
+            }
+          ]
+        }
+      }
+    },
+    "unsw-sydney": {
+      "slug": "unsw-sydney",
+      "name": "University of New South Wales (UNSW Sydney)",
+      "recordSha256": "0d78b4d341674952bf7aac19da4563378b263db0c0efd1c6559a792335330e6b",
+      "schoolFingerprint": "0d78b4d341674952bf7aac19da4563378b263db0c0efd1c6559a792335330e6b",
+      "universityRevisionId": "qs20-22-v6-r1-20261018",
+      "experience": "compact_evidence",
+      "presentationRevision": "qs20-22-v6-r1-20261018",
+      "images": [],
+      "scope": {
+        "en": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+        "zh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+      },
+      "topics": {
+        "coursework": {
+          "en": "Assessment tasks follow transitional period frameworks: six Levels of AI Assistance (No Assistance, Simple Editing Assistance, Planning or Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, Not Applicable) apply to Term 3 2026, Semester 2 2026, and Hexamester 5 2026; three AI Assessment Modes (Can't Use AI, Can Use AI, Must Use AI) apply to Hexamester 6 2026 and Summer Term 2027. The future Assessment and Feedback Procedure is scheduled for phased rollout across Term 3 2027, Semester 2 2027, and Hexamester 1 2027 (with clauses taking effect in January 2027 and January 2028); current assessments must follow current period framework instructions.",
+          "zh": "课程考核遵循各学期的具体过渡框架：2026年第3学期、第2半学年及第5六分学期适用六级 AI 辅助框架（禁止辅助、简易编辑辅助、规划设计辅助、归属引用辅助、基于生成式 AI 软件的考核、不适用）；2026年第6六分学期及2027年夏季学期适用三种 AI 考核模式（不可使用、可以使用、必须使用）。未来的《考核与反馈程序》计划在 2027 年第 3 学期、第 2 半学年及第 1 六分学期分步实施（具体条款分别于 2027 年 1 月及 2028 年 1 月生效）；当前各项考核必须严格遵循所属学期的具体指引。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        },
+        "exams": {
+          "en": "Assessments designated 'No Assistance' or 'Can't Use AI' prohibit generative AI use. Follow the framework and instructions for the relevant teaching period; suspected misuse is handled under the applicable academic integrity procedure.",
+          "zh": "标明 No Assistance 或 Can't Use AI 的考核禁止使用生成式 AI。请遵守所属学期的框架及考核要求；涉嫌违规的情况依适用学术诚信程序处理。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        },
+        "disclosure": {
+          "en": "Where AI tools are permitted, students must provide clear acknowledgement and citation according to course specifications and referencing guidelines.",
+          "zh": "在获准使用 AI 的考核中，学生须依据课程具体要求和参考文献指引提供清晰的致谢与规范引用。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        },
+        "privacy_data": {
+          "en": "UNSW's Information Governance Policy applies to students, researchers, research trainees, employees and affiliates; individual procedures may have narrower scope. Its AI procedure requires confidentiality of highly sensitive, sensitive, commercial and personal information and an AI self-assurance assessment before use, except for an approved, deployed enterprise-grade system such as Copilot. Student guidance separately advises against including personal or sensitive information in AI prompts.",
+          "zh": "UNSW 信息治理政策适用于学生、研究人员、研究受训人员、员工及关联人员，具体程序可能另有较窄范围。其 AI 程序要求对高度敏感、敏感、商业及个人信息保密，并在使用 AI 前进行 self-assurance assessment；已批准部署的企业级系统（如 Copilot）有例外。学生指引另建议不要在 AI 提示词中输入个人或敏感信息。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        },
+        "academic_integrity": {
+          "en": "UNSW manages academic integrity under the Student Plagiarism Management Procedure across five tiers: Poor scholarship, Minor, Moderate, Significant, and Serious. For Minor plagiarism, the rubric states that a mark reduction should not exceed 10% of the maximum grade available for the assessment task (from plagiarism rubric Appendix 3 footnote 4, not an absolute cap). School authorities manage Poor scholarship and Minor through Significant cases. Serious cases must be referred to the Conduct & Integrity Office (CIO) as potential student misconduct, with potential outcomes ranging from task/course failure to suspension or exclusion (not automatic penalties). Actions outside the outcomes available for a level require CIO approval, and repeated instances may also be escalated to student misconduct. For School-level outcomes notified under clause 4.3(a), an internal review request must be made within 20 business days of that notice and is limited to procedural fairness, not the merits. Serious cases follow the separate CIO process.",
+          "zh": "UNSW 依据《学生抄袭管理程序》将学术不端划分为五个层级：学术素养不足（Poor scholarship）、轻微（Minor）、中度（Moderate）、重大（Significant）及严重（Serious）。对于 Minor 抄袭，细则明确规定扣分应不超过该项评估最高可得分的 10%（源自抄袭细则附录 3 脚注 4，并非法定硬性上限）。学院负责处理轻微至重大层级的案例；严重案例移交品行与诚信办公室（CIO）按可能构成学生不端行为处理，处理措施（包括不及格、停学或除名）属可能裁定而非自动适用。超出对应层级可用结果的处理需经 CIO 批准，重复违规亦可转为不当行为程序。对于依据第 4.3(a) 条通知的学院层级处理结果，内部复核须在收到该通知后 20 个工作日内提出，范围限于程序公平而非处理结论本身；Serious 案件另走 CIO 程序。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        },
+        "approved_tools": {
+          "en": "The captured UNSW announcement describes ChatGPT Edu access for professional and academic staff, HDR candidates and casual academics, with further student expansion ahead of 2027 described as planned. Mentor AI appears in UNSW College ELICOS guidance. Institutional tool access does not confer permission for a particular assessment.",
+          "zh": "已采集的 UNSW 公告说明 ChatGPT Edu 面向专业及学术员工、HDR 研究型学位候选人和兼职学术人员，并将 2027 年前进一步向学生扩展描述为计划。Mentor AI 出现在 UNSW College ELICOS 指引中。校内工具访问权不等于具体考核使用许可。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        },
+        "research_publication": {
+          "en": "UNSW Library guidance advises researchers that text and data mining with AI must respect copyright and vendor electronic resource licence terms.",
+          "zh": "新南威尔士大学图书馆指引明确提示研究人员，使用 AI 进行文本与数据挖掘时必须严格遵守著作权及数据库供应商电子资源许可协议。",
+          "meaningEn": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
+          "meaningZh": "学生抄袭管理程序、考核与反馈程序、信息治理程序及图书馆 TDM 指引。全校审计状态保持 PARTIAL。"
+        }
+      },
+      "topicBasis": {
+        "coursework": "Assessment tasks follow transitional period frameworks: six Levels of AI Assistance (No Assistance, Simple Editing Assistance, Planning or Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, Not Applicable) apply to Term 3 2026, Semester 2 2026, and Hexamester 5 2026; three AI Assessment Modes (Can't Use AI, Can Use AI, Must Use AI) apply to Hexamester 6 2026 and Summer Term 2027. The future Assessment and Feedback Procedure is scheduled for phased rollout across Term 3 2027, Semester 2 2027, and Hexamester 1 2027 (with clauses taking effect in January 2027 and January 2028); current assessments must follow current period framework instructions.",
+        "exams": "Assessments designated 'No Assistance' or 'Can't Use AI' prohibit generative AI use. Follow the framework and instructions for the relevant teaching period; suspected misuse is handled under the applicable academic integrity procedure.",
+        "disclosure": "Where AI tools are permitted, students must provide clear acknowledgement and citation according to course specifications and referencing guidelines.",
+        "privacy_data": "UNSW's Information Governance Policy applies to students, researchers, research trainees, employees and affiliates; individual procedures may have narrower scope. Its AI procedure requires confidentiality of highly sensitive, sensitive, commercial and personal information and an AI self-assurance assessment before use, except for an approved, deployed enterprise-grade system such as Copilot. Student guidance separately advises against including personal or sensitive information in AI prompts.",
+        "academic_integrity": "UNSW manages academic integrity under the Student Plagiarism Management Procedure across five tiers: Poor scholarship, Minor, Moderate, Significant, and Serious. For Minor plagiarism, the rubric states that a mark reduction should not exceed 10% of the maximum grade available for the assessment task (from plagiarism rubric Appendix 3 footnote 4, not an absolute cap). School authorities manage Poor scholarship and Minor through Significant cases. Serious cases must be referred to the Conduct & Integrity Office (CIO) as potential student misconduct, with potential outcomes ranging from task/course failure to suspension or exclusion (not automatic penalties). Actions outside the outcomes available for a level require CIO approval, and repeated instances may also be escalated to student misconduct. For School-level outcomes notified under clause 4.3(a), an internal review request must be made within 20 business days of that notice and is limited to procedural fairness, not the merits. Serious cases follow the separate CIO process.",
+        "approved_tools": "The captured UNSW announcement describes ChatGPT Edu access for professional and academic staff, HDR candidates and casual academics, with further student expansion ahead of 2027 described as planned. Mentor AI appears in UNSW College ELICOS guidance. Institutional tool access does not confer permission for a particular assessment.",
+        "research_publication": "UNSW Library guidance advises researchers that text and data mining with AI must respect copyright and vendor electronic resource licence terms."
+      },
+      "do": [
+        {
+          "en": "Check the AI framework for your teaching period and each assessment: six Levels apply to Term 3, Semester 2 and Hexamester 5 in 2026; three Modes apply to Hexamester 6 in 2026 and Summer Term 2027.",
+          "zh": "查阅所属学期及每项考核的 AI 要求：2026 年第 3 学期、第 2 半学年及第 5 六分学期适用六级框架；2026 年第 6 六分学期及 2027 年夏季学期适用三种模式。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-unsw-sydney-2"
+          ]
+        },
+        {
+          "en": "Provide clear acknowledgement and referencing when generative AI tools are permitted and used in assessable tasks.",
+          "zh": "当考核任务获准使用生成式 AI 工具时，规范提供清晰的使用致谢与参考文献引用。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-unsw-sydney-1",
+            "claim-unsw-sydney-22"
+          ]
+        },
+        {
+          "en": "For School-level outcomes under clause 4.3(a), email a procedural-fairness review request to the Head of School or delegate within 20 business days of the outcome notice. Serious cases follow the separate CIO process.",
+          "zh": "对于第 4.3(a) 条的学院层级处理结果，可在收到结果通知后 20 个工作日内，向学院主管或其代表电邮提出程序公平复核申请；Serious 案件另走 CIO 程序。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-unsw-sydney-17"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use generative AI in assessments marked 'No Assistance' or 'Can't Use AI'; follow the relevant teaching-period framework and assessment instructions.",
+          "zh": "切勿在标明 No Assistance 或 Can't Use AI 的考核中使用生成式 AI；请遵守所属学期框架及具体考核要求。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-unsw-sydney-2",
+            "claim-unsw-sydney-18"
+          ]
+        },
+        {
+          "en": "Where the UNSW AI governance procedure applies, do not use AI without the required self-assurance assessment; approved, deployed enterprise-grade systems such as Copilot are exempt. Maintain confidentiality of highly sensitive, sensitive, commercial and personal information.",
+          "zh": "在 UNSW AI 治理程序适用范围内，使用 AI 前须完成所要求的 self-assurance assessment；已批准部署的企业级系统（如 Copilot）有例外。高度敏感、敏感、商业及个人信息须保持保密。",
+          "kind": "requirement",
+          "claimIds": [
+            "draft-claim-unsw-information-governance-procedure"
+          ]
+        },
+        {
+          "en": "Do not assume institutional rollout (such as Copilot or ChatGPT Edu) conveys blanket permission for course assignments or examinations.",
+          "zh": "切勿将学校开通 Copilot 或 ChatGPT Edu 等校内工具等同于获准将其用于具体课程作业或考试。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-unsw-sydney-21",
+            "draft-claim-unsw-chatgpt-edu-2026"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "claim-unsw-sydney-18",
+          "claim-unsw-sydney-17"
+        ],
+        "outcomes": [
+          "claim-unsw-sydney-18"
+        ],
+        "appeal": [
+          "claim-unsw-sydney-17"
+        ]
+      },
+      "claims": {
+        "claim-unsw-sydney-21": {
+          "id": "claim-unsw-sydney-21",
+          "text": "Under the AI capability framework for teaching staff, UNSW lists Microsoft Copilot, Adobe Firefly, and Scite.ai as adopted AI tools for identification and practical application. The framework provides capability outcomes for staff to explore features and professional applications of generative AI tools including Copilot, ChatGPT, and Firefly to enhance productivity and innovation.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Technology\nIdentification and practical application of adopted AI tools at UNSW:\nMicrosoft Copilot\nAdobe Firefly\nScite.ai\nList the features and functionalities of generative AI tools such as ChatGPT, Copilot and Firefly.\nDescribe how ChatGPT, Copilot and Firefly can be used in different professional contexts to enhance productivity and innovation.",
+              "url": "https://www.teaching.unsw.edu.au/ai/guidelines",
+              "language": "en",
+              "hash": "3928a96e82b6db61b1414ee91e7e01b583310f1ce7953bcb21bf215ca4f2c2c0",
+              "location": "lines 108-114; AI capability framework for teaching staff > Technology"
+            }
+          ]
+        },
+        "claim-unsw-sydney-17": {
+          "id": "claim-unsw-sydney-17",
+          "text": "UNSW's teacher guidance describes preliminary checks and consultation for suspected AI writing. Under the formal Student Plagiarism Management Procedure, the Course Authority or SSIA should notify the student in writing of detected Poor scholarship/Minor/Moderate/Significant plagiarism and proposed academic action; the student has 5 business days to respond. For these School-level outcomes, an internal review must be emailed to the Head of School or delegate within 20 business days of the Notification of Outcome under clause 4.3(a). Review is limited to procedural fairness, not the merits. The reviewer must not have participated in the initial decision; the student is to be notified of the review outcome within 10 business days of receipt of the review request. Serious cases follow the separate CIO process; these School-level deadlines must not be presented as deadlines for every serious-misconduct case.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Step 1: Initial checks... Step 2: Check the signs... Step 3: Discuss with the student... Step 4: Contact your SSIA for further assistance... Step 5: Contact the Conduct & Integrity Office",
+              "url": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+              "language": "en",
+              "hash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+              "location": "Staff Teaching Gateway historical guidance context"
+            },
+            {
+              "quote": "3.1.       The Course Authority or SSIA should advise the student in writing of poor scholarship/ minor/\n                  moderate/ significant level detected and proposed academic action (Template 2, Appendix 4).\n\n       3.2.       The student will have 5 business days to provide a response.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 6; lines 247-250; Student Plagiarism Management Procedure, Section 3, Clauses 3.1-3.2"
+            },
+            {
+              "quote": "4.3.       The Course Authority will:\n                  a. notify the student by email of the outcome and any action to be taken (Template 3, Appendix 4);",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 6; lines 264-265; Student Plagiarism Management Procedure, Section 4, Clause 4.3(a)"
+            },
+            {
+              "quote": "6.1.    A student may only lodge an internal review on the ground that the process followed by the School in\n           determining poor scholarship or plagiarism lacked procedural fairness.\n\n   6.2.    The purpose or scope of the internal review will not extend to a review of the merits of the decision.\n\n   6.3.    Internal reviews must be submitted by email to the Head of School or delegate within 20 business\n           days of the Notification of Outcome referred to in section 4.3(a) above.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 7; lines 289-295; Student Plagiarism Management Procedure, Section 6, Clauses 6.1-6.3"
+            },
+            {
+              "quote": "7.1.    The Head of School or their delegate, who was not involved in the initial decision-making process,\n           will consider the internal review request and determine the outcome.\n\n   7.2.    The student is to be notified by the Head of School or their delegate of the outcome of the internal\n           review within 10 business days of receipt of the internal review request. The notification should\n           include any action to be taken where an internal review is upheld (see Template 5, Appendix D).",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 7; lines 299-304; Student Plagiarism Management Procedure, Section 7, Clauses 7.1-7.2"
+            },
+            {
+              "quote": "2.2.       According to the UNSW plagiarism evaluation rubric:\n                  a. ‘Poor scholarship’, ‘Minor’, ’Moderate’ and ‘Significant’ will be managed by the School according\n                     to sections 3-5 below; or\n\n                  b. ‘Serious’ will be referred by the Course Authority (following consultation with the SSIA) or the\n                     SSIA to UNSW Conduct & Integrity Office (CIO), to manage as a potential Student Misconduct\n                     according to the Complaints Management and Investigations Policy & Procedure.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 6; lines 237-243; Student Plagiarism Management Procedure, Section 2, Clause 2.2"
+            },
+            {
+              "quote": "Appendix 3: UNSW Student Plagiarism Evaluation Rubric\nThe following rubric should be applied to work/ piece of assessment submitted where plagiarism has been\ndetected. Poor scholarship and Minor/ Moderate/ Significant levels of plagiarism are to be managed by Schools\naccording to sections 3 to 7 of the Student Plagiarism Management Procedure. Any action or outcome that is\noutside of what is available below for the respective levels MUST be approved by the Conduct and Integrity Office\n(CIO). Plagiarism identified at the Serious level must be referred to UNSW Conduct and Integrity Office to\nmanaged according to the UNSW Complaints Management and Investigations Policy & Procedure.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 14; lines 587-593; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Introduction"
+            },
+            {
+              "quote": "8\n  The Course Authority and/or SSIA will identify if plagiarism level is ‘Serious’ and then refer the matter to UNSW Conduct and Integrity Office\n   to be handled as potential Student Misconduct under the Complaints Management and Investigations Policy & Procedure",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 15; lines 733-735; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Footnote 8"
+            }
+          ]
+        },
+        "cl-the-university-of-new-south-wales-unsw-sydney-microsoft-copilot-150": {
+          "id": "cl-the-university-of-new-south-wales-unsw-sydney-microsoft-copilot-150",
+          "text": "Microsoft Copilot Chat is listed for The University of New South Wales (UNSW Sydney) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+          "claimType": "ai_tool_treatment",
+          "evidence": [
+            {
+              "quote": "UNSW's official MyIT page says Copilot Chat is available to all UNSW staff and students. It is built into UNSW's Microsoft environment and protected under UNSW's Microsoft licence. Users sign in with their zID, zPass, and MFA; UNSW calls Copilot its official AI chat.",
+              "url": "https://www.unsw.edu.au/myit/services/software-applications/using-copilot-chat",
+              "language": "en",
+              "hash": "7dc6944cec54319fdf8d1eaf55c057ae31f19f3410746ac94b4ecde7b34405b5",
+              "location": ""
+            }
+          ]
+        },
+        "draft-claim-unsw-chatgpt-edu-2026": {
+          "id": "draft-claim-unsw-chatgpt-edu-2026",
+          "text": "A UNSW announcement states that ChatGPT Edu access is being extended to Higher Degree Research candidates and casual academic staff, building on existing professional and academic staff access. It describes planned expansion of AI tools across the student community ahead of the 2027 academic year. Assessment permission still depends on the course instructions.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "This week, access to ChatGPT Edu is being extended to Higher Degree Research candidates and casual academic staff, building on existing access for professional and academic staff.\nUNSW is also working towards expanding access to AI tools across the entire student community ahead of the 2027 academic year.",
+              "url": "https://www.unsw.edu.au/newsroom/news/2026/09/unsw-partners-with-openai-to-support-the-first-generation-of-ai-",
+              "language": "en",
+              "hash": "07a5ddf54a54daca0b9efc28112e086dbd6aea11ba4eb985ab9410cd3a196af4",
+              "location": "lines 186-187; OpenAI Partnership Announcement, Paragraphs 4-5"
+            },
+            {
+              "quote": "When using AI, remember to:\nCheck your course guidelines to see if the use of AI is permitted, including its usage as a translation tool. See the levels of AI assistance and what they entail\nMaintain your academic integrity. Do not copy and paste AI-generated materials and claim them as your own. Learn how to reference AI in your assessments\nProtect personal information. Do not include any personal or sensitive information in prompts, your own or other people's (i.e. addresses, name, emails, zID or intellectual property). For data privacy and protection, use Microsoft Copilot using your UNSW account\nVerify accuracy of AI outputs. GenAI tools could produce invalid or unreliable information ('",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 420-425; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "fabrications' or 'hallucinations'). Book an appointment with the Academic Skills team if you need guidance.\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 420-425; Coordinator checked continuous source section; excerpt offset 700–808"
+            }
+          ]
+        },
+        "claim-unsw-sydney-18": {
+          "id": "claim-unsw-sydney-18",
+          "text": "UNSW's formal Student Plagiarism Management Procedure uses the levels Poor scholarship, Minor, Moderate, Significant and Serious, with generative AI misuse assessed according to the applicable rubric. Poor scholarship and Minor/Moderate/Significant cases are managed by the School; Serious cases must be referred to the Conduct & Integrity Office (CIO) as potential student misconduct. For Minor plagiarism, the rubric says a mark reduction should not exceed 10% of the maximum grade available. Listed outcomes for Serious cases include failing the work or course, suspension and permanent exclusion; these are possible outcomes, not automatic consequences of every unauthorised AI use. Actions outside the outcomes available for a level require CIO approval, and repeated instances may also be handled as student misconduct.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "2.2.       According to the UNSW plagiarism evaluation rubric:\n                  a. ‘Poor scholarship’, ‘Minor’, ’Moderate’ and ‘Significant’ will be managed by the School according\n                     to sections 3-5 below; or\n\n                  b. ‘Serious’ will be referred by the Course Authority (following consultation with the SSIA) or the\n                     SSIA to UNSW Conduct & Integrity Office (CIO), to manage as a potential Student Misconduct\n                     according to the Complaints Management and Investigations Policy & Procedure.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 6; lines 237-243; Student Plagiarism Management Procedure, Section 2, Clause 2.2"
+            },
+            {
+              "quote": "Appendix 3: UNSW Student Plagiarism Evaluation Rubric\nThe following rubric should be applied to work/ piece of assessment submitted where plagiarism has been\ndetected. Poor scholarship and Minor/ Moderate/ Significant levels of plagiarism are to be managed by Schools\naccording to sections 3 to 7 of the Student Plagiarism Management Procedure. Any action or outcome that is\noutside of what is available below for the respective levels MUST be approved by the Conduct and Integrity Office\n(CIO). Plagiarism identified at the Serious level must be referred to UNSW Conduct and Integrity Office to\nmanaged according to the UNSW Complaints Management and Investigations Policy & Procedure.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 14; lines 587-593; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Introduction"
+            },
+            {
+              "quote": "Serious8        •   The whole/almost the whole of the work                        Applied by the CIO according to the              Fail the\n                        submitted has been plagiarised; and/or                        UNSW Complaints Management and                   course\n                    •   Copying or collusion where the whole/ almost                  Investigations Policy & Procedure,               (may only\n                        the whole of the work submitted is                            possible outcomes include:                       be applied\n                        identical/almost identical to work submitted by               •  Fail (0%) for the work9               ",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 15; lines 704-721; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Serious Level Row; excerpt offset 0–700"
+            },
+            {
+              "quote": "        by the CIO,\n                        another student, and/or                                       • Fail (0% or 00FL) for the course10             where\n                                                                                      • Suspension from the University                 appropriat\n                    •   All or a large part of the work submitted was the                                                              e)\n                        work of another person, and/ or                               • Permanent exclusion from the\n                                                                                         University\n                    •   Evidence of a ",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 15; lines 704-721; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Serious Level Row; excerpt offset 700–1400"
+            },
+            {
+              "quote": "deliberate attempt to disguise\n                        plagiarism including through misuse of\n                        generative AI, and/or\n                    •   Evidence of contract cheating occurred, and/or\n                    •   Serious misuse of generative AI\n                        e.g. whole/ almost whole sections of the work, including\n                        all key learning points, contain generative AI output,\n                        against assessment guidelines.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 15; lines 704-721; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Serious Level Row; excerpt offset 1400–1881"
+            },
+            {
+              "quote": "8\n  The Course Authority and/or SSIA will identify if plagiarism level is ‘Serious’ and then refer the matter to UNSW Conduct and Integrity Office\n   to be handled as potential Student Misconduct under the Complaints Management and Investigations Policy & Procedure",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 15; lines 733-735; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Footnote 8"
+            },
+            {
+              "quote": "4\n    The mark reduction for Minor Plagiarism should not be more than 10% of the maximum grade available. For example, if a student is found to\n     have committed minor plagiarism, the penalty should not reduce their grade by more than 10% of the highest possible mark they could\n     have received. For example, if the maximum mark for an assignment is 100 points, the reduction for minor plagiarism should not exceed 10\n     points.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 14; lines 651-655; Appendix 3: UNSW Student Plagiarism Evaluation Rubric, Footnote 4"
+            },
+            {
+              "quote": "8.2.    Repeated instances of plagiarism by a student may constitute a breach of the UNSW Code of\n           Conduct and Values and will be managed by UNSW Conduct & Integrity Office as an allegation of\n           Student Misconduct according to the UNSW Complaints Management and Investigations Policy &\n           Procedure. If the repeated instance occurs in the first year of study, the behaviour may be\n           considered as a misunderstanding of the academic standards required, however a warning notice\n           will be issued reminding the student of their obligations to maintain academic integrity.\n\n   8.3.    Repeated instances of plagiarism, regardless of level, where a warning not",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 7; lines 311-319; Student Plagiarism Management Procedure, Section 8, Clauses 8.2-8.3; excerpt offset 0–700"
+            },
+            {
+              "quote": "ice has been already\n           issued, may be considered Student Misconduct.",
+              "url": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+              "language": "en",
+              "hash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+              "location": "physical page 7; lines 311-319; Student Plagiarism Management Procedure, Section 8, Clauses 8.2-8.3; excerpt offset 700–777"
+            }
+          ]
+        },
+        "claim-unsw-sydney-12": {
+          "id": "claim-unsw-sydney-12",
+          "text": "UNSW's second key principle for AI in assessment requires that any AI-based output must be reviewed with all due diligence before being released or relied upon, particularly to avoid bias and factual errors.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Ensure that any AI-based output is reviewed with all due diligence before being released or relied upon. This is particularly important to ensure that you avoid bias and factual errors in the output.",
+              "url": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+              "language": "en",
+              "hash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+              "location": "Section 'Key principles of AI usage in assessment'"
+            }
+          ]
+        },
+        "claim-unsw-sydney-13": {
+          "id": "claim-unsw-sydney-13",
+          "text": "The retained Staff Teaching Gateway evidence describes categories of permitted AI use to support assessment design. Current student guidance distinguishes the six Levels of AI Assistance for Term 3, Semester 2 and Hexamester 5 2026 from three AI Assessment Modes for Hexamester 6 2026 and Summer Term 2027.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Levels of AI assistance\nThis framework applies to students in Term 3 2026, Semester 2 2026 or Hexamester 5 2026.\nThe Levels of AI Assistance framework is designed to help convenors communicate to students how much, or how little AI can be used in the process of planning, creating and producing an assignment. To ensure clarity in UNSW AI policy, and how to use AI responsibly in your assessments, we've created this resource for further guidance. Download the framework or read below.\nDownload framework\nNo assistance\nThis assessment is designed for you to complete without the use of any generative AI.  You are not permitted to use any generative AI tools, software or service to search for or gen",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "erate information or answers.\nSimple editing assistance\nIn completing this assessment, you are permitted to use standard editing and referencing functions in the software you use to complete your assessment (for example Microsoft Word, Mendeley, Zotero).\nYou are not allowed to use any generative AI tools including prompts or features that generate text. Using functions that generate or paraphrase passages of text or other media, whether based on your own work or not, can be grounds for academic misconduct.\nPlanning or design assistance\nThis category permits the use of generative AI as ‘inspiration’ for assessment. For example, generating initial ideas, structures, or outlines. Beyond that, t",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 700–1400"
+            },
+            {
+              "quote": "he use of generative AI is prohibited.\nYou are permitted to use generative AI tools, software or services to generate initial ideas, structures, or outlines only. After you've used generative AI for inspiration you must develop those ideas to produce your own work.\nAssistance with attribution\nThis category permits the use of generative AI as a 'coach'. Learning usually takes effort. In recognition of this, this category requires you to make a first attempt at the task yourself. Once this is done you can use generative AI to improve your submission. The focus is on your thoughts and creation with the AI helping you edit your work.\nThe AI-based edit must be attributed, and this reinforces the ",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 1400–2100"
+            },
+            {
+              "quote": "responsible use of generative AI in a scholarly context. The degree of referencing or attribution may vary on the nature of the task – from general acknowledgement to full attribution of all editing suggestions. Your Convenor will specify the types of attribution required, as well as when generative AI tools can be used throughout the assessment.\nKeep copies of your drafts as your convenor may also request them as part of the submission\nIf outputs of generative AI tools, software or services form part of your submission and are not appropriately attributed, your Convenor may ask you to explain your work. If you are unable to satisfactorily demonstrate your understanding of your submission an",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 2100–2800"
+            },
+            {
+              "quote": "d how you have done it you may be referred to UNSW Conduct & Integrity Office for investigation for academic misconduct and possible penalties.\nGenerative AI software-based assessments\nThis assessment is designed for you to use generative AI as part of the assessed learning outcomes.  Please refer to the assessment instructions for more details.\nThis category expects a wide range of use of generative AI in assessment. Your convenor will specify what they want you to do with generative AI. This may include assessments where a first draft is generated by generative AI and you are asked to critique that draft; it may be an assessment where a particular generative AI tool is required to be used;",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 2800–3500"
+            },
+            {
+              "quote": " or it may be an assessment where you have options to use or not use those tools.\nNot applicable\nThis assessment would not likely require or benefit from the use of AI. However, if you do use it, it must be properly referenced.\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 3500–3728"
+            },
+            {
+              "quote": "Framework for Hexamester 6 2026/Summer Term 2027\nIn this transitional period, students in specific teaching periods will be subjected to the AI framework below.\nImportant note\nThe framework below only applies to students in Hexamester 6 2026 and Summer Term 2027. If you're currently in a different teaching period, please refer to the framework above.\nAI Assessment Modes\nAI Assessment Modes are part of the University's broader shift from simply asking \"Can you use AI in assessments?\" to \"What role should AI play in assessments and why?\"\nUNSW uses three modes to determine how you use AI when completing an assessment.\nThe mode for each assessment is determined by its educational purpose, learni",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 453-462; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "ng outcomes and the evidence of learning you need to demonstrate.\nDownload framework\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 453-462; Coordinator checked continuous source section; excerpt offset 700–785"
+            },
+            {
+              "quote": "The role of AI in your assessments\nFrom Hexamester 6 2026 and Summer Term 2027, UNSW will transition from Levels of AI Assistance to a new framework for how you can use AI in your assessments: AI Assessment Modes.\nAs the role of AI in professional practice continues to change, your assessments are evolving to help you develop the skills to use AI effectively, critically and responsibly.\nDuring the transition, make sure you refer to the framework that applies to your current teaching period. You can find information about how you can use AI in each specific assessment in your course outline and instructions from your lecturer or tutor.\nTerm 3/Semester 2/Hexamester 5 2026\nHexamester 6 2026/Sum",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 425-431; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "mer Term 2027\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 425-431; Coordinator checked continuous source section; excerpt offset 700–714"
+            }
+          ]
+        },
+        "claim-unsw-sydney-3": {
+          "id": "claim-unsw-sydney-3",
+          "text": "Under UNSW's 'No Assistance' level, students are not permitted to use any generative AI tools, software, or service to search for or generate information or answers.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "This assessment is designed for you to complete without the use of any generative AI.  You are not permitted to use any generative AI tools, software or service to search for or generate information or answers.",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+              "location": "Levels of AI assistance > No assistance"
+            }
+          ]
+        },
+        "draft-claim-unsw-information-governance-procedure": {
+          "id": "draft-claim-unsw-information-governance-procedure",
+          "text": "UNSW's Information Governance Policy applies to students, researchers, research trainees, employees and affiliates; individual procedures may have narrower scope. Its Use of Artificial Intelligence Systems or Tools Procedure requires users to maintain confidentiality of highly sensitive, sensitive, commercial and personal information throughout the data management life cycle. Before an AI system or tool is used, an AI self-assurance assessment must be conducted, except when using an approved, deployed enterprise-grade system such as Copilot.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Scope\nThis policy applies to:\nall information collected, used or generated at UNSW or during UNSW-affiliated   research (with the exception of library scholarly information resources procured under a contract or licence), including  published research data,  unpublished  research data ,  research materials ,  master data ,  reference data ,  metadata , and records  all formats of data, information and records including print, electronic, audiovisual or any other format    UNSW information resources  (including for example, procured library and scholarly information resources)  digital communication platforms/technologies  artificial intelligence systems and tools  all devices connected to a ",
+              "url": "https://www.unsw.edu.au/governance/policy/policy-hub/informationgovernancepolicy",
+              "language": "en",
+              "hash": "7ec4f719288fc0d328a2547c3b3957476c90cf043f223b401ec22c4d60f348ea",
+              "location": "lines 145-151; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "UNSW network or used to access  UNSW information resources .\nThis policy applies to  students ,  researchers ,  research trainees ,  employees  and  affiliates . The procedures that follow the policy may state that a more limited scope applies.\nContents\nPrinciples and Objectives\n",
+              "url": "https://www.unsw.edu.au/governance/policy/policy-hub/informationgovernancepolicy",
+              "language": "en",
+              "hash": "7ec4f719288fc0d328a2547c3b3957476c90cf043f223b401ec22c4d60f348ea",
+              "location": "lines 145-151; Coordinator checked continuous source section; excerpt offset 700–980"
+            },
+            {
+              "quote": "1.3    Users of AI systems or tools must ensure that confidentiality of highly sensitive, sensitive, commercial and/or personal information is maintained throughout the data management life cycle.\n2. AI self-assurance assessment\n2.1    Before any AI system or tool (other than for using an approved, deployed enterprise grade system i.e. CoPilot) is used an  AI self-assurance assessment  must be conducted.",
+              "url": "https://www.unsw.edu.au/governance/policy/policy-hub/informationgovernancepolicy",
+              "language": "en",
+              "hash": "7ec4f719288fc0d328a2547c3b3957476c90cf043f223b401ec22c4d60f348ea",
+              "location": "lines 708-710; Section 6: Use of Artificial Intelligence Systems or Tools Procedure, Clauses 1.3 & 2.1"
+            }
+          ]
+        },
+        "claim-unsw-sydney-11": {
+          "id": "claim-unsw-sydney-11",
+          "text": "UNSW's first key principle for AI in assessment requires staff to be honest and transparent about the use of any AI tool where it would reasonably be expected that use of the tool would be disclosed.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Be honest and transparent about the use of any AI tool where it would reasonably be expected that use of the tool would be disclosed.",
+              "url": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+              "language": "en",
+              "hash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+              "location": "Section 'Key principles of AI usage in assessment'"
+            }
+          ]
+        },
+        "draft-claim-unsw-library-tdm-guidance": {
+          "id": "draft-claim-unsw-library-tdm-guidance",
+          "text": "UNSW Library provides guidance for researchers and teaching academics using AI with copyrighted, licensed scholarly resources. The guide lists restrictions on automated scraping, reverse engineering and training AI systems on publisher datasets, and says publishers require attribution of AI use in submitted publications. It warns that publisher positions cannot be confirmed with100% accuracy, terms change, and researchers should check the relevant publisher or journal rules directly.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "UNSW Library provides access to a broad range of scholarly resources which are protected by copyright and are also subject to licence agreements that may place restrictions on how you use them.\n​For specific requests to use custom data, refer to the  individual publisher information .\nGeneral conditions that researchers and academics need to be aware of:\nProhibition on Automated Scraping:\nThe use of automated means to access or gather information is expressly prohibited. This safeguard ensures compliance with ethical standards and legal boundaries.​\nSource Content and Algorithm Protection:\nReverse engineering of source content or algorithms is strictly forbidden. By preserving the integrity ",
+              "url": "https://subjectguides.library.unsw.edu.au/ai-tdm-api/ai",
+              "language": "en",
+              "hash": "ff2c06444730490a9aaf5640f7c09424a4fe85a13b19f90899ab142ffb1a674e",
+              "location": "lines 707-722; Section 'AI and scholarly content' & Disclaimer; excerpt offset 0–700"
+            },
+            {
+              "quote": "and security of AI systems, we maintain trust and uphold best practices.​\nLimitations on Training Data:\nPublisher datasets containing scholarly content cannot be utilised for training AI systems. This restriction prevents unauthorised access to proprietary information and promotes responsible data usage.​\nPublication Restrictions:\nAny datasets generated during AI research cannot be included in published research outputs. This measure safeguards the originality and confidentiality of scholarly work.​\nRequirement to attribute use of AI ​:\nPublisher require researchers to attribute any use of AI when submitting publications.​\nDisclaimer\nUNSW Library cannot confirm with 100% accuracy a publisher",
+              "url": "https://subjectguides.library.unsw.edu.au/ai-tdm-api/ai",
+              "language": "en",
+              "hash": "ff2c06444730490a9aaf5640f7c09424a4fe85a13b19f90899ab142ffb1a674e",
+              "location": "lines 707-722; Section 'AI and scholarly content' & Disclaimer; excerpt offset 700–1400"
+            },
+            {
+              "quote": "&#39;s position on the use of AI-assisted technologies. We recommend that you use the provided information as a starting point for your research of the publisher&#39;s and/or journal&rsquo;s editorial policies and author guidelines related to AI-assisted technologies.\nPublishers constantly update their positions on the use of AI-assisted technologies.&nbsp;For the most up-to-date information, contact the publisher directly.",
+              "url": "https://subjectguides.library.unsw.edu.au/ai-tdm-api/ai",
+              "language": "en",
+              "hash": "ff2c06444730490a9aaf5640f7c09424a4fe85a13b19f90899ab142ffb1a674e",
+              "location": "lines 707-722; Section 'AI and scholarly content' & Disclaimer; excerpt offset 1400–1827"
+            }
+          ]
+        },
+        "claim-unsw-sydney-10": {
+          "id": "claim-unsw-sydney-10",
+          "text": "UNSW has published six AI principles: AI use must benefit UNSW and society; be equitable and respectful of human rights; be trustworthy, safe, and reliable; be transparent; be identifiable, explainable, and contestable; and be secure and resilient.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "The use of AI systems at UNSW benefits UNSW, individuals, society, and the environment. The use of AI systems at UNSW is equitable, and respectful of human rights, diversity, inclusivity, and accessibility. AI systems and their lifecycle at UNSW are trustworthy and are used responsibly, safely, and reliably in accordance with their intended purpose. The use of AI systems is transparent, and people understand when the AI system is engaging with or impacting them, the environment, and/or society. AI systems and their lifecycle used at UNSW are identifiable, explainable, interpretable, accountable, and contestable. AI systems and their lifecycle used at UNSW are secure and resilient.",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+              "location": "Section 'Responsible use of Generative AI tools' - AI principles"
+            }
+          ]
+        },
+        "draft-claim-unsw-assessment-procedure-clause-6-1": {
+          "id": "draft-claim-unsw-assessment-procedure-clause-6-1",
+          "text": "Under Section 6.1 of UNSW's Assessment and Feedback Procedure, the course outline will be published at least one week before the start of the teaching period and will specify for each assessment the allowed role of artificial intelligence and, where relevant, how it can be used. The procedure specifies phased applicability across teaching periods: effective generally from Term 3 2026, Semester 2 2026, and Hexamester 1 2027, with clauses 1.1–1.2 and 1.4 effective from 1 January 2027, and clauses 2.1–2.2 and 3.5–3.7 effective from 1 January 2028.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "6.1.  The course outline will be published at least one week before the start of the teaching period and will include the following for each assessment:\npurpose  learning outcomes  the allowed role of artificial intelligence and, where relevant, how it can be used  weighting toward the  course result   when the assessment task is due for submission and its submission instructions, or when the assessment task will be held  timing and type of feedback  whether it is a hurdle task  whether a short extension is available  whether a supplementary assessment is available.",
+              "url": "https://www.unsw.edu.au/governance/policy/policy-hub/assessmentandprogressionpolicy",
+              "language": "en",
+              "hash": "077c4e4a67d7274e2c5ac8f19bc9c620b5277ff2a0b66110da9788df957c66d2",
+              "location": "lines 248-249; Section 6. Communicating assessment expectations to students, Clause 6.1"
+            },
+            {
+              "quote": "Unless stated otherwise, this procedure is effective for all programs and courses within the scope of this policy from the following teaching periods :\nTerm 3, 2026  Semester 2, 2026  Hexamester 1, 2027.\nThe following requirements are effective from  1 January 2027 :\nclauses 1.1 – 1.2 (aligning an assessment to PLOs, SLOs and CLOs)  clause 1.4 (assuring PLOs and SLOs with secure assessment).\nThe following requirements are effective from  1 January 2028 :\nclauses 2.1 – 2.2 (program-level approaches to assessment)  clauses 3.5 – 3.7 (assessment workload).",
+              "url": "https://www.unsw.edu.au/governance/policy/policy-hub/assessmentandprogressionpolicy",
+              "language": "en",
+              "hash": "077c4e4a67d7274e2c5ac8f19bc9c620b5277ff2a0b66110da9788df957c66d2",
+              "location": "lines 192-197; Procedure Implementation & Version Control, Effective dates"
+            }
+          ]
+        },
+        "claim-unsw-sydney-2": {
+          "id": "claim-unsw-sydney-2",
+          "text": "UNSW's student guidance lists six Levels of AI Assistance for Term 3 2026, Semester 2 2026 and Hexamester 5 2026: No Assistance, Simple Editing Assistance, Planning or Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, and Not Applicable. For Hexamester 6 2026 and Summer Term 2027, the page specifies three AI Assessment Modes: Can't Use AI, Can Use AI and Must Use AI. Students should use the framework for their teaching period and check each assessment's instructions.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Levels of AI assistance\nThis framework applies to students in Term 3 2026, Semester 2 2026 or Hexamester 5 2026.\nThe Levels of AI Assistance framework is designed to help convenors communicate to students how much, or how little AI can be used in the process of planning, creating and producing an assignment. To ensure clarity in UNSW AI policy, and how to use AI responsibly in your assessments, we've created this resource for further guidance. Download the framework or read below.\nDownload framework\nNo assistance\nThis assessment is designed for you to complete without the use of any generative AI.  You are not permitted to use any generative AI tools, software or service to search for or gen",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "erate information or answers.\nSimple editing assistance\nIn completing this assessment, you are permitted to use standard editing and referencing functions in the software you use to complete your assessment (for example Microsoft Word, Mendeley, Zotero).\nYou are not allowed to use any generative AI tools including prompts or features that generate text. Using functions that generate or paraphrase passages of text or other media, whether based on your own work or not, can be grounds for academic misconduct.\nPlanning or design assistance\nThis category permits the use of generative AI as ‘inspiration’ for assessment. For example, generating initial ideas, structures, or outlines. Beyond that, t",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 700–1400"
+            },
+            {
+              "quote": "he use of generative AI is prohibited.\nYou are permitted to use generative AI tools, software or services to generate initial ideas, structures, or outlines only. After you've used generative AI for inspiration you must develop those ideas to produce your own work.\nAssistance with attribution\nThis category permits the use of generative AI as a 'coach'. Learning usually takes effort. In recognition of this, this category requires you to make a first attempt at the task yourself. Once this is done you can use generative AI to improve your submission. The focus is on your thoughts and creation with the AI helping you edit your work.\nThe AI-based edit must be attributed, and this reinforces the ",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 1400–2100"
+            },
+            {
+              "quote": "responsible use of generative AI in a scholarly context. The degree of referencing or attribution may vary on the nature of the task – from general acknowledgement to full attribution of all editing suggestions. Your Convenor will specify the types of attribution required, as well as when generative AI tools can be used throughout the assessment.\nKeep copies of your drafts as your convenor may also request them as part of the submission\nIf outputs of generative AI tools, software or services form part of your submission and are not appropriately attributed, your Convenor may ask you to explain your work. If you are unable to satisfactorily demonstrate your understanding of your submission an",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 2100–2800"
+            },
+            {
+              "quote": "d how you have done it you may be referred to UNSW Conduct & Integrity Office for investigation for academic misconduct and possible penalties.\nGenerative AI software-based assessments\nThis assessment is designed for you to use generative AI as part of the assessed learning outcomes.  Please refer to the assessment instructions for more details.\nThis category expects a wide range of use of generative AI in assessment. Your convenor will specify what they want you to do with generative AI. This may include assessments where a first draft is generated by generative AI and you are asked to critique that draft; it may be an assessment where a particular generative AI tool is required to be used;",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 2800–3500"
+            },
+            {
+              "quote": " or it may be an assessment where you have options to use or not use those tools.\nNot applicable\nThis assessment would not likely require or benefit from the use of AI. However, if you do use it, it must be properly referenced.\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 431-453; Coordinator checked continuous source section; excerpt offset 3500–3728"
+            },
+            {
+              "quote": "Framework for Hexamester 6 2026/Summer Term 2027\nIn this transitional period, students in specific teaching periods will be subjected to the AI framework below.\nImportant note\nThe framework below only applies to students in Hexamester 6 2026 and Summer Term 2027. If you're currently in a different teaching period, please refer to the framework above.\nAI Assessment Modes\nAI Assessment Modes are part of the University's broader shift from simply asking \"Can you use AI in assessments?\" to \"What role should AI play in assessments and why?\"\nUNSW uses three modes to determine how you use AI when completing an assessment.\nThe mode for each assessment is determined by its educational purpose, learni",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 453-462; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "ng outcomes and the evidence of learning you need to demonstrate.\nDownload framework\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 453-462; Coordinator checked continuous source section; excerpt offset 700–785"
+            },
+            {
+              "quote": "The three AI assessment modes are:\nCan’t Use AI – Independent Demonstration: AI is excluded where its use would undermine evidence of your independent knowledge, skills or judgement.\nCan Use AI – Open Practice: AI may support your learning and task completion where its use does not undermine the evidence the assessment is intended to collect.\nMust Use AI – AI Capability Demonstration: AI use is required where AI capability is itself part of the intended learning and you need to demonstrate that capability through the assessment.",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 462-465; Section 'AI Assessment Modes' (Hexamester 6 2026/Summer Term 2027)"
+            },
+            {
+              "quote": "The role of AI in your assessments\nFrom Hexamester 6 2026 and Summer Term 2027, UNSW will transition from Levels of AI Assistance to a new framework for how you can use AI in your assessments: AI Assessment Modes.\nAs the role of AI in professional practice continues to change, your assessments are evolving to help you develop the skills to use AI effectively, critically and responsibly.\nDuring the transition, make sure you refer to the framework that applies to your current teaching period. You can find information about how you can use AI in each specific assessment in your course outline and instructions from your lecturer or tutor.\nTerm 3/Semester 2/Hexamester 5 2026\nHexamester 6 2026/Sum",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 425-431; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "mer Term 2027\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 425-431; Coordinator checked continuous source section; excerpt offset 700–714"
+            },
+            {
+              "quote": "When using AI, remember to:\nCheck your course guidelines to see if the use of AI is permitted, including its usage as a translation tool. See the levels of AI assistance and what they entail\nMaintain your academic integrity. Do not copy and paste AI-generated materials and claim them as your own. Learn how to reference AI in your assessments\nProtect personal information. Do not include any personal or sensitive information in prompts, your own or other people's (i.e. addresses, name, emails, zID or intellectual property). For data privacy and protection, use Microsoft Copilot using your UNSW account\nVerify accuracy of AI outputs. GenAI tools could produce invalid or unreliable information ('",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 420-425; Coordinator checked continuous source section; excerpt offset 0–700"
+            },
+            {
+              "quote": "fabrications' or 'hallucinations'). Book an appointment with the Academic Skills team if you need guidance.\n",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+              "location": "lines 420-425; Coordinator checked continuous source section; excerpt offset 700–808"
+            }
+          ]
+        },
+        "claim-unsw-sydney-4": {
+          "id": "claim-unsw-sydney-4",
+          "text": "At UNSW, the unauthorised or unacknowledged use of AI in assessments is classified as cheating and considered student misconduct under the Code of Conduct and Values.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "The unauthorised or unacknowledged use of AI in assessments is a form of cheating and is considered to be student misconduct at UNSW under the current Code of Conduct and Values.",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+              "location": "FAQ section 'What are the implications of unauthorised use of AI?'"
+            }
+          ]
+        },
+        "claim-unsw-sydney-1": {
+          "id": "claim-unsw-sydney-1",
+          "text": "UNSW advises students given permission to use AI in assessments to always clearly acknowledge that use when planning, designing, or writing their assessment.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "If you are given permission and wish to use AI in the process of planning, designing, or writing your assessment, you should always clearly acknowledge this.",
+              "url": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+              "language": "en",
+              "hash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+              "location": "Main content section 'When using AI in your assessment'"
+            }
+          ]
+        },
+        "claim-unsw-sydney-22": {
+          "id": "claim-unsw-sydney-22",
+          "text": "UNSW requires that students must follow assessment instructions regarding AI use, that what students present must be their own work, and that students must acknowledge all sources including AI as an external source using proper referencing.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Students must follow the assessment instructions... What students present must be their own work... Students must acknowledge sources. Students should attribute all sources using proper referencing, unless the assessment nature or instructions exempt them from doing so. External sources that must be referenced include both the work of others and sources from digital or physical objects, with AI classified as an external source.",
+              "url": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+              "language": "en",
+              "hash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca",
+              "location": "Section 'Guidance to students' > fundamental principles of assessment"
+            }
+          ]
+        }
+      }
+    },
+    "yale-university": {
+      "slug": "yale-university",
+      "name": "Yale University",
+      "recordSha256": "ce7623d1c69b3b9cafd08bb768e300334bfa2a105ac2ad59ceb27d42e7374903",
+      "schoolFingerprint": "ce7623d1c69b3b9cafd08bb768e300334bfa2a105ac2ad59ceb27d42e7374903",
+      "universityRevisionId": "qs20-22-v6-r1-20261018",
+      "experience": "compact_evidence",
+      "presentationRevision": "qs20-22-v6-r1-20261018",
+      "images": [],
+      "scope": {
+        "en": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+        "zh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+      },
+      "topics": {
+        "coursework": {
+          "en": "Instructors specify permitted AI use in course syllabi. Students must not use AI tools in coursework or evaluations unless explicitly authorized.",
+          "zh": "任课教师在课程教学大纲中明确 AI 许可范围。未经任课教师明确允许，学生不得在课程作业或学术评价中使用 AI 工具。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        },
+        "exams": {
+          "en": "Permissibility of generative AI during exams is determined by individual instructors in course policies and syllabi; AI use is not permitted unless authorized by the instructor. There is no university-wide blanket permission or mandatory in-writing format unless specified in the course syllabus.",
+          "zh": "考试中是否允许使用生成式 AI 由任课教师在课程政策及教学大纲中规定；未经教师明确许可，不得使用 AI。全校范围内无统括性许可，除课程教学大纲特别规定外，亦无全校统一的书面形式硬性要求。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        },
+        "disclosure": {
+          "en": "Under GSAS academic integrity standards, students must attribute all AI assistance and possess the ability to articulate their research and composition process, including draft history if requested.",
+          "zh": "依据 GSAS 学术诚信标准，学生须对所有 AI 辅助进行规范致谢，并在被要求时具备阐释研究与创作过程（包括草稿历史）的能力。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        },
+        "privacy_data": {
+          "en": "Yale's September 2023 Provost guidance says not to enter confidential, legally restricted, Moderate-risk or High-risk Yale data into an AI tool. The current institutional directory separately lists service-specific data classifications, including Clarity for High-risk data with special ePHI and DUA conditions, while Radiate web search is limited to Low-risk data. Follow the service's access restrictions and applicable data agreements; these classifications do not settle authorization for every dataset.",
+          "zh": "耶鲁 2023 年 9 月教务长指引表示，不要将机密、受法律限制、中风险或高风险的耶鲁数据输入 AI 工具。当前校内目录另列各服务的数据分类，例如 Clarity 可处理高风险数据但有专门 ePHI 环境及 DUA 条件，Radiate 网络搜索仅限低风险数据。须遵守具体服务的访问限制及适用数据协议；目录分类不能替代对每份数据集使用权限的判断。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        },
+        "academic_integrity": {
+          "en": "Inserting AI-generated content into submitted work without proper attribution constitutes an academic integrity violation. Under GSAS 2026–2027 standards, graduate students must consult relevant faculty before using AI in coursework or research and must be prepared to articulate and demonstrate their drafting process if requested, but there is no universal requirement for all students to log every prompt. Disciplinary responses are managed by the Committee on Regulations and Discipline; written student statements are ordinarily due within two weeks.",
+          "zh": "在提交作品中混入 AI 生成内容且未适当归属构成学术诚信违规。依据 GSAS 2026–2027 年规范，研究生在将 AI 用于课程或研究前须咨询相关教师，并在被询问时能够阐明与展示起草过程，但这并非要求所有学生强制记录每一次提示词。纪律处理由规章与纪律委员会管理，学生书面申辩声明通常应在两周内提交。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        },
+        "approved_tools": {
+          "en": "Yale provides institutional tools including Microsoft Copilot, Clarity, and Claude Enterprise, and permits Zoom AI Companion with account controls. Tool availability does not confer academic assessment permission.",
+          "zh": "耶鲁大学提供 Microsoft Copilot、Clarity 及 Claude Enterprise 等校内核准工具，并在受控设置下开通 Zoom AI Companion。工具的开通并不创设课程考核许可。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        },
+        "research_publication": {
+          "en": "Yale Library guidance requires that use of generative AI with licensed electronic resources must comply with vendor license agreements, which often prohibit commercial text and data mining or feeding content into external AI models.",
+          "zh": "耶鲁大学图书馆指引明确要求，将生成式 AI 与订阅电子资源结合使用时，必须严格遵守数据库供应商许可协议，协议通常禁止商业性文本与数据挖掘或将内容输入外部 AI 模型。",
+          "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
+          "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
+        }
+      },
+      "topicBasis": {
+        "coursework": "Instructors specify permitted AI use in course syllabi. Students must not use AI tools in coursework or evaluations unless explicitly authorized.",
+        "exams": "Permissibility of generative AI during exams is determined by individual instructors in course policies and syllabi; AI use is not permitted unless authorized by the instructor. There is no university-wide blanket permission or mandatory in-writing format unless specified in the course syllabus.",
+        "disclosure": "Under GSAS academic integrity standards, students must attribute all AI assistance and possess the ability to articulate their research and composition process, including draft history if requested.",
+        "privacy_data": "Yale's September 2023 Provost guidance says not to enter confidential, legally restricted, Moderate-risk or High-risk Yale data into an AI tool. The current institutional directory separately lists service-specific data classifications, including Clarity for High-risk data with special ePHI and DUA conditions, while Radiate web search is limited to Low-risk data. Follow the service's access restrictions and applicable data agreements; these classifications do not settle authorization for every dataset.",
+        "academic_integrity": "Inserting AI-generated content into submitted work without proper attribution constitutes an academic integrity violation. Under GSAS 2026–2027 standards, graduate students must consult relevant faculty before using AI in coursework or research and must be prepared to articulate and demonstrate their drafting process if requested, but there is no universal requirement for all students to log every prompt. Disciplinary responses are managed by the Committee on Regulations and Discipline; written student statements are ordinarily due within two weeks.",
+        "approved_tools": "Yale provides institutional tools including Microsoft Copilot, Clarity, and Claude Enterprise, and permits Zoom AI Companion with account controls. Tool availability does not confer academic assessment permission.",
+        "research_publication": "Yale Library guidance requires that use of generative AI with licensed electronic resources must comply with vendor license agreements, which often prohibit commercial text and data mining or feeding content into external AI models."
+      },
+      "do": [
+        {
+          "en": "Review each course syllabus and consult instructors regarding permitted AI writing assistance before submission.",
+          "zh": "在提交前查阅各门课程教学大纲，并咨询任课教师以了解获准的 AI 写作辅助范围。",
+          "kind": "requirement",
+          "claimIds": [
+            "yale-claim-1",
+            "draft-claim-yale-gsas-academic-integrity-ai"
+          ]
+        },
+        {
+          "en": "For GSAS academic work, acknowledge and attribute permitted generative AI assistance as required by the applicable GSAS standards and course rules.",
+          "zh": "对于 GSAS 学术作业，依适用的 GSAS 标准及课程规定，对获准使用的生成式 AI 辅助进行致谢与引用。",
+          "kind": "requirement",
+          "claimIds": [
+            "draft-claim-yale-gsas-academic-integrity-ai"
+          ]
+        },
+        {
+          "en": "GSAS standards expect students to be able to demonstrate and articulate the process behind their work, including research, drafting and composition history; this is not a requirement to retain every AI chat log.",
+          "zh": "GSAS 标准期望学生能够展示并阐释完成作品的过程，包括研究、草稿形成及写作历史；这不等于要求保留每一次 AI 对话日志。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "draft-claim-yale-gsas-writing-process-draft-history"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use generative AI tools in coursework or examinations unless explicitly authorized by the instructor.",
+          "zh": "未经任课教师明确许可，切勿在课程作业或考试中使用生成式 AI 工具。",
+          "kind": "requirement",
+          "claimIds": [
+            "yale-claim-1",
+            "yale-claim-2"
+          ]
+        },
+        {
+          "en": "Read Yale's September 2023 Provost warning about entering protected Yale data into any AI tool alongside the current institutional directory's service-specific restrictions; do not treat directory access as authorization for every dataset.",
+          "zh": "阅读耶鲁 2023 年 9 月教务长关于不要将受保护的耶鲁数据输入任何 AI 工具的提醒时，也须核对当前校内目录中各服务的具体限制；目录访问权不代表每份数据集均获准使用。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "yale-claim-1"
+          ]
+        },
+        {
+          "en": "Do not use Clarity Radiate for Moderate or High Risk data, as search queries are transmitted to external models.",
+          "zh": "切勿将 Clarity Radiate 用于中风险或高风险数据，因其搜索查询会外传至第三方外部模型。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "yale-claim-1"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "draft-claim-yale-gsas-discipline-committee-procedure"
+        ],
+        "outcomes": [
+          "draft-claim-yale-gsas-discipline-committee-procedure"
+        ],
+        "appeal": [
+          "draft-claim-yale-gsas-discipline-committee-procedure"
+        ]
+      },
+      "claims": {
+        "cl-yale-university-zoom-ai-companion-165": {
+          "id": "cl-yale-university-zoom-ai-companion-165",
+          "text": "Yale's AI tools directory lists Zoom AI Companion for students, staff and faculty, free with a Zoom account and enabled by default for account holders. The Zoom AI Companion row lists the data classification level as High.",
+          "claimType": "ai_tool_treatment",
+          "evidence": [
+            {
+              "quote": "Zoom AI Companion\n\nZoom AI Companion is an AI feature within the Zoom app that enhances meetings by transcribing meetings, assisting with organizing meetings and sharing files, generating summarized meeting notes, answering questions about a meeting, and providing action items.\n\nAvailable to: students, staff, and faculty\n\nPricing: Free (with Zoom account)\n\nHow to Access: Zoom AI Companion is enabled by default for everyone with a Zoom account\n\nHigh\n\n",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 161-173; Coordinator checked full contiguous table row/policy paragraph"
+            }
+          ]
+        },
+        "yale-claim-5": {
+          "id": "yale-claim-5",
+          "text": "Yale states that instructors have authority within each course to determine whether and how students may use AI on assignments.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "Within each course, instructors at Yale have full authority to determine whether and how students may use AI when completing assignments.",
+              "url": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+              "language": "en",
+              "hash": "2cd0d46503913e910859a794afe1c351afa0cde76be5e070238fab0f331128a7",
+              "location": "Guiding principles, course authority"
+            }
+          ]
+        },
+        "yale-claim-2": {
+          "id": "yale-claim-2",
+          "text": "Yale expects faculty to give clear instructions on permitted AI use and attribution, and expects students to follow instructor guidelines for coursework.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Faculty members are expected to provide clear instructions on the permitted use of generative AI tools for academic work and requirements for attribution. Likewise, students are expected to follow their instructors' guidelines about permitted use of AI for coursework.",
+              "url": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+              "language": "en",
+              "hash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+              "location": "General guidelines, academic integrity"
+            }
+          ]
+        },
+        "draft-claim-yale-library-licensed-resources-ai": {
+          "id": "draft-claim-yale-library-licensed-resources-ai",
+          "text": "Yale Library guidance says licensed resources generally may not be used with AI because of copyright and vendor licensing agreements. Users should check the specific resource licence; the guide directs licence questions to the License Review Steering Committee and copyright questions to the Yale Copyright Librarian. The captured guide shows Last Updated September9,2026.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Can you use AI with Licensed Resources?\n\nGenerally, the answer is no. This is largely due to copyright and licensing agreements between the library and vendors that govern these resources.\n\nYale has a License Review Steering Committee  that is dedicated to negotiating and reviewing electronic resources for the Yale Community. This pertains to all of the databases, music, and art that Yale offers its faculty, students, and staff.\n\nThe Subject Specialist in your area may be able to provide information on resources for your scholarly research.\n\nPlease review our general guidelines which discusses whether a particular licensed e-resource can be used or not in association with AI.  For questions ",
+              "url": "https://guides.library.yale.edu/libraryAI",
+              "language": "en",
+              "hash": "e82ee378da39deef132e51ff4bad7dfb04160da5fc4953c173494e2862293588",
+              "location": "lines 85-95; Can you use AI with Licensed Resources? and Copyright Guidance; excerpt offset 0–700"
+            },
+            {
+              "quote": "on existing licenses or about appropriate usage of licensed materials, please email LRSC.\n\nIf you are unsure on how to move forward with potentially using AI and licensed resources, or need copyright guidance in general, please contact Yale Copyright Librarian.",
+              "url": "https://guides.library.yale.edu/libraryAI",
+              "language": "en",
+              "hash": "e82ee378da39deef132e51ff4bad7dfb04160da5fc4953c173494e2862293588",
+              "location": "lines 85-95; Can you use AI with Licensed Resources? and Copyright Guidance; excerpt offset 700–961"
+            },
+            {
+              "quote": "Last Updated: Sep 9, 2026 12:57 PM",
+              "url": "https://guides.library.yale.edu/libraryAI",
+              "language": "en",
+              "hash": "e82ee378da39deef132e51ff4bad7dfb04160da5fc4953c173494e2862293588",
+              "location": "lines 111-111; Footer: Last Updated timestamp"
+            }
+          ]
+        },
+        "yale-claim-1": {
+          "id": "yale-claim-1",
+          "text": "Yale's September2023 Provost guidance says not to enter confidential, legally restricted, moderate-risk or high-risk Yale data into an AI tool. The current institutional directory separately lists Clarity for High-risk data with a special ePHI environment and DUA restrictions, while Radiate web search is listed for Low-risk data. It lists Copilot Chat Web as Moderate and Work as High, Gemini and NotebookLM as Moderate, and Claude Enterprise as High with a special ePHI environment. These platform classifications must be read with each service's access restrictions and applicable data agreements; they do not resolve authorization for every dataset.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "1.    Protect Yale’s confidential information and your own. Do not enter confidential or legally restricted data or any data that Yale’s data classification policy identifies as moderate or high-risk into an AI tool.  If you are not sure whether you should share certain data, please review Yale’s data classification policy.",
+              "url": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+              "language": "en",
+              "hash": "9bae29601dad8e97fd1a915eaf5da51123bc3de0410261474d9bb5256ec1b04d",
+              "location": "lines 41-41; Section 1: Protect Yale’s confidential information and your own"
+            },
+            {
+              "quote": "Wednesday, September 20, 2023",
+              "url": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+              "language": "en",
+              "hash": "9bae29601dad8e97fd1a915eaf5da51123bc3de0410261474d9bb5256ec1b04d",
+              "location": "lines 33-33; Publication date header"
+            },
+            {
+              "quote": "Clarity Platform\n\nThe Clarity Platform provides access to AI chatbots similar to OpenAI’s ChatGPT or Microsoft Copilot Chat but housed within Yale’s secure infrastructure, and provides access to large language models from Anthropic, Google, and OpenAI. The featured Clarity AI agents are generative AI tools that can help you write reports, write and check code, describe and analyze uploaded images, and summarize uploaded documents. In addition, the Clarity Platform offers API access as well as a self-service portal for building and deploying Custom Agents tailored to specific tasks and use cases.\n\nAvailable to: staff, faculty, and students\n\nPricing: Free except for Clarity API access\n\nHow to ",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 99-113; Coordinator checked full contiguous table row/policy paragraph; excerpt offset 0–700"
+            },
+            {
+              "quote": "Access: Clarity Platform Chat\n\nHigh, with special environment for ePHI. Refer to Clarity Platform Security for ePHI access requests and restrictions on external obligation data subject to Data Use Agreements (DUAs).\n\nLow, when using web search feature with the Radiate agent.\n\n",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 99-113; Coordinator checked full contiguous table row/policy paragraph; excerpt offset 700–977"
+            },
+            {
+              "quote": "Copilot Chat, formerly known as Copilot with data protection, is a secure AI chatbot using GPT-5 and other models. It does not use your conversations to train any AI model or share any data with OpenAI, ensuring your information remains private. Functionality is split into a Work and a Web tab. High risk data should only be used in the Work search. You can use Copilot Chat for writing emails, reports, and other text, generate images based on natural language descriptions, or upload documents and images for extracting information and answering questions.\n\nAvailable to: staff, faculty, and students (18 years of age or above)\n\nPricing: Free\n\nHow to Access: Copilot Chat (log in with your Yale em",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 115-123; Copilot Chat: Description, Audience, and Data Classification; excerpt offset 0–700"
+            },
+            {
+              "quote": "ail address) Students should log in at  Copilot Chat for Students\n\nModerate in Web tab, High in Work tab",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 115-123; Copilot Chat: Description, Audience, and Data Classification; excerpt offset 700–804"
+            },
+            {
+              "quote": "Google Gemini for Education is an AI assistant designed to enhance productivity and creativity. It can be used for tasks such as drafting emails, summarizing documents, and generating creative content. By leveraging its capabilities, users can save time and effort while ensuring clear and professional communication. NotebookLM is also part of the Google for Education offering. NotebookLM is a research and note-taking tool that helps analyze, summarize, and interact with uploaded documents using the Gemini language models.\n\nAvailable to: staff, faculty and  students (18 years of age or above)\n\nPricing: Free\n\nHow to Access: Google Gemini and NotebookLM (login with your Yale Google Workspace (E",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 127-135; Google Gemini and NotebookLM: Description, Audience, and Data Classification; excerpt offset 0–700"
+            },
+            {
+              "quote": "liApps) account)\n\nModerate",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 127-135; Google Gemini and NotebookLM: Description, Audience, and Data Classification; excerpt offset 700–726"
+            },
+            {
+              "quote": "Claude is an AI assistant created by Anthropic that you can use to draft and edit documents, summarize and analyze files, brainstorm ideas, write and explain code, and answer questions, all within Yale’s security and privacy protections. Through Yale’s Claude Enterprise subscription you will also get access to Claude Chat, Code, and Cowork*.\n*Cowork is not available in the HIPAA/Zero Data Retention environment.\n\nAvailable to: staff, faculty, and students (with department or faculty sponsorship)\n\nPricing: $20/month (Standard License).\n$50/month (Premium License)\n\nHow to Access: Submit a license request. After a license has been obtained, access Claude through the web version, desktop app, or ",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 235-245; Claude Enterprise: Description, Audience, Pricing, and Data Classification; excerpt offset 0–700"
+            },
+            {
+              "quote": "mobile app (log in with your Yale email).\n\nHigh, with special environment for ePHI.",
+              "url": "https://ai.yale.edu/yales-ai-tools-and-resources",
+              "language": "en",
+              "hash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+              "location": "lines 235-245; Claude Enterprise: Description, Audience, Pricing, and Data Classification; excerpt offset 700–783"
+            }
+          ]
+        },
+        "draft-claim-yale-gsas-writing-process-draft-history": {
+          "id": "draft-claim-yale-gsas-writing-process-draft-history",
+          "text": "Under GSAS 2026–2027 standards, graduate students have the responsibility to be able to articulate explicitly the process by which they conduct research and draft work, including the ability to provide a draft history of submitted work demonstrating original thought and composition. In evaluating disciplinary allegations involving inappropriate use of AI tools, the absence of this material or an inability to articulate clearly the research and writing process may be taken into account.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Additionally, graduate students have the responsibility to be able to articulate explicitly the process by which they conduct research and draft work, including the ability to provide a draft history of any work submitted for evaluation that demonstrates original thought and composition. The absence of this material and/or the inability to articulate clearly the research and writing process may be taken into account in evaluating disciplinary allegations involving inappropriate use of AI tools.",
+              "url": "https://catalog.yale.edu/gsas/policies-regulations/academic-regulations/personal-conduct-academic-integrity-standards/",
+              "language": "en",
+              "hash": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+              "location": "lines 177-177; Research and drafting process articulation and draft history"
+            }
+          ]
+        },
+        "draft-claim-yale-gsas-discipline-committee-procedure": {
+          "id": "draft-claim-yale-gsas-discipline-committee-procedure",
+          "text": "Under GSAS Committee on Regulations and Discipline procedures, students are asked to respond in writing to an allegation. Written statements are ordinarily due to the secretary two weeks after the student receives notification of the charge. The statement should admit or deny the allegations, including admission of some allegations and denial of others where applicable.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Student statement. Students will be asked to respond in writing to the allegation. Providing a written statement allows the student to present their perspective on events and any broader context or other information that will help the Coordinating Group and committee to better understand the situation. Written statements will ordinarily be due to the secretary two weeks after the student receives notification of the charge. In their statement, students should admit or deny allegations against them. In some cases, the student may admit responsibility for some portion of the allegations and deny others.",
+              "url": "https://catalog.yale.edu/gsas/policies-regulations/academic-regulations/personal-conduct-academic-integrity-standards/",
+              "language": "en",
+              "hash": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+              "location": "lines 243-243; Procedures: Student statement response deadline"
+            }
+          ]
+        },
+        "draft-claim-yale-gsas-academic-integrity-ai": {
+          "id": "draft-claim-yale-gsas-academic-integrity-ai",
+          "text": "Under the Graduate School of Arts and Sciences (GSAS) 2026–2027 Personal Conduct and Academic Integrity Standards, inserting AI-generated text into an assignment without proper attribution is a violation of academic integrity standards, and using AI tools in a manner not authorized by faculty may also constitute a breach. Permissibility of AI writing tools varies from course to course and across research settings; graduate students are responsible for consulting relevant faculty members before using AI tools for coursework or research.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Graduate School of Arts and Sciences Programs and Policies 2026–2027",
+              "url": "https://catalog.yale.edu/gsas/policies-regulations/academic-regulations/personal-conduct-academic-integrity-standards/",
+              "language": "en",
+              "hash": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+              "location": "lines 15-15; Bulletin title: 2026–2027 edition"
+            },
+            {
+              "quote": "A note on artificial intelligence (AI) tools: Inserting AI-generated text into an assignment without proper attribution is a violation of academic integrity standards, and using AI tools in a manner that is not authorized by the faculty may also be considered a breach of academic integrity. How and whether the use AI writing tools are permitted will vary from course to course and in different research settings. Students are responsible for consulting with the relevant faculty member(s) before using these tools to complete coursework or produce research. Guidelines and policies governing these practices may change over time. Students are responsible for remaining informed about acceptable use",
+              "url": "https://catalog.yale.edu/gsas/policies-regulations/academic-regulations/personal-conduct-academic-integrity-standards/",
+              "language": "en",
+              "hash": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+              "location": "lines 175-175; A note on artificial intelligence (AI) tools; excerpt offset 0–700"
+            },
+            {
+              "quote": " policies for AI tools.",
+              "url": "https://catalog.yale.edu/gsas/policies-regulations/academic-regulations/personal-conduct-academic-integrity-standards/",
+              "language": "en",
+              "hash": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+              "location": "lines 175-175; A note on artificial intelligence (AI) tools; excerpt offset 700–723"
+            }
+          ]
+        }
+      }
+    },
+    "epfl": {
+      "slug": "epfl",
+      "name": "EPFL – École polytechnique fédérale de Lausanne",
+      "recordSha256": "6eb57084fbc9ae39847cf3a7135e07df7d5fec4193114224692f4d9b831a30d5",
+      "schoolFingerprint": "6eb57084fbc9ae39847cf3a7135e07df7d5fec4193114224692f4d9b831a30d5",
+      "universityRevisionId": "qs20-22-v6-r1-20261018",
+      "experience": "compact_evidence",
+      "presentationRevision": "qs20-22-v6-r1-20261018",
+      "images": [],
+      "scope": {
+        "en": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+        "zh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+      },
+      "topics": {
+        "coursework": {
+          "en": "EPFL guidelines for using AI in studying advise students that they should not use AI during exams or assessments unless explicitly allowed, and tell students to check their course policy or ask their instructor. Assessment material that is not the student's personal and original contribution must be recognizable as such under LEX 1.3.3 Article 4; guidelines advise disclosing AI-tool use in a statement and checking the course policy or instructor for its formulation.",
+          "zh": "EPFL 学习使用 AI 指引建议学生，除非明确允许，否则在考试或考核中不应使用 AI，并告知学生核对课程规定或咨询教师。依据 Lex 1.3.3 第 4 条，非学生本人原创贡献的考核材料必须可被识别；指引建议在声明中披露 AI 工具的使用，并查阅课程规定或教师要求确定表述方式。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        },
+        "exams": {
+          "en": "EPFL studying guidelines advise students that they should not use AI during exams or assessments unless explicitly allowed by the course policy or instructor. Suspected unauthorized use or non-disclosure is referred as a potential integrity case; the guidance describes submitting AI-generated content as one’s own without proper attribution as AI plagiarism.",
+          "zh": "EPFL 学习指引建议，除非课程规定或教师明确允许，否则学生在考试或考核中不应使用 AI。涉嫌未经授权使用或未披露的情况作为潜在诚信案件转交处理；指引将把 AI 生成内容冒充本人作品且未适当注明来源的行为描述为 AI 抄袭。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        },
+        "disclosure": {
+          "en": "EPFL's studying guide states that assessment material that is not the student’s personal and original contribution must be recognizable as such under Lex 1.3.3 Article 4, says the use of AI tools should be disclosed in a statement, and directs students to check their course's specific AI policy or ask the instructor how to formulate it. For manuscripts intended for publication, EPFL Library guidance states that the LLM used, what it was used for, and how it was used must be disclosed in the manuscript, adhering to publisher policies.",
+          "zh": "EPFL 学习指引指出，依据 Lex 1.3.3 第 4 条，非学生个人原创贡献的考核材料必须清晰可辨，表示应（should）在声明中披露 AI 工具的使用，并指引学生核对课程具体 AI 规定或咨询教师如何表述。对于拟发表的手稿，EPFL 图书馆指引规定必须（must）在手稿中披露所使用的 LLM、具体用途及使用方式，并遵守所选出版机构的相关政策。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        },
+        "privacy_data": {
+          "en": "EPFL advises students not to input confidential, private, or personal information into public generative AI tools because data is shared with private companies and control is lost. In the captured EPFL teaching guide, enterprise licenses such as Microsoft 365 Copilot via an EPFL account are described as unsuitable for regulated data because the guide states that EPFL has not signed a data processing agreement guaranteeing protections aligned with institutional needs or Swiss personal-data legislation; the current central-IT contract or tenant DPA status was not independently established in this review.",
+          "zh": "EPFL 建议学生切勿将机密、隐私或个人信息输入外部公开生成式 AI 工具，因为数据将与私营企业共享且失去控制。在已采集的 EPFL 教学指引中，通过 EPFL 账户使用的企业许可（如 Microsoft 365 Copilot）被描述为不适合处理受监管数据，因为该指引称 EPFL 尚未签署确保数据保护措施符合机构需求或瑞士个人数据保护法的数据处理协议（DPA）；本次审查未独立核实当前中央 IT 合同或租户 DPA 状态。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        },
+        "approved_tools": {
+          "en": "EPFL lists official educational AI services including AI Tutors (CEDE) deployed within participating courses, aiaiapps for teachers, and the internal EPFL Chatbot. Microsoft 365 Copilot is listed with allowed availability, but tool directory listing does not constitute assessment permission or a verified current IT DPA.",
+          "zh": "EPFL 列出了官方教学 AI 服务，包括在参与课程中部署的 AI Tutors (CEDE)、面向教师的 aiaiapps 以及校内 EPFL Chatbot。Microsoft 365 Copilot 处于允许可用状态，但工具目录列出并不构成考核使用许可，亦不代表已确认当前中央 IT DPA。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        },
+        "research_publication": {
+          "en": "EPFL Library guidance clarifies that LLMs cannot be listed as authors or co-authors under the Swiss Copyright Act (Art. 6) because they lack accountability. Under EPFL Library's agreement with Elsevier, CC-BY open access content may be used with any AI tool, whereas for licensed closed or CC-BY-NC-ND publications, use is permitted with closed non-learning AI tools or with open learning tools operating in a secure, user-controlled environment (on-premises or solely for authorized users); commercial use is prohibited and publications must not reproduce closed or CC-BY-NC-ND content.",
+          "zh": "EPFL 图书馆指引明确说明，依据瑞士著作权法（第 6 条），LLM 因无法承担责任而不能列为作者或合著者。依据 EPFL 图书馆与 Elsevier 的协议，CC-BY 开放获取成果可用于任何 AI 工具；而对于订阅期刊受限内容或 CC-BY-NC-ND 成果，仅允许在不参与训练的封闭式 AI 工具中或在用户控制的安全受控环境（本地自建或仅限授权用户）中运行的学习型工具中使用；禁止商业用途，且生成结果不得复制封闭或 CC-BY-NC-ND 原文内容。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        },
+        "academic_integrity": {
+          "en": "Submitting AI-generated content as one's own work without proper attribution constitutes AI plagiarism under Lex 1.3.3 Article 4. AI detection tools are not admissible as stand-alone evidence due to false-positive risks; teacher referral of suspected non-disclosure to the section director and Legal Affairs is a misconduct evaluation referral, not an adjudication of cheating. Formal grade or notified failure disputes follow EPFL study regulations: internal reassessment within 10 days or external appeal to the Commission de recours interne des EPF within 30 days calculated from postal reception of the grade or notified failure; these rules govern academic grading disputes, and whether specific appeal pathways apply to AI disciplinary misconduct sanctions is an unverified evidence gap.",
+          "zh": "依据 Lex 1.3.3 第 4 条，将 AI 生成内容作为本人作品提交且未适当归属构成 AI 抄袭。因存在较高误报风险，AI 检测工具不能单独作为抄袭证据；教师对疑似未披露情况向系主任及法务部门的报告属于行为性质评估移送，而非直接认定作弊。正式成绩或不及格通知争议遵循 EPFL 学习管理规定：在收到学业成绩或不及格书面邮寄通知后 10 天内申请校内重评，或 30 天内向 EPF 内部申诉委员会提出外部申诉；此程序适用于学业成绩争议，针对 AI 纪律处分的具体申诉途径仍属未核实的证据缺口。",
+          "meaningEn": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "学习与教学中使用 AI 的指引；LEX 1.3.3 引文及区分借用内容指令（法文文本具约束力，英文为参考译文，其 Version xx. 页脚占位标识尚未解决）；平时考核规则；图书馆 AI 指导。全校审计状态保持 PARTIAL。"
+        }
+      },
+      "topicBasis": {
+        "coursework": "EPFL guidelines for using AI in studying advise students that they should not use AI during exams or assessments unless explicitly allowed, and tell students to check their course policy or ask their instructor. Assessment material that is not the student's personal and original contribution must be recognizable as such under LEX 1.3.3 Article 4; guidelines advise disclosing AI-tool use in a statement and checking the course policy or instructor for its formulation.",
+        "exams": "EPFL studying guidelines advise students that they should not use AI during exams or assessments unless explicitly allowed by the course policy or instructor. Suspected unauthorized use or non-disclosure is referred as a potential integrity case; the guidance describes submitting AI-generated content as one’s own without proper attribution as AI plagiarism.",
+        "disclosure": "EPFL's studying guide states that assessment material that is not the student’s personal and original contribution must be recognizable as such under Lex 1.3.3 Article 4, says the use of AI tools should be disclosed in a statement, and directs students to check their course's specific AI policy or ask the instructor how to formulate it. For manuscripts intended for publication, EPFL Library guidance states that the LLM used, what it was used for, and how it was used must be disclosed in the manuscript, adhering to publisher policies.",
+        "privacy_data": "EPFL advises students not to input confidential, private, or personal information into public generative AI tools because data is shared with private companies and control is lost. In the captured EPFL teaching guide, enterprise licenses such as Microsoft 365 Copilot via an EPFL account are described as unsuitable for regulated data because the guide states that EPFL has not signed a data processing agreement guaranteeing protections aligned with institutional needs or Swiss personal-data legislation; the current central-IT contract or tenant DPA status was not independently established in this review.",
+        "approved_tools": "EPFL lists official educational AI services including AI Tutors (CEDE) deployed within participating courses, aiaiapps for teachers, and the internal EPFL Chatbot. Microsoft 365 Copilot is listed with allowed availability, but tool directory listing does not constitute assessment permission or a verified current IT DPA.",
+        "research_publication": "EPFL Library guidance clarifies that LLMs cannot be listed as authors or co-authors under the Swiss Copyright Act (Art. 6) because they lack accountability. Under EPFL Library's agreement with Elsevier, CC-BY open access content may be used with any AI tool, whereas for licensed closed or CC-BY-NC-ND publications, use is permitted with closed non-learning AI tools or with open learning tools operating in a secure, user-controlled environment (on-premises or solely for authorized users); commercial use is prohibited and publications must not reproduce closed or CC-BY-NC-ND content.",
+        "academic_integrity": "Submitting AI-generated content as one's own work without proper attribution constitutes AI plagiarism under Lex 1.3.3 Article 4. AI detection tools are not admissible as stand-alone evidence due to false-positive risks; teacher referral of suspected non-disclosure to the section director and Legal Affairs is a misconduct evaluation referral, not an adjudication of cheating. Formal grade or notified failure disputes follow EPFL study regulations: internal reassessment within 10 days or external appeal to the Commission de recours interne des EPF within 30 days calculated from postal reception of the grade or notified failure; these rules govern academic grading disputes, and whether specific appeal pathways apply to AI disciplinary misconduct sanctions is an unverified evidence gap."
+      },
+      "do": [
+        {
+          "en": "Check course outlines and consult instructors regarding permitted AI use before using tools for studying or coursework.",
+          "zh": "在将生成式 AI 用于学习或课程作业前，查阅课程大纲并咨询任课教师以确认许可范围。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "draft-claim-epfl-assessment-prior-authorization",
+            "CL-003"
+          ]
+        },
+        {
+          "en": "Ensure assessment material that is not your personal and original contribution is recognizable as such under LEX 1.3.3 Article 4; the studying guide says AI tool use should be disclosed in a statement and directs students to check the course policy or instructor for its formulation.",
+          "zh": "依据 Lex 1.3.3 第 4 条确保非本人原创贡献的考核材料清晰可辨；学习指引表示应在声明中披露 AI 工具使用，并指引学生查阅课程规定或咨询教师确定表述方式。",
+          "kind": "requirement",
+          "claimIds": [
+            "draft-claim-epfl-assessment-prior-authorization",
+            "CL-001",
+            "draft-claim-epfl-lex-1-3-3-v2-2"
+          ]
+        },
+        {
+          "en": "For manuscripts intended for publication, disclose the LLM tool used, its purpose, and method in the manuscript adhering to publisher policies.",
+          "zh": "对于拟发表的手稿，依据图书馆指引在手稿中披露所使用的 LLM 工具、具体用途及使用方式，并遵守出版社规定。",
+          "kind": "requirement",
+          "claimIds": [
+            "draft-claim-epfl-library-ai-disclosure"
+          ]
+        },
+        {
+          "en": "For disputes over an academic grade or notified failure, request internal reassessment within 10 days or appeal to the EPF internal appeals commission within 30 days, both from postal receipt at the student’s address. These deadlines have not been verified as AI disciplinary appeal deadlines.",
+          "zh": "对于学业成绩或不及格通知的争议，可在邮寄通知送达学生地址并收悉后 10 天内申请校内重评，或在收悉后 30 天内向 EPF 内部申诉委员会申诉。这些期限未被核实为 AI 纪律处分的申诉期限。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "draft-claim-epfl-grade-reassessment-appeal"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Students should not use generative AI tools during exams or assessments unless explicitly allowed by the course policy or instructor.",
+          "zh": "学生在考试或考核中不应使用生成式 AI，除非课程规定或教师明确允许。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "draft-claim-epfl-assessment-prior-authorization"
+          ]
+        },
+        {
+          "en": "Do not enter confidential, personal, or regulated data into public AI tools; in the captured teaching guide, enterprise Microsoft 365 Copilot is described as unsuitable for regulated data because the guide states EPFL has not signed an aligned DPA, while current central-IT contract or tenant DPA status was not independently established.",
+          "zh": "切勿将机密、个人或受监管数据输入公开 AI 工具；在已采集的教学指引中，企业版 Microsoft 365 Copilot 因指引称 EPFL 未签署对齐的 DPA 而被描述为不适合受监管数据，当前中央 IT 合同或租户 DPA 状态未独立核实。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "CL-002",
+            "CL-005"
+          ]
+        },
+        {
+          "en": "Do not list Large Language Models as authors or co-authors on manuscripts intended for publication.",
+          "zh": "切勿在拟发表的手稿中将大型语言模型列为作者或合著者。",
+          "kind": "requirement",
+          "claimIds": [
+            "draft-claim-epfl-library-no-ai-author"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "draft-claim-epfl-assessment-prior-authorization",
+          "draft-claim-epfl-lex-1-3-3-v2-2"
+        ],
+        "outcomes": [
+          "draft-claim-epfl-lex-1-3-3-v2-2"
+        ],
+        "appeal": [
+          "draft-claim-epfl-grade-reassessment-appeal"
+        ]
+      },
+      "claims": {
+        "CL-005": {
+          "id": "CL-005",
+          "text": "In the captured EPFL teaching guide, enterprise licenses such as Microsoft 365 Copilot via an EPFL account are described as unsuitable for regulated data because the guide states that EPFL has not signed a data processing agreement guaranteeing protections aligned with institutional needs or Swiss personal-data legislation. The current central-IT contract or tenant DPA status was not independently established in this review.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "However, enterprise licenses such as Microsoft 365 Copilot via your EPFL account are currently not a secure solution for processing regulated data, because no data processing agreement has been signed by EPFL that would guarantee that data protection measures align with institutional needs or with Swiss legislation on personal data protection.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+              "language": "en",
+              "hash": "f6bfafe11a7f1b6fa0f300507c20b2870c3b2eb6b37b9885912de084390ce5a6",
+              "location": "lines 89-89; Data Protection"
+            }
+          ]
+        },
+        "draft-claim-epfl-lex-1-3-3-v2-2": {
+          "id": "draft-claim-epfl-lex-1-3-3-v2-2",
+          "text": "The French LEX1.3.3 directive, originally effective1 January2013 and revised1 September2026 as version2.2, requires scientific and academic work to distinguish borrowed material from the author's personal and original contribution under Article4. Article4 says that failing to identify borrowed material presents it as a personal and original contribution and constitutes plagiarism, referring to Article8. The official Polylex directory states that only the French version is legally binding and that the English version is for information and has no legal force.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Directive concernant l’utilisation, la citation et la référence\ndes sources LEX 1.3.3\ndu 1er janvier 2013, état au 1er septembre 2026",
+              "url": "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.3.3_dir_plagiat_etudiant_fr.pdf",
+              "language": "fr",
+              "hash": "872db10daa0c42fe712407a789af604cec32b08a0bec5447d802140263d6523d",
+              "location": "physical page 1; lines 1-3; Header p. 1"
+            },
+            {
+              "quote": "Article 4\n\nEmprunts et apport personnel\n\n1\n\nTout travail scientifique et académique doit impérativement distinguer :\na.\nles emprunts faits à d’autres travaux (art. 5), de\nb.\nl’apport personnel et nouveau de l’autrice ou de l’auteur.\n2\nLa réutilisation de données ou de code élaborés par des tiers doit être explicitement\nmentionnée.\n3\nTout emprunt (y compris les publications, les données de recherche et les codes) doit être\nreconnaissable comme tel dans le travail, par une citation directe et/ou une paraphrase\nappropriée, ainsi que par les références nécessaires à la source.\n4\nSi les emprunts ne sont pas clairement indiqués dans le travail, l’autrice ou l’auteur laisse à\npenser qu’il s’agit de",
+              "url": "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.3.3_dir_plagiat_etudiant_fr.pdf",
+              "language": "fr",
+              "hash": "872db10daa0c42fe712407a789af604cec32b08a0bec5447d802140263d6523d",
+              "location": "physical page 2; lines 60-80; Article 4; excerpt offset 0–700"
+            },
+            {
+              "quote": " son apport personnel et nouveau. Cela constitue un plagiat (art. 8).",
+              "url": "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.3.3_dir_plagiat_etudiant_fr.pdf",
+              "language": "fr",
+              "hash": "872db10daa0c42fe712407a789af604cec32b08a0bec5447d802140263d6523d",
+              "location": "physical page 2; lines 60-80; Article 4; excerpt offset 700–769"
+            },
+            {
+              "quote": "Article 9\n\nEntrée en vigueur\n\nLa présente directive entrée en vigueur le 1er janvier 2013 et a été révisé au 1er septembre\n2026 (version 2.2).\n\nAu nom de la Direction de l'EPFL :\n\nLa Présidente :\nAnna Fontcuberta I Morral\n\nLe Directeur des Affaires juridiques\nSimon Brunschwig",
+              "url": "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.3.3_dir_plagiat_etudiant_fr.pdf",
+              "language": "fr",
+              "hash": "872db10daa0c42fe712407a789af604cec32b08a0bec5447d802140263d6523d",
+              "location": "physical page 3; lines 174-187; Article 9"
+            },
+            {
+              "quote": "The english version is provided for information purposes only and has no legal force. Only the French version is legally binding.",
+              "url": "https://www.epfl.ch/about/overview/regulations-and-guidelines/polylex-en/polylex-search/?type=lex",
+              "language": "en",
+              "hash": "a0c1c6d598cda744b9071355a4d65e26f79baa2a13cdc99c9af741ac42dc1790",
+              "location": "lines 49-49; Polylex search preamble"
+            }
+          ]
+        },
+        "draft-claim-epfl-assessment-prior-authorization": {
+          "id": "draft-claim-epfl-assessment-prior-authorization",
+          "text": "EPFL guidelines for using AI in studying advise students that they should not use AI during exams or assessments unless explicitly allowed, and tell students to check their course policy or ask their instructor. The guidelines state that assessment material that is not the student's personal and original contribution must be recognizable as such under LEX1.3.3 Article4; they advise disclosing AI-tool use in a statement and checking the course policy or instructor for its formulation.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Always check your course’s specific AI policy. If none exists, ask your instructor. You should not use AI during exams or assessments unless explicitly allowed.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+              "language": "en",
+              "hash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+              "location": "lines 73-73; How to use AI in coursework"
+            },
+            {
+              "quote": "EPFL rules (Lex 1.3.3, Article 4) require that all assessment material that is not the student’s personal and original contribution must be recognizable as such. Therefore, the use of AI tools should be disclosed in a statement. Check your course’s specific AI policy or ask your instructor how to formulate this statement.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+              "language": "en",
+              "hash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+              "location": "lines 89-89; Transparency"
+            }
+          ]
+        },
+        "draft-claim-epfl-library-licensed-content-permissions": {
+          "id": "draft-claim-epfl-library-licensed-content-permissions",
+          "text": "According to EPFL Library's description of its agreement with Elsevier, open access publications with a CC-BY license may be used with any available AI tool, including for tool development and training, with free sharing of results. For licensed closed publications or Open Access publications under a restrictive CC-BY-NC-ND license where Elsevier owns all or key rights, use is permitted with closed versions of AI tools that do not train the algorithm or learn from/incorporate inputs (e.g. non-learning ChatGPT Team, potentially subject to fees/restrictions), or with open versions of learning AI tools or institutional tool/platform development provided they operate in a secure, user-controlled environment (self-hosted on-premises or externally hosted solely for Participating Institutions or Authorized Users). AI-generated results or platforms may be published for research and teaching provided they do not contain or reproduce closed or CC-BY-NC-ND content (linking is permitted), while commercial use of such AI-generated content or platforms is prohibited.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Elsevier\n“Open access publications with a CC-BY license can be used with any kind of available AI tool, may be used for the development and training of any AI tool and the results including the content can be freely shared.\nLicensed content (closed publications) or Open Access publications with a restrictive CC-BY-NC-ND license, where Elsevier owns all rights or some key rights such as the right to create derivatives, may be used\nwith closed versions of AI tools that do not train the algorithm, do not learn from the input or incorporate the input in the AI tool (e.g. Open AI “non-learning” subscription version ChatGPT Team). The use of the closed version may be subject to a fee and / or rest",
+              "url": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+              "language": "en",
+              "hash": "fdaadef0f876d475990e0958a0cec46b38c06c3b88f8cbbcecd7396f4abfd12f",
+              "location": "lines 94-99; Using licensed electronic resources with AI / Elsevier agreement; excerpt offset 0–700"
+            },
+            {
+              "quote": "rictions.\nwith open versions of learning AI tools or to develop your own AI tool or platform, provided that it is used in a secure, user-controlled environment (i.e. self-hosted in an on-premises environment or in an environment hosted externally solely for use by Participating Institutions or Authorised Users).\nResults generated or platforms developed with the help of AI may be published and made available for research and teaching, provided that they do not contain or reproduce content from closed or CC-BY-NC-ND publications. Links to closed publications are permitted. The commercial use of AI-generated content or platforms is prohibited.”",
+              "url": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+              "language": "en",
+              "hash": "fdaadef0f876d475990e0958a0cec46b38c06c3b88f8cbbcecd7396f4abfd12f",
+              "location": "lines 94-99; Using licensed electronic resources with AI / Elsevier agreement; excerpt offset 700–1349"
+            }
+          ]
+        },
+        "draft-claim-epfl-grade-reassessment-appeal": {
+          "id": "draft-claim-epfl-grade-reassessment-appeal",
+          "text": "EPFL study management regulations provide two formal procedures to oppose a grade or notified failure: an internal request for reassessment at EPFL within 10 days, or an external appeal to the Commission de recours interne des EPF within 30 days. Both deadlines are calculated from reception, at the address given by the student, of the grade or notified failure (transcripts sent by post). If a mark is contested on the grounds of an error in correction or assessment, the responsible teacher is the only person authorized to modify the mark subject to justification to the program direction; if contested for a formal defect, Legal Affairs reviews whether a significant formal defect impacted the result to warrant exam cancellation and repetition. Procedural costs are charged ahead of the procedure and refunded only if the student's claim succeeds. These rules govern academic grade disputes; whether specific appeal pathways or different deadlines apply to AI disciplinary misconduct sanctions is not established on this page and remains an evidence gap.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "There are two ways of opposing a grade or notified failure: a procedure at EPFL, called request for reassessment, and a procedure outside of EPFL, through the Commission de recours interne des EPF, called appeal.",
+              "url": "https://www.epfl.ch/education/studies/en/rules-and-procedures/request_reassment/",
+              "language": "en",
+              "hash": "87dc2f8c479d6e88f12ebbec919c575a779071fa0dae774d7efd25ca3fc574fc",
+              "location": "lines 58-58; Reassessment request and appeal"
+            },
+            {
+              "quote": "The deadline to start these procedures is within 10 days for the request for reassessment and within 30 days for the appeal. Both deadlines are calculated from the reception, at the address given by the student, of the grade or notified failure (transcripts sent by post).",
+              "url": "https://www.epfl.ch/education/studies/en/rules-and-procedures/request_reassment/",
+              "language": "en",
+              "hash": "87dc2f8c479d6e88f12ebbec919c575a779071fa0dae774d7efd25ca3fc574fc",
+              "location": "lines 61-61; Reassessment request and appeal / Deadlines"
+            },
+            {
+              "quote": "If a mark is contested on the grounds of an error in correction or assessment, the teacher responsible will be asked to check the correction. He/she is the only person authorized to make any corrections. If he/she modifies the mark, he/she must justify the modification to the program’s direction, who will check whether the reason is justified. If the result is contested on the grounds of a formal defect, the matter is referred to Legal Affairs, who can only conclude that the examination should be cancelled if the formal defect is significant and has been shown to have had an impact on the result.",
+              "url": "https://www.epfl.ch/education/studies/en/rules-and-procedures/request_reassment/",
+              "language": "en",
+              "hash": "87dc2f8c479d6e88f12ebbec919c575a779071fa0dae774d7efd25ca3fc574fc",
+              "location": "lines 59-59; Reassessment request and appeal / Grounds"
+            },
+            {
+              "quote": "The costs are charged ahead of the procedure by EPFL and the appeals authority. They are refunded only if the student’s claim succeeds.",
+              "url": "https://www.epfl.ch/education/studies/en/rules-and-procedures/request_reassment/",
+              "language": "en",
+              "hash": "87dc2f8c479d6e88f12ebbec919c575a779071fa0dae774d7efd25ca3fc574fc",
+              "location": "lines 60-60; Reassessment request and appeal / Costs"
+            }
+          ]
+        },
+        "cl-epfl-ecole-polytechnique-federale-de-lausanne-institutional-ai-service-167": {
+          "id": "cl-epfl-ecole-polytechnique-federale-de-lausanne-institutional-ai-service-167",
+          "text": "EPFL teaching guidance lists EPFL Chatbot as an AI-powered chatbot and semantic search of EPFL academic content that can suggest relevant video lectures and related exercises. The institutional tool listing does not establish permission to use AI in assessments; the studying guide advises students not to use AI during exams or assessments unless explicitly allowed.",
+          "claimType": "ai_tool_treatment",
+          "evidence": [
+            {
+              "quote": "EPFL Chatbot\nAI powered chatbot and semantic search of EPFL’s academic content. Ask it to help you solve and exercise and it will suggest relevant video lectures and relatred excercises.\nChatbot",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+              "language": "en",
+              "hash": "2c90da7e0d268a59610a49c6baa416ef8bd73030f7afa0c9509f72f83b866f29",
+              "location": "lines 72-74; Tools / EPFL Chatbot card"
+            },
+            {
+              "quote": "Always check your course’s specific AI policy. If none exists, ask your instructor. You should not use AI during exams or assessments unless explicitly allowed.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+              "language": "en",
+              "hash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+              "location": "lines 73-73; How to use AI in coursework"
+            }
+          ]
+        },
+        "CL-001": {
+          "id": "CL-001",
+          "text": "EPFL's studying guide states that assessment material not constituting the student's personal and original contribution must be recognizable as such under LEX 1.3.3 Article 4. It says the use of AI tools should be disclosed in a statement and directs students to check their course's specific AI policy or ask the instructor how to formulate it.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "EPFL rules (Lex 1.3.3, Article 4) require that all assessment material that is not the student’s personal and original contribution must be recognizable as such. Therefore, the use of AI tools should be disclosed in a statement. Check your course’s specific AI policy or ask your instructor how to formulate this statement.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+              "language": "en",
+              "hash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+              "location": "lines 89-89; Transparency"
+            }
+          ]
+        },
+        "draft-claim-epfl-library-ai-disclosure": {
+          "id": "draft-claim-epfl-library-ai-disclosure",
+          "text": "EPFL Library guidance for manuscripts intended for publication states that the LLM used, what it was used for, and how it was used must be disclosed in the manuscript, while adhering to the policies on AI-generated content of the specific journal or publisher chosen for submission.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "The LLM you used, what you used it for, and how, must be disclosed in the manuscript. Make sure you adhere to the policies on the use of AI-generated content of your publisher of choice (e.g. Nature Editorial Policies – AI).",
+              "url": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+              "language": "en",
+              "hash": "fdaadef0f876d475990e0958a0cec46b38c06c3b88f8cbbcecd7396f4abfd12f",
+              "location": "lines 83-83; Writing and publishing / Disclosure"
+            }
+          ]
+        },
+        "CL-004": {
+          "id": "CL-004",
+          "text": "EPFL guidance specifies that submitting AI-generated content as one's own work without proper attribution is considered AI plagiarism. Tools specifically aiming to detect AI-generated content are not admissible as stand-alone evidence of AI plagiarism due to a high risk of false positives. Under continuous assessment procedures, where unauthorized AI use or non-disclosure is suspected, the course teacher writes a report and submits it with evidence to the section director and Legal Service (Affaires juridiques) for formal evaluation, which constitutes a referral of suspected misconduct rather than an adjudication of cheating.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Submitting AI-generated content as your own work without proper attribution is considered AI plagiarism.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+              "language": "en",
+              "hash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+              "location": "lines 90-90; Transparency / What you should avoid"
+            },
+            {
+              "quote": "Tools that specifically aim to detect whether content was AI-generated (e.g., turnitin) are not admissible as stand-alone evidence of AI plagiarism due to their high risk of false positives (e.g., Farrelly & Baker, 2023). Other irrefutable evidence must be presented to substantiate claims of academic dishonesty.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+              "language": "en",
+              "hash": "f6bfafe11a7f1b6fa0f300507c20b2870c3b2eb6b37b9885912de084390ce5a6",
+              "location": "lines 98-98; AI plagiarism"
+            },
+            {
+              "quote": "Use of AI tools in ways that are not authorized or failure to attribute their use will be treated as a potential case of cheating and will be forwarded to the EPFL Legal Affairs team",
+              "url": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+              "language": "en",
+              "hash": "23a5f6f38ee16b9bcdd2aa876b888efe521d2f77b12be64121ce52607624a98c",
+              "location": "lines 53-53; Setting clear expectations"
+            },
+            {
+              "quote": "In the case of any suspected fraud and/or cheating, the teacher writes a report which they then send to the section director and Legal Service together with evidence of the compromising or suspected item or behaviour.",
+              "url": "https://www.epfl.ch/education/teaching/rules-for-continuous-assessment/",
+              "language": "en",
+              "hash": "7b984cfd141b7a15211c2ca06bc74c6913bddf2d33564f699f1c26ed76fbf847",
+              "location": "lines 87-87; Fraud and cheating"
+            }
+          ]
+        },
+        "cl-epfl-ecole-polytechnique-federale-de-lausanne-microsoft-copilot-for-m365-168": {
+          "id": "cl-epfl-ecole-polytechnique-federale-de-lausanne-microsoft-copilot-for-m365-168",
+          "text": "Microsoft 365 Copilot is listed for EPFL – École polytechnique fédérale de Lausanne in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
+          "claimType": "ai_tool_treatment",
+          "evidence": [
+            {
+              "quote": "EPFL's guidance says enterprise Microsoft 365 Copilot is available via an EPFL account, but is not currently secure for regulated data because EPFL has no signed data-processing agreement.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+              "language": "en-GB",
+              "hash": "499b021672c7c6248b2f3cc2696fe4dc70269aa9484ff0436c60d4046bc5d0ba",
+              "location": ""
+            }
+          ]
+        },
+        "draft-claim-epfl-library-no-ai-author": {
+          "id": "draft-claim-epfl-library-no-ai-author",
+          "text": "EPFL Library guidance on scientific information for manuscripts intended for publication states that Large Language Models cannot be listed as authors or co-authors because they lack the ability to be accountable for the content they generate, citing the Swiss Copyright Act (Chapter 2, Art. 6). This statement represents Library guidance for publication manuscripts rather than an independently verified universal legal rule or campus-wide degree thesis requirement.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "LLMs do not have the ability to be accountable for the content they generate. Thus, they cannot be listed as authors/co-authors on a manuscript, according to Swiss law (Swiss Copyright Act, Chapter 2 Art. 6 – https://www.fedlex.admin.ch/eli/cc/1993/1798_1798_1798/en)",
+              "url": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+              "language": "en",
+              "hash": "fdaadef0f876d475990e0958a0cec46b38c06c3b88f8cbbcecd7396f4abfd12f",
+              "location": "lines 82-82; Writing and publishing / Authorship"
+            }
+          ]
+        },
+        "CL-003": {
+          "id": "CL-003",
+          "text": "EPFL recommends that teachers make explicit to students what AI use is not legitimate in a course and what rules accompany AI tool use.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "Since there is no ‘one-size-fits-all’ rule regarding the use of AI in assessment, it is recommended that teachers make explicit to students what kind of use is not legitimate in their course, and what rules accompany the use of AI tools.",
+              "url": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+              "language": "en",
+              "hash": "fba7ab5ff6baa8b705ec86e53353af3c699c78ed3d7b123580158d2b708ca8b8",
+              "location": ""
+            }
+          ]
+        },
+        "cl-epfl-ecole-polytechnique-federale-de-lausanne-institutional-ai-service-166": {
+          "id": "cl-epfl-ecole-polytechnique-federale-de-lausanne-institutional-ai-service-166",
+          "text": "aiaiapps is listed for EPFL – École polytechnique fédérale de Lausanne in an official teaching tools source as a collection of crystallized prompts developed by CEDE for teachers to facilitate the generation of quizzes, exercises, hints, and image descriptions. It is designed primarily for instructors and teaching staff to support course design; student use in assessments is not authorized by this tool listing.",
+          "claimType": "ai_tool_treatment",
+          "evidence": [
+            {
+              "quote": "aiaiapps are cristallized prompts for teachers that facilitate the generation of quizzes, exercises and image descriptions.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+              "language": "en",
+              "hash": "2c90da7e0d268a59610a49c6baa416ef8bd73030f7afa0c9509f72f83b866f29",
+              "location": "lines 76-76; Tools / aiaiapps"
+            },
+            {
+              "quote": "A collection of crystalized prompts in the form of user-friendly apps for education.",
+              "url": "https://aiaiapps.epfl.ch/en/",
+              "language": "en",
+              "hash": "178a01923ba2165f04e2acfbd404af23f574fbe23c229c1f0c863990f0f67a1e",
+              "location": "lines 8-8; Home apps"
+            },
+            {
+              "quote": "The Center for Digital Education (CEDE) develops tools to facilitate the process of EPFL teachers adopting genAI for their teaching.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+              "language": "en",
+              "hash": "2c90da7e0d268a59610a49c6baa416ef8bd73030f7afa0c9509f72f83b866f29",
+              "location": "lines 71-71; Tools"
+            },
+            {
+              "quote": "Always check your course’s specific AI policy. If none exists, ask your instructor. You should not use AI during exams or assessments unless explicitly allowed.",
+              "url": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+              "language": "en",
+              "hash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+              "location": "lines 73-73; How to use AI in coursework"
+            }
+          ]
+        },
+        "CL-002": {
+          "id": "CL-002",
+          "text": "EPFL advises students not to input confidential, private or personal information into generative AI tools. When using generative AI tools, students are sharing data with private companies and lose control over it.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "Never input confidential, private or personal information about yourself or others into these tools. Always reflect first on the nature of the information you are using, because once you enter it into one of these tools, it’s no longer confidential.",
+              "url": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+              "language": "en",
+              "hash": "5eeaf435b05194c1df42edec4c82f305a9971d53eadf7ce1392453f738937014",
+              "location": ""
             }
           ]
         }

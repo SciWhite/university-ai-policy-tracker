@@ -1,7 +1,7 @@
 {
-  "path": "revisions/melbourne-v6-r3-20261018.json",
-  "sha256": "db566ca6afba805db485048a12354868475c4c1d9b30d1960c0d485dafb09946",
-  "releaseId": "melbourne-v6-r3-20261018",
+  "path": "revisions/qs20-22-v6-r1-20261018.json",
+  "sha256": "097c95e57f99e18bd21827ce6f11a8a2236466e9a8f9a05ca5304469a461dd02",
+  "releaseId": "qs20-22-v6-r1-20261018",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -21,7 +21,10 @@
     "cornell-university",
     "tsinghua-university",
     "university-of-california-berkeley",
-    "university-of-melbourne"
+    "university-of-melbourne",
+    "unsw-sydney",
+    "yale-university",
+    "epfl"
   ],
   "v5Slugs": []
 }

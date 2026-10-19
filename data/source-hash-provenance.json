@@ -1768,6 +1768,344 @@
       "rawSha256": "685ec5cf985c86f25ed5a2db826c7e91e8f3e816f8993ef7de2629d75375766a",
       "textSha256": "53526f4a4ca358f5cff5b2d9d13ecdd3c140a01c7fb0a28b1317bf4634d2d013",
       "verification": "Retained raw bytes and extracted-text SHA-256 checked; quotes bound by exact character offsets; captured 2026-10-18."
+    },
+    {
+      "sourceUrl": "https://ai.yale.edu/posts/2026-09-15-now-available-claude-enterprise-licenses-at-yale",
+      "snapshotHash": "cf97813121b444bfef3b9930bacab4de3df8f5c86ca60a8da14b16d122a2c045",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "cf97813121b444bfef3b9930bacab4de3df8f5c86ca60a8da14b16d122a2c045",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "3aaae655fd28f422dc0c3650d10bb7f3628cd5b8ea6ee5a9ef1bf8c856853b9d"
+    },
+    {
+      "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+      "snapshotHash": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "26eb767a34a1ac654f77247af23840c189865fc29528d3a8435ba830a4f6d1d5",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "a52540215baff83c8ee020cd6b2ff44165515dfee65deb0bf58079ec1211bede"
+    },
+    {
+      "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+      "snapshotHash": "529ab9fe322c198cc342617552a496d0a19b6c299f365139c6556e93d7a0f3e5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+      "snapshotHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://aiaiapps.epfl.ch/en/",
+      "snapshotHash": "178a01923ba2165f04e2acfbd404af23f574fbe23c229c1f0c863990f0f67a1e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "178a01923ba2165f04e2acfbd404af23f574fbe23c229c1f0c863990f0f67a1e",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "387d06700f474bc6b3904c39677af7bba6876d078f6716fc525ac9ee8fe4fca1"
+    },
+    {
+      "sourceUrl": "https://catalog.yale.edu/gsas/policies-regulations/academic-regulations/personal-conduct-academic-integrity-standards/",
+      "snapshotHash": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "60a34db804984939b942a115805a86e92e807df6117fff835519f322dff20acd",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "bb509f90b97229a44b351c406f97241f61862d7c7998516898ceeb3ba7f8ca14"
+    },
+    {
+      "sourceUrl": "https://catalog.yale.edu/handbook-instructors-undergraduates-yale-college/teaching/academic-dishonesty/",
+      "snapshotHash": "6c6927aa24affa230b5ceb4af47b3a08a59066c510d1513e0dce0673d3266c71",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://guides.library.yale.edu/libraryAI",
+      "snapshotHash": "e82ee378da39deef132e51ff4bad7dfb04160da5fc4953c173494e2862293588",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e82ee378da39deef132e51ff4bad7dfb04160da5fc4953c173494e2862293588",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "74caee6a754575f220925d30ad56a20e0e67fd0fe2e72e1660b6ff07085a4437"
+    },
+    {
+      "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+      "snapshotHash": "12ae53670bcd950ebf1e0194c3d1a04cfe914b9cac429beae58530f1f3e9bb07",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+      "snapshotHash": "480942a7fc762dbe43a517aeae7df90d5d042ca01cb56f314c0cc36bd115dc2a",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+      "snapshotHash": "80e2bd611a7a0fcfa1fa137d77ef2c3b02e3e420a60b14a483c363f73baac0f4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+      "snapshotHash": "2cd0d46503913e910859a794afe1c351afa0cde76be5e070238fab0f331128a7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://poorvucenter.yale.edu/learning/learning-resource-library/ai-guidance-for-students",
+      "snapshotHash": "d1e2823bce0f284b85c61bdc815a4681c5a623d73b9a0e856aac9941b498942f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+      "snapshotHash": "a3ce5f7b43936c954d51d5f07634d49a5e05b4eff8d060d9d98b82dd99ccc91c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+      "snapshotHash": "bbac849b9594a8b457ebd0c8224ec47bebaf0c91521ec2c599bf202c7faeff14",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+      "snapshotHash": "43854432f3c071ffabf46609ad4e79ebe87c3e9a6cd35e1ec63d8872fe38900c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+      "snapshotHash": "9bae29601dad8e97fd1a915eaf5da51123bc3de0410261474d9bb5256ec1b04d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9bae29601dad8e97fd1a915eaf5da51123bc3de0410261474d9bb5256ec1b04d",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "d2f3aeb4da438f060e145e302be8bee85210a7ff85c332376eaa5cadf6e72e48"
+    },
+    {
+      "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+      "snapshotHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://subjectguides.library.unsw.edu.au/ai-tdm-api/ai",
+      "snapshotHash": "ff2c06444730490a9aaf5640f7c09424a4fe85a13b19f90899ab142ffb1a674e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ff2c06444730490a9aaf5640f7c09424a4fe85a13b19f90899ab142ffb1a674e",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "d8200db7ffb28ad2ba0943643b22a0ef449a797c0b57442149d80735a6af860c"
+    },
+    {
+      "sourceUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+      "snapshotHash": "1096262dab754a5ea23a65f1479127c13267baf1d621c2fb21bc82125ac62b72",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/about/overview/regulations-and-guidelines/polylex-en/polylex-search/?type=lex",
+      "snapshotHash": "a0c1c6d598cda744b9071355a4d65e26f79baa2a13cdc99c9af741ac42dc1790",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a0c1c6d598cda744b9071355a4d65e26f79baa2a13cdc99c9af741ac42dc1790",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "6f50b320fbd1d529d1507f990cf3f13cf494e843e65f75dbc35bb79801464425"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.3.3_dir_plagiat_etudiant_an.pdf",
+      "snapshotHash": "a11468200193b3c95ac1ec6ae36dc81326fc18ffbb5edaae3aabe4350ded2891",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a11468200193b3c95ac1ec6ae36dc81326fc18ffbb5edaae3aabe4350ded2891",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "7c749962c45902f7731ecd66a9cad60e98c0ba7270df8a52cb2a408fc943d1ae"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.3.3_dir_plagiat_etudiant_fr.pdf",
+      "snapshotHash": "872db10daa0c42fe712407a789af604cec32b08a0bec5447d802140263d6523d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "872db10daa0c42fe712407a789af604cec32b08a0bec5447d802140263d6523d",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "3fa4f7c27bed93d2a6df0ff29a0bdac557649ae1345b7cc4a01ce36ab1fe9aa1"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/fr/vice-presidence-academique-vpa/conseils-pour-lutilisation-de-lia-generative-dans-la-recherche-et-leducation/",
+      "snapshotHash": "0c8f94c33e323d9186a4728a89f8629ff00be9a07f40d632c9604b99f1b69856",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+      "snapshotHash": "5eeaf435b05194c1df42edec4c82f305a9971d53eadf7ce1392453f738937014",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+      "snapshotHash": "fdaadef0f876d475990e0958a0cec46b38c06c3b88f8cbbcecd7396f4abfd12f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "fdaadef0f876d475990e0958a0cec46b38c06c3b88f8cbbcecd7396f4abfd12f",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "5876b1d9d0d2a50ca855c63cf6b22b6dc6519b09a29759542a147e8e0d2ab033"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/educational-initiatives/cede/providing-feedback/ai-tutors/",
+      "snapshotHash": "c6f380b4b7baf9474e7eacb9eacc6e848d99c49418aa7612f03fcccde52f3e40",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c6f380b4b7baf9474e7eacb9eacc6e848d99c49418aa7612f03fcccde52f3e40",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "4ca235f9e48e63d5a754cdf631699cce9f8165ccb6be20491a1e13e899ffd536"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/studies/en/rules-and-procedures/request_reassment/",
+      "snapshotHash": "87dc2f8c479d6e88f12ebbec919c575a779071fa0dae774d7efd25ca3fc574fc",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "87dc2f8c479d6e88f12ebbec919c575a779071fa0dae774d7efd25ca3fc574fc",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "ea60f05ea49466c0e46c4b7b7551505555b80a3093c76380add68832fbc13430"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+      "snapshotHash": "23a5f6f38ee16b9bcdd2aa876b888efe521d2f77b12be64121ce52607624a98c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "23a5f6f38ee16b9bcdd2aa876b888efe521d2f77b12be64121ce52607624a98c",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "3ec7964e1b5fccf27659c5765e5224d347d1924e582f67c2d77c45f332f57851"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+      "snapshotHash": "fba7ab5ff6baa8b705ec86e53353af3c699c78ed3d7b123580158d2b708ca8b8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+      "snapshotHash": "2c90da7e0d268a59610a49c6baa416ef8bd73030f7afa0c9509f72f83b866f29",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2c90da7e0d268a59610a49c6baa416ef8bd73030f7afa0c9509f72f83b866f29",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "c85fc5e7d28fdd88afb8e5286de1a44fe5ea0ef7ffebf4428d2707bd37da99a0"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+      "snapshotHash": "499b021672c7c6248b2f3cc2696fe4dc70269aa9484ff0436c60d4046bc5d0ba",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+      "snapshotHash": "f6bfafe11a7f1b6fa0f300507c20b2870c3b2eb6b37b9885912de084390ce5a6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f6bfafe11a7f1b6fa0f300507c20b2870c3b2eb6b37b9885912de084390ce5a6",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "ee78414929913b75edb58a8d8f9c985b265dc8e9aea62c4fc90726d38b7e1f0c"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+      "snapshotHash": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e6550341061f9244bbb733a1b4b1d09d58aa236e668771b10b8ccda567cab8aa",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "129440f2445a5cf883b252bc7f6c90925a07fd47c5ff57f0771901951027bced"
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/rules-for-continuous-assessment/",
+      "snapshotHash": "7b984cfd141b7a15211c2ca06bc74c6913bddf2d33564f699f1c26ed76fbf847",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "7b984cfd141b7a15211c2ca06bc74c6913bddf2d33564f699f1c26ed76fbf847",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "485040eae89e1c7e15b47d2185dd0ecbf18e4c50b499e993965003233654b5a3"
+    },
+    {
+      "sourceUrl": "https://www.inside.unsw.edu.au/education/why-unsw-adopting-new-approach-assessment",
+      "snapshotHash": "30524c28c59b6f8ff53bd6ba4c2458b5907ee70f2d50062167a987c51d7c148d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "30524c28c59b6f8ff53bd6ba4c2458b5907ee70f2d50062167a987c51d7c148d",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "dc7f561a0d62c890923c2eeef8cf23d1905621c51d52b4821c17f8c28d07e4c4"
+    },
+    {
+      "sourceUrl": "https://www.inside.unsw.edu.au/innovation-and-engagement/are-you-aware-unsws-new-ai-principles",
+      "snapshotHash": "d4f62e3d035e16bcf2620ee3ad7f1dfc3694f5b41f4f68bb73f6ccd53902a9bf",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+      "snapshotHash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+      "snapshotHash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+      "snapshotHash": "3928a96e82b6db61b1414ee91e7e01b583310f1ce7953bcb21bf215ca4f2c2c0",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3928a96e82b6db61b1414ee91e7e01b583310f1ce7953bcb21bf215ca4f2c2c0",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "f607e07cd0190c35acca36d1f78dd763ad35952ff00cfdb12052c8fc1b264744"
+    },
+    {
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+      "snapshotHash": "57b772b4148fa35277a60538cbc8175d07caf290a51ab057206f4b17b5cf5639",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/content/dam/pdfs/governance/policy/2022-01-policies/plagiarismpolicy.pdf",
+      "snapshotHash": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "64e2e0275c0ce6785a2c45d67d733e87bc8bd7ef43ec489fd30257581918ea88",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "06b25ce657031e02b82cc49e65d5d485949c8d9ebe9965e70d884f5ad82a408f"
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/governance/policy/policy-hub/assessmentandprogressionpolicy",
+      "snapshotHash": "077c4e4a67d7274e2c5ac8f19bc9c620b5277ff2a0b66110da9788df957c66d2",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "077c4e4a67d7274e2c5ac8f19bc9c620b5277ff2a0b66110da9788df957c66d2",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "e49495fef39d5444f7a338cf6a580449875b77453c0085d9d5dfccf411aa4312"
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/governance/policy/policy-hub/informationgovernancepolicy",
+      "snapshotHash": "7ec4f719288fc0d328a2547c3b3957476c90cf043f223b401ec22c4d60f348ea",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "7ec4f719288fc0d328a2547c3b3957476c90cf043f223b401ec22c4d60f348ea",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "f31e3916f13a6076943ec203030495d9ec2568c58e6fe7cf5d1fe05552023fc2"
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/myit/services/software-applications/using-copilot-chat",
+      "snapshotHash": "7dc6944cec54319fdf8d1eaf55c057ae31f19f3410746ac94b4ecde7b34405b5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/newsroom/news/2026/09/unsw-partners-with-openai-to-support-the-first-generation-of-ai-",
+      "snapshotHash": "07a5ddf54a54daca0b9efc28112e086dbd6aea11ba4eb985ab9410cd3a196af4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "07a5ddf54a54daca0b9efc28112e086dbd6aea11ba4eb985ab9410cd3a196af4",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "f0121d2970be8f957b649ebd7d30ea2ebc122fe3fbfa1bfe516889cf5e2e7889"
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+      "snapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Baseline public snapshot; preserved across release."
+    },
+    {
+      "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+      "snapshotHash": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
+      "verification": "Retained raw bytes and source locators checked; captured October 2026.",
+      "textSha256": "cd2aed9eb5e5d2a6dee4ef00a7d33cf98d5f0b82d722aad5973a2b57d00406e6"
     }
   ]
 }

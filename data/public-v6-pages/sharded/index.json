@@ -111,6 +111,11 @@
       "path": "sharded/revisions/melbourne-v6-r3-20261018-a39d3f7c1359e616ba0e1430272e04f9a2cdef7d9d99bf3f21755e644d75705a.json",
       "sha256": "a39d3f7c1359e616ba0e1430272e04f9a2cdef7d9d99bf3f21755e644d75705a",
       "sourceSha256": "db566ca6afba805db485048a12354868475c4c1d9b30d1960c0d485dafb09946"
+    },
+    "qs20-22-v6-r1-20261018": {
+      "path": "sharded/revisions/qs20-22-v6-r1-20261018-dbb61345b87b7aaa4bc1acf6dec4fe5a0e5e4c305128eaf94a4b1bbe4da0ed34.json",
+      "sha256": "dbb61345b87b7aaa4bc1acf6dec4fe5a0e5e4c305128eaf94a4b1bbe4da0ed34",
+      "sourceSha256": "097c95e57f99e18bd21827ce6f11a8a2236466e9a8f9a05ca5304469a461dd02"
     }
   }
 }
