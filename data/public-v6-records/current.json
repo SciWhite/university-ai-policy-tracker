@@ -1,7 +1,7 @@
 {
-  "path": "revisions/qs20-22-v6-r1-20261018.json",
-  "sha256": "1fa85d0b9e799978445f4315294d97723b19ef2946935a8b01f087af800b25d0",
-  "revision": "qs20-22-v6-r1-20261018",
+  "path": "revisions/qs23-24-v6-r3-20261019.json",
+  "sha256": "3c6d03a1be9ddc5e2d7685bf7d7a51a2a58960dc19d7c269c204ee0e7621a5fb",
+  "revision": "qs23-24-v6-r3-20261019",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -24,7 +24,9 @@
     "university-of-melbourne",
     "unsw-sydney",
     "yale-university",
-    "epfl"
+    "epfl",
+    "technical-university-of-munich",
+    "jhu"
   ],
   "v5Slugs": []
 }

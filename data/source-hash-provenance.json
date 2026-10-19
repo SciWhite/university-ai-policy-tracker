@@ -2106,6 +2106,374 @@
       "rawSha256": "96bb5fe94c09564e7464548515edff63f18bd84786ad8a53686c4cd26093d705",
       "verification": "Retained raw bytes and source locators checked; captured October 2026.",
       "textSha256": "cd2aed9eb5e5d2a6dee4ef00a7d33cf98d5f0b82d722aad5973a2b57d00406e6"
+    },
+    {
+      "sourceUrl": "https://carey.jhu.edu/student-life/student-resources/policies/academic-ethics-policy",
+      "snapshotHash": "7bfc2e7a45aca848f2df488eb3f02fc3193cec8e9af309a7f598763ad017ec70",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "7bfc2e7a45aca848f2df488eb3f02fc3193cec8e9af309a7f598763ad017ec70",
+      "textSha256": "07b52764e085a923b4131fd714fcd316f790c3250c04de73219bbd4b3514d0c8",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://chat-ai.academiccloud.de/",
+      "snapshotHash": "cf447da740bcbc6aa27cb0cc680558a0f2b849d57e8a87e8389aa1615ae1932c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "cf447da740bcbc6aa27cb0cc680558a0f2b849d57e8a87e8389aa1615ae1932c",
+      "textSha256": "b4692730b094448056bb47e70a3e3e9f3b2d01b56997d0e5ae10c0e3950123c4",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://ctei.jhu.edu/teaching-and-ai",
+      "snapshotHash": "c9e63cc2a9281341b514cf57ce634aa247a816632d63c9d86c3d478780f8990c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c9e63cc2a9281341b514cf57ce634aa247a816632d63c9d86c3d478780f8990c",
+      "textSha256": "fce8c1882a5a9649630634a8925721da44725a20dda2de5dd74047f1432ace78",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/technical-university-of-munich.json",
+      "snapshotHash": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "textSha256": "fb398b7ea4a2c85bbdde7cc3545c2720665b3d9dea18bf3c7f65338aa78d8906",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/api/public/v1/universities/technical-university-of-munich/snapshot.json",
+      "snapshotHash": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "textSha256": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/api/v1/students/jhu",
+      "snapshotHash": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "textSha256": "d1d8fcf98217a5ad3081c637e73d5b5df337050fc5abdd2dd2f32828a9bc3567",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/api/v1/universities/jhu",
+      "snapshotHash": "afef455e28847d5a577fdbcaa71807f7941c4ad5cca95208e32bc056815af722",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "afef455e28847d5a577fdbcaa71807f7941c4ad5cca95208e32bc056815af722",
+      "textSha256": "cd5d83e1c5d20c2dd7d9a9c9b7b9fb76177bbaa68f2fde4835e0e7bded723a20",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/changes/technical-university-of-munich",
+      "snapshotHash": "8b4792950c55179c74f6fb04a1fb5fb32a66364d5afcaaac1906659402b458eb",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8b4792950c55179c74f6fb04a1fb5fb32a66364d5afcaaac1906659402b458eb",
+      "textSha256": "511414c84572d50c88be67e4e22e9de3ee78e69705e1086a2e7a7c3213f33c93",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/universities/jhu/changes",
+      "snapshotHash": "3a0e4cd9f5ea289cc540d6608b21065b2f3651f4cb81d7e84858aafd68d92666",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3a0e4cd9f5ea289cc540d6608b21065b2f3651f4cb81d7e84858aafd68d92666",
+      "textSha256": "a138232845a3085acfb1552efc2c540b6ca59e79cdb87e4040e4879ad75fdb9b",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/universities/technical-university-of-munich",
+      "snapshotHash": "e71b0802ce9516d712fcfcb79d3672bc63d10603c5a99b6a4059fae9fea6f2fc",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e71b0802ce9516d712fcfcb79d3672bc63d10603c5a99b6a4059fae9fea6f2fc",
+      "textSha256": "a8472f3a166c266bc95c9c2515002e20c9781a4afecd7ee1202eea24cee55998",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/zh/changes/technical-university-of-munich",
+      "snapshotHash": "c3afa354fa288ed6f5de5d8a428b3982dc95557ba6ae9542685144e44d1fac11",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c3afa354fa288ed6f5de5d8a428b3982dc95557ba6ae9542685144e44d1fac11",
+      "textSha256": "5e2a4f670e270c3578aea889c5ad7a983f2921ff7911669301b2dcdbe95f20d7",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://eduaipolicy.org/zh/universities/technical-university-of-munich",
+      "snapshotHash": "5aa099bd9739eac799f009d3b12f0130505a995aa091706e46dedd58f0edf458",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5aa099bd9739eac799f009d3b12f0130505a995aa091706e46dedd58f0edf458",
+      "textSha256": "d3dbd01bb3a3d0397b11e4800c1639a9bc6d263779ca68dfe7eb55d4a78c7565",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://ep.jhu.edu/courses/605203-discrete-mathematics/",
+      "snapshotHash": "28aed3a1cfb7c3f2dcc21dfb8ffce1442c0167b407c8c875640992c7750dcb34",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "28aed3a1cfb7c3f2dcc21dfb8ffce1442c0167b407c8c875640992c7750dcb34",
+      "textSha256": "edd0e66497119ad022b0fdc08837c641207f131fa36ad321e2c8f9eaf43152db",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://ep.jhu.edu/faculty-staff/preparing-to-teach/faculty-facing-guidance-on-student-generative-ai-use/",
+      "snapshotHash": "6e8e01cec2901f7ff06b536e805d949c2e51aa4e76090bc6d891de4538bc3957",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6e8e01cec2901f7ff06b536e805d949c2e51aa4e76090bc6d891de4538bc3957",
+      "textSha256": "41c3e43fb59629185ca7996dd2d5dc6b4514ab3fa3a08b2ac32c51e20aacd2eb",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://ep.jhu.edu/student-services/academic-services/academic-policies/student-guidance-on-responsible-generative-ai-use/",
+      "snapshotHash": "be2efc0e3b5b544e644f98f042e54f6f1f46ee7f79741270f4fb4427435a5ff2",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "be2efc0e3b5b544e644f98f042e54f6f1f46ee7f79741270f4fb4427435a5ff2",
+      "textSha256": "06924ffef4ccf13d0dc7ec8ee01254fbd008d10cac3e59ea2226ddc7939a369a",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://ep.jhu.edu/wseacademicmisconductpolicy",
+      "snapshotHash": "90e7344291d30e7d3dd5a629729918ab0009fb46b9d7b91030e357fe02867f27",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "90e7344291d30e7d3dd5a629729918ab0009fb46b9d7b91030e357fe02867f27",
+      "textSha256": "90e7344291d30e7d3dd5a629729918ab0009fb46b9d7b91030e357fe02867f27",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://guides.library.jhu.edu/c.php?g=1327116&p=9770857",
+      "snapshotHash": "3c1e74ebc392e422a3e68fa70f26811304764e48fb4d50b91328bdfce68193d7",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3c1e74ebc392e422a3e68fa70f26811304764e48fb4d50b91328bdfce68193d7",
+      "textSha256": "916bbef6e12189ee5389a96d7b946c9534add33494c09bcd5b9a6ffc00ba0a7d",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://it.johnshopkins.edu/ai/claude/",
+      "snapshotHash": "5007873d77d40c75e3492d972feef0237d7e7e91841956c5b9c55ef801c15181",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5007873d77d40c75e3492d972feef0237d7e7e91841956c5b9c55ef801c15181",
+      "textSha256": "82f6aefd90aae127c3288b9e057b23ba382544336d608276ca99920732fab060",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://it.johnshopkins.edu/ai/guidelines-for-responsible-use-of-ai/",
+      "snapshotHash": "a2d3881a526269324b312d885fc6f66a4df0e7505147cd4784403912c58236e8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a2d3881a526269324b312d885fc6f66a4df0e7505147cd4784403912c58236e8",
+      "textSha256": "27822487826439970cbb8017d920fb141867122ee4524b89a221d33e60a07976",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://it.johnshopkins.edu/ai/hopgpt/",
+      "snapshotHash": "222de198133f4a7c17aeffade2a41805a12eb7b2051ca856d74c3c59d6bca349",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "222de198133f4a7c17aeffade2a41805a12eb7b2051ca856d74c3c59d6bca349",
+      "textSha256": "0946caf4c388db9aac01ba36eaef178b8f0da0cf674437fdec226e1122f846c3",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://it.johnshopkins.edu/ai/zoom-ai-companion/",
+      "snapshotHash": "fa8f7f7626b7393c3d94f62ccb6bb9d5fe220270cfb09391ad59bb9469e9cd55",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "fa8f7f7626b7393c3d94f62ccb6bb9d5fe220270cfb09391ad59bb9469e9cd55",
+      "textSha256": "5429d6349b93658ae3fb8c362b779fcbc4b33aa299439416825ea12a7d3acd02",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://krieger.jhu.edu/hwgradaffairs/wp-content/uploads/sites/35/2018/08/Homewood-WSE_KSAS_-WSE-EP_KSAS-AAP-Graduate-Academic-Misconduct-Policy-2018SU.pdf",
+      "snapshotHash": "8db220b0d62d86e350cd14789f8471fcd25a546cf166c3fbb2315a6e8e6faac5",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8db220b0d62d86e350cd14789f8471fcd25a546cf166c3fbb2315a6e8e6faac5",
+      "textSha256": "6b8481dbac713f8a7706c14142a6765dd67fd35a1b3fa40213b25ece93167a50",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://portal.mytum.de/archiv/kompendium_rechtsangelegenheiten/sonstiges/TUM_SGwP.pdf",
+      "snapshotHash": "ecb1e58f51012787c053a6bb77bbe4c2fb84cd08734935e42f26bac99e8a30c2",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ecb1e58f51012787c053a6bb77bbe4c2fb84cd08734935e42f26bac99e8a30c2",
+      "textSha256": "8699a29524bd0d68f4d286f1c1f4729546f7859de21dd656324b8139be3f40c9",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
+      "snapshotHash": "27769b90fec3b0cc3a9f7f1b4ba7db85e41e076800798d86ca801ae1aef37e55",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "27769b90fec3b0cc3a9f7f1b4ba7db85e41e076800798d86ca801ae1aef37e55",
+      "textSha256": "f9f09346877b8a4588ec97eb3ec60a3416da886133919fb6ac8416d15777a033",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+      "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained baseline source hash; byte representation not established."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+      "snapshotHash": "e684b07a4862d3ee1db88dd42990a8ca7f2c69a197f9cd9f0859dcbfc6f23d25",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e684b07a4862d3ee1db88dd42990a8ca7f2c69a197f9cd9f0859dcbfc6f23d25",
+      "textSha256": "25a8165add76206bc11bc0a02e9a5e3aa27cb8222849e04f938ba5c4332a50e3",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+      "snapshotHash": "0361c671b44f0c3eeeae37fe164e5732da010adcee3ba345bff98a7fea5f9e0e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0361c671b44f0c3eeeae37fe164e5732da010adcee3ba345bff98a7fea5f9e0e",
+      "textSha256": "a65b6e548da218472e2d771ef7f622762b8f5d2e6a97a4f6056b35800ada3e25",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+      "snapshotHash": "b798c11c21d63a79554776a9ff51f37d8937256fe47a6c8c87b49e0fa199d84b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "b798c11c21d63a79554776a9ff51f37d8937256fe47a6c8c87b49e0fa199d84b",
+      "textSha256": "f3f37fd76af61286d34b818e3a468bfa586d5889edceb2a38f064396821419e3",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.digitalisierung.tum.de/en/grammarly-available-for-all-tum-members/",
+      "snapshotHash": "24cc107da8022618d92222fb72d4f0f8acd8a5815065676da7f45400f1a132e8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "24cc107da8022618d92222fb72d4f0f8acd8a5815065676da7f45400f1a132e8",
+      "textSha256": "87288501237b1f96c6de1eb2158bda57df5b7267d9361e01bb253c73a50ce8c4",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.digitalisierung.tum.de/en/grammarly-available-for-all-tum-members/",
+      "snapshotHash": "5184314eadc881415add2ec1e0303af1db01d8dd887d2f367ae66b364abfd06f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained baseline source hash; byte representation not established."
+    },
+    {
+      "sourceUrl": "https://www.digitalisierung.tum.de/en/m365-and-copilot/",
+      "snapshotHash": "28fab13dc9a6ad6df3e6ab66721756633af52d898df927398ad707f676c68cf4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "28fab13dc9a6ad6df3e6ab66721756633af52d898df927398ad707f676c68cf4",
+      "textSha256": "9b5955280438e274759de3cb21f5d3824aa86e81aa589fac595854e94b04a974",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.digitalisierung.tum.de/m365-und-copilot/",
+      "snapshotHash": "9f1a572347424e022b00cf83834a3d3bb7784cafb08b2ff5296e48b0efb3865a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9f1a572347424e022b00cf83834a3d3bb7784cafb08b2ff5296e48b0efb3865a",
+      "textSha256": "2c187fb7d9e0383d2996bbbcbd59a93b536089e4180d87da075c8415d5ac0d16",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.edu.sot.tum.de/fileadmin/w00bed/edu/Documents/Studium/APSO/Lesb.F._APSO_vom_18.03.2011_mit_11._AES_vom_17.12.2024.pdf",
+      "snapshotHash": "b11e364f6d692ebc0f14dfc034f48a5c4fb14d6e4d9fc7584540b026485d0804",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "b11e364f6d692ebc0f14dfc034f48a5c4fb14d6e4d9fc7584540b026485d0804",
+      "textSha256": "df16e3a2cb64ce31da98b315204e7c909b151a51dee073bb9b7bada030eece94",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.msl.mgt.tum.de/fileadmin/w00cja/mcr/Thesis_Topics/Guidelines/2026_07_GestaltungArbeiten.pdf",
+      "snapshotHash": "bc15d9579c5ee34b51c1e032f8e63cd027ea7dec715c89e9fade417d4fa41b1b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "bc15d9579c5ee34b51c1e032f8e63cd027ea7dec715c89e9fade417d4fa41b1b",
+      "textSha256": "0c9dd995ed596587809104c970292e0d24925b4b45111840bc3848e9fa6e5c9c",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.press.jhu.edu/sites/default/files/2023-12/Generative_AI_for_Authors_final_0.pdf",
+      "snapshotHash": "390db91f36a50ad82b6237cbe19e080ce579ee0416f3546e1bed28f466bc4f66",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "390db91f36a50ad82b6237cbe19e080ce579ee0416f3546e1bed28f466bc4f66",
+      "textSha256": "1da0f775ce715174a8d5fd513632ced3c9ffb507248860d8942041d3cb6dfffb",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.prolehre.tum.de/en/prolehre/programs-services/teaching-development/use-ai-wisely/",
+      "snapshotHash": "bdbf768421e69c22440bce9f101cfe67a0795d2541c3fc414bae50b3867efd2c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "bdbf768421e69c22440bce9f101cfe67a0795d2541c3fc414bae50b3867efd2c",
+      "textSha256": "8feffbb2ea840f0f7d52245adcbe3934489ec5395448eedc377104f6bcc0042e",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+      "snapshotHash": "4a4edc4855f45730a360a039728dc53ffe4bf9fe2d6be6a091d302098db18da0",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4a4edc4855f45730a360a039728dc53ffe4bf9fe2d6be6a091d302098db18da0",
+      "textSha256": "327e6fcdae766019ced756baf1ba924263b73cb337b18a836c5d0a0116ef0782",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+      "snapshotHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained baseline source hash; byte representation not established."
+    },
+    {
+      "sourceUrl": "https://www.prolehre.tum.de/prolehre/angebote/lehrentwicklung/ki-klug-nutzen/",
+      "snapshotHash": "0c083855561614f5f77812f48ace7026d8ec36947defe4bce511cc88dce8b954",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0c083855561614f5f77812f48ace7026d8ec36947defe4bce511cc88dce8b954",
+      "textSha256": "63e62852370ef1d1b0ac0522452a3d5ecbdae73c6c8fbfd59b76b8f4de862020",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/regeln-fuer-den-umgang-mit-ki-in-der-wissenschaft",
+      "snapshotHash": "18aa470cee79002a2a83f380f72e98a3994bb057df26e9b45e319f1d4d053ad2",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "18aa470cee79002a2a83f380f72e98a3994bb057df26e9b45e319f1d4d053ad2",
+      "textSha256": "521cca979247d93d2164ff82ef424ff8436d41b7de1695539cbf6ed681123d6b",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/studium/im-studium/das-studium-organisieren/satzungen-ordnungen",
+      "snapshotHash": "25321ff95987b4b146a5158cc897959104b39664d5466ed73b96ad6d1d428f1c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "25321ff95987b4b146a5158cc897959104b39664d5466ed73b96ad6d1d428f1c",
+      "textSha256": "ebe55b9d2d8d0d98268c53c111b969a046dadb15668311b58ed2a85a1fa0032f",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/studium/im-studium/das-studium-organisieren/satzungen-ordnungen/statute.html",
+      "snapshotHash": "5f8e008ed02c7a6f5e74365a8b16ac9c5084dbc224637a00313cb6bb6329474b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5f8e008ed02c7a6f5e74365a8b16ac9c5084dbc224637a00313cb6bb6329474b",
+      "textSha256": "1cc76986193c9f7515f695faa533d68fc4d6853b2a60bdb83338315f8f60690c",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/studium/im-studium/das-studium-organisieren/satzungen-ordnungen/statutepagebrowse.html",
+      "snapshotHash": "5d852cb491fdf6d33343e4d4d7bc95834c9f31db966f498e5d96110329b52933",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained baseline source hash; byte representation not established."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/studium/im-studium/das-studium-organisieren/satzungen-ordnungen/statutepagebrowse.html",
+      "snapshotHash": "d84db01ea8704657397fee68d612400cfce64e94fafb212c359427c4ff0e1988",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d84db01ea8704657397fee68d612400cfce64e94fafb212c359427c4ff0e1988",
+      "textSha256": "3be15216816732246d51455f68e305f8cd15e91b151b3afd29560d94babc9731",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/studium/im-studium/das-studium-organisieren/satzungen-ordnungen?tx_in2tumstatutedatabase_pi1%5Baction%5D=download&tx_in2tumstatutedatabase_pi1%5Bcontroller%5D=Statute&tx_in2tumstatutedatabase_pi1%5BfileId%5D=P009252242&cHash=3cf9b810b42507c7bc7e7439d7606d9a",
+      "snapshotHash": "27f89e0d56214e2b7dad166c36df783ce66c990f61c631d396c5bb6050d9f4cc",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "27f89e0d56214e2b7dad166c36df783ce66c990f61c631d396c5bb6050d9f4cc",
+      "textSha256": "e7880d6b0d517c9ca30431e40459088b8be6ed40dcf53cac939f64b4220eb667",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/studium/im-studium/das-studium-organisieren/satzungen-ordnungen?tx_in2tumstatutedatabase_pi1[action]=download&tx_in2tumstatutedatabase_pi1[controller]=Statute&tx_in2tumstatutedatabase_pi1[fileId]=P009252245&cHash=567d38284605b14880bb6caef451ec42",
+      "snapshotHash": "ef47d77442d3b97d9afb3e3e9a90f2ed288e059d6bcfdd1e4464e39065644311",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ef47d77442d3b97d9afb3e3e9a90f2ed288e059d6bcfdd1e4464e39065644311",
+      "textSha256": "87286744c8482fdef145a65b3d5672638d12c57597c7757f59f2946cc1ef2416",
+      "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.tum.de/ueber-die-tum/ziele-und-werte/compliance",
+      "snapshotHash": "514ac2d4a8baaa9adbeca4c7ef2248a4cc370af5f214d7199e87e17fb326be4f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "514ac2d4a8baaa9adbeca4c7ef2248a4cc370af5f214d7199e87e17fb326be4f",
+      "textSha256": "a6a453dc979550b17891851382df6f1ee1724cd22e54c4862f4b6c5e2c656193",
+      "verification": "Verified byte-identical against accepted input."
     }
   ]
 }

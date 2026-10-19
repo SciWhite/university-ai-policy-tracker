@@ -116,6 +116,11 @@
       "path": "sharded/revisions/qs20-22-v6-r1-20261018-dbb61345b87b7aaa4bc1acf6dec4fe5a0e5e4c305128eaf94a4b1bbe4da0ed34.json",
       "sha256": "dbb61345b87b7aaa4bc1acf6dec4fe5a0e5e4c305128eaf94a4b1bbe4da0ed34",
       "sourceSha256": "097c95e57f99e18bd21827ce6f11a8a2236466e9a8f9a05ca5304469a461dd02"
+    },
+    "qs23-24-v6-r3-20261019": {
+      "path": "sharded/revisions/qs23-24-v6-r3-20261019-c76e795e6ee2fffd5524935c0992b4b73ed109921e9b4aa6782e68db992eb56a.json",
+      "sha256": "c76e795e6ee2fffd5524935c0992b4b73ed109921e9b4aa6782e68db992eb56a",
+      "sourceSha256": "29787f684a246095d1c069d565c9dedb4342dc9b47d742cb5c3f021835ad481c"
     }
   }
 }
