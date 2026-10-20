@@ -22,5 +22,12 @@
   "yale-university": "https://www.yale.edu/",
   "epfl": "https://www.epfl.ch/",
   "technical-university-of-munich": "https://www.tum.de/",
-  "jhu": "https://www.jhu.edu/"
+  "jhu": "https://www.jhu.edu/",
+  "princeton-university": "https://www.princeton.edu/",
+  "university-of-sydney": "https://www.sydney.edu.au/",
+  "mcgill-university": "https://www.mcgill.ca/",
+  "universite-psl": "https://psl.eu/",
+  "university-of-toronto": "https://www.utoronto.ca/",
+  "fudan-university": "https://www.fudan.edu.cn/",
+  "kcl": "https://www.kcl.ac.uk/"
 }

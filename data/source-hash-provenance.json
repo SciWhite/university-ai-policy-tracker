@@ -2482,6 +2482,482 @@
       "rawSha256": "892962b65060fb0bba370a55435f90b8152fde2abd0ab4eda4a4bdda3a6edac3",
       "textSha256": "892962b65060fb0bba370a55435f90b8152fde2abd0ab4eda4a4bdda3a6edac3",
       "verification": "verified"
+    },
+    {
+      "sourceUrl": "http://www.cce.fudan.edu.cn/84/9b/c14097a165019/page.htm",
+      "snapshotHash": "0b95d56de4dd9ebb5507778fee0ad21c064b9dcf6205b407877ab390aa5d95c4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0b95d56de4dd9ebb5507778fee0ad21c064b9dcf6205b407877ab390aa5d95c4",
+      "textSha256": "20e0df316be28c019c1431e4e89477efd1a60e31891a7cd5a628864f886c6ad1",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:19:10Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://ai.utoronto.ca/ai-kitchen/",
+      "snapshotHash": "3882ff0100cf4de6a87e1d532a2faaac5b377529df3a6c687e258e0e5e555eab",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3882ff0100cf4de6a87e1d532a2faaac5b377529df3a6c687e258e0e5e555eab",
+      "textSha256": "153aa1e72ea6764ddb2f49878aa125d505f400bd84905fc689b091c4cfaa055f",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:55Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://artandarchaeology.princeton.edu/about-us/undergraduate/history-art-independent-work-guide",
+      "snapshotHash": "4c7a77a2ece311a19a0234dd05bc19cded70a3a87b35725e1695aad8f5f65272",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4c7a77a2ece311a19a0234dd05bc19cded70a3a87b35725e1695aad8f5f65272",
+      "textSha256": "cb6cad2dfee8a39e79a624dbd5f0cb817cf17758f3d3d04cb71bad732c1eb193",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+      "snapshotHash": "e681701f7b49b1fb6ffd1e6e97a5137e4d8acd9ee0ab9f37c8b2721125d0bc65",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e681701f7b49b1fb6ffd1e6e97a5137e4d8acd9ee0ab9f37c8b2721125d0bc65",
+      "textSha256": "8456bbaf6b272cea1fb7324b09fb2fc8fabb4d9d9ec99a74933693b54ca09f4f",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:49Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://ciens.ens.psl.eu/charte-dutilisation-de-lintelligence-artificielle-generative/",
+      "snapshotHash": "fedc5fe21bcac3153822cbdecb189d9df794a5a934219b69b4f1aa1891c3b6d2",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "fedc5fe21bcac3153822cbdecb189d9df794a5a934219b69b4f1aa1891c3b6d2",
+      "textSha256": "77824dc239f3142deff40d9cf44de2e41e921c33ec4105c45e4e0f0dd04f8541",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:26:43Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+      "snapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+      "snapshotHash": "058efdd957971901a0e660842c9c6489291b59f707f0ce8389586021ae393a1e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-0",
+      "snapshotHash": "f30271f7de532f5e513371865d35ea248e44fae97884fa8b2c57a2743e4cc1f7",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f30271f7de532f5e513371865d35ea248e44fae97884fa8b2c57a2743e4cc1f7",
+      "textSha256": "d0681ecaefe90421d5f8d1087046039b41d2973f077f04fa6f2724bb877f4d4d",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:47:43Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://ices.fudan.edu.cn/_upload/article/files/4a/f1/9be98c364eba91b44981f0bcfd51/92ec86c4-0d8f-44ec-80aa-9d92dcfb1613.pdf",
+      "snapshotHash": "f870863b2c670a906f70c985812e9914c82a190c6f5801c12d054ff7740756ef",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f870863b2c670a906f70c985812e9914c82a190c6f5801c12d054ff7740756ef",
+      "textSha256": "4cdde05b8706c6b88ff06998906b14d0a46bcac0585cbc6d601b2a99baa46bb5",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:18:58Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+      "snapshotHash": "74581ab5b9b62a231d5c6a8b4e3eb02ce4eaa3382926f5fd04a5e5d0c19159b7",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "74581ab5b9b62a231d5c6a8b4e3eb02ce4eaa3382926f5fd04a5e5d0c19159b7",
+      "textSha256": "137c4af1b2be64f024acd09a28a161726b155dec025f3a8bec917e446a5dd5de",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://mse.fudan.edu.cn/_upload/article/files/14/04/b6ae22ac40f1b7211686132a3f1f/9a7f07a7-f040-4135-a11f-bafe7c7154a1.pdf",
+      "snapshotHash": "e89a3c7d3fa184edc13f54d817bbeef5e192fe52caa1ea23cb8d86ab072e5638",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e89a3c7d3fa184edc13f54d817bbeef5e192fe52caa1ea23cb8d86ab072e5638",
+      "textSha256": "18a06c82a781c7a915f8dce852aa5eaf7357af0221d2c941ba919249c5e0b8e6",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:19:18Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://news.fudan.edu.cn/2024/1220/c3163a143685/page.htm",
+      "snapshotHash": "63c88f9848bfb85a5493de843e6bfa9c9939127dc607011ce235e8de7a01ed10",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "63c88f9848bfb85a5493de843e6bfa9c9939127dc607011ce235e8de7a01ed10",
+      "textSha256": "b9345a886ca98146257a1bd39d74822381ac76ca8b098a2da94868f594af9dc9",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:24:22Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+      "snapshotHash": "1995f980ec9eb92dd892bb4cc5eac8b6b66c71cfc1cc52237d2a801f054fd451",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1995f980ec9eb92dd892bb4cc5eac8b6b66c71cfc1cc52237d2a801f054fd451",
+      "textSha256": "bd1fe1527422e5068be829c25a5e2d6ca446dd84a5479c36ae256c87ad1ce2a9",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+      "snapshotHash": "1b23120c73661668a7befb2f6a76a414d547a3f339a846601deb0b3124c3aeca",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1b23120c73661668a7befb2f6a76a414d547a3f339a846601deb0b3124c3aeca",
+      "textSha256": "c4e9221c1ee730fc9bfe9e98a6952050f3d86905a9cdeb04ed46de0d2d9f868c",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://oit.princeton.edu/generative-ai",
+      "snapshotHash": "5ccd6eabb7e9e92fb576915649053ec3340adfbf7fd33cc627555eb2035162ed",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5ccd6eabb7e9e92fb576915649053ec3340adfbf7fd33cc627555eb2035162ed",
+      "textSha256": "06a7cf5cd3939064a40036c358c84359d5f5385b203591b415370e5fe3075924",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+      "snapshotHash": "300539b6bc2ccd828f7c0375081483f27564f1a365187d3a7a9ee440c78540cb",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "300539b6bc2ccd828f7c0375081483f27564f1a365187d3a7a9ee440c78540cb",
+      "textSha256": "1784635c65989c20d0fbc0db76bb14bb163cdad3fb427475691604350647beb3",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+      "snapshotHash": "be9edba18d78c36239b49f30a6b41ada57e3048ae56b2b0f1662a5cf5fe019f6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "be9edba18d78c36239b49f30a6b41ada57e3048ae56b2b0f1662a5cf5fe019f6",
+      "textSha256": "144372ae947e48d7df77d192b6c1dae40bbcee3ce81abbe041f5bb9607def091",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://rrr.princeton.edu/students-and-university/24-academic-regulations",
+      "snapshotHash": "02f7a6473e1fbbb8554ffb523d55b3ee5822be0080bf2e95af48ed888e11424c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "02f7a6473e1fbbb8554ffb523d55b3ee5822be0080bf2e95af48ed888e11424c",
+      "textSha256": "add93083c18435d911c9ef6e4385948cc88312280d211d9a741424cd4540bd78",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+      "snapshotHash": "cdce51c933dcc1167d68bddd6fefec90df6cb5389070b831a6ee1a8d3ef19bc6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "cdce51c933dcc1167d68bddd6fefec90df6cb5389070b831a6ee1a8d3ef19bc6",
+      "textSha256": "c041b9c1dbbedd5254f8c5355a07783965baa926ac07a54cc7b5ae5f239d54e0",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/tutoring",
+      "snapshotHash": "e54b1590631592f289672d604d985faa6670168ed50c38ea0d997736dda0854f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e54b1590631592f289672d604d985faa6670168ed50c38ea0d997736dda0854f",
+      "textSha256": "5314aaef008058991df7f3df6568a2e94b8aeffcfa811e17bc3617755a9e3b9b",
+      "verification": "Firecrawl-returned rawHtml bytes (third-party render of the official page, not origin transfer bytes); captured 2026-10-20 for qs25-31."
+    },
+    {
+      "sourceUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+      "snapshotHash": "25dfb97a0276e6c6219b08f60e6ed3587c7afe996bfeb1c08b90cab10a547969",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "25dfb97a0276e6c6219b08f60e6ed3587c7afe996bfeb1c08b90cab10a547969",
+      "textSha256": "80131b70d733821fa41e0e26b0b46cf297f023ebbdfa9b977cdb3c3635c726fc",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:56Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://static.psl.eu/sites/default/files/2026-07/ndeg_20-2026.pdf",
+      "snapshotHash": "a48b6e2eb4f8b33d33e5959d648635a0f9176bcbd2cecf268cd853d4d3e9b35a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a48b6e2eb4f8b33d33e5959d648635a0f9176bcbd2cecf268cd853d4d3e9b35a",
+      "textSha256": "a345d2724561baf390f5bcea98d15df5c07e58fc6719a312f143eb7e2aa223e5",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:15:42Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://static.psl.eu/sites/default/files/2026-07/ndeg_28-2026.pdf",
+      "snapshotHash": "806c6f406411153c275d6553aee4e4211a17c10a4e2093489c0b1ffcf2ba56c1",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "806c6f406411153c275d6553aee4e4211a17c10a4e2093489c0b1ffcf2ba56c1",
+      "textSha256": "7c65476b7e3f73485bb9c036183291d0ab4b9eb848896057a0bec13240b809e1",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:15:52Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+      "snapshotHash": "47916cc6cc8fe89a59a15bf943c01d6346d5884663a901fef0107597824b6d15",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "47916cc6cc8fe89a59a15bf943c01d6346d5884663a901fef0107597824b6d15",
+      "textSha256": "4bbf6088781d5988de46ac6dc40dec8353696392fe636dd1415cd5adffc94a6b",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:55Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://teachingblog.mcgill.ca/2026/08/12/5-things-instructors-should-know-about-generative-ai-at-mcgill/",
+      "snapshotHash": "9a219792e4d0bd7b865ed17147484bded43af5a995603beb2e8d0e15405d3276",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9a219792e4d0bd7b865ed17147484bded43af5a995603beb2e8d0e15405d3276",
+      "textSha256": "3eb47cac8f6cf1217869aceb0fc074afddf98f0aa1103c930b6b51895e19d2f9",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:36:46Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+      "snapshotHash": "d445b3d5fc78ebd4417cee657da623c09e8cfceb9b34f37fa6ec6385136ab108",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d445b3d5fc78ebd4417cee657da623c09e8cfceb9b34f37fa6ec6385136ab108",
+      "textSha256": "6b2461af16a115297b66551cccbd1c2696f887da3a80b746fc2216599e09cae4",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:46Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+      "snapshotHash": "d842d0ad67dd6697b411f00d8c57c0ee3cb26e133d82a52c10fedbe64c245934",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+      "snapshotHash": "6b438a2f77745a5b215c3be80e9f92a2c6d8c14631144704944784eb73cdd5f8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6b438a2f77745a5b215c3be80e9f92a2c6d8c14631144704944784eb73cdd5f8",
+      "textSha256": "68cc9f1aae91fdae2805c140046c359a3dcd43adf31f18b071ee4561924f20e9",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:56Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.fudan.edu.cn/2026/0113/c24a148049/page.htm",
+      "snapshotHash": "ac76acffd0007e6540ef3787c4a40e58e7b3320bc61360c492053ca4a9f19378",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ac76acffd0007e6540ef3787c4a40e58e7b3320bc61360c492053ca4a9f19378",
+      "textSha256": "de634299da1dc1baab3b1d5d8d97455989555a1081d871211caccc4a13f27581",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T06:19:03Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/ai-assisted-marking-and-feedback",
+      "snapshotHash": "900f04b8200eb1fd5fe7840cd58646356e7b8f064b7881c9b3173771694c27c5",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "900f04b8200eb1fd5fe7840cd58646356e7b8f064b7881c9b3173771694c27c5",
+      "textSha256": "a74afc64429c311bbfbd11d910d68e87193797e2ce4b3b2e650059aad6e5f4e2",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:50Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/context-definitions",
+      "snapshotHash": "ca24453f069fb2243629bd6e43c2cb5aa57a2fef0ad4721d11d3ee57e6855bb1",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ca24453f069fb2243629bd6e43c2cb5aa57a2fef0ad4721d11d3ee57e6855bb1",
+      "textSha256": "7b60fecfd168d2039b686fe5954e9338117e7347a9620d98e8bd5786ea93dbbb",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:51Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/context-definitions",
+      "snapshotHash": "e83b1023c70fd9113f0fafdecb9f0ee84991617be4a6e17182b9fdf753d682f0",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+      "snapshotHash": "1b5648a579910bcd366eaec85b06b0205a5991befd431a0fb3a6ff761a940b3c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1b5648a579910bcd366eaec85b06b0205a5991befd431a0fb3a6ff761a940b3c",
+      "textSha256": "977b3de9eb3ea863e5274b86ffd9e3da6fbe1bbe5e97c36a543e3e2d6a74593d",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:49Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+      "snapshotHash": "7a1dd2b317bc654cd4834c6dcd738cf2b2f1334c0d29a89e641af8466c836601",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/macro-level",
+      "snapshotHash": "1e3ca992756b189957a27399a52e9201c612cbba5426b6ceb89b212e9bb41682",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1e3ca992756b189957a27399a52e9201c612cbba5426b6ceb89b212e9bb41682",
+      "textSha256": "89c03ef2f5638eac79d62fa1de8d43c69a882b5d15d971167470aeed22a58a6e",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:52Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+      "snapshotHash": "3eea2074456e43ca13d816549e2a0a4fbcac13261120addbddb656b949c4b6a4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3eea2074456e43ca13d816549e2a0a4fbcac13261120addbddb656b949c4b6a4",
+      "textSha256": "253edc3d2f8bc684ada49083b31a18e408a6a451b78f4908e8506f341ab3f5d3",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:48Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+      "snapshotHash": "de7e5bc7b74c4cb2793a5aa5fa10833903a495498accbd3da32eaac9e5f4cc23",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.kcl.ac.uk/assets/policyzone/assessment/academic-misconduct-policy.pdf",
+      "snapshotHash": "d1df4e2341fad7ce1946ea3740e43ac5e5149ec5e96ba787c32689580679152c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d1df4e2341fad7ce1946ea3740e43ac5e5149ec5e96ba787c32689580679152c",
+      "textSha256": "24c633ea477bc26cc491c20d41b160d70d9404a148e85140c40bdefc95e1b350",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:32:50Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/gps/files/gps/generative_ai_statement_for_thesis_students_may_1_2026.pdf",
+      "snapshotHash": "8a38c96b7dfda1d9b27b97667b8a0da933462efd05024e6580b033686ce388af",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8a38c96b7dfda1d9b27b97667b8a0da933462efd05024e6580b033686ce388af",
+      "textSha256": "50749563f40c18806303032293323e061fc6fc5dff03830a0edd4346a7ac4261",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:36:54Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/gps/files/gps/using_generative_ai_in_research_gps_guidelines_november_2024.pdf",
+      "snapshotHash": "289e5748fe3c87f043048f1230012d430a08dff0cd4e31b74289aa0befc21ecf",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "289e5748fe3c87f043048f1230012d430a08dff0cd4e31b74289aa0befc21ecf",
+      "textSha256": "b5aa85a54221c32d8a1c17903e62d793a10b1b919f7f6865eb5e06cc2e329cfe",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:36:54Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/gps/thesis/thesis-guidelines/use-generative-ai-research",
+      "snapshotHash": "6dc15875644825f4aad19b7075031f79cf6e9fe652ad5399906af46e9da2d7a6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6dc15875644825f4aad19b7075031f79cf6e9fe652ad5399906af46e9da2d7a6",
+      "textSha256": "3fe2ae148b33777718ffeeaa214c31fc8f494a109731a63c3cd2b733423cfd8b",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:36:45Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-governance",
+      "snapshotHash": "76b6cd6789954eea09ae30fa99fd4f43fc919779d547c272cbc211e1d86d6c6d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "76b6cd6789954eea09ae30fa99fd4f43fc919779d547c272cbc211e1d86d6c6d",
+      "textSha256": "6d3c3b16695c4ccb010b8fce4711d7a31d8b6342b53a47f7f1a74cb00f5191f8",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:46Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+      "snapshotHash": "65240bfc8b000bd19a295b33007df10eb02f40e3b3347bc667da67f42f7ce4ee",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+      "snapshotHash": "a002a390ec0fe1ae8a6a46a47f0f79f04a712489d592831005a02a41fc15f764",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a002a390ec0fe1ae8a6a46a47f0f79f04a712489d592831005a02a41fc15f764",
+      "textSha256": "2418b7c2a8b709bafda1778567c48128b7851cb0fd672e96a10ff297fe0a2645",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:45Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/linguistic-services/language-resources/ai-translation-guide",
+      "snapshotHash": "5010e0ab97c01f9d7e41032875cb6a06d1fc09e78db7f4f840f160dceb0ecaaf",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5010e0ab97c01f9d7e41032875cb6a06d1fc09e78db7f4f840f160dceb0ecaaf",
+      "textSha256": "abca06df86cfa1bb63583ef680ff029db9dbb541968540e3e69d3d7ec0c477ff",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:51:59Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+      "snapshotHash": "a39f919a2af53c8a4a0ee5de48dc402137863dbe071f284617f71db93d371695",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a39f919a2af53c8a4a0ee5de48dc402137863dbe071f284617f71db93d371695",
+      "textSha256": "d0ad45bc209b31e1cd1987cfc964da9c8978dffc25a342118bb9732fb94e0ed5",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:46Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+      "snapshotHash": "bf264889e0f83ad66de9b81f263407457f522fa784bf56c38075b3f5f1b4ffdf",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/secretariat/files/secretariat/code_of_student_conduct_and_disciplinary_procedures.pdf",
+      "snapshotHash": "0fbc6a7e8c35cbd844c288333fca635be17d3f232c3ffdcb03c8bbbf7df6ae54",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0fbc6a7e8c35cbd844c288333fca635be17d3f232c3ffdcb03c8bbbf7df6ae54",
+      "textSha256": "4a5d4487fdd19c01da60e953b5aef27d4b876358fc8c7bc25739c5bed46bbe16",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:41:35Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+      "snapshotHash": "a2ae561f30ec0955eb90aa0cb2728faaf9cacb215857e3b1ed906d060b8778cb",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a2ae561f30ec0955eb90aa0cb2728faaf9cacb215857e3b1ed906d060b8778cb",
+      "textSha256": "7bf587710a279f0fc4ecc379ccb3ee5129a5087f2fc45728a812534d0ccc89c0",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:54Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+      "snapshotHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/research/graduate-research/current-students/getting-started.html",
+      "snapshotHash": "315ab3cccc95bc4f98db73c548d50b8d5dc97e68dead644f249935c683f0f0f1",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "315ab3cccc95bc4f98db73c548d50b8d5dc97e68dead644f249935c683f0f0f1",
+      "textSha256": "7629612a8bb803547d790cb175188684e278f0297de27dd30959992fe690d9ac",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:54:24Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/research/graduate-research/current-students/thesis-and-examination/preparing-your-thesis.html",
+      "snapshotHash": "48ee868f346d41c0addb36093ed6548c6a6697836049dd0303e8beb8a9eb846a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "48ee868f346d41c0addb36093ed6548c6a6697836049dd0303e8beb8a9eb846a",
+      "textSha256": "b62206e89c33515da8395877f49f6578d310419b2c737173719d6b71ba6eec4d",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:54:25Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/academic-appeals.html",
+      "snapshotHash": "bb6f0d403ed4a71b0d0f71fd6a184e91bb5145fb10e84946d589e7f163aa5d43",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "bb6f0d403ed4a71b0d0f71fd6a184e91bb5145fb10e84946d589e7f163aa5d43",
+      "textSha256": "0ff6bb2294d417254641190cbb07bc6d2da1ee2005fdd1688b5e91d10f3aeb49",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:55:28Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/academic-integrity/investigation.html",
+      "snapshotHash": "58463fa9bd09ebeaf674041801f0a940cf84c7345b845b0a1ba145c952ace5d6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "58463fa9bd09ebeaf674041801f0a940cf84c7345b845b0a1ba145c952ace5d6",
+      "textSha256": "14864a51e2241e296bc6280b254c50b31759b8009975ad3bab1a0c157e4c2ada",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:55:29Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/chatgpt-edu.html",
+      "snapshotHash": "dd7b4d834ba379380ba985db473d5fbe2346e22bd6a91d5dd065dc417252e55e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "dd7b4d834ba379380ba985db473d5fbe2346e22bd6a91d5dd065dc417252e55e",
+      "textSha256": "11236cfad5799e27849577ea1093530a2f8fccf16dc6d9c09df6cfaf2cd83fbb",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:55:10Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+      "snapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained public baseline snapshot hash for an unchanged claim; byte representation not re-established in qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+      "snapshotHash": "c5c9c40bab94402e0943669b6a1187ef57e3a43e766ca2a896f98fa2d818142b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c5c9c40bab94402e0943669b6a1187ef57e3a43e766ca2a896f98fa2d818142b",
+      "textSha256": "fe91d07344ea4c8da43825f4d6a13fd094541c95fed7f2458051c93a1499559b",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:36Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/student-it/apps.html",
+      "snapshotHash": "81af3a0c8d7bb45219d0ad877118d356fb3346b070404e4d92a68312e71fe548",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "81af3a0c8d7bb45219d0ad877118d356fb3346b070404e4d92a68312e71fe548",
+      "textSha256": "816b82b08695d373e53e49f7525eb162cab82394eaffe2ea0e7533cd1ba115a9",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:37Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.sydney.edu.au/students/student-misconduct/appeal-outcome.html",
+      "snapshotHash": "d201fb90b6a25b329d6b8d61b7657ba9b5974b76d201d674fa8d4120660ae710",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d201fb90b6a25b329d6b8d61b7657ba9b5974b76d201d674fa8d4120660ae710",
+      "textSha256": "dda2d695ae0e7b80f0a21b568dbb5854b6429f47d1e850b7f666043b4d414d27",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:55:29Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.utsc.utoronto.ca/ctl/generative-ai-tools",
+      "snapshotHash": "dcf70a6a12913fe2cd1ae208ee5e1d2122c07c861ad4da316055bbdac1d5ee20",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "dcf70a6a12913fe2cd1ae208ee5e1d2122c07c861ad4da316055bbdac1d5ee20",
+      "textSha256": "7ebc92c5d0eea3af883e9215517ef2c08a4adafa44a923dbe1401510ea3921a0",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:48:23Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://www.vptl.utoronto.ca/teaching-initiatives/generative-artificial-intelligence-faq/",
+      "snapshotHash": "c3f63de2bf0cef4a8766517dc27e4392a2aa0ca9813f94e5309dc076569eca06",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c3f63de2bf0cef4a8766517dc27e4392a2aa0ca9813f94e5309dc076569eca06",
+      "textSha256": "0bfcfc48c394ea3af493b00fae13dac02128cb2e634a18384f47ca8e2012fccb",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:31:54Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://xxb.fudan.edu.cn/0e/85/c33159a724613/page.htm",
+      "snapshotHash": "bb0ed5c205b72363e8d12f21bff66662b43beee16c15c59271be1c192b85b38f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "bb0ed5c205b72363e8d12f21bff66662b43beee16c15c59271be1c192b85b38f",
+      "textSha256": "76adc92972ef27400a729ac88451265271a4a422d0abbc9f4a1419e6870667c0",
+      "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:55Z for qs25-31."
     }
   ]
 }
