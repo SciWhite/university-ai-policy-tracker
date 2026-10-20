@@ -1,3 +1,5 @@
+import {canonicalUniversitySlug} from "@/lib/canonical-university-slug";
+import {GET as universityEndpoint} from "@/app/api/public/v1/universities/[...slug]/route";
 import {withSourceHashContract} from "@/lib/source-hash-contract";
 import {v6BaselineRevision} from '@/lib/v6-effective-records';
 import {HistoryCapacityError} from '@/lib/bounded-cache';
@@ -40,6 +42,8 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
 }
 async function handleGet(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const path=(await params).path.join('/');
+ const match = path.match(/^(universities|claims)\/([^/]+)$/) ?? path.match(/^(changes\/(?:latest|[a-z0-9-]+))\/([^/]+)$/);
+ if(match){const slug=match[2].replace(/\.json$/, ""), canonical=canonicalUniversitySlug(slug);if(canonical!==slug)return NextResponse.redirect(new URL(`/api/public/v1/${match[1]}/${canonical}${match[2].endsWith(".json")?".json":""}`,getSiteBaseUrl()),308);}
  const correction=readV6RecordCorrections()!;
  if(path.startsWith('policy-pages/v6/revisions/')){const revision=path.split('/').at(-1)!.replace(/\.json$/,'');const data=readPublishedV6Revision(revision);return NextResponse.json(data??{error:'Revision not found'},{status:data?200:404});}
  if(/^record-corrections\/(latest|[a-z0-9-]+)\.json$/.test(path)){const revision=path.split('/')[1].replace(/\.json$/,'');const selected=revision==='latest'?correction:readV6RecordCorrectionRevision(revision);return NextResponse.json(selected?{schemaVersion:'uapt-scoped-record-diff-v1',revision:selected.revision,datasetReleaseId:selected.datasetReleaseId,publishedAt:selected.publishedAt,changes:selected.changesBySlug}:{error:'Correction revision not found'},{status:selected?200:404});}
@@ -92,6 +96,10 @@ async function handleGet(request:Request,{params}:{params:Promise<{path:string[]
   return NextResponse.json(buildPolicySnapshotResponse(snapshot,getSiteBaseUrl()),{headers:{'Cache-Control':'private, no-store, no-transform'}});
  }
  }
+ const summaryPath=path.match(/^universities\/([^/]+)$/);
+ if(summaryPath)return universityEndpoint(request,{params:Promise.resolve({slug:[summaryPath[1]]})});
+ const claimPath=path.match(/^claims\/([^/]+)$/);
+ if(claimPath)return claimsEndpoint(request,{params:Promise.resolve({slug:claimPath[1]})});
  return NextResponse.json({error:'Outside bounded repair scope'},{status:404});
 }
 

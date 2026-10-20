@@ -1,0 +1,1028 @@
+/* Desktop hierarchy follows the five frozen ImageGen references, not a new redesign. */
+.discovery-page[data-discovery-page="changes"] {
+  max-width: 1240px;
+  width: min(1240px, calc(100% - 64px));
+  margin-top: 46px;
+}
+.discovery-page h1 {
+  font-size: clamp(2rem, 3.1vw, 3.2rem);
+}
+.discovery-page[data-discovery-page="search"] > .discovery-header,
+.discovery-page[data-discovery-page="search"] > .discovery-search-form,
+.discovery-page[data-discovery-page="search"] > .discovery-tabs {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+.discovery-page[data-discovery-page="search"] > .discovery-header {
+  margin-bottom: 22px;
+}
+.discovery-page[data-discovery-page="search"] > .discovery-header h1 {
+  max-width: none;
+}
+.discovery-search-form input {
+  min-height: 48px !important;
+}
+.discovery-search-form button[type="submit"] {
+  min-height: 48px;
+}
+.discovery-search-shortcut {
+  margin-inline-start: auto;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  align-self: center;
+}
+.search-autocomplete:has(.discovery-clear-search) > input {
+  padding-inline-end: 42px;
+}
+.discovery-page .discovery-clear-search {
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  min-height: 40px;
+  height: 40px;
+  min-width: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+}
+.discovery-page[data-discovery-page="universities"] > .discovery-layout {
+  margin-top: 0;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 28px;
+}
+.university-mockup-page .discovery-header {
+  margin-bottom: 22px;
+}
+.university-mockup-page .discovery-search-form {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.university-mockup-page .discovery-result-toolbar {
+  margin-top: 30px;
+  margin-bottom: 14px;
+}
+.university-mockup-page .discovery-university-grid {
+  gap: 14px;
+}
+.university-mockup-page .discovery-filters {
+  padding-inline-end: 28px;
+}
+.university-mockup-page .discovery-filter-heading {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 22px !important;
+}
+.discovery-filter-extra {
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 14px;
+}
+.discovery-filter-extra > summary {
+  cursor: pointer;
+  color: var(--color-text-muted);
+}
+.discovery-filter-extra[open] > label {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+.discovery-filter-extra select {
+  margin-top: 6px;
+}
+.discovery-topic-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+}
+.discovery-page .discovery-topic-chips button,
+.discovery-topic-chips > span {
+  min-height: 32px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-canvas-subtle);
+  font-size: 0.75rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+.discovery-page .discovery-topic-chips button[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.university-mockup-page .discovery-university-card {
+  min-height: 138px;
+  align-items: start;
+  gap: 18px;
+  padding: 18px 18px 16px 48px;
+}
+.university-mockup-page .discovery-university-card > .university-mark {
+  width: 64px;
+  height: 64px;
+  flex-basis: 64px;
+}
+.university-mockup-page .discovery-university-card > .university-mark--wide {
+  width: 112px;
+  flex-basis: 112px;
+}
+.university-mockup-page .discovery-university-card .university-mark img {
+  max-height: 64px !important;
+}
+.university-mockup-page .discovery-card-content h3 {
+  font-size: 1.06rem;
+}
+.university-mockup-page .discovery-actions {
+  margin-top: 10px;
+  gap: 8px 16px;
+}
+.university-mockup-page .discovery-actions a {
+  font-size: 0.76rem;
+}
+.university-mockup-page .discovery-outline-link {
+  min-height: 34px;
+  padding: 4px 10px;
+}
+.discovery-page-number {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+.discovery-pagination {
+  gap: 6px;
+  padding-top: 20px;
+}
+.discovery-pagination .discovery-page-number button {
+  min-width: 36px;
+  min-height: 38px;
+  padding: 6px 10px;
+}
+.discovery-pagination button[aria-current="page"] {
+  background: var(--color-accent-emphasis);
+  color: var(--color-fg-on-emphasis, #fff);
+  border-color: var(--color-accent-emphasis);
+}
+.discovery-university-card--featured {
+  padding: 20px;
+  gap: 24px;
+  align-items: start;
+  min-height: 174px;
+}
+.discovery-university-card--featured > .university-mark {
+  width: 90px;
+  height: 90px;
+  flex-basis: 90px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-canvas-default);
+  padding: 12px;
+}
+.discovery-university-card--featured > .university-mark--wide {
+  width: 120px;
+  flex-basis: 120px;
+}
+.discovery-university-card--featured > .university-mark img {
+  max-height: 68px !important;
+}
+.discovery-university-card--featured h3 {
+  font-size: 1.8rem;
+  letter-spacing: -0.035em;
+}
+.discovery-university-card--featured .discovery-location {
+  display: inline-block;
+  font-size: 0.86rem;
+  margin-inline-end: 12px;
+}
+.discovery-university-card--featured .discovery-date {
+  display: inline-block;
+  font-size: 0.8rem;
+}
+.discovery-university-card--featured .discovery-card-summary {
+  margin-top: 10px !important;
+  font-size: 0.9rem;
+}
+.discovery-university-card--featured .discovery-card-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 10px;
+}
+.discovery-university-card--featured .discovery-card-content > h3,
+.discovery-university-card--featured
+  .discovery-card-content
+  > .discovery-card-summary {
+  flex-basis: 100%;
+}
+.discovery-university-card--featured .discovery-topic-chips {
+  margin: 10px auto 0 0;
+  gap: 6px;
+}
+.discovery-university-card--featured .discovery-topic-chips > span {
+  border-radius: 4px;
+  background: var(--color-canvas-default);
+  font-size: 0.7rem;
+  min-height: 30px;
+  padding: 5px 9px;
+}
+.discovery-university-card--featured .discovery-actions {
+  margin-top: 12px;
+}
+.discovery-page .discovery-evidence-card--compact {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) auto;
+  gap: 20px;
+  padding: 20px;
+  background: var(--color-canvas-default);
+}
+.discovery-evidence-label {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.discovery-evidence-label > svg {
+  flex-shrink: 0;
+}
+.discovery-evidence-content {
+  min-width: 0;
+}
+.discovery-evidence-content .discovery-evidence-claim {
+  font-size: 0.88rem;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+.discovery-evidence-attribution {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-top: 10px !important;
+}
+.discovery-evidence-attribution > a:first-child {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.discovery-evidence-card--compact > .discovery-outline-link {
+  align-self: center;
+  font-size: 0.8rem;
+}
+.discovery-evidence-card--compact .discovery-excerpt {
+  margin-top: 8px;
+}
+.discovery-evidence-card--compact .discovery-excerpt > summary {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.discovery-evidence-card--compact .discovery-excerpt > p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.discovery-page[data-discovery-page="changes"] .discovery-header p {
+  font-size: 1.12rem;
+}
+.discovery-page .discovery-copy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-canvas-subtle);
+  font-size: 0.85rem;
+}
+.discovery-page .discovery-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 20px;
+  line-height: 1.5;
+  position: relative;
+  margin: 0 0 22px;
+}
+.discovery-boundary > p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+.discovery-boundary > .discovery-data {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+.discovery-boundary > .discovery-data > summary {
+  color: var(--color-accent);
+}
+.discovery-boundary > .discovery-data[open] {
+  flex-shrink: 1;
+}
+.discovery-boundary:has(> .discovery-data[open]) {
+  flex-wrap: wrap;
+}
+.discovery-boundary > .discovery-data[open] > .discovery-data-body {
+  padding: 18px 0 0;
+}
+.discovery-change-filters {
+  grid-template-columns:
+    minmax(240px, 2.4fr) minmax(150px, 1fr) minmax(150px, 1fr)
+    minmax(180px, 1.2fr);
+  gap: 12px;
+  align-items: start;
+}
+.discovery-change-filters > .discovery-field {
+  font-size: 0;
+  gap: 0;
+}
+.discovery-change-filters > .discovery-field select,
+.discovery-change-filters > .discovery-field input {
+  font-size: 0.85rem;
+  min-height: 44px;
+}
+.discovery-date-range {
+  position: relative;
+}
+.discovery-date-range > summary {
+  cursor: pointer;
+  list-style: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 11px 14px;
+  font-size: 0.85rem;
+  min-height: 44px;
+}
+.discovery-date-range > summary::after {
+  content: "⌄";
+  float: inline-end;
+  margin-inline-start: 12px;
+}
+.discovery-date-range > div {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  min-width: 260px;
+  padding: 16px;
+  background: var(--color-canvas-default);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  z-index: 10;
+  display: grid;
+  gap: 14px;
+}
+.discovery-change-more {
+  font-size: 0.78rem;
+  margin-top: 10px;
+}
+.discovery-page[data-discovery-page="changes"]
+  form
+  > .discovery-result-toolbar {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.discovery-timeline-layout {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  margin-top: 20px;
+}
+.discovery-timeline-row {
+  grid-template-columns: 98px minmax(0, 1fr);
+  gap: 22px;
+}
+.discovery-timeline-row > time {
+  font-size: 0.8rem;
+  padding-top: 14px;
+}
+.discovery-timeline-row::before {
+  left: 109px;
+  top: 19px;
+}
+.discovery-timeline-card::before {
+  top: 17px;
+  left: -17px;
+  width: 10px;
+  height: 10px;
+}
+.discovery-timeline-card {
+  padding: 18px;
+}
+.discovery-timeline-identity {
+  align-items: start;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+.discovery-timeline-identity > .university-mark {
+  width: 66px;
+  height: 72px;
+  flex-basis: 66px;
+}
+.discovery-timeline-identity > .university-mark--wide {
+  width: 94px;
+  flex-basis: 94px;
+}
+.discovery-timeline-identity .university-mark img {
+  max-height: 70px !important;
+}
+.discovery-timeline-card > .discovery-timeline-identity h3 > a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.discovery-timeline-card > p,
+.discovery-timeline-card > .discovery-actions {
+  margin-inline-start: 84px;
+}
+.discovery-timeline-card > p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.discovery-timeline-card > .discovery-actions {
+  margin-top: 10px;
+}
+.discovery-change-kind {
+  border: 0;
+  background: var(--color-accent-subtle, var(--color-canvas-inset));
+  font-size: 0.72rem;
+  padding: 4px 10px;
+}
+.discovery-change-preview {
+  padding: 18px;
+}
+.discovery-change-preview h2 {
+  margin-bottom: 16px;
+}
+.discovery-preview-date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 6px !important;
+}
+.discovery-preview-date .discovery-change-kind {
+  margin-top: 0;
+}
+.discovery-change-preview > .discovery-timeline-identity > .university-mark {
+  width: 64px;
+  height: 64px;
+  flex-basis: 64px;
+}
+.discovery-change-preview > p {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+.discovery-change-stats {
+  display: grid;
+  gap: 9px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 18px;
+  margin: 14px 0 18px;
+  font-size: 0.8rem;
+}
+.discovery-change-stats > div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 14px;
+}
+.discovery-change-stats dt {
+  font-weight: 600;
+}
+.discovery-change-stats dd {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+.discovery-diff-block h4 {
+  font-size: 0.9rem;
+}
+.discovery-diff-block p {
+  padding: 12px;
+  font-size: 0.82rem;
+}
+.discovery-compare-tray {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-canvas-default);
+}
+.discovery-compare-inner {
+  max-width: 1440px;
+  padding: 16px 24px;
+  margin: auto;
+  gap: 18px;
+}
+.discovery-compare-chips button {
+  background: var(--color-canvas-default);
+  font-size: 0.8rem;
+}
+body:has(.discovery-compare-tray) .site-footer {
+  padding-bottom: 130px;
+}
+@media (min-width: 1151px) {
+  .discovery-page[data-discovery-page="changes"] .discovery-timeline-aside {
+    display: block;
+  }
+  .discovery-page[data-discovery-page="changes"] .discovery-timeline-inline {
+    display: none;
+  }
+}
+@media (max-width: 1150px) {
+  .discovery-timeline-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .discovery-university-card--featured .discovery-actions {
+    flex-basis: 100%;
+  }
+  .discovery-evidence-card--compact {
+    grid-template-columns: 130px minmax(0, 1fr) !important;
+  }
+  .discovery-evidence-card--compact > .discovery-outline-link {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .discovery-change-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .university-mockup-page .discovery-university-card {
+    padding-inline-start: 42px;
+    gap: 14px;
+  }
+  .university-mockup-page .discovery-university-card > .university-mark--wide {
+    width: 90px;
+    flex-basis: 90px;
+  }
+}
+@media (max-width: 900px) {
+  .university-mockup-page .discovery-university-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .discovery-page[data-discovery-page="universities"] > .discovery-layout {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 22px;
+  }
+  .discovery-search-shortcut {
+    display: none;
+  }
+  .discovery-university-card--featured {
+    gap: 18px;
+  }
+  .discovery-university-card--featured h3 {
+    font-size: 1.5rem;
+  }
+  .discovery-university-card--featured .discovery-date {
+    flex-basis: 100%;
+  }
+  .discovery-change-stats > div {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .discovery-page[data-discovery-page="changes"] {
+    width: calc(100% - 32px);
+    margin-top: 28px;
+  }
+  .discovery-page[data-discovery-page="universities"] > .discovery-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .university-mockup-page .discovery-result-toolbar {
+    margin-top: 24px;
+  }
+  .discovery-page .discovery-boundary {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px;
+  }
+  .discovery-page .discovery-boundary > .discovery-data {
+    flex-shrink: 1;
+  }
+  .discovery-change-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .discovery-date-range > div {
+    position: static;
+    min-width: 0;
+    margin-top: 8px;
+  }
+  .discovery-timeline-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .discovery-timeline-row > time {
+    text-align: start;
+    padding: 0;
+    margin-inline-start: 14px;
+  }
+  .discovery-timeline-row::before {
+    left: 0;
+    top: 28px;
+  }
+  .discovery-timeline-card::before {
+    left: -7px;
+  }
+  .discovery-timeline-card {
+    margin-inline-start: 14px;
+    padding: 16px;
+  }
+  .discovery-timeline-card > p,
+  .discovery-timeline-card > .discovery-actions {
+    margin-inline-start: 0;
+  }
+  .discovery-timeline-identity > .university-mark {
+    width: 48px;
+    height: 54px;
+    flex-basis: 48px;
+  }
+  .discovery-timeline-identity > .university-mark--wide {
+    width: 88px;
+    flex-basis: 88px;
+  }
+  .discovery-timeline-identity .university-mark img {
+    max-height: 54px !important;
+  }
+  .discovery-change-preview {
+    padding: 14px;
+  }
+  .discovery-university-card--featured {
+    flex-direction: column;
+  }
+  .discovery-university-card--featured > .university-mark {
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
+  }
+  .discovery-university-card--featured > .university-mark--wide {
+    width: 112px;
+    flex-basis: 72px;
+  }
+  .discovery-page .discovery-evidence-card--compact {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px;
+    padding: 18px;
+  }
+  .discovery-evidence-card--compact > .discovery-outline-link {
+    grid-column: 1;
+  }
+  .discovery-university-card--featured .discovery-actions {
+    gap: 8px 14px;
+  }
+  .discovery-compare-inner {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  .discovery-compare-chips {
+    max-height: 82px;
+    overflow-y: auto;
+  }
+  .discovery-compare-count {
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 1200px) {
+  body:has(main.discovery-page) .site-header__top,
+  body:has(main.discovery-page) .site-nav {
+    max-width: 1180px;
+  }
+  body:has(main.discovery-page) .site-header__top {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .home-v6-page {
+    max-width: 1116px;
+    width: min(1116px, calc(100% - 64px));
+  }
+  .rankings-v6-page {
+    max-width: 1160px;
+    width: min(1160px, calc(100% - 64px));
+  }
+  .discovery-page[data-discovery-page="universities"] > .discovery-layout {
+    grid-template-columns: 268px minmax(0, 1fr);
+  }
+}
+/* Same-size comparison pass: align the first-screen vertical rhythm. */
+.home-v6-page .home-v6-hero h1 {
+  font-size: clamp(2.1rem, 3.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.home-v6-page .mockup-eyebrow {
+  margin-bottom: 4px !important;
+}
+.home-v6-topic p {
+  font-weight: 400;
+  font-size: 0.81rem;
+  line-height: 1.4;
+}
+.home-v6-topic {
+  padding-block: 18px;
+}
+.home-v6-section {
+  margin-top: 24px;
+}
+.home-v6-guide {
+  padding: 16px 16px 12px;
+}
+.home-v6-guide-heading {
+  min-height: 56px;
+  margin-bottom: 8px;
+}
+.home-v6-guide .university-mark {
+  width: 56px;
+  height: 56px;
+  flex-basis: 56px;
+}
+.home-v6-guide .university-mark--wide {
+  width: 84px;
+  flex-basis: 84px;
+}
+.home-v6-guide .university-mark img {
+  max-height: 54px !important;
+}
+.home-v6-guide .discovery-actions {
+  margin-top: 8px;
+}
+.home-v6-guide .discovery-outline-link {
+  min-height: 34px;
+}
+.discovery-page[data-discovery-page="search"] > .discovery-header,
+.discovery-page[data-discovery-page="search"] > .discovery-search-form,
+.discovery-page[data-discovery-page="search"] > .discovery-tabs {
+  max-width: 1144px;
+}
+.discovery-page[data-discovery-page="search"] > .discovery-header {
+  margin-bottom: 14px;
+}
+.discovery-page[data-discovery-page="search"] > .discovery-search-form {
+  margin-top: 14px;
+}
+.discovery-page[data-discovery-page="search"] > .discovery-tabs {
+  margin-top: 16px;
+}
+.discovery-page[data-discovery-page="search"]
+  .discovery-result-toolbar
+  > .discovery-field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  font-weight: 400;
+}
+.discovery-university-card--featured {
+  padding: 18px;
+}
+.discovery-university-card--featured h3 {
+  font-size: 1.7rem;
+  line-height: 1.25;
+}
+.discovery-university-card--featured .discovery-card-summary {
+  margin-top: 8px !important;
+}
+.discovery-university-card--featured .discovery-topic-chips {
+  margin-top: 8px;
+}
+.discovery-evidence-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 14px;
+  align-items: start;
+}
+.discovery-evidence-content > h3,
+.discovery-evidence-content > .discovery-evidence-claim {
+  grid-column: 1/-1;
+}
+.discovery-evidence-content > .discovery-excerpt[open] {
+  grid-column: 1/-1;
+}
+.discovery-evidence-card--compact .discovery-excerpt > summary {
+  min-height: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+.discovery-page[data-discovery-page="changes"] {
+  margin-top: 40px;
+}
+.discovery-boundary > .discovery-data > summary {
+  min-height: 0;
+  line-height: 1.5;
+}
+.discovery-timeline-card > .discovery-timeline-identity {
+  position: relative;
+  padding-inline-start: 84px;
+}
+.discovery-timeline-card > .discovery-timeline-identity > .university-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.discovery-timeline-card .discovery-actions a,
+.discovery-timeline-card .discovery-actions button {
+  min-height: 30px;
+}
+.discovery-change-stats dd {
+  font-weight: 400;
+}
+.university-mockup-page {
+  margin-top: 28px;
+}
+.university-mockup-page .discovery-header {
+  margin-bottom: 14px;
+}
+.university-mockup-page .discovery-university-card {
+  min-height: 124px;
+  padding-block: 16px;
+}
+.university-mockup-page .discovery-pagination {
+  padding-top: 12px;
+}
+.discovery-compare-tray {
+  padding: 0;
+  margin-top: 0;
+}
+.discovery-compare-inner {
+  padding: 10px 24px;
+}
+.discovery-compare-chips button {
+  max-width: none;
+  white-space: nowrap;
+}
+.discovery-compare-chips button > .university-mark {
+  width: 20px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.discovery-compare-chips button > .university-mark img {
+  max-width: 20px !important;
+  max-height: 24px !important;
+  object-fit: contain;
+}
+@media (min-width: 1200px) {
+  .home-v6-page,
+  .rankings-v6-page {
+    margin-top: 32px;
+  }
+  .rankings-v6-page .discovery-header h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .rankings-v6-tabs a {
+    padding-block: 11px;
+  }
+  .ranking-v6-filterbar {
+    padding: 16px;
+  }
+  .ranking-v6-table th:first-child {
+    width: 7%;
+  }
+  .ranking-v6-table th:nth-child(2) {
+    width: 30%;
+  }
+  .ranking-v6-table th:nth-child(5) {
+    width: 24%;
+  }
+  .ranking-v6-table td {
+    padding-block: 12px;
+    font-size: 0.85rem;
+  }
+  .ranking-v6-university > .university-mark {
+    height: 38px;
+    width: 38px;
+  }
+  .ranking-v6-university > .university-mark img {
+    max-height: 38px !important;
+  }
+  .ranking-v6-row-actions > label {
+    margin-inline-start: 12px;
+  }
+  .ranking-v6-row-actions > a {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 900px) {
+  .discovery-evidence-content {
+    display: block;
+  }
+  .discovery-evidence-content > .discovery-excerpt {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 760px) {
+  .discovery-timeline-card > .discovery-timeline-identity {
+    padding-inline-start: 66px;
+    min-height: 56px;
+  }
+  .discovery-timeline-card
+    > .discovery-timeline-identity
+    > .university-mark--wide {
+    position: static;
+    width: 88px;
+    flex-basis: 88px;
+  }
+  .discovery-timeline-card
+    > .discovery-timeline-identity:has(> .university-mark--wide) {
+    padding-inline-start: 0;
+  }
+  .discovery-university-card--featured h3 {
+    font-size: 1.5rem;
+  }
+  .discovery-compare-chips button {
+    white-space: normal;
+    max-width: 230px;
+  }
+  .home-v6-guide .university-mark {
+    width: 56px;
+    height: 56px;
+    flex-basis: 56px;
+  }
+}
+.home-v6-page .home-v6-hero h1 {
+  letter-spacing: -0.025em;
+}
+.home-v6-hero + .home-v6-section {
+  margin-top: 40px;
+}
+.home-v6-section:has(> .home-v6-guides) {
+  margin-top: 30px;
+}
+.home-v6-guide-heading h3 {
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+.home-v6-guide-heading .discovery-location {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+.home-v6-guide .discovery-actions a {
+  min-height: 34px;
+}
+.discovery-page[data-discovery-page="search"] {
+  max-width: 1452px;
+  width: min(1452px, calc(100% - 64px));
+}
+@media (min-width: 1200px) {
+  .ranking-v6-filterbar {
+    margin-bottom: 20px;
+  }
+  .ranking-v6-table td {
+    padding-block: 10px;
+  }
+  .ranking-v6-table th {
+    padding-block: 13px;
+  }
+}
+@media (min-width: 761px) {
+  .discovery-timeline-card
+    > .discovery-timeline-identity:has(> .university-mark--wide) {
+    padding-inline-start: 112px;
+  }
+  .discovery-timeline-card:has(
+      > .discovery-timeline-identity > .university-mark--wide
+    )
+    > p,
+  .discovery-timeline-card:has(
+      > .discovery-timeline-identity > .university-mark--wide
+    )
+    > .discovery-actions {
+    margin-inline-start: 112px;
+  }
+}
+@media (max-width: 760px) {
+  .discovery-page[data-discovery-page="search"] {
+    width: calc(100% - 32px);
+  }
+}
+@media (min-width: 1200px) {
+  .university-mockup-page .discovery-result-toolbar {
+    margin-top: 13px;
+  }
+}
+@media (min-width: 761px) {
+  .discovery-compare-inner {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+@media (min-width: 1200px) and (pointer: fine) {
+  .university-mockup-page .discovery-pagination button {
+    min-height: 36px;
+    height: 36px;
+    padding: 6px 10px;
+  }
+}
+.discovery-page[data-discovery-page="changes"]
+  .discovery-header-actions
+  > .discovery-outline-link {
+  color: var(--color-text);
+  border-color: var(--color-border);
+  background: var(--color-canvas-subtle);
+}
+@media (min-width: 1200px) and (pointer: fine) {
+  .university-mockup-page .discovery-pagination {
+    padding-top: 8px;
+  }
+}

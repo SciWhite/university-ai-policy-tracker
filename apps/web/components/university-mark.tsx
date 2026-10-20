@@ -1,35 +1,70 @@
-import React from "react";
-import marks from "@/lib/university-marks.json";
+"use client";
 
-/** Only independently accepted, locally exported assets enter this registry. */
+import React, { useState, type CSSProperties } from "react";
+import marks from "@/lib/university-marks.json";
+import displayOverrides from "@/lib/university-mark-display-overrides.json";
+import { getLocalCompactMark, getPublishedCompactMark, requiresPublishedCompactGeometry, requiresLocalCompactGeometry, type UniversityMarkSize } from "@/lib/local-university-marks";
+import { universityIdentitySlugs } from "@/lib/canonical-university-slug";
+
+/** Accepted assets win; additional compact candidates are development-only. */
+const compactMark = (slug: string, size: UniversityMarkSize) => getPublishedCompactMark(slug, size) ?? getLocalCompactMark(slug, size);
+
 export function UniversityMark({
-  slug,
+  slug: requestedSlug,
   size = "small",
 }: {
   slug: string;
-  size?: "hero" | "small" | "chip";
+  size?: UniversityMarkSize;
 }) {
-  const mark = marks[slug as keyof typeof marks];
+  // Marks stay bound to the slug they were accepted under; a merged identity
+  // reuses an accepted mark filed under a retired alias slug before any
+  // development-only candidate.
+  const identitySlugs = universityIdentitySlugs(requestedSlug);
+  const slug = identitySlugs.find((item) => item in marks)
+    ?? identitySlugs.find((item) => compactMark(item, size))
+    ?? requestedSlug;
+  const legacyMark = marks[slug as keyof typeof marks];
+  const mark = size !== "hero" && (requiresPublishedCompactGeometry(slug) || requiresLocalCompactGeometry(slug)) ? undefined : legacyMark;
+  const candidate = compactMark(slug, size);
+  const local = mark && !(size === "directory" && candidate?.legacyGeometryCorrection) ? undefined : candidate;
+  const displayOverride = process.env.NODE_ENV === "development"
+    ? displayOverrides[slug as keyof typeof displayOverrides] : undefined;
+  const darkBacking = Boolean(mark?.[5] || local?.backing === "dark" || displayOverride?.backing === "dark");
+  const [failedSource, setFailedSource] = useState<string>();
   const hero = size === "hero";
   const detailed = hero || Boolean(mark?.[6]);
   const width = mark ? Number(mark[detailed ? 3 : 1]) : 0;
   const height = mark ? Number(mark[detailed ? 4 : 2]) : 0;
+  const source = local ? ("source" in local ? String(local.source) : `/api/local/university-marks/${local.file}`) : mark
+    ? `/assets/university-marks/20261013/${mark[0]}/${detailed ? "hero" : "small"}.webp`
+    : undefined;
+  const imageAvailable = source && source !== failedSource;
+  const localStyle = local ? {
+    "--local-mark-width": `${local.displayWidth}px`,
+    "--local-mark-height": `${local.displayHeight}px`,
+    "--local-mark-frame-width": local.frameWidth ? `${local.frameWidth}px` : undefined,
+    "--local-mark-frame-height": local.frameHeight ? `${local.frameHeight}px` : undefined,
+  } as CSSProperties : undefined;
   return (
     <span
-      className={`university-mark university-mark--${size}${mark ? " university-mark--accepted" : ""}${mark?.[5] ? " university-mark--reversed" : ""}${mark?.[6] ? " university-mark--wide" : ""}`}
-      data-university-mark={slug}
-      data-mark-status={mark ? "accepted" : "unavailable"}
+      className={`university-mark university-mark--${size}${mark && !local && imageAvailable ? " university-mark--accepted" : ""}${local && imageAvailable ? " university-mark--local" : ""}${darkBacking && imageAvailable ? " university-mark--reversed" : ""}${mark?.[6] && !local ? " university-mark--wide" : ""}`}
+      data-university-mark={requestedSlug}
+      data-mark-status={!imageAvailable ? source ? "image-failed" : "unavailable" : local ? ("source" in local ? "published-compact" : "local-candidate") : "accepted"}
+      data-mark-publication-approved={local ? "false" : undefined}
+      data-mark-minimum-width={local?.minimumWidth}
+      style={localStyle}
       aria-hidden="true"
     >
-      {mark ? (
+      {imageAvailable ? (
         <img
-          src={`/assets/university-marks/20261013/${mark[0]}/${detailed ? "hero" : "small"}.webp`}
+          src={source}
           alt=""
-          width={width}
-          height={height}
+          width={local?.width ?? width}
+          height={local?.height ?? height}
           loading={hero ? "eager" : "lazy"}
           decoding="async"
-          style={{ maxWidth: width, maxHeight: height }}
+          style={local ? undefined : { maxWidth: width, maxHeight: height }}
+          onError={() => setFailedSource(source)}
         />
       ) : <svg
         viewBox="0 0 24 24"

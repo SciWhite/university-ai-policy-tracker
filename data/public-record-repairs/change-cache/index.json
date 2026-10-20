@@ -13,7 +13,7 @@
       "reviewStates": [
         {
           "reviewState": "agent_reviewed",
-          "count": 462,
+          "count": 460,
           "label": "Agent reviewed"
         },
         {
@@ -25,7 +25,7 @@
       "sourceHealth": [
         {
           "severity": "warning",
-          "count": 448,
+          "count": 440,
           "label": "Warning"
         },
         {
@@ -35,49 +35,49 @@
         },
         {
           "severity": "error",
-          "count": 3,
+          "count": 9,
           "label": "Error"
         }
       ],
       "themes": [
         {
           "theme": "ai_tool_treatment",
-          "count": 430,
+          "count": 428,
           "label": "AI tool treatment"
         },
         {
           "theme": "academic_integrity",
-          "count": 388,
+          "count": 398,
           "label": "Academic integrity"
         },
         {
           "theme": "teaching",
-          "count": 335,
+          "count": 344,
           "label": "Teaching"
         },
         {
           "theme": "privacy",
-          "count": 320,
+          "count": 328,
           "label": "Privacy"
         },
         {
           "theme": "source_status",
-          "count": 148,
+          "count": 152,
           "label": "Source status"
         },
         {
           "theme": "research",
-          "count": 143,
+          "count": 146,
           "label": "Research"
         },
         {
           "theme": "security_review",
-          "count": 105,
+          "count": 107,
           "label": "Security review"
         },
         {
           "theme": "procurement",
-          "count": 42,
+          "count": 45,
           "label": "Procurement"
         },
         {
@@ -404,6 +404,886 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/massachusetts-institute-of-technology"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/essex-university-of",
+        "changeUrl": "/changes/essex-university-of",
+        "claimCount": 7,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 2,
+        "firstSeenAt": "2026-07-14T03:40:00.000Z",
+        "lastChangedAt": "2026-07-16T07:54:43.896Z",
+        "lastCheckedAt": "2026-07-19T11:49:39.689Z",
+        "name": "Essex, University of",
+        "newlyExtractedClaims": 1,
+        "reviewedClaimCount": 7,
+        "policyTextChanged": 1,
+        "primaryDiff": {
+          "changeCategory": "policy_text_changed",
+          "changeExplanation": "The tracker matched an old claim to a new claim and the claim text or normalized value changed between release snapshots.",
+          "changeType": "claim_modified",
+          "newClaimText": "Microsoft Copilot is listed for Essex, University of in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+          "newClaimType": "ai_tool_treatment",
+          "oldClaimText": "Microsoft 365 Copilot Chat is listed for Essex, University of in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/essex-university-of.json",
+        "releaseCount": 2,
+        "releaseId": "public-release-20260715-005",
+        "removed": 2,
+        "reviewState": "agent_reviewed",
+        "slug": "essex-university-of",
+        "sourceAdded": 1,
+        "sourceCount": 4,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 1,
+        "sourceSnapshotChanged": 1,
+        "sourceTextChanged": 0,
+        "summary": "Essex, University of is listed as QS 2026 rank =456. Essex, University of has 7 source-backed AI policy claim records from 4 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 2,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "privacy",
+            "count": 2,
+            "label": "Privacy"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 1,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "procurement",
+            "count": 1,
+            "label": "Procurement"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/essex-university-of"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/stony-brook-university-state-university-of-new-york",
+        "changeUrl": "/changes/stony-brook-university-state-university-of-new-york",
+        "claimCount": 8,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 2,
+        "firstSeenAt": "2026-07-14T03:23:00.000Z",
+        "lastChangedAt": "2026-07-16T07:53:43.896Z",
+        "lastCheckedAt": "2026-07-19T11:48:39.689Z",
+        "name": "Stony Brook University, State University of New York",
+        "newlyExtractedClaims": 3,
+        "reviewedClaimCount": 8,
+        "policyTextChanged": 1,
+        "primaryDiff": {
+          "changeCategory": "policy_text_changed",
+          "changeExplanation": "The tracker matched an old claim to a new claim and the claim text or normalized value changed between release snapshots.",
+          "changeType": "claim_modified",
+          "newClaimText": "Google Gemini is listed for Stony Brook University, State University of New York in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+          "newClaimType": "ai_tool_treatment",
+          "oldClaimText": "Gemini is listed for Stony Brook University, State University of New York in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/stony-brook-university-state-university-of-new-york.json",
+        "releaseCount": 2,
+        "releaseId": "public-release-20260715-005",
+        "removed": 4,
+        "reviewState": "agent_reviewed",
+        "slug": "stony-brook-university-state-university-of-new-york",
+        "sourceAdded": 1,
+        "sourceCount": 6,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 1,
+        "sourceSnapshotChanged": 1,
+        "sourceTextChanged": 0,
+        "summary": "Stony Brook University, State University of New York is listed as QS 2026 rank =452. Stony Brook University, State University of New York has 8 source-backed AI policy claim records from 6 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 3,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "teaching",
+            "count": 2,
+            "label": "Teaching"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 1,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "privacy",
+            "count": 1,
+            "label": "Privacy"
+          },
+          {
+            "theme": "source_status",
+            "count": 1,
+            "label": "Source status"
+          }
+        ],
+        "trackerRemovedClaims": 2,
+        "universityUrl": "/universities/stony-brook-university-state-university-of-new-york"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/universita-degli-studi-di-pavia",
+        "changeUrl": "/changes/universita-degli-studi-di-pavia",
+        "claimCount": 6,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-14T03:47:00.000Z",
+        "lastChangedAt": "2026-07-16T07:38:43.896Z",
+        "lastCheckedAt": "2026-07-19T11:33:39.689Z",
+        "name": "Università degli Studi di Pavia",
+        "newlyExtractedClaims": 7,
+        "reviewedClaimCount": 6,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "tracker_removed_claim",
+          "changeExplanation": "This claim was present in the previous tracker release and is no longer present in the current tracker release. This does not by itself prove the university removed the policy.",
+          "changeType": "claim_removed",
+          "oldClaimText": "Consensus Enterprise is listed for Università degli Studi di Pavia in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universita-degli-studi-di-pavia.json",
+        "releaseCount": 2,
+        "releaseId": "public-release-20260715-005",
+        "removed": 5,
+        "reviewState": "agent_reviewed",
+        "slug": "universita-degli-studi-di-pavia",
+        "sourceAdded": 2,
+        "sourceCount": 4,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 1,
+        "sourceSnapshotChanged": 0,
+        "sourceTextChanged": 0,
+        "summary": "Università degli Studi di Pavia is listed as QS 2026 rank =423. Università degli Studi di Pavia has 6 source-backed AI policy claim records from 4 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 3,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "security_review",
+            "count": 1,
+            "label": "Security review"
+          },
+          {
+            "theme": "source_status",
+            "count": 1,
+            "label": "Source status"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 4,
+        "universityUrl": "/universities/universita-degli-studi-di-pavia"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/lappeenranta-lahti-university-of-technology-lut",
+        "changeUrl": "/changes/lappeenranta-lahti-university-of-technology-lut",
+        "claimCount": 7,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-16T07:11:43.896Z",
+        "lastChangedAt": "2026-07-16T07:11:43.896Z",
+        "lastCheckedAt": "2026-07-19T11:06:39.689Z",
+        "name": "Lappeenranta-Lahti University of Technology LUT",
+        "newlyExtractedClaims": 1,
+        "reviewedClaimCount": 7,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "Microsoft Copilot is listed for Lappeenranta-Lahti University of Technology LUT in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "academic_integrity",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/lappeenranta-lahti-university-of-technology-lut.json",
+        "releaseCount": 1,
+        "releaseId": "public-release-20260715-005",
+        "removed": 0,
+        "reviewState": "agent_reviewed",
+        "slug": "lappeenranta-lahti-university-of-technology-lut",
+        "sourceAdded": 0,
+        "sourceCount": 4,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 1,
+        "sourceTextChanged": 0,
+        "summary": "Lappeenranta-Lahti University of Technology LUT is listed as QS 2026 rank =397. Lappeenranta-Lahti University of Technology LUT has 7 source-backed AI policy claim records from 4 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "academic_integrity",
+            "count": 3,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 2,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "privacy",
+            "count": 1,
+            "label": "Privacy"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/lappeenranta-lahti-university-of-technology-lut"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/universitat-politecnica-de-catalunya-barcelonatech-upc",
+        "changeUrl": "/changes/universitat-politecnica-de-catalunya-barcelonatech-upc",
+        "claimCount": 15,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-16T07:06:43.896Z",
+        "lastChangedAt": "2026-07-16T07:06:43.896Z",
+        "lastCheckedAt": "2026-07-19T11:01:39.689Z",
+        "name": "Universitat Politècnica de Catalunya · BarcelonaTech (UPC)",
+        "newlyExtractedClaims": 4,
+        "reviewedClaimCount": 15,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "Google Gemini is listed for Universitat Politècnica de Catalunya · BarcelonaTech (UPC) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universitat-politecnica-de-catalunya-barcelonatech-upc.json",
+        "releaseCount": 1,
+        "releaseId": "public-release-20260715-005",
+        "removed": 0,
+        "reviewState": "agent_reviewed",
+        "slug": "universitat-politecnica-de-catalunya-barcelonatech-upc",
+        "sourceAdded": 1,
+        "sourceCount": 11,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 1,
+        "sourceTextChanged": 0,
+        "summary": "Universitat Politècnica de Catalunya · BarcelonaTech (UPC) is listed as QS 2026 rank =392. Universitat Politècnica de Catalunya · BarcelonaTech (UPC) has 15 source-backed AI policy claim records from 11 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 5,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 3,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "privacy",
+            "count": 3,
+            "label": "Privacy"
+          },
+          {
+            "theme": "procurement",
+            "count": 2,
+            "label": "Procurement"
+          },
+          {
+            "theme": "research",
+            "count": 1,
+            "label": "Research"
+          },
+          {
+            "theme": "source_status",
+            "count": 1,
+            "label": "Source status"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/universitat-politecnica-de-catalunya-barcelonatech-upc"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/birkbeck-university-of-london",
+        "changeUrl": "/changes/birkbeck-university-of-london",
+        "claimCount": 5,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-16T06:57:43.896Z",
+        "lastChangedAt": "2026-07-16T06:57:43.896Z",
+        "lastCheckedAt": "2026-07-19T10:52:39.689Z",
+        "name": "Birkbeck, University of London",
+        "newlyExtractedClaims": 1,
+        "reviewedClaimCount": 5,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "Microsoft Copilot in Birkbeck Microsoft 365 is listed for Birkbeck, University of London in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "academic_integrity",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/birkbeck-university-of-london.json",
+        "releaseCount": 1,
+        "releaseId": "public-release-20260715-005",
+        "removed": 0,
+        "reviewState": "agent_reviewed",
+        "slug": "birkbeck-university-of-london",
+        "sourceAdded": 1,
+        "sourceCount": 3,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 0,
+        "sourceTextChanged": 0,
+        "summary": "Birkbeck, University of London is listed as QS 2026 rank =388. Birkbeck, University of London has 5 source-backed AI policy claim records from 3 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "academic_integrity",
+            "count": 3,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 2,
+            "label": "AI tool treatment"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/birkbeck-university-of-london"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/brunel-university-of-london",
+        "changeUrl": "/changes/brunel-university-of-london",
+        "claimCount": 6,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-16T06:54:43.896Z",
+        "lastChangedAt": "2026-07-16T06:54:43.896Z",
+        "lastCheckedAt": "2026-07-19T10:49:39.689Z",
+        "name": "Brunel University of London",
+        "newlyExtractedClaims": 1,
+        "reviewedClaimCount": 6,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "BrunOwl AI Study Buddy is listed for Brunel University of London in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "academic_integrity",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brunel-university-of-london.json",
+        "releaseCount": 1,
+        "releaseId": "public-release-20260715-005",
+        "removed": 0,
+        "reviewState": "agent_reviewed",
+        "slug": "brunel-university-of-london",
+        "sourceAdded": 1,
+        "sourceCount": 5,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 0,
+        "sourceTextChanged": 0,
+        "summary": "Brunel University of London is listed as QS 2026 rank =385. Brunel University of London has 6 source-backed AI policy claim records from 5 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "academic_integrity",
+            "count": 2,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 2,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "privacy",
+            "count": 1,
+            "label": "Privacy"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/brunel-university-of-london"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/eberhard-karls-universitat-tubingen",
+        "changeUrl": "/changes/eberhard-karls-universitat-tubingen",
+        "claimCount": 5,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-16T03:10:43.896Z",
+        "lastChangedAt": "2026-07-16T03:10:43.896Z",
+        "lastCheckedAt": "2026-07-19T07:05:39.689Z",
+        "name": "Eberhard Karls Universität Tübingen",
+        "newlyExtractedClaims": 1,
+        "reviewedClaimCount": 5,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "bwGPT is listed for Eberhard Karls Universität Tübingen in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/eberhard-karls-universitat-tubingen.json",
+        "releaseCount": 1,
+        "releaseId": "public-release-20260715-005",
+        "removed": 0,
+        "reviewState": "agent_reviewed",
+        "slug": "eberhard-karls-universitat-tubingen",
+        "sourceAdded": 1,
+        "sourceCount": 4,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 0,
+        "sourceTextChanged": 0,
+        "summary": "Eberhard Karls Universität Tübingen is listed as QS 2026 rank =215. Eberhard Karls Universität Tübingen has 5 source-backed AI policy claim records from 4 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 3,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 1,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/eberhard-karls-universitat-tubingen"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/kit-karlsruhe-institute-of-technology",
+        "changeUrl": "/changes/kit-karlsruhe-institute-of-technology",
+        "claimCount": 10,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 3,
+        "firstSeenAt": "2026-07-12T15:55:56.000Z",
+        "lastChangedAt": "2026-07-15T23:34:43.896Z",
+        "lastCheckedAt": "2026-07-19T03:29:39.689Z",
+        "name": "KIT, Karlsruhe Institute of Technology",
+        "newlyExtractedClaims": 5,
+        "reviewedClaimCount": 10,
+        "policyTextChanged": 1,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "Anthropic Claude via KI-Toolbox is listed for Karlsruhe Institute of Technology (KIT) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kit-karlsruhe-institute-of-technology.json",
+        "releaseCount": 2,
+        "releaseId": "public-release-20260715-005",
+        "removed": 5,
+        "reviewState": "agent_reviewed",
+        "slug": "kit-karlsruhe-institute-of-technology",
+        "sourceAdded": 4,
+        "sourceCount": 8,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 2,
+        "sourceSnapshotChanged": 0,
+        "sourceTextChanged": 0,
+        "summary": "KIT, Karlsruhe Institute of Technology is listed as QS 2026 rank =98. KIT, Karlsruhe Institute of Technology has 10 source-backed AI policy claim records from 8 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 6,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 2,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "privacy",
+            "count": 1,
+            "label": "Privacy"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 1,
+        "universityUrl": "/universities/kit-karlsruhe-institute-of-technology"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-university-of-sheffield",
+        "changeUrl": "/changes/the-university-of-sheffield",
+        "claimCount": 19,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 2,
+        "firstSeenAt": "2026-05-23T18:20:00.000Z",
+        "lastChangedAt": "2026-07-15T23:24:43.896Z",
+        "lastCheckedAt": "2026-07-19T03:19:39.689Z",
+        "name": "The University of Sheffield",
+        "newlyExtractedClaims": 5,
+        "reviewedClaimCount": 19,
+        "policyTextChanged": 1,
+        "primaryDiff": {
+          "changeCategory": "policy_text_changed",
+          "changeExplanation": "The tracker matched an old claim to a new claim and the claim text or normalized value changed between release snapshots.",
+          "changeType": "claim_modified",
+          "newClaimText": "Google Gemini is listed for University of Sheffield in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+          "newClaimType": "ai_tool_treatment",
+          "oldClaimText": "Google Gemini is listed for The University of Sheffield in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "academic_integrity",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-university-of-sheffield.json",
+        "releaseCount": 5,
+        "releaseId": "public-release-20260715-005",
+        "removed": 2,
+        "reviewState": "agent_reviewed",
+        "slug": "the-university-of-sheffield",
+        "sourceAdded": 1,
+        "sourceCount": 9,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 1,
+        "sourceSnapshotChanged": 5,
+        "sourceTextChanged": 0,
+        "summary": "The University of Sheffield is listed as QS 2026 rank 92. The University of Sheffield has 19 source-backed AI policy claim records from 9 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "academic_integrity",
+            "count": 6,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 3,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "privacy",
+            "count": 3,
+            "label": "Privacy"
+          },
+          {
+            "theme": "research",
+            "count": 2,
+            "label": "Research"
+          },
+          {
+            "theme": "security_review",
+            "count": 2,
+            "label": "Security review"
+          },
+          {
+            "theme": "other",
+            "count": 1,
+            "label": "Other policy"
+          },
+          {
+            "theme": "source_status",
+            "count": 1,
+            "label": "Source status"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/the-university-of-sheffield"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
+        "changeUrl": "/changes/tokyo-institute-of-technology",
+        "claimCount": 8,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-15T23:05:43.896Z",
+        "lastChangedAt": "2026-07-15T23:05:43.896Z",
+        "lastCheckedAt": "2026-07-19T03:00:39.689Z",
+        "name": "Tokyo Institute of Technology (Tokyo Tech)",
+        "newlyExtractedClaims": 1,
+        "reviewedClaimCount": 8,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "newly_extracted_claim",
+          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
+          "changeType": "claim_added",
+          "newClaimText": "Microsoft Copilot is listed for Tokyo Institute of Technology (Tokyo Tech) in an official university AI tools source. Derived availability: not mentioned. Derived endorsement type: institutionally licensed or procured.",
+          "newClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/tokyo-institute-of-technology.json",
+        "releaseCount": 1,
+        "releaseId": "public-release-20260715-005",
+        "removed": 0,
+        "reviewState": "agent_reviewed",
+        "slug": "tokyo-institute-of-technology",
+        "sourceAdded": 1,
+        "sourceCount": 4,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 0,
+        "sourceTextChanged": 0,
+        "summary": "Tokyo Institute of Technology (Tokyo Tech) is listed as QS 2026 rank 85. Tokyo Institute of Technology (Tokyo Tech) has 8 source-backed AI policy claim records from 4 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 3,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 1,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "privacy",
+            "count": 1,
+            "label": "Privacy"
+          },
+          {
+            "theme": "research",
+            "count": 1,
+            "label": "Research"
+          },
+          {
+            "theme": "source_status",
+            "count": 1,
+            "label": "Source status"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 0,
+        "universityUrl": "/universities/tokyo-institute-of-technology"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-university-of-western-australia",
+        "changeUrl": "/changes/the-university-of-western-australia",
+        "claimCount": 14,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-07T13:20:00.000Z",
+        "lastChangedAt": "2026-07-15T22:54:43.896Z",
+        "lastCheckedAt": "2026-07-19T02:49:39.689Z",
+        "name": "The University of Western Australia",
+        "newlyExtractedClaims": 9,
+        "reviewedClaimCount": 14,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "tracker_removed_claim",
+          "changeExplanation": "This claim was present in the previous tracker release and is no longer present in the current tracker release. This does not by itself prove the university removed the policy.",
+          "changeType": "claim_removed",
+          "oldClaimText": "Adobe Express is listed for The University of Western Australia in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "ai_tool_treatment",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-university-of-western-australia.json",
+        "releaseCount": 3,
+        "releaseId": "public-release-20260715-005",
+        "removed": 7,
+        "reviewState": "agent_reviewed",
+        "slug": "the-university-of-western-australia",
+        "sourceAdded": 2,
+        "sourceCount": 11,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 1,
+        "sourceSnapshotChanged": 1,
+        "sourceTextChanged": 0,
+        "summary": "The University of Western Australia is listed as QS 2026 rank 77. The University of Western Australia has 14 source-backed AI policy claim records from 11 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "ai_tool_treatment",
+            "count": 5,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 3,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "privacy",
+            "count": 3,
+            "label": "Privacy"
+          },
+          {
+            "theme": "research",
+            "count": 2,
+            "label": "Research"
+          },
+          {
+            "theme": "security_review",
+            "count": 1,
+            "label": "Security review"
+          }
+        ],
+        "trackerRemovedClaims": 6,
+        "universityUrl": "/universities/the-university-of-western-australia"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-university-of-warwick",
+        "changeUrl": "/changes/the-university-of-warwick",
+        "claimCount": 11,
+        "claimMetadataChanged": 0,
+        "confidence": 0.97,
+        "evidenceChanged": 0,
+        "firstSeenAt": "2026-07-12T02:25:00.000Z",
+        "lastChangedAt": "2026-07-15T22:52:43.896Z",
+        "lastCheckedAt": "2026-07-19T02:47:39.689Z",
+        "name": "The University of Warwick",
+        "newlyExtractedClaims": 2,
+        "reviewedClaimCount": 11,
+        "policyTextChanged": 0,
+        "primaryDiff": {
+          "changeCategory": "tracker_removed_claim",
+          "changeExplanation": "This claim was present in the previous tracker release and is no longer present in the current tracker release. This does not by itself prove the university removed the policy.",
+          "changeType": "claim_removed",
+          "oldClaimText": "Copilot is listed for The University of Warwick in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260714-002",
+          "releaseId": "public-release-20260715-005"
+        },
+        "primaryTheme": "academic_integrity",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-university-of-warwick.json",
+        "releaseCount": 2,
+        "releaseId": "public-release-20260715-005",
+        "removed": 1,
+        "reviewState": "agent_reviewed",
+        "slug": "the-university-of-warwick",
+        "sourceAdded": 1,
+        "sourceCount": 6,
+        "sourceHealth": "warning",
+        "sourceHealthLabel": "Source changed",
+        "sourceRemoved": 0,
+        "sourceSnapshotChanged": 1,
+        "sourceTextChanged": 0,
+        "summary": "The University of Warwick is listed as QS 2026 rank 74. The University of Warwick has 11 source-backed AI policy claim records from 6 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+        "themes": [
+          {
+            "theme": "academic_integrity",
+            "count": 2,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 2,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "privacy",
+            "count": 2,
+            "label": "Privacy"
+          },
+          {
+            "theme": "research",
+            "count": 2,
+            "label": "Research"
+          },
+          {
+            "theme": "procurement",
+            "count": 1,
+            "label": "Procurement"
+          },
+          {
+            "theme": "security_review",
+            "count": 1,
+            "label": "Security review"
+          },
+          {
+            "theme": "teaching",
+            "count": 1,
+            "label": "Teaching"
+          }
+        ],
+        "trackerRemovedClaims": 1,
+        "universityUrl": "/universities/the-university-of-warwick"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-new-hampshire",
@@ -8854,102 +9734,6 @@
         "universityUrl": "/universities/colorado-state-university"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-essex",
-        "changeUrl": "/changes/university-of-essex",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T11:49:39.689Z",
-        "lastChangedAt": "2026-07-19T11:49:39.689Z",
-        "lastCheckedAt": "2026-07-19T11:49:39.689Z",
-        "name": "University Of Essex",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Microsoft Copilot is listed for Essex, University of in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-essex.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-essex",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University Of Essex has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-essex"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/stony-brook-university",
-        "changeUrl": "/changes/stony-brook-university",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T11:48:39.689Z",
-        "lastChangedAt": "2026-07-19T11:48:39.689Z",
-        "lastCheckedAt": "2026-07-19T11:48:39.689Z",
-        "name": "Stony Brook University",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Google Gemini is listed for Stony Brook University, State University of New York in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/stony-brook-university.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "stony-brook-university",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Stony Brook University has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/stony-brook-university"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/shenzhen-university",
         "changeUrl": "/changes/shenzhen-university",
         "claimCount": 7,
@@ -9623,54 +10407,6 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/washington-state-university"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-pavia",
-        "changeUrl": "/changes/university-of-pavia",
-        "claimCount": 3,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T11:33:39.689Z",
-        "lastChangedAt": "2026-07-19T11:33:39.689Z",
-        "lastCheckedAt": "2026-07-19T11:33:39.689Z",
-        "name": "University Of Pavia",
-        "newlyExtractedClaims": 3,
-        "reviewedClaimCount": 3,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Gemini App is listed for Università degli Studi di Pavia in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-pavia.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-pavia",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University Of Pavia has 3 source-backed AI policy claim records from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 3,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-pavia"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/tampere-university",
@@ -10552,54 +11288,6 @@
         "universityUrl": "/universities/university-of-kent"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/lappeenranta-lahti-university-technology-lut",
-        "changeUrl": "/changes/lappeenranta-lahti-university-technology-lut",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T11:06:39.689Z",
-        "lastChangedAt": "2026-07-19T11:06:39.689Z",
-        "lastCheckedAt": "2026-07-19T11:06:39.689Z",
-        "name": "Lappeenranta Lahti University Technology Lut",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Microsoft Copilot is listed for Lappeenranta-Lahti University of Technology LUT in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/lappeenranta-lahti-university-technology-lut.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "lappeenranta-lahti-university-technology-lut",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Lappeenranta Lahti University Technology Lut has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/lappeenranta-lahti-university-technology-lut"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/ruhr-universitat-bochum",
         "changeUrl": "/changes/ruhr-universitat-bochum",
         "claimCount": 7,
@@ -10721,54 +11409,6 @@
         "universityUrl": "/universities/aston-university"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/universitat-politecnica-catalunya",
-        "changeUrl": "/changes/universitat-politecnica-catalunya",
-        "claimCount": 4,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T11:01:39.689Z",
-        "lastChangedAt": "2026-07-19T11:01:39.689Z",
-        "lastCheckedAt": "2026-07-19T11:01:39.689Z",
-        "name": "Universitat Politecnica Catalunya",
-        "newlyExtractedClaims": 4,
-        "reviewedClaimCount": 4,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Google Gemini is listed for Universitat Politècnica de Catalunya · BarcelonaTech (UPC) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universitat-politecnica-catalunya.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "universitat-politecnica-catalunya",
-        "sourceAdded": 2,
-        "sourceCount": 2,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Universitat Politecnica Catalunya has 4 source-backed AI policy claim records from 2 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 4,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/universitat-politecnica-catalunya"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/southeast-university",
         "changeUrl": "/changes/southeast-university",
         "claimCount": 9,
@@ -10825,54 +11465,6 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/southeast-university"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/birkbeck-university-london",
-        "changeUrl": "/changes/birkbeck-university-london",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T10:52:39.689Z",
-        "lastChangedAt": "2026-07-19T10:52:39.689Z",
-        "lastCheckedAt": "2026-07-19T10:52:39.689Z",
-        "name": "Birkbeck University London",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Microsoft Copilot in Birkbeck Microsoft 365 is listed for Birkbeck, University of London in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/birkbeck-university-london.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "birkbeck-university-london",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Birkbeck University London has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/birkbeck-university-london"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/beihang-university-former-buaa",
@@ -10989,54 +11581,6 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/flinders-university"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/brunel-university-london",
-        "changeUrl": "/changes/brunel-university-london",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T10:49:39.689Z",
-        "lastChangedAt": "2026-07-19T10:49:39.689Z",
-        "lastCheckedAt": "2026-07-19T10:49:39.689Z",
-        "name": "Brunel University London",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "BrunOwl AI Study Buddy is listed for Brunel University of London in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brunel-university-london.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "brunel-university-london",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Brunel University London has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/brunel-university-london"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/northeastern-university",
@@ -16014,54 +16558,6 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/technische-universitat-dresden"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tuebingen",
-        "changeUrl": "/changes/university-of-tuebingen",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T07:05:39.689Z",
-        "lastChangedAt": "2026-07-19T07:05:39.689Z",
-        "lastCheckedAt": "2026-07-19T07:05:39.689Z",
-        "name": "University Of Tuebingen",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "bwGPT is listed for Eberhard Karls Universität Tübingen in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tuebingen.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-tuebingen",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University Of Tuebingen has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-tuebingen"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/keio-university",
@@ -21265,54 +21761,6 @@
         "universityUrl": "/universities/politecnico-di-milano"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/karlsruhe-institute-of-technology-kit",
-        "changeUrl": "/changes/karlsruhe-institute-of-technology-kit",
-        "claimCount": 4,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T03:29:39.689Z",
-        "lastChangedAt": "2026-07-19T03:29:39.689Z",
-        "lastCheckedAt": "2026-07-19T03:29:39.689Z",
-        "name": "Karlsruhe Institute Of Technology Kit",
-        "newlyExtractedClaims": 4,
-        "reviewedClaimCount": 4,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Anthropic Claude via KI-Toolbox is listed for Karlsruhe Institute of Technology (KIT) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/karlsruhe-institute-of-technology-kit.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "karlsruhe-institute-of-technology-kit",
-        "sourceAdded": 2,
-        "sourceCount": 2,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Karlsruhe Institute Of Technology Kit has 4 source-backed AI policy claim records from 2 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 4,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/karlsruhe-institute-of-technology-kit"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-nottingham",
         "changeUrl": "/changes/university-of-nottingham",
         "claimCount": 8,
@@ -21593,54 +22041,6 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/uppsala-university"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-sheffield",
-        "changeUrl": "/changes/university-of-sheffield",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T03:19:39.689Z",
-        "lastChangedAt": "2026-07-19T03:19:39.689Z",
-        "lastCheckedAt": "2026-07-19T03:19:39.689Z",
-        "name": "University Of Sheffield",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Google Gemini is listed for University of Sheffield in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sheffield.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-sheffield",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University Of Sheffield has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-sheffield"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/osaka-university",
@@ -22066,54 +22466,6 @@
         "universityUrl": "/universities/university-of-leeds"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology-tokyo-tech",
-        "changeUrl": "/changes/tokyo-institute-of-technology-tokyo-tech",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T03:00:39.689Z",
-        "lastChangedAt": "2026-07-19T03:00:39.689Z",
-        "lastCheckedAt": "2026-07-19T03:00:39.689Z",
-        "name": "Tokyo Institute of Technology (Tokyo Tech)",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Microsoft Copilot is listed for Tokyo Institute of Technology (Tokyo Tech) in an official university AI tools source. Derived availability: not mentioned. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/tokyo-institute-of-technology-tokyo-tech.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "tokyo-institute-of-technology-tokyo-tech",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Tokyo Institute of Technology (Tokyo Tech) is listed as QS 2026 rank 85. Tokyo Institute of Technology (Tokyo Tech) has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/tokyo-institute-of-technology-tokyo-tech"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/adelaide-university",
         "changeUrl": "/changes/adelaide-university",
         "claimCount": 9,
@@ -22474,54 +22826,6 @@
         "universityUrl": "/universities/kth-royal-institute-of-technology"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-western-australia",
-        "changeUrl": "/changes/university-of-western-australia",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T02:49:39.689Z",
-        "lastChangedAt": "2026-07-19T02:49:39.689Z",
-        "lastCheckedAt": "2026-07-19T02:49:39.689Z",
-        "name": "University Of Western Australia",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Copilot Chat is listed for The University of Western Australia in an official university AI tools source. Derived availability: not mentioned. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-western-australia.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-western-australia",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University Of Western Australia has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-western-australia"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-birmingham",
         "changeUrl": "/changes/university-of-birmingham",
         "claimCount": 15,
@@ -22598,54 +22902,6 @@
         ],
         "trackerRemovedClaims": 0,
         "universityUrl": "/universities/university-of-birmingham"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-warwick",
-        "changeUrl": "/changes/university-of-warwick",
-        "claimCount": 1,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-19T02:47:39.689Z",
-        "lastChangedAt": "2026-07-19T02:47:39.689Z",
-        "lastCheckedAt": "2026-07-19T02:47:39.689Z",
-        "name": "University Of Warwick",
-        "newlyExtractedClaims": 1,
-        "reviewedClaimCount": 1,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Microsoft Copilot is listed for The University of Warwick in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-warwick.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-warwick",
-        "sourceAdded": 1,
-        "sourceCount": 1,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University Of Warwick has 1 source-backed AI policy claim record from 1 official source attribution. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 1,
-            "label": "AI tool treatment"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-warwick"
       },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/sorbonne-university",
@@ -26110,74 +26366,6 @@
         "universityUrl": "/universities/harvard-university"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/the-university-of-western-australia",
-        "changeUrl": "/changes/the-university-of-western-australia",
-        "claimCount": 13,
-        "claimMetadataChanged": 0,
-        "confidence": 0.95,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-07T13:20:00.000Z",
-        "lastChangedAt": "2026-07-07T13:20:00.000Z",
-        "lastCheckedAt": "2026-07-07T13:19:00.000Z",
-        "name": "The University of Western Australia",
-        "newlyExtractedClaims": 2,
-        "reviewedClaimCount": 13,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "UWA’s 2026 student AI guide now states that UWA staff and students must not use DeepSeek in any way, that UWA has blocked DeepSeek on University-managed networks and devices, and that students should avoid using DeepSeek on their personal devices.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260707-001",
-          "releaseId": "public-release-20260709-001"
-        },
-        "primaryTheme": "ai_tool_treatment",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-university-of-western-australia.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260709-001",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "the-university-of-western-australia",
-        "sourceAdded": 0,
-        "sourceCount": 10,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 1,
-        "sourceTextChanged": 0,
-        "summary": "The University of Western Australia is listed as QS 2026 rank 77. The University of Western Australia has 13 source-backed AI policy claim records from 10 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "ai_tool_treatment",
-            "count": 4,
-            "label": "AI tool treatment"
-          },
-          {
-            "theme": "academic_integrity",
-            "count": 3,
-            "label": "Academic integrity"
-          },
-          {
-            "theme": "privacy",
-            "count": 3,
-            "label": "Privacy"
-          },
-          {
-            "theme": "research",
-            "count": 2,
-            "label": "Research"
-          },
-          {
-            "theme": "security_review",
-            "count": 1,
-            "label": "Security review"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/the-university-of-western-australia"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/durham-university",
         "changeUrl": "/changes/durham-university",
         "claimCount": 16,
@@ -28699,89 +28887,6 @@
         "universityUrl": "/universities/university-of-nairobi"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/the-university-of-sheffield",
-        "changeUrl": "/changes/the-university-of-sheffield",
-        "claimCount": 18,
-        "claimMetadataChanged": 0,
-        "confidence": 0.96,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-05-23T18:20:00.000Z",
-        "lastChangedAt": "2026-05-23T18:20:00.000Z",
-        "lastCheckedAt": "2026-05-23T18:20:00.000Z",
-        "name": "The University of Sheffield",
-        "newlyExtractedClaims": 4,
-        "reviewedClaimCount": 18,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "The University of Sheffield tells students that GenAI outputs should not be used as sources for assessment and should never be cited as if they were sources.",
-          "newClaimType": "academic_integrity",
-          "previousReleaseId": "public-release-20260523-001",
-          "releaseId": "public-release-20260523-002"
-        },
-        "primaryTheme": "academic_integrity",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-university-of-sheffield.json",
-        "releaseCount": 3,
-        "releaseId": "public-release-20260523-002",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "the-university-of-sheffield",
-        "sourceAdded": 0,
-        "sourceCount": 8,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 4,
-        "sourceTextChanged": 0,
-        "summary": "The University of Sheffield is listed as QS 2026 rank 92. The University of Sheffield has 18 source-backed AI policy claim records from 8 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "academic_integrity",
-            "count": 6,
-            "label": "Academic integrity"
-          },
-          {
-            "theme": "privacy",
-            "count": 3,
-            "label": "Privacy"
-          },
-          {
-            "theme": "ai_tool_treatment",
-            "count": 2,
-            "label": "AI tool treatment"
-          },
-          {
-            "theme": "research",
-            "count": 2,
-            "label": "Research"
-          },
-          {
-            "theme": "security_review",
-            "count": 2,
-            "label": "Security review"
-          },
-          {
-            "theme": "other",
-            "count": 1,
-            "label": "Other policy"
-          },
-          {
-            "theme": "source_status",
-            "count": 1,
-            "label": "Source status"
-          },
-          {
-            "theme": "teaching",
-            "count": 1,
-            "label": "Teaching"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/the-university-of-sheffield"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/utrecht-university",
         "changeUrl": "/changes/utrecht-university",
         "claimCount": 9,
@@ -29759,17 +29864,17 @@
       }
     ],
     "summary": {
-      "claimCount": 4029,
-      "newlyExtractedClaimsCount": 1639,
-      "policyTextChangedCount": 69,
-      "recordCount": 463,
-      "reviewedClaimCount": 4027,
-      "sourceHealthIssueCount": 451,
-      "sourceSnapshotChangedCount": 140,
+      "claimCount": 4098,
+      "newlyExtractedClaimsCount": 1653,
+      "policyTextChangedCount": 73,
+      "recordCount": 461,
+      "reviewedClaimCount": 4096,
+      "sourceHealthIssueCount": 449,
+      "sourceSnapshotChangedCount": 146,
       "sourceTextChangedCount": 0
     }
   },
-  "generatedAt": "2026-10-12T00:12:02.032Z",
+  "generatedAt": "2026-10-20T02:42:49.843Z",
   "license": "CC-BY-4.0",
   "limitations": [
     "Change records are tracker metadata and do not publish official source text.",

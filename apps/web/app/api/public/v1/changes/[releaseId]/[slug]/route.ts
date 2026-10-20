@@ -4,6 +4,7 @@ import {
   getLatestReleaseDiff,
   getReleaseDiff
 } from "@/lib/release-diffs";
+import { aliasSlugJsonRedirect } from "@/lib/entity-alias-redirect";
 
 interface ReleaseEntityDiffRouteProps {
   params: Promise<{
@@ -33,6 +34,11 @@ export async function GET(
 ) {
   const { releaseId, slug: rawSlug } = await params;
   const slug = rawSlug.replace(/\.json$/, "");
+  const aliasRedirect = await aliasSlugJsonRedirect(
+    slug,
+    (canonicalSlug) => `/api/public/v1/changes/${releaseId}/${canonicalSlug}.json`
+  );
+  if (aliasRedirect) return aliasRedirect;
   const entityDiff = await getEntityReleaseDiff(releaseId, slug);
 
   if (!entityDiff) {

@@ -8,7 +8,7 @@ import {
   getLocaleFromPathname,
   getPathnameWithoutLocale,
   localizeHref,
-  type SupportedLocale
+  type SupportedLocale,
 } from "@/lib/i18n";
 import { getShellMessages } from "@/lib/i18n-messages";
 
@@ -31,14 +31,14 @@ interface SiteNavigationProps {
 
 export function SiteNavigation({
   items,
-  mobileUtilities
+  mobileUtilities,
 }: SiteNavigationProps) {
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const shell = getShellMessages(locale);
   const labels = {
     ...shell.navigation,
-    ...shell.footer
+    ...shell.footer,
   } as Record<string, string>;
   const unprefixedPathname = getPathnameWithoutLocale(pathname);
 
@@ -85,7 +85,7 @@ export function SiteNavigation({
                   className="site-nav__link"
                 />
               </li>
-            )
+            ),
           )}
         </ul>
       </div>
@@ -137,7 +137,7 @@ export function SiteNavigation({
                   pathname={unprefixedPathname}
                   className="site-nav__mobile-link"
                 />
-              )
+              ),
             )}
           </div>
           {mobileUtilities ? (
@@ -169,9 +169,11 @@ function NavigationLink({
   label,
   locale,
   navArea,
-  pathname
+  pathname,
 }: NavigationLinkProps) {
-  const isActive = matchesPath(pathname, item.href);
+  const isActive =
+    matchesPath(pathname, item.href) ||
+    (item.href === "/universities" && matchesPath(pathname, "/rankings"));
 
   return (
     <DocumentLink
@@ -206,7 +208,7 @@ function SiteNavigationDisclosure({
   id,
   label,
   openLabel,
-  pathname
+  pathname,
 }: SiteNavigationDisclosureProps) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
@@ -219,7 +221,7 @@ function SiteNavigationDisclosure({
     const frame = window.requestAnimationFrame(() => {
       const details = detailsRef.current;
       const firstFocusable = details?.querySelector<HTMLElement>(
-        "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])"
+        "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])",
       );
 
       if (firstFocusable && details?.contains(document.activeElement)) {
@@ -287,15 +289,14 @@ function SiteNavigationDisclosure({
 }
 
 function isNavigationGroup(
-  item: SiteNavigationItem
+  item: SiteNavigationItem,
 ): item is SiteNavigationGroup {
   return "links" in item;
 }
 
-function hasActiveChild(
-  item: SiteNavigationGroup,
-  pathname: string
-): boolean {
+function hasActiveChild(item: SiteNavigationGroup, pathname: string): boolean {
+  if (item.labelKey === "explore" && matchesPath(pathname, "/rankings"))
+    return false;
   return item.links.some((link) => matchesPath(pathname, link.href));
 }
 

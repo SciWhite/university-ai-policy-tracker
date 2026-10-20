@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { aliasSlugJsonRedirect } from "@/lib/entity-alias-redirect";
 import { getLatestEntityReleaseDiff, getLatestReleaseDiff } from "@/lib/release-diffs";
 
 interface LatestEntityDiffRouteProps {
@@ -24,6 +25,11 @@ export async function GET(
 ) {
   const { slug: rawSlug } = await params;
   const slug = rawSlug.replace(/\.json$/, "");
+  const aliasRedirect = await aliasSlugJsonRedirect(
+    slug,
+    (canonicalSlug) => `/api/public/v1/changes/latest/${canonicalSlug}.json`
+  );
+  if (aliasRedirect) return aliasRedirect;
   const entityDiff = await getLatestEntityReleaseDiff(slug);
 
   if (!entityDiff) {

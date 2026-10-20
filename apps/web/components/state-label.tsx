@@ -62,6 +62,10 @@ export function StateLabel({ locale = DEFAULT_LOCALE, reviewState, prefix = "Rev
   );
 }
 
+export function getReviewStateLabel(reviewState: string, locale: SupportedLocale): string {
+  return isKnownReviewState(reviewState) ? stateLabels[locale][reviewState] : formatUnknownState(reviewState);
+}
+
 function isKnownReviewState(value: string): value is KnownReviewState {
   return Object.prototype.hasOwnProperty.call(stateTones, value);
 }

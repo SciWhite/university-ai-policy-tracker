@@ -1,4 +1,5 @@
 import {BoundedAsyncCache} from './bounded-cache';
+import { readPublicReleaseDiff } from "./public-change-history";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import {
@@ -250,7 +251,14 @@ export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
 export async function getReleaseDiff(
   releaseId: string
 ): Promise<ReleaseDiff | undefined> {
-  return releaseDiffPromises.get(releaseId, () => buildCachedReleaseDiff(releaseId));
+  return releaseDiffPromises.get(releaseId, async () =>
+    await readPublicReleaseDiff(releaseId) ?? await buildCachedReleaseDiff(releaseId)
+  );
+}
+
+/** Offline projection builder; always reconstructs from the published inputs. */
+export async function buildPublicReleaseDiff(releaseId: string): Promise<ReleaseDiff | undefined> {
+  return buildCachedReleaseDiff(releaseId);
 }
 
 export async function getLatestEntityReleaseDiff(

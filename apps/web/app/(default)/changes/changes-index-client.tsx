@@ -1,540 +1,546 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type FormEvent
-} from "react";
-import { DataList, DataListRow } from "@/components/data-list";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { DocumentLink as Link } from "@/components/document-link";
-import { MetaLabel } from "@/components/meta-label";
-import { StateLabel } from "@/components/state-label";
+import { UniversityMark } from "@/components/university-mark";
+import { StateLabel, getReviewStateLabel } from "@/components/state-label";
+import {
+  DiscoveryEmpty,
+  DiscoveryIcon,
+  DiscoveryLoadState,
+  DiscoveryPagination,
+  useDiscoveryRecords,
+} from "@/components/discovery-ui";
+import { discoveryCopy, discoveryTopicLabel } from "@/lib/discovery-copy";
 import {
   defaultChangeIndexFilters,
   filterChangeIndexRecords,
-  formatChangeReviewStateLabel,
-  formatChangeSourceHealthLabel,
-  isDefaultChangeIndexFilters,
-  normalizeChangeReviewFilter,
-  normalizeChangeSortKey,
-  normalizeChangeSourceHealthFilter,
   parseChangeIndexFilters,
-  summarizeChangeIndexRecords,
   type ChangeIndexFilters,
-  type ChangeIndexVisibleSummary
+  type ChangeIndexVisibleSummary,
 } from "@/lib/change-index-filters";
-import type {
-  ChangeIndexData,
-  ChangeIndexRecord
-} from "@/lib/change-records";
+import type { ChangeIndexData, ChangeIndexRecord } from "@/lib/change-records";
 import { localizeHref, type SupportedLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import type { ChangesIndexClientCopy } from "@/lib/page-copy";
 import { formatDateMedium } from "@/lib/format-date";
+import { mockupCopy } from "@/lib/mockup-copy";
+import { normalizeForSearch, textMatchesNormalized } from "@/lib/search-text";
 
-type ChangeIndexFacets = ChangeIndexData["data"]["facets"];
+type Extra = {
+  kind: string;
+  from: string;
+  to: string;
+  page: number;
+  selected: string;
+};
+const emptyExtra: Extra = { kind: "", from: "", to: "", page: 1, selected: "" };
+type Kind =
+  | "correction"
+  | "policyText"
+  | "sourceUpdate"
+  | "claimUpdate"
+  | "recordUpdate";
+export function getDiscoveryChangeKind(record: ChangeIndexRecord): Kind {
+  if (record.publicationKind === "scoped_record_correction")
+    return "correction";
+  if (record.policyTextChanged > 0) return "policyText";
+  if (
+    record.sourceTextChanged ||
+    record.sourceSnapshotChanged ||
+    record.sourceAdded ||
+    record.sourceRemoved
+  )
+    return "sourceUpdate";
+  if (
+    record.newlyExtractedClaims ||
+    record.claimMetadataChanged ||
+    record.trackerRemovedClaims
+  )
+    return "claimUpdate";
+  return "recordUpdate";
+}
+function date(record: ChangeIndexRecord) {
+  return record.lastChangedAt ?? record.lastCheckedAt ?? record.firstSeenAt;
+}
+function parseExtra(p: URLSearchParams): Extra {
+  return {
+    kind: [
+      "correction",
+      "policyText",
+      "sourceUpdate",
+      "claimUpdate",
+      "recordUpdate",
+    ].includes(p.get("kind") ?? "")
+      ? p.get("kind")!
+      : "",
+    from: /^\d{4}-\d{2}-\d{2}$/.test(p.get("from") ?? "") ? p.get("from")! : "",
+    to: /^\d{4}-\d{2}-\d{2}$/.test(p.get("to") ?? "") ? p.get("to")! : "",
+    page: Math.max(1, Math.min(10000, Number(p.get("page")) || 1)),
+    selected: p.get("selected") ?? "",
+  };
+}
 
-interface ChangesIndexClientProps {
+export function ChangesIndexClient({
+  copy: oldCopy,
+  facets,
+  initialRecords,
+  locale,
+  totalSummary,
+  children,
+}: {
   copy: ChangesIndexClientCopy;
-  facets: ChangeIndexFacets;
-  // NO_ADVICE_BOUNDARY passed from the server page: importing it from
-  // @uapt/shared here would pull the whole shared package (zod included)
-  // into the client bundle.
-  fallbackNotice: string;
+  facets: ChangeIndexData["data"]["facets"];
+  fallbackNotice?: string;
   initialRecords: ChangeIndexRecord[];
   locale: SupportedLocale;
   totalSummary: ChangeIndexVisibleSummary;
-}
-
-const fullTimelinePath = "/api/public/v1/changes/index.json";
-
-const fullTimelineCopy: Record<SupportedLocale, {
-  load: string;
-  loading: string;
-  loadError: string;
-  firstPage: (visible: string, total: string) => string;
-}> = {
-  en: {
-    load: "Load complete timeline",
-    loading: "Loading...",
-    loadError: "The complete timeline could not be loaded. Public JSON remains available from the changes artifact links.",
-    firstPage: (visible, total) => `Showing a fast first page of ${visible} change records. Search, filter, sort, or load the complete timeline to query all ${total} records.`
-  },
-  zh: {
-    load: "加载完整时间线",
-    loading: "正在加载…",
-    loadError: "无法加载完整时间线。仍可通过变更工件链接访问公共 JSON。",
-    firstPage: (visible, total) => `当前快速显示前 ${visible} 条变更记录。搜索、筛选、排序或加载完整时间线，即可查询全部 ${total} 条记录。`
-  },
-  fr: {
-    load: "Charger la chronologie complète",
-    loading: "Chargement…",
-    loadError: "Impossible de charger la chronologie complète. Le JSON public reste accessible depuis les liens de l’artefact des changements.",
-    firstPage: (visible, total) => `Affichage rapide des ${visible} premiers enregistrements de changements. Recherchez, filtrez, triez ou chargez la chronologie complète pour interroger les ${total} enregistrements.`
-  },
-  pl: {
-    load: "Wczytaj pełną oś czasu",
-    loading: "Wczytywanie…",
-    loadError: "Nie udało się wczytać pełnej osi czasu. Publiczny JSON jest nadal dostępny przez łącza artefaktu zmian.",
-    firstPage: (visible, total) => `Wyświetlana jest szybka pierwsza strona obejmująca ${visible} rekordów zmian. Wyszukaj, przefiltruj, posortuj lub wczytaj pełną oś czasu, aby przeglądać wszystkie ${total} rekordów.`
-  },
-  es: {
-    load: "Cargar la cronología completa",
-    loading: "Cargando…",
-    loadError: "No se pudo cargar la cronología completa. El JSON público sigue disponible desde los enlaces del artefacto de cambios.",
-    firstPage: (visible, total) => `Se muestra una primera página rápida de ${visible} registros de cambios. Busca, filtra, ordena o carga la cronología completa para consultar los ${total} registros.`
-  },
-  nl: {
-    load: "Volledige tijdlijn laden",
-    loading: "Laden…",
-    loadError: "De volledige tijdlijn kon niet worden geladen. De openbare JSON blijft beschikbaar via de artefactlinks van de wijzigingen.",
-    firstPage: (visible, total) => `Er wordt een snelle eerste pagina met ${visible} wijzigingsrecords getoond. Zoek, filter, sorteer of laad de volledige tijdlijn om alle ${total} records te doorzoeken.`
-  },
-  ms: {
-    load: "Muatkan garis masa lengkap",
-    loading: "Memuatkan…",
-    loadError: "Garis masa lengkap tidak dapat dimuatkan. JSON awam masih tersedia melalui pautan artifak perubahan.",
-    firstPage: (visible, total) => `Paparan pantas halaman pertama menunjukkan ${visible} rekod perubahan. Cari, tapis, isih atau muatkan garis masa lengkap untuk meneliti kesemua ${total} rekod.`
-  }
-};
-
-export function ChangesIndexClient({
-  copy,
-  facets,
-  fallbackNotice,
-  initialRecords,
-  locale,
-  totalSummary
-}: ChangesIndexClientProps) {
-  const timelineCopy = fullTimelineCopy[locale];
-  const [filters, setFilters] = useState<ChangeIndexFilters>(
-    defaultChangeIndexFilters
+  children?: ReactNode;
+}) {
+  const copy = discoveryCopy(locale);
+  const design = mockupCopy(locale);
+  const [filters, setFilters] = useState(defaultChangeIndexFilters);
+  const [extra, setExtra] = useState(emptyExtra);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const data = useDiscoveryRecords(
+    initialRecords,
+    "/api/public/v1/changes/index.json",
+    totalSummary.recordCount,
   );
-  const [records, setRecords] = useState(initialRecords);
-  const [hasFullIndex, setHasFullIndex] = useState(false);
-  const [isLoadingFullIndex, setIsLoadingFullIndex] = useState(false);
-  const [fullIndexError, setFullIndexError] = useState(false);
-
-  const loadFullIndex = useCallback(async () => {
-    if (hasFullIndex || isLoadingFullIndex) return;
-
-    setIsLoadingFullIndex(true);
-    setFullIndexError(false);
-
-    try {
-      const response = await fetch(fullTimelinePath);
-      if (!response.ok) throw new Error(`Timeline request failed: ${response.status}`);
-      const payload = (await response.json()) as {
-        data?: {
-          records?: ChangeIndexRecord[];
-        };
-      };
-      const nextRecords = payload.data?.records;
-      if (!Array.isArray(nextRecords)) {
-        throw new Error("Timeline response did not include records.");
-      }
-      setRecords(nextRecords);
-      setHasFullIndex(true);
-    } catch {
-      setFullIndexError(true);
-    } finally {
-      setIsLoadingFullIndex(false);
-    }
-  }, [hasFullIndex, isLoadingFullIndex]);
-
   useEffect(() => {
-    const syncFromLocation = () => {
-      setFilters(parseChangeIndexFilters(new URLSearchParams(window.location.search)));
+    const sync = () => {
+      const p = new URLSearchParams(window.location.search);
+      setFilters(parseChangeIndexFilters(p));
+      setExtra(parseExtra(p));
     };
-
-    syncFromLocation();
-    window.addEventListener("popstate", syncFromLocation);
-
-    return () => window.removeEventListener("popstate", syncFromLocation);
+    sync();
+    window.addEventListener("popstate", sync);
+    return () => window.removeEventListener("popstate", sync);
   }, []);
-
+  const needsAll = Boolean(
+    filters.q ||
+      filters.theme ||
+      filters.review !== "all" ||
+      filters.sourceHealth !== "all" ||
+      filters.sort !== "changed" ||
+      extra.kind ||
+      extra.from ||
+      extra.to ||
+      extra.page > 1,
+  );
   useEffect(() => {
-    if (isDefaultChangeIndexFilters(filters) || hasFullIndex) return;
-    void loadFullIndex();
-  }, [filters, hasFullIndex, loadFullIndex]);
-
-  const isFiltered = !isDefaultChangeIndexFilters(filters);
-  const filteredRecords = useMemo(
-    () => filterChangeIndexRecords(records, filters),
-    [filters, records]
-  );
-  const visibleSummary = useMemo(
-    () =>
-      hasFullIndex || isFiltered
-        ? summarizeChangeIndexRecords(filteredRecords)
-        : totalSummary,
-    [filteredRecords, hasFullIndex, isFiltered, totalSummary]
-  );
-  const activeFilterSummary = buildActiveFilterSummary(
-    filters,
-    facets,
-    filteredRecords.length,
-    totalSummary.recordCount
-  );
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    window.history.pushState({}, "", buildFilterUrl(filters, locale));
+    if (needsAll && !data.full && !data.error) void data.load();
+  }, [needsAll, data.full, data.error, data.load]);
+  const rows = useMemo(() => {
+    const query = normalizeForSearch(filters.q);
+    return filterChangeIndexRecords(data.records, { ...filters, q: "" }).filter(
+      (r) => {
+        if (
+          query &&
+          !textMatchesNormalized(
+            [
+              r.name,
+              getLocalizedInstitutionName(r.slug, r.name, locale),
+              r.summary,
+              r.changeSummary,
+              r.primaryDiff?.changeExplanation,
+              r.primaryDiff?.oldClaimText,
+              r.primaryDiff?.newClaimText,
+            ]
+              .filter(Boolean)
+              .join(" "),
+            query,
+          )
+        )
+          return false;
+        if (extra.kind && getDiscoveryChangeKind(r) !== extra.kind)
+          return false;
+        const day = date(r)?.slice(0, 10);
+        return (
+          (!extra.from || Boolean(day && day >= extra.from)) &&
+          (!extra.to || Boolean(day && day <= extra.to))
+        );
+      },
+    );
+  }, [data.records, filters, extra.kind, extra.from, extra.to, locale]);
+  const count =
+    !data.full && !needsAll ? totalSummary.recordCount : rows.length;
+  const pageCount = Math.max(1, Math.ceil(count / 8));
+  const page = Math.min(extra.page, pageCount);
+  const visible = rows.slice((page - 1) * 8, page * 8);
+  const selected = visible.find((r) => r.slug === extra.selected) ?? visible[0];
+  function update(
+    patch: Partial<ChangeIndexFilters>,
+    more: Partial<Extra> = {},
+  ) {
+    const f = { ...filters, ...patch };
+    const x = { ...extra, ...more, page: more.page ?? 1 };
+    setFilters(f);
+    setExtra(x);
+    const p = new URLSearchParams();
+    for (const key of ["q", "review", "sourceHealth", "theme", "sort"] as const)
+      if (f[key] && f[key] !== defaultChangeIndexFilters[key])
+        p.set(key, f[key]);
+    for (const key of ["kind", "from", "to", "selected"] as const)
+      if (x[key]) p.set(key, x[key]);
+    if (x.page > 1) p.set("page", String(x.page));
+    window.history.pushState(
+      null,
+      "",
+      localizeHref(`/changes${p.size ? `?${p}` : ""}`, locale),
+    );
   }
-
-  function resetFilters() {
-    setFilters(defaultChangeIndexFilters);
-    window.history.pushState({}, "", localizeHref("/changes", locale));
+  function reset() {
+    update({ ...defaultChangeIndexFilters }, { ...emptyExtra });
   }
-
   return (
-    <>
-      <section className="metrics-grid" aria-label={copy.summaryLabel}>
-        <div>
-          <span>{visibleSummary.recordCount}</span>
-          <p>{copy.recordsWithDiffRows}</p>
-        </div>
-        <div>
-          <span>{visibleSummary.policyTextChangedCount}</span>
-          <p>{copy.policyTextChanges}</p>
-        </div>
-        <div>
-          <span>{visibleSummary.newlyExtractedClaimsCount}</span>
-          <p>{copy.newlyExtractedClaims}</p>
-        </div>
-        <div>
-          <span>{visibleSummary.sourceHealthIssueCount}</span>
-          <p>{copy.sourceHealthLabel}</p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>{copy.filtersTitle}</h2>
-        </div>
-
-        <form
-          action={localizeHref("/changes", locale)}
-          className="university-filter-form"
-          method="get"
-          onSubmit={handleSubmit}
+    <div data-discovery-ready={data.ready}>
+      <div className="discovery-boundary">
+        <p>{copy.changeBoundary}</p>
+        {children}
+      </div>
+      <button
+        className="discovery-change-toggle"
+        type="button"
+        aria-expanded={filtersOpen}
+        aria-controls="change-filter-controls"
+        onClick={() => setFiltersOpen(!filtersOpen)}
+      >
+        <DiscoveryIcon name="filter" />
+        <span>{copy.filters}</span>
+        <span aria-hidden="true">{filtersOpen ? "−" : "+"}</span>
+      </button>
+      <form
+        action={localizeHref("/changes", locale)}
+        method="get"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!data.full) void data.load();
+        }}
+      >
+        <div
+          id="change-filter-controls"
+          className={`discovery-change-controls${filtersOpen ? " is-open" : ""}`}
         >
-          <label>
-            <span>{copy.searchLabel}</span>
-            <input
-              name="q"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  q: event.target.value
-                }))
-              }
-              placeholder={copy.searchPlaceholder}
-              type="search"
-              value={filters.q}
-            />
-          </label>
-          <label>
-            <span>{copy.themeLabel}</span>
-            <select
-              name="theme"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  theme: event.target.value
-                }))
-              }
-              value={filters.theme}
-            >
-              <option value="">{copy.allThemes}</option>
-              {facets.themes.map((facet) => (
-                <option key={facet.theme} value={facet.theme}>
-                  {facet.label} ({facet.count})
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>{copy.reviewLabel}</span>
-            <select
-              name="review"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  review: normalizeChangeReviewFilter(event.target.value)
-                }))
-              }
-              value={filters.review}
-            >
-              <option value="all">{copy.allReviewStates}</option>
-              {facets.reviewStates.map((facet) => (
-                <option key={facet.reviewState} value={facet.reviewState}>
-                  {facet.label} ({facet.count})
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>{copy.sourceHealthLabel}</span>
-            <select
-              name="sourceHealth"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  sourceHealth: normalizeChangeSourceHealthFilter(
-                    event.target.value
-                  )
-                }))
-              }
-              value={filters.sourceHealth}
-            >
-              <option value="all">{copy.allSourceHealth}</option>
-              {facets.sourceHealth.map((facet) => (
-                <option key={facet.severity} value={facet.severity}>
-                  {facet.label} ({facet.count})
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>{copy.sortLabel}</span>
-            <select
-              name="sort"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  sort: normalizeChangeSortKey(event.target.value)
-                }))
-              }
-              value={filters.sort}
-            >
-              <option value="changed">{copy.sortChanged}</option>
-              <option value="checked">{copy.sortChecked}</option>
-              <option value="claims">{copy.sortClaims}</option>
-              <option value="sources">{copy.sortSources}</option>
-              <option value="firstSeen">{copy.firstSeen}</option>
-            </select>
-          </label>
-          <button type="submit">{copy.applyFilters}</button>
-          <button
-            className="filter-reset-link"
-            onClick={resetFilters}
-            type="button"
-          >
-            {copy.resetFilters}
-          </button>
-        </form>
-
-        <p className="table-summary">{activeFilterSummary}</p>
-        {!hasFullIndex ? (
-          <p className="notice-card">
-            {timelineCopy.firstPage(
-              records.length.toLocaleString(locale),
-              totalSummary.recordCount.toLocaleString(locale)
-            )}{" "}
-            <button
-              className="filter-reset-link"
-              disabled={isLoadingFullIndex}
-              onClick={() => void loadFullIndex()}
-              type="button"
-            >
-              {isLoadingFullIndex ? timelineCopy.loading : timelineCopy.load}
-            </button>
-          </p>
-        ) : null}
-        {fullIndexError ? (
-          <p className="notice-card">{timelineCopy.loadError}</p>
-        ) : null}
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>{copy.timelineTitle}</h2>
-          <p>
-            {filteredRecords.length} of {totalSummary.recordCount} change
-            records visible. {visibleSummary.policyTextChangedCount} comparable
-            policy-text changes, {visibleSummary.newlyExtractedClaimsCount} newly
-            extracted claims, and {visibleSummary.sourceSnapshotChangedCount} source
-            snapshot changes are currently in view.
-          </p>
+          <div className="discovery-change-filters">
+            <label className="discovery-field">
+              {copy.search}
+              <div className="discovery-search-field">
+                <DiscoveryIcon name="search" />
+                <input
+                  name="q"
+                  type="search"
+                  placeholder={copy.universitySearch}
+                  value={filters.q}
+                  onChange={(e) => update({ q: e.target.value })}
+                />
+              </div>
+            </label>
+            <label className="discovery-field">
+              {copy.changeType}
+              <select
+                name="kind"
+                value={extra.kind}
+                onChange={(e) => update({}, { kind: e.target.value })}
+              >
+                <option value="">{copy.allChanges}</option>
+                {(
+                  [
+                    "correction",
+                    "policyText",
+                    "sourceUpdate",
+                    "claimUpdate",
+                    "recordUpdate",
+                  ] as Kind[]
+                ).map((k) => (
+                  <option key={k} value={k}>
+                    {copy[k]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <details className="discovery-date-range">
+              <summary>{design.dateRange}</summary>
+              <div>
+                {" "}
+                <label className="discovery-field">
+                  {copy.from}
+                  <input
+                    type="date"
+                    name="from"
+                    value={extra.from}
+                    max={extra.to || undefined}
+                    onChange={(e) => update({}, { from: e.target.value })}
+                  />
+                </label>
+                <label className="discovery-field">
+                  {copy.to}
+                  <input
+                    type="date"
+                    name="to"
+                    value={extra.to}
+                    min={extra.from || undefined}
+                    onChange={(e) => update({}, { to: e.target.value })}
+                  />
+                </label>
+              </div>
+            </details>{" "}
+            <label className="discovery-field">
+              {copy.sort}
+              <select
+                name="sort"
+                value={filters.sort}
+                onChange={(e) =>
+                  update({ sort: e.target.value as ChangeIndexFilters["sort"] })
+                }
+              >
+                <option value="changed">{copy.mostRecent}</option>
+                <option value="checked">{copy.checked}</option>
+                <option value="claims">{copy.mostClaims}</option>
+                <option value="sources">{copy.mostSources}</option>
+                <option value="firstSeen">{oldCopy.firstSeen}</option>
+              </select>
+            </label>
+          </div>
         </div>
-
-        {filteredRecords.length ? (
-          <DataList className="timeline-list">
-            {filteredRecords.map((record) => {
-              const displayName = getLocalizedInstitutionName(
-                record.slug,
-                record.name,
-                locale
-              );
-              const primaryDate = record.lastChangedAt ?? record.lastCheckedAt;
-
+      </form>
+      <DiscoveryLoadState
+        locale={locale}
+        loading={data.loading}
+        error={data.error}
+        partial={false}
+        onLoad={() => void data.load()}
+      />
+      {visible.length ? (
+        <section
+          className="discovery-timeline-layout"
+          aria-label={copy.timeline}
+          aria-busy={data.loading}
+        >
+          <ol className="discovery-timeline-list">
+            {visible.map((r) => {
+              const selectedRow = selected?.slug === r.slug;
+              const name = getLocalizedInstitutionName(r.slug, r.name, locale);
+              const updated = date(r);
               return (
-                <DataListRow
-                  actions={
-                    <>
-                      <Link href={record.changeUrl}>
-                        {copy.changeDetail}
-                      </Link>
-                      <Link href={record.universityUrl}>
-                        {copy.universityPage}
-                      </Link>
-                      <a href={record.publicJsonUrl}>{copy.publicJson}</a>
-                      <a href={`/api/public/v1/changes/latest/${record.slug}.json`}>
-                        {copy.latestDiffJson}
-                      </a>
-                    </>
-                  }
-                  className="timeline-list__row"
-                  key={record.slug}
-                  metadata={
-                    <>
-                      <StateLabel
-                        locale={locale}
-                        prefix=""
-                        reviewState={record.reviewState}
-                      />
-                      <MetaLabel label={copy.sourceHealthLabel}>
-                        {record.sourceHealthLabel}
-                      </MetaLabel>
-                      <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
-                      <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
-                      <MetaLabel label={copy.firstSeen}>
-                        {record.firstSeenAt
-                          ? formatDateMedium(record.firstSeenAt, locale)
-                          : copy.noPublicDate}
-                      </MetaLabel>
-                      {record.lastCheckedAt ? (
-                        <MetaLabel label={copy.checked}>
-                          {formatDateMedium(record.lastCheckedAt, locale)}
-                        </MetaLabel>
-                      ) : null}
-                      {record.lastChangedAt ? (
-                        <MetaLabel label={copy.changed}>
-                          {formatDateMedium(record.lastChangedAt, locale)}
-                        </MetaLabel>
-                      ) : null}
-                      <MetaLabel label="Releases">{record.releaseCount}</MetaLabel>
-                      <MetaLabel label="Themes">
-                        {formatThemes(record)}
-                      </MetaLabel>
-                    </>
-                  }
-                >
-                  <p className="timeline-list__date">
-                    {primaryDate ? formatDateMedium(primaryDate, locale) : copy.noPublicDate}
-                  </p>
-                  <h2 data-i18n="preserve">{displayName}</h2>
-                  <p>{record.summary || buildRecordSummary(record, locale)}</p>
-                  {record.primaryDiff ? (
-                    <div className="change-claim-pair">
-                      <div className="change-claim-pair__item">
-                        <span className="change-claim-pair__label">
-                          {copy.oldClaim}
+                <li className="discovery-timeline-row" key={r.slug}>
+                  <time dateTime={updated}>
+                    {updated ? formatDateMedium(updated, locale) : copy.noDate}
+                  </time>
+                  <article
+                    className={`discovery-timeline-card${selectedRow ? " is-selected" : ""}`}
+                  >
+                    <div className="discovery-timeline-identity">
+                      <UniversityMark slug={r.slug} />
+                      <div>
+                        <h3>
+                          <Link href={r.changeUrl}>{name}</Link>
+                        </h3>
+                        <span className="discovery-change-kind">
+                          {copy[getDiscoveryChangeKind(r)]}
                         </span>
-                        <p className="change-claim-pair__text">
-                          {record.primaryDiff.oldClaimText ??
-                            record.primaryDiff.changeExplanation}
-                        </p>
-                      </div>
-                      <div className="change-claim-pair__item">
-                        <span className="change-claim-pair__label">
-                          {copy.newClaim}
-                        </span>
-                        <p className="change-claim-pair__text">
-                          {record.primaryDiff.newClaimText ??
-                            record.primaryDiff.changeExplanation}
-                        </p>
                       </div>
                     </div>
-                  ) : (
-                    <p className="notice-card">
-                      {record.summary || fallbackNotice}
+                    <p data-i18n="preserve">
+                      {r.changeSummary ??
+                        r.primaryDiff?.changeExplanation ??
+                        r.summary}
                     </p>
-                  )}
-                </DataListRow>
+                    <div className="discovery-actions">
+                      <button
+                        className="discovery-text-button"
+                        type="button"
+                        aria-pressed={selectedRow}
+                        onClick={() => update({}, { selected: r.slug, page })}
+                      >
+                        {copy.preview}
+                      </button>
+                      <Link href={r.universityUrl}>{copy.viewGuide}</Link>
+                    </div>
+                    {selectedRow ? (
+                      <div className="discovery-timeline-inline">
+                        <ChangePreview record={r} locale={locale} />
+                      </div>
+                    ) : null}
+                  </article>
+                </li>
               );
             })}
-          </DataList>
-        ) : (
-          <p className="notice-card">{copy.noChanges}</p>
-        )}
-      </section>
-    </>
+          </ol>
+          <aside className="discovery-timeline-aside" aria-live="polite">
+            {selected ? (
+              <ChangePreview record={selected} locale={locale} />
+            ) : null}
+          </aside>
+        </section>
+      ) : !data.loading ? (
+        <DiscoveryEmpty locale={locale} onReset={reset} />
+      ) : null}
+      <DiscoveryPagination
+        locale={locale}
+        page={page}
+        pageCount={pageCount}
+        onPage={(p) => update({}, { page: p, selected: "" })}
+      />
+      <details className="discovery-change-more">
+        <summary>{copy.moreFilters}</summary>
+        <div>
+          <label className="discovery-field">
+            {oldCopy.themeLabel}
+            <select
+              value={filters.theme}
+              onChange={(e) => update({ theme: e.target.value })}
+            >
+              <option value="">{copy.allTopics}</option>
+              {facets.themes.map((t) => (
+                <option value={t.theme} key={t.theme}>
+                  {discoveryTopicLabel(t.theme, locale)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="discovery-field">
+            {oldCopy.reviewLabel}
+            <select
+              value={filters.review}
+              onChange={(e) =>
+                update({
+                  review: e.target.value as ChangeIndexFilters["review"],
+                })
+              }
+            >
+              <option value="all">{oldCopy.allReviewStates}</option>
+              {facets.reviewStates.map((r) => (
+                <option key={r.reviewState} value={r.reviewState}>
+                  {getReviewStateLabel(r.reviewState, locale)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="discovery-field">
+            {oldCopy.sourceHealthLabel}
+            <select
+              value={filters.sourceHealth}
+              onChange={(e) =>
+                update({
+                  sourceHealth: e.target
+                    .value as ChangeIndexFilters["sourceHealth"],
+                })
+              }
+            >
+              <option value="all">{oldCopy.allSourceHealth}</option>
+              {facets.sourceHealth.map((r) => (
+                <option key={r.severity} value={r.severity}>
+                  {copy[r.severity]}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </details>{" "}
+      <div className="discovery-result-toolbar">
+        <p className="discovery-muted" aria-live="polite">
+          {copy.showing} {visible.length ? (page - 1) * 8 + 1 : 0}–
+          {Math.min(page * 8, rows.length)} {copy.of}{" "}
+          {count.toLocaleString(locale)}
+        </p>
+        <button className="discovery-text-button" type="button" onClick={reset}>
+          {copy.reset}
+        </button>
+      </div>
+    </div>
   );
 }
 
-function buildFilterUrl(
-  filters: ChangeIndexFilters,
-  locale: SupportedLocale
-): string {
-  const params = new URLSearchParams();
-  if (filters.q.trim()) params.set("q", filters.q.trim());
-  if (filters.theme) params.set("theme", filters.theme);
-  if (filters.review !== defaultChangeIndexFilters.review) {
-    params.set("review", filters.review);
-  }
-  if (filters.sourceHealth !== defaultChangeIndexFilters.sourceHealth) {
-    params.set("sourceHealth", filters.sourceHealth);
-  }
-  if (filters.sort !== defaultChangeIndexFilters.sort) {
-    params.set("sort", filters.sort);
-  }
-  const query = params.toString();
-
-  return localizeHref(query ? `/changes?${query}` : "/changes", locale);
-}
-
-function buildActiveFilterSummary(
-  filters: ChangeIndexFilters,
-  facets: ChangeIndexFacets,
-  visibleRecordCount: number,
-  totalRecordCount: number
-): string {
-  const parts = [
-    filters.q ? `query "${filters.q}"` : "",
-    filters.theme ? `theme ${getFilterThemeLabel(filters.theme, facets)}` : "",
-    filters.review !== "all"
-      ? `review ${formatChangeReviewStateLabel(filters.review)}`
-      : "",
-    filters.sourceHealth !== "all"
-      ? `source health ${formatChangeSourceHealthLabel(filters.sourceHealth)}`
-      : ""
-  ].filter(Boolean);
-
-  return parts.length
-    ? `Showing ${visibleRecordCount} of ${totalRecordCount} records filtered by ${parts.join(", ")}.`
-    : `Showing ${visibleRecordCount} records.`;
-}
-
-function getFilterThemeLabel(
-  theme: string,
-  facets: ChangeIndexFacets
-): string {
+function ChangePreview({
+  record: r,
+  locale,
+}: {
+  record: ChangeIndexRecord;
+  locale: SupportedLocale;
+}) {
+  const copy = discoveryCopy(locale);
+  const design = mockupCopy(locale);
+  const diff = r.primaryDiff;
+  const hasText = Boolean(diff && (diff.oldClaimText || diff.newClaimText));
   return (
-    facets.themes.find((facet) => facet.theme === theme)?.label ?? theme
+    <div className="discovery-change-preview">
+      <h2>{copy.whatChanged}</h2>
+      <div className="discovery-timeline-identity">
+        <UniversityMark slug={r.slug} />
+        <div>
+          <h3>{getLocalizedInstitutionName(r.slug, r.name, locale)}</h3>
+          <p className="discovery-preview-date">
+            {date(r) ? (
+              <time dateTime={date(r)}>
+                {formatDateMedium(date(r)!, locale)}
+              </time>
+            ) : null}
+            <span className="discovery-change-kind">
+              {copy[getDiscoveryChangeKind(r)]}
+            </span>
+          </p>
+        </div>
+      </div>
+      <p data-i18n="preserve">
+        {r.changeSummary ?? diff?.changeExplanation ?? r.summary}
+      </p>
+      <dl className="discovery-change-stats">
+        <div>
+          <dt>{design.recordText}</dt>
+          <dd>{copy[getDiscoveryChangeKind(r)]}</dd>
+        </div>
+        <div>
+          <dt>{design.evidenceRefs}</dt>
+          <dd>{r.evidenceChanged.toLocaleString(locale)}</dd>
+        </div>
+        <div>
+          <dt>{design.sourceVersions}</dt>
+          <dd>
+            {r.sourceSnapshotChanged.toLocaleString(locale)} {copy.sources}
+          </dd>
+        </div>
+      </dl>
+      {hasText ? (
+        <>
+          <div className="discovery-diff-block discovery-diff-block--old">
+            <h4>{copy.previousRecord}</h4>
+            <p data-i18n="preserve">{diff?.oldClaimText ?? copy.notPresent}</p>
+          </div>
+          <div className="discovery-diff-block discovery-diff-block--new">
+            <h4>{copy.currentRecord}</h4>
+            <p data-i18n="preserve">{diff?.newClaimText ?? copy.notPresent}</p>
+          </div>
+        </>
+      ) : (
+        <p className="discovery-muted">{copy.noComparison}</p>
+      )}
+      <div className="discovery-actions">
+        <Link className="discovery-outline-link" href={r.changeUrl}>
+          {copy.viewChanges}
+          <DiscoveryIcon name="arrow" />
+        </Link>
+        <Link href={`${r.universityUrl}#sources`}>
+          {copy.officialSources} ↗
+        </Link>
+        <Link href={r.changeUrl}>{design.history}</Link>
+      </div>
+      <details className="discovery-data">
+        <summary>{copy.data}</summary>
+        <div className="discovery-data-body">
+          <StateLabel locale={locale} reviewState={r.reviewState} />
+          <p className="discovery-muted">
+            {copy.version}:{" "}
+            <span data-i18n="preserve">{r.releaseId ?? "—"}</span>
+          </p>
+          <div className="discovery-actions">
+            <a href={r.publicJsonUrl}>JSON</a>
+            <a href={`/api/public/v1/changes/latest/${r.slug}.json`}>
+              Diff JSON
+            </a>
+          </div>
+        </div>
+      </details>
+    </div>
   );
 }
-
-function buildRecordSummary(
-  record: ChangeIndexRecord,
-  locale: SupportedLocale
-): string {
-  const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
-  const changedText = record.lastChangedAt
-    ? `Latest tracked change on ${formatDateMedium(record.lastChangedAt, locale)}.`
-    : "No public changed date has been published yet.";
-  return `${displayName} has ${record.claimCount} source-backed claim records and ${record.sourceCount} official source attributions. ${changedText}`;
-}
-
-function formatThemes(record: ChangeIndexRecord): string {
-  const labels = record.themes.slice(0, 3).map((theme) => theme.label);
-  if (!labels.length) return "Unclassified";
-  if (record.themes.length > labels.length) {
-    labels.push(`+${record.themes.length - labels.length}`);
-  }
-  return labels.join(", ");
-}
-

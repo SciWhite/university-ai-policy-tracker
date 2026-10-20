@@ -18,11 +18,15 @@ import {readFile} from "node:fs/promises";
 import path from "node:path";
 import {findRepoRoot} from "./repo-root";
 import {readCorrectionChangeCache,readRecordCorrectionChanges} from "./record-correction-changes";
+import { getEntityAliasResolver } from "./entity-aliases";
+import { readPublicChangeHistory } from "./public-change-history";
 import { getStagedPublicDataset } from "./staged-public-data";
 import {
   getLatestReleaseDiff,
   getKnownReleaseIds,
   getReleaseDiff,
+  buildPublicReleaseDiff,
+  type ReleaseDiff,
   type ReleaseDiffRow,
   type ReleaseEntityDiff
 } from "./release-diffs";
@@ -224,7 +228,10 @@ export async function getChangeRecords(): Promise<ChangeRecord[]> {
 }
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
-  const cached = await changeIndexCache.get("current", () => readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData()));
+  const cached = withoutAliasSlugRows(
+    await changeIndexCache.get("current", () => readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData())),
+    (await getEntityAliasResolver()).slugAliases
+  );
   const correction = readV6RecordCorrections();
   if (!correction) return cached;
   const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
@@ -311,9 +318,7 @@ export async function getEntityChangeHistory(
   }
   const dataset = await getStagedPublicDataset();
   const summary = dataset.publicSummaries.find((item) => item.entity.slug === slug);
-  const releaseRecords = (await getAllReleaseChangedRecords()).filter(
-    (record) => record.slug === slug
-  );
+  const releaseRecords = await readPublicChangeHistory(slug);
 
   if (!summary && !releaseRecords.length) return undefined;
 
@@ -327,6 +332,25 @@ export async function getEntityChangeHistory(
 
 async function getAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
   return allReleaseChangedRecordsCache.get("history", buildAllReleaseChangedRecords);
+}
+
+/** Offline export only: keep global historical reconstruction off page requests. */
+export async function buildPublicHistoryProjection() {
+  const dataset = await getStagedPublicDataset();
+  const summaries = new Map(dataset.publicSummaries.map(summary => [summary.entity.slug, summary]));
+  const records: ChangeRecord[] = [];
+  const releases: Record<string, ReleaseDiff> = {};
+  for (const releaseId of await getKnownReleaseIds()) {
+    const diff = await buildPublicReleaseDiff(releaseId);
+    if (!diff) continue;
+    releases[releaseId] = diff;
+    if (!diff.previousReleaseId) continue;
+    for (const entity of diff.entities.filter(entity => entity.rows.length)) {
+      const summary = summaries.get(entity.entitySlug);
+      records.push(summary ? buildChangeRecord(summary, entity) : buildDiffOnlyChangeRecord(entity));
+    }
+  }
+  return { histories: Object.fromEntries(groupBySlug(records.sort(compareFreshness))), releases };
 }
 
 async function buildAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
@@ -358,7 +382,22 @@ async function buildChangeIndexData(): Promise<ChangeIndexData> {
     if (!record) throw new Error("Missing corrected change index record");
     return record;
   });
-  const indexRecords = [...corrected, ...baseline.data.records.filter(item => !corrections.some(entry => entry.slug === item.slug))];
+  // Baseline rows frozen under a registered alias slug predate that identity
+  // merge. Like corrections, the merged canonical identity is recomputed from
+  // the current record, whose release history now includes the alias rows.
+  const { slugAliases } = await getEntityAliasResolver();
+  const mergedSlugs = new Set(
+    baseline.data.records
+      .filter(item => slugAliases.has(item.slug))
+      .map(item => slugAliases.get(item.slug)!)
+      .filter(slug => !corrections.some(entry => entry.slug === slug))
+  );
+  const merged = [...mergedSlugs].map(slug => {
+    const record = computedRecords.find(item => item.slug === slug);
+    if (!record) throw new Error(`Missing merged identity change index record: ${slug}`);
+    return record;
+  });
+  const indexRecords = [...corrected, ...merged, ...baseline.data.records.filter(item => !corrections.some(entry => entry.slug === item.slug) && !mergedSlugs.has(item.slug) && !slugAliases.has(item.slug))];
   const facets = buildChangeIndexFacets(indexRecords);
   const summary = buildChangeIndexSummary(indexRecords);
   const canonicalUrl = `${getSiteBaseUrl()}/changes`;
@@ -392,6 +431,17 @@ async function buildChangeIndexData(): Promise<ChangeIndexData> {
     sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
     trackerMetadataLicense: TRACKER_METADATA_LICENSE
   };
+}
+
+// A projection frozen before an identity merge must not list the retired alias
+// beside its canonical record; the regenerated projection carries the merge.
+function withoutAliasSlugRows(
+  data: ChangeIndexData,
+  slugAliases: ReadonlyMap<string, string>
+): ChangeIndexData {
+  if (!data.data.records.some(record => slugAliases.has(record.slug))) return data;
+  const records = data.data.records.filter(record => !slugAliases.has(record.slug));
+  return {...data, data: {...data.data, records, facets: buildChangeIndexFacets(records), summary: buildChangeIndexSummary(records)}};
 }
 
 function buildChangeIndexRecord(record: ChangeRecord): ChangeIndexRecord {

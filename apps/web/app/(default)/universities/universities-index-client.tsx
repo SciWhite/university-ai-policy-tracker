@@ -1,704 +1,476 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
+import type { RankingSystemId } from "@uapt/shared";
 import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type FormEvent,
-  type ReactNode
-} from "react";
-import type {
-  CatalogUniversityRanking,
-  RankingSystemId
-} from "@uapt/shared";
-import { DocumentLink as Link } from "@/components/document-link";
-import { MetaLabel } from "@/components/meta-label";
-import { StateLabel } from "@/components/state-label";
-import { formatCopyTemplate } from "@/lib/copy-templates";
-import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+  DiscoveryCompareTray,
+  DiscoveryEmpty,
+  DiscoveryFilters,
+  DiscoveryIcon,
+  DiscoveryLoadState,
+  DiscoveryPagination,
+  DiscoveryUniversityCard,
+  useDiscoveryRecords,
+} from "@/components/discovery-ui";
+import {
+  discoveryCopy,
+  discoveryTopics,
+  discoveryTopicLabel,
+} from "@/lib/discovery-copy";
 import {
   getInstitutionLocalizedAliasesByLocale,
-  getLocalizedInstitutionName
+  getLocalizedInstitutionName,
 } from "@/lib/institution-localization";
-import type { UniversitiesIndexClientCopy } from "@/lib/page-copy";
+import { discoveryPrimaryTopics } from "@/lib/discovery-topic-groups";
+import { canonicalUniversitySlugs } from "@/lib/canonical-university-slug";
+import { localizeHref, type SupportedLocale } from "@/lib/i18n";
 import { normalizeForSearch, textMatchesNormalized } from "@/lib/search-text";
 import type {
   StaticUniversityIndexRecord,
-  UniversityIndexCoverageFilter,
   UniversityIndexRankingSystem,
-  UniversityIndexSortKey,
-  UniversityIndexSortOrder
 } from "@/lib/university-index-records";
 
-interface UniversitiesIndexClientProps {
-  browseSlot?: ReactNode;
-  copy: UniversitiesIndexClientCopy;
-  initialRecords: StaticUniversityIndexRecord[];
-  locale: SupportedLocale;
-  priorityRecords: StaticUniversityIndexRecord[];
-  rankingCounts: Record<string, number>;
-  rankingSystems: UniversityIndexRankingSystem[];
-  totalClaimCount: number;
-  totalRecordCount: number;
-  totalSourceCount: number;
-}
-
-interface UniversityIndexFilters {
-  coverage: UniversityIndexCoverageFilter;
-  order: UniversityIndexSortOrder;
+interface Filters {
   q: string;
+  country: string;
+  topics: string[];
   ranking: RankingSystemId;
-  sort: UniversityIndexSortKey;
+  coverage: string;
+  sort: string;
+  order: string;
+  view: string;
+  page: number;
+  compare: string[];
 }
-
-const defaultFilters: UniversityIndexFilters = {
-  coverage: "all",
-  order: "asc",
+const defaults: Filters = {
   q: "",
+  country: "",
+  topics: [],
   ranking: "qs",
-  sort: "rank"
+  coverage: "all",
+  sort: "name",
+  order: "asc",
+  view: "grid",
+  page: 1,
+  compare: [],
 };
-
-const fullIndexPath = "/api/public/v1/university-index.json";
-
-const fullIndexCopy: Record<SupportedLocale, {
-  load: string;
-  loading: string;
-  loadError: string;
-  firstPage: (visible: string, total: string) => string;
-}> = {
-  en: {
-    load: "Load complete index",
-    loading: "Loading...",
-    loadError: "The complete index could not be loaded. Public JSON remains available from the dataset links.",
-    firstPage: (visible, total) => `Showing a fast first page of ${visible} records. Search, filter, sort, or load the complete index to query all ${total} records.`
-  },
-  zh: {
-    load: "加载完整索引",
-    loading: "正在加载…",
-    loadError: "无法加载完整索引。仍可通过数据集链接访问公共 JSON。",
-    firstPage: (visible, total) => `当前快速显示前 ${visible} 条记录。搜索、筛选、排序或加载完整索引，即可查询全部 ${total} 条记录。`
-  },
-  fr: {
-    load: "Charger l’index complet",
-    loading: "Chargement…",
-    loadError: "Impossible de charger l’index complet. Le JSON public reste accessible depuis les liens des jeux de données.",
-    firstPage: (visible, total) => `Affichage rapide des ${visible} premiers enregistrements. Recherchez, filtrez, triez ou chargez l’index complet pour interroger les ${total} enregistrements.`
-  },
-  pl: {
-    load: "Wczytaj pełny indeks",
-    loading: "Wczytywanie…",
-    loadError: "Nie udało się wczytać pełnego indeksu. Publiczny JSON jest nadal dostępny przez łącza do zbiorów danych.",
-    firstPage: (visible, total) => `Wyświetlana jest szybka pierwsza strona obejmująca ${visible} rekordów. Wyszukaj, przefiltruj, posortuj lub wczytaj pełny indeks, aby przeglądać wszystkie ${total} rekordów.`
-  },
-  es: {
-    load: "Cargar el índice completo",
-    loading: "Cargando…",
-    loadError: "No se pudo cargar el índice completo. El JSON público sigue disponible desde los enlaces de los conjuntos de datos.",
-    firstPage: (visible, total) => `Se muestra una primera página rápida de ${visible} registros. Busca, filtra, ordena o carga el índice completo para consultar los ${total} registros.`
-  },
-  nl: {
-    load: "Volledige index laden",
-    loading: "Laden…",
-    loadError: "De volledige index kon niet worden geladen. De openbare JSON blijft beschikbaar via de datasetlinks.",
-    firstPage: (visible, total) => `Er wordt een snelle eerste pagina met ${visible} records getoond. Zoek, filter, sorteer of laad de volledige index om alle ${total} records te doorzoeken.`
-  },
-  ms: {
-    load: "Muatkan indeks lengkap",
-    loading: "Memuatkan…",
-    loadError: "Indeks lengkap tidak dapat dimuatkan. JSON awam masih tersedia melalui pautan set data.",
-    firstPage: (visible, total) => `Paparan pantas halaman pertama menunjukkan ${visible} rekod. Cari, tapis, isih atau muatkan indeks lengkap untuk meneliti kesemua ${total} rekod.`
-  }
-};
+function parse(params: URLSearchParams): Filters {
+  return {
+    q: params.get("q") ?? "",
+    country: params.get("country") ?? "",
+    topics: params
+      .getAll("topic")
+      .filter((t) =>
+        discoveryTopics.includes(t as (typeof discoveryTopics)[number]),
+      ),
+    ranking: (["qs", "the", "arwu", "usnews", "cwts"].includes(
+      params.get("ranking") ?? "",
+    )
+      ? params.get("ranking")
+      : "qs") as RankingSystemId,
+    coverage: ["ranked", "missing"].includes(params.get("coverage") ?? "")
+      ? params.get("coverage")!
+      : "all",
+    sort: ["rank", "name", "recent", "claims", "sources"].includes(
+      params.get("sort") ?? "",
+    )
+      ? params.get("sort")!
+      : "name",
+    order: params.get("order") === "desc" ? "desc" : "asc",
+    view: params.get("view") === "list" ? "list" : "grid",
+    page: Math.max(1, Math.min(10000, Number(params.get("page")) || 1)),
+    compare: canonicalUniversitySlugs(
+      (params.get("compare") ?? "")
+        .split(",")
+        .filter((s) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s)),
+    ).slice(0, 4),
+  };
+}
+function toUrl(filters: Filters, locale: SupportedLocale) {
+  const p = new URLSearchParams();
+  for (const key of [
+    "q",
+    "country",
+    "ranking",
+    "coverage",
+    "sort",
+    "order",
+    "view",
+  ] as const)
+    if (filters[key] && filters[key] !== defaults[key])
+      p.set(key, filters[key]);
+  filters.topics.forEach((t) => p.append("topic", t));
+  if (filters.page > 1) p.set("page", String(filters.page));
+  if (filters.compare.length) p.set("compare", filters.compare.join(","));
+  return localizeHref(`/universities${p.size ? `?${p}` : ""}`, locale);
+}
 
 export function UniversitiesIndexClient({
-  browseSlot,
-  copy,
   initialRecords,
+  universityNames,
   locale,
-  priorityRecords,
-  rankingCounts,
   rankingSystems,
-  totalClaimCount,
   totalRecordCount,
-  totalSourceCount
-}: UniversitiesIndexClientProps) {
-  const indexCopy = fullIndexCopy[locale];
-  const [filters, setFilters] = useState<UniversityIndexFilters>(defaultFilters);
-  const [records, setRecords] = useState(initialRecords);
-  const [hasFullIndex, setHasFullIndex] = useState(false);
-  const [isLoadingFullIndex, setIsLoadingFullIndex] = useState(false);
-  const [fullIndexError, setFullIndexError] = useState(false);
-
-  const loadFullIndex = useCallback(async () => {
-    if (hasFullIndex || isLoadingFullIndex) return;
-
-    setIsLoadingFullIndex(true);
-    setFullIndexError(false);
-
-    try {
-      const response = await fetch(fullIndexPath);
-      if (!response.ok) throw new Error(`Index request failed: ${response.status}`);
-      const payload = (await response.json()) as {
-        data?: {
-          records?: StaticUniversityIndexRecord[];
-        };
-      };
-      const nextRecords = payload.data?.records;
-      if (!Array.isArray(nextRecords)) {
-        throw new Error("Index response did not include records.");
-      }
-      setRecords(nextRecords);
-      setHasFullIndex(true);
-    } catch {
-      setFullIndexError(true);
-    } finally {
-      setIsLoadingFullIndex(false);
-    }
-  }, [hasFullIndex, isLoadingFullIndex]);
-
+  countries,
+  topicIndex,
+}: {
+  initialRecords: StaticUniversityIndexRecord[];
+  universityNames: Record<string, string>;
+  locale: SupportedLocale;
+  rankingSystems: UniversityIndexRankingSystem[];
+  totalRecordCount: number;
+  countries: string[];
+  topicIndex: Record<string, string[]>;
+}) {
+  const copy = discoveryCopy(locale);
+  const [filters, setFilters] = useState(defaults);
+  const data = useDiscoveryRecords(
+    initialRecords,
+    "/api/public/v1/university-index.json",
+    totalRecordCount,
+  );
   useEffect(() => {
-    const syncFromLocation = () => {
-      setFilters(parseFilters(new URLSearchParams(window.location.search)));
-    };
-
-    syncFromLocation();
-    window.addEventListener("popstate", syncFromLocation);
-
-    return () => window.removeEventListener("popstate", syncFromLocation);
+    const sync = () =>
+      setFilters(parse(new URLSearchParams(window.location.search)));
+    sync();
+    window.addEventListener("popstate", sync);
+    return () => window.removeEventListener("popstate", sync);
   }, []);
-
+  const needsAll = Boolean(
+    filters.q ||
+      filters.country ||
+      filters.topics.length ||
+      filters.ranking !== "qs" ||
+      filters.coverage !== "all" ||
+      filters.sort !== defaults.sort ||
+      filters.order !== "asc" ||
+      filters.page > 1,
+  );
+  // The loader guards concurrent calls; a failed request is retried explicitly.
   useEffect(() => {
-    if (!needsFullIndex(filters) || hasFullIndex) return;
-    void loadFullIndex();
-  }, [filters, hasFullIndex, loadFullIndex]);
-
-  const selectedRankingLabel = getRankingLabel(filters.ranking, rankingSystems);
-  const allRecords = useMemo(
-    () => records.map((record) => withSelectedRanking(record, filters.ranking)),
-    [filters.ranking, records]
+    if (needsAll && !data.full && !data.error) void data.load();
+  }, [needsAll, data.full, data.error, data.load]);
+  const rows = useMemo(() => {
+    const query = normalizeForSearch(filters.q);
+    return data.records
+      .filter((r) => {
+        const ranking = r.rankings.find((x) => x.systemId === filters.ranking);
+        if (filters.country && r.country !== filters.country) return false;
+        if (
+          (filters.coverage === "ranked" && !ranking) ||
+          (filters.coverage === "missing" && ranking)
+        )
+          return false;
+        if (
+          filters.topics.length &&
+          !filters.topics.every((t) => topicIndex[r.slug]?.includes(t))
+        )
+          return false;
+        return (
+          !query ||
+          textMatchesNormalized(
+            [
+              r.name,
+              r.country,
+              r.region,
+              ...(r.aliases ?? []),
+              getLocalizedInstitutionName(r.slug, r.name, locale),
+              ...getInstitutionLocalizedAliasesByLocale(r.slug, locale),
+            ].join(" "),
+            query,
+          )
+        );
+      })
+      .sort((a, b) => {
+        let v = 0;
+        if (filters.sort === "name")
+          v = getLocalizedInstitutionName(a.slug, a.name, locale).localeCompare(
+            getLocalizedInstitutionName(b.slug, b.name, locale),
+            locale,
+          );
+        else if (filters.sort === "recent")
+          v =
+            (Date.parse(b.lastCheckedAt ?? "") || 0) -
+            (Date.parse(a.lastCheckedAt ?? "") || 0);
+        else if (filters.sort === "claims") v = b.claimCount - a.claimCount;
+        else if (filters.sort === "sources") v = b.sourceCount - a.sourceCount;
+        else
+          v =
+            (a.rankings.find((x) => x.systemId === filters.ranking)
+              ?.rankNumber ?? Infinity) -
+            (b.rankings.find((x) => x.systemId === filters.ranking)
+              ?.rankNumber ?? Infinity);
+        return (
+          (v || a.name.localeCompare(b.name)) *
+          (filters.order === "desc" ? -1 : 1)
+        );
+      });
+  }, [data.records, filters, locale, topicIndex]);
+  const pageCount = Math.max(
+    1,
+    Math.ceil((!data.full && !needsAll ? totalRecordCount : rows.length) / 6),
   );
-  const filteredRecords = useMemo(
+  const page = Math.min(filters.page, pageCount);
+  const visible = rows.slice((page - 1) * 6, page * 6);
+  const names = useMemo(
     () =>
-      sortRecords(
-        filterRecords(allRecords, filters.q, filters.coverage, locale),
-        filters.sort,
-        filters.order,
-        locale
+      Object.fromEntries(
+        Object.entries(universityNames).map(([slug, name]) => [
+          slug,
+          getLocalizedInstitutionName(slug, name, locale),
+        ]),
       ),
-    [allRecords, filters.coverage, filters.order, filters.q, filters.sort, locale]
+    [universityNames, locale],
   );
-  const rankedCount = hasFullIndex
-    ? allRecords.filter((record) => record.selectedRanking).length
-    : (rankingCounts[filters.ranking] ?? 0);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const nextUrl = buildFilterUrl(filters, locale);
-    window.history.pushState({}, "", nextUrl);
+  function update(patch: Partial<Filters>) {
+    const next = { ...filters, ...patch, page: patch.page ?? 1 };
+    setFilters(next);
+    window.history.pushState(null, "", toUrl(next, locale));
   }
-
-  function resetFilters() {
-    setFilters(defaultFilters);
-    window.history.pushState({}, "", localizeHref("/universities", locale));
+  function reset() {
+    const next = { ...defaults, compare: filters.compare };
+    setFilters(next);
+    window.history.pushState(null, "", toUrl(next, locale));
   }
-
+  function toggle(slug: string) {
+    update({
+      compare: filters.compare.includes(slug)
+        ? filters.compare.filter((s) => s !== slug)
+        : [...filters.compare, slug].slice(0, 4),
+      page: filters.page,
+    });
+  }
   return (
-    <main className="page-shell page-shell--wide">
-      <section className="hero">
-        <p className="kicker">{copy.kicker}</p>
-        <h1>{copy.heading}</h1>
-      </section>
-
-      <section className="metrics-grid" aria-label={copy.coverageLabel}>
-        <div>
-          <span>{totalRecordCount}</span>
-          <p>{copy.universityRecords}</p>
-        </div>
-        <div>
-          <span>{totalClaimCount}</span>
-          <p>{copy.sourceBackedClaims}</p>
-        </div>
-        <div>
-          <span>{totalSourceCount}</span>
-          <p>{copy.officialSourceAttributions}</p>
-        </div>
-        <div>
-          <span>{rankedCount}</span>
-          <p>
-            {formatCopyTemplate(copy.templates.rankedRecords, {
-              ranking: selectedRankingLabel
-            })}
-          </p>
-        </div>
-      </section>
-
-      {priorityRecords.length ? (
-        <section className="section" aria-labelledby="priority-university-records">
-          <div className="section-heading">
-            <h2 id="priority-university-records">{copy.priorityTitle}</h2>
-          </div>
-          <div className="source-attribution-list">
-            {priorityRecords.map((record) => {
-              const displayName = getLocalizedInstitutionName(
-                record.slug,
-                record.name,
-                locale
-              );
-
-              return (
-                <article className="source-attribution-row" key={record.slug}>
-                  <div>
-                    <h3>{displayName}</h3>
-                    <div className="tag-row">
-                      {record.reviewState ? (
-                        <StateLabel locale={locale} reviewState={record.reviewState} />
-                      ) : null}
-                      <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
-                      <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
-                      {record.lastCheckedAt ? (
-                        <MetaLabel label={copy.lastChecked}>
-                          {formatDate(record.lastCheckedAt, locale)}
-                        </MetaLabel>
-                      ) : null}
-                    </div>
-                  </div>
-                  <div className="tag-row">
-                    <Link href={`/universities/${record.slug}`}>
-                      {copy.priorityRecordLink}
-                    </Link>
-                    <Link href={`/changes/${record.slug}`}>
-                      {copy.priorityChangeLink}
-                    </Link>
-                    <Link href="/reports/monthly/2026-08">
-                      {copy.priorityReportsLink}
-                    </Link>
-                    <a href={record.publicJsonUrl}>{copy.publicJson}</a>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-      ) : null}
-
-      <section
-        className="section"
-        data-ranking-system={filters.ranking}
-        data-university-index-count={records.length}
+    <>
+      <main
+        className="discovery-page university-mockup-page"
+        data-discovery-page="universities"
+        data-discovery-ready={data.ready}
       >
-        <div className="section-heading">
-          <h2>{copy.indexTitle}</h2>
-        </div>
-
-        <form
-          action={localizeHref("/universities", locale)}
-          className="university-filter-form"
-          method="get"
-          onSubmit={handleSubmit}
-        >
-          <label>
-            <span>{copy.search}</span>
-            <input
-              name="q"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  q: event.target.value
-                }))
-              }
-              placeholder={copy.searchPlaceholder}
-              type="search"
-              value={filters.q}
-            />
-          </label>
-          <label>
-            <span>{copy.ranking}</span>
-            <select
-              name="ranking"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  ranking: parseRankingSystem(event.target.value)
-                }))
-              }
-              value={filters.ranking}
-            >
-              {rankingSystems.map((system) => (
-                <option key={system.id} value={system.id}>
-                  {system.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>{copy.coverage}</span>
-            <select
-              name="coverage"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  coverage: parseCoverageFilter(event.target.value)
-                }))
-              }
-              value={filters.coverage}
-            >
-              <option value="all">{copy.allRecords}</option>
-              <option value="ranked">{copy.rankedInSelectedSystem}</option>
-              <option value="missing">{copy.missingSelectedRank}</option>
-            </select>
-          </label>
-          <label>
-            <span>{copy.sort}</span>
-            <select
-              name="sort"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  sort: parseSortKey(event.target.value)
-                }))
-              }
-              value={filters.sort}
-            >
-              <option value="rank">{copy.selectedRanking}</option>
-              <option value="recent">{copy.recentlyChecked}</option>
-              <option value="name">{copy.universityName}</option>
-              <option value="claims">{copy.claimCount}</option>
-              <option value="sources">{copy.sourceCount}</option>
-            </select>
-          </label>
-          <label>
-            <span>{copy.order}</span>
-            <select
-              name="order"
-              onChange={(event) =>
-                setFilters((current) => ({
-                  ...current,
-                  order: parseSortOrder(event.target.value)
-                }))
-              }
-              value={filters.order}
-            >
-              <option value="asc">{copy.ascending}</option>
-              <option value="desc">{copy.descending}</option>
-            </select>
-          </label>
-          <button type="submit">{copy.apply}</button>
-          <button
-            className="filter-reset-link"
-            onClick={resetFilters}
-            type="button"
+        <div className="discovery-layout">
+          <DiscoveryFilters
+            title={copy.filterUniversities}
+            id="university-filter-fields"
           >
-            {copy.reset}
-          </button>
-        </form>
-
-        <div className="table-summary" data-university-visible-count={filteredRecords.length}>
-          {formatCopyTemplate(copy.templates.showing, {
-            visible: filteredRecords.length,
-            total: totalRecordCount
-          })}{" "}
-          {filters.q ? (
-            <>
-              {formatCopyTemplate(copy.templates.searchSummary, {
-                query: filters.q
-              })}{" "}
-            </>
-          ) : null}
-          {formatCopyTemplate(copy.templates.rankingView, {
-            ranking: selectedRankingLabel
-          })}
-        </div>
-        {!hasFullIndex ? (
-          <p className="notice-card">
-            {indexCopy.firstPage(
-              records.length.toLocaleString(locale),
-              totalRecordCount.toLocaleString(locale)
-            )}{" "}
-            <button
-              className="filter-reset-link"
-              disabled={isLoadingFullIndex}
-              onClick={() => void loadFullIndex()}
-              type="button"
-            >
-              {isLoadingFullIndex ? indexCopy.loading : indexCopy.load}
-            </button>
-          </p>
-        ) : null}
-        {fullIndexError ? (
-          <p className="notice-card">{indexCopy.loadError}</p>
-        ) : null}
-
-        <div className="university-table-wrap">
-          <table className="university-table">
-            <thead>
-              <tr>
-                <th>{copy.university}</th>
-                <th>
-                  {formatCopyTemplate(copy.templates.rank, {
-                    ranking: selectedRankingLabel
-                  })}
-                </th>
-                <th>{copy.claims}</th>
-                <th>{copy.sources}</th>
-                <th>{copy.lastChecked}</th>
-                <th>{copy.publicJson}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredRecords.map((record) => (
-                <tr data-university-row="" key={record.slug}>
-                  <td>
-                    <div className="table-record-title">
-                      <Link href={`/universities/${record.slug}`}>
-                        {getLocalizedInstitutionName(
-                          record.slug,
-                          record.name,
-                          locale
-                        )}
-                      </Link>
-                    </div>
-                    <div className="table-record-subtitle">
-                      {[record.region, record.country]
-                        .filter((value) => value && value !== "Unknown")
-                        .join(", ") || copy.locationUnknown}
-                    </div>
-                    <div className="table-record-meta">
-                      {record.reviewState ? (
-                        <StateLabel locale={locale} reviewState={record.reviewState} />
-                      ) : null}
-                      {record.confidence !== undefined ? (
-                        <MetaLabel label={copy.confidence}>
-                          {Math.round(record.confidence * 100)}%
-                        </MetaLabel>
-                      ) : null}
-                    </div>
-                  </td>
-                  <td>{renderRanking(record.selectedRanking, copy)}</td>
-                  <td>{record.claimCount}</td>
-                  <td>{record.sourceCount}</td>
-                  <td>
-                    {record.lastCheckedAt ? (
-                      <span>{formatDate(record.lastCheckedAt, locale)}</span>
-                    ) : (
-                      <span className="table-muted">{copy.unknown}</span>
-                    )}
-                  </td>
-                  <td>
-                    <a href={record.publicJsonUrl}>{copy.json}</a>
-                  </td>
-                </tr>
+            <label>
+              {copy.country}
+              <select
+                value={filters.country}
+                onChange={(e) => update({ country: e.target.value })}
+              >
+                <option value="">{copy.allCountries}</option>
+                {countries.map((c) => (
+                  <option key={c}>{c}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              {copy.ranking}
+              <select
+                value={filters.ranking}
+                onChange={(e) =>
+                  update({ ranking: e.target.value as RankingSystemId })
+                }
+              >
+                {rankingSystems.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <fieldset>
+              <legend>{copy.topics}</legend>
+              {discoveryPrimaryTopics.map((t) => (
+                <label className="discovery-check" key={t}>
+                  <input
+                    type="checkbox"
+                    checked={filters.topics.includes(t)}
+                    onChange={() =>
+                      update({
+                        topics: filters.topics.includes(t)
+                          ? filters.topics.filter((x) => x !== t)
+                          : [...filters.topics, t],
+                      })
+                    }
+                  />
+                  {discoveryTopicLabel(t, locale)}
+                </label>
               ))}
-            </tbody>
-          </table>
+            </fieldset>
+            <details className="discovery-filter-extra">
+              <summary>{copy.moreFilters}</summary>{" "}
+              <label>
+                {copy.coverage}
+                <select
+                  value={filters.coverage}
+                  onChange={(e) => update({ coverage: e.target.value })}
+                >
+                  <option value="all">{copy.allRecords}</option>
+                  <option value="ranked">{copy.rankedOnly}</option>
+                  <option value="missing">{copy.missingRank}</option>
+                </select>
+              </label>
+              <label>
+                <span className="visually-hidden">
+                  {copy.ascending} / {copy.descending}
+                </span>
+                <select
+                  value={filters.order}
+                  onChange={(e) => update({ order: e.target.value })}
+                >
+                  <option value="asc">{copy.ascending}</option>
+                  <option value="desc">{copy.descending}</option>
+                </select>
+              </label>
+            </details>
+            <button type="button" onClick={reset}>
+              {copy.reset}
+            </button>
+          </DiscoveryFilters>
+          <section
+            className="discovery-results"
+            aria-label={copy.browse}
+            aria-busy={data.loading}
+          >
+            {" "}
+            <header className="discovery-header">
+              <div>
+                <h1>{copy.findUniversity}</h1>
+                <p>{copy.directoryLead}</p>
+              </div>
+            </header>
+            <form
+              className="discovery-search-form"
+              action={localizeHref("/universities", locale)}
+              method="get"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!data.full) void data.load();
+              }}
+            >
+              <label className="discovery-search-field">
+                <span className="visually-hidden">{copy.search}</span>
+                <DiscoveryIcon name="search" />
+                <input
+                  name="q"
+                  type="search"
+                  placeholder={copy.directoryPlaceholder}
+                  value={filters.q}
+                  onChange={(e) => update({ q: e.target.value })}
+                />
+              </label>
+              <button type="submit">{copy.search}</button>
+            </form>
+            <p className="discovery-muted">
+              {totalRecordCount.toLocaleString(locale)} {copy.universityRecords}
+            </p>
+            <div className="discovery-result-toolbar">
+              <div>
+                <h2>{copy.browse}</h2>
+                <p className="visually-hidden" aria-live="polite">
+                  {copy.showing} {visible.length ? (page - 1) * 6 + 1 : 0}–
+                  {Math.min(page * 6, rows.length)} {copy.of}{" "}
+                  {(!data.full && !needsAll
+                    ? totalRecordCount
+                    : rows.length
+                  ).toLocaleString(locale)}
+                </p>
+              </div>
+              <div className="discovery-sort">
+                <label>
+                  {copy.sort}
+                  <select
+                    value={filters.sort}
+                    onChange={(e) => update({ sort: e.target.value })}
+                  >
+                    <option value="rank">{copy.rankOrder}</option>
+                    <option value="name">{copy.name}</option>
+                    <option value="recent">{copy.checked}</option>
+                    <option value="claims">{copy.mostClaims}</option>
+                    <option value="sources">{copy.mostSources}</option>
+                  </select>
+                </label>
+                <div className="discovery-view-switch">
+                  <button
+                    type="button"
+                    aria-label={copy.grid}
+                    aria-pressed={filters.view === "grid"}
+                    onClick={() => update({ view: "grid", page: filters.page })}
+                  >
+                    <DiscoveryIcon name="grid" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={copy.list}
+                    aria-pressed={filters.view === "list"}
+                    onClick={() => update({ view: "list", page: filters.page })}
+                  >
+                    <DiscoveryIcon name="list" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="discovery-topic-chips" aria-label={copy.topics}>
+              {discoveryPrimaryTopics.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  aria-pressed={filters.topics.includes(t)}
+                  onClick={() =>
+                    update({
+                      topics: filters.topics.includes(t)
+                        ? filters.topics.filter((x) => x !== t)
+                        : [...filters.topics, t],
+                    })
+                  }
+                >
+                  {discoveryTopicLabel(t, locale)}
+                </button>
+              ))}
+            </div>
+            <DiscoveryLoadState
+              locale={locale}
+              loading={data.loading}
+              error={data.error}
+              partial={false}
+              onLoad={() => void data.load()}
+            />
+            {visible.length ? (
+              <div
+                className={`discovery-university-grid${filters.view === "list" ? " discovery-grid--list" : ""}`}
+              >
+                {visible.map((r) => (
+                  <DiscoveryUniversityCard
+                    key={r.slug}
+                    record={{ ...r, summary: undefined }}
+                    showDate={false}
+                    locale={locale}
+                    selected={filters.compare.includes(r.slug)}
+                    compareDisabled={filters.compare.length >= 4}
+                    onCompare={() => toggle(r.slug)}
+                  />
+                ))}
+              </div>
+            ) : !data.loading ? (
+              <DiscoveryEmpty locale={locale} onReset={reset} />
+            ) : null}
+            <DiscoveryPagination
+              locale={locale}
+              page={page}
+              pageCount={pageCount}
+              onPage={(p) => update({ page: p })}
+            />
+          </section>
         </div>
-
-        {!filteredRecords.length ? (
-          <p className="notice-card">
-            {copy.noMatches}
-          </p>
-        ) : null}
-      </section>
-
-      {browseSlot}
-    </main>
+      </main>
+      <DiscoveryCompareTray
+        locale={locale}
+        selected={filters.compare}
+        names={names}
+        onRemove={toggle}
+        onClear={() => update({ compare: [], page: filters.page })}
+      />
+    </>
   );
-}
-
-function needsFullIndex(filters: UniversityIndexFilters): boolean {
-  return (
-    filters.q.trim().length > 0 ||
-    filters.coverage !== defaultFilters.coverage ||
-    filters.order !== defaultFilters.order ||
-    filters.ranking !== defaultFilters.ranking ||
-    filters.sort !== defaultFilters.sort
-  );
-}
-
-type RecordWithSelectedRanking = StaticUniversityIndexRecord & {
-  selectedRanking?: CatalogUniversityRanking;
-};
-
-function withSelectedRanking(
-  record: StaticUniversityIndexRecord,
-  rankingSystem: RankingSystemId
-): RecordWithSelectedRanking {
-  return {
-    ...record,
-    selectedRanking: record.rankings.find(
-      (ranking) => ranking.systemId === rankingSystem
-    )
-  };
-}
-
-function filterRecords(
-  records: RecordWithSelectedRanking[],
-  query: string,
-  coverage: UniversityIndexCoverageFilter,
-  locale: SupportedLocale
-): RecordWithSelectedRanking[] {
-  const normalizedQuery = normalizeForSearch(query);
-
-  return records.filter((record) => {
-    if (coverage === "ranked" && !record.selectedRanking) return false;
-    if (coverage === "missing" && record.selectedRanking) return false;
-    if (!normalizedQuery) return true;
-
-    return [
-      record.name,
-      getLocalizedInstitutionName(record.slug, record.name, locale),
-      ...getInstitutionLocalizedAliasesByLocale(record.slug, locale),
-      record.country,
-      record.region,
-      record.summary
-    ]
-      .filter((value): value is string => Boolean(value))
-      .some((value) => textMatchesNormalized(value, normalizedQuery));
-  });
-}
-
-function sortRecords(
-  records: RecordWithSelectedRanking[],
-  sortKey: UniversityIndexSortKey,
-  sortOrder: UniversityIndexSortOrder,
-  locale: SupportedLocale
-): RecordWithSelectedRanking[] {
-  const direction = sortOrder === "asc" ? 1 : -1;
-
-  return [...records].sort((left, right) => {
-    const comparison = compareRecords(left, right, sortKey, locale);
-    if (comparison) return comparison * direction;
-
-    return getLocalizedInstitutionName(left.slug, left.name, locale).localeCompare(
-      getLocalizedInstitutionName(right.slug, right.name, locale)
-    );
-  });
-}
-
-function compareRecords(
-  left: RecordWithSelectedRanking,
-  right: RecordWithSelectedRanking,
-  sortKey: UniversityIndexSortKey,
-  locale: SupportedLocale
-): number {
-  if (sortKey === "name") {
-    return getLocalizedInstitutionName(left.slug, left.name, locale).localeCompare(
-      getLocalizedInstitutionName(right.slug, right.name, locale)
-    );
-  }
-  if (sortKey === "claims") return left.claimCount - right.claimCount;
-  if (sortKey === "sources") return left.sourceCount - right.sourceCount;
-  if (sortKey === "recent") return getFreshnessTime(left) - getFreshnessTime(right);
-
-  return getRankValue(left) - getRankValue(right);
-}
-
-function getRankValue(record: RecordWithSelectedRanking): number {
-  return record.selectedRanking?.rankNumber ?? Number.MAX_SAFE_INTEGER;
-}
-
-function getFreshnessTime(record: StaticUniversityIndexRecord): number {
-  const value = record.lastChangedAt ?? record.lastCheckedAt;
-
-  return value ? new Date(value).getTime() : 0;
-}
-
-function renderRanking(
-  ranking: CatalogUniversityRanking | undefined,
-  copy: UniversitiesIndexClientCopy
-) {
-  if (!ranking) return <span className="table-muted">{copy.notIndexed}</span>;
-
-  return (
-    <span className="ranking-cell">
-      <strong>{ranking.rankText}</strong>
-      <span>
-        {ranking.rankingYear}
-        {ranking.status === "partial" ? ` · ${copy.partialSource}` : ""}
-        {ranking.rankType === "derived_metric_order" ? ` · ${copy.derivedOrder}` : ""}
-      </span>
-    </span>
-  );
-}
-
-function parseFilters(params: URLSearchParams): UniversityIndexFilters {
-  return {
-    coverage: parseCoverageFilter(params.get("coverage") ?? ""),
-    order: parseSortOrder(params.get("order") ?? ""),
-    q: params.get("q") ?? "",
-    ranking: parseRankingSystem(params.get("ranking") ?? ""),
-    sort: parseSortKey(params.get("sort") ?? "")
-  };
-}
-
-function buildFilterUrl(
-  filters: UniversityIndexFilters,
-  locale: SupportedLocale
-): string {
-  const params = new URLSearchParams();
-  if (filters.q.trim()) params.set("q", filters.q.trim());
-  if (filters.ranking !== defaultFilters.ranking) params.set("ranking", filters.ranking);
-  if (filters.coverage !== defaultFilters.coverage) {
-    params.set("coverage", filters.coverage);
-  }
-  if (filters.sort !== defaultFilters.sort) params.set("sort", filters.sort);
-  if (filters.order !== defaultFilters.order) params.set("order", filters.order);
-  const query = params.toString();
-
-  const path = query ? `/universities?${query}` : "/universities";
-
-  return localizeHref(path, locale);
-}
-
-function parseRankingSystem(value: string): RankingSystemId {
-  if (
-    value === "qs" ||
-    value === "the" ||
-    value === "arwu" ||
-    value === "usnews" ||
-    value === "cwts"
-  ) {
-    return value;
-  }
-
-  return "qs";
-}
-
-function parseSortKey(value: string): UniversityIndexSortKey {
-  if (
-    value === "rank" ||
-    value === "recent" ||
-    value === "name" ||
-    value === "claims" ||
-    value === "sources"
-  ) {
-    return value;
-  }
-
-  return "rank";
-}
-
-function parseSortOrder(value: string): UniversityIndexSortOrder {
-  return value === "desc" ? "desc" : "asc";
-}
-
-function parseCoverageFilter(value: string): UniversityIndexCoverageFilter {
-  if (value === "ranked" || value === "missing") return value;
-
-  return "all";
-}
-
-function getRankingLabel(
-  systemId: RankingSystemId,
-  rankingSystems: UniversityIndexRankingSystem[]
-): string {
-  return rankingSystems.find((system) => system.id === systemId)?.label ?? "QS";
-}
-
-function formatDate(value: string, locale: SupportedLocale): string {
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeZone: "UTC"
-  }).format(new Date(value));
 }

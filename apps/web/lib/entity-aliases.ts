@@ -68,6 +68,33 @@ export async function getAliasSlugs(): Promise<string[]> {
   return [...resolver.slugAliases.keys()];
 }
 
+/**
+ * Display-cased name, local-name and acronym aliases per canonical slug.
+ * Exposed as entity search aliases; ranking labels stay join-only.
+ */
+export async function getRetrievalNameAliasesBySlug(): Promise<
+  Map<string, string[]>
+> {
+  const registry = await getEntityAliasRegistry();
+  const bySlug = new Map<string, string[]>();
+
+  for (const alias of registry?.aliases ?? []) {
+    if (
+      alias.aliasType !== "name" &&
+      alias.aliasType !== "local_name" &&
+      alias.aliasType !== "acronym"
+    ) {
+      continue;
+    }
+    bySlug.set(alias.canonicalSlug, [
+      ...(bySlug.get(alias.canonicalSlug) ?? []),
+      alias.alias
+    ]);
+  }
+
+  return bySlug;
+}
+
 /** Canonical slug for a ranking label / name variant, else undefined. */
 export async function getCanonicalSlugForName(
   name: string

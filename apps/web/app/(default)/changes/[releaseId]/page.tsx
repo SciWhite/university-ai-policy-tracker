@@ -15,6 +15,7 @@ import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getKnownReleaseIds } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { formatDateMedium } from "@/lib/format-date";
 import { currentMonthlyReportPath } from "@/lib/reports";
@@ -39,6 +40,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ChangeDetailPageProps) {
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
+  await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
   const releaseRecords = await getReleaseChangeRecords(releaseId);
   if (releaseRecords) {
     const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
@@ -87,6 +89,7 @@ export default async function ChangeDetailPage({
 }: ChangeDetailPageProps) {
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
+  await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
   const recordsForRelease = await getReleaseChangeRecords(releaseId);
   if (recordsForRelease) {
     return (

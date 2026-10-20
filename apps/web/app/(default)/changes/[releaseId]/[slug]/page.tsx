@@ -10,6 +10,7 @@ import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 
 interface ReleaseEntityChangePageProps {
@@ -39,6 +40,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ReleaseEntityChangePageProps) {
   const { locale: localeParam, releaseId, slug } = await params;
   const locale = normalizeLocale(localeParam);
+  await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
   const record = (await getReleaseChangeRecords(releaseId))?.find(
     (item) => item.slug === slug
   );
@@ -71,11 +73,14 @@ export default async function ReleaseEntityChangePage({
 }: ReleaseEntityChangePageProps) {
   const { locale: localeParam, releaseId, slug } = await params;
   const locale = normalizeLocale(localeParam);
+  await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
   const record = (await getReleaseChangeRecords(releaseId))?.find(
     (item) => item.slug === slug
   );
 
-  if (!record) notFound();
+  if (!record) {
+    notFound();
+  }
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
 
   return (

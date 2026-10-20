@@ -1,6 +1,6 @@
 {
   "schemaVersion": "uapt-entity-alias-v1",
-  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "generatedAt": "2026-10-19T12:00:00.000Z",
   "notes": "Entity alias registry per docs/data-contract.md. Slug aliases resolve duplicate university identities created when later pipeline runs derived a fresh slug from ranking names instead of reusing the original record; the canonical slug is the original record holding the richer source history. Ranking-label aliases map QS 2026 institution names to canonical slugs so ranking joins can be exact instead of fuzzy. Aliases improve recall and identity resolution only; they never create policy facts.",
   "aliases": [
     {
@@ -447,12 +447,12 @@
       "alias": "KIT, Karlsruhe Institute of Technology",
       "aliasType": "ranking_label",
       "entityType": "university",
-      "canonicalSlug": "karlsruhe-institute-of-technology-kit",
+      "canonicalSlug": "kit-karlsruhe-institute-of-technology",
       "sourceSystem": "qs_rankings",
       "matchConfidence": 1,
       "reviewState": "agent_reviewed",
-      "matchReason": "QS 2026 label leads with the KIT acronym; tracker records use 'Karlsruhe Institute of Technology (KIT)'.",
-      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+      "matchReason": "QS 2026 label leads with the KIT acronym; tracker records use 'Karlsruhe Institute of Technology (KIT)'. Repointed 2026-10-19 from karlsruhe-institute-of-technology-kit after that slug was registered as a duplicate-identity alias of kit-karlsruhe-institute-of-technology.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
     },
     {
       "alias": "Macquarie University (Sydney, Australia)",
@@ -491,12 +491,342 @@
       "alias": "The University of Sheffield",
       "aliasType": "ranking_label",
       "entityType": "university",
-      "canonicalSlug": "university-of-sheffield",
+      "canonicalSlug": "the-university-of-sheffield",
       "sourceSystem": "qs_rankings",
       "matchConfidence": 1,
       "reviewState": "agent_reviewed",
-      "matchReason": "QS 2026 label carries a leading 'The'; tracker records use 'University of Sheffield'.",
-      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+      "matchReason": "QS 2026 label carries a leading 'The'; tracker records use 'University of Sheffield'. Repointed 2026-10-19 from university-of-sheffield after that slug was registered as a duplicate-identity alias of the-university-of-sheffield.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "birkbeck-university-london",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "birkbeck-university-of-london",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:1636 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite bbk.ac.uk and the alias tool claim already names \"Birkbeck, University of London\". Canonical holds the original 2026-05-16 single-school record (4 claims, 2 sources, QS/THE/ARWU) and its release history; alias was derived by the 2026-07 AI-tools batch (1 claim, 1 source, U.S. News).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "brunel-university-london",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "brunel-university-of-london",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:73 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Brunel official information states Brunel University London is the legal name and Brunel University of London the trading name used since 1 October 2024 (https://www.brunel.ac.uk/about/information). Canonical keeps the existing published trading-name URL with the 2026-05-16 single-school record (5 claims, 4 sources, QS/THE); alias from the 2026-07 AI-tools batch (1 claim, ARWU/U.S. News). The legal name is retained as a name alias.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-tuebingen",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "eberhard-karls-universitat-tubingen",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:629 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite uni-tuebingen.de and the alias tool claim names \"Eberhard Karls Universität Tübingen\". Canonical holds the 2026-05-15 single-school record (4 claims, 3 sources, QS); alias from the 2026-07 AI-tools batch (1 claim, ARWU).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-essex",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "essex-university-of",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:200 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite essex.ac.uk, share the official source https://www.essex.ac.uk/staff/it-services/use-of-ai-tools, and the alias tool claim names \"Essex, University of\". Canonical keeps the existing published URL with the 2026-05-16 record (6 claims, 3 sources, QS); alias from the 2026-07 AI-tools batch (1 claim, THE/ARWU/U.S. News).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "karlsruhe-institute-of-technology-kit",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "kit-karlsruhe-institute-of-technology",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:310 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite kit.edu KI-Toolbox sources and the alias tool claims name \"Karlsruhe Institute of Technology (KIT)\". Canonical holds the 2026-05-13 single-school record (6 claims, 6 sources, QS) and its release history; alias from the 2026-07 AI-tools batch (4 tool claims, ARWU).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "lappeenranta-lahti-university-technology-lut",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "lappeenranta-lahti-university-of-technology-lut",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:1274 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite elut.lut.fi and share the official AI-based tools policies page. Canonical holds the 2026-05-16 single-school record (6 claims, 3 sources, QS/U.S. News); alias from the 2026-07 AI-tools batch (1 claim, no ranking or location match).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "stony-brook-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "stony-brook-university-state-university-of-new-york",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:583 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite stonybrook.edu, share https://it.stonybrook.edu/guides/ai, and the alias tool claim names \"Stony Brook University, State University of New York\". Canonical holds the 2026-05-16 single-school record (7 claims, 5 sources, QS); alias from the 2026-07 AI-tools batch (1 claim, THE/ARWU/U.S. News).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-sheffield",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "the-university-of-sheffield",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:558 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite sheffield.ac.uk and share the PGR GenAI guidance page. Canonical holds the 2026-05-13 single-school record (18 claims, 8 sources, QS/ARWU), maintenance history and approved supplements; alias from the 2026-07 AI-tools batch (1 claim, THE/U.S. News/CWTS).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-warwick",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "the-university-of-warwick",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:664 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite warwick.ac.uk and the alias tool claim names \"The University of Warwick\". Canonical holds the 2026-05-12 single-school record (10 claims, 5 sources, QS/ARWU) and approved supplements; alias from the 2026-07 AI-tools batch (1 claim, THE/U.S. News/CWTS).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-western-australia",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "the-university-of-western-australia",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:673 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite uwa.edu.au and the alias tool claim names \"The University of Western Australia\". Canonical holds the 2026-05-13 single-school record plus 2026-07-07 maintenance (13 claims, 10 sources, QS/THE/ARWU); alias from the 2026-07 AI-tools batch (1 claim, U.S. News).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "tokyo-institute-of-technology-tokyo-tech",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "tokyo-institute-of-technology",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:613 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records carry the identical QS 2026 row 85 label \"Tokyo Institute of Technology (Tokyo Tech)\". Canonical holds the 2026-05-13 single-school record (7 claims, 3 sources) and its release history; alias from the 2026-07 AI-tools batch (1 claim citing a 2024 CITL report). Succession boundary: Institute of Science Tokyo opened on 1 October 2024 from the merger of Tokyo Institute of Technology and Tokyo Medical and Dental University (canonical claim cl-tokyotech-transition-science-tokyo). This alias merges two copies of the same QS-labelled record only; it does not equate the successor institution with Tokyo Tech, join successor-name ranking rows, rename the record, or re-date any claim.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-pavia",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "universita-degli-studi-di-pavia",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:493 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite unipv.it and the alias tool claims name \"Università degli Studi di Pavia\". Canonical holds the 2026-05-16 single-school record (3 claims, 3 sources, QS); alias from the 2026-07 AI-tools batch (3 tool claims, THE/ARWU/U.S. News/CWTS).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "universitat-politecnica-catalunya",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "universitat-politecnica-de-catalunya-barcelonatech-upc",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Same QS core identity qs-core:103 in the unified university-mark library binding and the 2026-10-19 directory identity audit. Both records cite upc.edu and share the institutional generative-AI tools FAQ; the alias tool claims name \"Universitat Politècnica de Catalunya · BarcelonaTech (UPC)\". Canonical holds the 2026-05-16 single-school record (11 claims, 9 sources, QS); alias from the 2026-07 AI-tools batch (4 tool claims, no ranking or location match).",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Birkbeck University London",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "birkbeck-university-of-london",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Brunel University London",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "brunel-university-of-london",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Tuebingen",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "eberhard-karls-universitat-tubingen",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Tübingen",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "eberhard-karls-universitat-tubingen",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Essex",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "essex-university-of",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Karlsruhe Institute of Technology",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "kit-karlsruhe-institute-of-technology",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Karlsruhe Institute of Technology (KIT)",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "kit-karlsruhe-institute-of-technology",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Lappeenranta-Lahti University of Technology",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "lappeenranta-lahti-university-of-technology-lut",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Lappeenranta Lahti University Technology LUT",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "lappeenranta-lahti-university-of-technology-lut",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Stony Brook University",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "stony-brook-university-state-university-of-new-york",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Sheffield",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "the-university-of-sheffield",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Warwick",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "the-university-of-warwick",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Western Australia",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "the-university-of-western-australia",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "University of Pavia",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "universita-degli-studi-di-pavia",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Universitat Politècnica de Catalunya",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "universitat-politecnica-de-catalunya-barcelonatech-upc",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "Universitat Politecnica Catalunya",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "universitat-politecnica-de-catalunya-barcelonatech-upc",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "alias": "UPC BarcelonaTech",
+      "aliasType": "name",
+      "entityType": "university",
+      "canonicalSlug": "universitat-politecnica-de-catalunya-barcelonatech-upc",
+      "sourceSystem": "manual_curation",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Former directory record name or common English name for the merged identity; retained so searches for either name resolve to the one canonical university. Retrieval hint only.",
+      "lastReviewedAt": "2026-10-19T12:00:00.000Z"
     }
   ]
 }

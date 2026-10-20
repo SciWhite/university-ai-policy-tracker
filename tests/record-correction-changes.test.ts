@@ -4,6 +4,7 @@ import {mkdtemp, mkdir, readFile, writeFile, cp, rm} from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import {readRecordCorrectionChanges} from '../apps/web/lib/record-correction-changes';
+import {getEntityAliasResolver} from '../apps/web/lib/entity-aliases';
 import {getEntityChangeHistory,getChangeIndexData} from '../apps/web/lib/change-records';
 import {getReleaseDiff,getLatestEntityReleaseDiff,getLatestReleaseDiff} from '../apps/web/lib/release-diffs';
 
@@ -14,8 +15,15 @@ test('scoped policy corrections appear in history, indexes and complete claim di
  assert.equal(latest.releaseId,'public-release-20260924-002');
  const publishedBaseline=JSON.parse(await readFile('data/public-record-repairs/change-index-baseline.json','utf8'));
  const scopedSlugs=new Set(entries.map(entry=>entry.slug));
- assert.equal(index.data.records.length,publishedBaseline.data.records.length);
- for(const row of publishedBaseline.data.records) if(!scopedSlugs.has(row.slug)) assert.deepEqual(index.data.records.find(r=>r.slug===row.slug),row);
+ // Rows frozen under a retired alias slug are replaced by their merged canonical identity.
+ const {slugAliases}=await getEntityAliasResolver();
+ const retired=publishedBaseline.data.records.filter((row:any)=>slugAliases.has(row.slug));
+ const merged=new Set(retired.map((row:any)=>slugAliases.get(row.slug)));
+ const addedCanonical=[...merged].filter(slug=>!publishedBaseline.data.records.some((row:any)=>row.slug===slug));
+ assert.equal(index.data.records.length,publishedBaseline.data.records.length-retired.length+addedCanonical.length);
+ assert.ok(index.data.records.every(r=>!slugAliases.has(r.slug)));
+ for(const slug of merged) assert.ok(index.data.records.some(r=>r.slug===slug),slug);
+ for(const row of publishedBaseline.data.records) if(!scopedSlugs.has(row.slug)&&!merged.has(row.slug)&&!slugAliases.has(row.slug)) assert.deepEqual(index.data.records.find(r=>r.slug===row.slug),row);
  assert.ok(index.data.records.every(r=>r.canonicalUrl.startsWith('https://eduaipolicy.org/')&&r.publicJsonUrl.startsWith('https://eduaipolicy.org/')));
  assert.equal(latest.scopedCorrections?.length,2);
  assert.ok(latest.entities.every(entity => entity.rows.every(row => !row.newClaim?.claimId?.startsWith('cl-imperial-current-'))));

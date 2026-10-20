@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import {
   buildEntityAliasResolver,
@@ -64,6 +64,42 @@ async function main() {
     assert.ok(
       qsNames.has(normalizeEntityAliasName(alias.alias)),
       `Ranking label alias '${alias.alias}' is not present in the QS 2026 ranking source.`
+    );
+  }
+
+  // The client-safe slug alias copy must match the registry exactly.
+  const derivedPath = path.join(
+    repoRoot,
+    "apps",
+    "web",
+    "lib",
+    "university-slug-aliases.json"
+  );
+  const expectedDerived = Object.fromEntries(
+    slugAliases
+      .filter((alias) => alias.entityType === "university")
+      .sort((left, right) => left.alias.localeCompare(right.alias))
+      .map((alias) => [alias.alias, alias.canonicalSlug])
+  );
+  const derived = JSON.parse(await readFile(derivedPath, "utf8")) as {
+    aliases: Record<string, string>;
+  };
+  if (process.argv.includes("--write")) {
+    derived.aliases = expectedDerived;
+    await writeFile(derivedPath, `${JSON.stringify(derived, null, 2)}\n`);
+  } else {
+    assert.deepEqual(
+      derived.aliases,
+      expectedDerived,
+      "apps/web/lib/university-slug-aliases.json is out of date; run pnpm validate:entity-aliases -- --write."
+    );
+  }
+
+  // A retired alias slug must not survive as its own name/label target.
+  for (const alias of registry.aliases) {
+    assert.ok(
+      !resolver.slugAliases.has(alias.canonicalSlug),
+      `Alias '${alias.alias}' targets retired slug ${alias.canonicalSlug}.`
     );
   }
 

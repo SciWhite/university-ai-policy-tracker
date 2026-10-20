@@ -20,6 +20,7 @@ import {
   type SupportedLocale
 } from "@/lib/i18n";
 import { getSiteBaseUrl } from "@/lib/site-url";
+import { uniqueSitemapEntries } from "@/lib/sitemap-entries";
 import {
   isIndexRecoveryPilotSlug
 } from "@/lib/index-recovery-pilot";
@@ -132,13 +133,13 @@ export async function buildSitemapSection(
 ): Promise<SitemapEntry[]> {
   switch (section) {
     case "core":
-      return buildCoreSection();
+      return uniqueSitemapEntries(await buildCoreSection());
     case "universities":
-      return buildUniversitiesSection();
+      return uniqueSitemapEntries(await buildUniversitiesSection());
     case "changes":
-      return buildChangesSection();
+      return uniqueSitemapEntries(await buildChangesSection());
     default:
-      return buildLocaleSection(section);
+      return uniqueSitemapEntries(await buildLocaleSection(section));
   }
 }
 

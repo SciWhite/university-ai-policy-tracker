@@ -8,6 +8,7 @@ const publicDataTraceFiles = [
   "../../data/public-v6-pages/sharded/**/*.json",
   "../../data/public-v6-records/sharded/**/*.json",
   "../../data/public-v6-history/sharded/**/*.json",
+  "../../data/public-change-history/**/*.json",
 ];
 const appRoot = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(appRoot, "../..");

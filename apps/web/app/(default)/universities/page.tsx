@@ -1,18 +1,15 @@
 import {
   getStaticUniversityIndexRecords,
-  universityIndexRankingSystems
+  universityIndexRankingSystems,
 } from "@/lib/university-index-records";
-import { BrowseEntryGroups } from "@/components/browse-entry-groups";
+import { getStagedPublicDataset } from "@/lib/staged-public-data";
 import { JsonLd } from "@/components/json-ld";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
-import {
-  getBrowseEntryGroupsCopy,
-  getPageCopy,
-  getUniversitiesIndexClientCopy
-} from "@/lib/page-copy";
+import { getPageCopy } from "@/lib/page-copy";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getDiscoveryTopicKeys } from "@/lib/discovery-topic-groups";
 import { UniversitiesIndexClient } from "./universities-index-client";
 
 export const dynamic = "force-static";
@@ -24,9 +21,7 @@ interface UniversitiesPageProps {
   }>;
 }
 
-export async function generateMetadata({
-  params
-}: UniversitiesPageProps = {}) {
+export async function generateMetadata({ params }: UniversitiesPageProps = {}) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).universities;
   const alternates = getLocalizedAlternates("/universities", locale);
@@ -40,33 +35,28 @@ export async function generateMetadata({
       title: copy.title,
       description: copy.description,
       url: canonical,
-      type: "website"
-    }
+      type: "website",
+    },
   };
 }
 
-export default async function UniversitiesPage({ params }: UniversitiesPageProps) {
+export default async function UniversitiesPage({
+  params,
+}: UniversitiesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).universities;
   const records = await getStaticUniversityIndexRecords();
   const initialRecords = getInitialUniversityIndexRecords(records);
-  const priorityRecords = getPriorityUniversityIndexRecords(records);
-  const totalClaimCount = records.reduce(
-    (total, record) => total + record.claimCount,
-    0
+  const dataset = await getStagedPublicDataset();
+  const topicIndex = Object.fromEntries(
+    dataset.publicSummaries.map((summary) => [
+      summary.entity.slug,
+      [...new Set(summary.claims.flatMap(getDiscoveryTopicKeys))],
+    ]),
   );
-  const totalSourceCount = records.reduce(
-    (total, record) => total + record.sourceCount,
-    0
-  );
-  const rankingCounts = Object.fromEntries(
-    universityIndexRankingSystems.map((system) => [
-      system.id,
-      records.filter((record) =>
-        record.rankings.some((ranking) => ranking.systemId === system.id)
-      ).length
-    ])
-  );
+  const countries = [
+    ...new Set(records.map((record) => record.country)),
+  ].sort();
 
   return (
     <>
@@ -80,84 +70,55 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
           mainEntity: {
             "@type": "ItemList",
             numberOfItems: records.length,
-            itemListElement: initialRecords.slice(0, 20).map((record, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              name: getLocalizedInstitutionName(record.slug, record.name, locale),
-              url: getAbsoluteSiteUrl(`/universities/${record.slug}`)
-            }))
-          }
+            itemListElement: initialRecords
+              .slice(0, 20)
+              .map((record, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: getLocalizedInstitutionName(
+                  record.slug,
+                  record.name,
+                  locale,
+                ),
+                url: getAbsoluteSiteUrl(`/universities/${record.slug}`),
+              })),
+          },
         }}
       />
       <UniversitiesIndexClient
-        browseSlot={
-          <BrowseEntryGroups
-            copy={getBrowseEntryGroupsCopy(locale)}
-            locale={locale}
-          />
-        }
-        copy={getUniversitiesIndexClientCopy(locale)}
+        universityNames={Object.fromEntries(
+          records.map((r) => [r.slug, r.name]),
+        )}
+        countries={countries}
+        topicIndex={topicIndex}
         initialRecords={initialRecords}
         locale={locale}
-        priorityRecords={priorityRecords}
-        rankingCounts={rankingCounts}
-        rankingSystems={universityIndexRankingSystems}
-        totalClaimCount={totalClaimCount}
+        rankingSystems={universityIndexRankingSystems.map((system) => {
+          const years = [
+            ...new Set(
+              records.flatMap((record) =>
+                record.rankings
+                  .filter((ranking) => ranking.systemId === system.id)
+                  .map((ranking) => ranking.rankingYear),
+              ),
+            ),
+          ].sort();
+          return {
+            ...system,
+            label: `${system.label} ${years.join(" / ")}`.trim(),
+          };
+        })}
         totalRecordCount={records.length}
-        totalSourceCount={totalSourceCount}
       />
     </>
   );
 }
 
-const priorityUniversitySlugs = [
-  "edinburgh",
-  "university-of-oslo",
-  "university-of-leeds",
-  "university-of-technology-sydney",
-  "university-of-queensland",
-  "university-of-waterloo"
-] as const;
-
-const priorityUniversitySlugSet = new Set<string>(priorityUniversitySlugs);
-
 function getInitialUniversityIndexRecords(
-  records: Awaited<ReturnType<typeof getStaticUniversityIndexRecords>>
-) {
-  const priorityRecords = getPriorityUniversityIndexRecords(records);
-  const priorityRecordSlugs = new Set(priorityRecords.map((record) => record.slug));
-  const rankedRecords = records
-    .slice()
-    .sort((left, right) => {
-      const leftRank = left.rankings.find((ranking) => ranking.systemId === "qs");
-      const rightRank = right.rankings.find(
-        (ranking) => ranking.systemId === "qs"
-      );
-
-      return (
-        (leftRank?.rankNumber ?? Number.MAX_SAFE_INTEGER) -
-          (rightRank?.rankNumber ?? Number.MAX_SAFE_INTEGER) ||
-        left.name.localeCompare(right.name)
-      );
-    })
-    .filter((record) => !priorityRecordSlugs.has(record.slug));
-
-  return [...priorityRecords, ...rankedRecords].slice(0, 100);
-}
-
-function getPriorityUniversityIndexRecords(
-  records: Awaited<ReturnType<typeof getStaticUniversityIndexRecords>>
+  records: Awaited<ReturnType<typeof getStaticUniversityIndexRecords>>,
 ) {
   return records
-    .filter((record) => priorityUniversitySlugSet.has(record.slug))
-    .sort((left, right) => {
-      const leftIndex = priorityUniversitySlugs.indexOf(
-        left.slug as (typeof priorityUniversitySlugs)[number]
-      );
-      const rightIndex = priorityUniversitySlugs.indexOf(
-        right.slug as (typeof priorityUniversitySlugs)[number]
-      );
-
-      return leftIndex - rightIndex;
-    });
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .slice(0, 100);
 }

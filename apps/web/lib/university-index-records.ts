@@ -21,6 +21,8 @@ export interface UniversityIndexRankingSystem {
 }
 
 export interface StaticUniversityIndexRecord {
+  /** Retrieval names (former record names); omitted when there are none. */
+  aliases?: string[];
   claimCount: number;
   confidence?: number;
   country: string;
@@ -56,8 +58,12 @@ export async function getStaticUniversityIndexRecords(): Promise<
   return dataset.catalogUniversities
     .map((catalog) => {
       const summary = summariesBySlug.get(catalog.slug);
+      const aliases = (summary?.entity.aliases ?? []).filter(
+        (alias) => alias !== catalog.name && !/^QS \d{4} /.test(alias)
+      );
 
       return {
+        ...(aliases.length ? { aliases } : {}),
         slug: catalog.slug,
         name: catalog.name,
         country: catalog.country,

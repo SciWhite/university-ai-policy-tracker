@@ -20,6 +20,7 @@ import { PolicyV6Popover, PolicyV6ActionIcon } from "./policy-v6-popover";
 import { PolicyV6Share } from "./policy-v6-share";
 import { PolicyV6SearchPicker } from "./policy-v6-search-picker";
 import { UniversityMark } from "./university-mark";
+import { canonicalUniversitySlugs } from "@/lib/canonical-university-slug";
 import { policyV6InteractionCopy } from "@/lib/policy-v6-interaction-copy";
 import {PolicyV6StudentGuide} from './policy-v6-student-guide';
 const v6Classes = {
@@ -97,14 +98,14 @@ export function PolicyV6Provider({
     if (!data) return;
     const restore = () => {
       const url = new URL(window.location.href);
-      const values = [
-        ...new Set((url.searchParams.get("compare") ?? "").split(",")),
-      ]
-        .filter(
-          (slug) =>
-            slug.length <= 160 && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug),
-        )
-        .slice(0, 4);
+      const values = canonicalUniversitySlugs(
+        (url.searchParams.get("compare") ?? "")
+          .split(",")
+          .filter(
+            (slug) =>
+              slug.length <= 160 && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug),
+          ),
+      ).slice(0, 4);
       setSelected(
         url.searchParams.has("compare") && !url.searchParams.get("compare")
           ? []

@@ -37,7 +37,10 @@ import {
   type StagedSourceCandidate,
   type StagedSourceSnapshot
 } from "@uapt/shared";
-import { getEntityAliasResolver } from "./entity-aliases";
+import {
+  getEntityAliasResolver,
+  getRetrievalNameAliasesBySlug
+} from "./entity-aliases";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 import {
@@ -254,7 +257,12 @@ async function buildPublicDatasetFromArtifacts(
   applyRepairs = false
 ): Promise<PublicDataset> {
   const rankingSources = await readRankingSources(repoRoot);
-  const rankingBySlug = buildRankingIndex(rankingSources);
+  const { slugAliases } = await getEntityAliasResolver();
+  const rankingBySlug = foldAliasRankingMatches(
+    buildRankingIndex(rankingSources),
+    slugAliases
+  );
+  const nameAliasesBySlug = await getRetrievalNameAliasesBySlug();
   const byEntity = groupArtifactsByEntity(
     await canonicalizeArtifactSlugs(artifacts)
   );
@@ -262,7 +270,8 @@ async function buildPublicDatasetFromArtifacts(
     .map((entityArtifacts) =>
       buildPublicSummary(
         entityArtifacts,
-        rankingBySlug.get(entityArtifacts.slug)?.primary
+        rankingBySlug.get(entityArtifacts.slug)?.primary,
+        nameAliasesBySlug.get(entityArtifacts.slug)
       )
     )
     .filter((summary): summary is PublicEntitySummary => Boolean(summary))
@@ -518,7 +527,8 @@ function getEntityBucket(
 
 function buildPublicSummary(
   entityArtifacts: EntityArtifacts,
-  ranking: RankingRecord | undefined
+  ranking: RankingRecord | undefined,
+  nameAliases: string[] = []
 ): PublicEntitySummary | undefined {
   const siteBaseUrl = getSiteBaseUrl();
   const canonicalUrl = new URL(
@@ -580,7 +590,7 @@ function buildPublicSummary(
       slug: entityArtifacts.slug,
       name,
       canonicalUrl,
-      aliases: buildAliases(name, ranking),
+      aliases: buildAliases(name, ranking, nameAliases),
       summary
     },
     summary,
@@ -867,6 +877,35 @@ function buildRankingIndex(
   return index;
 }
 
+// A ranking row joined to a registered alias slug belongs to the canonical
+// identity once the alias merges. Canonical rows win per ranking system; the
+// alias contributes only systems the canonical slug did not already match.
+function foldAliasRankingMatches(
+  index: Map<string, RankingMatch>,
+  slugAliases: ReadonlyMap<string, string>
+): Map<string, RankingMatch> {
+  for (const [aliasSlug, canonicalSlug] of slugAliases) {
+    const aliasMatch = index.get(aliasSlug);
+    if (!aliasMatch) continue;
+
+    const canonicalMatch = index.get(canonicalSlug);
+    const rankings = [...(canonicalMatch?.rankings ?? [])];
+    const systems = new Set(rankings.map((ranking) => ranking.systemId));
+    for (const ranking of aliasMatch.rankings) {
+      if (systems.has(ranking.systemId)) continue;
+      rankings.push(ranking);
+      systems.add(ranking.systemId);
+    }
+
+    index.set(canonicalSlug, {
+      primary: canonicalMatch?.primary ?? aliasMatch.primary,
+      rankings
+    });
+  }
+
+  return index;
+}
+
 function buildCatalogRanking(
   ranking: RankingRecordWithSource
 ): CatalogUniversityRanking {
@@ -1037,11 +1076,16 @@ function buildSummary(
 
 function buildAliases(
   name: string,
-  ranking: RankingRecord | undefined
+  ranking: RankingRecord | undefined,
+  nameAliases: string[]
 ): string[] {
   return dedupeBy(
-    [ranking?.name, name, ranking?.rankText ? `QS 2026 ${ranking.rankText}` : undefined]
-      .filter((value): value is string => Boolean(value)),
+    [
+      ranking?.name,
+      name,
+      ranking?.rankText ? `QS 2026 ${ranking.rankText}` : undefined,
+      ...nameAliases
+    ].filter((value): value is string => Boolean(value)),
     (value) => value
   ).filter((alias) => alias !== name);
 }

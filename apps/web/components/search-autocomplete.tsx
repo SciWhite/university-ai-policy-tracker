@@ -6,7 +6,7 @@ import {
   useMemo,
   useRef,
   useState,
-  type KeyboardEvent
+  type KeyboardEvent,
 } from "react";
 import { usePathname } from "next/navigation";
 import { MetaLabel } from "@/components/meta-label";
@@ -18,13 +18,84 @@ import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { localizeMatchReason } from "@/lib/match-reason-labels";
 
 const autocompleteCopy = {
-  en: { loading: "Loading suggestions...", empty: "No public records match this query.", error: "Suggestions are unavailable. Submit the search instead.", match: "Match", score: "Score", claims: "Claims", sources: "Sources", resultsReady: (count: number) => `${count} suggestions available. Use the up and down arrow keys to browse.` },
-  zh: { loading: "正在加载建议…", empty: "没有公开记录匹配此查询。", error: "暂时无法提供建议，请直接提交搜索。", match: "匹配", score: "得分", claims: "声明", sources: "来源", resultsReady: (count: number) => `有 ${count} 条建议。使用上下方向键浏览。` },
-  fr: { loading: "Chargement des suggestions…", empty: "Aucun enregistrement public ne correspond à cette requête.", error: "Les suggestions sont indisponibles. Lancez plutôt la recherche.", match: "Correspondance", score: "Score", claims: "Affirmations", sources: "Sources", resultsReady: (count: number) => `${count} suggestions disponibles. Utilisez les flèches haut et bas pour parcourir.` },
-  pl: { loading: "Wczytywanie sugestii…", empty: "Brak publicznych rekordów pasujących do zapytania.", error: "Sugestie są niedostępne. Zamiast tego uruchom wyszukiwanie.", match: "Dopasowanie", score: "Wynik", claims: "Twierdzenia", sources: "Źródła", resultsReady: (count: number) => `Dostępne sugestie: ${count}. Użyj klawiszy strzałek w górę i w dół, aby przeglądać.` },
-  es: { loading: "Cargando sugerencias…", empty: "Ningún registro público coincide con esta consulta.", error: "Las sugerencias no están disponibles. Envía la búsqueda directamente.", match: "Coincidencia", score: "Puntuación", claims: "Afirmaciones", sources: "Fuentes", resultsReady: (count: number) => `${count} sugerencias disponibles. Usa las teclas de flecha arriba y abajo para navegar.` },
-  nl: { loading: "Suggesties laden…", empty: "Er komen geen openbare records overeen met deze zoekopdracht.", error: "Suggesties zijn niet beschikbaar. Voer de zoekopdracht rechtstreeks uit.", match: "Overeenkomst", score: "Score", claims: "Claims", sources: "Bronnen", resultsReady: (count: number) => `${count} suggesties beschikbaar. Gebruik de pijltjestoetsen omhoog en omlaag om te bladeren.` },
-  ms: { loading: "Memuatkan cadangan…", empty: "Tiada rekod awam sepadan dengan pertanyaan ini.", error: "Cadangan tidak tersedia. Hantar carian secara terus.", match: "Padanan", score: "Skor", claims: "Tuntutan", sources: "Sumber", resultsReady: (count: number) => `${count} cadangan tersedia. Gunakan kekunci anak panah atas dan bawah untuk melihat.` }
+  en: {
+    loading: "Loading suggestions...",
+    empty: "No public records match this query.",
+    error: "Suggestions are unavailable. Submit the search instead.",
+    match: "Match",
+    score: "Score",
+    claims: "Claims",
+    sources: "Sources",
+    resultsReady: (count: number) =>
+      `${count} suggestions available. Use the up and down arrow keys to browse.`,
+  },
+  zh: {
+    loading: "正在加载建议…",
+    empty: "没有公开记录匹配此查询。",
+    error: "暂时无法提供建议，请直接提交搜索。",
+    match: "匹配",
+    score: "得分",
+    claims: "声明",
+    sources: "来源",
+    resultsReady: (count: number) => `有 ${count} 条建议。使用上下方向键浏览。`,
+  },
+  fr: {
+    loading: "Chargement des suggestions…",
+    empty: "Aucun enregistrement public ne correspond à cette requête.",
+    error: "Les suggestions sont indisponibles. Lancez plutôt la recherche.",
+    match: "Correspondance",
+    score: "Score",
+    claims: "Affirmations",
+    sources: "Sources",
+    resultsReady: (count: number) =>
+      `${count} suggestions disponibles. Utilisez les flèches haut et bas pour parcourir.`,
+  },
+  pl: {
+    loading: "Wczytywanie sugestii…",
+    empty: "Brak publicznych rekordów pasujących do zapytania.",
+    error: "Sugestie są niedostępne. Zamiast tego uruchom wyszukiwanie.",
+    match: "Dopasowanie",
+    score: "Wynik",
+    claims: "Twierdzenia",
+    sources: "Źródła",
+    resultsReady: (count: number) =>
+      `Dostępne sugestie: ${count}. Użyj klawiszy strzałek w górę i w dół, aby przeglądać.`,
+  },
+  es: {
+    loading: "Cargando sugerencias…",
+    empty: "Ningún registro público coincide con esta consulta.",
+    error:
+      "Las sugerencias no están disponibles. Envía la búsqueda directamente.",
+    match: "Coincidencia",
+    score: "Puntuación",
+    claims: "Afirmaciones",
+    sources: "Fuentes",
+    resultsReady: (count: number) =>
+      `${count} sugerencias disponibles. Usa las teclas de flecha arriba y abajo para navegar.`,
+  },
+  nl: {
+    loading: "Suggesties laden…",
+    empty: "Er komen geen openbare records overeen met deze zoekopdracht.",
+    error:
+      "Suggesties zijn niet beschikbaar. Voer de zoekopdracht rechtstreeks uit.",
+    match: "Overeenkomst",
+    score: "Score",
+    claims: "Claims",
+    sources: "Bronnen",
+    resultsReady: (count: number) =>
+      `${count} suggesties beschikbaar. Gebruik de pijltjestoetsen omhoog en omlaag om te bladeren.`,
+  },
+  ms: {
+    loading: "Memuatkan cadangan…",
+    empty: "Tiada rekod awam sepadan dengan pertanyaan ini.",
+    error: "Cadangan tidak tersedia. Hantar carian secara terus.",
+    match: "Padanan",
+    score: "Skor",
+    claims: "Tuntutan",
+    sources: "Sumber",
+    resultsReady: (count: number) =>
+      `${count} cadangan tersedia. Gunakan kekunci anak panah atas dan bawah untuk melihat.`,
+  },
 } as const;
 
 interface SearchAutocompleteProps {
@@ -33,6 +104,8 @@ interface SearchAutocompleteProps {
   name: string;
   placeholder: string;
   preserveQueryOnEscape?: boolean;
+  focusOnly?: boolean;
+  clearLabel?: string;
 }
 
 interface SuggestionResult {
@@ -54,14 +127,18 @@ export function SearchAutocomplete({
   id,
   name,
   placeholder,
-  preserveQueryOnEscape = false
+  preserveQueryOnEscape = false,
+  focusOnly = false,
+  clearLabel,
 }: SearchAutocompleteProps) {
   const [query, setQuery] = useState(defaultValue);
+  const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [results, setResults] = useState<SuggestionResult[]>([]);
   const [status, setStatus] = useState<SuggestionStatus>("idle");
   const listboxId = useId();
   const controllerRef = useRef<AbortController | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const copy = autocompleteCopy[locale];
@@ -93,7 +170,7 @@ export function SearchAutocomplete({
       try {
         const response = await fetch(
           `/api/public/v1/search.json?q=${encodeURIComponent(trimmedQuery)}&limit=8`,
-          { signal: controller.signal }
+          { signal: controller.signal },
         );
 
         if (!response.ok) throw new Error(`Search failed: ${response.status}`);
@@ -138,10 +215,10 @@ export function SearchAutocomplete({
       locale,
       page_type: "search",
       result_rank: rank,
-      ...queryAnalytics
+      ...queryAnalytics,
     });
     window.location.assign(
-      localizeHref(`/universities/${result.entitySlug}`, locale)
+      localizeHref(`/universities/${result.entitySlug}`, locale),
     );
   }
 
@@ -164,7 +241,7 @@ export function SearchAutocomplete({
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setActiveIndex((current) =>
-        current <= 0 ? results.length - 1 : current - 1
+        current <= 0 ? results.length - 1 : current - 1,
       );
     } else if (event.key === "Enter" && activeResult) {
       event.preventDefault();
@@ -172,15 +249,26 @@ export function SearchAutocomplete({
     }
   }
 
-  const isPanelOpen = status === "ready" || panelMessage !== "";
+  const isPanelOpen =
+    (!focusOnly || focused) && (status === "ready" || panelMessage !== "");
   const announcement =
     status === "ready" ? copy.resultsReady(results.length) : panelMessage;
 
   return (
-    <div className="search-autocomplete">
+    <div
+      className="search-autocomplete"
+      onFocus={() => setFocused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null))
+          setFocused(false);
+      }}
+    >
       <input
+        ref={inputRef}
         aria-activedescendant={
-          activeResult ? `${listboxId}-${activeResult.entitySlug}` : undefined
+          isPanelOpen && activeResult
+            ? `${listboxId}-${activeResult.entitySlug}`
+            : undefined
         }
         aria-autocomplete="list"
         aria-controls={listboxId}
@@ -195,6 +283,19 @@ export function SearchAutocomplete({
         type="search"
         value={query}
       />
+      {clearLabel && query ? (
+        <button
+          type="button"
+          className="discovery-clear-search"
+          aria-label={clearLabel}
+          onClick={() => {
+            setQuery("");
+            inputRef.current?.focus();
+          }}
+        >
+          ×
+        </button>
+      ) : null}
       <span className="visually-hidden" role="status">
         {announcement}
       </span>
@@ -218,6 +319,7 @@ export function SearchAutocomplete({
                 data-analytics-result-rank={index + 1}
                 id={`${listboxId}-${result.entitySlug}`}
                 key={result.entitySlug}
+                onMouseDown={(event) => event.preventDefault()}
                 onClick={() => openResult(result, index + 1)}
                 role="option"
               >
@@ -226,12 +328,15 @@ export function SearchAutocomplete({
                     {getLocalizedInstitutionName(
                       result.entitySlug,
                       result.entityName,
-                      locale
+                      locale,
                     )}
                   </span>
                   <p>{result.sourceBackedSnippet}</p>
                   <div className="table-record-meta">
-                    <StateLabel locale={locale} reviewState={result.reviewState} />
+                    <StateLabel
+                      locale={locale}
+                      reviewState={result.reviewState}
+                    />
                     <MetaLabel label={copy.match}>
                       {localizeMatchReason(result.matchReason, locale)}
                     </MetaLabel>
@@ -240,7 +345,9 @@ export function SearchAutocomplete({
                 </div>
                 <div className="search-autocomplete__option-actions">
                   <MetaLabel label={copy.claims}>{result.claimCount}</MetaLabel>
-                  <MetaLabel label={copy.sources}>{result.sourceCount}</MetaLabel>
+                  <MetaLabel label={copy.sources}>
+                    {result.sourceCount}
+                  </MetaLabel>
                   {/* Mouse-only shortcut: nested interactive content is not
                       allowed inside an option, so it is hidden from AT and
                       removed from the tab order. */}

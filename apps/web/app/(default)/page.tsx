@@ -23,13 +23,15 @@ import { isHomeV4Preview } from "@/lib/home-v4-preview";
 import { getHomeV4Copy } from "@/lib/home-v4-copy";
 import { getVerifiedHomeV4Guides } from "@/lib/home-v4-guides";
 import { HomeV4View } from "@/components/home-v4-view";
+import { getChangeIndexData } from "@/lib/change-records";
+import { HomeV6View } from "@/components/home-v6-view";
 
 const quickQueries = [
   "disclosure",
   "privacy",
   "coursework",
   "approved tools",
-  "academic integrity"
+  "academic integrity",
 ] as const;
 
 // The "sample results" section below the search hero is a pre-run search for
@@ -47,7 +49,7 @@ interface HomePageProps {
 
 export async function generateMetadata({
   params,
-  searchParams
+  searchParams,
 }: HomePageProps = {}): Promise<Metadata> {
   const locale = normalizeLocale((await params)?.locale);
   const layout = (await searchParams)?.layout;
@@ -57,7 +59,9 @@ export async function generateMetadata({
     const alternates = getLocalizedAlternates("/", locale);
     const canonical = String(alternates.canonical);
     const universities = await getStaticUniversityIndexRecords();
-    const dynamicTitle = copy.metadataTitle(formatNumber(universities.length, locale));
+    const dynamicTitle = copy.metadataTitle(
+      formatNumber(universities.length, locale),
+    );
 
     return {
       title: dynamicTitle,
@@ -68,12 +72,12 @@ export async function generateMetadata({
         description: copy.description,
         images: [getSiteOgImageUrl(locale)],
         url: canonical,
-        type: "website"
-      }
+        type: "website",
+      },
     };
   }
 
-  // Published Home V4 is now DEFAULT in production and development
+  // The V6 presentation reuses the existing localized homepage metadata.
   const v4Copy = getHomeV4Copy(locale);
   const alternates = getLocalizedAlternates("/", locale);
   const canonical = String(alternates.canonical);
@@ -89,42 +93,78 @@ export async function generateMetadata({
       description: v4Copy.metaDescription,
       images: [getSiteOgImageUrl(locale)],
       url: canonical,
-      type: "website"
-    }
+      type: "website",
+    },
   };
 }
 
-export default async function HomePage({ params, searchParams }: HomePageProps) {
+export default async function HomePage({
+  params,
+  searchParams,
+}: HomePageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const layout = (await searchParams)?.layout;
 
   const universities = await getStaticUniversityIndexRecords();
   const claimCount = universities.reduce(
     (total, university) => total + university.claimCount,
-    0
+    0,
   );
   const sourceCount = universities.reduce(
     (total, university) => total + university.sourceCount,
-    0
+    0,
   );
   // The homepage needs check dates, not every release's evidence/text diff.
   const recentRecords = universities
     .filter((record) => record.lastCheckedAt && record.reviewedClaimCount > 0)
-    .sort((a, b) => (b.lastCheckedAt ?? "").localeCompare(a.lastCheckedAt ?? "") || a.slug.localeCompare(b.slug))
+    .sort(
+      (a, b) =>
+        (b.lastCheckedAt ?? "").localeCompare(a.lastCheckedAt ?? "") ||
+        a.slug.localeCompare(b.slug),
+    )
     .slice(0, 5);
 
   if (layout !== "legacy") {
-    const verifiedGuides = await getVerifiedHomeV4Guides();
-    const eligibleGuideSlugs = verifiedGuides.filter((g) => g.isEligible).map((g) => g.slug);
+    const [verifiedGuides, changeIndex] = await Promise.all([
+      getVerifiedHomeV4Guides(),
+      isHomeV4Preview(layout) ? Promise.resolve(null) : getChangeIndexData(),
+    ]);
+    const eligibleGuideSlugs = verifiedGuides
+      .filter((g) => g.isEligible)
+      .map((g) => g.slug);
     const isPreview = isHomeV4Preview(layout);
+    const View = isPreview ? HomeV4View : HomeV6View;
     return (
-      <main className="page-shell home-v4-shell page-shell--wide">
-        <HomeV4View
+      <main
+        className={
+          isPreview
+            ? "page-shell home-v4-shell page-shell--wide"
+            : "discovery-page home-v6-page"
+        }
+      >
+        <View
           locale={locale}
           universities={universities}
           claimCount={claimCount}
           sourceCount={sourceCount}
           recentRecords={recentRecords}
+          {...(!isPreview
+            ? {
+                recentChanges: changeIndex?.data.records
+                  .slice()
+                  .sort((a, b) =>
+                    (
+                      b.lastChangedAt ??
+                      b.lastCheckedAt ??
+                      b.firstSeenAt ??
+                      ""
+                    ).localeCompare(
+                      a.lastChangedAt ?? a.lastCheckedAt ?? a.firstSeenAt ?? "",
+                    ),
+                  )
+                  .slice(0, 3),
+              }
+            : {})}
           eligibleGuideSlugs={eligibleGuideSlugs}
           isPreview={isPreview}
         />
@@ -134,14 +174,16 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
 
   const [analysisProfiles, searchRecords] = await Promise.all([
     getPolicyAnalysisProfiles(),
-    getSearchIndexRecords()
+    getSearchIndexRecords(),
   ]);
 
   const copy = getPageCopy(locale).home;
   const suggestedRecords = searchIndexRecords(searchRecords, sampleQuery, {
-    limit: 5
+    limit: 5,
   });
-  const pageTitle = copy.metadataTitle(formatNumber(universities.length, locale));
+  const pageTitle = copy.metadataTitle(
+    formatNumber(universities.length, locale),
+  );
   const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
   const searchJsonPath = `/api/public/${PUBLIC_API_VERSION}/search.json?q=chatgpt`;
 
@@ -160,14 +202,12 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
               potentialAction: {
                 "@type": "SearchAction",
                 "query-input": "required name=search_term_string",
-                target: getAbsoluteSiteUrl(
-                  "/search?q={search_term_string}"
-                )
+                target: getAbsoluteSiteUrl("/search?q={search_term_string}"),
               },
               publisher: {
-                "@id": getAbsoluteSiteUrl("/#organization")
+                "@id": getAbsoluteSiteUrl("/#organization"),
               },
-              url: getAbsoluteSiteUrl("/")
+              url: getAbsoluteSiteUrl("/"),
             },
             {
               "@id": getAbsoluteSiteUrl("/#faq"),
@@ -177,15 +217,15 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
                 name: answer.title,
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: answer.text
-                }
-              }))
+                  text: answer.text,
+                },
+              })),
             },
             {
               "@id": getAbsoluteSiteUrl("/#dataset"),
               "@type": "Dataset",
               creator: {
-                "@id": getAbsoluteSiteUrl("/#organization")
+                "@id": getAbsoluteSiteUrl("/#organization"),
               },
               description:
                 "Source-backed university AI policy metadata with public JSON, review states, original-language evidence snippets, and citation fields.",
@@ -194,26 +234,26 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
                   "@type": "DataDownload",
                   contentUrl: getAbsoluteSiteUrl(universitiesJsonPath),
                   encodingFormat: "application/json",
-                  name: "Public university records JSON"
+                  name: "Public university records JSON",
                 },
                 {
                   "@type": "DataDownload",
                   contentUrl: getAbsoluteSiteUrl(
-                    `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`
+                    `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
                   ),
                   encodingFormat: "application/json",
-                  name: "Dataset release manifest"
-                }
+                  name: "Dataset release manifest",
+                },
               ],
               isAccessibleForFree: true,
               license: "https://creativecommons.org/licenses/by/4.0/",
               name: "University AI Policy Tracker public dataset",
               publisher: {
-                "@id": getAbsoluteSiteUrl("/#organization")
+                "@id": getAbsoluteSiteUrl("/#organization"),
               },
-              url: getAbsoluteSiteUrl("/datasets")
-            }
-          ]
+              url: getAbsoluteSiteUrl("/datasets"),
+            },
+          ],
         }}
       />
 
@@ -240,22 +280,32 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
               </Link>
             ))}
           </div>
-          {locale === "en" ? <nav aria-label="Illustrated student guides" className="home-student-guides">
-            <p>Start with a student guide</p>
-            <div>
-              <Link href="/universities/stanford-university">Stanford</Link>
-              <Link href="/universities/harvard-university">Harvard</Link>
-              <Link href="/universities/university-of-bristol">Bristol</Link>
-              <Link href="/universities/national-university-of-singapore">NUS</Link>
-              <Link href="/universities">Find your university →</Link>
+          {locale === "en" ? (
+            <nav
+              aria-label="Illustrated student guides"
+              className="home-student-guides"
+            >
+              <p>Start with a student guide</p>
+              <div>
+                <Link href="/universities/stanford-university">Stanford</Link>
+                <Link href="/universities/harvard-university">Harvard</Link>
+                <Link href="/universities/university-of-bristol">Bristol</Link>
+                <Link href="/universities/national-university-of-singapore">
+                  NUS
+                </Link>
+                <Link href="/universities">Find your university →</Link>
+              </div>
+            </nav>
+          ) : null}
+          <details className="home-data-links">
+            <summary>{copy.publicJson} & API</summary>
+            <div className="tag-row hero-meta">
+              <MetaLabel label={copy.publicJson}>
+                {universitiesJsonPath}
+              </MetaLabel>
+              <MetaLabel label={copy.searchApi}>{searchJsonPath}</MetaLabel>
+              <MetaLabel label={copy.license}>CC-BY-4.0 metadata</MetaLabel>
             </div>
-          </nav> : null}
-          <details className="home-data-links"><summary>{copy.publicJson} & API</summary>
-          <div className="tag-row hero-meta">
-            <MetaLabel label={copy.publicJson}>{universitiesJsonPath}</MetaLabel>
-            <MetaLabel label={copy.searchApi}>{searchJsonPath}</MetaLabel>
-            <MetaLabel label={copy.license}>CC-BY-4.0 metadata</MetaLabel>
-          </div>
           </details>
         </div>
         <aside className="search-hero__side" aria-label="Public dataset counts">
@@ -289,7 +339,10 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
 
       <IntentFlow locale={locale} />
 
-      <BrowseEntryGroups copy={getBrowseEntryGroupsCopy(locale)} locale={locale} />
+      <BrowseEntryGroups
+        copy={getBrowseEntryGroupsCopy(locale)}
+        locale={locale}
+      />
 
       <section className="section compact-section">
         <div className="section-heading">
@@ -304,16 +357,22 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
             <DataListRow
               actions={
                 <>
-                  <Link href={`/universities/${record.entitySlug}`}>{copy.record}</Link>
+                  <Link href={`/universities/${record.entitySlug}`}>
+                    {copy.record}
+                  </Link>
                   <a href={record.publicJsonUrl}>JSON</a>
                 </>
               }
               key={record.entitySlug}
               metadata={
                 <>
-                  {record.reviewState ? <StateLabel reviewState={record.reviewState} /> : null}
+                  {record.reviewState ? (
+                    <StateLabel reviewState={record.reviewState} />
+                  ) : null}
                   <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
-                  <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
+                  <MetaLabel label={copy.sources}>
+                    {record.sourceCount}
+                  </MetaLabel>
                 </>
               }
             >
@@ -322,7 +381,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
                   {getLocalizedInstitutionName(
                     record.entitySlug,
                     record.entityName,
-                    locale
+                    locale,
                   )}
                 </Link>
               </div>
@@ -342,16 +401,22 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
             <DataListRow
               actions={
                 <>
-                  <Link href={`/universities/${record.slug}`}>{copy.record}</Link>
+                  <Link href={`/universities/${record.slug}`}>
+                    {copy.record}
+                  </Link>
                   <a href={record.publicJsonUrl}>JSON</a>
                 </>
               }
               key={record.slug}
               metadata={
                 <>
-                  {record.reviewState ? <StateLabel reviewState={record.reviewState} /> : null}
+                  {record.reviewState ? (
+                    <StateLabel reviewState={record.reviewState} />
+                  ) : null}
                   <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
-                  <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
+                  <MetaLabel label={copy.sources}>
+                    {record.sourceCount}
+                  </MetaLabel>
                 </>
               }
             >
@@ -378,6 +443,6 @@ function formatNumber(value: number, locale: string): string {
 function formatDate(value: string, locale: string): string {
   return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
-    timeZone: "UTC"
+    timeZone: "UTC",
   }).format(new Date(value));
 }

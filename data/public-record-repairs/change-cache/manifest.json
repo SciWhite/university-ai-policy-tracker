@@ -3,7 +3,7 @@
   "journalSha256": "f1d20b7b32518697c82e42d10aebd8cbfd70ba99d9a9308f62d16227a7f5f391",
   "baselineSha256": "44473c8425a8a70f5eb297e07b443734f34ef5333b0435a4d56a600d60c65cb9",
   "files": {
-    "index.json": "53934011f5ae3aa78297f91b66013ed7d83c621425e84db1a155012a1c20b8e8",
+    "index.json": "00c001acd70bc5c6571bcc99dd24ad1df11614833e377cba795fb0975eed745e",
     "stanford-university.json": "7652fadfe8cd0704883709c63e3cabb8e48b446c7af223c291c9910622191571",
     "university-of-oxford.json": "87a59723e711342a53f319c8957804a23def02fcafae0c937feb7870962aa701",
     "imperial-college-london.json": "002dc13940aa6eda6e186d3f857498f0cc2b78fcdc88a9858f20db187fff1640",

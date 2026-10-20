@@ -1,0 +1,22 @@
+/* Native-pixel limits apply even where a page requests a larger mark slot. */
+.university-mark.university-mark--local {
+  padding: 3px;
+  background: #fff;
+}
+.university-mark--local.university-mark--reversed {
+  background: #17324d;
+  border-color: #17324d;
+}
+.university-mark.university-mark--local > img {
+  display: block;
+  width: min(100%, var(--local-mark-width)) !important;
+  height: min(100%, var(--local-mark-height)) !important;
+  max-width: var(--local-mark-width) !important;
+  max-height: var(--local-mark-height) !important;
+  object-fit: contain;
+}
+.discovery-university-card > .university-mark--directory.university-mark--local {
+  width: var(--local-mark-frame-width);
+  height: var(--local-mark-frame-height);
+  flex-basis: var(--local-mark-frame-width);
+}

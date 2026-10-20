@@ -11,6 +11,8 @@ import {
   getStagedPublicSummaryBySlug
 } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getAliasSlugs } from "@/lib/entity-aliases";
+import { aliasSlugJsonRedirect } from "@/lib/entity-alias-redirect";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -23,10 +25,11 @@ interface ClaimsRouteProps {
 
 export async function generateStaticParams() {
   const summaries = await getStagedPublicSummaries();
+  const aliasSlugs = await getAliasSlugs();
 
-  return summaries.map((summary) => ({
-    slug: `${summary.entity.slug}.json`
-  }));
+  return [...summaries.map((summary) => summary.entity.slug), ...aliasSlugs].map(
+    (slug) => ({ slug: `${slug}.json` })
+  );
 }
 
 export async function GET(_request: Request, { params }: ClaimsRouteProps) {
@@ -34,6 +37,11 @@ export async function GET(_request: Request, { params }: ClaimsRouteProps) {
   const universitySlug = slug.endsWith(".json")
     ? slug.slice(0, -".json".length)
     : slug;
+  const aliasRedirect = await aliasSlugJsonRedirect(
+    universitySlug,
+    (canonicalSlug) => `/api/public/${PUBLIC_API_VERSION}/claims/${canonicalSlug}.json`
+  );
+  if (aliasRedirect) return aliasRedirect;
   const summary = await getStagedPublicSummaryBySlug(universitySlug);
 
   if (!summary) {
