@@ -2474,6 +2474,14 @@
       "rawSha256": "514ac2d4a8baaa9adbeca4c7ef2248a4cc370af5f214d7199e87e17fb326be4f",
       "textSha256": "a6a453dc979550b17891851382df6f1ee1724cd22e54c4862f4b6c5e2c656193",
       "verification": "Verified byte-identical against accepted input."
+    },
+    {
+      "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+      "snapshotHash": "892962b65060fb0bba370a55435f90b8152fde2abd0ab4eda4a4bdda3a6edac3",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "892962b65060fb0bba370a55435f90b8152fde2abd0ab4eda4a4bdda3a6edac3",
+      "textSha256": "892962b65060fb0bba370a55435f90b8152fde2abd0ab4eda4a4bdda3a6edac3",
+      "verification": "verified"
     }
   ]
 }

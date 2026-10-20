@@ -1,7 +1,7 @@
 {
-  "path": "revisions/qs23-24-v6-r3-20261019.json",
-  "sha256": "29787f684a246095d1c069d565c9dedb4342dc9b47d742cb5c3f021835ad481c",
-  "releaseId": "qs23-24-v6-r3-20261019",
+  "path": "revisions/qs20-24-v6-r6-20261020.json",
+  "sha256": "44effc6a19f37b2885694dc4dcd1dd254c07b34d7bed18aed9197a73b4b1231f",
+  "releaseId": "qs20-24-v6-r6-20261020",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
