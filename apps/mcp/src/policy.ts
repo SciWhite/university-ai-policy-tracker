@@ -11,7 +11,7 @@ export class PolicyService {
     "Live availability of official URLs is not checked by these tools. If a source cannot be opened, identify the answer as based on recorded evidence and do not claim fresh verification."] }; }
   private recordBase(record: Record) {
     const base = this.base();
-    return {...base,...(record.universityRevisionId?{datasetReleaseId:this.catalog.releaseId,universityRevisionId:record.universityRevisionId,recordSha256:record.recordSha256,recordPublishedAt:record.recordPublishedAt,snapshotUnavailableReason:record.snapshotUnavailableReason,historicalClaimIds:record.historicalClaimIds}:{}), limitations:[...new Set([...base.limitations,...record.summary.limitations,...(record.snapshot?.limitations ?? [])])]};
+    return {...base,...(record.universityRevisionId?{datasetReleaseId:this.catalog.releaseId,universityRevisionId:record.universityRevisionId,recordSha256:record.recordSha256,recordPublishedAt:record.recordPublishedAt,snapshotUnavailableReason:record.snapshotUnavailableReason,historicalClaimIds:record.historicalClaimIds}:{}), limitations:[...new Set([...base.limitations,"releaseId identifies the historical base dataset; universityRevisionId and recordPublishedAt identify this school record correction. Claim reviewState applies to individual claims, not to the separately generated machine-candidate Analysis API or approval of student snapshots.",...record.summary.limitations,...(record.snapshot?.limitations ?? [])])]};
   }
   resolve(name: string) {
     const query = normalizeForSearch(name);

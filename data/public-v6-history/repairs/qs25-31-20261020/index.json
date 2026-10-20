@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "uapt-history-display-repair-v1",
+  "recordRevision": "qs25-31-v6-r1-20261020",
+  "records": {
+    "fudan-university": {
+      "path": "repairs/qs25-31-20261020/26e2c3ddd7eb0e5c9f2060c18943a59583a1c3616e70e9cb0d9776ec09e55cf8.json",
+      "sha256": "26e2c3ddd7eb0e5c9f2060c18943a59583a1c3616e70e9cb0d9776ec09e55cf8"
+    },
+    "kcl": {
+      "path": "repairs/qs25-31-20261020/560ccebcc9cfa720d122c45f6ea40887bc5f8d037cdf6d76785b3edd2c96c7c2.json",
+      "sha256": "560ccebcc9cfa720d122c45f6ea40887bc5f8d037cdf6d76785b3edd2c96c7c2"
+    },
+    "mcgill-university": {
+      "path": "repairs/qs25-31-20261020/5bae0ef1678b18322040e11c09d331313b2402077283348adc70c2584c0eeab4.json",
+      "sha256": "5bae0ef1678b18322040e11c09d331313b2402077283348adc70c2584c0eeab4"
+    },
+    "princeton-university": {
+      "path": "repairs/qs25-31-20261020/7553b49192951dc659a25e3debe212a4672b8b5134d9f7f0553841207a12b0ba.json",
+      "sha256": "7553b49192951dc659a25e3debe212a4672b8b5134d9f7f0553841207a12b0ba"
+    },
+    "university-of-sydney": {
+      "path": "repairs/qs25-31-20261020/bfb63fe7494a78e54ac9859c0c036d4229a14b55821384d9a3fd5721c6056ad1.json",
+      "sha256": "bfb63fe7494a78e54ac9859c0c036d4229a14b55821384d9a3fd5721c6056ad1"
+    },
+    "universite-psl": {
+      "path": "repairs/qs25-31-20261020/63949f16d3740e6bab8535cc2f4afb1e098ea55afc9235f0fdbe42718bdea675.json",
+      "sha256": "63949f16d3740e6bab8535cc2f4afb1e098ea55afc9235f0fdbe42718bdea675"
+    },
+    "university-of-toronto": {
+      "path": "repairs/qs25-31-20261020/3ddd561b3f8ac991eea4a9a29f140a4ba40591d3f3b36580fc2653cc83dafdcd.json",
+      "sha256": "3ddd561b3f8ac991eea4a9a29f140a4ba40591d3f3b36580fc2653cc83dafdcd"
+    }
+  }
+}

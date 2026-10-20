@@ -1,3 +1,4 @@
+import {v6HistoryRepair} from "./v6-history-repair";
 import {BoundedAsyncCache} from './bounded-cache';
 import {v6FrozenHistory} from "./v6-history-cache";
 import {readV6RecordCorrections,readV6RecordCorrectionRevision,v6SummaryAtRevision} from "./v6-effective-records";
@@ -301,9 +302,10 @@ export async function getEntityChangeHistory(
     const candidateFrozen = normalizedFrozen.find(
       (row) => row.releaseId === current.releaseId
     );
-    const effectiveCurrent = candidateFrozen
+    const repaired=v6HistoryRepair(slug,current.releaseId!);
+    const effectiveCurrent = repaired ?? (candidateFrozen
       ? { ...current, ...candidateFrozen }
-      : current;
+      : current);
     return {
       record: effectiveCurrent,
       releaseRecords: [
@@ -1156,6 +1158,7 @@ function v6ChangeRecord(summary:PublicEntitySummary):ChangeRecord {
  const selected=readV6RecordCorrections()!;const slug=summary.entity.slug;
  // An inherited record keeps its actual correction version and timestamp.
  const recordRevision=selected.recordRevisions[slug].universityRevisionId;
+ const repaired=v6HistoryRepair(slug,recordRevision);if(repaired)return repaired;
  const p=recordRevision===selected.revision?selected:readV6RecordCorrectionRevision(recordRevision)??selected;
  const diff=p.changesBySlug[slug];
  const previous=(p.parentRevisionId?v6SummaryAtRevision(slug,p.parentRevisionId):undefined)??p.historical[slug]?.baseline;

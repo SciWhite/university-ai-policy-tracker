@@ -737,7 +737,8 @@ function buildCoverageScore(dimensions: PolicyAnalysisDimension[]) {
   const byKey = new Map(dimensions.map((dimension) => [dimension.key, dimension]));
   const components = COVERAGE_COMPONENTS.map((component) => {
     const dimension = byKey.get(component.key);
-    const hasEvidence = Boolean(dimension?.evidenceClaimIds.length) && dimension?.status !== "insufficient_public_evidence";
+    const hasEvidence = Boolean(dimension?.evidenceClaimIds.length) &&
+      !["unclear", "not_mentioned", "insufficient_public_evidence"].includes(dimension?.status ?? "not_mentioned");
 
     return {
       key: component.key,
@@ -759,6 +760,7 @@ function buildCoverageScore(dimensions: PolicyAnalysisDimension[]) {
     reviewState: REVIEW_STATE,
     limitations: [
       "Policy Coverage Score measures breadth of public, source-backed coverage; it is not a policy quality score.",
+      "Unclear, not-mentioned and insufficient-evidence dimensions receive zero points even when related claims exist. The eight scored topics do not establish complete policy knowledge; research guidance and all scope limitations must be checked separately.",
       NO_ADVICE_BOUNDARY
     ]
   };
