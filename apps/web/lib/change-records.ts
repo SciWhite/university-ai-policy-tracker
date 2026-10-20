@@ -282,11 +282,28 @@ export async function getEntityChangeHistory(
 ): Promise<EntityChangeHistory | undefined> {
   const frozen = v6FrozenHistory(slug);
   if (frozen) {
+    const normalizedFrozen = frozen.map((row) => ({
+      ...row,
+      changeSummary:
+        typeof row.changeSummary === "object" && row.changeSummary !== null
+          ? ((row.changeSummary as any).en || (row.changeSummary as any).zh)
+          : row.changeSummary,
+    }));
     const corrected = v6SummaryAtRevision(slug)!;
     const current = v6ChangeRecord(corrected);
-    const candidateFrozen = frozen.find(row => row.releaseId === current.releaseId);
-    const effectiveCurrent = candidateFrozen ? { ...current, ...candidateFrozen } : current;
-    return {record:effectiveCurrent,releaseRecords:[effectiveCurrent,...frozen.filter(row => row.releaseId !== current.releaseId)]};
+    const candidateFrozen = normalizedFrozen.find(
+      (row) => row.releaseId === current.releaseId
+    );
+    const effectiveCurrent = candidateFrozen
+      ? { ...current, ...candidateFrozen }
+      : current;
+    return {
+      record: effectiveCurrent,
+      releaseRecords: [
+        effectiveCurrent,
+        ...normalizedFrozen.filter((row) => row.releaseId !== current.releaseId),
+      ],
+    };
   }
   if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
     const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);
@@ -725,7 +742,10 @@ function buildAggregateEntityDiff(
     claimMetadataChanged: semanticCounts.claimMetadataChanged,
     currentReleaseId: latest?.releaseId ?? "multiple-releases",
     publicationKind: latest?.publicationKind,
-    changeSummary: latest?.changeSummary,
+    changeSummary:
+      typeof latest?.changeSummary === "object" && latest?.changeSummary !== null
+        ? ((latest.changeSummary as any).en || (latest.changeSummary as any).zh)
+        : latest?.changeSummary,
     recordSha256: latest?.recordSha256,
     entityName: latest?.name ?? name,
     entitySlug: slug,

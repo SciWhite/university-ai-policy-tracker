@@ -82,7 +82,7 @@ export default async function ReleaseEntityChangePage({
     <main className="page-shell page-shell--wide">
       {record.publicationKind === "scoped_record_correction" ? (
         <p className="notice-card" data-i18n="preserve">
-          Tracker audit correction: {record.changeSummary} Published in the tracker on {record.lastChangedAt}. This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately.
+          Tracker audit correction: {typeof record.changeSummary === "object" && record.changeSummary !== null ? ((record.changeSummary as any)[locale] || (record.changeSummary as any).en) : record.changeSummary} Published in the tracker on {record.lastChangedAt}. This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately.
         </p>
       ) : null}
       <section className="entity-header">
