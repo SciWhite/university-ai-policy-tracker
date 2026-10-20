@@ -111,5 +111,10 @@
     "path": "revisions/qs25-31-v6-r1-20261020.json",
     "sha256": "cddfe36da028bb65fd6405b47d70759eecfe884442a46193dcc80da3476aa439",
     "revision": "qs25-31-v6-r1-20261020"
+  },
+  "qs20-24-v6-r7-20261020": {
+    "path": "revisions/qs20-24-v6-r7-20261020.json",
+    "sha256": "41cfdd72310f2da8f23788220af28d74b0617960cff6a70f5dd1cc7f979390fc",
+    "revision": "qs20-24-v6-r7-20261020"
   }
 }

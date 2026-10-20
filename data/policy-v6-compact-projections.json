@@ -7734,11 +7734,11 @@
     "unsw-sydney": {
       "slug": "unsw-sydney",
       "name": "University of New South Wales (UNSW Sydney)",
-      "recordSha256": "7d12c6946710d4716cad0fcd00d7c2ccc0b8fd6f0b998eb8b944aa69650f6621",
-      "schoolFingerprint": "7d12c6946710d4716cad0fcd00d7c2ccc0b8fd6f0b998eb8b944aa69650f6621",
-      "universityRevisionId": "qs20-24-v6-r6-20261020",
+      "recordSha256": "162f56fa911147609cee1e855195b0f2db3311a172b36b4d849543ae2ebe422d",
+      "schoolFingerprint": "162f56fa911147609cee1e855195b0f2db3311a172b36b4d849543ae2ebe422d",
+      "universityRevisionId": "qs20-24-v6-r7-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r6-20261020",
+      "presentationRevision": "qs20-24-v6-r7-20261020",
       "images": [],
       "scope": {
         "en": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
@@ -7789,13 +7789,13 @@
         }
       },
       "topicBasis": {
-        "coursework": "Assessment tasks follow transitional period frameworks: six Levels of AI Assistance (No Assistance, Simple Editing Assistance, Planning or Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, Not Applicable) apply to Term 3 2026, Semester 2 2026, and Hexamester 5 2026; three AI Assessment Modes (Can't Use AI, Can Use AI, Must Use AI) apply to Hexamester 6 2026 and Summer Term 2027. The future Assessment and Feedback Procedure is scheduled for phased rollout across Term 3 2027, Semester 2 2027, and Hexamester 1 2027 (with clauses taking effect in January 2027 and January 2028); current assessments must follow current period framework instructions.",
+        "coursework": "Assessment tasks follow transitional period frameworks: six Levels of AI Assistance (No Assistance, Simple Editing Assistance, Planning or Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, Not Applicable) apply to Term 3 2026, Semester 2 2026, and Hexamester 5 2026; three AI Assessment Modes (Can't Use AI, Can Use AI, Must Use AI) apply to Hexamester 6 2026 and Summer Term 2027. Unless stated otherwise, the Assessment and Feedback Procedure applies from Term 3 2026, Semester 2 2026, and Hexamester 1 2027. Clauses 1.1–1.2 and 1.4 apply from 1 January 2027; clauses 2.1–2.2 and 3.5–3.7 apply from 1 January 2028. Follow the framework and course instructions for the relevant teaching period.",
         "exams": "Assessments designated 'No Assistance' or 'Can't Use AI' prohibit generative AI use. Follow the framework and instructions for the relevant teaching period; suspected misuse is handled under the applicable academic integrity procedure.",
         "disclosure": "Where AI tools are permitted, students must provide clear acknowledgement and citation according to course specifications and referencing guidelines.",
         "privacy_data": "UNSW's Information Governance Policy applies to students, researchers, research trainees, employees and affiliates; individual procedures may have narrower scope. Its AI procedure requires confidentiality of highly sensitive, sensitive, commercial and personal information and an AI self-assurance assessment before use, except for an approved, deployed enterprise-grade system such as Copilot. Student guidance separately advises against including personal or sensitive information in AI prompts.",
-        "academic_integrity": "UNSW manages academic integrity under the Student Plagiarism Management Procedure across five tiers: Poor scholarship, Minor, Moderate, Significant, and Serious. For Minor plagiarism, the rubric states that a mark reduction should not exceed 10% of the maximum grade available for the assessment task (from plagiarism rubric Appendix 3 footnote 4, not an absolute cap). School authorities manage Poor scholarship and Minor through Significant cases. Serious cases must be referred to the Conduct & Integrity Office (CIO) as potential student misconduct, with potential outcomes ranging from task/course failure to suspension or exclusion (not automatic penalties). Actions outside the outcomes available for a level require CIO approval, and repeated instances may also be escalated to student misconduct. For School-level outcomes notified under clause 4.3(a), an internal review request must be made within 20 business days of that notice and is limited to procedural fairness, not the merits. Serious cases follow the separate CIO process.",
         "approved_tools": "The captured UNSW announcement describes ChatGPT Edu access for professional and academic staff, HDR candidates and casual academics, with further student expansion ahead of 2027 described as planned. Mentor AI appears in UNSW College ELICOS guidance. Institutional tool access does not confer permission for a particular assessment.",
-        "research_publication": "UNSW Library guidance advises researchers that text and data mining with AI must respect copyright and vendor electronic resource licence terms."
+        "research_publication": "UNSW Library guidance advises researchers that text and data mining with AI must respect copyright and vendor electronic resource licence terms.",
+        "academic_integrity": "UNSW manages academic integrity under the Student Plagiarism Management Procedure across five tiers: Poor scholarship, Minor, Moderate, Significant, and Serious. For Minor plagiarism, the rubric states that a mark reduction should not exceed 10% of the maximum grade available for the assessment task (from plagiarism rubric Appendix 3 footnote 4, not an absolute cap). School authorities manage Poor scholarship and Minor through Significant cases. Serious cases must be referred to the Conduct & Integrity Office (CIO) as potential student misconduct, with potential outcomes ranging from task/course failure to suspension or exclusion (not automatic penalties). Actions outside the outcomes available for a level require CIO approval, and repeated instances may also be escalated to student misconduct. For School-level outcomes notified under clause 4.3(a), an internal review request must be made within 20 business days of that notice and is limited to procedural fairness, not the merits. Serious cases follow the separate CIO process."
       },
       "do": [
         {
@@ -8410,11 +8410,11 @@
     "yale-university": {
       "slug": "yale-university",
       "name": "Yale University",
-      "recordSha256": "69a7cf0b717299b8867ab9d6d70942d2f53d261ccbc4ec186091967230de691e",
-      "schoolFingerprint": "69a7cf0b717299b8867ab9d6d70942d2f53d261ccbc4ec186091967230de691e",
-      "universityRevisionId": "qs20-24-v6-r6-20261020",
+      "recordSha256": "f2056d14d900377259f898fffa6915abf0d133cefadd3ad035484fe4cf949153",
+      "schoolFingerprint": "f2056d14d900377259f898fffa6915abf0d133cefadd3ad035484fe4cf949153",
+      "universityRevisionId": "qs20-24-v6-r7-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r6-20261020",
+      "presentationRevision": "qs20-24-v6-r7-20261020",
       "images": [],
       "scope": {
         "en": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
@@ -8434,8 +8434,8 @@
           "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
         },
         "disclosure": {
-          "en": "Under GSAS academic integrity standards, students must attribute all AI assistance and possess the ability to articulate their research and composition process, including draft history if requested.",
-          "zh": "依据 GSAS 学术诚信标准，学生须对所有 AI 辅助进行规范致谢，并在被要求时具备阐释研究与创作过程（包括草稿历史）的能力。",
+          "en": "GSAS students must properly attribute AI-generated text used in submitted work and follow faculty-specific rules for other AI assistance. They must be able to explain their research and writing process, including providing draft history when requested. This is a GSAS rule, not a uniform disclosure rule for every Yale student.",
+          "zh": "文理研究生院（GSAS）学生须正确注明提交作品中使用的 AI 生成文本；其他 AI 辅助须遵循相关教师的具体规定。学生须能够说明研究和写作过程，并按要求提供草稿历史。这是 GSAS 的要求，不是对所有耶鲁学生或一切 AI 辅助统一适用的披露规则。",
           "meaningEn": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
           "meaningZh": "教务长生成式 AI 指引、文理研究生院（GSAS）个人品行与学术诚信标准、GSAS 纪律委员会程序及耶鲁图书馆电子资源许可指南。全校审计状态保持 PARTIAL。"
         },
@@ -8467,11 +8467,11 @@
       "topicBasis": {
         "coursework": "Instructors specify permitted AI use in course syllabi. Students must not use AI tools in coursework or evaluations unless explicitly authorized.",
         "exams": "Permissibility of generative AI during exams is determined by individual instructors in course policies and syllabi; AI use is not permitted unless authorized by the instructor. There is no university-wide blanket permission or mandatory in-writing format unless specified in the course syllabus.",
-        "disclosure": "Under GSAS academic integrity standards, students must attribute all AI assistance and possess the ability to articulate their research and composition process, including draft history if requested.",
+        "disclosure": "GSAS students must properly attribute AI-generated text used in submitted work and follow faculty-specific rules for other AI assistance. They must be able to explain their research and writing process, including providing draft history when requested. This is a GSAS rule, not a uniform disclosure rule for every Yale student.",
         "privacy_data": "Yale's September 2023 Provost guidance says not to enter confidential, legally restricted, Moderate-risk or High-risk Yale data into an AI tool. The current institutional directory separately lists service-specific data classifications, including Clarity for High-risk data with special ePHI and DUA conditions, while Radiate web search is limited to Low-risk data. Follow the service's access restrictions and applicable data agreements; these classifications do not settle authorization for every dataset.",
-        "academic_integrity": "Inserting AI-generated content into submitted work without proper attribution constitutes an academic integrity violation. Under GSAS 2026–2027 standards, graduate students must consult relevant faculty before using AI in coursework or research and must be prepared to articulate and demonstrate their drafting process if requested, but there is no universal requirement for all students to log every prompt. Disciplinary responses are managed by the Committee on Regulations and Discipline; written student statements are ordinarily due within two weeks.",
         "approved_tools": "Yale provides institutional tools including Microsoft Copilot, Clarity, and Claude Enterprise, and permits Zoom AI Companion with account controls. Tool availability does not confer academic assessment permission.",
-        "research_publication": "Yale Library guidance requires that use of generative AI with licensed electronic resources must comply with vendor license agreements, which often prohibit commercial text and data mining or feeding content into external AI models."
+        "research_publication": "Yale Library guidance requires that use of generative AI with licensed electronic resources must comply with vendor license agreements, which often prohibit commercial text and data mining or feeding content into external AI models.",
+        "academic_integrity": "Inserting AI-generated content into submitted work without proper attribution constitutes an academic integrity violation. Under GSAS 2026–2027 standards, graduate students must consult relevant faculty before using AI in coursework or research and must be prepared to articulate and demonstrate their drafting process if requested, but there is no universal requirement for all students to log every prompt. Disciplinary responses are managed by the Committee on Regulations and Discipline; written student statements are ordinarily due within two weeks."
       },
       "do": [
         {
@@ -8776,11 +8776,11 @@
     "epfl": {
       "slug": "epfl",
       "name": "EPFL – École polytechnique fédérale de Lausanne",
-      "recordSha256": "75df8d43058bfc4efba34a9e3b5bf4b698ac7ae340521663567c5b468617a276",
-      "schoolFingerprint": "75df8d43058bfc4efba34a9e3b5bf4b698ac7ae340521663567c5b468617a276",
-      "universityRevisionId": "qs20-24-v6-r6-20261020",
+      "recordSha256": "d46cbd56c4b8038654af052bbc59eb271df3c5c2db34ea7cd64a9cb6d607868b",
+      "schoolFingerprint": "d46cbd56c4b8038654af052bbc59eb271df3c5c2db34ea7cd64a9cb6d607868b",
+      "universityRevisionId": "qs20-24-v6-r7-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r6-20261020",
+      "presentationRevision": "qs20-24-v6-r7-20261020",
       "images": [],
       "scope": {
         "en": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
@@ -9783,11 +9783,11 @@
     "jhu": {
       "slug": "jhu",
       "name": "Johns Hopkins University",
-      "recordSha256": "513565b5fac71e6e09791f0fdeb7d1cc1d4f314e6a51f5dc128cf4fef045b541",
-      "schoolFingerprint": "513565b5fac71e6e09791f0fdeb7d1cc1d4f314e6a51f5dc128cf4fef045b541",
-      "universityRevisionId": "qs20-24-v6-r6-20261020",
+      "recordSha256": "7e41529f529ba47035b91ec16bf8c1fd77393b77ab2f97bf6d91fcfef46b9e06",
+      "schoolFingerprint": "7e41529f529ba47035b91ec16bf8c1fd77393b77ab2f97bf6d91fcfef46b9e06",
+      "universityRevisionId": "qs20-24-v6-r7-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r6-20261020",
+      "presentationRevision": "qs20-24-v6-r7-20261020",
       "images": [],
       "scope": {
         "en": "Johns Hopkins IT Responsible Use & Data Governance; Teaching @ JHU & CTEI Guidance; Whiting Engineering for Professionals (EP) Course Categorization & Student AI Guide; Krieger/Whiting Graduate Academic Misconduct Procedures (Homewood 2017 / AAP 2018); Hopkins Press Author Policy. Institution audit remains PARTIAL.",
@@ -9795,14 +9795,14 @@
       },
       "topics": {
         "coursework": {
-          "en": "Engineering for Professionals (EP) implements a course-level color classification system for generative AI use: Red (no AI permitted in any form), Yellow (moderate AI permitted with restrictions and required disclosure), and Green (liberal AI permitted with transparency). Course-level designation is mandatory; Yellow courses must also include assignment-level labels. This policy applies strictly to EP courses and does not establish a blanket university-wide permission.",
-          "zh": "工程专业继续教育（EP）实行课程级 AI 颜色分类体系：红色（禁止以任何形式使用 AI）、黄色（在限制条件下适度使用且必须披露）、绿色（广泛使用但须保持透明）。课程级标识为强制要求；黄色课程考核须逐项标明分类。该政策仅适用于 EP 课程，不构成全校通用许可。",
+          "en": "Engineering for Professionals (EP) implements a course-level color classification system for generative AI use: Red (GenAI is prohibited, including drafting, editing and revision, unless the instructor or applicable course instructions explicitly state otherwise), Yellow (moderate AI permitted with restrictions and required disclosure), and Green (liberal AI permitted with transparency). Course-level designation is mandatory; Yellow courses must also include assignment-level labels. This policy applies strictly to EP courses and does not establish a blanket university-wide permission.",
+          "zh": "工程专业继续教育（EP）实行课程级 AI 颜色分类体系：红色（禁止使用生成式 AI，包括起草、编辑与修订；除非教师或适用课程说明明确另有规定）、黄色（在限制条件下适度使用且必须披露）、绿色（广泛使用但须保持透明）。课程级标识为强制要求；黄色课程考核须逐项标明分类。该政策仅适用于 EP 课程，不构成全校通用许可。",
           "meaningEn": "Whiting School of Engineering for Professionals (EP) course color classification policy.",
           "meaningZh": "怀廷工程学院继续教育（EP）课程颜色分类政策。"
         },
         "exams": {
-          "en": "In Engineering for Professionals (EP) courses, assessments designated Red strictly prohibit generative AI assistance in any form. Students must follow specific course and examination instructions; tool access does not confer examination permission, and unauthorized AI use is subject to disciplinary procedures.",
-          "zh": "在工程专业继续教育（EP）课程中，标明红色（Red）的考核严禁使用任何形式的生成式 AI 辅助。学生必须遵守具体课程与考试说明；开通工具不代表获得考试使用许可，擅自使用将按纪律程序处理。",
+          "en": "In Engineering for Professionals (EP) courses, assessments designated Red prohibit generative AI assistance, including drafting, editing and revision, unless the instructor or applicable course instructions explicitly state otherwise. Students must follow specific course and examination instructions; tool access does not confer examination permission, and unauthorized AI use is subject to disciplinary procedures.",
+          "zh": "在工程专业继续教育（EP）课程中，标明红色（Red）的考核禁止使用生成式 AI 辅助，包括起草、编辑与修订；除非教师或适用课程说明明确另有规定。学生必须遵守具体课程与考试说明；开通工具不代表获得考试使用许可，擅自使用将按纪律程序处理。",
           "meaningEn": "Engineering for Professionals (EP) Red assessment classification and examination rules.",
           "meaningZh": "工程专业继续教育（EP）红色考核分类与考试规定。"
         },
@@ -9838,8 +9838,8 @@
         }
       },
       "topicBasis": {
-        "coursework": "Engineering for Professionals (EP) implements a course-level color classification system for generative AI use: Red (no AI permitted in any form), Yellow (moderate AI permitted with restrictions and required disclosure), and Green (liberal AI permitted with transparency). Course-level designation is mandatory; Yellow courses must also include assignment-level labels. This policy applies strictly to EP courses and does not establish a blanket university-wide permission.",
-        "exams": "In Engineering for Professionals (EP) courses, assessments designated Red strictly prohibit generative AI assistance in any form. Students must follow specific course and examination instructions; tool access does not confer examination permission, and unauthorized AI use is subject to disciplinary procedures.",
+        "coursework": "Engineering for Professionals (EP) implements a course-level color classification system for generative AI use: Red (GenAI is prohibited, including drafting, editing and revision, unless the instructor or applicable course instructions explicitly state otherwise), Yellow (moderate AI permitted with restrictions and required disclosure), and Green (liberal AI permitted with transparency). Course-level designation is mandatory; Yellow courses must also include assignment-level labels. This policy applies strictly to EP courses and does not establish a blanket university-wide permission.",
+        "exams": "In Engineering for Professionals (EP) courses, assessments designated Red prohibit generative AI assistance, including drafting, editing and revision, unless the instructor or applicable course instructions explicitly state otherwise. Students must follow specific course and examination instructions; tool access does not confer examination permission, and unauthorized AI use is subject to disciplinary procedures.",
         "disclosure": "In Yellow and Green EP courses, students must adhere to instructor standards for AI disclosure, where full transcripts, model/site citations, or visual highlighting serve as potential examples. Students must save AI outputs and interaction records if disclosure or verification is requested by the course. Hopkins Press requires authors to disclose generative AI use in submissions and will not credit AI as an author.",
         "privacy_data": "Johns Hopkins IT policies prohibit entering non-public proprietary Hopkins data (including clinical, financial, and business records) into unapproved third-party AI tools. Meeting hosts should not enable Zoom AI Companion features for meetings involving student education records (FERPA recommendation). HopGPT is approved for sensitive data including PHI and PII, subject to institutional stewardship and required research approvals (IRB for non-clinical research; SIP for clinical research or uses involving PHI/PII).",
         "approved_tools": "Johns Hopkins provides ChatGPT Edu ($8.50/mo base plus usage for full-time faculty/staff), HopGPT (secure internal LLM), Copilot Web (free, non-HIPAA), Microsoft 365 Copilot ($215/yr, HIPAA-compliant), Claude ($22/$55 recharge for active affiliates 18+ on campus or VPN), and Zoom AI Companion (hosts should not enable for FERPA student records). Institutional tool access does not confer coursework or exam authorization.",
@@ -9920,18 +9920,18 @@
           "claimType": "ai_tool_treatment",
           "evidence": [
             {
-              "quote": "ChatGPT Edu is now officially available for Johns Hopkins University full-time faculty and staff. If you are not a full-time faculty or staff member at the university, you will need to speak with your divisional technical teams to explore available options. Before submitting an account request, please take a moment and read the resources on this page: https://engineering.jhu.edu/cmts/jhu-chatgpt-edu-account-request-for-faculty-and-staff/\nJHU ChatGPT EDU Beyond the $8.50 base monthly cost for your account, you will be charged for actual usage.\nChatGPT Edu is the enterprise version of ChatGPT but with advanced features and privacy controls specific to education. https://openai.com/chatgpt/educ",
+              "quote": "ChatGPT Edu is now officially available for Johns Hopkins University full-time faculty and staff. If you are not a full-time faculty or staff member at the university, you will need to speak with your divisional technical teams to explore available options. Before submitting an account request, please take a moment and read the resources on this page: https://engineering.jhu.edu/cmts/jhu-chatgpt-edu-account-request-for-faculty-and-staff/",
               "url": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
               "language": "en",
               "hash": "27769b90fec3b0cc3a9f7f1b4ba7db85e41e076800798d86ca801ae1aef37e55",
-              "location": "lines 32-36; CMTS AI Tools Guide, ChatGPT Edu Section (Full Paragraph); excerpt offset 0–700"
+              "location": "Adjacent retained excerpts recombined byte-for-byte; original order and source URL/hash preserved. lines 32-36; CMTS AI Tools Guide, ChatGPT Edu Section (Full Paragraph); excerpt offset 0–700 | lines 32-36; CMTS AI Tools Guide, ChatGPT Edu Section (Full Paragraph); excerpt offset 700–926"
             },
             {
-              "quote": "ation/\nModels & limits: https://help.openai.com/en/articles/11165333-chatgpt-enterprise-models-limits\nAfter the form is submitted with your cost center, our team will send you an invite. You must login with your JHEDID@JH.EDU.",
+              "quote": "\nJHU ChatGPT EDU Beyond the $8.50 base monthly cost for your account, you will be charged for actual usage.\nChatGPT Edu is the enterprise version of ChatGPT but with advanced features and privacy controls specific to education. https://openai.com/chatgpt/education/\nModels & limits: https://help.openai.com/en/articles/11165333-chatgpt-enterprise-models-limits\nAfter the form is submitted with your cost center, our team will send you an invite. You must login with your JHEDID@JH.EDU.",
               "url": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
               "language": "en",
               "hash": "27769b90fec3b0cc3a9f7f1b4ba7db85e41e076800798d86ca801ae1aef37e55",
-              "location": "lines 32-36; CMTS AI Tools Guide, ChatGPT Edu Section (Full Paragraph); excerpt offset 700–926"
+              "location": "Adjacent retained excerpts recombined byte-for-byte; original order and source URL/hash preserved. lines 32-36; CMTS AI Tools Guide, ChatGPT Edu Section (Full Paragraph); excerpt offset 0–700 | lines 32-36; CMTS AI Tools Guide, ChatGPT Edu Section (Full Paragraph); excerpt offset 700–926"
             }
           ]
         },
@@ -10105,7 +10105,7 @@
         },
         "draft-claim-jhu-ep-ai-usage-classification": {
           "id": "draft-claim-jhu-ep-ai-usage-classification",
-          "text": "Engineering for Professionals (EP) implements a course-level color classification system for generative AI use: Red (GenAI use is not permitted in any form, students must complete all work independently); Yellow (Moderate GenAI use is permitted with restrictions to support learning, and all use must be disclosed according to course expectations); and Green (Liberal GenAI use is permitted throughout the workflow, with expectations for transparency and accountability). Every EP course must have a course-level color designation; Yellow courses must also include assignment-level labels for all assessments and activities, while Red and Green courses need not apply categories at the assignment level. This policy applies strictly to EP courses and does not establish a blanket university-wide permission or exam authorization.",
+          "text": "Engineering for Professionals (EP) implements a course-level color classification system for generative AI use: Red (GenAI use is prohibited, including drafting, editing and revision, unless the instructor or applicable course instructions explicitly state otherwise); Yellow (Moderate GenAI use is permitted with restrictions to support learning, and all use must be disclosed according to course expectations); and Green (Liberal GenAI use is permitted throughout the workflow, with expectations for transparency and accountability). Every EP course must have a course-level color designation; Yellow courses must also include assignment-level labels for all assessments and activities, while Red and Green courses need not apply categories at the assignment level. This policy applies strictly to EP courses and does not establish a blanket university-wide permission or exam authorization.",
           "claimType": "teaching",
           "evidence": [
             {
@@ -10135,6 +10135,13 @@
               "language": "en",
               "hash": "6e8e01cec2901f7ff06b536e805d949c2e51aa4e76090bc6d891de4538bc3957",
               "location": "lines 50-50; EP Faculty Guidance, Implementation Guidance, Course Classification Requirement"
+            },
+            {
+              "quote": "Students must complete all work independently without GenAI assistance, including drafting, editing, or revision, unless explicitly stated otherwise.",
+              "url": "https://ep.jhu.edu/student-services/academic-services/academic-policies/student-guidance-on-responsible-generative-ai-use/",
+              "language": "en",
+              "hash": "c01be4577f7fb6ca99c94758563f70b346ca7a58eda2023fe22562186517feff",
+              "location": "Student guidance: Generative AI Use Categories / Red; retained web-extracted text. Direct browser/HTTP returned 403; independently readable web extraction retained."
             }
           ]
         },

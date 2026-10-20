@@ -2958,6 +2958,13 @@
       "rawSha256": "bb0ed5c205b72363e8d12f21bff66662b43beee16c15c59271be1c192b85b38f",
       "textSha256": "76adc92972ef27400a729ac88451265271a4a422d0abbc9f4a1419e6870667c0",
       "verification": "Raw response bytes captured directly from the official URL on 2026-10-20T05:35:55Z for qs25-31."
+    },
+    {
+      "sourceUrl": "https://ep.jhu.edu/student-services/academic-services/academic-policies/student-guidance-on-responsible-generative-ai-use/",
+      "snapshotHash": "c01be4577f7fb6ca99c94758563f70b346ca7a58eda2023fe22562186517feff",
+      "hashKind": "extracted_text_utf8",
+      "textSha256": "c01be4577f7fb6ca99c94758563f70b346ca7a58eda2023fe22562186517feff",
+      "verification": "retained_web_extraction"
     }
   ]
 }

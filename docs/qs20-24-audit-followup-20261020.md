@@ -1,0 +1,15 @@
+# QS20–24 second-audit follow-up
+
+A scoped tracker correction based on the published `c2cb8db6` release. Current policy gaps and institutional PARTIAL decisions remain; no strong student snapshot is approved.
+
+- UNSW: the base school summary and its derived FAQ/evidence summaries now use the same staged dates as the corrected compact card: Term3 2026, Semester2 2026, Hexamester1 2027, with the specified January2027/2028 clause exceptions. Do not combine the separate Plagiarism Policy and Management Procedure effective dates.
+- Yale: GSAS disclosure concerns AI-generated text used in submitted work. Other AI assistance follows faculty-specific instructions. The research/writing process and draft-history obligation remains; it is not a universal rule covering all AI assistance or all Yale students.
+- JHU: the EP Red summary and current classification claim retain the explicit course/instructor exception. Existing faculty evidence remains, and the student guidance exception is separately source-bound. Direct browser/HTTP access returned403; independently readable web extraction was retained with its own text hash and an explicit channel limitation. The original historical evidence is not overwritten. The ChatGPT Edu excerpts are resegmented at a paragraph boundary so the source URL stays complete; concatenated retained text is byte-identical and each snippet stays within the public contract limit.
+- Current `entity.summary` inventory prose is rebuilt from the actual claim/source attribution arrays before the record fingerprint is frozen. UNSW, Yale and EPFL counts are corrected; JHU's source count includes the newly bound student guidance. The preparation helper and regression prevent applying stale counts as current metadata.
+- TUM is an unchanged control. All115 five-school Claim IDs, all27 other current school records, original source objects, historical revisions, held decisions and snapshot approvals remain.
+
+The paired public package uses `pnpm v6:pack` and a new immutable correction revision `qs20-24-v6-r7-20261020`, parent `qs25-31-v6-r1-20261020`. Four schools get a new school-record correction; TUM retains its actual r6 revision. Changes includes the new student-summary/inventory comparisons without labelling tracker edits as university enactments. Candidate and public synchronization2.0.0 receipts are required before calling deployment complete.
+
+The local MCP plugin configuration and its resolved live outputs were checked separately. Its URL is the production `/api/mcp`. The historical base dataset releaseId and per-school universityRevisionId are both present; the base releaseId alone is not evidence of rollback. Post-release connector readback is recorded privately.
+
+Build only the existing OCI shared zone, use the fixed free candidate slots and lifecycle entry, preserve the previous release for cold rollback, and retire old active units after public readback. Actual release/build and smoke receipts are private; this document alone is not deployment evidence.

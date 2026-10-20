@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {renderToStaticMarkup} from 'react-dom/server';
-import {readV6RecordCorrections,v6SummaryAtRevision} from '../apps/web/lib/v6-effective-records';
+import {readV6RecordCorrections,readV6RecordCorrectionRevision,v6SummaryAtRevision} from '../apps/web/lib/v6-effective-records';
 import {buildPolicyAnalysisProfile} from '../apps/web/lib/policy-analysis';
 import {getEntityChangeHistory,getChangeIndexData} from '../apps/web/lib/change-records';
 import {v6FrozenHistory} from '../apps/web/lib/v6-history-cache';
@@ -23,7 +23,7 @@ test('uncertain dimensions score zero while reviewed claims, scope and Analysis 
 });
 
 test('all declared corrections have readable before/after or held entries; frozen global histories remain intact',async()=>{
-  const pkg=readV6RecordCorrections()!;const totals=[0,0,0];const index=await getChangeIndexData();
+  const pkg=readV6RecordCorrectionRevision("qs25-31-v6-r1-20261020")!;const totals=[0,0,0];const index=await getChangeIndexData();
   for(const slug of slugs){
     const changes=pkg.changesBySlug[slug];const ids=[...changes.addedClaimIds,...changes.updatedClaimIds,...changes.heldClaimIds];
     totals[0]+=changes.addedClaimIds.length;totals[1]+=changes.updatedClaimIds.length;totals[2]+=changes.heldClaimIds.length;
