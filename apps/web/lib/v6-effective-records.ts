@@ -44,8 +44,8 @@ export function v6CorrectedSummary(slug:string){return v6SummaryAtRevision(slug)
 export function v6RecordRevision(slug:string){return readV6RecordCorrections()?.recordRevisions[slug];}
 export function v6CorrectedSnapshot(slug:string){return structuredClone(readV6RecordCorrections()?.snapshots[slug]);}
 export function v6CorrectedTools(slug:string){return structuredClone(readV6RecordCorrections()?.toolsBySlug[slug]);}
-export function v6ReviewedAnalysisOverride(summary:PublicEntitySummary){
- const pin=readV6RecordCorrections()?.analysisOverrides?.[summary.entity.slug];
+export function v6ReviewedAnalysisOverride(summary:PublicEntitySummary, customPackage?: V6RecordPackage){
+ const pin=(customPackage ?? readV6RecordCorrections())?.analysisOverrides?.[summary.entity.slug];
  if(!pin||createHash('sha256').update(JSON.stringify(summary)).digest('hex')!==pin.recordSha256)return undefined;
  return pin.dimensions;
 }

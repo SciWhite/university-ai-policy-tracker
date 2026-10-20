@@ -263,7 +263,7 @@ export async function getReleaseChangeRecords(
 
   return releaseDiff.entities
     .map((entity) => {
-      const summary = summariesBySlug.get(entity.entitySlug);
+      const summary = (releaseDiff.releaseId ? v6SummaryAtRevision(entity.entitySlug, releaseDiff.releaseId) : undefined) ?? v6SummaryAtRevision(entity.entitySlug) ?? summariesBySlug.get(entity.entitySlug);
       return summary
         ? buildChangeRecord(summary, entity)
         : buildDiffOnlyChangeRecord(entity);
@@ -284,7 +284,9 @@ export async function getEntityChangeHistory(
   if (frozen) {
     const corrected = v6SummaryAtRevision(slug)!;
     const current = v6ChangeRecord(corrected);
-    return {record:current,releaseRecords:[current,...frozen.filter(row => row.releaseId !== current.releaseId)]};
+    const candidateFrozen = frozen.find(row => row.releaseId === current.releaseId);
+    const effectiveCurrent = candidateFrozen ? { ...current, ...candidateFrozen } : current;
+    return {record:effectiveCurrent,releaseRecords:[effectiveCurrent,...frozen.filter(row => row.releaseId !== current.releaseId)]};
   }
   if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
     const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);

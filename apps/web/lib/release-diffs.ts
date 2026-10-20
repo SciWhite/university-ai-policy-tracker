@@ -22,7 +22,7 @@ import { readRecordCorrectionChanges, readRecordCorrectionSummary } from "./reco
 import { reviewedClaimsFingerprint } from "./index-recovery-basis";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
-import { readV6RecordCorrectionRevision, v6SummaryAtRevision } from "./v6-effective-records";
+import { readV6RecordCorrections, readV6RecordCorrectionRevision, v6SummaryAtRevision, type V6RecordPackage } from "./v6-effective-records";
 
 export type ReleaseDiffChangeType =
   | "claim_added"
@@ -305,7 +305,15 @@ export async function getV5RecordReleaseDiff(releaseId: string): Promise<Release
 }
 
 export async function getKnownReleaseIds(): Promise<string[]> {
-  return [...(await readRecordCorrectionChanges()).map(entry => entry.revision), ...(await getKnownReleaseManifests()).map(manifest => manifest.releaseId)];
+  const v6Rev = readV6RecordCorrections()?.revision;
+  const ids = [
+    ...(await readRecordCorrectionChanges()).map(entry => entry.revision),
+    ...(await getKnownReleaseManifests()).map(manifest => manifest.releaseId)
+  ];
+  if (v6Rev && !ids.includes(v6Rev)) {
+    ids.unshift(v6Rev);
+  }
+  return ids;
 }
 
 export async function getKnownReleaseSummaries(): Promise<
@@ -442,6 +450,12 @@ async function buildCachedReleaseDiff(
   const manifest = manifests.find((item) => item.releaseId === releaseId);
 
   if (!manifest) {
+    if (releaseId.startsWith("pku-v5-")) {
+      const v5 = await getV5RecordReleaseDiff(releaseId);
+      if (v5) return v5;
+    }
+    const scoped = await getScopedRecordReleaseDiff(releaseId);
+    if (scoped) return scoped;
     const correction = (await readRecordCorrectionChanges()).find(entry => entry.revision === releaseId);
     if (!correction) return undefined;
     const baselineManifest = await getManifestByReleaseId(correction.previousReleaseId);
@@ -1312,18 +1326,71 @@ function entitySlugToName(slug: string): string {
     .join(" ");
 }
 
-/** Compare a scoped correction with its immutable school baseline. */
-export async function getScopedRecordReleaseDiff(releaseId:string):Promise<ReleaseDiff|undefined>{
- const correction=readV6RecordCorrectionRevision(releaseId);if(!correction)return undefined;
- const summaries=Object.keys(correction.recordRevisions).filter(slug=>correction.recordRevisions[slug].universityRevisionId===releaseId&&correction.historical[slug]?.baseline).map(slug=>v6SummaryAtRevision(slug,releaseId)!);
- if(!summaries.length)return undefined;
- const manifest=await getManifestByReleaseId(correction.datasetReleaseId);if(!manifest)throw Error('Scoped correction dataset basis unavailable');
- const entities=summaries.map(summary=>{
- const slug=summary.entity.slug,previousReleaseId=correction.recordRevisions[slug].previousRevisionId??correction.recordRevisions[slug].baselineRevisionId??'baseline-v6-pages-20261013';
- const previous=v6SummaryAtRevision(slug,previousReleaseId)??correction.historical[slug].baseline;
- const entity=buildEntityDiff({...manifest,releaseId,publishedAt:correction.publishedAt},{...manifest,releaseId:previousReleaseId},previous,summary,new Map());
- entity.lastChangedAt=correction.publishedAt;entity.publicationKind='scoped_record_correction';entity.changeSummary=correction.changeSummary?.en;entity.recordSha256=correction.recordRevisions[slug].recordSha256;
- for(const row of entity.rows){row.changeExplanation=`Tracker audit correction, not a new university policy publication. ${row.changeExplanation}`;row.limitations=[...row.limitations,'Previous record is the frozen prior school revision or baseline; correction timestamps are not university effective dates.'];}
- return entity;});
- return {apiVersion:PUBLIC_API_VERSION,canonicalUrl:new URL(`/changes/${releaseId}`,getSiteBaseUrl()).toString(),changeCounts:summarizeRows(entities.flatMap(e=>e.rows)),currentReleaseId:releaseId,entities,generatedAt:correction.publishedAt,license:TRACKER_METADATA_LICENSE,limitations:['Scoped tracker correction; global dataset release unchanged.',NO_ADVICE_BOUNDARY],previousReleaseId:correction.parentRevisionId??'baseline-v6-pages-20261013',releaseId,sourcePolicy:OFFICIAL_SOURCE_RIGHTS_CAVEAT,sourceRightsPolicy:OFFICIAL_SOURCE_RIGHTS_CAVEAT,publicationKind:'scoped_record_correction',changeSummary:correction.changeSummary?.en};
+/** Compare a scoped correction with its immutable school baseline or immediate parent revision. */
+export async function getScopedRecordReleaseDiff(releaseId: string, customCorrection?: V6RecordPackage): Promise<ReleaseDiff | undefined> {
+  const correction = customCorrection ?? readV6RecordCorrectionRevision(releaseId);
+  if (!correction) return undefined;
+  const summaries = Object.keys(correction.recordRevisions)
+    .filter(slug => correction.recordRevisions[slug].universityRevisionId === releaseId && (correction.historical[slug]?.baseline || correction.parentRevisionId || correction.recordRevisions[slug]?.previousRevisionId))
+    .map(slug => (customCorrection?.summaries.find(s => s.entity.slug === slug) ?? v6SummaryAtRevision(slug, releaseId))!);
+  if (!summaries.length) return undefined;
+  const manifest = await getManifestByReleaseId(correction.datasetReleaseId);
+  if (!manifest) throw Error('Scoped correction dataset basis unavailable');
+  const entities = summaries.map(summary => {
+    const slug = summary.entity.slug;
+    const explicitEntityPreviousId = correction.recordRevisions[slug]?.previousRevisionId;
+    const parentRevisionId = correction.parentRevisionId;
+    const declaredBaselineId = correction.recordRevisions[slug]?.baselineRevisionId;
+
+    let previous: PublicEntitySummary | undefined;
+    let resolvedPreviousId: string;
+
+    if (explicitEntityPreviousId) {
+      resolvedPreviousId = explicitEntityPreviousId;
+      previous = v6SummaryAtRevision(slug, explicitEntityPreviousId);
+      if (!previous) {
+        throw Error(`Declared previous revision '${explicitEntityPreviousId}' unavailable for entity '${slug}'`);
+      }
+    } else if (parentRevisionId && v6SummaryAtRevision(slug, parentRevisionId)) {
+      resolvedPreviousId = parentRevisionId;
+      previous = v6SummaryAtRevision(slug, parentRevisionId);
+    } else if (declaredBaselineId || correction.historical[slug]?.baseline) {
+      resolvedPreviousId = declaredBaselineId ?? 'baseline-v6-pages-20261013';
+      previous = (resolvedPreviousId ? v6SummaryAtRevision(slug, resolvedPreviousId) : undefined) ?? correction.historical[slug]?.baseline;
+      if (!previous) {
+        throw Error(`Baseline summary unavailable for entity '${slug}'`);
+      }
+    } else if (parentRevisionId) {
+      throw Error(`Declared previous revision '${parentRevisionId}' unavailable for entity '${slug}'`);
+    } else {
+      throw Error(`No valid previous or baseline revision found for entity '${slug}'`);
+    }
+
+    const entity = buildEntityDiff({...manifest, releaseId, publishedAt: correction.publishedAt}, {...manifest, releaseId: resolvedPreviousId}, previous, summary, new Map());
+    entity.lastChangedAt = correction.publishedAt;
+    entity.publicationKind = 'scoped_record_correction';
+    entity.changeSummary = correction.changeSummary?.en;
+    entity.recordSha256 = correction.recordRevisions[slug]?.recordSha256;
+    for (const row of entity.rows) {
+      row.changeExplanation = `Tracker audit correction, not a new university policy publication. ${row.changeExplanation}`;
+      row.limitations = [...row.limitations, 'Previous record is the frozen prior school revision or baseline; correction timestamps are not university effective dates.'];
+    }
+    return entity;
+  });
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    canonicalUrl: new URL(`/changes/${releaseId}`, getSiteBaseUrl()).toString(),
+    changeCounts: summarizeRows(entities.flatMap(e => e.rows)),
+    currentReleaseId: releaseId,
+    entities,
+    generatedAt: correction.publishedAt,
+    license: TRACKER_METADATA_LICENSE,
+    limitations: ['Scoped tracker correction; global dataset release unchanged.', NO_ADVICE_BOUNDARY],
+    previousReleaseId: correction.parentRevisionId ?? 'baseline-v6-pages-20261013',
+    releaseId,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    publicationKind: 'scoped_record_correction',
+    changeSummary: correction.changeSummary?.en
+  };
 }
