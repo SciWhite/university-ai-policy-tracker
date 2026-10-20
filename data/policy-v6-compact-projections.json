@@ -1,6 +1,6 @@
 {
   "schemaVersion": "uapt-v6-compact-projections-v1",
-  "presentationRevision": "qs20-24-v6-r5-20261020",
+  "presentationRevision": "qs20-24-v6-r6-20261020",
   "schools": {
     "massachusetts-institute-of-technology": {
       "slug": "massachusetts-institute-of-technology",
@@ -7736,9 +7736,9 @@
       "name": "University of New South Wales (UNSW Sydney)",
       "recordSha256": "7d12c6946710d4716cad0fcd00d7c2ccc0b8fd6f0b998eb8b944aa69650f6621",
       "schoolFingerprint": "7d12c6946710d4716cad0fcd00d7c2ccc0b8fd6f0b998eb8b944aa69650f6621",
-      "universityRevisionId": "qs20-24-v6-r5-20261020",
+      "universityRevisionId": "qs20-24-v6-r6-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r5-20261020",
+      "presentationRevision": "qs20-24-v6-r6-20261020",
       "images": [],
       "scope": {
         "en": "Student Plagiarism Management Procedure; Assessment and Feedback Procedure; Information Governance Procedure; Library TDM Guidance. Institution audit remains PARTIAL.",
@@ -8412,9 +8412,9 @@
       "name": "Yale University",
       "recordSha256": "69a7cf0b717299b8867ab9d6d70942d2f53d261ccbc4ec186091967230de691e",
       "schoolFingerprint": "69a7cf0b717299b8867ab9d6d70942d2f53d261ccbc4ec186091967230de691e",
-      "universityRevisionId": "qs20-24-v6-r5-20261020",
+      "universityRevisionId": "qs20-24-v6-r6-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r5-20261020",
+      "presentationRevision": "qs20-24-v6-r6-20261020",
       "images": [],
       "scope": {
         "en": "Provost Generative AI Guidance; GSAS Personal Conduct and Academic Integrity Standards; GSAS Disciplinary Committee Procedures; Yale Library Electronic Resource Licensing Advice. Institution audit remains PARTIAL.",
@@ -8776,11 +8776,11 @@
     "epfl": {
       "slug": "epfl",
       "name": "EPFL – École polytechnique fédérale de Lausanne",
-      "recordSha256": "1adeb06a5220353efc4873a0a56344c4b5acef2453f3cc579f352f653eb70482",
-      "schoolFingerprint": "1adeb06a5220353efc4873a0a56344c4b5acef2453f3cc579f352f653eb70482",
-      "universityRevisionId": "qs20-24-v6-r5-20261020",
+      "recordSha256": "75df8d43058bfc4efba34a9e3b5bf4b698ac7ae340521663567c5b468617a276",
+      "schoolFingerprint": "75df8d43058bfc4efba34a9e3b5bf4b698ac7ae340521663567c5b468617a276",
+      "universityRevisionId": "qs20-24-v6-r6-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r5-20261020",
+      "presentationRevision": "qs20-24-v6-r6-20261020",
       "images": [],
       "scope": {
         "en": "Guidelines for AI in studying and teaching; LEX 1.3.3 directive on citing and distinguishing borrowed material (French text is binding; English is a reference translation, with an unresolved Version xx. footer placeholder); rules for continuous assessment; Library AI advice. Institution-wide audit remains PARTIAL.",
@@ -9232,9 +9232,9 @@
       "name": "Technical University of Munich",
       "recordSha256": "b2ef123a5eb85623f0e58ae5a8f1561bc593ae7f588a346a9b9bec1fd4ab802d",
       "schoolFingerprint": "b2ef123a5eb85623f0e58ae5a8f1561bc593ae7f588a346a9b9bec1fd4ab802d",
-      "universityRevisionId": "qs20-24-v6-r5-20261020",
+      "universityRevisionId": "qs20-24-v6-r6-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r5-20261020",
+      "presentationRevision": "qs20-24-v6-r6-20261020",
       "images": [],
       "scope": {
         "en": "TUM ProLehre Didactic Guidance; APSO 12th Amending Statute Reading Version (Latest listed amendment 16 Dec 2025; formally published enactments remain legally authoritative); SGwP Research Statute; MKT Chair Thesis Guidelines. Institution audit remains PARTIAL.",
@@ -9785,9 +9785,9 @@
       "name": "Johns Hopkins University",
       "recordSha256": "513565b5fac71e6e09791f0fdeb7d1cc1d4f314e6a51f5dc128cf4fef045b541",
       "schoolFingerprint": "513565b5fac71e6e09791f0fdeb7d1cc1d4f314e6a51f5dc128cf4fef045b541",
-      "universityRevisionId": "qs20-24-v6-r5-20261020",
+      "universityRevisionId": "qs20-24-v6-r6-20261020",
       "experience": "compact_evidence",
-      "presentationRevision": "qs20-24-v6-r5-20261020",
+      "presentationRevision": "qs20-24-v6-r6-20261020",
       "images": [],
       "scope": {
         "en": "Johns Hopkins IT Responsible Use & Data Governance; Teaching @ JHU & CTEI Guidance; Whiting Engineering for Professionals (EP) Course Categorization & Student AI Guide; Krieger/Whiting Graduate Academic Misconduct Procedures (Homewood 2017 / AAP 2018); Hopkins Press Author Policy. Institution audit remains PARTIAL.",
