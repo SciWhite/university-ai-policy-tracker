@@ -10,17 +10,21 @@ function sha256(buf: Buffer | string): string {
 
 let cachedCandidateRecords: { pkg: V6RecordPackage; sha256: string; path: string; mtimeMs: number } | undefined;
 let cachedCandidatePages: { pkg: PublishedV6Package; sha256: string; path: string; mtimeMs: number } | undefined;
+let cachedCandidateHistory: { pkg: { schemaVersion: string; basisRevision: string; records: Record<string, unknown> }; sha256: string; path: string; mtimeMs: number } | undefined;
 
 export function resetQACandidateCache(): void {
   cachedCandidateRecords = undefined;
   cachedCandidatePages = undefined;
+  cachedCandidateHistory = undefined;
 }
 
 interface QAConfig {
   recordsPath: string;
   pagesPath: string;
+  historyPath?: string;
   expectedRecordsHash: string;
   expectedPagesHash: string;
+  expectedHistoryHash?: string;
   expectedRevision: string;
 }
 
@@ -29,20 +33,28 @@ function getValidatedQAConfig(): QAConfig | undefined {
 
   const recordsPath = process.env.UAPT_LOCAL_QA_CANDIDATE_RECORDS;
   const pagesPath = process.env.UAPT_LOCAL_QA_CANDIDATE_PAGES;
+  const historyPath = process.env.UAPT_LOCAL_QA_CANDIDATE_HISTORY;
   const expectedRecordsHash = process.env.UAPT_LOCAL_QA_EXPECTED_RECORDS_HASH;
   const expectedPagesHash = process.env.UAPT_LOCAL_QA_EXPECTED_PAGES_HASH;
+  const expectedHistoryHash = process.env.UAPT_LOCAL_QA_EXPECTED_HISTORY_HASH;
   const expectedRevision = process.env.UAPT_LOCAL_QA_EXPECTED_REVISION;
 
-  const anySet = Boolean(recordsPath || pagesPath || expectedRecordsHash || expectedPagesHash || expectedRevision);
+  const anySet = Boolean(recordsPath || pagesPath || historyPath || expectedRecordsHash || expectedPagesHash || expectedHistoryHash || expectedRevision);
   if (!anySet) return undefined;
 
   if (!recordsPath || !pagesPath || !expectedRecordsHash || !expectedPagesHash || !expectedRevision) {
     throw new Error(
-      "UAPT_LOCAL_QA incomplete configuration: all five parameters (RECORDS, PAGES, EXPECTED_RECORDS_HASH, EXPECTED_PAGES_HASH, EXPECTED_REVISION) are required when QA candidate selection is enabled"
+      "UAPT_LOCAL_QA incomplete configuration: all five base parameters (RECORDS, PAGES, EXPECTED_RECORDS_HASH, EXPECTED_PAGES_HASH, EXPECTED_REVISION) are required when QA candidate selection is enabled"
     );
   }
 
-  return { recordsPath, pagesPath, expectedRecordsHash, expectedPagesHash, expectedRevision };
+  if (Boolean(historyPath) !== Boolean(expectedHistoryHash)) {
+    throw new Error(
+      "UAPT_LOCAL_QA incomplete history configuration: both UAPT_LOCAL_QA_CANDIDATE_HISTORY and UAPT_LOCAL_QA_EXPECTED_HISTORY_HASH must be provided together"
+    );
+  }
+
+  return { recordsPath, pagesPath, historyPath, expectedRecordsHash, expectedPagesHash, expectedHistoryHash, expectedRevision };
 }
 
 export function getLocalQACandidateRecords(): V6RecordPackage | undefined {
@@ -138,5 +150,50 @@ export function getLocalQACandidatePages(): PublishedV6Package | undefined {
   }
 
   cachedCandidatePages = { pkg, sha256: hash, path: resolved, mtimeMs: stat.mtimeMs };
+  return pkg;
+}
+
+export function getLocalQACandidateHistory(): { schemaVersion: string; basisRevision: string; records: Record<string, unknown> } | undefined {
+  const config = getValidatedQAConfig();
+  if (!config || !config.historyPath || !config.expectedHistoryHash) return undefined;
+
+  const resolved = [resolve(config.historyPath), resolve(process.cwd(), config.historyPath), resolve(process.cwd(), "../..", config.historyPath)].find(existsSync);
+  if (!resolved) {
+    throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY path not found: ${config.historyPath}`);
+  }
+
+  const stat = statSync(resolved);
+
+  if (cachedCandidateHistory && cachedCandidateHistory.path === resolved && cachedCandidateHistory.mtimeMs === stat.mtimeMs) {
+    if (cachedCandidateHistory.sha256 !== config.expectedHistoryHash) {
+      throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY hash mismatch: expected ${config.expectedHistoryHash}, got ${cachedCandidateHistory.sha256}`);
+    }
+    if (cachedCandidateHistory.pkg.basisRevision !== config.expectedRevision) {
+      throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY revision mismatch: expected ${config.expectedRevision}, got ${cachedCandidateHistory.pkg.basisRevision}`);
+    }
+    return cachedCandidateHistory.pkg;
+  }
+
+  const raw = readFileSync(resolved);
+  const hash = sha256(raw);
+
+  if (hash !== config.expectedHistoryHash) {
+    throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY hash mismatch: expected ${config.expectedHistoryHash}, got ${hash}`);
+  }
+
+  const pkg = JSON.parse(raw.toString("utf8")) as { schemaVersion: string; basisRevision: string; records: Record<string, unknown> };
+  if (pkg.schemaVersion !== "uapt-bounded-public-history-v1") {
+    throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY invalid schema`);
+  }
+
+  if (pkg.basisRevision !== config.expectedRevision) {
+    throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY revision mismatch: expected ${config.expectedRevision}, got ${pkg.basisRevision}`);
+  }
+
+  if (cachedCandidateRecords && cachedCandidateRecords.pkg.revision !== pkg.basisRevision) {
+    throw new Error(`UAPT_LOCAL_QA pair mismatch: history basis '${pkg.basisRevision}' !== records revision '${cachedCandidateRecords.pkg.revision}'`);
+  }
+
+  cachedCandidateHistory = { pkg, sha256: hash, path: resolved, mtimeMs: stat.mtimeMs };
   return pkg;
 }

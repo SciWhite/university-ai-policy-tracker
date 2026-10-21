@@ -51,16 +51,17 @@ export function v6RecordSlugs(revision=pointer.revision):string[]{
  if(useShards(revision)){readV6RecordCorrectionRevision(revision);return [...store().manifest(revision)!.scope];}
  return readV6RecordCorrectionRevision(revision)?.summaries.map(s=>s.entity.slug)??[];
 }
-export function v6SummaryAtRevision(slug:string,revision=pointer.revision):PublicEntitySummary|undefined{
+export function v6SummaryAtRevision(slug:string,revision?:string):PublicEntitySummary|undefined{
   const selected=readV6RecordCorrections();
   if(!selected)return undefined;
-  if(selected.revision === revision) {
+  const targetRevision = revision ?? selected.revision ?? pointer.revision;
+  if(selected.revision === targetRevision) {
     const s = selected.summaries.find(s=>s.entity.slug===slug);
     if (s) return structuredClone(s);
   }
-  const revPkg = readV6RecordCorrectionRevision(revision);
+  const revPkg = readV6RecordCorrectionRevision(targetRevision);
   if(!revPkg)return undefined;
-  return useShards(revision)?store().field<PublicEntitySummary>(revision,['summaries',slug]):structuredClone(revPkg.summaries.find(s=>s.entity.slug===slug));
+  return useShards(targetRevision)?store().field<PublicEntitySummary>(targetRevision,['summaries',slug]):structuredClone(revPkg.summaries.find(s=>s.entity.slug===slug));
 }
 export function v6CorrectedSummary(slug:string){
   const selected = readV6RecordCorrections();

@@ -4,6 +4,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { findRepoRoot } from "../apps/web/lib/repo-root";
 import { publicHistoryBasis } from "../apps/web/lib/public-history-basis";
+import { validateFrozenHistory } from "../apps/web/lib/v6-history-cache";
 import { exportPublicChangeHistory } from "./export-public-change-history";
 import type { ShardIndex, ShardNode, ShardManifest } from "../apps/web/lib/v6-artifact-store";
 
@@ -349,6 +350,38 @@ export async function prepareCandidateBuildInputs(
   const recordsCurrSlugs = familySourceData["public-v6-records"].currentData.slugs;
   if (!Array.isArray(recordsCurrSlugs) || JSON.stringify(recordsCurrSlugs) !== recordsScopeStr) {
     throw new Error("public-v6-records current.json slugs mismatch with manifest scope");
+  }
+
+  // =========================================================================
+  // STEP 1.8: Preflight Frozen History Shape & Integrity Validation
+  // =========================================================================
+  const historyRecordsNode = historyMan.root.entries.find((e) => e[0] === "records")?.[1];
+  if (!historyRecordsNode || historyRecordsNode.kind !== "object") {
+    throw new Error("Missing or invalid records entry in public-v6-history manifest root");
+  }
+  const historyRecordsMap = new Map<string, ShardNode>(historyRecordsNode.entries);
+  const historyObjectsDir = path.join(srcDir, "public-v6-history", "sharded", "objects");
+
+  for (const slug of historyMan.scope) {
+    const shard = historyRecordsMap.get(slug);
+    if (!shard || shard.kind !== "blob") {
+      throw new Error(`Missing or non-blob shard descriptor for ${slug} in public-v6-history manifest`);
+    }
+    const objFile = path.join(historyObjectsDir, `${shard.sha256}.json`);
+    if (!existsSync(objFile)) {
+      throw new Error(`Missing shard object file for ${slug} (${shard.sha256}) in public-v6-history`);
+    }
+    const rawObj = readFileSync(objFile);
+    if (digest(rawObj) !== shard.sha256) {
+      throw new Error(`Shard object hash mismatch for ${slug}: expected ${shard.sha256}, got ${digest(rawObj)}`);
+    }
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(rawObj.toString("utf8"));
+    } catch (e) {
+      throw new Error(`Failed to parse shard JSON for ${slug} (${shard.sha256}): ${e}`);
+    }
+    validateFrozenHistory(slug, parsed);
   }
 
   // =========================================================================
