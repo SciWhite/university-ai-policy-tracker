@@ -245,6 +245,13 @@ export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
   const entries = await readRecordCorrectionChanges();
   const scopedCorrections = [];
   for (const entry of entries) scopedCorrections.push(await getReleaseDiff(entry.revision));
+  if (process.env.NODE_ENV === "development") {
+    const candidate = readV6RecordCorrections();
+    if (candidate && candidate.revision) {
+      const candidateDiff = await getReleaseDiff(candidate.revision);
+      if (candidateDiff) scopedCorrections.push(candidateDiff);
+    }
+  }
   return {...diff, scopedCorrections: scopedCorrections.filter((item): item is ReleaseDiff => !!item)};
 }
 
@@ -264,6 +271,16 @@ export async function buildPublicReleaseDiff(releaseId: string): Promise<Release
 export async function getLatestEntityReleaseDiff(
   slug: string
 ): Promise<ReleaseEntityDiff | undefined> {
+  if (process.env.NODE_ENV === "development") {
+    const candidate = readV6RecordCorrections();
+    if (candidate && candidate.recordRevisions[slug]?.universityRevisionId === candidate.revision && candidate.changesBySlug[slug]) {
+      const diff = await getReleaseDiff(candidate.revision);
+      if (diff) {
+        const entity = getEntityDiff(diff, slug);
+        if (entity) return entity;
+      }
+    }
+  }
   const correction = (await readRecordCorrectionChanges()).find(entry => entry.slug === slug);
   const diff = correction ? await getReleaseDiff(correction.revision) : await getLatestReleaseDiff();
   return diff ? getEntityDiff(diff, slug) : undefined;
@@ -1339,7 +1356,7 @@ export async function getScopedRecordReleaseDiff(releaseId: string, customCorrec
   const correction = customCorrection ?? readV6RecordCorrectionRevision(releaseId);
   if (!correction) return undefined;
   const summaries = Object.keys(correction.recordRevisions)
-    .filter(slug => correction.recordRevisions[slug].universityRevisionId === releaseId && (correction.historical[slug]?.baseline || correction.parentRevisionId || correction.recordRevisions[slug]?.previousRevisionId))
+    .filter(slug => correction.recordRevisions[slug]?.universityRevisionId === releaseId)
     .map(slug => (customCorrection?.summaries.find(s => s.entity.slug === slug) ?? v6SummaryAtRevision(slug, releaseId))!);
   if (!summaries.length) return undefined;
   const manifest = await getManifestByReleaseId(correction.datasetReleaseId);
@@ -1359,12 +1376,14 @@ export async function getScopedRecordReleaseDiff(releaseId: string, customCorrec
       if (!previous) {
         throw Error(`Declared previous revision '${explicitEntityPreviousId}' unavailable for entity '${slug}'`);
       }
-    } else if (parentRevisionId && v6SummaryAtRevision(slug, parentRevisionId)) {
+    } else if (parentRevisionId && (previous = v6SummaryAtRevision(slug, parentRevisionId))) {
       resolvedPreviousId = parentRevisionId;
-      previous = v6SummaryAtRevision(slug, parentRevisionId);
-    } else if (declaredBaselineId || correction.historical[slug]?.baseline) {
+    } else if (correction.historical[slug]?.baseline) {
       resolvedPreviousId = declaredBaselineId ?? 'baseline-v6-pages-20261013';
-      previous = (resolvedPreviousId ? v6SummaryAtRevision(slug, resolvedPreviousId) : undefined) ?? correction.historical[slug]?.baseline;
+      previous = correction.historical[slug]?.baseline;
+    } else if (declaredBaselineId) {
+      resolvedPreviousId = declaredBaselineId;
+      previous = v6SummaryAtRevision(slug, resolvedPreviousId);
       if (!previous) {
         throw Error(`Baseline summary unavailable for entity '${slug}'`);
       }

@@ -721,7 +721,7 @@ export function PolicyV6TopicControls({
           <p className="policy-v6-muted">{topic.scope}</p>
         ) : null}
         {topic.actions.length ? (
-          <ul lang="en" data-i18n="preserve">
+          <ul lang={lab.data.locale === "zh" ? "zh" : "en"} data-i18n="preserve">
             {topic.actions.map((a) => (
               <li key={a}>{a}</li>
             ))}

@@ -27,11 +27,52 @@ test('UCL is a separate local pilot; production cannot read the private view',()
  const original=process.env.NODE_ENV;process.env.NODE_ENV='production';try {assert.equal(getLocalV6Bundle('ucl','en'),undefined);}finally{if(original===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=original;}
 });
 test('new bundle pilots stay local and reject omitted, held or mis-scoped records',()=>{
- for(const slug of ['california-institute-of-technology','eth-zurich','national-university-of-singapore']) {
+ for(const slug of ['california-institute-of-technology','eth-zurich','national-university-of-singapore','anu','edinburgh','cuhk']) {
   assert.equal(isPolicyV6Preview(slug,'v6','development'),true);
   assert.equal(isPolicyV6Preview(slug,'v6','production'),false);
  }
  const held={...fixture(),heldDraftIds:['test-claim']};assert.throws(()=>parse(held));
  const missing={...fixture(),auditCoverage:{publicClaimIds:['test-claim','omitted'],excludedClaims:[],originalObjectCount:2,analysisDimensionKeys:[],institutionAuditStatus:'PARTIAL'}};assert.throws(()=>parse(missing));
  const scoped={...fixture(),scopedToolNames:['Invented service']};assert.throws(()=>parse(scoped));
+});
+
+test('local view localizes topic summaries and topic scopes when locale is zh',()=>{
+ const f = fixture() as any;
+ f.topicSummaries = { coursework: { en: 'Coursework EN', zh: '课程作业中文总结' } };
+ f.topicScopes = { coursework: { en: 'Scope EN', zh: '课程作业中文范围' } };
+ const rawZh = Buffer.from(JSON.stringify(f));
+ const parsedZh = parseLocalV6Bundle(rawZh, 'test-school', {
+  sha256: createHash('sha256').update(rawZh).digest('hex'),
+  sourceBundleSha256: fingerprint
+ }, 'zh');
+ assert.equal(parsedZh.school.topics[0].summary, '课程作业中文总结');
+ assert.equal(parsedZh.school.topics[0].scope, '课程作业中文范围');
+
+ const rawEn = Buffer.from(JSON.stringify(f));
+ const parsedEn = parseLocalV6Bundle(rawEn, 'test-school', {
+  sha256: createHash('sha256').update(rawEn).digest('hex'),
+  sourceBundleSha256: fingerprint
+ }, 'en');
+ assert.equal(parsedEn.school.topics[0].summary, 'Coursework EN');
+ assert.equal(parsedEn.school.topics[0].scope, 'Scope EN');
+});
+
+test('source hold union fails closed if held draft is present in public claims list',()=>{
+ const f = fixture();
+ (f as any).heldDraftIds = ['test-held-leak'];
+ f.claims.push({
+  id: 'test-held-leak',
+  entitySlug: 'test-school',
+  entityType: 'university',
+  claimType: 'other',
+  claimText: 'Leaked held claim',
+  confidence: 0,
+  reviewState: 'agent_reviewed',
+  evidence: []
+ });
+ const raw = Buffer.from(JSON.stringify(f));
+ assert.throws(() => parseLocalV6Bundle(raw, 'test-school', {
+  sha256: createHash('sha256').update(raw).digest('hex'),
+  sourceBundleSha256: fingerprint
+ }, 'en'));
 });

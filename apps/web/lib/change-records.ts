@@ -225,7 +225,8 @@ export async function getChangeRecords(): Promise<ChangeRecord[]> {
   const rows = await aggregateChangeRecordsCache.get("current", buildAggregatedChangeRecords);
   const correction = readV6RecordCorrections();
   if (!correction) return rows;
-  return [...correction.summaries.map(v6ChangeRecord), ...rows.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
+  const correctedSlugs = new Set(correction.summaries.map((s) => s.entity.slug));
+  return [...correction.summaries.map(v6ChangeRecord), ...rows.filter((r) => !correctedSlugs.has(r.slug))].sort(compareFreshness);
 }
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
@@ -235,7 +236,8 @@ export async function getChangeIndexData(): Promise<ChangeIndexData> {
   );
   const correction = readV6RecordCorrections();
   if (!correction) return cached;
-  const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
+  const correctedSlugs = new Set(correction.summaries.map((s) => s.entity.slug));
+  const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter((r) => !correctedSlugs.has(r.slug))].sort(compareFreshness);
   return {...cached, data: {...cached.data, records, facets: buildChangeIndexFacets(records), summary: buildChangeIndexSummary(records)}};
 }
 

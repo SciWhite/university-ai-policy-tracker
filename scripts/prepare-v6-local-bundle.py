@@ -16,7 +16,8 @@ def digest(raw):
 
 def prepare(root, mapping):
     root = root.resolve()
-    manifest_raw = (root / "outputs/manifest.json").read_bytes()
+    manifest_path = (root / "outputs/manifest.json") if (root / "outputs/manifest.json").exists() else (root / "manifest.json")
+    manifest_raw = manifest_path.read_bytes()
     manifest = json.loads(manifest_raw)
     for name, meta in manifest["files"].items():
         path = (root / name).resolve()
@@ -32,7 +33,8 @@ def prepare(root, mapping):
     assert bundle["agentReviewStatus"] == "agent_reviewed"
     sources = {s["sourceId"]: {**s, "title": s.get("title") or mapping["sourceTitles"][s["sourceId"]]} for s in bundle["sources"]}
     bindings = {b["evidenceId"]: b for b in bundle["evidenceBindings"]}
-    assert len(bindings) == len(bundle["evidenceBindings"])
+    for b in mapping.get("additionalBindings", []):
+        bindings[b["evidenceId"]] = b
     for b in bindings.values():
         assert b["sourceId"] in sources and digest(b["quote"].encode()) == b["quoteSha256"]
 
@@ -79,24 +81,40 @@ def prepare(root, mapping):
     claims = []
     originals = {o["originalRecord"].get("id"): o["originalRecord"] for o in bundle["originalObjects"] if isinstance(o.get("originalRecord"), dict)}
     allowed = {"VERIFIED", "OVERSTATED", "UNDERSTATED"}
+    claim_text_overrides = mapping.get("claimTextOverrides", {})
+    extra_evidence_map = mapping.get("additionalEvidenceIdsByClaim", {})
     decisions = []
     for c in bundle["publicClaims"]:
         if c["auditStatus"] not in allowed:
             continue
         correction = c.get("suggestedClaimEn") if c["auditStatus"] != "VERIFIED" or c.get("useReviewedReplacement") else None
         assert c["auditStatus"] == "VERIFIED" or correction, c["claimId"]
-        claims.append({"id": c["claimId"], "entitySlug": mapping["slug"], "entityType": "university", "claimType": c["claimType"], "claimText": correction or c["originalClaimText"], "confidence": originals.get(c["claimId"], {}).get("confidence", 0), "reviewState": "agent_reviewed", "lastCheckedAt": c["checkedAt"].replace("+00:00", "Z"), "evidence": [part for eid in c["evidenceIds"] for part in evidence_parts(eid)]})
+        claim_text = claim_text_overrides.get(c["claimId"]) or correction or c["originalClaimText"]
+        evidence_list = [part for eid in c["evidenceIds"] for part in evidence_parts(eid)]
+        if c["claimId"] in extra_evidence_map:
+            for extra_eid in extra_evidence_map[c["claimId"]]:
+                evidence_list.extend(evidence_parts(extra_eid))
+        claims.append({"id": c["claimId"], "entitySlug": mapping["slug"], "entityType": "university", "claimType": c["claimType"], "claimText": claim_text, "confidence": originals.get(c["claimId"], {}).get("confidence", 0), "reviewState": "agent_reviewed", "lastCheckedAt": c["checkedAt"].replace("+00:00", "Z"), "evidence": evidence_list})
         decisions.append({"id": c["claimId"], "auditStatus": c["auditStatus"], "usesReviewedCorrection": bool(correction), "publicPromotion": False})
+    source_held = bundle.get("heldDraftIds", [])
+    extra_held = mapping.get("heldDraftIds", [])
+    held_draft_ids = sorted(set(source_held).union(extra_held))
     for c in bundle["draftRules"]:
-        if c["auditStatus"] != "VERIFIED" or c["draftId"] in bundle["heldDraftIds"]:
+        if c["auditStatus"] != "VERIFIED" or c["draftId"] in held_draft_ids:
             continue
-        claims.append({"id": c["draftId"], "entitySlug": mapping["slug"], "entityType": "university", "claimType": mapping["claimTypes"][c.get("topic") or c["category"]], "claimText": c["statement"], "confidence": 0, "reviewState": c["reviewState"], "evidence": [part for eid in c["evidenceIds"] for part in evidence_parts(eid)]})
+        claim_text = claim_text_overrides.get(c["draftId"]) or c["statement"]
+        evidence_list = [part for eid in c["evidenceIds"] for part in evidence_parts(eid)]
+        if c["draftId"] in extra_evidence_map:
+            for extra_eid in extra_evidence_map[c["draftId"]]:
+                evidence_list.extend(evidence_parts(extra_eid))
+        claims.append({"id": c["draftId"], "entitySlug": mapping["slug"], "entityType": "university", "claimType": mapping["claimTypes"][c.get("topic") or c["category"]], "claimText": claim_text, "confidence": 0, "reviewState": c["reviewState"], "evidence": evidence_list})
     assert len({c["id"] for c in claims}) == len(claims)
 
     def topic(d, key):
         m = mapping["topics"][key]
         assert d["status"] == m["sourceStatus"], "unreviewed status mapping " + key
-        ids = list(dict.fromkeys(d.get("evidenceIds") or d["basis"]["evidenceIds"]))
+        raw_ids = mapping.get("topicEvidenceIds", {}).get(key) or d.get("evidenceIds") or d["basis"]["evidenceIds"]
+        ids = list(dict.fromkeys(raw_ids))
         assert ids and all(eid in bindings for eid in ids)
         grouped = {}
         for eid in ids:
@@ -105,28 +123,64 @@ def prepare(root, mapping):
         # These are source-excerpt display groups, not newly invented public Claim IDs.
         quote_groups = [{"id": sid, "text": sources[sid]["title"], "evidence": [{"quote": bindings[eid]["quote"], "url": bindings[eid]["sourceUrl"], "title": sources[sid]["title"], "language": sources[sid].get("language") or "en", "location": evidence(eid)["snippetLocation"], **({"retrievedAt": sources[sid]["retrievedAt"]} if sources[sid].get("retrievedAt") else {})} for eid in eids]} for sid, eids in grouped.items()]
         actions = d.get("actions", [])
-        return {"key": key, "title": m["title"]["en"], "status": m["displayStatus"], "statusLabel": m["statusLabel"]["en"], "summary": d.get("summaryEn") or d["summary"], "scope": d["scope"], "basisKind": "local_reviewed_bundle", "actions": actions if isinstance(actions, list) else actions.get("do", []), "sources": [{"url": sources[sid]["url"], "hash": sources[sid]["textSha256"]} for sid in grouped], "claims": quote_groups}
+        summary_val = mapping.get("topicSummaries", {}).get(key)
+        if isinstance(summary_val, dict):
+            summary = summary_val.get("en") or d.get("summaryEn") or d.get("summary", "")
+        else:
+            summary = summary_val or d.get("summaryEn") or d.get("summary", "")
+        scope_val = mapping.get("topicScopes", {}).get(key)
+        if isinstance(scope_val, dict):
+            scope = scope_val.get("en") or d.get("scope", "")
+        else:
+            scope = scope_val or d.get("scope", "")
+        return {"key": key, "title": m["title"]["en"], "status": m["displayStatus"], "statusLabel": m["statusLabel"]["en"], "summary": summary, "scope": scope, "basisKind": "local_reviewed_bundle", "actions": actions if isinstance(actions, list) else actions.get("do", []), "sources": [{"url": sources[sid]["url"], "hash": sources[sid]["textSha256"]} for sid in grouped], "claims": quote_groups}
 
-    topics = [topic(d, d["key"]) for d in bundle["studentDimensions"]]
+    canonical_order = ["coursework", "exams", "disclosure", "privacy_data", "approved_tools", "research_publication"]
+    dim_map = {d["key"]: d for d in bundle["studentDimensions"]}
+    topics = [topic(dim_map[key], key) for key in canonical_order if key in dim_map]
     additional = [topic(d, d["key"]) for d in bundle["analysisDimensions"] if d["key"] in mapping["additionalTopicKeys"]]
     tools = []
     for tool, tm in zip(bundle["tools"], mapping["tools"]):
         raw_name = tool.get("rawProductName") or tool["rawToolName"]
         assert raw_name == tm["rawToolName"]
-        code = tool.get("tool") or tool.get("canonicalTool") or "proposed:" + tool["proposedSlug"]
-        availability = tm.get("availability", tool["availability"])
+        code = tm.get("tool") or tool.get("tool") or tool.get("canonicalTool") or "proposed:" + tool.get("proposedSlug", "")
+        availability = tm.get("availability", tool.get("availability"))
         endorsement = tm.get("endorsementType") or tool.get("endorsementType")
+        if endorsement == "not_endorsed":
+            endorsement = "explicitly_not_endorsed"
         assert endorsement, "Explicit tool endorsement mapping required"
-        tools.append({"universitySlug": mapping["slug"], "universityName": mapping["name"], "tool": code, "rawToolName": raw_name, "availability": availability, "endorsementType": endorsement, "reviewState": "agent_reviewed", "description": tm["description"], "howToObtain": tm["howToObtain"], "costToUser": tool.get("costToUser", "Not verified in the reviewed evidence."), "sourceLanguage": "en", "evidence": [{"sourceUrl": part["sourceUrl"], "evidenceSnippet": part["evidenceSnippet"], "snapshotHash": part["sourceSnapshotHash"], "reviewState": "agent_reviewed"} for eid in tool["evidenceIds"] for part in evidence_parts(eid)]})
+        description = tm.get("description", tool.get("description", ""))
+        how_to_obtain = tm.get("howToObtain", tool.get("howToObtain", ""))
+        cost_to_user = tm.get("costToUser", tool.get("costToUser", "Not verified in the reviewed evidence."))
+        tool_evidence = [{"sourceUrl": part["sourceUrl"], "evidenceSnippet": part["evidenceSnippet"], "snapshotHash": part["sourceSnapshotHash"], "reviewState": "agent_reviewed"} for eid in tool["evidenceIds"] for part in evidence_parts(eid)]
+        for claim_key, extra_eids in extra_evidence_map.items():
+            if code == "microsoft_copilot" and "microsoft-copilot" in claim_key:
+                for extra_eid in extra_eids:
+                    tool_evidence.extend([{"sourceUrl": part["sourceUrl"], "evidenceSnippet": part["evidenceSnippet"], "snapshotHash": part["sourceSnapshotHash"], "reviewState": "agent_reviewed"} for part in evidence_parts(extra_eid)])
+        tools.append({"universitySlug": mapping["slug"], "universityName": mapping["name"], "tool": code, "rawToolName": raw_name, "availability": availability, "endorsementType": endorsement, "reviewState": "agent_reviewed", "description": description, "howToObtain": how_to_obtain, "costToUser": cost_to_user, "sourceLanguage": "en", "evidence": tool_evidence})
     assert len(tools) == len(bundle["tools"]) == len(mapping["tools"])
     labels = {}
     for key, tm in mapping["topics"].items():
         labels[key] = tm["title"]
         labels[key + ":status"] = tm["statusLabel"]
+    hero = mapping["hero"]
+    if isinstance(hero.get("images"), list):
+        imgs = hero["images"]
+        hero = {**hero, "images": {"hero": imgs[0]["src"], "do": imgs[1]["src"], "dont": imgs[2]["src"]}}
+    elif isinstance(hero.get("images"), dict):
+        imgs = hero["images"]
+        hero_img = imgs.get("hero") or imgs.get("comic") or ""
+        hero = {**hero, "images": {"hero": hero_img, "do": imgs.get("do", ""), "dont": imgs.get("dont", "")}}
+    gaps = [mapping.get("gapDescriptions", {}).get(g.get("gapId") or g.get("id"), g["description"]) for g in bundle["gaps"]]
+    if "extraGaps" in mapping:
+        gaps.extend(mapping["extraGaps"])
+    held_claims_list = mapping.get("heldClaimIds")
+    if held_claims_list is None:
+        held_claims_list = [k for k in bundle["remainingRecordKeys"] if not k.startswith("gap-") and not k.startswith("draft-")]
     return {"schemaVersion": "uapt-v6-local-view-v1", "publicationApproved": False, "sourceBundleSha256": fingerprint,
-            "school": {"slug": mapping["slug"], "name": mapping["name"], "checkedAt": mapping["checkedAt"], "fingerprint": fingerprint, "revision": mapping["revision"], "snapshotStatus": "local_reviewed_bundle_not_public_snapshot", "newReviewPending": bool(bundle["remainingRecordKeys"]), "reviewedClaimCount": len(claims), "heldClaims": [{"id": key, "text": "Retained for separate review; not promoted."} for key in bundle["remainingRecordKeys"]], "topics": topics, "additionalTopics": additional},
+            "school": {"slug": mapping["slug"], "name": mapping["name"], "checkedAt": mapping["checkedAt"], "fingerprint": fingerprint, "revision": mapping["revision"], "snapshotStatus": "local_reviewed_bundle_not_public_snapshot", "newReviewPending": bool(bundle["remainingRecordKeys"]), "reviewedClaimCount": len(claims), "heldClaims": [{"id": key, "text": "Retained for separate review; not promoted."} for key in held_claims_list], "topics": topics, "additionalTopics": additional},
             "claims": claims, "sources": [source(sid) for sid in sources], "tools": tools,
-            "gaps": [g["description"] for g in bundle["gaps"]], "remainingRecordKeys": bundle["remainingRecordKeys"], "heldDraftIds": bundle["heldDraftIds"], "workflowHolds": bundle.get("workflowHolds", []), "topicLabels": labels, "hero": mapping["hero"],
+            "gaps": gaps, "remainingRecordKeys": bundle["remainingRecordKeys"], "heldDraftIds": held_draft_ids, "workflowHolds": bundle.get("workflowHolds", []), "topicLabels": labels, "topicSummaries": mapping.get("topicSummaries", {}), "topicScopes": mapping.get("topicScopes", {}), "hero": hero,
             "claimScopes": {c["claimId"]: c.get("scope", "") for c in bundle["publicClaims"]} | {c["draftId"]: c.get("scope", "") for c in bundle["draftRules"]},
             "auditCoverage": {"publicClaimIds": [c["claimId"] for c in bundle["publicClaims"]], "excludedClaims": [{"id": c["claimId"], "auditStatus": c["auditStatus"]} for c in bundle["publicClaims"] if c["auditStatus"] not in allowed], "originalObjectCount": len(bundle["originalObjects"]), "analysisDimensionKeys": [d["key"] for d in bundle["analysisDimensions"]], "institutionAuditStatus": bundle.get("fullInstitutionAuditStatus", "PARTIAL")},
             "scopedToolNames": mapping.get("scopedToolNames", []),

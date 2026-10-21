@@ -27,6 +27,9 @@ export interface LocalV6Bundle {
   claimScopes?: Record<string, string>;
   auditCoverage?: { publicClaimIds: string[]; excludedClaims: { id: string; auditStatus: string }[]; originalObjectCount: number; analysisDimensionKeys: string[]; institutionAuditStatus: string };
   topicLabels: Record<string, { en: string; zh: string }>;
+  topicSummaries?: Record<string, { en: string; zh: string }>;
+  topicScopes?: Record<string, { en: string; zh: string }>;
+  topicActions?: Record<string, { en: string[]; zh: string[] }>;
   hero: { title: { en: string; zh: string }; scope: { en: string; zh: string }; images: { hero: string; do: string; dont: string }; actions: { do: { key: string; en: string; zh: string }[]; dont: { key: string; en: string; zh: string }[] } };
 }
 
@@ -77,6 +80,15 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
   for (const topic of [...view.school.topics, ...view.school.additionalTopics]) {
     topic.title = view.topicLabels[topic.key]?.[local] ?? topic.title;
     topic.statusLabel = view.topicLabels[`${topic.key}:status`]?.[local] ?? topic.statusLabel;
+    if (view.topicSummaries?.[topic.key]?.[local]) {
+      topic.summary = view.topicSummaries[topic.key][local];
+    }
+    if (view.topicScopes?.[topic.key]?.[local]) {
+      topic.scope = view.topicScopes[topic.key][local];
+    }
+    if (view.topicActions?.[topic.key]?.[local]) {
+      topic.actions = view.topicActions[topic.key][local];
+    }
   }
   return view;
 }

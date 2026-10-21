@@ -82,8 +82,8 @@ export async function getCatalogSources(): Promise<CatalogSourceRecord[]> {
 export async function getPublicUniversitySummaryBySlug(
   slug: string
 ): Promise<PublicEntitySummary | undefined> {
-  if (universityIdentitySlugs(slug).length > 1 || isRepairedUniversity(slug) || isCandidateRepairPreview(slug)) return getStagedPublicSummaryBySlug(slug);
   const corrected=v6CorrectedSummary(slug);if(corrected)return corrected;
+  if (universityIdentitySlugs(slug).length > 1 || isRepairedUniversity(slug) || isCandidateRepairPreview(slug)) return getStagedPublicSummaryBySlug(slug);
   const fromApi = await fetchApi(
     `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
     {

@@ -14,6 +14,9 @@ export const policyV6BundlePreviewSlugs = [
   "california-institute-of-technology",
   "eth-zurich",
   "national-university-of-singapore",
+  "anu",
+  "edinburgh",
+  "cuhk",
 ] as const;
 export const isPolicyV6Preview = (
   slug: string,
