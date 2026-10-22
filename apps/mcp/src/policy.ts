@@ -35,17 +35,21 @@ export class PolicyService {
     const snapshot = record.snapshot;
     const dimensions = snapshot?.dimensions.filter(d => (!requested.length || requested.includes(d.key)) &&
       !["not_mentioned", "insufficient_public_evidence"].includes(d.status)) ?? [];
-    const relevantClaims = requested.length ? record.summary.claims.filter(c =>
-      dimensions.some(d => d.basis.claimIds.includes(c.id!)) || requested.some(t => claimMatchesTopic(c, t))) : record.summary.claims;
+    const relevantClaims = (requested.length ? record.summary.claims.filter(c =>
+      dimensions.some(d => d.basis.claimIds.includes(c.id!)) || requested.some(t => claimMatchesTopic(c, t))) : [...record.summary.claims])
+      // Keep permission and assessment conditions ahead of tool catalogue entries.
+      .sort((a,b) => Number(isToolClaim(a)) - Number(isToolClaim(b)));
     const claims = relevantClaims.slice(0,15);
+    const remainingClaimIds = relevantClaims.slice(15).map(c => c.id!);
     const insufficientTopics = requested.filter(t => !(t === "approved_tools" && tools?.length) && !dimensions.some(d => d.key === t) && !relevantClaims.some(c => claimMatchesTopic(c,t)));
-    return { ...this.recordBase(record), status: claims.length || dimensions.length || tools?.length ? "ok" : "insufficient_evidence", university: record.summary.entity.name, slug,
+    const base = this.recordBase(record);
+    return { ...base, limitations: [...base.limitations, ...(remainingClaimIds.length ? ["This response contains only the first 15 relevant claims. Before presenting a complete account of the requested rules, call get_policy_evidence with remainingClaimIds in batches of at most 10. Preserve the scope of each returned claim."] : [])], status: claims.length || dimensions.length || tools?.length ? "ok" : "insufficient_evidence", university: record.summary.entity.name, slug,
       lastCheckedAt: record.summary.lastCheckedAt, trackerUrl: tracker(slug), publicJsonUrl: `https://eduaipolicy.org/api/public/v1/universities/${slug}.json`,
       ...(snapshot ? { snapshotStatus: "strong", scope: snapshot.scope, audiences: snapshot.audiences, summary: requested.length ? undefined : snapshot.summary } : { snapshotStatus: "unavailable", summary: record.summary.claims.length ? "Reviewed claims are provided below; no eligible current student summary is available." : "No eligible reviewed claims are currently available. This does not mean the university has no policy." }),
       dimensions, claims: claims.map(c => ({ id: c.id, claimType: c.claimType, text: c.claimText, confidence: c.confidence, reviewState: c.reviewState,
         lastCheckedAt: c.lastCheckedAt, trackerEvidenceUrl: `${tracker(slug)}#claim-${encodeURIComponent(c.id!)}`, officialSourceUrls: [...new Set(c.evidence.map(e => e.sourceUrl))] })),
       ...(tools ? { tools, totalToolRecords: tools.length, toolEvidenceNotice: "These are separately published tool and access records, not additional policy claims. Preserve procurement, cost, user eligibility, data and service-mode conditions. Access or a catalogue listing does not establish course, assessment or sensitive-data permission." } : {}),
-      totalRelevantClaims: relevantClaims.length, remainingClaimIds: relevantClaims.slice(15).map(c => c.id), insufficientTopics,
+      totalRelevantClaims: relevantClaims.length, remainingClaimIds, insufficientTopics,
       ...(insufficientTopics.length ? { evidenceNotice: "The published evidence does not support a conclusion for these topics. This does not mean the university has no rule." } : {}) };
   }
   evidence(slug: string, ids: string[]) {
@@ -59,11 +63,15 @@ export class PolicyService {
   }
 }
 
+function isToolClaim(claim: Record["summary"]["claims"][number]): boolean {
+  return claim.claimType === "ai_tool_treatment" || claim.claimType === "procurement";
+}
+
 // These selectors retrieve evidence, not permission classifications or new policy conclusions.
 function claimMatchesTopic(claim: Record["summary"]["claims"][number], topic: Topic): boolean {
   switch(topic) {
-    case "coursework": return claim.claimType === "teaching";
-    case "exams": return /\b(exam|examination|assessment|quiz)\b/i.test(claim.claimText);
+    case "coursework": return claim.claimType === "teaching" || /\b(coursework|courses?|assignments?|assessments?|syllabus|syllabi)\b/i.test(claim.claimText);
+    case "exams": return /\b(exams?|examinations?|assessments?|quizzes|quiz)\b/i.test(claim.claimText);
     case "disclosure": return /\b(disclos\w*|acknowledg\w*|declar\w*|citat\w*)\b/i.test(claim.claimText);
     case "privacy_data": return claim.claimType === "privacy" || claim.claimType === "security_review";
     case "approved_tools": return claim.claimType === "ai_tool_treatment" || claim.claimType === "procurement";

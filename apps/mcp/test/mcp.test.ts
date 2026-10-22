@@ -71,6 +71,57 @@ test("unsupported topics and foreign claim IDs do not create conclusions", async
   assert.equal(response.claims?.length,0);
   assert.equal(p.evidence(record.summary.entity.slug,["claim-from-another-university"]).claims.length,0);
 });
+test("focused topics retain CLIE assessment exceptions and Waterloo instructor restrictions", async () => {
+  const p = new PolicyService(await loadCatalog(file));
+  const exams = p.policy("ucl",["exams"]);
+  assert.ok("claims" in exams);
+  assert.ok(exams.claims?.some(c=>c.id==="clm-ucl-clie-genai-assessment-2026-27"));
+  const coursework = p.policy("university-of-waterloo",["coursework"]);
+  assert.ok("claims" in coursework);
+  for (const id of ["claim-waterloo-ai-instructor-rules","claim-waterloo-grad-genai-permission","claim-waterloo-course-outline-permitted-use"]) {
+    assert.ok(coursework.claims?.some(c=>c.id===id),id);
+  }
+});
+test("policy conditions precede tool entries without losing claims or mutating the catalog", async () => {
+  const catalog=await loadCatalog(file); const p=new PolicyService(catalog);
+  for (const [slug,restriction] of [
+    ["university-of-toronto","draft-claim-uoft-course-materials-upload"],
+    ["princeton-university","draft-claim-princeton-art-archaeology-independent-work"]
+  ]) {
+    const record=catalog.records.find(r=>r.summary.entity.slug===slug)!;
+    const original=JSON.stringify(record);
+    const response=p.policy(slug);
+    assert.ok("claims" in response);
+    assert.ok(response.claims?.some(c=>c.id===restriction),restriction);
+    assert.ok(response.claims!.length<=15);
+    assert.deepEqual(new Set([...response.claims!.map(c=>c.id),...response.remainingClaimIds!]),new Set(record.summary.claims.map(c=>c.id)));
+    assert.deepEqual(response.tools,record.tools);
+    assert.equal(JSON.stringify(record),original);
+  }
+});
+test("remaining claims have a bounded evidence continuation with complete original text", async () => {
+  const catalog=await loadCatalog(file); const p=new PolicyService(catalog);
+  const response=p.policy("university-of-toronto");
+  assert.ok("remainingClaimIds" in response);
+  assert.ok(response.remainingClaimIds!.length>0);
+  assert.ok(response.limitations.some(l=>l.includes("get_policy_evidence") && l.includes("at most 10")));
+  const remaining=response.remainingClaimIds!;
+  const recovered=[];
+  for (let start=0;start<remaining.length;start+=10) {
+    const evidence=p.evidence("university-of-toronto",remaining.slice(start,start+10));
+    assert.equal(evidence.status,"ok");
+    assert.ok("missingClaimIds" in evidence);
+    assert.deepEqual(evidence.missingClaimIds,[]);
+    recovered.push(...evidence.claims);
+  }
+  assert.deepEqual(new Set(recovered.map(c=>c.id)),new Set(remaining));
+  const record=catalog.records.find(r=>r.summary.entity.slug==="university-of-toronto")!;
+  for (const claim of recovered) {
+    const original=record.summary.claims.find(c=>c.id===claim.id)!;
+    assert.equal(claim.claimText,original.claimText);
+    assert.deepEqual(claim.evidence,original.evidence);
+  }
+});
 test("recorded evidence retains local scope and does not promise live source availability", async () => {
   const catalog=await loadCatalog(file);
   const record=structuredClone(catalog.records.find(r=>r.snapshot)!);
