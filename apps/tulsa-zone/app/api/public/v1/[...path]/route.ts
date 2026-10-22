@@ -62,9 +62,14 @@ async function handleGet(request:Request,{params}:{params:Promise<{path:string[]
   // The dataset publication and this composed response have different clocks.
   body.datasetGeneratedAt=body.generatedAt;
   body.generatedAt=new Date().toISOString();
-  body.timestampSemantics={generatedAt:'Response composition time; not evidence retrieval or policy effective date.',datasetGeneratedAt:'Historical base dataset publication time.',universityRevisionPublishedAt:'Per-school correction time in record provenance; not policy effective date.'};
+  body.timestampSemantics={generatedAt:'Response composition time; not evidence retrieval or policy effective date.',datasetGeneratedAt:'Historical base dataset publication time.','appliedRecordCorrection.recordedAt':'Scoped record/package correction time; not policy effective date.'};
  }
- return NextResponse.json(withIndexProvenance(body,correction),{headers:{'Cache-Control':'private, no-store, no-transform'}});}
+ const indexed=withIndexProvenance(body,correction);
+ if(path==='coverage/qs-2026.json'){
+  indexed.baselineGeneratedAt=body.datasetGeneratedAt;
+  indexed.generatedAtMeaning='response_composition';
+ }
+ return NextResponse.json(indexed,{headers:{'Cache-Control':'private, no-store, no-transform'}});}
  if(path==='recent-changes.json')return recentChanges();
  if(path==='changes/index.json')return NextResponse.json(await getChangeIndexResponse());
  if(path==='changes/latest.json')return NextResponse.json({...await getLatestReleaseDiff(),scopedRecordCorrection:{revision:correction.revision,publishedAt:correction.publishedAt,changes:correction.changesBySlug}});
