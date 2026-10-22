@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { AnalyticsPreferenceControl } from "./analytics-preference-control";
 import { ClarityPrivacyControl } from "./clarity-integration";
 import { clarityCopy } from "@/lib/clarity-copy";
+import { PluginGetStarted } from "./plugin-get-started";
+import { pluginPromotionCopy } from "@/lib/plugin-promotion";
 import { PluginInstallLink } from "./plugin-install-link";
 import { SupportMailboxDetails } from "./support-mailbox-details";
 import { getTrustContent, trustIntroductions, type TrustPageKind } from "@/lib/trust-content";
@@ -24,7 +26,9 @@ export function TrustPage({ kind, locale = "en" }: { kind: TrustPageKind; locale
     <div className={styles.body}>
     <nav aria-label={text.labels[5]} className={styles.navigation}><p>{text.labels[5]}</p>{(["contact","support","privacy","terms","mcp"] as const).map(k => <a key={k} href={withLocalePrefix(`/${k}`,locale)} aria-current={kind === k ? "page" : undefined}>{text.labels[kindIndex[k]]}</a>)}</nav>
     <div className={styles.content}>
+    {kind === "mcp" && <div className={styles.install}><PluginInstallLink labels={text.labels} /></div>}
     {text[kind].map((p,index) => {
+      if (kind === "mcp" && index === 2) return null;
       const split = kind === "privacy" ? p.search(/[:：]/) : -1;
       return <section key={p}>{split > 0 ? <><h2>{p.slice(0,split)}</h2><p>{p.slice(split+1).trim()}</p></> : <p>{p}</p>}
         {kind === "privacy" && index === 0 ? <AnalyticsPreferenceControl labels={text.labels} /> : null}
@@ -37,9 +41,9 @@ export function TrustPage({ kind, locale = "en" }: { kind: TrustPageKind; locale
     </section> : null}
     <div className={styles.actions}>
       {(kind === "contact" || kind === "support" || kind === "privacy" || kind === "terms") && <p><a href="mailto:support@eduaipolicy.org">support@eduaipolicy.org</a></p>}
-      {(kind === "mcp" || kind === "support") && <PluginInstallLink labels={text.labels} />}
+      {kind === "support" && <PluginInstallLink labels={text.labels} />}
     </div>
-      {kind === "mcp" && <div className={styles.technical}><p><a href="/api/public/v1/mcp/manifest.json">REST alpha manifest</a> · <a href="/api/public/v1/mcp/tool-catalog.json">REST alpha tool catalog</a></p><p><code>resolve_university → get_student_policy → get_policy_evidence</code></p></div>}
+      {kind === "mcp" && <><PluginGetStarted locale={locale} /><details className={styles.technical}><summary>{pluginPromotionCopy(locale).technical}</summary><p>{text.mcp[2]}</p><p><a href="/api/public/v1/mcp/manifest.json">REST alpha manifest</a> · <a href="/api/public/v1/mcp/tool-catalog.json">REST alpha tool catalog</a></p><p><code>resolve_university → get_student_policy → get_policy_evidence</code></p></details></>}
     <footer className={styles.note}><p>{text.labels[12]} <a href={`/${kind}`} lang="en">English</a></p></footer>
     </div></div></div>
   </main>;

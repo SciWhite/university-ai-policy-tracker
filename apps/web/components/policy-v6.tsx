@@ -22,6 +22,8 @@ import { PolicyV6SearchPicker } from "./policy-v6-search-picker";
 import { UniversityMark } from "./university-mark";
 import { canonicalUniversitySlugs } from "@/lib/canonical-university-slug";
 import { policyV6InteractionCopy } from "@/lib/policy-v6-interaction-copy";
+import { UNIVERSITY_POLICY_PLUGIN_URL } from "@/lib/plugin-directory";
+import { pluginPromotionCopy } from "@/lib/plugin-promotion";
 import {PolicyV6StudentGuide} from './policy-v6-student-guide';
 const v6Classes = {
   actions: "policy-v6-actions",
@@ -622,6 +624,7 @@ export function PolicyV6Intro() {
         })}
       </div>
       <div className={v6Classes.introFoot}>
+        <a href={UNIVERSITY_POLICY_PLUGIN_URL} target="_blank" rel="noopener noreferrer">{pluginPromotionCopy(data.locale).cta} ↗</a>
         <a className="v6-compact-check-entry" href="#v6-submission-guide"><strong>{data.locale === "zh" ? "提交前检查" : "Before you submit"}</strong><span>{data.locale === "zh" ? "建议与注意事项" : "Advice and precautions"}</span><span aria-hidden="true">↓</span></a>
         <a
           href={`${data.locale === "en" ? "" : `/${data.locale}`}/changes/${data.currentSlug}`}

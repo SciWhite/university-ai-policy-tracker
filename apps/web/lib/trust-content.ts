@@ -40,7 +40,7 @@ export const trustContent = {
     ],
     "mcp": [
       "Ask what your school says about AI use, disclosure, exams, privacy and institutional tools. The service queries all eligible published university records and preserves their evidence and scope.",
-      "Resolve the school, retrieve student policy, then verify claim evidence when needed. Each answer should include a tracker link and official source link. Unpublished research is excluded.",
+      "Ask in your own words and include your university’s full name. Answers link to tracker evidence and official university sources, with the conditions that apply to your course or faculty.",
       "The remote endpoint is https://eduaipolicy.org/api/mcp. Public-directory availability is shown below. The earlier REST alpha manifest and tool catalog remain available for compatibility."
     ]
   },
@@ -84,7 +84,7 @@ export const trustContent = {
     ],
     "mcp": [
       "查询学校对 AI 使用、披露、考试、隐私和机构工具的规定。服务覆盖所有符合门槛的正式发布记录，并保留证据和适用范围。",
-      "先确定学校，再查询学生政策，必要时核查声明证据。回答应同时提供网站和学校官方链接。未发布的研究资料不参与回答。",
+      "用自己的话提问，并写出学校全名。回答提供网站证据和学校官方来源链接，保留课程及院系的适用条件。",
       "远程端点为 https://eduaipolicy.org/api/mcp。公开目录状态见下方；此前的 REST alpha manifest 和工具目录继续保留兼容。"
     ]
   },
