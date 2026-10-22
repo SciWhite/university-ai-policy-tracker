@@ -130,5 +130,9 @@
   "qs35-40-v6-r3-20261022": {
     "path": "revisions/qs35-40-v6-r3-20261022.json",
     "sha256": "2c4dc9c1302d348ed2457d732676eb09ac42fef3c1aa520a20e9b3fcfc9ca194"
+  },
+  "qs35-40-v6-r4-meta-20261022": {
+    "path": "revisions/qs35-40-v6-r4-meta-20261022.json",
+    "sha256": "1155333aa0316fb8b7306e4a9a6a84247c1c8012be62dc0a2aae0ac5f76d8e04"
   }
 }

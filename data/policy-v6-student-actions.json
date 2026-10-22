@@ -756,10 +756,10 @@
       "slug": "snu",
       "name": "Seoul National University",
       "experience": "compact_evidence",
-      "presentationRevision": "qs35-40-v6-r3-20261022",
-      "recordSha256": "af2652baf6effae8747d17d7518784163018fcd97e22fa7f2923701895503749",
-      "schoolFingerprint": "af2652baf6effae8747d17d7518784163018fcd97e22fa7f2923701895503749",
-      "universityRevisionId": "qs35-40-v6-r3-20261022",
+      "presentationRevision": "qs35-40-v6-r4-meta-20261022",
+      "recordSha256": "37b909cd08bd464daa763809b4acdab821aa0b7eeba9f16d00be73a81f7129c6",
+      "schoolFingerprint": "37b909cd08bd464daa763809b4acdab821aa0b7eeba9f16d00be73a81f7129c6",
+      "universityRevisionId": "qs35-40-v6-r4-meta-20261022",
       "do": [
         {
           "en": "Check your course syllabus for permitted AI scope and reporting rules (§2(5)).",
@@ -1588,10 +1588,10 @@
       "slug": "manchester",
       "name": "The University of Manchester",
       "experience": "compact_evidence",
-      "presentationRevision": "qs35-40-v6-r3-20261022",
-      "recordSha256": "5517306113cdc94a0a9157592c9115cda5e00f571fc6fe77e9dcfa880cf0cf88",
-      "schoolFingerprint": "5517306113cdc94a0a9157592c9115cda5e00f571fc6fe77e9dcfa880cf0cf88",
-      "universityRevisionId": "qs35-40-v6-r3-20261022",
+      "presentationRevision": "qs35-40-v6-r4-meta-20261022",
+      "recordSha256": "2d24db35dbf3a6021fba39680c88bd414b911119f06be1c06e8b44e729d7a8cb",
+      "schoolFingerprint": "2d24db35dbf3a6021fba39680c88bd414b911119f06be1c06e8b44e729d7a8cb",
+      "universityRevisionId": "qs35-40-v6-r4-meta-20261022",
       "do": [
         {
           "en": "Always verify the designated AI assessment category (A, B, C, or D) in the course unit handbook and Canvas assessment brief before starting coursework (DocID 79331 §2.1.1, §2.1.3).",
@@ -2441,10 +2441,10 @@
       "slug": "monash",
       "name": "Monash University",
       "experience": "compact_evidence",
-      "presentationRevision": "qs35-40-v6-r3-20261022",
-      "recordSha256": "d425439c730e1c169eb1d11572672de10315ff2bbf8c0481c7439ee9bb76018d",
-      "schoolFingerprint": "d425439c730e1c169eb1d11572672de10315ff2bbf8c0481c7439ee9bb76018d",
-      "universityRevisionId": "qs35-40-v6-r3-20261022",
+      "presentationRevision": "qs35-40-v6-r4-meta-20261022",
+      "recordSha256": "c71dc3a2dd662e8a3867306ba6bd3ca24294fd6e17d7af99f607475105ad5531",
+      "schoolFingerprint": "c71dc3a2dd662e8a3867306ba6bd3ca24294fd6e17d7af99f607475105ad5531",
+      "universityRevisionId": "qs35-40-v6-r4-meta-20261022",
       "do": [
         {
           "en": "Check the specific Moodle statement (Without Limits, Guided, or Must Not Be Used) before using AI.",
@@ -3187,10 +3187,10 @@
       "slug": "ubc",
       "name": "University of British Columbia",
       "experience": "compact_evidence",
-      "presentationRevision": "qs35-40-v6-r3-20261022",
-      "recordSha256": "3529e6bd3be76a7d38ac4ff7f8fb8828038c1e30ff60e89a3c17d8466807e2f6",
-      "schoolFingerprint": "3529e6bd3be76a7d38ac4ff7f8fb8828038c1e30ff60e89a3c17d8466807e2f6",
-      "universityRevisionId": "qs35-40-v6-r3-20261022",
+      "presentationRevision": "qs35-40-v6-r4-meta-20261022",
+      "recordSha256": "7f5590aa788b4ef6c9fb81cdb9bb85a895d64844113afc50bafc19a62c6162c0",
+      "schoolFingerprint": "7f5590aa788b4ef6c9fb81cdb9bb85a895d64844113afc50bafc19a62c6162c0",
+      "universityRevisionId": "qs35-40-v6-r4-meta-20261022",
       "do": [
         {
           "en": "Get express permission from your instructor, supervisor, or program before using GenAI in assessed work, and check the course syllabus statement (Senate V-130 / O-130.1).",
@@ -4375,10 +4375,10 @@
       "slug": "columbia",
       "name": "Columbia University",
       "experience": "compact_evidence",
-      "presentationRevision": "qs35-40-v6-r3-20261022",
-      "recordSha256": "2cde7981c88f2238cca81157576793306c717a3999e9c43bbbf5181b7771ce47",
-      "schoolFingerprint": "2cde7981c88f2238cca81157576793306c717a3999e9c43bbbf5181b7771ce47",
-      "universityRevisionId": "qs35-40-v6-r3-20261022",
+      "presentationRevision": "qs35-40-v6-r4-meta-20261022",
+      "recordSha256": "3b65166503e79e9f99380a47cf552b3871d5469d60b498f78f5cf9b03d12ad1b",
+      "schoolFingerprint": "3b65166503e79e9f99380a47cf552b3871d5469d60b498f78f5cf9b03d12ad1b",
+      "universityRevisionId": "qs35-40-v6-r4-meta-20261022",
       "do": [
         {
           "en": "Check your school-specific policy and course syllabus before using generative AI in coursework: adhering schools under CSSI Standards & Discipline require prior instructor authorization, while Columbia Law School allows defined research/writing support by default unless the instructor restricts it.",
@@ -5129,10 +5129,10 @@
       "slug": "u-tokyo",
       "name": "The University of Tokyo",
       "experience": "compact_evidence",
-      "presentationRevision": "qs35-40-v6-r3-20261022",
-      "recordSha256": "4cc5cc5e0211cb02ae33d4f93e384ef18173291c278e7cdd8005a8bcaaa98253",
-      "schoolFingerprint": "4cc5cc5e0211cb02ae33d4f93e384ef18173291c278e7cdd8005a8bcaaa98253",
-      "universityRevisionId": "qs35-40-v6-r3-20261022",
+      "presentationRevision": "qs35-40-v6-r4-meta-20261022",
+      "recordSha256": "3c4317564c03494bd2dd85ae9b81dd8d9c75f35ee014bf17211d740d2ac4797d",
+      "schoolFingerprint": "3c4317564c03494bd2dd85ae9b81dd8d9c75f35ee014bf17211d740d2ac4797d",
+      "universityRevisionId": "qs35-40-v6-r4-meta-20261022",
       "do": [
         {
           "en": "Check the UTOL assignment Permitted AI Use label (T0–T5 or Other) or course syllabus before using any generative AI tool.",

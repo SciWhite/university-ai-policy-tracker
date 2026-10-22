@@ -57,7 +57,14 @@ async function handleGet(request:Request,{params}:{params:Promise<{path:string[]
   'universities.json':universities,'search/index.json':searchIndex,'policy-snapshots/index.json':snapshotIndex,
   'analysis/index.json':analysisIndex,'analysis/coverage-scores.json':coverageScores,'analysis/page-quality.json':pageQuality
  };
- if(path==='coverage/qs-2026.json'||path==='policy-snapshots/index.json'){const response=await common[path]();const body=await response.json();return NextResponse.json(withIndexProvenance(body,correction),{headers:{'Cache-Control':'private, no-store, no-transform'}});}
+ if(path==='coverage/qs-2026.json'||path==='policy-snapshots/index.json'){const response=await common[path]();const body=await response.json();
+ if(path==='coverage/qs-2026.json'){
+  // The dataset publication and this composed response have different clocks.
+  body.datasetGeneratedAt=body.generatedAt;
+  body.generatedAt=new Date().toISOString();
+  body.timestampSemantics={generatedAt:'Response composition time; not evidence retrieval or policy effective date.',datasetGeneratedAt:'Historical base dataset publication time.',universityRevisionPublishedAt:'Per-school correction time in record provenance; not policy effective date.'};
+ }
+ return NextResponse.json(withIndexProvenance(body,correction),{headers:{'Cache-Control':'private, no-store, no-transform'}});}
  if(path==='recent-changes.json')return recentChanges();
  if(path==='changes/index.json')return NextResponse.json(await getChangeIndexResponse());
  if(path==='changes/latest.json')return NextResponse.json({...await getLatestReleaseDiff(),scopedRecordCorrection:{revision:correction.revision,publishedAt:correction.publishedAt,changes:correction.changesBySlug}});

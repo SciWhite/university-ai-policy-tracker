@@ -146,6 +146,11 @@
       "path": "sharded/revisions/qs35-40-v6-r3-20261022-f9a515a4d86e5f7dbe95e44b2da1e6e567cbd80b06f8e3e5833b247634a2c7bc.json",
       "sha256": "f9a515a4d86e5f7dbe95e44b2da1e6e567cbd80b06f8e3e5833b247634a2c7bc",
       "sourceSha256": "2c4dc9c1302d348ed2457d732676eb09ac42fef3c1aa520a20e9b3fcfc9ca194"
+    },
+    "qs35-40-v6-r4-meta-20261022": {
+      "path": "sharded/revisions/qs35-40-v6-r4-meta-20261022-d946845dac2739985b1f51380c56fe73280ad3118412cb10287bf4ccef1500a9.json",
+      "sha256": "d946845dac2739985b1f51380c56fe73280ad3118412cb10287bf4ccef1500a9",
+      "sourceSha256": "1155333aa0316fb8b7306e4a9a6a84247c1c8012be62dc0a2aae0ac5f76d8e04"
     }
   }
 }
