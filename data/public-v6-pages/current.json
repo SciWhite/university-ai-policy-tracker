@@ -1,7 +1,7 @@
 {
-  "path": "revisions/qs20-24-v6-r7-20261020.json",
-  "sha256": "cb70bcb12e6d44ce8f4d539034a50b708b2bde6e35341c02646d0c46a01d5d38",
-  "releaseId": "qs20-24-v6-r7-20261020",
+  "path": "revisions/qs35-40-v6-r3-20261022.json",
+  "sha256": "2c4dc9c1302d348ed2457d732676eb09ac42fef3c1aa520a20e9b3fcfc9ca194",
+  "releaseId": "qs35-40-v6-r3-20261022",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -33,7 +33,16 @@
     "universite-psl",
     "university-of-toronto",
     "fudan-university",
-    "kcl"
+    "kcl",
+    "anu",
+    "edinburgh",
+    "cuhk",
+    "snu",
+    "manchester",
+    "monash",
+    "ubc",
+    "columbia",
+    "u-tokyo"
   ],
   "v5Slugs": []
 }

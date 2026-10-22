@@ -136,6 +136,16 @@
       "path": "sharded/revisions/qs20-24-v6-r7-20261020-e25c821f83a20626043c40a1781ec9ec211037dacf3d7cdf5c4b0ebf4c73c71d.json",
       "sha256": "e25c821f83a20626043c40a1781ec9ec211037dacf3d7cdf5c4b0ebf4c73c71d",
       "sourceSha256": "cb70bcb12e6d44ce8f4d539034a50b708b2bde6e35341c02646d0c46a01d5d38"
+    },
+    "v6-target-r7-candidate-20261021": {
+      "path": "sharded/revisions/v6-target-r7-candidate-20261021-2281a51fd314205bdd2a687dcd35783d0d4b12a4b5f50b76c230ea94d89c7b60.json",
+      "sha256": "2281a51fd314205bdd2a687dcd35783d0d4b12a4b5f50b76c230ea94d89c7b60",
+      "sourceSha256": "521f63759ccf397136aa671cab21f748499048c3276c0cc500bd8f400f30ce52"
+    },
+    "qs35-40-v6-r3-20261022": {
+      "path": "sharded/revisions/qs35-40-v6-r3-20261022-f9a515a4d86e5f7dbe95e44b2da1e6e567cbd80b06f8e3e5833b247634a2c7bc.json",
+      "sha256": "f9a515a4d86e5f7dbe95e44b2da1e6e567cbd80b06f8e3e5833b247634a2c7bc",
+      "sourceSha256": "2c4dc9c1302d348ed2457d732676eb09ac42fef3c1aa520a20e9b3fcfc9ca194"
     }
   }
 }
