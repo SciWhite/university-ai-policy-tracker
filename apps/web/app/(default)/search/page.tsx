@@ -247,7 +247,7 @@ interface SearchPageProps {
 
 export async function generateMetadata({
   params
-}: Pick<SearchPageProps, "params"> = {}) {
+}: Pick<SearchPageProps, "params">) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = searchCopy[locale];
   const alternates = getLocalizedAlternates("/search", locale);
