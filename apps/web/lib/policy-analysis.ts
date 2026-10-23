@@ -1,4 +1,5 @@
 import {v6ReviewedAnalysisOverride} from "./v6-effective-records";
+import {scopedAnalysisRepair,scopedAnalysisRepairRevision} from "./scoped-analysis-repair";
 import mitAnalysisDimensions from "../../../data/public-record-repairs/mit-20261010/analysis-dimensions.json";
 import { getRepairAnalysisContext } from "./public-record-repairs";
 import {
@@ -465,6 +466,7 @@ async function buildPolicyAnalysisProfiles(): Promise<PolicyAnalysisProfile[]> {
 export function buildPolicyAnalysisProfile(
   summary: PublicEntitySummary
 ): PolicyAnalysisProfile {
+  const scopedRepair=scopedAnalysisRepair(summary);
   const generatedAt = latestIso(
     summary.claims.flatMap((claim) => [
       claim.lastChangedAt,
@@ -503,10 +505,10 @@ export function buildPolicyAnalysisProfile(
     basedOnSourceUrls,
     sourceLanguages,
     reviewState: REVIEW_STATE,
-    confidence: deriveProfileConfidence(dimensions),
+    confidence: scopedRepair ? 0 : deriveProfileConfidence(dimensions),
     coverageScore,
     dimensions,
-    limitations: ANALYSIS_LIMITATIONS,
+    limitations: scopedRepair ? [...ANALYSIS_LIMITATIONS, `Scoped interpretation revision ${scopedAnalysisRepairRevision}, bound to the exact current university record. Confidence 0 is uncalibrated; institution coverage remains PARTIAL and student snapshot review remains pending.`] : ANALYSIS_LIMITATIONS,
     suggestedCitation:
       `University AI Policy Tracker. "${summary.entity.name} policy analysis profile." ` +
       `Version ${PUBLIC_API_VERSION}. ${summary.canonicalUrl}`
@@ -518,6 +520,7 @@ function buildDimension(
   definition: DimensionDefinition
 ): PolicyAnalysisDimension {
   const isMit = summary.entity.slug === "massachusetts-institute-of-technology";
+  const scopedRepair=scopedAnalysisRepair(summary);
   const imperialContext = getRepairAnalysisContext(summary);
   const isImperialCandidate = Boolean(imperialContext);
   const repair = v6ReviewedAnalysisOverride(summary)?.[definition.key] ?? (isMit ? mitAnalysisDimensions[definition.key] : imperialContext?.dimensions[definition.key]);
@@ -578,7 +581,9 @@ function buildDimension(
 
   const isCandidateContext =
     imperialContext && !imperialContext.publicationApproved;
-  const explanation = isMit
+  const explanation = scopedRepair
+    ? "Explicit scoped interpretation from the current reviewed claims listed in basis; audience, program, assessment and source-year limits remain in the summary. This is not keyword-derived permission or independent student-snapshot approval."
+    : isMit
     ? "Scoped MIT source interpretation from the current reviewed claims listed in basis; historical held provisions are excluded. This derived profile does not replace course instructions or the pending independent student-summary review. Confidence is an uncalibrated extraction signal, not accuracy."
     : isImperialCandidate
     ? isCandidateContext
@@ -586,7 +591,9 @@ function buildDimension(
       : "Scoped university source interpretation from reviewed claims listed in basis. This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
     : buildDimensionExplanation(definition, status, claims);
 
-  const normalizedValue = isMit
+  const normalizedValue = scopedRepair
+    ? `${scopedAnalysisRepairRevision}:${definition.key}:${status}`
+    : isMit
     ? `mit_scoped_review:${definition.key}:${status}`
     : isImperialCandidate
     ? `imperial_scoped_${imperialContext?.publicationApproved ? "review" : "candidate"}:${definition.key}:${status}`
@@ -605,7 +612,7 @@ function buildDimension(
     evidenceSourceUrls,
     sourceLanguages,
     reviewState: REVIEW_STATE,
-    confidence: deriveDimensionConfidence(claims),
+    confidence: scopedRepair ? 0 : deriveDimensionConfidence(claims),
     evidenceCount: evidenceClaimIds.length,
     sourceCount: evidenceSourceUrls.length,
     basis

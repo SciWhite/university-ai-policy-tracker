@@ -7,6 +7,7 @@ import {publishedV6Enabled} from './policy-v6-published-gate';
 import {readPublishedV6Revision} from './policy-v6-published';
 import {V6ArtifactStore, readVerifiedArtifact, v6PublicDataRoot, type ShardIndex} from './v6-artifact-store';
 import {getLocalQACandidateRecords} from './v6-qa-candidate';
+import {scopedAnalysisRepair} from './scoped-analysis-repair';
 export interface RecordRevision {universityRevisionId:string;datasetReleaseId:string;recordSha256:string;publishedAt:string;baselineRevisionId?:string;previousRevisionId?:string}
 export interface V6RecordPackage {schemaVersion:string;revision:string;publishedAt:string;datasetReleaseId:string;publicationApproved:true;parentRevisionId?:string;changeSummary?:{en:string;zh:string};summaries:PublicEntitySummary[];snapshots:Record<string,PolicySnapshot>;toolsBySlug:Record<string,UniversityToolRecord[]>;recordRevisions:Record<string,RecordRevision>;heldBySlug:Record<string,PublicEntitySummary['claims']>;historical:Record<string,{baseline:PublicEntitySummary;snapshot:PolicySnapshot|null;heldClaims:PublicEntitySummary['claims']}>;aliasesBySlug:Record<string,string[]>;changesBySlug:Record<string,{addedClaimIds:string[];updatedClaimIds:string[];heldClaimIds:string[]}>;analysisOverrides?:Record<string,{recordSha256:string;dimensions:Record<string,{claimIds:string[];status:string;summary:string}>}>}
 const useShards=(revision:string)=>process.env.UAPT_V6_LEGACY_DATA!=='1'&&Object.hasOwn(shardIndex.revisions,revision);
@@ -75,6 +76,8 @@ export function v6RecordRevision(slug:string){return readV6RecordCorrections()?.
 export function v6CorrectedSnapshot(slug:string){return structuredClone(readV6RecordCorrections()?.snapshots[slug]);}
 export function v6CorrectedTools(slug:string){return structuredClone(readV6RecordCorrections()?.toolsBySlug[slug]);}
 export function v6ReviewedAnalysisOverride(summary:PublicEntitySummary, customPackage?: V6RecordPackage){
+ const scoped=publishedV6Enabled()?scopedAnalysisRepair(summary):undefined;
+ if(scoped)return scoped;
  const pin=(customPackage ?? readV6RecordCorrections())?.analysisOverrides?.[summary.entity.slug];
  if(!pin||createHash('sha256').update(JSON.stringify(summary)).digest('hex')!==pin.recordSha256)return undefined;
  return pin.dimensions;

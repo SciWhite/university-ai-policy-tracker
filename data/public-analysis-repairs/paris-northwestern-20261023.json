@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "uapt-scoped-analysis-repair-v1",
+  "revision": "paris-northwestern-analysis-20261023-r1",
+  "basisRevision": "uq-hkust-michigan-v6-r4-20261022",
+  "limitations": [
+    "Derived analysis correction only. Institution audits remain PARTIAL.",
+    "No new source verification or public student snapshot approval.",
+    "No ID aliases; obsolete claims stay in historical versions."
+  ],
+  "universities": {
+    "institut-polytechnique-de-paris": {
+      "recordSha256": "7bc4d2a344230a1c48980d3571b54e70aa8068a716f2ae022a3c89effad9416a",
+      "dimensions": {
+        "policy_presence": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-ai-exams-and-coursework"
+          ],
+          "status": "conditionally_allowed",
+          "summary": "The 2026–27 IP Paris M1/M2 regulation contains explicit AI assessment rules. This establishes scoped guidance, not a university-wide AI policy."
+        },
+        "ai_disclosure": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-ai-disclosure"
+          ],
+          "status": "required",
+          "summary": "The 2026–27 Master rules require systematic, precise and detailed disclosure for permitted non-exam AI support; examination citation follows academic citation rules. Citation alone does not authorize use."
+        },
+        "coursework": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-ai-exams-and-coursework",
+            "candidate-ipp-master-2026-27-ai-generated-content"
+          ],
+          "status": "conditionally_allowed",
+          "summary": "For IP Paris M1/M2 in 2026–27, outside examinations AI support is described for information search, knowledge deepening and reasoning checks, subject to full disclosure, plagiarism restrictions and explicit instructor bans. Member-school/course conditions remain separate."
+        },
+        "exams": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-ai-exams-and-coursework"
+          ],
+          "status": "conditionally_allowed",
+          "summary": "AI use in any examination requires explicit instructor authorization in the applicable instructions. This is limited to the covered 2026–27 Master scope."
+        },
+        "privacy_data_entry": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-research-confidentiality"
+          ],
+          "status": "unclear",
+          "summary": "The Master regulation requires confidentiality for scientific, technical and institutional information. It does not establish AI vendor training, retention or student account controls."
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-ai-exams-and-coursework",
+            "candidate-ipp-master-2026-27-ai-generated-content",
+            "candidate-ipp-master-2026-27-academic-sanctions",
+            "candidate-ipp-master-2026-27-disciplinary-jurisdiction"
+          ],
+          "status": "restricted",
+          "summary": "For 2026–27 IP Paris M1/M2, unauthorized exam AI use is fraud and reproduction beyond duly cited short excerpts is plagiarism. Academic penalties and disciplinary jurisdiction are stated separately; no numerical appeal deadline is established."
+        },
+        "approved_tools": {
+          "claimIds": [],
+          "status": "not_mentioned",
+          "summary": "No student product access, procurement, cost or endorsement is established by this review. Teacher-facing resources are not student access or assessment permission."
+        },
+        "named_ai_services": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-ai-generated-content"
+          ],
+          "status": "unclear",
+          "summary": "The covered Master text names ChatGPT, MistralAI and Gemini as LLM examples. Naming them establishes neither approved student access nor assessment permission."
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "candidate-polytechnique-instructor-detection-resource-catalog"
+          ],
+          "status": "recommended",
+          "summary": "École polytechnique’s instructor resource catalogue lists Turnitin, AI Text Classifier and GPTZero, including a Moodle authenticity workflow. This is teacher-facing resource guidance, not a detector accuracy finding or student permission."
+        },
+        "research_guidance": {
+          "claimIds": [
+            "candidate-ipp-master-2026-27-research-confidentiality"
+          ],
+          "status": "unclear",
+          "summary": "The regulation states confidentiality duties for Master research and thesis information; broader thesis, publication and third-party service conditions remain unverified."
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "status": "not_mentioned",
+          "summary": "No reviewed direct AI security-review, procurement, licensing or student vendor approval rule is established in this candidate."
+        }
+      }
+    },
+    "northwestern-university": {
+      "recordSha256": "d7311602df80f348bab6b69f9270b7134adc40f3dcd9eebdcc9aacccfe5fa5ed",
+      "dimensions": {
+        "policy_presence": {
+          "claimIds": [
+            "nw-claim-001",
+            "nw-claim-004"
+          ],
+          "status": "required",
+          "summary": "University academic integrity and institutional-data guidance exist, with different program procedures and tool-specific conditions."
+        },
+        "coursework": {
+          "claimIds": [
+            "nw-local-course-hierarchy",
+            "nw-claim-001",
+            "nw-new-20261022-05"
+          ],
+          "status": "conditionally_allowed",
+          "summary": "Follow the actual course and assignment instructions. Open, Conditional and Closed are instructor examples, not blanket student permission. Feinberg MD assignments require direct authorship unless specifically permitted; the Kellogg 2025–26 rule is historical."
+        },
+        "exams": {
+          "claimIds": [
+            "nw-local-course-hierarchy"
+          ],
+          "status": "unclear",
+          "summary": "Unauthorized examination aids are prohibited. The reviewed current university guidance does not establish one AI default for every exam; follow the instructor and school rules. The Kellogg 2025–26 manual must not be assumed current."
+        },
+        "ai_disclosure": {
+          "claimIds": [
+            "nw-claim-001",
+            "nw-claim-002"
+          ],
+          "status": "required",
+          "summary": "Work submitted under your name needs proper attribution and authorization. Follow the task’s disclosure format; detailed prompt/verification lists in teaching examples are not a universal checklist, and citation does not authorize prohibited use."
+        },
+        "privacy_data_entry": {
+          "claimIds": [
+            "nw-claim-004",
+            "nw-claim-006",
+            "nw-new-20261022-06",
+            "nw-new-20261022-11",
+            "nw-local-feinberg-materials"
+          ],
+          "status": "restricted",
+          "summary": "Use only the validated tool, intended use and applicable data-provider permission. Feinberg clinical PHI guidance, its MD policy, McCormick Level 3 ban and Pritzker’s some-Level-3 allowance have distinct scopes. No-training assurances do not remove sensitive-data or retention limits."
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "nw-claim-001",
+            "nw-local-partc-response",
+            "nw-local-partc-outcomes",
+            "nw-new-20261022-02",
+            "nw-new-20261022-03"
+          ],
+          "status": "restricted",
+          "summary": "Unauthorized AI authorship may be cheating or plagiarism. Part C response, possible sanctions and appeals apply only to listed schools; professional schools differ. TGS’s written-decision appeal period and initial-notification finality wording must remain separate."
+        },
+        "approved_tools": {
+          "claimIds": [
+            "nw-claim-003",
+            "nw-new-20261022-07",
+            "nw-local-kellogg-workspaces"
+          ],
+          "status": "conditionally_allowed",
+          "summary": "Copilot Chat is available through Northwestern accounts; paid M365 Copilot and school-funded ChatGPT/Claude seats have different eligibility. The SSO tool catalog remains unverified, and access never grants assessment permission."
+        },
+        "named_ai_services": {
+          "claimIds": [
+            "nw-claim-003",
+            "cl-northwestern-university-chatgpt-230",
+            "cl-northwestern-university-claude-231"
+          ],
+          "status": "conditionally_allowed",
+          "summary": "Named Microsoft, ChatGPT and Claude offerings are documented for specific institutional accounts or school workspaces. Consumer, Team, Enterprise, Business and Premium modes are not interchangeable."
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "nw-claim-002",
+            "nw-new-20261022-09",
+            "nw-new-20261022-10"
+          ],
+          "status": "recommended",
+          "summary": "Instructors can choose and communicate AI course policies; the Open/Conditional/Closed examples and Fall 2026 smart-glasses wording are recommendations. AI grading involving protected student information needs the stated agreements and security review."
+        },
+        "research_guidance": {
+          "claimIds": [
+            "nw-new-20261022-08",
+            "nw-new-20261022-12"
+          ],
+          "status": "restricted",
+          "summary": "Panopto should not be used for non-public research data in the interview-transcription guidance. Other research recording, IRB and sponsor conditions require separate checks; Feinberg MD publication/presentation disclosure follows journal or organization requirements."
+        },
+        "security_procurement": {
+          "claimIds": [
+            "nw-claim-004",
+            "nw-new-20261022-10",
+            "nw-new-20261022-11"
+          ],
+          "status": "restricted",
+          "summary": "Institutional data use requires the intended-use validation and data-provider permission in IT guidance. Protected grading data and school workspaces have additional agreements/restrictions; a catalog listing or no-training statement does not itself approve a use case."
+        }
+      }
+    }
+  }
+}
