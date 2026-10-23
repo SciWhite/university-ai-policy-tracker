@@ -10,7 +10,7 @@ const workspaceRoot = path.resolve(appRoot, "../..");
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 180,
   experimental: {
-    cpus: 2,
+    cpus: 1,
     globalNotFound: true,
     memoryBasedWorkersCount: false,
     staticGenerationMaxConcurrency: 2,
