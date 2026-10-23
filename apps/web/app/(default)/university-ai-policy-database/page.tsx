@@ -167,7 +167,7 @@ export default async function UniversityAiPolicyDatabasePage({
   params
 }: {
   params?: Promise<{ locale?: string }>;
-} = {}) {
+}) {
   const locale = normalizeLocale((await params)?.locale);
   const stats = await getDatabaseStats();
   const title = buildTitle(stats.universityCount, locale);
