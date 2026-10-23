@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
     cpus: 1,
     globalNotFound: true,
     memoryBasedWorkersCount: false,
+    webpackMemoryOptimizations: true,
     staticGenerationMaxConcurrency: 1,
     staticGenerationMinPagesPerWorker: 50
   },
