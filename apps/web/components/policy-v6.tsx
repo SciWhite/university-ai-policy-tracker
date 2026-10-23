@@ -144,7 +144,7 @@ export function PolicyV6Provider({
     setLoading(true);
     setLoadError(false);
     fetch(
-      `${data.published ? "/api/policy-v6/compare" : "/api/local/policy-v6/compare"}?${new URLSearchParams({ slugs: missing.join(","), locale: data.locale })}`,
+      `/api/policy-v6/compare?${new URLSearchParams({ slugs: missing.join(","), locale: data.locale })}`,
       { signal: controller.signal },
     )
       .then(async (response) => {

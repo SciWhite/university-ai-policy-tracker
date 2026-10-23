@@ -10,6 +10,8 @@ export const policyV6Slugs = [
 ] as const;
 /** Separate opt-in local bundle pilots, with their own evidence and acceptance. */
 export const policyV6BundlePreviewSlugs = [
+  "institut-polytechnique-de-paris",
+  "northwestern-university",
   "ucl",
   "california-institute-of-technology",
   "eth-zurich",

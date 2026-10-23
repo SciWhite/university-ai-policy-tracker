@@ -1,3 +1,5 @@
+import { validateLocalV6AnalysisProjection, type LocalV6AnalysisProjection } from "./policy-v6-local-analysis";
+import type { V6StudentActions } from "./policy-v6-student-actions";
 import {publishedV6Bundle} from "./policy-v6-published";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -11,6 +13,7 @@ import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
+  analysisProjection?: LocalV6AnalysisProjection;
   publication?: {releaseId:string;kind:string;publishedAt?:string};
   schemaVersion: "uapt-v6-local-view-v1";
   publicationApproved: false;
@@ -26,11 +29,37 @@ export interface LocalV6Bundle {
   workflowHolds?: unknown[];
   claimScopes?: Record<string, string>;
   auditCoverage?: { publicClaimIds: string[]; excludedClaims: { id: string; auditStatus: string }[]; originalObjectCount: number; analysisDimensionKeys: string[]; institutionAuditStatus: string };
+  studentActions?: V6StudentActions;
   topicLabels: Record<string, { en: string; zh: string }>;
   topicSummaries?: Record<string, { en: string; zh: string }>;
   topicScopes?: Record<string, { en: string; zh: string }>;
   topicActions?: Record<string, { en: string[]; zh: string[] }>;
   hero: { title: { en: string; zh: string }; scope: { en: string; zh: string }; images: { hero: string; do: string; dont: string }; actions: { do: { key: string; en: string; zh: string }[]; dont: { key: string; en: string; zh: string }[] } };
+}
+
+/** Private projections bind to this exact local claim set, independently of published approvals. */
+export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions | undefined {
+  const guide = view.studentActions;
+  if (!guide || guide.slug !== view.school.slug || guide.name !== view.school.name ||
+    !guide.claims || !Array.isArray(guide.do) || !Array.isArray(guide.dont) ||
+    guide.do.length !== 3 || guide.dont.length !== 3 || !guide.procedures ||
+    guide.schoolFingerprint !== view.school.fingerprint ||
+    guide.recordSha256 !== createHash("sha256").update(JSON.stringify(view.claims)).digest("hex")) return undefined;
+  if (view.analysisProjection && [...view.school.topics, ...view.school.additionalTopics].some(topic =>
+    guide.topics?.[topic.key]?.en !== view.topicSummaries?.[topic.key]?.en ||
+    guide.topics?.[topic.key]?.zh !== view.topicSummaries?.[topic.key]?.zh)) return undefined;
+  const claims = new Map(view.claims.map((claim) => [claim.id, claim]));
+  for (const row of Object.values(guide.claims)) {
+    const claim = claims.get(row.id);
+    if (!claim || claim.reviewState !== "agent_reviewed" || row.text !== claim.claimText ||
+      JSON.stringify(row.evidence) !== JSON.stringify(claim.evidence.map((e) => ({
+        quote: e.evidenceSnippet, url: e.sourceUrl, language: e.sourceLanguage ?? "und",
+        hash: e.sourceSnapshotHash, location: e.snippetLocation ?? "",
+      })))) return undefined;
+  }
+  if ([...guide.do, ...guide.dont].some((action) => !action.claimIds.length || action.claimIds.some((id) => !guide.claims[id])) ||
+    Object.values(guide.procedures).flat().some((id) => !guide.claims[id])) return undefined;
+  return structuredClone(guide);
 }
 
 /** Explicit local registration only; no environment-selected unrelated candidates. */
@@ -76,6 +105,7 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
   for (const topic of topics) {
     if (topic.basisKind !== "local_reviewed_bundle" || !topic.claims.length || !topic.summary || topic.claims.some((claim) => !claim.evidence.length || claim.evidence.some((e) => !e.quote || !/^https?:\/\//.test(e.url)))) throw new Error("Invalid V6 topic evidence");
   }
+  validateLocalV6AnalysisProjection(view);
   const local = locale === "zh" ? "zh" : "en";
   for (const topic of [...view.school.topics, ...view.school.additionalTopics]) {
     topic.title = view.topicLabels[topic.key]?.[local] ?? topic.title;

@@ -4257,6 +4257,190 @@
       "rawSha256": "53136206fed857990608ee2ffa17b995f32f28148ee8db35fea1319ec5d8ee84",
       "textSha256": "99103ee972b312e5c0081e6a79f86a75621d5bd227a6c6636f8e907612974471",
       "verification": "verified_captured_bytes"
+    },
+    {
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/R%C3%A8glement%20des%20%C3%A9tudes%20de%20master2026-2027%20approuv%C3%A9%20en%20CA%201.pdf",
+      "snapshotHash": "074f17e3c3f159397f31478ba84ce26b7658074284eb7649d51509c556d21544",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "074f17e3c3f159397f31478ba84ce26b7658074284eb7649d51509c556d21544",
+      "textSha256": "9e99733bbd589477cdfe7db5a09f7fa8229465a77c91547ba0c99e19f44c5cb1",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.ip-paris.fr/education/niveau-master-et-ingenieur/masters",
+      "snapshotHash": "9e1b64549417c98ab9393dd3e1e2460e4b32f3e8f20350df642e1a858818a238",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9e1b64549417c98ab9393dd3e1e2460e4b32f3e8f20350df642e1a858818a238",
+      "textSha256": "1cdc8f719991aeb479a36d0d3f6d881fbba463e99b3adc77ef3d56e666634b7f",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20Academic%20Regulations%20IP%20Paris%20Master%20Programs%201.pdf",
+      "snapshotHash": "237a5d5b2a4ba88612dcc0fdf069ef38967c52f26850d47549dbf558c52c028b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "237a5d5b2a4ba88612dcc0fdf069ef38967c52f26850d47549dbf558c52c028b",
+      "textSha256": "d12725d375d4dc6dc1613bd01105db20f8daba3c3d132914921b30845dc00ed4",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+      "snapshotHash": "65ddac738ec3727dd7cb5179cc5ebaaf4c9195f9fe49ed67c7a3e559eb167dba",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "65ddac738ec3727dd7cb5179cc5ebaaf4c9195f9fe49ed67c7a3e559eb167dba",
+      "textSha256": "5fd9b1540284c29d026a162cbbada698cccbbd5b82d134087b60f61371aa758b",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-01-21_reglement_des_etudes_de_master_ip_paris_2023_2024_approuve_en_CA.pdf",
+      "snapshotHash": "65ddac738ec3727dd7cb5179cc5ebaaf4c9195f9fe49ed67c7a3e559eb167dba",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "65ddac738ec3727dd7cb5179cc5ebaaf4c9195f9fe49ed67c7a3e559eb167dba",
+      "textSha256": "5fd9b1540284c29d026a162cbbada698cccbbd5b82d134087b60f61371aa758b",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+      "snapshotHash": "db8760f5f69022cf76ab85ebe7542b1b495a068fd4b543e258e72d1cba3bb4c6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "db8760f5f69022cf76ab85ebe7542b1b495a068fd4b543e258e72d1cba3bb4c6",
+      "textSha256": "eea55a29327718dd7aeb72e03fdca29923623f3d8fd928b397183e24738a6f3c",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.polytechnique.edu/teaching-learning/ressources-ia",
+      "snapshotHash": "3672619945080410d8f188d57dbebe82be243777387779304c7a877e53b28f49",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3672619945080410d8f188d57dbebe82be243777387779304c7a877e53b28f49",
+      "textSha256": "135b83c014e73ceff1bbfed3ba058c4d674da40ab305510bf102646147d3d212",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/ri_ipparis_version_approuvee_ca_140325_annexe%20%281%29.pdf",
+      "snapshotHash": "595fb347d7f95d9b0aad71ee9c8e5eebbe7f735bb486b248a6d9fc46ef154ce3",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "595fb347d7f95d9b0aad71ee9c8e5eebbe7f735bb486b248a6d9fc46ef154ce3",
+      "textSha256": "b5ddaa54153868ea316c07d0b1cb819edc40cac3d45b70526d890845d40753cc",
+      "verification": "frozen_artifact_bytes"
+    },
+    {
+      "sourceUrl": "https://www.northwestern.edu/provost/policies-procedures/academic-integrity/principles.html",
+      "snapshotHash": "ea627eeb73f137cbbd6d3b312ecdb5f5325f0a86219b907e7ed017970ecb3877",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ea627eeb73f137cbbd6d3b312ecdb5f5325f0a86219b907e7ed017970ecb3877",
+      "textSha256": "5ccc4cc7c8931349a42a3798f03309c0b0ad2c8cced79f692765bbc1325464be",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+      "snapshotHash": "ccdac576c85f8ac31cb5fa9096661eb3c31e91dc0db18dec7d396c61a4eab340",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ccdac576c85f8ac31cb5fa9096661eb3c31e91dc0db18dec7d396c61a4eab340",
+      "textSha256": "b19e604acd2ea88ef4c6798ab93128611488f180371282e2f46813f6b723f239",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+      "snapshotHash": "441ccaeec012e626fa11c755de9e20ad5a5c21dfb711609d5ee2fe4b1f0bbf1a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "441ccaeec012e626fa11c755de9e20ad5a5c21dfb711609d5ee2fe4b1f0bbf1a",
+      "textSha256": "eff07b7fdd05067ba9fc084d7b2535a4b637ea34efce50f01e2e66760f4f3214",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+      "snapshotHash": "e8af2814604066181ae2708c0a28e5cd957a6d6a6f61082105607d6ee4c1333e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e8af2814604066181ae2708c0a28e5cd957a6d6a6f61082105607d6ee4c1333e",
+      "textSha256": "ae7b93fe7b1d3a7cb9a5e497cfad67da2305931d7476697200bef2036e41e2a6",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://catalogs.northwestern.edu/tgs/academic-policies-procedures/academic-integrity/",
+      "snapshotHash": "fd4f7dfe494fdd81414e3732454c0374f996a0e2560e21756c087e52a830bf0b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "fd4f7dfe494fdd81414e3732454c0374f996a0e2560e21756c087e52a830bf0b",
+      "textSha256": "d5d2caeee2f9366f027f95765a3bbb4253bb03291c21caf30990aa668cd4aee6",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.northwestern.edu/provost/policies-procedures/academic-integrity/counseling-and-contacts.html",
+      "snapshotHash": "97ab8ee7ec8c2fd9838dcd99d4db36025b3287aef56f7482b7c6c725c3f91360",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "97ab8ee7ec8c2fd9838dcd99d4db36025b3287aef56f7482b7c6c725c3f91360",
+      "textSha256": "642f48406d5c6780ca474ab7493ba94dc12c805ff9089d35718551f796c3df20",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.feinberg.northwestern.edu/md-education/docs/policies/professionalism-learning-environment/use-of-generative-ai-tools-policy.pdf",
+      "snapshotHash": "9ecb54687f9132299aa1c8dd13e22173a53dd69784d0bb550c9905d0c47df2a8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9ecb54687f9132299aa1c8dd13e22173a53dd69784d0bb550c9905d0c47df2a8",
+      "textSha256": "261967265bffbb09a14feef7c250037966022400d4932e2255b81d69e483d503",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.feinberg.northwestern.edu/sites/artificial-intelligence/health-data-science/ai-essentials/using-llms-responsibly.html",
+      "snapshotHash": "1f6cd9bf05b5dd9a65a75be04bc0bdd82f635c06342086bfea74182c09d31868",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1f6cd9bf05b5dd9a65a75be04bc0bdd82f635c06342086bfea74182c09d31868",
+      "textSha256": "f96aac6a64c832c21066e46e16236f03048745e97b3227a3a7546405557dbc45",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.kellogg.northwestern.edu/-/media/ay25-26-academic-policy-manual.pdf?hash=603F9FF1F736739E1153ECE2C8F1DE15&sc_lang=en",
+      "snapshotHash": "2a0dc751e1250c48bae4f238cd08527589638478ccca28cbc2eee86006b82e9f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2a0dc751e1250c48bae4f238cd08527589638478ccca28cbc2eee86006b82e9f",
+      "textSha256": "39a1ab73ea0aaafc72eefc112db92702034fd2e14041c189f649459d628b561f",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://kiskellogg.service-now.com/sp?id=kb_article_view&sysparm_article=KB0011306",
+      "snapshotHash": "00fc4d4107a6189175930239aef637b94270843969dbb136ce18b50cce3b2d7b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "00fc4d4107a6189175930239aef637b94270843969dbb136ce18b50cce3b2d7b",
+      "textSha256": "9dcc7ddb914d2e23f37bea3dbabf275f2862ae1623d7e72dfc7a1a8126d99f57",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://www.mccormick.northwestern.edu/it-resources/computer-software/ai-tools.html",
+      "snapshotHash": "941747622c0c77fdd721d72885e9c30050e8c52f6caf5d67ce9c17e36d175025",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "941747622c0c77fdd721d72885e9c30050e8c52f6caf5d67ce9c17e36d175025",
+      "textSha256": "992a7108eb09710cad91ad4245423203e7e56fc6fc9d2be3dba7811812af652b",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.law.northwestern.edu/campus-services/it/training/",
+      "snapshotHash": "07293a4dea6dfe0d671c3b00029de86b9f9e73d58fce8490f7f3d70e8a797db6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "07293a4dea6dfe0d671c3b00029de86b9f9e73d58fce8490f7f3d70e8a797db6",
+      "textSha256": "08921f58a29b01b872e19a4fcd71db06cc2ec5bb6e44a15782a76ed2b5c31e4a",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.northwestern.edu/provost/news/2026/2026-fall-quarter-updates.html",
+      "snapshotHash": "6d91d976262c0be7e30bc73bafa2330e212e2cee9be5a7aa414ace1177abcd22",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6d91d976262c0be7e30bc73bafa2330e212e2cee9be5a7aa414ace1177abcd22",
+      "textSha256": "c80e9ca4774fcd77f024192e3cc9d435dc3e3d9a6466b3660c43e42145196e4c",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.northwestern.edu/provost/news/2026/seeking-faculty-input-on-ai-assisted-grading.html",
+      "snapshotHash": "2efc08dcbc561b933716d8eb3b2ff45a35dec4a48cbea77cdc064d6303265cf9",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2efc08dcbc561b933716d8eb3b2ff45a35dec4a48cbea77cdc064d6303265cf9",
+      "textSha256": "9e264307d2589f737ea750bd6561cea039786f9a7b356df7f324f4c0611a40b1",
+      "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.it.northwestern.edu/ai/research-with-ai/ai-transcription-of-research-interviews.html",
+      "snapshotHash": "2ee7a6a1ccb18438e95cff8391e341257c20cea022d504a16e9675b04aa64a4e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2ee7a6a1ccb18438e95cff8391e341257c20cea022d504a16e9675b04aa64a4e",
+      "textSha256": "caccce364d78846c477b3340d51fedbfd580bef5402229f5116562e8b605ff0d",
+      "verification": "frozen_capture_file_bytes"
     }
   ]
 }

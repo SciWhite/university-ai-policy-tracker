@@ -16,7 +16,7 @@ import { policyV6Slugs, policyV6BundlePreviewSlugs } from "./policy-v6-gate";
 import type { SupportedLocale } from "./i18n";
 import { policyV6ReviewState } from "./policy-v6-review";
 import {getV6StudentActions,type V6StudentActions} from './policy-v6-student-actions';
-import { getLocalV6Bundle } from "./policy-v6-bundle";
+import { getLocalV6Bundle, getLocalV6StudentActions } from "./policy-v6-bundle";
 import {
   getLocalV6Evidence,
   type LocalV6Evidence,
@@ -220,10 +220,14 @@ export async function getPolicyV6Data(
   const slugs: string[] = [...policyV6Slugs];
   if (policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug)) slugs.push(currentSlug);
   const schools = await Promise.all(slugs.map((slug) => getPolicyV6School(locale, slug)));
+  const localCurrent = schools.find((school) => school?.slug === currentSlug);
+  const localBundle = process.env.NODE_ENV === "development" ? getLocalV6Bundle(currentSlug, locale) : undefined;
+  const localActions = localBundle ? getLocalV6StudentActions(localBundle) : undefined;
   return {
     locale,
     currentSlug,
     schools: schools.filter((s): s is NonNullable<typeof s> => Boolean(s)),
+    ...(localActions && localCurrent ? { studentActionsPilot: true, studentActions: localActions } : {}),
   };
 }
 
