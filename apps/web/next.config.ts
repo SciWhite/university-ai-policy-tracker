@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     cpus: 1,
     globalNotFound: true,
     memoryBasedWorkersCount: false,
-    staticGenerationMaxConcurrency: 2,
+    staticGenerationMaxConcurrency: 1,
     staticGenerationMinPagesPerWorker: 50
   },
   turbopack: {
