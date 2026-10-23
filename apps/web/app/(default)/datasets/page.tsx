@@ -140,7 +140,7 @@ interface DatasetsPageProps {
 
 export async function generateMetadata({
   params
-}: DatasetsPageProps = {}) {
+}: DatasetsPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).datasets;
   const alternates = getLocalizedAlternates("/datasets", locale);

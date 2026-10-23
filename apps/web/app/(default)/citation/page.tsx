@@ -24,7 +24,7 @@ interface CitationPageProps {
 
 export async function generateMetadata({
   params
-}: CitationPageProps = {}) {
+}: CitationPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).citation;
   const alternates = getLocalizedAlternates("/citation", locale);
