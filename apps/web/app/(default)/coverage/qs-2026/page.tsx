@@ -37,7 +37,7 @@ export default async function QsCoveragePage({
   params
 }: {
   params?: Promise<{ locale?: string }>;
-} = {}) {
+}) {
   const locale = normalizeLocale((await params)?.locale);
   const data = await getCoverageDashboardData();
   const apiPath = `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`;
