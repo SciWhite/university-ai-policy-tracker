@@ -141,7 +141,7 @@
     "releaseId": "paris-northwestern-v6-r1-20261022"
   },
   "uq-hkust-michigan-v6-r2-20261022": {
-    "path": "sharded/revisions/uq-hkust-michigan-v6-r2-20261022-ff461fe378ec79492ceb99db34f22c65c07ffef1a16c10699dc8297e350bd319.json",
+    "path": "revisions/uq-hkust-michigan-v6-r2-20261022.json",
     "sha256": "b7182db63cc1a5f6fc09eeb5db24f3b2129a9ed12cb6c16389e2236e4092cb0c",
     "releaseId": "uq-hkust-michigan-v6-r2-20261022"
   }

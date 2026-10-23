@@ -131,7 +131,7 @@
     "revision": "paris-northwestern-v6-r1-20261022"
   },
   "uq-hkust-michigan-v6-r2-20261022": {
-    "path": "sharded/revisions/uq-hkust-michigan-v6-r2-20261022-6ca6bf2b96eeeaed7f3d0a4fe7bdb27174f17247165ac1b8cc5dcf84de08c7a8.json",
+    "path": "revisions/uq-hkust-michigan-v6-r2-20261022.json",
     "sha256": "732e568baeff94bf75d81a62aa7f8b0bfff3027184188f0b870614f6be50cb39",
     "revision": "uq-hkust-michigan-v6-r2-20261022"
   }
