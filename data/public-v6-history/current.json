@@ -1,5 +1,5 @@
 {
-  "path": "revisions/qs35-40-v6-r4-meta-20261022.json",
-  "sha256": "d0ba168645794419525374ae2d94267f08ce7ad356f823cb2d3ae386800f83ec",
-  "basisRevision": "qs35-40-v6-r4-meta-20261022"
+  "path": "sharded/revisions/uq-hkust-michigan-v6-r2-20261022-4f4fa297f970f6b2fa4bea57f983ad5e7a2943566cf8ab9359a2129726bd8027.json",
+  "sha256": "0f6bced28275d27fbfe0d6ca44c21963a5c499d3dc9d6b3fb2c106a39175453c",
+  "basisRevision": "uq-hkust-michigan-v6-r2-20261022"
 }

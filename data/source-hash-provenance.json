@@ -4441,6 +4441,302 @@
       "rawSha256": "2ee7a6a1ccb18438e95cff8391e341257c20cea022d504a16e9675b04aa64a4e",
       "textSha256": "caccce364d78846c477b3340d51fedbfd580bef5402229f5116562e8b605ff0d",
       "verification": "frozen_capture_file_bytes"
+    },
+    {
+      "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/assessment-design",
+      "snapshotHash": "833b7c2a57f7266c25d5559d7e2a33da80f86ce6f46a3fc4d3ac02d8ee105534",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "833b7c2a57f7266c25d5559d7e2a33da80f86ce6f46a3fc4d3ac02d8ee105534",
+      "textSha256": "bf8ef61a7e14cb95d3fb01fcae2bb1dc9113ceec321782ec03b33510d43a5bfd",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+      "snapshotHash": "a3b207f55df77ae44cf829af6a04be35a080f7f7998a0283958425f3055ddd4a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a3b207f55df77ae44cf829af6a04be35a080f7f7998a0283958425f3055ddd4a",
+      "textSha256": "82793a184064e79303d65b581c3e72ef8b1b2984eb40d9338d8be1306a025021",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+      "snapshotHash": "7b24037815ac2e0d6673a6e6b4b66890c1755fc7a59b336eb5e247ef34e57821",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "7b24037815ac2e0d6673a6e6b4b66890c1755fc7a59b336eb5e247ef34e57821",
+      "textSha256": "b8a1a567ae1ff37bf920e088aff945c8e324bf81e238d8a27c391c8a1a68396d",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/faculty",
+      "snapshotHash": "4ab93d5e509ed9a9ef25039f8f8c62e70b0f55e93f11478e8d9cfdc6b435e705",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4ab93d5e509ed9a9ef25039f8f8c62e70b0f55e93f11478e8d9cfdc6b435e705",
+      "textSha256": "82b927df4b6a22ae64795e7b7e352cb73c404c8433a23dc5b7e91d4e4d3f21d5",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+      "snapshotHash": "a40033e2b1bca5d6fd5a8c5f30bcfb526fefb99a45e72d9d9868f7b61ed00e7e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a40033e2b1bca5d6fd5a8c5f30bcfb526fefb99a45e72d9d9868f7b61ed00e7e",
+      "textSha256": "191da3aaa6036192d20101c7a9262c2edae1fcfad9788b08f28a5c08c16c567d",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/students",
+      "snapshotHash": "1ae5f5b3ac8bac3633bc9f0fd2528be969e03b2e1c0915eb444a82f149c84f07",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1ae5f5b3ac8bac3633bc9f0fd2528be969e03b2e1c0915eb444a82f149c84f07",
+      "textSha256": "409c6146855d44dd51c420ef1596ec12a6bde75cfbba018904934064b88a388b",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/tools",
+      "snapshotHash": "6a1bd7d2d0659d50d6e03b3ff8ba18e64e75e28cafbb67de400c22e62357b74a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6a1bd7d2d0659d50d6e03b3ff8ba18e64e75e28cafbb67de400c22e62357b74a",
+      "textSha256": "c7010c47f8683762fc8ee63337cce319e7cfa766232915e9abf0e2e039d86eef",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://guides.library.uq.edu.au/referencing/acknowledging-and-referencing-ai",
+      "snapshotHash": "2e8a56e7301fb9a1f66b7f03cdf7dde0a806345aab457ee072c10bd2870a0913",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2e8a56e7301fb9a1f66b7f03cdf7dde0a806345aab457ee072c10bd2870a0913",
+      "textSha256": "2d1e3918cdfad76cfd2ced0f91612f76a904f41c9ef78bc571ea0afedd0de39f",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-researcher-hub/responsible-use-of-ai",
+      "snapshotHash": "c0e040cb9d109897d6bc06d6678da19707056e427fb8fe19fb690666c8e1111d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c0e040cb9d109897d6bc06d6678da19707056e427fb8fe19fb690666c8e1111d",
+      "textSha256": "4e17ad9689b1f90169f764014248ebce92df6075b61ecbda58f862a1aff0f9d1",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-researcher-hub/scenarios",
+      "snapshotHash": "8cfa5f4008985e657e57e1abccf358e4e6eaf1835c4ca1b47f17fefff5c0de88",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8cfa5f4008985e657e57e1abccf358e4e6eaf1835c4ca1b47f17fefff5c0de88",
+      "textSha256": "3ee2e3dea6c8d13405f59b4d360c1782a2017ff8e291a56c0c90021a00930f86",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub/ai-tools-and-training",
+      "snapshotHash": "1ddeb809c8f5764b061d06c04f8cd75061b76b2aa2c256e42f13bb15d18be2a9",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1ddeb809c8f5764b061d06c04f8cd75061b76b2aa2c256e42f13bb15d18be2a9",
+      "textSha256": "b3c26863a44ccc06d6278740720c16fff02a6d6d930b522499777b8bd07fa80d",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/microsoft-copilot-chat",
+      "snapshotHash": "61ede92ecc253468e30ae6a281e440b8cb3cabe090a490635a92de8f718bf367",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "61ede92ecc253468e30ae6a281e440b8cb3cabe090a490635a92de8f718bf367",
+      "textSha256": "a7a9fe107e4d47c31205db11e2b5aadaecc03d099baae366bb5298604a39632f",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/microsoft-copilot-chat/access",
+      "snapshotHash": "82a23eb380c6f7078fa8bfcb17ed1845c4db97d47ac6324d6c4833a890fe87ef",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "82a23eb380c6f7078fa8bfcb17ed1845c4db97d47ac6324d6c4833a890fe87ef",
+      "textSha256": "7c31637afaf72b0274e602eaafccbcc27224d709fd0b4024a5e4f4470d103c95",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://huma.hkust.edu.hk/sites/default/files/doc/Teaching/Courses/UG/Summer2025/HUMA2661.pdf",
+      "snapshotHash": "f182b8513e4dc32329d44d6e41e75dbef50a35c0e6c0cf02b1fc3f270cd4e09a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f182b8513e4dc32329d44d6e41e75dbef50a35c0e6c0cf02b1fc3f270cd4e09a",
+      "textSha256": "8a52949f510fb6f92588e1d8b1f56f4463247dea35112bb61fb349981514337f",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://itali.uq.edu.au/teaching-guidance/generative-ai-teaching-learning-and-assessment/rules-using-ai-assessment",
+      "snapshotHash": "72e694fc60d7f4bc9cb37446266273d383294bfc337fe2d97058810a2bcb6995",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "72e694fc60d7f4bc9cb37446266273d383294bfc337fe2d97058810a2bcb6995",
+      "textSha256": "0ca905dd196e9188f2fc88ec1358e4fcbd0d6199fd0a9174d7bec4fdd7ed761b",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://its.umich.edu/computing/ai",
+      "snapshotHash": "9777508b3bf9712d54d2f8e48999096c557270032f8cbf94d13a4389b916929a",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9777508b3bf9712d54d2f8e48999096c557270032f8cbf94d13a4389b916929a",
+      "textSha256": "4c61e5ace8770a2a884b98ccc67bb96753cb05222b39c1fe2104fe6c6a01cfa1",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://its.umich.edu/computing/ai/google-gemini-and-gemini-notebook",
+      "snapshotHash": "ccbf99e4ab4f329cd6dc2545a7a8c660b551dbe3bc7357f2166bcf752447aff9",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ccbf99e4ab4f329cd6dc2545a7a8c660b551dbe3bc7357f2166bcf752447aff9",
+      "textSha256": "d51f3e5f38ee9862251ccbee5c32b2714c46642af4ac243ea096f572eec128d8",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://its.umich.edu/computing/ai/privacy-notice",
+      "snapshotHash": "83f5cc09e7ef3fe550e0261e0207c50c899cfd2d32dc65fca719de0ad152fa57",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "83f5cc09e7ef3fe550e0261e0207c50c899cfd2d32dc65fca719de0ad152fa57",
+      "textSha256": "e4d24e7ad862879311fb40746d4d847389ea2d65ef2f1bb4606b504c8ae69a17",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://its.umich.edu/computing/ai/terms-of-service",
+      "snapshotHash": "eddbfedc797c82850a29078ea33519ca288b9689cc49526aabaf93fe715feb7f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "eddbfedc797c82850a29078ea33519ca288b9689cc49526aabaf93fe715feb7f",
+      "textSha256": "8dc1654df028a8f4c8a7192877e79df266042264830147f6da2c8503a2177d67",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+      "snapshotHash": "4bfdc40a85570d60d0470274168c8f61f05d4b75fee9c0aa74cddc1d95c883f3",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4bfdc40a85570d60d0470274168c8f61f05d4b75fee9c0aa74cddc1d95c883f3",
+      "textSha256": "fc7ea0120d55cdeb4657f0cb629f8249d2e85d743d76ea0e89911dddaab49163",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools-comparison",
+      "snapshotHash": "593dcd0a7d2dbf0c553bd74dc039168743586cb7fce3c15aeb6caba3aea52fbd",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "593dcd0a7d2dbf0c553bd74dc039168743586cb7fce3c15aeb6caba3aea52fbd",
+      "textSha256": "87be535ba6e5f25523229b5d4ddee99ca6d5dbc2b0742489240b8eb3f1dc6736",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/guidelines",
+      "snapshotHash": "75fa7dc4e488f30db7e33eb1dd21d697d59a06c0bbc22e9242dd53db08bc5166",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "75fa7dc4e488f30db7e33eb1dd21d697d59a06c0bbc22e9242dd53db08bc5166",
+      "textSha256": "aa9ae81ccd2c31c10912d0491566c0960cf640f1cb4708594359b473d99210e3",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://libguides.hkust.edu.hk/ai-literacy/faqs",
+      "snapshotHash": "0fa1707175310cd75eef752267c99b26ddd22e1286927f2efdd540b076303875",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0fa1707175310cd75eef752267c99b26ddd22e1286927f2efdd540b076303875",
+      "textSha256": "efb7699bb02defbeeacb950370e530cb760e1be0b05469d5eaeec63d70750ff1",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://lsa.umich.edu/lsa/academics/academic-integrity/procedures-for-resolving-violations-of-academic-integrity.html",
+      "snapshotHash": "5e4b4638287da2b552656263a5ff04548e64b79ad9128c9e9547991cc9afe25e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5e4b4638287da2b552656263a5ff04548e64b79ad9128c9e9547991cc9afe25e",
+      "textSha256": "b2885e1102d81d8af676f334ee328a4c4b37125f32ddf7ec1e4df0f47c8e9076",
+      "verification": "firecrawl_rendered_html_capture_file_bytes_not_origin_response"
+    },
+    {
+      "sourceUrl": "https://my.uq.edu.au/information-and-services/manage-my-program/student-integrity-and-conduct/academic-integrity-and-student-conduct",
+      "snapshotHash": "8943ed0c4c3d4ef6b9f256d5aa27d67fa06beb2e4d702b81dddcbcd83054d47e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8943ed0c4c3d4ef6b9f256d5aa27d67fa06beb2e4d702b81dddcbcd83054d47e",
+      "textSha256": "c832541ebd4073889dbd9c5fbeb417bf86089d1d5e4c7d174b142a65b832e3de",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://policies.uq.edu.au/document/status-and-details.php?id=225",
+      "snapshotHash": "4f47985fd0ec27576afcb85c932f27513acf7e33fb33b8cc2785af3086654d9d",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4f47985fd0ec27576afcb85c932f27513acf7e33fb33b8cc2785af3086654d9d",
+      "textSha256": "de695ab7b8c7203a69ca82e18b45ad4b361fc127787ce2abee4552820ffd7d50",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://policies.uq.edu.au/document/view-current.php?id=225",
+      "snapshotHash": "0baa4205c31e4c0a5bd068ed59a0e15e64d5002bf4643e6b04f9e5c8d127ab75",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "0baa4205c31e4c0a5bd068ed59a0e15e64d5002bf4643e6b04f9e5c8d127ab75",
+      "textSha256": "f44d90c53dbf93bb0e86e30986ac5be8e4368d6d2b156c693d55cfd8b16608f8",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://registry.hkust.edu.hk/resource-library/academic-regulations-governing-ug-studies-2026-27",
+      "snapshotHash": "f7f077ded11a91c8adf81844f449f9db5ab4ab970bbeb75a603274e7f39910be",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f7f077ded11a91c8adf81844f449f9db5ab4ab970bbeb75a603274e7f39910be",
+      "textSha256": "84fcfe927c2c1cb958e25e426597e7b6d1feab121432d7ab87f2fbb73a7d93b7",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+      "snapshotHash": "63378eb964d1ed527830fc041a404eab0df09b11bcdb13c4ae14803f6b4dced0",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "63378eb964d1ed527830fc041a404eab0df09b11bcdb13c4ae14803f6b4dced0",
+      "textSha256": "99abb48e24f3d9b255938066dda448fa0ac8b83684d64b576296e57b6dde040c",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://registry.hkust.edu.hk/resource-library/grade-review-student-appeals-and-grade-changes",
+      "snapshotHash": "f038a241a42d2e4387885247eb1457166adcf40c232d03d20080cfffeaf6a9ff",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f038a241a42d2e4387885247eb1457166adcf40c232d03d20080cfffeaf6a9ff",
+      "textSha256": "1449de184b0f9ce71c93212ec4e1c173c06b571930faac44b0419821b2f53885",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://registry.hkust.edu.hk/resource-library/regulations-student-academic-integrity",
+      "snapshotHash": "aeff9ddea4f06090eb9db2181b41863948e5b5e909f42880c69bcee458f45d6b",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "aeff9ddea4f06090eb9db2181b41863948e5b5e909f42880c69bcee458f45d6b",
+      "textSha256": "ca4b4eaabfb3fd1ca33b9a13e55aeea468fd87229b0b1aa9f0fa293bceb3a5f9",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://registry.hkust.edu.hk/resource-library/rules-conduct-examinations",
+      "snapshotHash": "038aeb4d87d83b5f046d02c44f53c61d070209266ae8c8ff4c055a381d4e853f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "038aeb4d87d83b5f046d02c44f53c61d070209266ae8c8ff4c055a381d4e853f",
+      "textSha256": "acc55298221e680ebea9c815295da036629481f9754d1b6019adc813b7b3f0d3",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://research.umich.edu/wp-content/uploads/2025/08/OVPR-AI-Guidelines-Internal-Peer-Review_2025.pdf",
+      "snapshotHash": "a9f9a5e7ab31c89aeb784a0907efafb14f549b9dd4252d6ec250537475af1966",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a9f9a5e7ab31c89aeb784a0907efafb14f549b9dd4252d6ec250537475af1966",
+      "textSha256": "5f306f37d8acd8d7bc85945eabd591c54518198b5ba8f983de56702118f2293c",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://teamdynamix.umich.edu/TDClient/30/Portal/KB/Article/11803/Plagiarism-Detection-with-Generative-AI-Tools",
+      "snapshotHash": "a955fb5487e4e140e4532ae5bacbdd855da2a027e56bdfa917c3a3687d502829",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a955fb5487e4e140e4532ae5bacbdd855da2a027e56bdfa917c3a3687d502829",
+      "textSha256": "4d47da543f3bc528386095536561d750aa04a6028a03ce186eadda94a652c120",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://teamdynamix.umich.edu/TDClient/57/Portal/KB/PrintArticle?ID=15809",
+      "snapshotHash": "64912597152bcdeeadaad372249bb798fb5a8b8359e30be6fa05a0b5e6cb9864",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "64912597152bcdeeadaad372249bb798fb5a8b8359e30be6fa05a0b5e6cb9864",
+      "textSha256": "e913cd82ee940195bf09e46835e0d59d4517a6ee3a3499c8556056e04883c0e1",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://urop.hkust.edu.hk/For_Students",
+      "snapshotHash": "c3ede89e802b09822b6b7783f9fb350cbf2e5c79d47c428d40cf4320bb676384",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c3ede89e802b09822b6b7783f9fb350cbf2e5c79d47c428d40cf4320bb676384",
+      "textSha256": "a20324689f71f8769c9f1f4899ebc9ac2544fca0fcaf0fe39cfd5399f228dd18",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://vprd.hkust.edu.hk/policies-compliance/policies-guidelines/research-conduct-and-integrity",
+      "snapshotHash": "9f4f39e1534f48171a66c1a3a7bf33bd9b0e39fe5cd24a8c0a7a70cfb5a4862e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9f4f39e1534f48171a66c1a3a7bf33bd9b0e39fe5cd24a8c0a7a70cfb5a4862e",
+      "textSha256": "e0e01f446cc8ec306cb0e20c3afb265eaea62efba9ac9fa085a396e6f0a03e67",
+      "verification": "frozen_captured_response_file_bytes"
     }
   ]
 }

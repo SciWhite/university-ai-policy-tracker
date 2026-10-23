@@ -207,6 +207,8 @@ export async function getPolicyV6Data(
     );
   const current = publishedV6School(currentSlug, locale);
   if(current) {
+    const publishedBundle = getLocalV6Bundle(currentSlug, locale);
+    const acceptedActions = publishedBundle ? getLocalV6StudentActions(publishedBundle) : undefined;
     const studentActionsPilot=true;
     return {
       locale,
@@ -214,7 +216,7 @@ export async function getPolicyV6Data(
       schools: [structuredClone(current)],
       schoolNames: publishedV6SchoolNames(locale),
       published: true,
-      ...(studentActionsPilot ? {studentActionsPilot, studentActions:getV6StudentActions(current)} : {}),
+      ...(studentActionsPilot ? {studentActionsPilot, studentActions:acceptedActions ?? getV6StudentActions(current)} : {}),
     };
   }
   const slugs: string[] = [...policyV6Slugs];
