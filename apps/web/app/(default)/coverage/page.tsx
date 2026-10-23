@@ -39,7 +39,7 @@ export default async function CoveragePage({
   params
 }: {
   params?: Promise<{ locale?: string }>;
-} = {}) {
+}) {
   const locale = normalizeLocale((await params)?.locale);
   const [coverage, sourceHealth, reviewQueue] = await Promise.all([
     getCoverageDashboardData(),
