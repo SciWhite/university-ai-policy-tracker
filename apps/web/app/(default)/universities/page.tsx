@@ -26,7 +26,7 @@ interface UniversitiesPageProps {
 
 export async function generateMetadata({
   params
-}: UniversitiesPageProps = {}) {
+}: UniversitiesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).universities;
   const alternates = getLocalizedAlternates("/universities", locale);
