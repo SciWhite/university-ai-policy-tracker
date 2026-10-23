@@ -141,6 +141,11 @@
       "path": "sharded/revisions/uq-hkust-michigan-v6-r4-20261022-9e45e80a10aa355b5c0297e3e172f37096acb6b6743e6337b31dde7fb9d64481.json",
       "sha256": "9e45e80a10aa355b5c0297e3e172f37096acb6b6743e6337b31dde7fb9d64481",
       "sourceSha256": "6187fee7abdd0181d494fafb498f5570be99495cec97dfd81b1320562ef319b2"
+    },
+    "qs46-50-v6-r1-20261023": {
+      "path": "sharded/revisions/qs46-50-v6-r1-20261023-ad9114202cc624bd20e268b639a1a2c4a3faffa5d894c5e2d3d114a19d258432.json",
+      "sha256": "ad9114202cc624bd20e268b639a1a2c4a3faffa5d894c5e2d3d114a19d258432",
+      "sourceSha256": "63f3ea615aedd13d5457e432dec9ffa6bb49693edf017203e18d89ded97fb2a8"
     }
   }
 }

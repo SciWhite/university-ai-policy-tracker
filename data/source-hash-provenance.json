@@ -4737,6 +4737,374 @@
       "rawSha256": "9f4f39e1534f48171a66c1a3a7bf33bd9b0e39fe5cd24a8c0a7a70cfb5a4862e",
       "textSha256": "e0e01f446cc8ec306cb0e20c3afb265eaea62efba9ac9fa085a396e6f0a03e67",
       "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://ai.zju.edu.cn/2026/0112/c89504a3127572/page.htm",
+      "snapshotHash": "81fb454be91a800ece237560ce9ff098e1b5c6aa111aad6fa8fe09fb9236ce16",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "81fb454be91a800ece237560ce9ff098e1b5c6aa111aad6fa8fe09fb9236ce16",
+      "textSha256": "a7c6b7149a4d4f5467bd387656153ddd662dc901570f6585a3d559359ed29e99",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://arch.yonsei.ac.kr/notice/download/5894/%EC%97%B0%EA%B5%AC%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EC%83%9D%EC%84%B1%ED%98%95%20AI%20%ED%99%9C%EC%9A%A9%20%EC%A7%80%EC%B9%A8.pdf?download=1",
+      "snapshotHash": "3f4ab418ef4deafaf9ff388d570578ba1c4a7f96469b58e8ba192553a7c1aef6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3f4ab418ef4deafaf9ff388d570578ba1c4a7f96469b58e8ba192553a7c1aef6",
+      "textSha256": "52ca25e7bd24a8f299b118c654cc22898ddb8d2b55d24f55ebad8800c39c0ffb",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://complit.yonsei.ac.kr/econo/board/free_board.do?articleNo=454959&attachNo=196655&mode=download",
+      "snapshotHash": "a7901d77b83292583dd39f0297b9ab5f55eb2807839025ac27235ffb864ee850",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a7901d77b83292583dd39f0297b9ab5f55eb2807839025ac27235ffb864ee850",
+      "textSha256": "6611b0c6d9367f2643a411c44691db00f490cccc2c731b70b31912980a3200f2",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://ctldnew.sjtu.edu.cn/news/detail/1143",
+      "snapshotHash": "9e9d87feeb0f0161f580c46c43c1860075e6923502d721c5f0e9e12e5e6c87db",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "9e9d87feeb0f0161f580c46c43c1860075e6923502d721c5f0e9e12e5e6c87db",
+      "textSha256": "327fab7d7a1c36cd15edb855432da84839130914d830c06a36e629852e7e300e",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+      "snapshotHash": "30c2e69e2843af735a33a57a7d79640f1915f03ff9f0f34534ad3be0a19f52be",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "30c2e69e2843af735a33a57a7d79640f1915f03ff9f0f34534ad3be0a19f52be",
+      "textSha256": "2833aa08fe288a84f6db76ec58842d1b795e7f880c58b83288ca5710819c7383",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/initiatives/ai/guiding-principles-responsible-use",
+      "snapshotHash": "4468536c8d57cdb2d416bdcb93da3ca7d6ae467ad128761df0b76fe980379f5f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4468536c8d57cdb2d416bdcb93da3ca7d6ae467ad128761df0b76fe980379f5f",
+      "textSha256": "642dde022e9c338aea35ea55cc6f6b28a150713462d28b1b2f3facae0ba15755",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/news/turnitins-ai-writing-detection-preview-feature-opted-out",
+      "snapshotHash": "f1768a546e041489faa790ccb6be0c2bbefc7a94b9d8658d72c6b0749ffbdf2f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f1768a546e041489faa790ccb6be0c2bbefc7a94b9d8658d72c6b0749ffbdf2f",
+      "textSha256": "7c817541933aad007dcf3a2036e5fec0b4d9453a59f23ddf9eca768e194f0986",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/products-services/ai-tools/campus-ai-tools-comparison",
+      "snapshotHash": "86039d1ae6de8de5341e403128fb42f266ce429595f3ea8287162210aa5eaa51",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "86039d1ae6de8de5341e403128fb42f266ce429595f3ea8287162210aa5eaa51",
+      "textSha256": "1d4f10eacedc6df3e35ca776145c4d8b7273a5d0da69f43be68a15837d43bf7f",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/products-services/ai-tools/google-ai",
+      "snapshotHash": "ea92eca6aa93a68013f84ec2e1d3dcef8dc28be8e90797507a9f29b24613c296",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ea92eca6aa93a68013f84ec2e1d3dcef8dc28be8e90797507a9f29b24613c296",
+      "textSha256": "0a55fdd0725811589c31298098abbff55b0da6537db0c90f49c4c8c22d351b33",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/products-services/ai-tools/microsoft-ai",
+      "snapshotHash": "1b357cb7d2766b8ebe9099dbe2fbaf60b491e064dbb2865c3d14e5407b5bbd45",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "1b357cb7d2766b8ebe9099dbe2fbaf60b491e064dbb2865c3d14e5407b5bbd45",
+      "textSha256": "b193b4caceec2864d5113c172c18051ac149ad35f95798bc0d03dff0507b7b70",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/products-services/ai-tools/open-ai",
+      "snapshotHash": "93a2c2425691cd3da6e648c501c9a409409ebd918597fb514933e7b890b120dc",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "93a2c2425691cd3da6e648c501c9a409409ebd918597fb514933e7b890b120dc",
+      "textSha256": "07b846fe47b4273508349ab9ac6627d43410b34bf47e71996c8267b7396d0717",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/products-services/ai-tools/zoom-ai",
+      "snapshotHash": "f7b89d4ac940691bd4525c659da17802411647c1c03b379d2a596e44e71621c8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f7b89d4ac940691bd4525c659da17802411647c1c03b379d2a596e44e71621c8",
+      "textSha256": "bbed64ec30179bc238fe08800ff035ea63f00afb9f84df1c952a1389d8f4dfcc",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://dts.ucla.edu/products-services/security/third-party-risk-management-tprm",
+      "snapshotHash": "99a0b591cb9ed56692e8c0628d38293beb303739d115890e9b8b5b809f1b8ba6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "99a0b591cb9ed56692e8c0628d38293beb303739d115890e9b8b5b809f1b8ba6",
+      "textSha256": "5d707e2d1677795a3167b78fb246bf95c9d4ab6f40d768d5e8d4f40e017097b1",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://evcp.ucla.edu/announcements/2026-27/ai-resources-for-teaching-and-learning-at-ucla/",
+      "snapshotHash": "2201fa7feee871cc98f9298c8bd5bbf3d911a914064b215375f278e28e9d7854",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2201fa7feee871cc98f9298c8bd5bbf3d911a914064b215375f278e28e9d7854",
+      "textSha256": "c0837a18456d356390687c23cb852c21c41a8efbb9c3f05a91d1cd6fa54bd659",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://filelist.tudelft.nl/Studentenportal/Faculteitspecifiek/ME/Onderwijs/GERELATEERD/Reglementen/Archief%20Onderwijsreglementen/2026-2027/Confirmed%20RGBE%20MSc%20ME%202026-27.pdf",
+      "snapshotHash": "6870ea3fe7d9b377ca4b6ed5b6b36348ca9814dfc6aba364982cff0cebf58ad2",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6870ea3fe7d9b377ca4b6ed5b6b36348ca9814dfc6aba364982cff0cebf58ad2",
+      "textSha256": "f6220cdb1a78c3b430e178512522b18f3186f4400bf84300e644399cbd6c1689",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://filelist.tudelft.nl/Studentenportal/Faculteitspecifiek/ME/Onderwijs/GERELATEERD/Reglementen/Archief%20Onderwijsreglementen/2026-2027/Vastgestelde%20RRvE%20BSc%20ME%202026-27.pdf",
+      "snapshotHash": "3d76a6c0b2aa32181ed20c61d976f22b04c853bd31be9d84429271be90ad6048",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3d76a6c0b2aa32181ed20c61d976f22b04c853bd31be9d84429271be90ad6048",
+      "textSha256": "82880df3c28678d02acf9cbc379789f652f745a53824dcb2024df534ab813f32",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://filelist.tudelft.nl/me/Organisatie/Generative%20AI%20Guidelines%20for%20Students%20%E2%80%93%20Faculty%20of%20Mechanical%20Engineering%C2%A02026%20Jan.pdf",
+      "snapshotHash": "87600074fd0209dca8c3266c903d99b69b28b125e12db23c5b7cfba403ad3a30",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "87600074fd0209dca8c3266c903d99b69b28b125e12db23c5b7cfba403ad3a30",
+      "textSha256": "e363f1a64b2758b8c932e9e2bc89797882256cb350a473fc39c1c5c0daa7df01",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://gk.sjtu.edu.cn/Data/View/723",
+      "snapshotHash": "5bad5cce08a01e10f646d0de76e9eb692fa447758b9d649ecb22fcdaa5800fa0",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "5bad5cce08a01e10f646d0de76e9eb692fa447758b9d649ecb22fcdaa5800fa0",
+      "textSha256": "679f52581959cfbbd137e4de63986dedbb3a972a5b536791becb46811e498f62",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://gk.sjtu.edu.cn/Phone/View/3867",
+      "snapshotHash": "c43fab73ba4a2cfeb6028dcb4f11d1968865b56a424d4dca00d6ef964433fa1f",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c43fab73ba4a2cfeb6028dcb4f11d1968865b56a424d4dca00d6ef964433fa1f",
+      "textSha256": "e88505b630b2caa2463d30c7689cd962e69b5c02e98ba5db60706232ef3ecbf8",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://gs.sjtu.edu.cn/post/detail/Z3MzODAx",
+      "snapshotHash": "772c3043ed3243f36f445a73e369cd2d714be0efcfa15bf2d4078361f25377d8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "772c3043ed3243f36f445a73e369cd2d714be0efcfa15bf2d4078361f25377d8",
+      "textSha256": "ff4f07612b85a6e8fb9addb38801bd190d222a80d3cf7f6fae2b4e8563f5e785",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://humtech.ucla.edu/instructional-support/ai-toolkit-for-the-humanities-classroom/citing-the-use-of-generative-ai/",
+      "snapshotHash": "6b47630b73ff2895cfb438161dc5c8c4781f909000fa5718f51990bb6f99ed45",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "6b47630b73ff2895cfb438161dc5c8c4781f909000fa5718f51990bb6f99ed45",
+      "textSha256": "317be7d25f64b30335edecfbc62556e843aa9c761f6001bb3d02199fc7262dc9",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://its.zju.edu.cn/2026/0407/c90619a3148395/page.htm",
+      "snapshotHash": "c0c51e58948ae9b82061a7410e1a1caa655919b7b6b6826fa21b348c73bbc921",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c0c51e58948ae9b82061a7410e1a1caa655919b7b6b6826fa21b348c73bbc921",
+      "textSha256": "0eed4472d00e5facef028dcb76f818d1b1b4d5ee8b086080f84aa6e58e03d165",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+      "snapshotHash": "4855aacfe843ae9b4d8064bfd038a30861b01fa6f64a2a80424c078d0dc50626",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "4855aacfe843ae9b4d8064bfd038a30861b01fa6f64a2a80424c078d0dc50626",
+      "textSha256": "9d40699654da000b350041f35f63c796378d99b21c12ccacb8835fdddc4b330d",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://mcfd.zju.edu.cn/2026/1014/c65868a3214353/page.htm",
+      "snapshotHash": "486355b8f365f9daf7484fad623cd63811c41251e72cc9b22c8ea5efbc928ca8",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "486355b8f365f9daf7484fad623cd63811c41251e72cc9b22c8ea5efbc928ca8",
+      "textSha256": "bc1007368a1f5f13e54c24328865eaf324a5aa919db9c1a88973090f4e973f4c",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://plan.sjtu.edu.cn/info/1025/4295.htm",
+      "snapshotHash": "ff78ac6da074170fd4c7998f9935688bcee5928c5f92e3f5fa7bc8319787b52e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "ff78ac6da074170fd4c7998f9935688bcee5928c5f92e3f5fa7bc8319787b52e",
+      "textSha256": "a3d3216ed19c117d23a51aae9a0aeeb7e1131b27572e7af3de63f4d12ea789cd",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://rules.yonsei.ac.kr/regulations/2a85e62f-029e-46d6-92c7-edefce6432c0",
+      "snapshotHash": "bf3f03afc4e8911edaee4c5d27da7d962241659f57bbe912276c3c0ba128ff67",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "bf3f03afc4e8911edaee4c5d27da7d962241659f57bbe912276c3c0ba128ff67",
+      "textSha256": "ee4933c84c0fe11df288bd2b8505499c1de1ddebfb9c32a37507a5e8d8d3c9af",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+      "snapshotHash": "f62400bf0744cd18111c212c7d083beb0029b4934e29da52f154fea5cd48b426",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "f62400bf0744cd18111c212c7d083beb0029b4934e29da52f154fea5cd48b426",
+      "textSha256": "9e9cdf46628968b0ecf55e489079acf5dba8dbeeca28cddae7c9b87e87d9a1f1",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://socsci.yonsei.ac.kr/socsci/community/notice.do?mode=download&articleNo=448211&attachNo=191153",
+      "snapshotHash": "34d566381ce14c7e5e71163fc2e47be451abdff801b6e8ce558714257b7c0fd6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "34d566381ce14c7e5e71163fc2e47be451abdff801b6e8ce558714257b7c0fd6",
+      "textSha256": "e683caa49feeab01002fa1473f7ec08ff0cccda95a1c73bc46e0d8fdc9f2037a",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://soe.sjtu.edu.cn/kindeditor/Upload/file/20240924/202409241752088876670.pdf",
+      "snapshotHash": "41c06567c253780e5f0a121924804294d4204737a860909f922411d58b1f0c3c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "41c06567c253780e5f0a121924804294d4204737a860909f922411d58b1f0c3c",
+      "textSha256": "58451f079d89b3b49c54b5b1f5bb1da2a4befb377e10d3a4c25babc2a9280192",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://studentconduct.ucla.edu/2026-individual-student-code",
+      "snapshotHash": "908477e9ae3f3865c6e8812f3be7ca52e57aaadbffefb069cd866524d5600548",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "908477e9ae3f3865c6e8812f3be7ca52e57aaadbffefb069cd866524d5600548",
+      "textSha256": "c4426d64c22c56d9e7d70675bd6ee75a444ead88116f261de5df7eca28320a28",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.adminpolicies.ucla.edu/APP/Number/993.0",
+      "snapshotHash": "e790da6d99af31af6a937680235534fa83b1e3764b1e374c8f1159f273f24e27",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "e790da6d99af31af6a937680235534fa83b1e3764b1e374c8f1159f273f24e27",
+      "textSha256": "86d93d7db417e96cdb5cf4dd750765e8597429a836e82b6cb647bb8051d43d13",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.adminpolicies.ucla.edu/APP/Number/993.1",
+      "snapshotHash": "399e0ab50601482869a79a2770276a6a14411b500a7392858bf08517b27884c3",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "399e0ab50601482869a79a2770276a6a14411b500a7392858bf08517b27884c3",
+      "textSha256": "e85a0d89b25b2eddf95cb9cf84c50cdbb68193033c8bcce07da5136c0d26c3b5",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.gs.sjtu.edu.cn/post/detail/Z3MzMzg5",
+      "snapshotHash": "315e80b4a080e2192e5184eb6d3fd411a081956b4b04039c46a130111a0f303c",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "315e80b4a080e2192e5184eb6d3fd411a081956b4b04039c46a130111a0f303c",
+      "textSha256": "9ce9d788efa6d2e6cf7ac7b9d8aad8411d06be9f73ec3163cb6eb368a13af856",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.sjtu.edu.cn/resource/upload/202503/20250304_105048_720.pdf",
+      "snapshotHash": "8772c9bf7045cea1e0ca048d6cc8840a77d7edd151ed83fb970d549dcc178eb4",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "8772c9bf7045cea1e0ca048d6cc8840a77d7edd151ed83fb970d549dcc178eb4",
+      "textSha256": "24d1996eca84d34ddd911c08fdaa29413072ea908851ba502ce40edcce9e89ab",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/en/open-publishing/publish-with-us/resources-support/tu-delft-open-publishing-policies",
+      "snapshotHash": "867e720abac7505a8ec674b0f348c40e17c08a80f6448dce5d41bc5a8e4a487e",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "867e720abac7505a8ec674b0f348c40e17c08a80f6448dce5d41bc5a8e4a487e",
+      "textSha256": "3908f7092e5ebb369bee89df7e10b9aa2bb4bd5d8e4769f3f557a7f42d406838",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/en/student/my-study-me/rules-guidelines-and-participation/objections-and-appeals/appeals",
+      "snapshotHash": "650cdc427f34bb43ac498a3f6070bd46f1f6fb9120d9fc2329933399a204c717",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "650cdc427f34bb43ac498a3f6070bd46f1f6fb9120d9fc2329933399a204c717",
+      "textSha256": "2364edd537bbe4435104f8af130b96f09293b600624fcd977a8a79476591fe81",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+      "snapshotHash": "a594446a9a7c20ff70f74e3e84a8cd1c4af07b6d92449497701e09606be7f9e7",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "a594446a9a7c20ff70f74e3e84a8cd1c4af07b6d92449497701e09606be7f9e7",
+      "textSha256": "095ef5d373ce71148c257b72848c45670ee8122944561b16400d8396b864f6cb",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education/ai-in-assessment/ai-detection-tools-usage",
+      "snapshotHash": "eca57e446e71240d485aef170d381504bfe34dc7110bf1db2b48113a05f7bdce",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "eca57e446e71240d485aef170d381504bfe34dc7110bf1db2b48113a05f7bdce",
+      "textSha256": "4e791b19ed158fbdcd0321427d4f22258c82112f5639b6b4d3d14909fd3d1423",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education/ai-in-assessment/communicate-acceptable-ai-usage",
+      "snapshotHash": "945a6a622f75d5754ffa2492ed759d9d3bea94131b98a61c88dc366e898e14cf",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "945a6a622f75d5754ffa2492ed759d9d3bea94131b98a61c88dc366e898e14cf",
+      "textSha256": "625b334f100ad244118a66d77431c2068ea9e746dd9b5942e0585327b779ab4c",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/assess/guidelines/ai-chatbots-in-unsupervised-assessment",
+      "snapshotHash": "b4ce07875b56bf5554dff20f1a4ccd961805de803fe8cf7559edc24f1220e4e7",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "b4ce07875b56bf5554dff20f1a4ccd961805de803fe8cf7559edc24f1220e4e7",
+      "textSha256": "fce0820c215c05169544781f82d5ed3b91752824730b588aadc87b8acb247f85",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.tudelft.nl/research-support/planning-set-up/ethics-security-and-privacy",
+      "snapshotHash": "d75640ab3cfc3abc0c9158726ba9458949849de14b5c3bcdf1ecabe3dafdc5e5",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "d75640ab3cfc3abc0c9158726ba9458949849de14b5c3bcdf1ecabe3dafdc5e5",
+      "textSha256": "adfc80e5e666aa2328a1fb69ba28d72eaae0056d1f2822ebd8a5d381d70e4040",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.yonsei.ac.kr/en_sc/2274/subview.do",
+      "snapshotHash": "c90be73b608c3fcd53653286566c1542c652460b1f45aa5d27700fc9a07140b6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c90be73b608c3fcd53653286566c1542c652460b1f45aa5d27700fc9a07140b6",
+      "textSha256": "20e97caa4b4a2724cb12956a56ec5e06eec0f64a1c6d6159c559ecae1d713e5b",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.zju.edu.cn/_upload/article/files/23/52/35ec066e4078aea7b71fd4a1afbf/f8b13ab6-b553-44ea-92b8-a07537efafe7.pdf",
+      "snapshotHash": "c681580adee093fe46c08cad81d993153cc08f9bfc1272af15d56b807f1e8489",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "c681580adee093fe46c08cad81d993153cc08f9bfc1272af15d56b807f1e8489",
+      "textSha256": "bb19e76a41841bd4eb03ee6a1d91b563a4420e53bea1f6f217fccb8e3ce67ff4",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://www.zju.edu.cn/_upload/article/files/71/c6/33c1d2bc49ee817c605222bfa8c7/9fddb8b1-7137-4e92-bc1e-14b3dc904b03.pdf",
+      "snapshotHash": "3dc791548209c7b1e8f79541c7eb9b478bf336418ff9563e352192c0bfc20fa6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "3dc791548209c7b1e8f79541c7eb9b478bf336418ff9563e352192c0bfc20fa6",
+      "textSha256": "e2ebd6fcc6fdf0cf7f34294a90ef5435a6f9b918aa20881f1de1938de0d65e4b",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://xflops.sjtu.edu.cn/hpc-start-guide/info-lit/get-info-efficiently/",
+      "snapshotHash": "7721b6d5fd8a084ee9ca9a964fb27ba1b44cd98671f6928cce8879e4907eb3b6",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "7721b6d5fd8a084ee9ca9a964fb27ba1b44cd98671f6928cce8879e4907eb3b6",
+      "textSha256": "d12486f1248454619ba025dd3ba1ed15c427e36836759bbe2e3c9970858c2404",
+      "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://yure.yonsei.ac.kr/research/researchCommitee.do",
+      "snapshotHash": "2bdc4615f3b3d5d9a62b70d0102ea04a4e6e4a717c614e6be78139dbc8286211",
+      "hashKind": "raw_captured_bytes",
+      "rawSha256": "2bdc4615f3b3d5d9a62b70d0102ea04a4e6e4a717c614e6be78139dbc8286211",
+      "textSha256": "1da01c40a76586f21bee37373d349d533ba538e6bd77171b09a516bdb58b33cf",
+      "verification": "frozen_captured_response_file_bytes"
     }
   ]
 }

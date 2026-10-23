@@ -34,5 +34,10 @@
   "northwestern-university": "https://www.northwestern.edu/",
   "university-of-queensland": "https://www.uq.edu.au/",
   "hkust": "https://hkust.edu.hk/",
-  "university-of-michigan-ann-arbor": "https://umich.edu/"
+  "university-of-michigan-ann-arbor": "https://umich.edu/",
+  "ucla": "https://www.ucla.edu/",
+  "delft-university-of-technology": "https://www.tudelft.nl/",
+  "shanghai-jiao-tong-university": "https://www.sjtu.edu.cn/",
+  "zhejiang-university": "https://www.zju.edu.cn/",
+  "yonsei-university": "https://www.yonsei.ac.kr/"
 }

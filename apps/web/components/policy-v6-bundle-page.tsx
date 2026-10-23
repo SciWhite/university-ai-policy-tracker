@@ -29,6 +29,9 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   const t = (s: string) => translate(s, locale);
   const scopedNames = new Set(view.scopedToolNames ?? []);
   const scopedTools = view.tools.filter((tool) => scopedNames.has(tool.rawToolName));
+  const unscopedTools = view.tools.filter((tool) => !scopedNames.has(tool.rawToolName));
+  const onlyScopedTools = scopedTools.length > 0 && unscopedTools.length === 0;
+  const scopeNote = locale === "zh" ? "以下工具限特定对象、账户、模式或用途；不代表全体学生获得使用许可，也不代表考核许可。请核对每项获取条件。" : "These tools have audience, account, mode or purpose limits; access is not established for all students and does not grant assessment permission. Check each access condition.";
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
     <PolicyV6Provider data={data}><PolicyReferenceLayout enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
       <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
@@ -38,7 +41,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
       <PolicyReferenceHero uiLab scene={getLocalV6BundleScene(view, locale)} locale={locale} localizedActions={locale === "zh"} tools />
       <PolicyV6RecordTopics data={data} />
       <PolicyV6BeforeTools />
-      <UniversityAiTools records={view.tools.filter((tool) => !scopedNames.has(tool.rawToolName))} locale={locale} uiLab scopedTools={scopedTools.length ? <>
+      <UniversityAiTools records={onlyScopedTools ? scopedTools : unscopedTools} locale={locale} uiLab scopeNote={onlyScopedTools ? scopeNote : undefined} scopedTools={!onlyScopedTools && scopedTools.length ? <>
         <p>{locale === "zh" ? "以下工具限特定对象、模式或用途；不代表全体学生获得使用许可。" : "These tools have audience, mode or purpose limits; access is not established for all students."}</p>
         <UniversityAiTools records={scopedTools} locale={locale} uiLab standalone sectionId="university-ai-tools-scoped" />
       </> : undefined} />

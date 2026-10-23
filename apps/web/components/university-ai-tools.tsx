@@ -48,6 +48,7 @@ export function UniversityAiTools({
   draftPreview = false,
   uiLab = false,
   scopedTools,
+  scopeNote,
   sectionId = "university-ai-tools",
   standalone = false,
 }: {
@@ -57,6 +58,7 @@ export function UniversityAiTools({
   draftPreview?: boolean;
   uiLab?: boolean;
   scopedTools?: ReactNode;
+  scopeNote?: ReactNode;
   sectionId?: string;
   standalone?: boolean;
 }) {
@@ -80,6 +82,7 @@ export function UniversityAiTools({
       aria-labelledby={`${sectionId}-title`}
     >
       <h2 id={`${sectionId}-title`}>{sectionId==="university-ai-tools-scoped"?policyV6EvidenceLabel("scoped_tools",locale):ui[0]}</h2>
+      {scopeNote ? <p className="university-ai-tools__boundary">{scopeNote}</p> : null}
       {!uiLab ? <p className="university-ai-tools__boundary">{ui[1]}</p> : null}
       {!supported.length ? (
         <p className="muted">{ui[3]}</p>

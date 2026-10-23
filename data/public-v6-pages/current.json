@@ -1,7 +1,7 @@
 {
-  "path": "revisions/uq-hkust-michigan-v6-r4-20261022.json",
-  "sha256": "a81ef08266cd1bec67e47a4ef326fe48009a4db5dc92cee50a7002003612e526",
-  "releaseId": "uq-hkust-michigan-v6-r4-20261022",
+  "path": "revisions/qs46-50-v6-r1-20261023.json",
+  "sha256": "9abcb080ef05d77e44588fad94255669a76ece077e0cc9a7ad00fe978af4e7db",
+  "releaseId": "qs46-50-v6-r1-20261023",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -47,7 +47,12 @@
     "northwestern-university",
     "university-of-queensland",
     "hkust",
-    "university-of-michigan-ann-arbor"
+    "university-of-michigan-ann-arbor",
+    "ucla",
+    "delft-university-of-technology",
+    "shanghai-jiao-tong-university",
+    "zhejiang-university",
+    "yonsei-university"
   ],
   "v5Slugs": []
 }
