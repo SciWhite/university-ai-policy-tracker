@@ -38,7 +38,7 @@ interface AnalysisIndexPageProps {
 
 export async function generateMetadata({
   params
-}: AnalysisIndexPageProps = {}) {
+}: AnalysisIndexPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).analysis;
   const alternates = getLocalizedAlternates("/analysis", locale);
