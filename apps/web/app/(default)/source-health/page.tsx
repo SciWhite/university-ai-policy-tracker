@@ -62,7 +62,7 @@ export default async function SourceHealthPage({
   params
 }: {
   params?: Promise<{ locale?: string }>;
-} = {}) {
+}) {
   const locale = normalizeLocale((await params)?.locale);
   const data = await getSourceHealthDashboardData();
   const apiPath = `/api/public/${PUBLIC_API_VERSION}/source-health.json`;
