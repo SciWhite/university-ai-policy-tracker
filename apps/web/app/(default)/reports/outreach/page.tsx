@@ -32,7 +32,7 @@ export default async function OutreachPage({
   params
 }: {
   params?: Promise<{ locale?: string }>;
-} = {}) {
+}) {
   const locale = normalizeLocale((await params)?.locale);
   const [outreach, report] = await Promise.all([
     getOutreachPackage(),
