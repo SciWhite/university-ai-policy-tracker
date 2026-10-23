@@ -18,7 +18,7 @@ interface MethodologyPageProps {
 
 export async function generateMetadata({
   params
-}: MethodologyPageProps = {}) {
+}: MethodologyPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).methodology;
   const alternates = getLocalizedAlternates("/methodology", locale);

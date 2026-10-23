@@ -8,7 +8,7 @@ import { getProjectCopy } from "@/lib/project-copy";
 
 type Props = { params?: Promise<{ locale?: string }> };
 
-export async function generateMetadata({ params }: Props = {}) {
+export async function generateMetadata({ params }: Props) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getProjectCopy(locale);
   return {
