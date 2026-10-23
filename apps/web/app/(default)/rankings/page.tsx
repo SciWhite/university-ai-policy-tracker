@@ -7,7 +7,7 @@ export const revalidate = false;
 interface Props {
   params?: Promise<{ locale?: string }>;
 }
-export async function generateMetadata({ params }: Props = {}) {
+export async function generateMetadata({ params }: Props) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = rankingsCopy(locale);
   const alternates = getLocalizedAlternates("/rankings", locale);
