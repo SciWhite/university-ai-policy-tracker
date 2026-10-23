@@ -20,7 +20,7 @@ interface ContributePageProps {
 
 export async function generateMetadata({
   params
-}: ContributePageProps = {}) {
+}: ContributePageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).contribute;
   const alternates = getLocalizedAlternates("/contribute", locale);
