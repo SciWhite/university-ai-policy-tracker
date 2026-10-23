@@ -41,7 +41,7 @@ export default async function ReportsPage({
   params
 }: {
   params?: Promise<{ locale?: string }>;
-} = {}) {
+}) {
   const locale = normalizeLocale((await params)?.locale);
   const reports = await getReportsIndex(locale);
   const latestReport = reports[0];
