@@ -31,7 +31,7 @@ test("production preview gate fails closed in production and for non-v4 values",
 
 test("default SEO and metadata promote V4 to default in production and support legacy layout", async () => {
   // Published V4 metadata is default without query parameter
-  const defaultMeta = await generateMetadata();
+  const defaultMeta = await generateMetadata({});
   assert.equal(defaultMeta.robots, undefined);
   assert.equal(defaultMeta.title, "Find your university’s AI policy | University AI Policy Tracker");
   assert.equal(defaultMeta.description, "Explore guidance for assignments, disclosure and data safety, with links to official university sources.");

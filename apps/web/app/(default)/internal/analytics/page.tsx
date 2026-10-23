@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function PrivateAnalyticsPage({
   searchParams
-}: PrivateAnalyticsPageProps = {}) {
+}: PrivateAnalyticsPageProps) {
   const resolvedParams = (await searchParams) ?? {};
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(resolvedParams)) {
