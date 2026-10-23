@@ -136,13 +136,13 @@
     "sha256": "1155333aa0316fb8b7306e4a9a6a84247c1c8012be62dc0a2aae0ac5f76d8e04"
   },
   "paris-northwestern-v6-r1-20261022": {
-    "path": "sharded/revisions/paris-northwestern-v6-r1-20261022-ef3b6ab217aff2a078342e5f253c933e07751b50c79235dc1ea53937e28eb9b8.json",
+    "path": "revisions/paris-northwestern-v6-r1-20261022.json",
     "sha256": "006dbd4be3dfc628a876bbb0e5a08e276815d5ed8b02da742c256869145b641c",
     "releaseId": "paris-northwestern-v6-r1-20261022"
   },
-  "uq-hkust-michigan-v6-r2-20261022": {
-    "path": "revisions/uq-hkust-michigan-v6-r2-20261022.json",
-    "sha256": "b7182db63cc1a5f6fc09eeb5db24f3b2129a9ed12cb6c16389e2236e4092cb0c",
-    "releaseId": "uq-hkust-michigan-v6-r2-20261022"
+  "uq-hkust-michigan-v6-r4-20261022": {
+    "path": "revisions/uq-hkust-michigan-v6-r4-20261022.json",
+    "sha256": "a81ef08266cd1bec67e47a4ef326fe48009a4db5dc92cee50a7002003612e526",
+    "releaseId": "uq-hkust-michigan-v6-r4-20261022"
   }
 }
