@@ -131,7 +131,7 @@ export function createLocalizedSurfaceMetadata(
 ) {
   return async function generateLocalizedMetadata(props: {
     params?: Promise<Record<string, string | undefined>>;
-  } = {}) {
+  }) {
     const params = (await props.params) ?? {};
     const locale = getSurfaceLocale(params);
     const metadata =
