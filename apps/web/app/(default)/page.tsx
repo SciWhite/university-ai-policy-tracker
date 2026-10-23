@@ -47,7 +47,7 @@ interface HomePageProps {
 export async function generateMetadata({
   params,
   searchParams
-}: HomePageProps = {}): Promise<Metadata> {
+}: HomePageProps): Promise<Metadata> {
   const locale = normalizeLocale((await params)?.locale);
   const layout = (await searchParams)?.layout;
 

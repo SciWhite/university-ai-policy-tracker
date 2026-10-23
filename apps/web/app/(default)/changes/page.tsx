@@ -32,7 +32,7 @@ interface ChangesPageProps {
 
 export async function generateMetadata({
   params
-}: ChangesPageProps = {}) {
+}: ChangesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).changes;
   const alternates = getLocalizedAlternates("/changes", locale);
