@@ -1,9 +1,12 @@
+import {validateChangePackage,copyChangePackage} from "./lib/change-package";
+import {V6ArtifactStore} from "../apps/web/lib/v6-artifact-store";
+import type {ChangeOverviewPackage} from "../apps/web/lib/change-events";
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { findRepoRoot } from "../apps/web/lib/repo-root";
-import { publicHistoryBasis } from "../apps/web/lib/public-history-basis";
+import { publicHistoryBasis, publicHistoryBasisV2 } from "../apps/web/lib/public-history-basis";
 import { validateFrozenHistory } from "../apps/web/lib/v6-history-cache";
 import { exportPublicChangeHistory } from "./export-public-change-history";
 import type { ShardIndex, ShardNode, ShardManifest } from "../apps/web/lib/v6-artifact-store";
@@ -99,10 +102,10 @@ export async function verifyPublicHistoryOnDisk(
     throw new Error("Manifest sha256 mismatch with current.json pointer");
   }
   const manifest = JSON.parse(manifestRaw.toString("utf8"));
-  if (manifest.schemaVersion !== "uapt-public-change-history-v1") {
+  if (!["uapt-public-change-history-v1","uapt-public-change-history-v2"].includes(manifest.schemaVersion)) {
     throw new Error("Invalid manifest schemaVersion");
   }
-  const basis = await publicHistoryBasis(repoRoot);
+  const basis = manifest.schemaVersion === "uapt-public-change-history-v2" ? await publicHistoryBasisV2(repoRoot) : await publicHistoryBasis(repoRoot);
   if (manifest.basisSha256 !== basis || (expectedBasis && basis !== expectedBasis)) {
     throw new Error("Public change history is out of date; regenerate with scripts/export-public-change-history.ts");
   }
@@ -127,6 +130,13 @@ export async function verifyPublicHistoryOnDisk(
       }
     }
   }
+  if(manifest.schemaVersion==="uapt-public-change-history-v2"){
+    const overviewRoot=path.join(repoRoot,"data/public-v6-change-overviews");
+    const index=JSON.parse(readFileSync(path.join(overviewRoot,"sharded/index.json"),'utf8')) as ShardIndex;
+    const overview=new V6ArtifactStore(overviewRoot,index).view<ChangeOverviewPackage>(manifest.revision);
+    if(!overview)throw Error("Missing event overview family");
+    validateChangePackage(historyRoot,current,overview);
+  }
   return { manifest, basis };
 }
 
@@ -136,7 +146,9 @@ export async function prepareCandidateBuildInputs(
   const repoRoot = options.repoRoot ? path.resolve(options.repoRoot) : await findRepoRoot();
   const srcDir = path.resolve(options.packagesDir);
 
-  const families = ["public-v6-pages", "public-v6-records", "public-v6-history"] as const;
+  const hasEvents=existsSync(path.join(srcDir,"public-v6-change-overviews"));
+  if(hasEvents!==existsSync(path.join(srcDir,"public-change-history")))throw Error("Paired event projection and overview family required");
+  const families = ["public-v6-pages", "public-v6-records", "public-v6-history", ...(hasEvents?["public-v6-change-overviews"]:[])];
   const revisions: Record<string, { revision: string; sha256: string; path: string }> = {};
   const familySourceData: Record<string, {
     revId: string;
@@ -355,6 +367,7 @@ export async function prepareCandidateBuildInputs(
   // =========================================================================
   // STEP 1.8: Preflight Frozen History Shape & Integrity Validation
   // =========================================================================
+  if(historyMan.root.kind!=="object")throw Error("Invalid public history root shape");
   const historyRecordsNode = historyMan.root.entries.find((e) => e[0] === "records")?.[1];
   if (!historyRecordsNode || historyRecordsNode.kind !== "object") {
     throw new Error("Missing or invalid records entry in public-v6-history manifest root");
@@ -382,6 +395,19 @@ export async function prepareCandidateBuildInputs(
       throw new Error(`Failed to parse shard JSON for ${slug} (${shard.sha256}): ${e}`);
     }
     validateFrozenHistory(slug, parsed);
+  }
+
+  let eventPackage:ReturnType<typeof validateChangePackage>|undefined;
+  let projectionRef:{path:string;sha256:string}|undefined;
+  if(hasEvents){
+    const info=familySourceData["public-v6-change-overviews"];
+    if(info.revId!==targetRev||JSON.stringify([...info.manifest.scope].sort())!==JSON.stringify([...recordsMan.scope].sort()))throw Error("Overview family revision/scope mismatch");
+    const pkg=new V6ArtifactStore(path.join(srcDir,"public-v6-change-overviews"),info.index).view<ChangeOverviewPackage>(targetRev)!;
+    projectionRef=JSON.parse(readFileSync(path.join(srcDir,"public-change-history/current.json"),'utf8'));
+    eventPackage=validateChangePackage(path.join(srcDir,"public-change-history"),projectionRef!,pkg);
+    const recordStore=new V6ArtifactStore(path.join(srcDir,"public-v6-records"),familySourceData["public-v6-records"].index);
+    const pins=recordStore.field<Record<string,{recordSha256:string}>>(targetRev,["recordRevisions"])!;
+    if(Object.entries(pkg.schools).some(([slug,o])=>o.recordSha256!==pins[slug]?.recordSha256))throw Error("Candidate overview/policy basis mismatch");
   }
 
   // =========================================================================
@@ -469,7 +495,15 @@ export async function prepareCandidateBuildInputs(
   // =========================================================================
   // STEP 4: Export Public Change History in Isolated Execution
   // =========================================================================
-  const historyResult = await exportPublicChangeHistory({ repoRoot });
+  let historyResult:{sha256:string;manifestFile:string;basisSha256:string};
+  if(eventPackage&&projectionRef){
+    const basis=await publicHistoryBasisV2(repoRoot);
+    if(basis!==eventPackage.store.manifest.basisSha256)throw Error("Staged candidate has a stale event basis");
+    const dst=path.join(repoRoot,"data/public-change-history");
+    const next=copyChangePackage(path.join(srcDir,"public-change-history"),projectionRef,dst,eventPackage.refs);
+    renameSync(next,path.join(dst,"current.json"));
+    historyResult={sha256:projectionRef.sha256,manifestFile:projectionRef.path,basisSha256:basis};
+  }else historyResult=await exportPublicChangeHistory({repoRoot});
 
   // =========================================================================
   // STEP 5: Verify the Public History Manifest Guard on Disk

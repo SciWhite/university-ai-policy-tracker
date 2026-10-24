@@ -3,16 +3,31 @@
   "compilerOptions": {
     "incremental": false,
     "paths": {
-      "@/*": ["../apps/web/*"],
-      "@uapt/db": ["../packages/db/src/index.ts"],
-      "@uapt/shared": ["../packages/shared/src/index.ts"]
+      "@/*": [
+        "../apps/web/*"
+      ],
+      "@uapt/db": [
+        "../packages/db/src/index.ts"
+      ],
+      "@uapt/shared": [
+        "../packages/shared/src/index.ts"
+      ]
     }
   },
   "include": [
     "pack-v6-release.ts",
+    "change-summary-workflow.ts",
+    "prepare-change-summary-cohort.ts",
+    "export-public-change-history.ts",
+    "prepare-candidate-build-inputs.ts",
+    "validate-change-event-projection.ts",
+    "../tests/change-events.test.ts",
+    "../tests/change-summary-evidence.test.ts",
     "lib/v6-release-contract.ts",
     "validate-v6-release.ts",
     "../tests/v6-contract-seo.test.ts"
   ],
-  "exclude": ["../node_modules"]
+  "exclude": [
+    "../node_modules"
+  ]
 }

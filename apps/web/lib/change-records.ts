@@ -1,3 +1,4 @@
+import { countCorrectionIds, selectChangeSummary } from "./change-presentation";
 import {v6HistoryRepair} from "./v6-history-repair";
 import {BoundedAsyncCache} from './bounded-cache';
 import {v6FrozenHistory} from "./v6-history-cache";
@@ -211,6 +212,7 @@ export interface ChangeIndexData {
 }
 
 export interface EntityChangeHistory {
+  summaryLanguage?: string;
   record: ChangeRecord;
   releaseRecords: ChangeRecord[];
 }
@@ -288,16 +290,14 @@ export async function getChangeRecordBySlug(
 }
 
 export async function getEntityChangeHistory(
-  slug: string
+  slug: string,
+  locale: import("./i18n").SupportedLocale = "en"
 ): Promise<EntityChangeHistory | undefined> {
   const frozen = v6FrozenHistory(slug);
   if (frozen) {
     const normalizedFrozen = frozen.map((row) => ({
       ...row,
-      changeSummary:
-        typeof row.changeSummary === "object" && row.changeSummary !== null
-          ? ((row.changeSummary as any).en || (row.changeSummary as any).zh)
-          : row.changeSummary,
+      changeSummary: selectChangeSummary(row.changeSummary, locale)?.text,
     }));
     const corrected = v6SummaryAtRevision(slug)!;
     const current = v6ChangeRecord(corrected);
@@ -306,9 +306,17 @@ export async function getEntityChangeHistory(
     );
     const repaired=v6HistoryRepair(slug,current.releaseId!);
     const effectiveCurrent = repaired ?? (candidateFrozen
-      ? { ...current, ...candidateFrozen }
+      ? { ...current, ...candidateFrozen,
+          added: current.added, modified: current.modified, removed: current.removed,
+          newlyExtractedClaims: current.newlyExtractedClaims,
+          trackerRemovedClaims: current.trackerRemovedClaims,
+          unchanged: current.unchanged,
+          changeSummary: candidateFrozen.changeSummary === "Reviewed scoped record correction; historical held claims remain excluded from current policy conclusions."
+            ? current.changeSummary : candidateFrozen.changeSummary,
+        }
       : current);
     return {
+      summaryLanguage: selectChangeSummary((repaired ?? frozen.find(row => row.releaseId === current.releaseId) ?? current).changeSummary, locale)?.language,
       record: effectiveCurrent,
       releaseRecords: [
         effectiveCurrent,
@@ -871,44 +879,11 @@ function buildClaimChangeRecord(claim: PolicyClaim): ClaimChangeRecord {
 }
 
 function buildDiffPreview(
-  summary: PublicEntitySummary | undefined,
+  _summary: PublicEntitySummary | undefined,
   diff: ReleaseEntityDiff | undefined
 ): DiffPreviewLine[] {
-  if (diff) return diff.rows.length ? buildReleaseDiffLines(diff) : [];
-
-  if (!summary) return [];
-  const lines: DiffPreviewLine[] = [];
-  let newLineNumber = 1;
-
-  lines.push({
-    type: "equal",
-    oldLineNumber: 1,
-    newLineNumber,
-    value: `# ${summary.entity.name} AI policy record`
-  });
-  newLineNumber += 1;
-
-  for (const claim of summary.claims.slice(0, 10)) {
-    lines.push({
-      type: "insert",
-      newLineNumber,
-      value: `${claim.claimType}: ${claim.claimText}`
-    });
-    newLineNumber += 1;
-
-    for (const evidence of claim.evidence.slice(0, 1)) {
-      const sourceLanguage = evidence.sourceLanguage ?? "und";
-
-      lines.push({
-        type: "insert",
-        newLineNumber,
-        value: `Evidence (${sourceLanguage}, ${evidence.sourceSnapshotHash.slice(0, 12)}): ${evidence.evidenceSnippet}`
-      });
-      newLineNumber += 1;
-    }
-  }
-
-  return lines;
+  // A current snapshot without a recorded comparison is not an addition.
+  return diff?.rows.length ? buildReleaseDiffLines(diff) : [];
 }
 
 function buildReleaseDiffLines(diff: ReleaseEntityDiff): DiffPreviewLine[] {
@@ -1163,8 +1138,9 @@ function v6ChangeRecord(summary:PublicEntitySummary):ChangeRecord {
  const repaired=v6HistoryRepair(slug,recordRevision);if(repaired)return repaired;
  const p=recordRevision===selected.revision?selected:readV6RecordCorrectionRevision(recordRevision)??selected;
  const diff=p.changesBySlug[slug];
+ const counts=countCorrectionIds(diff);
  const previous=(p.parentRevisionId?v6SummaryAtRevision(slug,p.parentRevisionId):undefined)??p.historical[slug]?.baseline;
  const before=new Map(previous?.officialSources.map(s=>[s.sourceUrl,s.snapshotHash])??[]),after=new Map(summary.officialSources.map(s=>[s.sourceUrl,s.snapshotHash]));
  const sourceAdded=[...after.keys()].filter(u=>!before.has(u)).length,sourceRemoved=[...before.keys()].filter(u=>!after.has(u)).length,sourceSnapshotChanged=[...after].filter(([u,h])=>before.has(u)&&before.get(u)!==h).length;
- return {slug,name:summary.entity.name,releaseId:p.revision,previousReleaseId:p.parentRevisionId??"baseline-v6-pages-20261013",publicationKind:"scoped_record_correction",recordSha256:p.recordRevisions[slug].recordSha256,changeSummary:"Reviewed scoped record correction; historical held claims remain excluded from current policy conclusions.",summary:summary.summary,canonicalUrl:`${getSiteBaseUrl()}/changes/${p.revision}/${slug}`,changeUrl:`/changes/${p.revision}/${slug}`,universityUrl:`/universities/${slug}`,publicJsonUrl:summary.apiUrl!,claimCount:summary.claims.length,reviewedClaimCount:summary.claims.length,candidateClaimCount:0,sourceCount:summary.officialSources.length,reviewState:summary.reviewState,lastCheckedAt:summary.lastCheckedAt,lastChangedAt:p.publishedAt,added:diff.addedClaimIds.length,modified:diff.updatedClaimIds.length,removed:diff.heldClaimIds.length,newlyExtractedClaims:diff.addedClaimIds.length,trackerRemovedClaims:diff.heldClaimIds.length,claimMetadataChanged:diff.updatedClaimIds.length,evidenceChanged:diff.updatedClaimIds.length,policyTextChanged:0,unchanged:summary.claims.length-diff.addedClaimIds.length-diff.updatedClaimIds.length,sourceAdded,sourceRemoved,sourceSnapshotChanged,sourceTextChanged:0,diffLines:[],diffRows:[],claimChanges:summary.claims.map(c=>({claimId:c.id,claimText:c.claimText,claimType:c.claimType,confidence:c.confidence,evidenceCount:c.evidence.length,lastCheckedAt:c.lastCheckedAt,lastChangedAt:c.lastChangedAt,reviewState:c.reviewState,sourceLanguages:[...new Set(c.evidence.map(e=>e.sourceLanguage??"en"))]})),sourceChanges:summary.officialSources,releaseCount:1};
+ return {slug,name:summary.entity.name,releaseId:p.revision,previousReleaseId:p.parentRevisionId??"baseline-v6-pages-20261013",publicationKind:"scoped_record_correction",recordSha256:p.recordRevisions[slug].recordSha256,changeSummary:counts.affected ? `Tracker record correction: ${counts.modified} updated claims, ${counts.added} newly recorded claims, ${counts.held} held or excluded claims.` : selectChangeSummary(p.changeSummary)?.text ?? "Reviewed scoped record correction; historical held claims remain excluded from current policy conclusions.",summary:summary.summary,canonicalUrl:`${getSiteBaseUrl()}/changes/${p.revision}/${slug}`,changeUrl:`/changes/${p.revision}/${slug}`,universityUrl:`/universities/${slug}`,publicJsonUrl:summary.apiUrl!,claimCount:summary.claims.length,reviewedClaimCount:summary.claims.length,candidateClaimCount:0,sourceCount:summary.officialSources.length,reviewState:summary.reviewState,lastCheckedAt:summary.lastCheckedAt,lastChangedAt:p.publishedAt,added:counts.added,modified:counts.modified,removed:counts.held,newlyExtractedClaims:counts.added,trackerRemovedClaims:counts.held,claimMetadataChanged:counts.modified,evidenceChanged:counts.modified,policyTextChanged:0,unchanged:summary.claims.filter(c=>!counts.changedCurrentIds.has(c.id!)).length,sourceAdded,sourceRemoved,sourceSnapshotChanged,sourceTextChanged:0,diffLines:[],diffRows:[],claimChanges:summary.claims.map(c=>({claimId:c.id,claimText:c.claimText,claimType:c.claimType,confidence:c.confidence,evidenceCount:c.evidence.length,lastCheckedAt:c.lastCheckedAt,lastChangedAt:c.lastChangedAt,reviewState:c.reviewState,sourceLanguages:[...new Set(c.evidence.map(e=>e.sourceLanguage??"en"))]})),sourceChanges:summary.officialSources,releaseCount:1};
 }

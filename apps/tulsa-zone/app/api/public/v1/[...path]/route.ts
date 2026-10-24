@@ -1,3 +1,5 @@
+import {eventIndexResponse} from "@/lib/change-index-events-api";
+import {changeEventsResponse} from "@/lib/change-events-api";
 import {canonicalUniversitySlug} from "@/lib/canonical-university-slug";
 import {GET as universityEndpoint} from "@/app/api/public/v1/universities/[...slug]/route";
 import {withSourceHashContract} from "@/lib/source-hash-contract";
@@ -70,10 +72,15 @@ async function handleGet(request:Request,{params}:{params:Promise<{path:string[]
   indexed.generatedAtMeaning='response_composition';
  }
  return NextResponse.json(indexed,{headers:{'Cache-Control':'private, no-store, no-transform'}});}
- if(path==='recent-changes.json')return recentChanges();
+ const eventSurface=path.match(/^changes\/events\/([a-z0-9-]+)\/(index|latest|recent)\.json$/);
+ if(eventSurface)return eventIndexResponse(request,eventSurface[1],eventSurface[2] as 'index'|'latest'|'recent');
+ if(['changes/index.json','changes/latest.json','recent-changes.json'].includes(path)&&new URL(request.url).searchParams.get('view')==='events')return eventIndexResponse(request,new URL(request.url).searchParams.get('revision')??'',path==='changes/latest.json'?'latest':path==='recent-changes.json'?'recent':'index');
+ if(path==='recent-changes.json')return recentChanges(request);
  if(path==='changes/index.json')return NextResponse.json(await getChangeIndexResponse());
  if(path==='changes/latest.json')return NextResponse.json({...await getLatestReleaseDiff(),scopedRecordCorrection:{revision:correction.revision,publishedAt:correction.publishedAt,changes:correction.changesBySlug}});
  if(path==='widgets/recent-changes.json')return NextResponse.json(buildRecentChangesWidgetFromPublicChanges((await getStagedRecentChangesEnvelope()).data.changes,10),{headers:widgetCorsHeaders});
+ const eventPath=path.match(/^changes\/(events|overview)\/([a-z0-9-]+)\/([a-z0-9-]+)(?:\.json)?$/);
+ if(eventPath)return changeEventsResponse(request,{kind:eventPath[1]==='overview'?'overview':'history',revision:eventPath[2],slug:eventPath[3]});
  if(path.startsWith('changes/')) {
    const parts=path.split('/').slice(1).map(part=>part.replace(/\.json$/, ''));
    if(parts[0].startsWith('pku-v5-')||Object.values(readV6RecordCorrectionRevision(parts[0])?.recordRevisions??{}).some(r=>r.universityRevisionId===parts[0]&&r.baselineRevisionId)) {

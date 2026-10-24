@@ -1,4 +1,6 @@
-import {readFileSync, mkdirSync, existsSync, writeFileSync, realpathSync} from 'node:fs';
+import {validateChangePackage,copyChangePackage} from "./lib/change-package";
+import {type ChangeOverviewPackage} from "../apps/web/lib/change-events";
+import {readFileSync, mkdirSync, existsSync, writeFileSync, realpathSync, renameSync} from 'node:fs';
 import {resolve, dirname, relative} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
@@ -14,6 +16,7 @@ type Ref = {path: string; sha256: string};
 export interface V6ReleaseInput {
   schemaVersion: 'uapt-v6-release-input-v1';
   pages: Ref; records: Ref; acceptance: Ref; syncLedger: Ref;
+  changeProjection?: Ref; changeOverviews?: Ref;
 }
 const hashPattern = /^[a-f0-9]{64}$/;
 function rejectPrivate(value: unknown) {
@@ -68,7 +71,21 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
   if (keys.length !== required.size || keys.some(k => !required.has(k))) throw Error('Incomplete source hash contract coverage');
   const previousProvenance = readFileSync(resolve('data/source-hash-provenance.json'));
   const mergedProvenance = mergeSourceHashRegistry(JSON.parse(previousProvenance.toString()) as SourceHashRegistry, bindings);
-  if (ledger.value.syncContractVersion !== '2.0.0') throw Error('Synchronization contract 2.0.0 required');
+  if (!['2.0.0','2.1.0'].includes(ledger.value.syncContractVersion)) throw Error('Synchronization contract 2.0.0/2.1.0 required');
+  const eventsEnabled=ledger.value.syncContractVersion==='2.1.0';
+  if(eventsEnabled!==Boolean(input.changeProjection&&input.changeOverviews)||Boolean(input.changeProjection)!==Boolean(input.changeOverviews))throw Error('Contract 2.1.0 requires paired projection and overview inputs');
+  const projection=input.changeProjection?read(input.changeProjection):undefined;
+  const overview=input.changeOverviews?read(input.changeOverviews):undefined;
+  const changes=projection&&overview?validateChangePackage(dirname(projection.path),{path:projection.path.split('/').at(-1)!,sha256:input.changeProjection!.sha256},overview.value as ChangeOverviewPackage):undefined;
+  if(overview){
+    rejectPrivate(overview.value);
+    if(overview.value.revision!==records.value.revision||a.projectionSha256!==input.changeProjection!.sha256||a.overviewSha256!==input.changeOverviews!.sha256)throw Error('Acceptance does not bind this event package');
+    const schools=overview.value.schools as ChangeOverviewPackage['schools'];
+    if(JSON.stringify(Object.keys(schools).sort())!==JSON.stringify(Object.keys(records.value.recordRevisions).sort())||Object.entries(schools).some(([slug,o])=>o.recordSha256!==records.value.recordRevisions[slug].recordSha256))throw Error('Policy/overview school basis mismatch');
+    const proofs=ledger.value.surfaces?.changes?.evidence??[];
+    const receipts=proofs.map((p:{path:string})=>JSON.parse(readFileSync(resolve(dirname(ledger.path),p.path),'utf8'))).filter((v:{surface?:string;schemaVersion?:string})=>v.surface==='changes'&&v.schemaVersion==='uapt-policy-surface-receipt-v1');
+    if(receipts.length!==1||receipts[0].projectionArtifact?.sha256!==input.changeProjection!.sha256||receipts[0].overviewArtifact?.sha256!==input.changeOverviews!.sha256)throw Error('Ledger does not bind packed event inputs');
+  }
   execFileSync('python3', [resolve('scripts/policy-inventory.py'), 'sync-gate', ledger.path, '--phase', 'candidate'], {stdio: 'pipe'});
   if (digest(readFileSync(ledger.path)) !== input.syncLedger.sha256) throw Error('Synchronization ledger changed during validation');
   const requested = resolve(output);
@@ -84,9 +101,17 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
     const restored = new V6ArtifactStore(root, index).view(records.value.revision);
     if (JSON.stringify(restored) !== JSON.stringify(original.value)) throw Error('Packed V6 readback differs');
   }
+  if(projection&&overview&&changes){
+    exportV6Revision(resolve(target,'public-v6-change-overviews'),'public-v6-change-overviews',records.value.revision,overview.raw);
+    const root=resolve(target,'public-v6-change-overviews');
+    mkdirSync(resolve(root,'revisions'),{recursive:true});writeFileSync(resolve(root,'revisions',records.value.revision+'.json'),overview.raw,{flag:'wx'});
+    writeFileSync(resolve(root,'current.json'),JSON.stringify({revision:records.value.revision,path:'revisions/'+records.value.revision+'.json',sha256:input.changeOverviews!.sha256})+'\n',{flag:'wx'});
+    const next=copyChangePackage(dirname(projection.path),{path:projection.path.split('/').at(-1)!,sha256:input.changeProjection!.sha256},resolve(target,'public-change-history'),changes.refs);
+    renameSync(next,resolve(target,'public-change-history/current.json'));
+  }
   const provenance = JSON.stringify(mergedProvenance,null,2)+'\n';
   writeFileSync(resolve(target,'source-hash-provenance.json'), provenance, {flag:'wx'});
-  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
+  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, ...(eventsEnabled?{projectionSha256:input.changeProjection!.sha256,overviewSha256:input.changeOverviews!.sha256}:{}), currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
   writeFileSync(resolve(target,'receipt.json'), JSON.stringify(receipt,null,2)+'\n', {flag:'wx'});
   return receipt;
 }

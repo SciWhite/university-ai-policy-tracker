@@ -11,12 +11,14 @@ export async function requirePolicySync(options: {
   if (!options.ledgerPath) throw Error("Refusing mutation/notification without --sync-ledger; see docs/policy-evidence-integration-runbook.md.");
   const ledger = JSON.parse(await readFile(options.ledgerPath, "utf8"));
   const basis = createHash("sha256").update(await readFile(options.basisFile)).digest("hex");
-  if (ledger.syncContractVersion !== "2.0.0" || !options.allowedTypes.includes(ledger.eventType) || ledger.basisSha256 !== basis) {
-    throw Error("Require synchronization contract 2.0.0 bound to this exact basis artifact and operation.");
+  if (!["2.0.0", "2.1.0"].includes(ledger.syncContractVersion) || !options.allowedTypes.includes(ledger.eventType) || ledger.basisSha256 !== basis) {
+    throw Error("Require synchronization contract 2.0.0/2.1.0 bound to this exact basis artifact and operation.");
   }
   if (options.requirePublicReadback && ledger.surfaces?.public_readback?.status !== "updated") {
     throw Error("Search notification requires actual public readback before sending.");
   }
+  // The authoritative gate inspects selected/incoming v2 artifacts and refuses
+  // a 2.0 downgrade. Accepting legacy 2.0 here is not a bypass of that check.
   runSyncGate(options.ledgerPath, "candidate");
   if (createHash("sha256").update(await readFile(options.basisFile)).digest("hex") !== basis) throw Error("Basis changed during synchronization validation.");
   return ledger;

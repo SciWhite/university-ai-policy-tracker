@@ -1,3 +1,4 @@
+import {PolicyV6Changes} from "./policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
 import {PolicyV6RecordLinks} from "./policy-v6-record-links";
@@ -186,7 +187,7 @@ export function PolicyV6LocalPage({
       data-v6-review-state="agent_reviewed"
     >
       <PolicyV6Provider data={data}>
-        <PolicyReferenceLayout enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
+        <PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
           <EntityHeader
             actions={
               <div id="v6-header-actions">
@@ -238,6 +239,7 @@ export function PolicyV6LocalPage({
           />
           <PolicyV6ChecklistFaq includeFaq={false} />
           <PolicyReferenceInteractions />
+          <PolicyV6Changes slug={university.slug} recordSha256={evidence.fingerprint} locale={locale}/>
           <section
             className="student-record-section student-record-section--compact"
             id="claims"

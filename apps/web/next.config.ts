@@ -8,7 +8,14 @@ const publicDataTraceFiles = [
   "../../data/public-v6-pages/sharded/**/*.json",
   "../../data/public-v6-records/sharded/**/*.json",
   "../../data/public-v6-history/sharded/**/*.json",
+  "../../data/public-v6-history/repairs/**/*.json",
   "../../data/public-change-history/**/*.json",
+  "../../data/public-change-summaries/**/*.json",
+  "../../data/public-v6-change-overviews/**/*.json",
+  "lib/change-events.ts",
+  "../tulsa-zone/components/v6-compact-change-note.tsx",
+  "../tulsa-zone/components/mit-student-guide-change-note.tsx",
+  "../tulsa-zone/components/imperial-ux-change-note.tsx",
 ];
 const appRoot = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(appRoot, "../..");
@@ -16,10 +23,12 @@ const workspaceRoot = path.resolve(appRoot, "../..");
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 180,
   experimental: {
-    cpus: 2,
+    cpus: 1,
     globalNotFound: true,
     memoryBasedWorkersCount: false,
-    staticGenerationMaxConcurrency: 2,
+    webpackMemoryOptimizations: true,
+    webpackBuildWorker: true,
+    staticGenerationMaxConcurrency: 1,
     staticGenerationMinPagesPerWorker: 50
   },
   turbopack: {

@@ -1,3 +1,4 @@
+import {v6ChangesCopy} from "@/lib/v6-changes-copy";
 import { policyV6Copy } from '@/lib/policy-v6-copy';
 import { translatePolicyReferenceUi as translate } from "@/lib/policy-reference-ui";
 import { withLocalePrefix, type SupportedLocale } from "@/lib/i18n";
@@ -14,14 +15,14 @@ export function PolicyReferenceReview({ state, locale }: { state: string; locale
   return <>{translate(state.replaceAll("_", " "), locale)}</>;
 }
 
-type NavigationOptions = { locale?: SupportedLocale; claimsOnly?: boolean; enforcement?: boolean; tools?: boolean; supplements?: boolean; uiLab?: boolean; studentActions?: boolean };
+type NavigationOptions = { locale?: SupportedLocale; claimsOnly?: boolean; enforcement?: boolean; tools?: boolean; supplements?: boolean; uiLab?: boolean; studentActions?: boolean; changes?: boolean };
 
-export function PolicyReferenceLayout({ enabled, children, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false, studentActions = false }: NavigationOptions & { enabled: boolean; children: ReactNode }) {
+export function PolicyReferenceLayout({ enabled, children, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false, studentActions = false, changes = false }: NavigationOptions & { enabled: boolean; children: ReactNode }) {
   if (!enabled) return <>{children}</>;
-  return <div className="policy-reference-body"><PolicyReferenceNavigation locale={locale} claimsOnly={claimsOnly} enforcement={enforcement} tools={tools} supplements={supplements} uiLab={uiLab} studentActions={studentActions} /><div className="policy-reference-content">{children}</div></div>;
+  return <div className="policy-reference-body"><PolicyReferenceNavigation locale={locale} claimsOnly={claimsOnly} enforcement={enforcement} tools={tools} supplements={supplements} uiLab={uiLab} studentActions={studentActions} changes={changes} /><div className="policy-reference-content">{children}</div></div>;
 }
 
-export function PolicyReferenceNavigation({ inline = false, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false, studentActions = false }: NavigationOptions & { inline?: boolean }) {
+export function PolicyReferenceNavigation({ inline = false, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false, studentActions = false, changes = false }: NavigationOptions & { inline?: boolean }) {
   return <nav className={`policy-reference-nav policy-reference-nav--${inline ? "inline" : "rail"}`} aria-label={translate("On this page", locale)}>
     <p>{translate("On this page", locale)}</p>
     <a href="#quick-guide">{translate("At a glance", locale)}</a>
@@ -37,6 +38,7 @@ export function PolicyReferenceNavigation({ inline = false, locale = "en", claim
     {tools ? <a href="#university-ai-tools">{universityToolsUi(locale)[0]}</a> : null}
     {supplements ? <a href="#policy-supplements">{translate("More policy information", locale)}</a> : null}
     {uiLab ? <><a href="#submission-checklist">{policyV6Copy(locale).checklist}</a><a href="#student-faq">{policyV6Copy(locale).faq}</a></> : null}
+    {changes ? <a href="#record-changes">{v6ChangesCopy(locale).title}</a> : null}
     <a href="#claims">{translate("Reviewed claims", locale)}</a>
     <a href="#sources">{translate("Official sources", locale)}</a>
     <a href="#record-info">{translate("About this record", locale)}</a>

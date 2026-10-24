@@ -1,3 +1,8 @@
+import {SchoolChangeHistoryPage} from "@/components/change-history-pages";
+import {changeHistoryMetadata} from "@/lib/change-history-view";
+import { localizeSurfaceTree } from "@/lib/surface-localization";
+import { changesUi, changeSummaryText } from "@/lib/changes-ui";
+import { exactClaimDiffLines, hasRecordedChanges } from "@/lib/change-presentation";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
@@ -41,10 +46,12 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
+  const eventMetadata=await changeHistoryMetadata(releaseId,locale);
+  if(eventMetadata)return eventMetadata;
   const releaseRecords = await getReleaseChangeRecords(releaseId);
   if (releaseRecords) {
     const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
-    const changedCount = releaseRecords.filter((record) => record.diffRows.length).length;
+    const changedCount = releaseRecords.filter(hasRecordedChanges).length;
 
     return {
       title: `University AI Policy Tracker Release Diff: ${releaseId}`,
@@ -59,7 +66,7 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
     };
   }
 
-  const history = await getEntityChangeHistory(releaseId);
+  const history = await getEntityChangeHistory(releaseId, locale);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
   const displayName = history
     ? getLocalizedInstitutionName(history.record.slug, history.record.name, locale)
@@ -90,6 +97,8 @@ export default async function ChangeDetailPage({
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
+  const eventPage=await SchoolChangeHistoryPage({slug:releaseId,locale});
+  if(eventPage)return eventPage;
   const recordsForRelease = await getReleaseChangeRecords(releaseId);
   if (recordsForRelease) {
     return (
@@ -101,15 +110,17 @@ export default async function ChangeDetailPage({
     );
   }
 
-  const history = await getEntityChangeHistory(releaseId);
+  const history = await getEntityChangeHistory(releaseId, locale);
 
   if (!history) notFound();
   const { record, releaseRecords } = history;
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const summaryText = getSummaryText(record, locale);
+  const diffLines = exactClaimDiffLines(record);
+  const summary = changeSummaryText(record.changeSummary, locale, history.summaryLanguage);
   const canonical = getAbsoluteSiteUrl(`/changes/${record.slug}`);
 
-  return (
+  return localizeSurfaceTree(
     <main className="page-shell page-shell--wide">
       <JsonLd
         data={{
@@ -140,19 +151,20 @@ export default async function ChangeDetailPage({
         }}
       />
       {record.publicationKind === "scoped_record_correction" ? (
-        <p className="notice-card" data-i18n="preserve">
-          Tracker audit correction: {typeof record.changeSummary === "object" && record.changeSummary !== null ? ((record.changeSummary as any)[locale] || (record.changeSummary as any).en) : record.changeSummary} Published in the tracker on {record.lastChangedAt}. This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately.
-        </p>
+        <div className="notice-card">
+          {summary ? <p data-i18n="preserve" lang={summary.language}>{summary.text}</p> : null}
+          <p>{changesUi("Tracker correction published: {0}. This is not a university policy effective date.", locale, record.lastChangedAt ? formatDateMedium(record.lastChangedAt, locale) : "—")}</p>
+        </div>
       ) : null}
       <section className="entity-header">
         <div className="entity-header__main">
           <p className="entity-header__eyebrow">Change log</p>
           <h1 data-i18n="preserve">{displayName}</h1>
           <p className="entity-header__summary">
-            {getEntityHistoryLead(record, releaseRecords.length)}
+            {getEntityHistoryLead(record, releaseRecords.length, locale)}
           </p>
           <div className="entity-header__metadata">
-            <StateLabel reviewState={record.reviewState} />
+            <StateLabel locale={locale} reviewState={record.reviewState} />
             {record.lastCheckedAt ? (
               <MetaLabel label="Last checked">
                 {formatDateMedium(record.lastCheckedAt, locale)}
@@ -172,16 +184,16 @@ export default async function ChangeDetailPage({
           </div>
         </div>
         <div className="entity-header__actions">
-          <Link className="site-action" href={record.universityUrl}>
+          <Link locale={false} className="site-action" href={record.universityUrl}>
             University page
           </Link>
           <a className="site-action" href={record.publicJsonUrl}>
             Public JSON
           </a>
-          <Link className="site-action" href={currentMonthlyReportPath}>
+          <Link locale={false} className="site-action" href={currentMonthlyReportPath}>
             Monthly report
           </Link>
-          <Link className="site-action" href="/universities">
+          <Link locale={false} className="site-action" href="/universities">
             University index
           </Link>
         </div>
@@ -199,12 +211,11 @@ export default async function ChangeDetailPage({
               <span data-i18n="preserve">{displayName}</span>. Individual release snapshots remain available from
               their release-specific URLs.
             </p>
-            {!record.diffRows.length ? (
+            {!diffLines.length ? (
               <p className="notice-card">
-                No release-to-release policy diff rows are recorded for this
-                university yet. The page still tracks current source-backed
-                claims, official source attributions, review state, source
-                freshness, and public JSON for discovery and citation.
+                {changesUi(hasRecordedChanges(record) || releaseRecords.some(hasRecordedChanges)
+                  ? "Recorded updates are available; a comparable before-and-after text preview is not available for this revision."
+                  : "No recorded updates are available in this tracker history.", locale)}
               </p>
             ) : null}
             <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
@@ -221,7 +232,7 @@ export default async function ChangeDetailPage({
             title="Diff categories"
           >
             <div className="tag-row">
-              <MetaLabel label="Policy text">
+              <MetaLabel label="Tracker claim text">
                 {record.policyTextChanged}
               </MetaLabel>
               <MetaLabel label="Newly extracted">
@@ -240,19 +251,20 @@ export default async function ChangeDetailPage({
           </ReferenceBox>
 
           <ReferenceBox
-            description="Unified tracker diff generated from all public release snapshots for this university."
-            title="Combined release diff"
+            description="Only recorded comparisons with an exact Claim ID match are shown."
+            title="Recorded text comparisons"
           >
-            {record.diffLines.length ? (
+            {diffLines.length ? (
               <DiffBlock
-                description={getCombinedDiffDescription(record, releaseRecords)}
-                lines={record.diffLines}
+                description={changesUi("Exact Claim ID comparisons from recorded releases.", locale)}
+                lines={diffLines}
                 title={`${displayName} combined release diff`}
               />
             ) : (
               <p className="notice-card">
-                No tracker claim/evidence/source changes are recorded for this
-                university in the latest public release.
+                {changesUi(hasRecordedChanges(record) || releaseRecords.some(hasRecordedChanges)
+                  ? "Recorded updates are available; a comparable before-and-after text preview is not available for this revision."
+                  : "No recorded updates are available in this tracker history.", locale)}
               </p>
             )}
           </ReferenceBox>
@@ -260,10 +272,7 @@ export default async function ChangeDetailPage({
           <section className="record-section">
             <div className="section-heading">
               <h2>Release history</h2>
-              <p>
-                {releaseRecords.length}{" "}
-                {pluralize("public release diff", releaseRecords.length)}
-              </p>
+              <p>{changesUi("Tracker history: {0} release records.", locale, releaseRecords.length)}</p>
             </div>
             <div className="source-attribution-list">
               {releaseRecords.map((releaseRecord) => (
@@ -279,7 +288,7 @@ export default async function ChangeDetailPage({
                         : "Initial tracked release."}
                     </p>
                     <div className="tag-row">
-                      <MetaLabel label="Policy text">
+                      <MetaLabel label="Tracker claim text">
                         {releaseRecord.policyTextChanged}
                       </MetaLabel>
                       <MetaLabel label="Newly extracted">
@@ -295,7 +304,7 @@ export default async function ChangeDetailPage({
                   </div>
                   <div className="tag-row">
                     {releaseRecord.releaseId ? (
-                      <Link href={`/changes/${releaseRecord.releaseId}/${record.slug}`}>
+                      <Link locale={false} href={`/changes/${releaseRecord.releaseId}/${record.slug}`}>
                         Release diff
                       </Link>
                     ) : null}
@@ -307,10 +316,10 @@ export default async function ChangeDetailPage({
                       </a>
                     ) : null}
                   </div>
-                  {releaseRecord.diffLines.length ? (
+                  {exactClaimDiffLines(releaseRecord).length ? (
                     <DiffBlock
-                      description={getDiffDescription(releaseRecord)}
-                      lines={releaseRecord.diffLines}
+                      description={changesUi("Comparing {0} to {1}.", locale, releaseRecord.previousReleaseId ?? "—", releaseRecord.releaseId ?? "—")}
+                      lines={exactClaimDiffLines(releaseRecord)}
                       title={`${displayName} ${releaseRecord.releaseId} diff`}
                     />
                   ) : null}
@@ -321,11 +330,8 @@ export default async function ChangeDetailPage({
 
           <section className="record-section">
             <div className="section-heading">
-              <h2>Claim changes</h2>
-              <p>
-                {record.claimChanges.length}{" "}
-                {pluralize("claim record", record.claimChanges.length)}
-              </p>
+              <h2>Current claim records</h2>
+              <p>{changesUi("Current claim records: {0}.", locale, record.claimChanges.length)}</p>
             </div>
             <div className="source-attribution-list">
               {record.claimChanges.map((claim) => (
@@ -338,7 +344,7 @@ export default async function ChangeDetailPage({
                     <p data-i18n="preserve">{claim.claimText}</p>
                   </div>
                   <div className="tag-row">
-                    <StateLabel reviewState={claim.reviewState} />
+                    <StateLabel locale={locale} reviewState={claim.reviewState} />
                     <MetaLabel label="Confidence">
                       {Math.round(claim.confidence * 100)}%
                     </MetaLabel>
@@ -357,10 +363,7 @@ export default async function ChangeDetailPage({
           <section className="record-section">
             <div className="section-heading">
               <h2>Source snapshots</h2>
-              <p>
-                {record.sourceChanges.length}{" "}
-                {pluralize("source attribution", record.sourceChanges.length)}
-              </p>
+              <p>{changesUi("Official source records: {0}.", locale, record.sourceChanges.length)}</p>
             </div>
             <div className="source-attribution-list">
               {record.sourceChanges.map((source) => (
@@ -402,7 +405,7 @@ export default async function ChangeDetailPage({
               <MetaLabel label="Candidate claims">
                 {record.candidateClaimCount}
               </MetaLabel>
-              <MetaLabel label="Policy text">
+              <MetaLabel label="Tracker claim text">
                 {record.policyTextChanged}
               </MetaLabel>
               <MetaLabel label="Newly extracted">
@@ -414,16 +417,16 @@ export default async function ChangeDetailPage({
             </div>
             <ul className="compact-list">
               <li>
-                <Link href="/changes">All changes</Link>
+                <Link locale={false} href="/changes">All changes</Link>
               </li>
               <li>
-                <Link href={record.universityUrl}>University record</Link>
+                <Link locale={false} href={record.universityUrl}>University record</Link>
               </li>
               <li>
-                <Link href={currentMonthlyReportPath}>Monthly report</Link>
+                <Link locale={false} href={currentMonthlyReportPath}>Monthly report</Link>
               </li>
               <li>
-                <Link href="/universities">University index</Link>
+                <Link locale={false} href="/universities">University index</Link>
               </li>
               <li>
                 <a href={record.publicJsonUrl}>Versioned public JSON</a>
@@ -432,7 +435,7 @@ export default async function ChangeDetailPage({
           </ReferenceBox>
         </aside>
       </div>
-    </main>
+    </main>, locale
   );
 }
 
@@ -445,16 +448,16 @@ function ReleaseOverviewPage({
   records: ChangeRecord[];
   releaseId: string;
 }) {
-  const changedRecords = records.filter((record) => record.diffRows.length > 0);
+  const changedRecords = records.filter(hasRecordedChanges);
 
-  return (
+  return localizeSurfaceTree(
     <main className="page-shell page-shell--wide">
       {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card" data-i18n="preserve">Tracker audit correction: {typeof records[0].changeSummary === "object" && records[0].changeSummary !== null ? ((records[0].changeSummary as any)[locale] || (records[0].changeSummary as any).en) : records[0].changeSummary} This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged.</p> : null}
       <section className="hero">
         <p className="kicker">Release diff</p>
         <h1>University AI Policy Tracker Release Diff: {releaseId}</h1>
         <p className="lead">
-          Release-to-release tracker changes. Comparable policy-text changes,
+          Release-to-release tracker changes. Comparable tracker claim text changes,
           newly extracted claims, and source snapshot changes are counted
           separately.
         </p>
@@ -469,7 +472,7 @@ function ReleaseOverviewPage({
           <span>
             {changedRecords.reduce((total, record) => total + record.policyTextChanged, 0)}
           </span>
-          <p>policy-text changes</p>
+          <p>tracker claim text changes</p>
         </div>
         <div>
           <span>
@@ -502,17 +505,17 @@ function ReleaseOverviewPage({
                 </p>
               </div>
               <div className="tag-row">
-                <Link href={`/changes/${releaseId}/${record.slug}`}>
+                <Link locale={false} href={`/changes/${releaseId}/${record.slug}`}>
                   Release diff
                 </Link>
-                <Link href={`/changes/${record.slug}`}>University history</Link>
-                <Link href={record.universityUrl}>University page</Link>
+                <Link locale={false} href={`/changes/${record.slug}`}>University history</Link>
+                <Link locale={false} href={record.universityUrl}>University page</Link>
               </div>
             </article>
           ))}
         </div>
       </section>
-    </main>
+    </main>, locale
   );
 }
 
@@ -527,7 +530,7 @@ function getEntityHistoryMetaDescription(
     : "";
 
   if (releaseRecords.length > 0 && record.diffRows.length > 0) {
-    return `${displayName} AI policy change history with ${releaseRecords.length} public release diff ${pluralize("record", releaseRecords.length)}, ${record.policyTextChanged} policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, source freshness, and public JSON.${checkedText}`;
+    return `${displayName} AI policy change history with ${releaseRecords.length} public release diff ${pluralize("record", releaseRecords.length)}, ${record.policyTextChanged} tracker claim text changes, ${record.newlyExtractedClaims} newly extracted claims, source freshness, and public JSON.${checkedText}`;
   }
 
   return `${displayName} source-backed AI policy change history with ${record.claimCount} claim ${pluralize("record", record.claimCount)}, ${record.sourceCount} official source ${pluralize("attribution", record.sourceCount)}, review state, source freshness, and public JSON.${checkedText}`;
@@ -545,45 +548,15 @@ function getEntityHistoryTitle(
 }
 
 function getEntityHistoryLead(
-  record: ChangeRecord,
-  releaseRecordCount: number
+  _record: ChangeRecord,
+  releaseRecordCount: number,
+  locale: SupportedLocale
 ): string {
-  if (record.diffRows.length > 0) {
-    return "Release-to-release tracker diff history with separate policy-text, newly-extracted claim, evidence, and source snapshot categories.";
-  }
-
-  return `Source-backed change history with no release-to-release policy diff rows recorded yet; current claims, official sources, review state, and freshness remain visible across ${releaseRecordCount} public release ${pluralize("record", releaseRecordCount)}.`;
+  return changesUi("Tracker history: {0} release records.", locale, releaseRecordCount);
 }
 
 function getSummaryText(record: ChangeRecord, locale: SupportedLocale): string {
-  const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
-  const changed = record.lastChangedAt
-    ? ` Latest tracked changed date: ${formatDateMedium(record.lastChangedAt, locale)}.`
-    : " No tracked changed date is published yet.";
-
-  const diff =
-    record.diffRows.length > 0
-      ? ` Combined tracker history: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
-      : " No tracker diff rows are recorded in the latest public release.";
-
-  return `${displayName} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
-}
-
-function getDiffDescription(record: ChangeRecord): string {
-  if (!record.previousReleaseId || !record.releaseId) {
-    return "Initial tracked release. Lines represent public claim/evidence records entering the release snapshot.";
-  }
-
-  return `Comparing ${record.previousReleaseId} to ${record.releaseId}.`;
-}
-
-function getCombinedDiffDescription(
-  record: ChangeRecord,
-  releaseRecords: ChangeRecord[]
-): string {
-  if (releaseRecords.length <= 1) return getDiffDescription(record);
-
-  return `Combining ${releaseRecords.length} public release diffs for this university. Each section below keeps the original release-to-release comparison.`;
+  return changesUi("{0} current claims; {1} official sources.", locale, record.claimCount, record.sourceCount);
 }
 
 function pluralize(label: string, count: number): string {
@@ -604,9 +577,9 @@ function formatSourceFreshness(source: {
   trackerCheckedAt?: string;
 }, locale: SupportedLocale): string {
   if (source.sourceLastModified) {
-    return `Source Last-Modified ${formatTimestamp(source.sourceLastModified, locale)}`;
+    return changesUi("Source Last-Modified {0}", locale, formatTimestamp(source.sourceLastModified, locale));
   }
 
   const checkedAt = source.trackerCheckedAt ?? source.retrievedAt;
-  return checkedAt ? `Tracker checked at ${formatTimestamp(checkedAt, locale)}` : "";
+  return checkedAt ? changesUi("Tracker checked at {0}", locale, formatTimestamp(checkedAt, locale)) : "";
 }

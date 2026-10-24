@@ -1,3 +1,4 @@
+import {PolicyV6Changes} from "@/components/policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "@/components/policy-v6-held-records";
 import {PolicyV6RecordLinks} from "@/components/policy-v6-record-links";
@@ -358,7 +359,7 @@ export default async function UniversityPage({
       />}
 
       <LabProvider {...(labData ? { data: labData } : {})}>
-      <PolicyReferenceLayout uiLab={uiLab} studentActions={Boolean(labData?.studentActionsPilot)} enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot && !uiLab} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements}>
+      <PolicyReferenceLayout changes={uiLab} uiLab={uiLab} studentActions={Boolean(labData?.studentActionsPilot)} enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot && !uiLab} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements}>
       {draftPreview ? <aside data-i18n="preserve" role="status">LOCAL CANDIDATE PREVIEW — pending review; not published. All evidence remains in its original language.</aside> : null}
       <EntityHeader
         actions={uiLab ? <div id="v6-header-actions"><PolicyV6Actions /></div> : undefined}
@@ -412,6 +413,7 @@ export default async function UniversityPage({
       {showSupplements ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 
+      {uiLab ? <PolicyV6Changes slug={slug} recordSha256={labData?.schools.find(s=>s.slug===slug)?.fingerprint} locale={locale}/> : null}
       <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="claims">
         <div className="section-heading">
           <div>

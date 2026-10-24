@@ -1,3 +1,5 @@
+import {ChangeRevisionPage} from "@/components/change-history-pages";
+import {changeHistoryMetadata} from "@/lib/change-history-view";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
@@ -41,6 +43,8 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   const { locale: localeParam, releaseId, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
+  const eventMetadata=await changeHistoryMetadata(slug,locale,releaseId);
+  if(eventMetadata)return eventMetadata;
   const record = (await getReleaseChangeRecords(releaseId))?.find(
     (item) => item.slug === slug
   );
@@ -74,6 +78,8 @@ export default async function ReleaseEntityChangePage({
   const { locale: localeParam, releaseId, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
+  const eventPage=await ChangeRevisionPage({slug,revision:releaseId,locale});
+  if(eventPage)return eventPage;
   const record = (await getReleaseChangeRecords(releaseId))?.find(
     (item) => item.slug === slug
   );

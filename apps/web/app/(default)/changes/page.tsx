@@ -19,6 +19,9 @@ import { translateSurfaceText } from "@/lib/surface-localization";
 import { CopyCurrentLink } from "@/components/copy-current-link";
 import { DiscoveryIcon } from "@/components/discovery-ui";
 import { ChangesIndexClient } from "./changes-index-client";
+import {ChangeIndexEventsPage} from "@/components/change-index-events-page";
+import {selectedEventIndex} from "@/lib/change-index-events-api";
+import {changeIndexEventsCopy} from "@/lib/change-index-events-copy";
 
 // Static shell + client filter island (same pattern as /universities): filters
 // come from the URL client-side, so crawlers and cold starts get a prebuilt
@@ -37,16 +40,18 @@ interface ChangesPageProps {
 export async function generateMetadata({ params }: ChangesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).changes;
+  let eventView=false;try{eventView=Boolean(await selectedEventIndex(locale));}catch{eventView=true;}
+  const title=eventView?changeIndexEventsCopy(locale).title:copy.title,description=eventView?changeIndexEventsCopy(locale).scope:copy.description;
   const alternates = getLocalizedAlternates("/changes", locale);
   const canonical = String(alternates.canonical);
 
   return {
-    title: copy.title,
-    description: copy.description,
+    title,
+    description,
     alternates,
     openGraph: {
-      title: copy.title,
-      description: copy.description,
+      title,
+      description,
       url: canonical,
       type: "website",
     },
@@ -56,6 +61,7 @@ export async function generateMetadata({ params }: ChangesPageProps) {
 export default async function ChangesPage({ params }: ChangesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).changes;
+  const events=await ChangeIndexEventsPage({locale});if(events)return events;
   const ui = discoveryCopy(locale);
   const index = await getChangeIndexData();
   const sortedRecords = [...index.data.records].sort((left, right) =>

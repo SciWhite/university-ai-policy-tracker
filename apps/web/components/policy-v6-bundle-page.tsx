@@ -1,3 +1,4 @@
+import {PolicyV6Changes} from "./policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
 import {PolicyV6RecordLinks} from "./policy-v6-record-links";
@@ -33,7 +34,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   const onlyScopedTools = scopedTools.length > 0 && unscopedTools.length === 0;
   const scopeNote = locale === "zh" ? "以下工具限特定对象、账户、模式或用途；不代表全体学生获得使用许可，也不代表考核许可。请核对每项获取条件。" : "These tools have audience, account, mode or purpose limits; access is not established for all students and does not grant assessment permission. Check each access condition.";
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
-    <PolicyV6Provider data={data}><PolicyReferenceLayout enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
+    <PolicyV6Provider data={data}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
       <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />
@@ -47,6 +48,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
       </> : undefined} />
       <PolicyV6ChecklistFaq includeFaq={false} />
       <PolicyReferenceInteractions />
+      <PolicyV6Changes slug={university.slug} recordSha256={view.school.fingerprint} locale={locale}/>
       <section id="claims" className="student-record-section student-record-section--compact"><div className="section-heading"><h2>{t("Reviewed claims")}</h2><p>{view.claims.length}</p></div>
         <PolicyV6ClaimGroups entitySlug={university.slug} groups={groupReviewedClaimsByClaimType(view.claims)} locale={locale} claimScopes={view.claimScopes} />
       </section>

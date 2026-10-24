@@ -24,7 +24,10 @@
   The maintenance promoter requires `--sync-ledger`; other release entry
   points require the same event checks until their adapters are implemented.
 - New promotions, actual snapshot re-pins and live IndexNow submissions require
-  synchronization contract 2.0.0. Legacy repair/content scripts must run through
+  synchronization contract 2.0.0. Releases carrying public-change-history v2 or
+  V6 change-overview packages require contract 2.1.0, which includes all 2.0.0
+  checks plus deterministic event artifact validation. Unknown versions fail
+  closed; historical unversioned audit receipts remain audit-only. Legacy repair/content scripts must run through
   `scripts/run-synchronized-policy-mutation.ts` with a frozen entry hash and
   exact basis; process success remains completion-pending until public readback.
   Use `scripts/policy-inventory-status.py` to check the pointer, cache, knowledge

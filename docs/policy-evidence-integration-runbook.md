@@ -207,3 +207,23 @@ sourceLevelId 保持 URL＋声明版本＋问题身份，当前 URL 去重取回
 V6 证据接入与政策修复的新任务使用 `docs/policy-audit-requirements-v1.1.json`（1.1.0）。保留上述默认 CLI 的 1.0.0 历史库存诊断行为；未来新库存显式设置 resolver 的 `requirementsRegistry` 为新路径，生成新 requirements-coverage，不原地改当前库存、旧基线、knowledge 冻结字节或历史批准。旧库存检查通过只确认旧依据完整；新任务另冻结 1.1.0 registry，并将新增稳定 ID 的历史覆盖记为 not_checked。
 
 新版本覆盖工具发现、课程/考试派生依据、展示投影、同原件 PDF、版本/时间层次、历史读回、验收阶段以及详情完整性。详细输入和验收见 V6 指南及模板。后台 validate-assessment-evidence.ts 按目标冻结 JSON 显式执行；它尚未接入生产分析生成器，不宣称历史结果已修复，也不替代语义审核。
+
+### Changes v2 / V6 overview：同步合同 2.1.0
+
+含 `uapt-public-change-history-v2` 或 `public-v6-change-overviews` 的新配对包必须使用 `syncContractVersion: "2.1.0"`。2.0.0 的既有验证保留；未声明版本的历史审计事件保留原审计验证，不能供发布入口使用。任何明确声明的未知版本均拒绝。Python sync gate、`uapt-release.mjs`、`require-policy-sync.ts` 和 V6 packer 使用相同版本范围；2.1 先运行全部 2.0 typed checks，再运行事件产物验证。
+
+权威 Python gate 还读取实际选中的 repo／runtime／事件包目录历史指针、overview family，以及待发布 basis 或 changes receipt 内的投影引用。选中或传入 v2 后，policy release／IndexNow 事件使用 2.0.0 会被拒绝；不能省略声明或降级合同来跳过事件校验。Node 公用入口仍支持纯 v1 历史的 2.0.0，但必须执行这个权威 gate。本地无发布资格的 audit 不因此继承生产批准。
+
+`scopeArtifact` 增加 `changedRevisionsBySlug`，完整列出本次 scope 各校在该配对包中新产生的事件修订；继承且无变化的学校为 `[]`，不能制造事件。`changes` typed receipt 除原六项 checks 外增加：
+
+- `projectionRevision`、`rulesVersion`、`inputBasisSha256`；
+- `projectionArtifact`、`overviewArtifact`：`{path, sha256, basisSha256}`，分别绑定历史 v2 manifest 和 overview 公共包原字节；
+- `eventSurfaces`：history、universityChanges、latestDiff、changesIndex、recentChanges、rss 的真实事件身份观测文件。各 proof 仍相对**事件包根目录**，不是 receipt 子目录。
+
+各观测文件采用 `uapt-change-event-surface-v1`，含 `surface`、`checkedSlugs`、`projectionSha256`、`rulesVersion`、按实际顺序的 `eventIds`。recentChanges/rss 还记录 `{start,end,limit}` 窗口，使用带时区时间戳；仅验证该窗口内预期子集，禁止用完整历史冒充窗口输出。latestDiff 为各校最近一个事件；history/universityChanges/changesIndex 为受检范围内的完整事件集。必须由实际消费者回读规范化得到，不能在发布时直接从预期列表复制而声称回读完成。
+
+门禁读取 manifest 的冻结 `projectionInput`，使用同一确定性规则重建事件，核对逐校历史、索引、overview、当前公开 Claim 集合及记录 fingerprint、scope 修订和六面事件身份。重复、遗漏、错误学校、未知规则、错误 basis、陈旧 RSS/index、超限 overview 均拒绝。旧的六个布尔标记本身不满足 2.1。
+
+V6 配对输入可增加 `changeProjection`、`changeOverviews` 两个冻结引用；2.1 包必须同时提供，acceptance 与 ledger 必须绑定其精确哈希。packer 输出已有公共历史体系的 v2 和 `public-v6-change-overviews` family，复用 shard manifest。overview 按学校强制未压缩 UTF-8 JSON ≤10,240 字节；family revision、政策 record hash、事件投影版本须一致。候选准备入口检测到该 family 时必须配对验证与暂存，不能遗漏或退回 v1 全量重建。
+
+首次代码上线和选择事件包仍需正式候选/API/MCP/网页/历史/sitemap/生命周期验收，按实际受影响服务选择发布路由。本地生成器输出、合成测试凭据及开发 QA 接口不是生产候选批准。全站旧 UI、旧 recent/RSS 的消费者迁移与回读未完成前，不能用 2.1 宣称公网同步完成。

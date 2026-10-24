@@ -13,7 +13,7 @@ const help = `UAPT release helpers (no build or deployment commands)
   node scripts/uapt-release.mjs inspect <full-40-character-sha>
     Read-only OCI build identity check. Run from the frozen release checkout.
   node scripts/uapt-release.mjs verify-sync <event.json> <basis-file> <candidate|complete>
-    Check contract 2.0.0 receipts before cutover or after actual public readback.
+    Check contract 2.0.0/2.1.0 receipts before cutover or after actual public readback.
   node scripts/uapt-release.mjs lifecycle <audit|prebuild|gate|cutover|complete|recover> [plan.json] [--completion-ledger event.json]
     Host lifecycle admission, bounded slots, recovery and mandatory retirement.
   node scripts/uapt-release.mjs --help
@@ -44,7 +44,7 @@ try {
     console.log("Local non-build preflight passed. Targeted tests/browser checks and OCI artifact acceptance are still required.");
   } else if (action === "verify-sync" && expectedSha && extra.length === 2 && ["candidate", "complete"].includes(extra[1])) {
     const event = readJson(expectedSha);
-    if (event.syncContractVersion !== "2.0.0" || event.basisSha256 !== hash(extra[0])) throw new Error("Synchronization contract/version or exact basis mismatch");
+    if (!["2.0.0", "2.1.0"].includes(event.syncContractVersion) || event.basisSha256 !== hash(extra[0])) throw new Error("Synchronization contract/version or exact basis mismatch");
     const result = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3", ["scripts/policy-inventory.py", "sync-gate", expectedSha, "--phase", extra[1]], { cwd: root, stdio: "inherit" });
     if (result.status !== 0) throw new Error("Synchronization gate rejected this operation");
     console.log("Synchronization receipts checked; deployment and semantic approval remain separate.");

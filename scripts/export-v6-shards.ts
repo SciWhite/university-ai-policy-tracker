@@ -1,3 +1,4 @@
+import { CHANGE_RULES_VERSION, OVERVIEW_MAX_BYTES, type ChangeOverviewPackage } from "../apps/web/lib/change-events";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -8,7 +9,7 @@ import type { ShardIndex, ShardManifest, ShardNode } from "../apps/web/lib/v6-ar
 
 export const digest = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 const bytes = (value: unknown) => Buffer.from(JSON.stringify(value) + "\n");
-const families = ["public-v6-pages", "public-v6-records", "public-v6-history"];
+const families = ["public-v6-pages", "public-v6-records", "public-v6-history", "public-v6-change-overviews"];
 
 /** Only converts already-public packages. Does not select a current content pointer. */
 export function exportV6Revision(root: string, family: string, revision: string, raw: Buffer): ShardManifest {
@@ -24,6 +25,13 @@ export function exportV6Revision(root: string, family: string, revision: string,
     Object.values(value.snapshots).forEach(s => policySnapshotSchema.parse(s));
     Object.values(value.toolsBySlug).forEach(list => (list as unknown[]).forEach(t => universityToolRecordSchema.parse(t)));
     scope = value.summaries.map((s: {entity: {slug: string}}) => s.entity.slug);
+  } else if (family === "public-v6-change-overviews") {
+    const pkg=value as ChangeOverviewPackage;
+    if(pkg.schemaVersion!=="uapt-v6-change-overviews-v1"||pkg.revision!==revision||pkg.rulesVersion!==CHANGE_RULES_VERSION||!/^[a-f0-9]{64}$/.test(pkg.projectionSha256)||!/^[a-f0-9]{64}$/.test(pkg.basisSha256))throw Error("Invalid change overview package");
+    scope=Object.keys(pkg.schools);
+    for(const [slug,o] of Object.entries(pkg.schools)){
+      if(o.slug!==slug||o.revision!==revision||o.projectionSha256!==pkg.projectionSha256||o.basisSha256!==pkg.basisSha256||o.rulesVersion!==CHANGE_RULES_VERSION||Buffer.byteLength(JSON.stringify(o),'utf8')+1>OVERVIEW_MAX_BYTES)throw Error("Invalid or oversized change overview");
+    }
   } else {
     if (value.schemaVersion !== "uapt-bounded-public-history-v1" || value.basisRevision !== revision) throw new Error("Expected frozen public history");
     scope = Object.keys(value.records);
@@ -45,6 +53,7 @@ export function exportV6Revision(root: string, family: string, revision: string,
     // Split exactly at public school/object boundaries; keep all unknown fields.
     if (family === "public-v6-pages" && path[0] === "locales" && path.length === 4) return leaf(item);
     if (family === "public-v6-records" && path.length === 2 && ["summaries", "historical", "heldBySlug", "toolsBySlug", "snapshots", "analysisOverrides"].includes(path[0])) return leaf(item);
+    if (family === "public-v6-change-overviews" && path[0] === "schools" && path.length === 2) return leaf(item);
     if (family === "public-v6-history" && path[0] === "records" && path.length === 2) return leaf(item);
     if (Array.isArray(item)) {
       const keys = path.at(-1) === "schools" ? item.map(s => s.slug) : path.join(".") === "summaries" ? item.map(s => s.entity.slug) : undefined;
@@ -74,7 +83,7 @@ export function exportV6Revision(root: string, family: string, revision: string,
 function main() {
   const args = process.argv.slice(2);
   if (args.length === 1 && args[0] === "--all-public") {
-    for (const family of families) {
+    for (const family of families.filter(f=>f!=="public-v6-change-overviews")) {
       const root = resolve("data", family);
       const registered = family === "public-v6-history"
         ? Object.fromEntries(readdirSync(resolve(root, "revisions")).filter(f => /^[a-z0-9-]+\.json$/.test(f)).map(f => [f.slice(0, -5), {path: `revisions/${f}`, sha256: digest(readFileSync(resolve(root, "revisions", f)))}]))

@@ -1,4 +1,5 @@
 "use client";
+import {v6ChangesCopy} from "@/lib/v6-changes-copy";
 
 import React, {
   createContext,
@@ -627,9 +628,9 @@ export function PolicyV6Intro() {
         <a href={UNIVERSITY_POLICY_PLUGIN_URL} target="_blank" rel="noopener noreferrer">{pluginPromotionCopy(data.locale).cta} ↗</a>
         <a className="v6-compact-check-entry" href="#v6-submission-guide"><strong>{data.locale === "zh" ? "提交前检查" : "Before you submit"}</strong><span>{data.locale === "zh" ? "建议与注意事项" : "Advice and precautions"}</span><span aria-hidden="true">↓</span></a>
         <a
-          href={`${data.locale === "en" ? "" : `/${data.locale}`}/changes/${data.currentSlug}`}
+          href="#record-changes"
         >
-          {ui.changes} →
+          {v6ChangesCopy(data.locale).title} ↓
         </a>
       </div>
     </section>

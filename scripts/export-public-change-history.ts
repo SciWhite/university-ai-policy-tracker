@@ -156,7 +156,14 @@ export async function exportPublicChangeHistory(options?: {
   repoRoot?: string;
   historyDir?: string;
   siteUrl?: string;
+  eventsOutput?: string;
 }): Promise<ExportPublicChangeHistoryResult> {
+  if (options?.eventsOutput) {
+    const repoRoot=await findRepoRoot();
+    if (options.repoRoot && path.resolve(options.repoRoot)!==path.resolve(repoRoot)) throw Error("Run the v2 exporter from its isolated target checkout");
+    const {exportChangeHistoryV2}=await import("./lib/export-change-events");
+    return await exportChangeHistoryV2(repoRoot,options.eventsOutput) as unknown as ExportPublicChangeHistoryResult;
+  }
   const targetRoot = options?.repoRoot ? path.resolve(options.repoRoot) : await findRepoRoot();
   const currentRoot = path.resolve(process.cwd());
 
@@ -230,7 +237,9 @@ export async function exportPublicChangeHistory(options?: {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  exportPublicChangeHistory().then(res => {
+  const args=process.argv.slice(2);
+  if(args.length && (args.length!==2||args[0]!=="--events-output"))throw Error("Use --events-output <NEW isolated directory>, or no arguments for the legacy v1 exporter");
+  exportPublicChangeHistory(args.length?{eventsOutput:args[1]}:undefined).then(res => {
     console.log(JSON.stringify(res));
   }).catch(error => {
     console.error(error);

@@ -1,5 +1,7 @@
 "use client";
 
+import { changeSummaryText } from "@/lib/localized-change-summary";
+
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { DocumentLink as Link } from "@/components/document-link";
 import { UniversityMark } from "@/components/university-mark";
@@ -341,11 +343,7 @@ export function ChangesIndexClient({
                         </span>
                       </div>
                     </div>
-                    <p data-i18n="preserve">
-                      {r.changeSummary ??
-                        r.primaryDiff?.changeExplanation ??
-                        r.summary}
-                    </p>
+                    <ChangeSummary record={r} locale={locale} />
                     <div className="discovery-actions">
                       <button
                         className="discovery-text-button"
@@ -461,8 +459,8 @@ function ChangePreview({
 }) {
   const copy = discoveryCopy(locale);
   const design = mockupCopy(locale);
-  const diff = r.primaryDiff;
-  const hasText = Boolean(diff && (diff.oldClaimText || diff.newClaimText));
+  // The v1 index omits Claim IDs and match evidence; use the verified history
+  // page for text comparisons instead of pairing unverified cached prose.
   return (
     <div className="discovery-change-preview">
       <h2>{copy.whatChanged}</h2>
@@ -482,9 +480,7 @@ function ChangePreview({
           </p>
         </div>
       </div>
-      <p data-i18n="preserve">
-        {r.changeSummary ?? diff?.changeExplanation ?? r.summary}
-      </p>
+      <ChangeSummary record={r} locale={locale} />
       <dl className="discovery-change-stats">
         <div>
           <dt>{design.recordText}</dt>
@@ -501,20 +497,7 @@ function ChangePreview({
           </dd>
         </div>
       </dl>
-      {hasText ? (
-        <>
-          <div className="discovery-diff-block discovery-diff-block--old">
-            <h4>{copy.previousRecord}</h4>
-            <p data-i18n="preserve">{diff?.oldClaimText ?? copy.notPresent}</p>
-          </div>
-          <div className="discovery-diff-block discovery-diff-block--new">
-            <h4>{copy.currentRecord}</h4>
-            <p data-i18n="preserve">{diff?.newClaimText ?? copy.notPresent}</p>
-          </div>
-        </>
-      ) : (
-        <p className="discovery-muted">{copy.noComparison}</p>
-      )}
+      <p className="discovery-muted">{copy.noComparison}</p>
       <div className="discovery-actions">
         <Link className="discovery-outline-link" href={r.changeUrl}>
           {copy.viewChanges}
@@ -543,4 +526,11 @@ function ChangePreview({
       </details>
     </div>
   );
+}
+
+function ChangeSummary({ record, locale }: { record: ChangeIndexRecord; locale: SupportedLocale }) {
+  const summary = changeSummaryText(record.changeSummary ?? record.primaryDiff?.changeExplanation ?? record.summary, locale);
+  if (!summary) return null;
+  return <><p data-i18n="preserve" lang={summary.language}>{summary.text}</p>
+    {summary.language === "en" && locale !== "en" ? <p className="discovery-muted">{discoveryCopy(locale).summaryFallback}</p> : null}</>;
 }

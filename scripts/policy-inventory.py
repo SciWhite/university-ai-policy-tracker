@@ -577,8 +577,59 @@ def sync_gate_v2(event, root, phase):
             if receipt["observedDataHash"] != data_hash: raise ValueError("Runtime uses a different public data artifact")
 
 
+def sync_gate_v21(event, root):
+    """v2.0 typed receipts plus deterministic event/input/overview and surface checks."""
+    import subprocess
+    changes = event["surfaces"].get("changes", {})
+    if changes.get("status") != "updated":
+        raise ValueError("Contract 2.1.0 requires event projection evidence")
+    def receipt(name):
+        found = [(safe_path(root, p["path"]), load(safe_path(root, p["path"]))) for p in event["surfaces"][name].get("evidence", []) if p["path"].endswith(".json")]
+        found = [(p, r) for p, r in found if isinstance(r, dict) and r.get("schemaVersion") == "uapt-policy-surface-receipt-v1" and r.get("surface") == name]
+        if len(found) != 1: raise ValueError("Missing unique event/public-data receipt")
+        return found[0]
+    changes_path, change_receipt = receipt("changes")
+    data_path, data_receipt = receipt("public_data")
+    repo = Path(__file__).resolve().parent.parent
+    command = ["node", str(repo / "node_modules/tsx/dist/cli.mjs"), "--tsconfig", str(repo / "apps/web/tsconfig.json"), str(repo / "scripts/validate-change-event-projection.ts"), str(changes_path), str(safe_path(root, event["scopeArtifact"]["path"])), str(safe_path(root, data_receipt["dataArtifact"]["path"])), event["basisSha256"], str(root)]
+    result = subprocess.run(command, cwd=repo, capture_output=True, text=True, timeout=120)
+    if result.returncode != 0: raise ValueError("Event projection gate rejected: " + result.stderr[-4000:])
+
+
+def event_projection_selected(package_root):
+    """Inspect selected artifacts, never an operator-supplied 'events enabled' flag."""
+    for data_root in [package_root, package_root / "data", package_root / "apps/web/.runtime-data", package_root / "apps/web/.runtime-data/data"]:
+        pointer = data_root / "public-change-history/current.json"
+        if pointer.exists():
+            ref = load(pointer)
+            manifest = safe_path(pointer.parent, ref["path"])
+            if sha(manifest.read_bytes()) != ref.get("sha256"): raise ValueError("Selected change projection hash mismatch")
+            schema = load(manifest).get("schemaVersion")
+            if schema == "uapt-public-change-history-v2": return True
+            if schema != "uapt-public-change-history-v1": raise ValueError("Unknown selected change projection")
+        for file in [data_root / "public-v6-change-overviews/current.json", data_root / "public-v6-change-overviews/sharded/index.json"]:
+            if file.exists(): return True
+    return False
+
+
+def require_event_contract(event, root):
+    if event.get("eventType") not in ["policy_release", "index_notification"]: return
+    repo = Path(__file__).resolve().parent.parent
+    basis_ref = event.get("basisArtifact", {}).get("path")
+    basis = load(safe_path(root, basis_ref)) if basis_ref else {}
+    incoming = isinstance(basis, dict) and (basis.get("changeProjection") or basis.get("changeOverviews"))
+    for proof in event.get("surfaces", {}).get("changes", {}).get("evidence", []):
+        value = load(safe_path(root, proof["path"]))
+        if isinstance(value, dict) and (value.get("projectionArtifact") or value.get("overviewArtifact")): incoming = True
+    if (incoming or any(event_projection_selected(path) for path in [repo, root])) and event.get("syncContractVersion") != "2.1.0":
+        raise ValueError("Selected or incoming Changes v2 requires synchronization contract 2.1.0; downgrade refused")
+
+
 def sync_gate(event, root=None, phase="complete"):
     """Verify frozen artifact receipts. Semantic acceptance is still an operator task."""
+    version = event.get("syncContractVersion")
+    if version not in [None, "2.0.0", "2.1.0"]:
+        raise ValueError("Unknown synchronization contract version")
     root = Path(root or ".").resolve()
     if phase not in ["candidate", "complete"]:
         raise ValueError("Invalid synchronization phase")
@@ -588,6 +639,7 @@ def sync_gate(event, root=None, phase="complete"):
     basis = event.get("basisArtifact", {})
     if basis.get("sha256") != event["basisSha256"] or not basis.get("path") or sha(safe_path(root, basis["path"]).read_bytes()) != event["basisSha256"]:
         raise ValueError("Missing or changed event basis artifact")
+    require_event_contract(event, root)
 
     def updated(name, surface):
         proofs = surface.get("evidence", [])
@@ -619,7 +671,8 @@ def sync_gate(event, root=None, phase="complete"):
             if s.get("status") != "updated":
                 raise ValueError("Candidate policy requires candidate readback")
             updated("candidate_readback", s)
-    if event.get("syncContractVersion") == "2.0.0": sync_gate_v2(event, root, phase)
+    if version in ["2.0.0", "2.1.0"]: sync_gate_v2(event, root, phase)
+    if version == "2.1.0": sync_gate_v21(event, root)
     return True
 
 
