@@ -22,6 +22,16 @@ class LifecycleTests(unittest.TestCase):
  def test_retirement_is_mandatory(self):
   self.plan['retireUnits']=[]
   with self.assertRaisesRegex(ValueError,'retire'):m.validate_plan(self.plan,self.policy,self.observed)
+ def test_immediate_cutover_gate_rechecks_actual_release_root_set(self):
+  with tempfile.TemporaryDirectory() as d:
+   receipt=Path(d)/'retention.json'
+   receipt.write_text(json.dumps({'schemaVersion':'uapt-release-retention-v1','basisSha256':'frozen','checkedAt':m.now(),'entries':[{'name':'accepted','disposition':'active','reason':'Current tested runtime'}]}))
+   self.policy['diskCapacity']={'root':'/srv/uapt','reserveBytes':100,'reserveInodes':10,'projectMaxBytes':1000,'artifactMaxBytesByRole':{'shared-web':300}}
+   self.observed['disk']={'root':'/srv/uapt','freeBytes':500,'availableInodes':100,'projectBytes':500,'releaseRoots':['accepted']}
+   self.plan.update(basis={'sha256':'frozen'},retentionReceipt={'path':str(receipt),'sha256':m.digest(receipt)},diskBudget={'schemaVersion':'uapt-release-disk-budget-v1','basisSha256':'frozen','role':'shared-web','artifactMaxBytes':300,'peakAdditionalBytesByStage':{s:200 for s in ['download','unpack','dependencies','build','candidate','archive','finalization']}})
+   self.assertTrue(m.validate_plan(self.plan,self.policy,self.observed))
+   self.observed['disk']['releaseRoots'].append('unexplained-new-directory')
+   with self.assertRaisesRegex(ValueError,'Unclassified'):m.validate_plan(self.plan,self.policy,self.observed)
  def test_recover_after_partial_route_write_restores_files_and_policy(self):
   with tempfile.TemporaryDirectory()as d:
    root=Path(d);target=root/'route';backup=root/'backup';backup.write_text('old accepted routing');target.write_text('partially selected routing');policy=root/'policy.json';m.write(policy,{'activeUnits':['new']});tx={'retireUnits':['old'],'files':[{'target':str(target),'backup':str(backup),'beforeSha256':m.digest(backup)}],'beforePolicy':{'activeUnits':['old']},'plan':{'candidateUnits':['new'],'candidateEndpoints':{'new':['127.0.0.1:9999']}}}

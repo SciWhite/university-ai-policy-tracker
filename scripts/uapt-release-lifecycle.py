@@ -105,6 +105,7 @@ def validate_plan(plan, policy, observed):
     if not plan.get('routingFiles') or not plan.get('candidateChecks') or not plan.get('retiredEndpoints'): raise ValueError('Missing routing/candidate/retirement endpoint scope')
     if not plan.get('staticArchiveReceipt') or not plan.get('publicChecks'): raise ValueError('Static archive and exact public readback checks required')
     validate_disk_budget(plan, policy, observed)
+    if policy.get('diskCapacity'): validate_retention_receipt(plan, observed)
     return True
 
 def validate_candidate_identity(plan, basis, prebuild=False):
