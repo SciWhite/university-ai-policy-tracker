@@ -183,4 +183,42 @@ class CandidateIdentityTests(unittest.TestCase):
    with self.assertRaisesRegex(ValueError, 'InvocationID changed since sampling'):
     m.validate_capacity({'candidatePeakBytes': 200, 'candidateUnits': ['candidate-web']}, capacity_diff_inv, basis=self.basis)
 
+class DiskAdmissionTests(unittest.TestCase):
+ def setUp(self):
+  self.policy={'diskCapacity':{'root':'/srv/uapt','reserveBytes':100,'reserveInodes':10,'projectMaxBytes':1000,'artifactMaxBytesByRole':{'shared-web':300}}}
+  self.observed={'disk':{'root':'/srv/uapt','freeBytes':500,'availableInodes':100,'projectBytes':500,'releaseRoots':['accepted']}}
+  self.plan={'basis':{'sha256':'frozen'},'diskBudget':{'schemaVersion':'uapt-release-disk-budget-v1','basisSha256':'frozen','role':'shared-web','artifactMaxBytes':300,'peakAdditionalBytesByStage':{s:200 for s in ['download','unpack','dependencies','build','candidate','archive','finalization']}}}
+ def test_full_peak_and_role_budget_pass(self):m.validate_disk_budget(self.plan,self.policy,self.observed)
+ def test_low_free_disk_and_inode_capacity_refuse(self):
+  self.observed['disk']['freeBytes']=299
+  with self.assertRaisesRegex(ValueError,'disk reserve'):m.validate_disk_budget(self.plan,self.policy,self.observed)
+  self.observed['disk']['freeBytes']=500;self.observed['disk']['availableInodes']=9
+  with self.assertRaisesRegex(ValueError,'inodes'):m.validate_disk_budget(self.plan,self.policy,self.observed)
+ def test_understated_stages_changed_basis_and_oversize_refuse(self):
+  del self.plan['diskBudget']['peakAdditionalBytesByStage']['archive']
+  with self.assertRaisesRegex(ValueError,'peak estimates'):m.validate_disk_budget(self.plan,self.policy,self.observed)
+  self.plan['diskBudget']['peakAdditionalBytesByStage']['archive']=200;self.plan['diskBudget']['basisSha256']='other'
+  with self.assertRaisesRegex(ValueError,'unbound'):m.validate_disk_budget(self.plan,self.policy,self.observed)
+  self.plan['diskBudget']['basisSha256']='frozen';self.plan['diskBudget']['artifactMaxBytes']=301
+  with self.assertRaisesRegex(ValueError,'per-role'):m.validate_disk_budget(self.plan,self.policy,self.observed)
+ def test_project_accumulation_refuses_even_with_free_host_disk(self):
+  self.observed['disk']['projectBytes']=801
+  with self.assertRaisesRegex(ValueError,'UAPT disk budget'):m.validate_disk_budget(self.plan,self.policy,self.observed)
+ def test_retention_must_cover_actual_roots_and_resolve_archive_debt(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'receipt.json'
+   def save(entries):
+    m.write(p,{'schemaVersion':'uapt-release-retention-v1','basisSha256':'frozen','checkedAt':m.now(),'entries':entries});self.plan['retentionReceipt']={'path':str(p),'sha256':m.digest(p)}
+   save([{'name':'accepted','disposition':'rollback','reason':'Exact previous accepted role artifact'}]);m.validate_retention_receipt(self.plan,self.observed)
+   self.observed['disk']['releaseRoots'].append('orphan')
+   with self.assertRaisesRegex(ValueError,'Unclassified'):m.validate_retention_receipt(self.plan,self.observed)
+   save([{'name':n,'disposition':'archive_pending','reason':'Not yet offloaded'} for n in self.observed['disk']['releaseRoots']])
+   with self.assertRaisesRegex(ValueError,'archive debt'):m.validate_retention_receipt(self.plan,self.observed)
+ def test_old_receipt_and_rehashed_foreign_basis_refuse(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'receipt.json';v={'schemaVersion':'uapt-release-retention-v1','basisSha256':'frozen','checkedAt':'2000-01-01T00:00:00Z','entries':[]};m.write(p,v);self.plan['retentionReceipt']={'path':str(p),'sha256':m.digest(p)}
+   with self.assertRaisesRegex(ValueError,'stale'):m.validate_retention_receipt(self.plan,self.observed)
+   v.update(checkedAt=m.now(),basisSha256='other');m.write(p,v);self.plan['retentionReceipt']['sha256']=m.digest(p)
+   with self.assertRaisesRegex(ValueError,'basis mismatch'):m.validate_retention_receipt(self.plan,self.observed)
+
 if __name__=='__main__':unittest.main()

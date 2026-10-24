@@ -27,7 +27,55 @@ def running():
 def audit():
     units = {unit: state(unit) for unit in running()}
     memory = {line.split(':')[0]: int(line.split()[1]) * 1024 for line in Path('/proc/meminfo').read_text().splitlines() if line.startswith(('MemTotal:', 'MemAvailable:'))}
-    return {'checkedAt': now(), 'memory': memory, 'units': units, 'uaptMemoryBytes': sum(int(s['MemoryCurrent']) for s in units.values())}
+    result = {'checkedAt': now(), 'memory': memory, 'units': units, 'uaptMemoryBytes': sum(int(s['MemoryCurrent']) for s in units.values())}
+    policy = json.loads(POLICY.read_text())
+    if policy.get('diskCapacity'):
+        root = Path(policy['diskCapacity']['root']).resolve()
+        fs = os.statvfs(root)
+        result['disk'] = {'root': str(root), 'freeBytes': fs.f_bavail * fs.f_frsize,
+            'availableInodes': fs.f_favail, 'projectBytes': int(run('du', '-sx', '-B1', str(root)).split()[0]),
+            'releaseRoots': sorted(p.name for p in (root / 'releases').iterdir() if p.is_dir() and not p.is_symlink())}
+    return result
+
+def validate_disk_budget(plan, policy, observed):
+    """Live filesystem headroom, total project ceiling and a basis-bound artifact budget.
+    Policies predating disk admission remain readable for historical recovery tests.
+    Production policy installs diskCapacity; removing it is not a release operation.
+    """
+    guard = policy.get('diskCapacity')
+    if not guard: return
+    disk, budget = observed.get('disk', {}), plan.get('diskBudget', {})
+    if budget.get('schemaVersion') != 'uapt-release-disk-budget-v1' or budget.get('basisSha256') != plan.get('basis', {}).get('sha256'):
+        raise ValueError('Missing or unbound disk budget')
+    if disk.get('root') != str(Path(guard['root']).resolve()): raise ValueError('Disk filesystem/root mismatch')
+    peaks = budget.get('peakAdditionalBytesByStage', {})
+    stages = {'download', 'unpack', 'dependencies', 'build', 'candidate', 'archive', 'finalization'}
+    if set(peaks) != stages or any(type(v) is not int or v < 0 for v in peaks.values()):
+        raise ValueError('Complete cumulative disk peak estimates required')
+    additional = max(peaks.values())
+    if disk.get('freeBytes', 0) - additional < guard['reserveBytes']: raise ValueError('Insufficient disk reserve for release peak')
+    if disk.get('availableInodes', 0) < guard['reserveInodes']: raise ValueError('Insufficient free disk inodes')
+    if disk.get('projectBytes', 0) + additional > guard['projectMaxBytes']: raise ValueError('UAPT disk budget exceeded; archive before releasing')
+    cap = budget.get('artifactMaxBytes'); role = budget.get('role')
+    if type(cap) is not int or cap <= 0 or role not in guard['artifactMaxBytesByRole'] or cap > guard['artifactMaxBytesByRole'][role]:
+        raise ValueError('Invalid per-role artifact size budget')
+
+def validate_retention_receipt(plan, observed):
+    proof = plan.get('retentionReceipt', {})
+    if not proof.get('path') or digest(proof['path']) != proof.get('sha256'): raise ValueError('Missing or changed retention receipt')
+    receipt = json.loads(Path(proof['path']).read_text())
+    if receipt.get('schemaVersion') != 'uapt-release-retention-v1' or receipt.get('basisSha256') != plan['basis']['sha256']:
+        raise ValueError('Retention receipt basis mismatch')
+    checked = datetime.datetime.fromisoformat(receipt.get('checkedAt', '').replace('Z', '+00:00'))
+    age = (datetime.datetime.now(datetime.timezone.utc) - checked).total_seconds()
+    if not -300 <= age <= 86400: raise ValueError('Retention receipt is stale; rescan current dependencies')
+    entries = receipt.get('entries', [])
+    names = [entry.get('name') for entry in entries]
+    if len(names) != len(set(names)) or set(names) != set(observed['disk']['releaseRoots']):
+        raise ValueError('Unclassified or changed release roots')
+    for entry in entries:
+        if entry.get('disposition') not in ['active', 'candidate', 'rollback', 'held'] or not entry.get('reason'):
+            raise ValueError('Unresolved release retention/archive debt')
 def validate_plan(plan, policy, observed):
     """Pure admission check; called again under the same lock immediately before routing."""
     if plan.get('schemaVersion') != 'uapt-release-lifecycle-plan-v1': raise ValueError('Wrong lifecycle plan schema')
@@ -56,6 +104,7 @@ def validate_plan(plan, policy, observed):
     if set(plan.get('candidateEndpoints', {})) != set(candidates) or any(not v for v in plan['candidateEndpoints'].values()): raise ValueError('Exact candidate endpoints required for cleanup')
     if not plan.get('routingFiles') or not plan.get('candidateChecks') or not plan.get('retiredEndpoints'): raise ValueError('Missing routing/candidate/retirement endpoint scope')
     if not plan.get('staticArchiveReceipt') or not plan.get('publicChecks'): raise ValueError('Static archive and exact public readback checks required')
+    validate_disk_budget(plan, policy, observed)
     return True
 
 def validate_candidate_identity(plan, basis, prebuild=False):
@@ -236,6 +285,12 @@ def load_plan(path, prebuild=False):
     validate_candidate_identity(plan, basis, prebuild=prebuild)
     capacity = json.loads(Path(plan['capacityReceipt']['path']).read_text())
     validate_capacity(plan, capacity, prebuild=prebuild, basis=basis)
+    if policy.get('diskCapacity'):
+        current = audit()
+        validate_disk_budget(plan, policy, current)
+        validate_retention_receipt(plan, current)
+        actual_bytes = int(run('du', '-sx', '-B1', str(Path(basis['release']).resolve())).split()[0])
+        if actual_bytes > plan['diskBudget']['artifactMaxBytes']: raise ValueError('Actual release artifact exceeds the declared per-role budget')
     return plan, policy
 
 def check_urls(checks):

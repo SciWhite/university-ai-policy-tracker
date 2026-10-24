@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync, spawnSync } from "node:child_process";
@@ -33,7 +33,10 @@ try {
   if (!action || action === "--help" || action === "help") {
     console.log(help);
   } else if (action === "lifecycle") {
-    const result = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3", ["scripts/uapt-release-lifecycle.py", ...[expectedSha, ...extra].filter(Boolean)], {cwd: root, stdio: "inherit"});
+    const installed = "/usr/local/libexec/uapt-release-lifecycle.py";
+    if (existsSync("/srv/uapt/operations/release-lifecycle/policy.json") && !existsSync(installed)) throw new Error("Missing installed lifecycle controller; do not fall back to a historical publisher");
+    const controller = existsSync(installed) ? installed : resolve(root, "scripts/uapt-release-lifecycle.py");
+    const result = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3", [controller, ...[expectedSha, ...extra].filter(Boolean)], {cwd: root, stdio: "inherit"});
     if (result.status !== 0) throw new Error("Lifecycle operation rejected or failed");
   } else if (action === "local-check" && !expectedSha && !extra.length) {
     for (const [command, args] of [["git", ["diff", "--check"]], ["git", ["diff", "--cached", "--check"]], ["pnpm", ["check"]]]) {
