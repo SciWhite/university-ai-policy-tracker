@@ -76,3 +76,20 @@ test('source hold union fails closed if held draft is present in public claims l
   sourceBundleSha256: fingerprint
  }, 'en'));
 });
+
+test('private guides bind retained Claims and never grant publication or apply proposed repairs',()=>{
+ const f={...fixture(),localReferenceGuide:{topics:{coursework:['test-claim']},submissionClaimIds:['test-claim']},localChangeProposals:[{changeId:'repair-draft',category:'scope correction',status:'draft_pending',publicationApproved:false,productionChangeApplied:false}]};
+ assert.equal(parse(f).localChangeProposals?.[0].publicationApproved,false);
+ assert.throws(()=>parse({...f,localReferenceGuide:{...f.localReferenceGuide,submissionClaimIds:['held-or-missing']}}),/Unbound local reference/);
+ assert.throws(()=>parse({...f,publication:{releaseId:'test',kind:'v6_presentation_integration'}}),/Private projections/);
+ assert.throws(()=>parse({...f,localChangeProposals:[{...f.localChangeProposals[0],publicationApproved:true}]}),/approval drift/);
+ assert.throws(()=>parse({...f,localChangeProposals:[{...f.localChangeProposals[0],productionChangeApplied:true}]}),/approval drift/);
+});
+test('English source content remains lang=en under Chinese UI fallback',()=>{
+ const f={...fixture(),topicSummaries:{coursework:{en:'Original English scope.',zh:'Original English scope.'}}};
+ assert.equal(parse(f).school.topics[0].summaryLanguage,'en');
+ for(const slug of ['universite-paris-saclay','lund-university','sorbonne-university','the-university-of-warwick','trinity-college-dublin-the-university-of-dublin']){
+  assert.equal(isPolicyV6Preview(slug,'v6','development'),true);
+  assert.equal(isPolicyV6Preview(slug,'v6','production'),false);
+ }
+});

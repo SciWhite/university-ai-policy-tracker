@@ -14,6 +14,9 @@ import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
+  /** Development-only navigation over retained, unchanged public Claims. */
+  localReferenceGuide?: { topics: Record<string, string[]>; submissionClaimIds: string[]; submissionPermissionGap?: boolean };
+  localChangeProposals?: { changeId: string; category: string; status: string; repairZh?: string; suggestedNewText?: string; recordKeysImpacted?: string[]; publicationApproved: false; productionChangeApplied?: false }[];
   privateRecordContext?: PrivateRecordContext;
   analysisProjection?: LocalV6AnalysisProjection;
   publication?: {releaseId:string;kind:string;publishedAt?:string};
@@ -101,6 +104,12 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
   }
   if (new Set(view.claims.map((claim) => claim.id)).size !== view.claims.length || view.claims.some((claim) => claim.entitySlug !== slug || claim.reviewState !== "agent_reviewed")) throw new Error("Invalid local claim coverage");
   const displayedIds = new Set(view.claims.map((claim) => claim.id));
+  if (view.localReferenceGuide || view.localChangeProposals) {
+    if (view.publication) throw new Error("Private projections cannot enter published views");
+    const guide = view.localReferenceGuide;
+    if (guide && [...Object.values(guide.topics).flat(), ...guide.submissionClaimIds].some(id => !displayedIds.has(id))) throw new Error("Unbound local reference guide");
+    if (view.localChangeProposals?.some(p => p.publicationApproved !== false || (p.productionChangeApplied as boolean | undefined) === true || p.status !== "draft_pending")) throw new Error("Local change proposal approval drift");
+  }
   if (view.heldDraftIds?.some((id) => displayedIds.has(id))) throw new Error("Held draft promoted into V6 conclusions");
   if (view.auditCoverage) {
     const expected = view.auditCoverage.publicClaimIds;
@@ -129,7 +138,7 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
     topic.statusLabel = view.topicLabels[`${topic.key}:status`]?.[local] ?? topic.statusLabel;
     if (view.topicSummaries?.[topic.key]?.[local]) {
       topic.summary = view.topicSummaries[topic.key][local];
-      topic.summaryLanguage = local;
+      topic.summaryLanguage = local === "zh" && !/[\u3400-\u9fff]/.test(topic.summary) ? "en" : local;
     }
     if (view.topicScopes?.[topic.key]?.[local]) {
       topic.scope = view.topicScopes[topic.key][local];
