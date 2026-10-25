@@ -183,13 +183,13 @@ export function PolicyV6Provider({
   const interactionUi = policyV6InteractionCopy(data.locale);
   const comparisonReady =
     schools.length >= 2 && schools.length === selected.length && !loading;
-  const topics = current?.topics ?? [];
+  const topics = [...(current?.topics ?? []), ...(current?.additionalTopics ?? [])];
   const visibleTopics = topics.filter(
     (t) =>
       !differences ||
       new Set(
         schools.map(
-          (s) => s.topics.find((d) => d.key === t.key)?.status ?? "unavailable",
+          (s) => [...s.topics, ...s.additionalTopics].find((d) => d.key === t.key)?.status ?? "unavailable",
         ),
       ).size > 1,
   );
@@ -282,7 +282,7 @@ export function PolicyV6Provider({
     ];
     for (const topic of visibleTopics)
       for (const school of schools) {
-        const d = school.topics.find((t) => t.key === topic.key);
+        const d = [...school.topics, ...school.additionalTopics].find((t) => t.key === topic.key);
         rows.push([
           school.name,
           topic.title,
@@ -436,7 +436,7 @@ export function PolicyV6Provider({
                     <tr key={t.key}>
                       <th scope="row">{t.title}</th>
                       {schools.map((s) => {
-                        const d = s.topics.find((x) => x.key === t.key);
+                        const d = [...s.topics, ...s.additionalTopics].find((x) => x.key === t.key);
                         return (
                           <td key={s.slug}>
                             {d ? (
@@ -450,7 +450,7 @@ export function PolicyV6Provider({
                                 >
                                   {d.statusLabel}
                                 </span>
-                                <p lang="en" data-i18n="preserve">
+                                <p lang={data.locale === "zh" && /[\u3400-\u9fff]/.test(d.summary) ? "zh" : d.summaryLanguage ?? "en"} data-i18n="preserve">
                                   {d.summary}
                                 </p>
                                 <small>
