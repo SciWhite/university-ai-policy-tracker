@@ -1,0 +1,2969 @@
+{
+  "schemaVersion": "uapt-v6-presentation-projections-v1",
+  "presentationRevision": "qs51-70-v6-complete-r4-20261025",
+  "basis": "Existing public agent-reviewed Claims only; bilingual presentation reviewed in coordinator task, not a new institutional policy audit or snapshot approval.",
+  "schools": {
+    "university-of-bristol": {
+      "recordSha256": "283f82a20aa5102e43b825c78b8904c9227ede448ec134163c753d6fe7dac6ad",
+      "claimsSha256": "b747a50ac72dfdd1c64ec5224e9d9e85f485a4e51e6fdcedc27dcc5ec0d27f38",
+      "scope": {
+        "en": "Taught assessments follow their AI category and instructions. PGR thesis/APM text has a separate restriction.",
+        "zh": "授课型考核按任务类别和具体说明执行；研究学位论文及APM报告另有文本撰写限制。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-bristol-002",
+            "claim-bristol-003"
+          ],
+          "en": "Assessment instructions determine the category: prohibited, minimal, selective or integral AI use; minimal use is the stated default.",
+          "zh": "考核按禁止、最低限度、选择性或必需使用AI四类管理；所载默认类别仅限拼写和语法等最低限度使用。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-bristol-003"
+          ],
+          "en": "Use the category assigned to the assessment. The four-category framework does not grant AI access in every exam.",
+          "zh": "按该项考核指定的AI类别执行；四类框架不意味着所有考试都允许使用AI。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-bristol-004"
+          ],
+          "en": "PGR students may not use GenAI to write text for their thesis or APM reports; they must write about their research in their own words.",
+          "zh": "研究学位学生不得让生成式AI撰写论文或APM报告中的文本，应以自己的语言表述研究。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-bristol-001",
+            "claim-bristol-003"
+          ],
+          "en": "AI should not replace intellectual rigour, student agency or working through complex problems; assessment categories set permitted use.",
+          "zh": "AI不应取代学生独立思考、主动学习及解决复杂问题的过程；考核须按指定类别使用。",
+          "status": "recommended"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-bristol-002"
+          ],
+          "en": "Beyond occasional short phrases and basic language checks, AI assistance can be cheating unless assessment instructions permit more.",
+          "zh": "除偶尔生成短语或基本语言检查外，更广泛使用AI可能被认定作弊，除非考核说明另行允许。",
+          "status": "restricted"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "privacy_data": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not establish a university-wide AI data-use rule. Check the tool’s data terms before uploading.",
+          "zh": "现有已公开条款未确立全校AI数据使用规则，上传前应核对工具数据条款。",
+          "status": "insufficient_public_evidence"
+        },
+        "approved_tools": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not identify an institutionally available AI service or its access terms.",
+          "zh": "现有已公开条款未列明机构AI服务及其获取条件。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the category and instructions for this assessment.",
+          "zh": "先核对本次考核的AI类别及具体说明。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-bristol-003"
+          ]
+        },
+        {
+          "en": "Keep assistance within the stated permitted level.",
+          "zh": "将AI辅助控制在任务明确允许的范围内。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-bristol-002"
+          ]
+        },
+        {
+          "en": "Write PGR thesis and APM text in your own words.",
+          "zh": "研究学位论文和APM报告须由自己撰写。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-bristol-004"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not treat one assessment’s AI category as permission for another.",
+          "zh": "不要把某次考核的AI类别当作其他任务的许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-bristol-003"
+          ]
+        },
+        {
+          "en": "Do not exceed basic language assistance without assessment permission.",
+          "zh": "未获考核许可，不要超出基本语言辅助的范围。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-bristol-002"
+          ]
+        },
+        {
+          "en": "Do not use GenAI to write PGR thesis or APM text.",
+          "zh": "不要使用生成式AI撰写研究学位论文或APM文本。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-bristol-004"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "claim-bristol-004": "PGR students at University of Bristol are not permitted to use generative AI tools such as ChatGPT to write any text used in their thesis or APM reports, as research degree students must demonstrate ability to write about research in their own words.",
+        "claim-bristol-002": "University of Bristol considers the use of AI or translation tools to be cheating if used for more than generating the occasional short phrase within a sentence or checking basic grammar and spelling, unless assessment instructions allow more comprehensive use.",
+        "claim-bristol-001": "University of Bristol has published official guidance on generative AI use in taught degree programmes, stating that generative AI should not replace activities that develop intellectual rigour, student agency, and students' capacity to work through complex problems themselves.",
+        "claim-bristol-003": "University of Bristol uses a four-category system for AI use in assessments: Category 1 (prohibited - no AI use), Category 2 (minimal - spelling/grammar only, default), Category 3 (selective - certain tasks as specified), and Category 4 (integral - AI required for assessment)."
+      }
+    },
+    "carnegie-mellon-university": {
+      "recordSha256": "24594971d2c5ebc0c18d2fb3e845312ed602b7b3e163161590235a75b67c3f84",
+      "claimsSha256": "02d269541583478085cd24865a07ef906d8a724373d4c13ad31419504e3a5954",
+      "scope": {
+        "en": "Graded-work assistance requires instructor authorization. Tool safeguards apply to the listed CMU services and specified sign-in mode.",
+        "zh": "计分作业的外部辅助须经教师授权；工具保护条款仅适用于所列CMU服务及指定登录方式。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "cmu-claim-academic-integrity-assistance",
+            "cmu-claim-course-ai-policy-clarity"
+          ],
+          "en": "Instructor authorization governs assistance on graded work; the instructor should clarify whether AI assistance is authorized.",
+          "zh": "计分作业的辅助须经教师授权；教师应明确AI属于获准还是未经授权的帮助。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "cmu-claim-academic-integrity-assistance"
+          ],
+          "en": "Authorization rules apply to graded academic work; confirm the instructor’s rules for the specific examination.",
+          "zh": "计分学术任务适用授权要求；具体考试应另行核对教师说明。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "cmu-claim-academic-integrity-assistance",
+            "cmu-claim-course-ai-policy-clarity"
+          ],
+          "en": "Cite sources and follow the instructor’s directions for acknowledging AI or human assistance.",
+          "zh": "引用所用来源，并按教师要求注明AI或他人协助。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "cmu-claim-no-public-ai-sensitive-data",
+            "cmu-claim-approved-ai-tools-list"
+          ],
+          "en": "Do not use public AI with student data, confidential research or sensitive administration. Listed protected services have specified Andrew sign-in safeguards.",
+          "zh": "不要向公共AI输入学生数据、保密研究或敏感行政材料；所列受保护服务须按Andrew账号等指定条件使用。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cmu-claim-approved-ai-tools-list",
+            "cmu-claim-vetted-tools-ferpa",
+            "cl-carnegie-mellon-university-zoom-ai-companion-271"
+          ],
+          "en": "CMU lists protected and vetted AI services; FERPA and training-use statements depend on using the listed services as instructed.",
+          "zh": "CMU列有受保护和已评估的AI服务；FERPA及不用于训练的说明以按指定方式使用这些服务为前提。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "cmu-claim-ai-detection-caution",
+            "cmu-claim-academic-integrity-assistance"
+          ],
+          "en": "Unauthorized assistance raises integrity issues; Eberly urges extreme caution about AI detectors because accuracy is not established.",
+          "zh": "未经授权的辅助涉及诚信风险；Eberly对AI检测器建议极其谨慎，其准确性尚未确立。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "cmu-claim-course-ai-policy-clarity"
+          ],
+          "en": "Explain authorized assistance and citation expectations clearly to students.",
+          "zh": "向学生明确哪些AI辅助获准，以及应如何引用和致谢。",
+          "status": "recommended"
+        },
+        "research_publication": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify a publication AI-use rule. Check the relevant journal or research-unit instructions.",
+          "zh": "现有已公开条款未明确AI发表规则，请查适用期刊或研究单位说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Obtain instructor authorization for assistance on graded work.",
+          "zh": "计分作业使用辅助前先取得教师授权。",
+          "kind": "requirement",
+          "claimIds": [
+            "cmu-claim-academic-integrity-assistance"
+          ]
+        },
+        {
+          "en": "Follow the course’s AI citation and acknowledgement instructions.",
+          "zh": "按课程要求引用并注明AI协助。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cmu-claim-course-ai-policy-clarity"
+          ]
+        },
+        {
+          "en": "Check the protected-tool list and use the specified Andrew sign-in.",
+          "zh": "核对受保护工具名单并使用指定Andrew账号登录。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cmu-claim-approved-ai-tools-list"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not put student or confidential research data into public AI.",
+          "zh": "不要向公共AI输入学生或保密研究数据。",
+          "kind": "requirement",
+          "claimIds": [
+            "cmu-claim-no-public-ai-sensitive-data"
+          ]
+        },
+        {
+          "en": "Do not assume access to a tool authorizes its use on graded work.",
+          "zh": "不要把工具可访问当作计分作业使用许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cmu-claim-academic-integrity-assistance"
+          ]
+        },
+        {
+          "en": "Do not treat an AI detector as established proof of authorship.",
+          "zh": "不要把AI检测结果视为作者身份的可靠证明。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cmu-claim-ai-detection-caution"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-carnegie-mellon-university-chatgpt-266": "ChatGPT Edu is listed for Carnegie Mellon University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-carnegie-mellon-university-gemini-267": "Google Gemini is listed for Carnegie Mellon University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-carnegie-mellon-university-institutional-ai-service-268": "AI Gateway is listed for Carnegie Mellon University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-carnegie-mellon-university-microsoft-copilot-269": "Microsoft Copilot Chat is listed for Carnegie Mellon University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-carnegie-mellon-university-notebooklm-270": "NotebookLM is listed for Carnegie Mellon University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-carnegie-mellon-university-zoom-ai-companion-271": "Zoom AI Companion is listed for Carnegie Mellon University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cmu-claim-no-public-ai-sensitive-data": "CMU Computing Services guidance says public AI tools should not be used with student data, confidential research, or sensitive administrative tasks.",
+        "cmu-claim-approved-ai-tools-list": "CMU Computing Services lists protected AI tools available at CMU and states that when users sign in with Andrew ID and password, each listed tool is FERPA-compliant and will not use data to train AI models.",
+        "cmu-claim-vetted-tools-ferpa": "CMU Eberly Center guidance identifies a growing list of CMU-vetted generative AI tools that are FERPA compliant for teaching and learning when used as instructed.",
+        "cmu-claim-ai-detection-caution": "CMU Eberly Center guidance recommends extreme caution when using AI-detection tools because no such tools have been established as accurate.",
+        "cmu-claim-course-ai-policy-clarity": "CMU Eberly Center guidance says instructors should clarify whether AI tools count as authorized or unauthorized assistance and how students should cite AI or human assistance.",
+        "cmu-claim-academic-integrity-assistance": "CMU academic-integrity policy requires instructor authorization for collaboration or assistance on graded work and requires citation of all sources.",
+        "cmu-claim-student-career-ai-originality": "CMU career guidance tells student job seekers that AI tools should aid revisions and editing rather than replace original words, thinking, information, and writing."
+      }
+    },
+    "university-of-amsterdam": {
+      "recordSha256": "8725ec9babcb98489d2ca656e6c413de3c2aaf7dab04b44ab9f52b8159e73247",
+      "claimsSha256": "a7f070c3eac6cfc9046055293c2730d1349583648367846f22efa2d12b440a36",
+      "scope": {
+        "en": "The central education framework allows faculty and programme implementation. Research-integrity codes also apply; tool access is a separate question.",
+        "zh": "中央教育框架由学院和项目落实；研究诚信规范亦适用，工具访问与具体考核许可须区分。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "uva-claim-001"
+          ],
+          "en": "UvA has central GenAI education guidelines, with faculties and programmes adapting them to their educational practice.",
+          "zh": "UvA设有生成式AI教育中央指引，各学院和项目会结合教学实际制定具体要求。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "uva-claim-003"
+          ],
+          "en": "Students are expected to be transparent about how they use GenAI in their learning and work.",
+          "zh": "学生应透明说明在学习和作业中如何使用生成式AI。",
+          "status": "required"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "uva-claim-002",
+            "cl-university-of-amsterdam-institutional-ai-service-272"
+          ],
+          "en": "UvA AI Chat is a self-managed AI environment intended for UvA students, lecturers and staff; this does not establish assessment permission.",
+          "zh": "UvA AI Chat为面向本校学生、教师和员工的自主管理环境；提供服务不等于批准用于任何考核。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "uva-claim-004",
+            "uva-claim-003"
+          ],
+          "en": "Research and teaching follow Dutch and European research-integrity codes, alongside transparent AI use.",
+          "zh": "研究与教学须遵循荷兰及欧洲研究诚信准则，并透明说明AI使用。",
+          "status": "required"
+        },
+        "research_publication": {
+          "claimIds": [
+            "uva-claim-004"
+          ],
+          "en": "Dutch and European research-integrity codes apply; the current Claims do not set a separate publication-specific AI workflow.",
+          "zh": "荷兰及欧洲研究诚信准则适用；现有条款未明确独立的AI发表操作流程。",
+          "status": "conditionally_allowed"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "uva-claim-001"
+          ],
+          "en": "Faculty and programme rules implement the central framework; consult the applicable educational policy.",
+          "zh": "学院和项目在中央框架下制定具体规则，应查询适用的教学政策。",
+          "status": "recommended"
+        },
+        "exams": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify whether GenAI is allowed in this school’s examinations. Check the exam instructions.",
+          "zh": "现有已公开条款未明确该校考试中的生成式AI许可，请核对本次考试说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "privacy_data": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not establish a university-wide AI data-use rule. Check the tool’s data terms before uploading.",
+          "zh": "现有已公开条款未确立全校AI数据使用规则，上传前应核对工具数据条款。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check your faculty and programme’s AI instructions.",
+          "zh": "先查看本学院和项目的AI规定。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uva-claim-001"
+          ]
+        },
+        {
+          "en": "Explain how GenAI contributed to your learning or work.",
+          "zh": "说明生成式AI参与学习或作业的具体方式。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "uva-claim-003"
+          ]
+        },
+        {
+          "en": "Follow the applicable research-integrity codes.",
+          "zh": "遵循适用的研究诚信准则。",
+          "kind": "requirement",
+          "claimIds": [
+            "uva-claim-004"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not assume a central framework permits AI in every assessment.",
+          "zh": "不要将中央框架理解为所有考核均允许使用AI。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uva-claim-001"
+          ]
+        },
+        {
+          "en": "Do not conceal GenAI contributions.",
+          "zh": "不要隐瞒生成式AI的参与。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "uva-claim-003"
+          ]
+        },
+        {
+          "en": "Do not infer course permission or data guarantees from the tool name alone.",
+          "zh": "不要仅凭工具名称推定课程许可或数据保护承诺。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uva-claim-002"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-university-of-amsterdam-institutional-ai-service-272": "UvA AI Chat is listed for University of Amsterdam in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutional ai service.",
+        "uva-claim-001": "The University of Amsterdam has a policy framework for Generative AI in education that provides central guidelines for responsible use of GenAI based on scientific integrity, with room for faculties and programmes to translate the policy into their own educational practice.",
+        "uva-claim-004": "At the UvA, both the Netherlands Code of Conduct for Research Integrity and the European Code of Conduct for Research Integrity apply, which outline the principles and standards for integrity in research and teaching.",
+        "uva-claim-002": "The University of Amsterdam is developing its own AI chat environment called UvA AI Chat, which is similar to ChatGPT but is fully self-managed and specifically designed for UvA students, lecturers and staff.",
+        "uva-claim-003": "The UvA and VU task force on AI in education has produced criteria for software to ensure academic integrity, and expects students to be transparent about how they have applied generative AI in their own learning and work."
+      }
+    },
+    "the-hong-kong-polytechnic-university": {
+      "recordSha256": "a168c3b37b300f05d1456429908a44fed229acf5a94ee7b24be0f7181669a081",
+      "claimsSha256": "603576eb28b2e7c7f50f9c52860d08e323ff6d004ed5111ec645edbf1d776d44",
+      "scope": {
+        "en": "Take-home continuous assessment guidance does not establish rules for every exam. Students remain accountable for their own submissions.",
+        "zh": "居家持续性考核的指引不等于所有考试均获准；学生须对本人提交的作业负责。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "polyu-claim-3",
+            "polyu-claim-5"
+          ],
+          "en": "GenAI may be used for take-home continuous assessment, while students remain accountable and must submit their own work.",
+          "zh": "生成式AI可用于居家持续性考核，但学生仍须负责并提交本人的成果，不可复制AI生成材料作为自己的作业。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "polyu-claim-3"
+          ],
+          "en": "The recorded permission concerns take-home continuous assessment; it does not establish AI access for invigilated exams.",
+          "zh": "现有许可针对居家持续性考核，不能据此推定监考考试允许使用AI。",
+          "status": "unclear"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "polyu-claim-4",
+            "cl-the-hong-kong-polytechnic-university-institutional-ai-service-273"
+          ],
+          "en": "PolyU provides its GenAI service and M365 Copilot Chat for staff and students; assessment conditions remain separate.",
+          "zh": "PolyU为师生提供GenAI服务及M365 Copilot Chat；考核使用条件仍须单独核对。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "polyu-claim-2",
+            "polyu-claim-5"
+          ],
+          "en": "All assessments require high academic-integrity standards; submitted work must not be a copy or version of others’ or AI-generated material.",
+          "zh": "所有考核均须遵守学术诚信要求；提交作品不可是他人或AI生成材料的复制版或改写版。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "polyu-claim-1",
+            "polyu-claim-3"
+          ],
+          "en": "PolyU embraces GenAI in education while maintaining student accountability in assessment.",
+          "zh": "PolyU支持在教育中使用生成式AI，同时保留学生对考核成果的责任。",
+          "status": "recommended"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "privacy_data": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not establish a university-wide AI data-use rule. Check the tool’s data terms before uploading.",
+          "zh": "现有已公开条款未确立全校AI数据使用规则，上传前应核对工具数据条款。",
+          "status": "insufficient_public_evidence"
+        },
+        "research_publication": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify a publication AI-use rule. Check the relevant journal or research-unit instructions.",
+          "zh": "现有已公开条款未明确AI发表规则，请查适用期刊或研究单位说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Confirm whether the task is take-home continuous assessment.",
+          "zh": "先确认任务是否属于居家持续性考核。",
+          "kind": "site_advice",
+          "claimIds": [
+            "polyu-claim-3"
+          ]
+        },
+        {
+          "en": "Submit work that remains your own.",
+          "zh": "提交属于本人创作的成果。",
+          "kind": "requirement",
+          "claimIds": [
+            "polyu-claim-5"
+          ]
+        },
+        {
+          "en": "Apply academic-integrity standards to every assessment.",
+          "zh": "在每项考核中遵守学术诚信要求。",
+          "kind": "requirement",
+          "claimIds": [
+            "polyu-claim-2"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not submit copied or reworked AI material as your own work.",
+          "zh": "不要把复制或改写的AI材料作为本人作品提交。",
+          "kind": "requirement",
+          "claimIds": [
+            "polyu-claim-5"
+          ]
+        },
+        {
+          "en": "Do not extend take-home permission to an invigilated exam.",
+          "zh": "不要将居家考核许可套用于监考考试。",
+          "kind": "site_advice",
+          "claimIds": [
+            "polyu-claim-3"
+          ]
+        },
+        {
+          "en": "Do not equate university tool access with unrestricted use.",
+          "zh": "不要将学校提供工具理解为可以不受限制地使用。",
+          "kind": "site_advice",
+          "claimIds": [
+            "polyu-claim-4"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-the-hong-kong-polytechnic-university-institutional-ai-service-273": "PolyU GenAI is listed for The Hong Kong Polytechnic University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "polyu-claim-1": "PolyU takes an open and forward-looking stance on the use of GenAI tools as a positive and creative force in education, and expects that the usage of generative AI will become a normal part of learning, teaching, and assessment from 2023/24 Semester One.",
+        "polyu-claim-5": "PolyU guidelines state that work submitted for assessment must be the student's own work and must not be a copy or version of other people's work or AI-generated material.",
+        "polyu-claim-2": "PolyU states that while it embraces the use of GenAI tools in education, students must adhere to high standards of academic integrity in all forms of assessments.",
+        "polyu-claim-3": "PolyU allows the use of GenAI for take-home continuous assessment tasks, while also upholding the principle that students should be accountable for their own work.",
+        "polyu-claim-4": "PolyU provides M365 Copilot Chat to all staff and students via the PolyU Gen AI app, using the Microsoft Prometheus model built upon OpenAI GPT-4o."
+      }
+    },
+    "new-york-university": {
+      "recordSha256": "8a84dbcc8602b65cdf99d3216a8722cc4927611ea4099d59f7369bd3588fdc3c",
+      "claimsSha256": "34357fc10fa7c709be26d096d08a9de637e9df11c51829686fa737ffacf3e6ee",
+      "scope": {
+        "en": "Instructor approval governs student AI use. Gemini/NotebookLM privacy statements concern NYU institutional accounts, not every AI service.",
+        "zh": "学生使用AI须经教师批准；Gemini及NotebookLM的数据说明针对NYU机构账号，不适用于所有AI服务。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-002"
+          ],
+          "en": "Students need instructor approval, must follow instructor limits and must comply with the Academic Integrity Policy.",
+          "zh": "学生须先获教师批准，遵守教师设置的使用限制及学术诚信政策。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-002"
+          ],
+          "en": "Instructor approval and limits remain decisive; the current record does not establish blanket permission for examinations.",
+          "zh": "须按教师批准范围及限制执行；现有条款不构成统一考试AI许可。",
+          "status": "conditionally_allowed"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-004"
+          ],
+          "en": "Gemini and NotebookLM under NYU institutional accounts are described as not training models on user data or logging queries and answers.",
+          "zh": "现有NYU条款称，机构账号下的Gemini和NotebookLM不以用户数据训练模型，也不记录提问和回答；勿推广至其他账号。",
+          "status": "conditionally_allowed"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-001",
+            "cl-new-york-university-nyu-microsoft-copilot-279",
+            "cl-new-york-university-nyu-notebooklm-280",
+            "uapt-new-york-university-20260512-claim-003"
+          ],
+          "en": "NYU supports institutional Gemini and NotebookLM; other services have tool-specific conditions. NYU does not license or endorse AI detectors.",
+          "zh": "NYU支持机构账号的Gemini及NotebookLM，其他服务各有条件；NYU不采购或背书AI检测工具。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-002"
+          ],
+          "en": "AI use without instructor approval or beyond stated limits conflicts with the recorded Academic Integrity Policy requirements.",
+          "zh": "未经教师批准或超出指定限制的AI使用不符合现有学术诚信政策要求。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-002",
+            "uapt-new-york-university-20260512-claim-001"
+          ],
+          "en": "Instructor decisions set the student-use boundary; institutional tools are available with service-specific terms.",
+          "zh": "教师决定学生使用AI的边界；机构工具须按各自服务条件使用。",
+          "status": "recommended"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "research_publication": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify a publication AI-use rule. Check the relevant journal or research-unit instructions.",
+          "zh": "现有已公开条款未明确AI发表规则，请查适用期刊或研究单位说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Obtain instructor approval and follow the stated limits.",
+          "zh": "先取得教师批准，并遵守指定使用限制。",
+          "kind": "requirement",
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-002"
+          ]
+        },
+        {
+          "en": "Use the NYU institutional account when relying on its Gemini/NotebookLM safeguards.",
+          "zh": "依赖NYU的Gemini或NotebookLM保护条件时，使用机构账号。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-004"
+          ]
+        },
+        {
+          "en": "Check the access terms for the specific institutional service.",
+          "zh": "核对具体机构服务的访问及使用条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-001"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not treat tool availability as permission for an assessment.",
+          "zh": "不要将工具可用视为考核使用许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-002"
+          ]
+        },
+        {
+          "en": "Do not assume consumer accounts have the same protections.",
+          "zh": "不要假定个人消费者账号享有相同保护。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-004"
+          ]
+        },
+        {
+          "en": "Do not describe AI detectors as NYU-endorsed tools.",
+          "zh": "不要将AI检测器称为NYU背书的工具。",
+          "kind": "site_advice",
+          "claimIds": [
+            "uapt-new-york-university-20260512-claim-003"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-new-york-university-nyu-adobe-express-274": "Adobe Express is listed for New York University (NYU) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-new-york-university-nyu-gemini-275": "Google Gemini is listed for New York University (NYU) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-new-york-university-nyu-gemini-276": "Google Gemini Pro is listed for New York University (NYU) in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-new-york-university-nyu-google-ai-studio-277": "Google AI Studio (Advanced Paid Tier) is listed for New York University (NYU) in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-new-york-university-nyu-google-ai-studio-278": "Google AI Studio (Basic Tier) is listed for New York University (NYU) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-new-york-university-nyu-microsoft-copilot-279": "Microsoft Copilot (web) is listed for New York University (NYU) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-new-york-university-nyu-notebooklm-280": "Google NotebookLM is listed for New York University (NYU) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-new-york-university-nyu-zoom-ai-companion-281": "Zoom AI Companion is listed for New York University (NYU) in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "uapt-new-york-university-20260512-claim-001": "NYU offers access and support for Google's Gemini and NotebookLM to faculty, staff, and students through institutional accounts.",
+        "uapt-new-york-university-20260512-claim-002": "NYU's policy requires instructor approval for student AI use, student compliance with instructor limitations, and adherence to the Academic Integrity Policy.",
+        "uapt-new-york-university-20260512-claim-003": "NYU does not license or endorse AI detection tools due to accuracy and reliability concerns.",
+        "uapt-new-york-university-20260512-claim-004": "NYU institutional accounts for Gemini and NotebookLM do not train AI models on user data and do not log queries or answers."
+      }
+    },
+    "the-london-school-of-economics-and-political-science": {
+      "recordSha256": "9c2bfc5d728bcff6b54c4f397372c2c1cb5413c288fd67bfca0b0ff6142941fa",
+      "claimsSha256": "de9bdc5d6c3a45f4093cc0b9fb106fc548e8e4ab3c71757ff244312efbe4f036",
+      "scope": {
+        "en": "Assessment authorization is set by departments/course convenors. Research guidance and external-tool data restrictions have separate scopes.",
+        "zh": "考核许可由院系或课程负责人确定；研究指引及外部工具数据限制须按各自范围适用。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "cc-lse-001",
+            "cc-lse-003"
+          ],
+          "en": "Assessment AI use is classified as none, limited or full authorization; the course or department must communicate the applicable position.",
+          "zh": "考核分为不授权、有限授权或完全授权三类；须以课程或院系通知的具体类别为准。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "cc-lse-001",
+            "cc-lse-002"
+          ],
+          "en": "Assessment-specific authorization and safeguards apply, including observed assessments; tool availability is not exam permission.",
+          "zh": "考核按具体授权和保障措施执行，包括受监督考核；工具可用不等于考试获准。",
+          "status": "conditionally_allowed"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "cc-lse-006",
+            "cc-lse-007",
+            "cc-lse-008"
+          ],
+          "en": "Do not enter personal, confidential or commercially sensitive data into external AI tools; Claude has an explicit no-sensitive-data condition.",
+          "zh": "不要向外部AI输入个人、保密或商业敏感数据；Claude服务也明确禁止分享个人、业务或保密数据。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cc-lse-004",
+            "cc-lse-008"
+          ],
+          "en": "LSE lists Claude for Education and protected Copilot for specified users; Claude is optional and does not train on student/staff data.",
+          "zh": "LSE为指定对象提供Claude for Education和受保护Copilot；Claude为自愿使用，师生数据不用于模型训练。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "cc-lse-005",
+            "cc-lse-006"
+          ],
+          "en": "Research AI should support the researcher, who remains accountable; data must meet LSE privacy/security conditions.",
+          "zh": "研究中的AI应作为辅助工具，研究者继续负责；数据处理须满足LSE隐私与安全要求。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "cc-lse-002"
+          ],
+          "en": "The 2025/26 assessment guidance requests safeguards against unfair AI advantage; it does not itself establish a student appeal deadline.",
+          "zh": "2025/26考核指引要求采取措施防止AI带来的不公平优势；该条款不构成学生申诉期限。",
+          "status": "recommended"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "cc-lse-001"
+          ],
+          "en": "Departments and convenors should specify and communicate the assessment authorization category.",
+          "zh": "院系及课程负责人应明确并通知考核AI授权类别。",
+          "status": "required"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "cc-lse-006",
+            "cc-lse-007"
+          ],
+          "en": "Third-party AI handling of research or sensitive information must meet LSE security, privacy and legal restrictions.",
+          "zh": "第三方AI处理研究或敏感信息须符合LSE安全、隐私及法律限制。",
+          "status": "restricted"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check whether the assessment authorizes no, limited or full AI use.",
+          "zh": "核对该考核属于不授权、有限授权还是完全授权。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cc-lse-001"
+          ]
+        },
+        {
+          "en": "Remain accountable for AI-assisted research outputs.",
+          "zh": "对AI辅助研究的成果继续承担责任。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cc-lse-005"
+          ]
+        },
+        {
+          "en": "Check LSE privacy and security conditions before choosing a research tool.",
+          "zh": "选择研究工具前核对LSE隐私和安全条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cc-lse-006"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not upload personal or confidential data to external AI tools.",
+          "zh": "不要向外部AI工具上传个人或保密数据。",
+          "kind": "requirement",
+          "claimIds": [
+            "cc-lse-007"
+          ]
+        },
+        {
+          "en": "Do not share personal, operational or confidential data through Claude.",
+          "zh": "不要通过Claude分享个人、业务或保密数据。",
+          "kind": "requirement",
+          "claimIds": [
+            "cc-lse-008"
+          ]
+        },
+        {
+          "en": "Do not read tool availability as unrestricted assessment permission.",
+          "zh": "不要将工具可用理解为不受限制的考核许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cc-lse-003"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cc-lse-003": "LSE states that making generative AI tools available does not endorse unrestricted use, and users should check their specific course, programme, or department policy.",
+        "cc-lse-006": "LSE research guidance tells researchers not to share personal, sensitive, or confidential data with third-party AI tools unless the tools meet LSE privacy and security standards, and it strongly encourages Microsoft Copilot for privacy and security.",
+        "cc-lse-001": "LSE requires departments or course convenors to classify authorised generative AI use in assessment as no authorised use, limited authorised use, or full authorised use, and to communicate the position to students.",
+        "cc-lse-005": "LSE research guidance applies to LSE staff and students undertaking research and frames generative AI as a supportive tool while keeping researchers accountable for outputs.",
+        "cc-lse-007": "LSE legal and regulatory guidance tells users not to put personal data, confidential or commercially sensitive data, or certain copyrighted content into external AI tools.",
+        "cc-lse-002": "For 2025/26, LSE requested departments to add assessment safeguards, including observed assessment methods, to help assure degree integrity and prevent unfair competitive advantage from generative AI.",
+        "cc-lse-004": "LSE lists Claude for Education as available to academic staff and students and Copilot with Commercial Data Protection as available to all staff and students.",
+        "cc-lse-008": "LSE Claude for Education guidance says use is optional, student and staff data will not be used to train Anthropic models, and personal, operational, or confidential data must not be shared through Claude."
+      }
+    },
+    "kyoto-university": {
+      "recordSha256": "32f687429915f2d044e3ff3676bd21d55f26c2ebb9093301fc71d5637c3657cd",
+      "claimsSha256": "a1203d1f3a698ee135f4f88a4bd680324d9e2829e5fbf3032901d3cdeac9b1e4",
+      "scope": {
+        "en": "Course instructors and research supervisors set the applicable rules for coursework, reports and theses; data restrictions apply separately.",
+        "zh": "作业、报告和论文须遵循任课教师或研究导师制定的规则；数据限制另行适用。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-kyoto-003"
+          ],
+          "en": "Follow the AI-use policy set by the course instructor or research supervisor for coursework, reports and theses.",
+          "zh": "课程作业、报告及论文须遵循任课教师或研究导师制定的AI使用规则。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-kyoto-003",
+            "claim-kyoto-004"
+          ],
+          "en": "Check the instructor’s assessment rules; written or oral exams may be used to preserve fair grading in foundational courses.",
+          "zh": "核对教师的考核规则；基础知识或技能课程可采用笔试、口试等方式维护评分公平。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-kyoto-002"
+          ],
+          "en": "Record AI use beyond wording revisions and disclose it when required; submitting AI output as your own may be misconduct.",
+          "zh": "超出措辞修改的AI使用须保留记录，并按要求披露；把AI输出当作自己的成果可能构成违规。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-kyoto-005",
+            "claim-kyoto-006"
+          ],
+          "en": "Do not casually enter private, confidential or copyrighted material; highly confidential information must not leave the university through AI services.",
+          "zh": "不要随意输入隐私、保密或受版权保护的材料；不得通过AI服务使高度保密信息流出学校。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "claim-kyoto-007",
+            "cl-kyoto-university-microsoft-copilot-285"
+          ],
+          "en": "The record lists Gemini, NotebookLM and Microsoft 365 Copilot Chat for students, faculty and staff; individual service conditions still apply.",
+          "zh": "记录列有面向师生和员工的Gemini、NotebookLM及Microsoft 365 Copilot Chat，仍须核对各服务具体条件。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-kyoto-003",
+            "claim-kyoto-002"
+          ],
+          "en": "For thesis writing follow your supervisor’s AI policy, keep use records and disclose when required; no general publication permission is inferred.",
+          "zh": "论文写作按导师规则使用AI，保留记录并按要求披露；不据此推定统一发表许可。",
+          "status": "conditionally_allowed"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-kyoto-004",
+            "claim-kyoto-001"
+          ],
+          "en": "Instructors should explain their AI policy and preserve fair assessment, including suitable written/oral checks.",
+          "zh": "教师应向学生说明AI规则，并通过适当笔试、口试等措施维护考核公平。",
+          "status": "recommended"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-kyoto-002"
+          ],
+          "en": "Using AI output in one’s own work may be judged misconduct; records and required disclosure matter.",
+          "zh": "在本人作品中使用AI输出可能被认定违规，应保留使用记录并按要求披露。",
+          "status": "restricted"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "claim-kyoto-006"
+          ],
+          "en": "Highly confidential information that must remain inside the university must not be entered into GenAI services.",
+          "zh": "不得向生成式AI服务输入不应流出学校的高度保密信息。",
+          "status": "restricted"
+        }
+      },
+      "do": [
+        {
+          "en": "Follow your instructor’s or supervisor’s AI-use policy.",
+          "zh": "遵循任课教师或研究导师的AI使用规则。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-kyoto-003"
+          ]
+        },
+        {
+          "en": "Record significant AI use and disclose it when required.",
+          "zh": "记录超出措辞修改的AI使用，并按要求披露。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-kyoto-002"
+          ]
+        },
+        {
+          "en": "Check the access and use conditions of the listed university services.",
+          "zh": "核对所列大学服务的访问和使用条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-kyoto-007"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not enter highly confidential university information into GenAI.",
+          "zh": "不要向生成式AI输入学校高度保密信息。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-kyoto-006"
+          ]
+        },
+        {
+          "en": "Do not casually upload personal or copyrighted material.",
+          "zh": "不要随意上传个人信息或受版权保护的材料。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-kyoto-005"
+          ]
+        },
+        {
+          "en": "Do not assume AI output can be submitted as your own.",
+          "zh": "不要默认可以将AI输出当作本人作品提交。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-kyoto-002"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-kyoto-university-gemini-282": "Google Workspace Gemini is listed for Kyoto University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-kyoto-university-institutional-ai-service-283": "exaBase is listed for Kyoto University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-kyoto-university-institutional-ai-service-284": "kWhisper is listed for Kyoto University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-kyoto-university-microsoft-copilot-285": "Microsoft 365 Copilot Chat is listed for Kyoto University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-kyoto-university-microsoft-copilot-for-m365-286": "Copilot for Microsoft 365 is listed for Kyoto University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-kyoto-university-notebooklm-287": "Google Workspace NotebookLM is listed for Kyoto University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "claim-kyoto-003": "Kyoto University tells students to follow the generative AI use policy set by the course instructor or research supervisor for coursework, reports, and thesis writing.",
+        "claim-kyoto-006": "Kyoto University states that highly confidential information that must not leave the university should not be entered into generative AI services.",
+        "claim-kyoto-002": "Kyoto University tells students to record and, when required, disclose how they used generative AI beyond wording revisions, and warns that using AI output in their own work may be judged misconduct.",
+        "claim-kyoto-005": "Kyoto University warns students not to casually enter privacy-related information, confidential information, or copyrighted works into generative AI prompts or uploaded data.",
+        "claim-kyoto-001": "Kyoto University has adopted an education and learning AI initiative intended to support responsible generative AI use by faculty, staff, and students while minimizing learning risks.",
+        "claim-kyoto-004": "Kyoto University expects instructors to state their generative AI use policy to students and, for courses focused on basic knowledge or skills, to preserve grading fairness through checks such as written or oral examinations.",
+        "claim-kyoto-007": "Kyoto University lists Gemini, NotebookLM, and Microsoft 365 Copilot Chat as generative AI services available to students, faculty, and staff."
+      }
+    },
+    "ludwig-maximilians-universitat-munchen": {
+      "recordSha256": "9c7f5c219091400bb13e65a0cb0c11d03a5e23d2435a05c91d510a391ed6fbe6",
+      "claimsSha256": "d84cefc5ff9fc5ee7b7e533e4cfdddfcb3b53a6633eebaeb40e7fabb3ee89cc6",
+      "scope": {
+        "en": "Assessment and personal-data rules cited here are IfKW guidance. Doctoral disclosure rules are from the Medical Faculty; do not extend either scope campus-wide.",
+        "zh": "此处考核和个人数据规则来自传播科学研究所IfKW；博士论文披露规则来自医学院，均不可扩大为全校统一规则。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-lmu-001"
+          ],
+          "en": "IfKW assessments require explicit teacher permission for AI; without it students must assume AI use is not allowed.",
+          "zh": "IfKW考核使用AI须获得教师明确许可；未明确许可时应视为不允许。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-lmu-001"
+          ],
+          "en": "The recorded IfKW assessment rule requires explicit permission; follow the instructions for the specific examination and unit.",
+          "zh": "现有IfKW考核规则要求明确许可；具体考试须核对所属单位及任务说明。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-lmu-003",
+            "claim-lmu-005"
+          ],
+          "en": "IfKW requires full documentation of permitted assessment AI use. Medical Faculty doctoral authors have separate disclosure and affidavit duties.",
+          "zh": "IfKW要求完整记录获准的考核AI使用；医学院博士作者另须说明使用位置、程度并在声明中列明。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-lmu-004"
+          ],
+          "en": "IfKW guidance requires consent and German/EU data-protection compliance before personal-information material enters AI systems.",
+          "zh": "IfKW指引要求：将含个人信息的材料输入AI前，须取得同意并符合德国或欧盟数据保护标准。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-ludwig-maximilians-universitaet-muenchen-microsoft-copilot-288"
+          ],
+          "en": "Microsoft Copilot is listed with conditional access; this does not override the explicit-permission rule for IfKW assessments.",
+          "zh": "Microsoft Copilot在记录中为有条件提供；工具可用不能覆盖IfKW考核的明确许可要求。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-lmu-005"
+          ],
+          "en": "Medical Faculty dissertation authors must identify when, where and how extensively AI was used, name it in the affidavit and mark affected sections.",
+          "zh": "医学院学位论文作者须披露AI使用时间、位置和程度，在声明中列为辅助，并标注生成或编辑过的章节。",
+          "status": "required"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-lmu-002"
+          ],
+          "en": "IfKW treats unattributed verbatim or minimally changed AI text as plagiarism; substantial unattributed use in assessed work can fail.",
+          "zh": "IfKW将未恰当注明的AI原文或小幅改写视为抄袭；考核中大量未注明的AI文本可被判不及格。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-lmu-006"
+          ],
+          "en": "LMU teaching guidance recommends e-exam tasks involving critical reflection on ChatGPT’s limitations rather than simple recall.",
+          "zh": "LMU教学指引建议电子考试考查对ChatGPT局限的批判反思，而非简单记忆或理解题。",
+          "status": "recommended"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "For IfKW assessments, obtain explicit teacher permission.",
+          "zh": "IfKW考核使用AI前取得教师明确许可。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-lmu-001"
+          ]
+        },
+        {
+          "en": "Fully document permitted AI use, including preliminary work.",
+          "zh": "完整记录获准的AI使用，包括准备阶段。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-lmu-003"
+          ]
+        },
+        {
+          "en": "For Medical Faculty dissertations, follow the separate disclosure and affidavit rules.",
+          "zh": "医学院学位论文按专门披露及声明规则执行。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-lmu-005"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not assume silence permits AI in an IfKW assessment.",
+          "zh": "不要把IfKW教师未表态理解为允许使用AI。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-lmu-001"
+          ]
+        },
+        {
+          "en": "Do not submit unattributed AI text or lightly edited output.",
+          "zh": "不要提交未恰当注明的AI文本或轻度改写输出。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-lmu-002"
+          ]
+        },
+        {
+          "en": "Do not upload personal-information material without consent and data-protection compliance.",
+          "zh": "未获同意且未满足数据保护条件，不要上传个人信息材料。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-lmu-004"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-ludwig-maximilians-universitaet-muenchen-microsoft-copilot-288": "Microsoft Copilot is listed for Ludwig-Maximilians-Universität München in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "claim-lmu-001": "LMU IfKW student guidance says AI may be used in assessments only with explicit teacher permission; if no explicit permission is given, students must assume AI use is not allowed.",
+        "claim-lmu-004": "LMU IfKW guidance says material containing personal information must not be entered into AI systems without consent and unless German or EU data-protection standards are met.",
+        "claim-lmu-002": "LMU IfKW guidance treats verbatim or minimally changed AI-generated text without proper attribution as plagiarism, and says significant unattributed AI-generated text in assessed work can receive grade 5 (failed).",
+        "claim-lmu-005": "LMU Medical Faculty dissertation guidance says doctoral authors must disclose when, where, and to what extent AI was used, name AI as an aid in the affidavit, and mark sections where AI was used for creation or editing.",
+        "claim-lmu-003": "LMU IfKW guidance says permitted AI use in assessed work, including preliminary tasks, must be completely and appropriately documented.",
+        "claim-lmu-006": "LMU teaching guidance recommends adapting e-exam questions for ChatGPT-era assessment, including tasks that require critical reflection on ChatGPT limitations rather than simple knowledge or comprehension questions."
+      }
+    },
+    "universiti-malaya": {
+      "recordSha256": "1f1b63fae97fa6c1bce8512e1ce84e0703b08f4f9b76319c265839db9bee482e",
+      "claimsSha256": "1398fc584933856ba0f2901e334d85e6aaa98029613c9e99d5627537f7e9e3f8",
+      "scope": {
+        "en": "The AI policy covers teaching and learning, including assessed work and research projects; lecturers specify the AI level for each task.",
+        "zh": "AI政策覆盖教学与学习，包括考核及研究项目；每项任务的AI使用等级由教师明确。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-um-ai-permitted-levels",
+            "claim-um-ai-learning-support-originality"
+          ],
+          "en": "Lecturers set the AI-use level for each assessment, from no AI to integrated AI; submitted work must reflect students’ understanding.",
+          "zh": "教师为每项考核指定从禁用到整合使用AI的等级；提交成果仍须体现学生自己的理解和贡献。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-um-ai-permitted-levels"
+          ],
+          "en": "The permitted AI level is task-specific; the recorded levels do not grant blanket examination access.",
+          "zh": "AI许可等级按任务指定；等级框架不等于所有考试均允许使用AI。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-um-ai-declaration-misconduct"
+          ],
+          "en": "Students must declare AI tools used in assignments or assessments; non-disclosure may be academic misconduct.",
+          "zh": "学生须申报作业或考核所用AI工具，未披露可能构成学术违规。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-um-ai-public-platform-confidentiality",
+            "claim-um-ai-data-privacy-risk-awareness"
+          ],
+          "en": "Do not upload confidential academic material, research data or university documents to public AI platforms without permission.",
+          "zh": "未经许可，不得向公共AI平台上传保密学术材料、研究数据或大学文件；注意隐私、版权及偏差风险。",
+          "status": "restricted"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-um-ai-policy-scope",
+            "claim-um-ai-public-platform-confidentiality"
+          ],
+          "en": "Research projects, dissertations and theses fall within the policy’s scope; confidential research data must not be uploaded without permission.",
+          "zh": "研究项目、学位论文等属于政策覆盖范围；保密研究数据不得未经许可上传。",
+          "status": "conditionally_allowed"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-um-ai-permitted-levels"
+          ],
+          "en": "Lecturers specify the permitted AI-use level for each assignment or assessment.",
+          "zh": "教师须为每份作业或考核明确AI许可等级。",
+          "status": "required"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-um-ai-learning-support-originality",
+            "claim-um-ai-declaration-misconduct"
+          ],
+          "en": "AI is a learning aid, not a substitute for the student’s intellectual contribution; required AI declarations must be made.",
+          "zh": "AI应作为学习辅助，不能取代学生的理解和智力贡献；须按要求申报AI使用。",
+          "status": "required"
+        },
+        "approved_tools": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not identify an institutionally available AI service or its access terms.",
+          "zh": "现有已公开条款未列明机构AI服务及其获取条件。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the lecturer’s AI-use level for this task.",
+          "zh": "核对教师为本项任务指定的AI等级。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-um-ai-permitted-levels"
+          ]
+        },
+        {
+          "en": "Declare AI tools used in assignments or assessments.",
+          "zh": "申报作业或考核中使用的AI工具。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-um-ai-declaration-misconduct"
+          ]
+        },
+        {
+          "en": "Ensure the submission reflects your understanding and contribution.",
+          "zh": "确保提交成果体现自己的理解和贡献。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-um-ai-learning-support-originality"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not upload confidential academic or research material without permission.",
+          "zh": "未经许可，不要上传保密学术或研究材料。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-um-ai-public-platform-confidentiality"
+          ]
+        },
+        {
+          "en": "Do not leave required AI use undeclared.",
+          "zh": "不要遗漏规定必须申报的AI使用。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-um-ai-declaration-misconduct"
+          ]
+        },
+        {
+          "en": "Do not apply one assignment’s AI level to another.",
+          "zh": "不要将某份作业的AI等级套用于另一项任务。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-um-ai-permitted-levels"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "claim-um-ai-policy-scope": "Universiti Malaya's AI policy applies to academic staff and students across teaching and learning activities, including coursework, research projects, dissertations, final-year projects, theses, and online or blended learning activities.",
+        "claim-um-ai-learning-support-originality": "Universiti Malaya student guidance frames AI as a learning support tool and says students remain responsible for ensuring submitted work reflects their own understanding and intellectual contribution.",
+        "claim-um-ai-permitted-levels": "Universiti Malaya guidance says lecturers specify the permitted level of AI use for each assignment or assessment, using levels from no AI use through integrated AI use.",
+        "claim-um-ai-declaration-misconduct": "Universiti Malaya guidance requires students to declare AI tools used in assignments or assessments and says failure to disclose AI use may be considered academic misconduct.",
+        "claim-um-ai-public-platform-confidentiality": "Universiti Malaya guidance warns students not to upload confidential academic materials, research data, or university documents to public AI platforms without permission.",
+        "claim-um-ai-data-privacy-risk-awareness": "Universiti Malaya's AI policy includes increasing awareness of ethical risks, copyright issues, data security including data privacy, and algorithmic bias in AI use."
+      }
+    },
+    "ku-leuven": {
+      "recordSha256": "d298ad7e9c77e0365e2daafd8f126e6dc4650168191733852bc916cc92ff9c45",
+      "claimsSha256": "6079e541b668ddfb4a54f4c492e19ec46d00f274c78d6cf165fe7b3eb3d98646",
+      "scope": {
+        "en": "Responsible use remains subject to assessment expectations and personal responsibility. Confidential-data rules distinguish Copilot and other tools.",
+        "zh": "负责任使用须遵循考核要求，学生承担本人作品责任；保密数据规则区分机构Copilot和其他工具。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-kul-student-responsibility",
+            "claim-kul-genai-irregularity"
+          ],
+          "en": "Students remain responsible for submissions and must demonstrate their competencies; largely AI-generated, non-transparent work can be an irregularity.",
+          "zh": "学生须对提交成果负责并展现自身能力；大量由AI生成且不透明说明的作品可能构成考核违规。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-kul-genai-irregularity",
+            "claim-kul-teaching-transparency"
+          ],
+          "en": "Be transparent about GenAI use; teaching guidance distinguishes uses that need documentation.",
+          "zh": "透明说明生成式AI使用，并按教学指引记录需披露的使用。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-kul-confidential-data-tooling",
+            "claim-kul-unsupported-tools-data-warning"
+          ],
+          "en": "Strictly confidential data is limited to KU Leuven-account Copilot; using another tool for confidential data requires a security check.",
+          "zh": "严格保密数据仅应使用KU Leuven账号登录的Copilot；若需其他工具处理保密数据，须进行安全检查。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "claim-kul-copilot-preferred",
+            "cl-ku-leuven-microsoft-copilot-289"
+          ],
+          "en": "KU Leuven recommends institution-account Copilot, citing contractual protection, enterprise security and no training on entered data.",
+          "zh": "KU Leuven推荐机构账号登录的Copilot，依据包括合同保护、企业安全及输入数据不用于进一步训练。",
+          "status": "recommended"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-kul-research-transparency"
+          ],
+          "en": "Report GenAI transparently when new output is generated for publications, project applications or doctoral theses.",
+          "zh": "在发表、项目申请或博士论文中使用AI生成新内容时，应透明报告。",
+          "status": "required"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-kul-general-responsible-use",
+            "claim-kul-teaching-transparency"
+          ],
+          "en": "Use GenAI critically as a complement to expertise and explain documentation expectations.",
+          "zh": "以批判方式使用AI辅助专业判断，并说明使用记录要求。",
+          "status": "recommended"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-kul-genai-irregularity",
+            "claim-kul-student-responsibility"
+          ],
+          "en": "Article 84 irregularity rules may apply to clear, non-transparent misuse; students remain responsible for assessed work.",
+          "zh": "明确且不透明的AI滥用可能适用第84条违规规则；考核成果仍由学生负责。",
+          "status": "restricted"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "claim-kul-confidential-data-tooling",
+            "claim-kul-copilot-preferred"
+          ],
+          "en": "Check security before using another AI tool for confidential data; recommended Copilot safeguards depend on institutional login.",
+          "zh": "使用其他AI处理保密数据前须核对安全条件；Copilot保护依赖机构登录等条件。",
+          "status": "required"
+        },
+        "exams": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify whether GenAI is allowed in this school’s examinations. Check the exam instructions.",
+          "zh": "现有已公开条款未明确该校考试中的生成式AI许可，请核对本次考试说明。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Make sure your submission demonstrates your own competencies.",
+          "zh": "确保提交作品能体现自己掌握的能力。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-kul-student-responsibility"
+          ]
+        },
+        {
+          "en": "Transparently report GenAI-generated research output.",
+          "zh": "透明报告AI生成的研究内容。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-kul-research-transparency"
+          ]
+        },
+        {
+          "en": "Use institutional-account Copilot when relying on its stated protections.",
+          "zh": "依赖所载保护条件时，使用机构账号登录Copilot。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-kul-copilot-preferred"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not submit largely AI-generated work without transparency.",
+          "zh": "不要大量使用AI生成作品却不作透明说明。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-kul-genai-irregularity"
+          ]
+        },
+        {
+          "en": "Do not put strictly confidential data in an unapproved alternative tool.",
+          "zh": "不要将严格保密数据输入未经核准的其他工具。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-kul-confidential-data-tooling"
+          ]
+        },
+        {
+          "en": "Do not enter sensitive, personal or copyrighted material into unsupported tools.",
+          "zh": "不要向不受支持的工具输入敏感、个人或受版权保护材料。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-kul-unsupported-tools-data-warning"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-ku-leuven-microsoft-copilot-289": "Microsoft Copilot is listed for KU Leuven in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "claim-kul-general-responsible-use": "KU Leuven permits and encourages responsible, critical use of generative AI in teaching and research, framing it as a complement to critical thinking and professional expertise rather than a replacement.",
+        "claim-kul-student-responsibility": "KU Leuven student guidance says students remain fully responsible for what they submit and must ensure assignments allow teaching staff to assess their acquired competences.",
+        "claim-kul-genai-irregularity": "KU Leuven student guidance says clear misuse of GenAI, where output is largely generated by GenAI and the student is not transparent about tool use, can be considered an irregularity under Article 84 of the Education and Examination Regulations.",
+        "claim-kul-teaching-transparency": "KU Leuven teaching guidance expects teaching staff to clearly inform students whether GenAI may be used for assignments and expects students to be transparent about GenAI use so assessment can be fair and correct.",
+        "claim-kul-copilot-preferred": "KU Leuven identifies Copilot logged in with a KU Leuven account as its recommended GenAI tool, citing contractual data protection, Enterprise technical security, and Microsoft not using entered data for further training.",
+        "claim-kul-confidential-data-tooling": "KU Leuven guidance says strictly confidential data should use only Copilot logged in with a KU Leuven account, and confidential or strictly confidential data require a security check if another AI tool is needed.",
+        "claim-kul-unsupported-tools-data-warning": "KU Leuven safe-use guidance warns users to be careful with unsupported AI tools and not to enter personal data, confidential information, IP-sensitive data, or copyrighted material.",
+        "claim-kul-research-transparency": "KU Leuven research guidance says GenAI use needs to be reported transparently whenever new output is generated in scientific publications, project applications, or doctoral theses."
+      }
+    },
+    "korea-university": {
+      "recordSha256": "93d92a370deb7991c078b26f28176e5cead4fc22281f9777bfafb5f4a84900b3",
+      "claimsSha256": "16750acef288cb23a88f00498ef004363a2f9e258a89294dee89f583b3aafbee",
+      "scope": {
+        "en": "The 2026 guidance concerns educational AI; course-specific policies govern learner use. Instructor and learner data obligations are distinguished.",
+        "zh": "2026指引针对教育AI；学生使用按各课程政策执行，教师和学生的数据责任分别适用。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "cc-ku-010",
+            "cc-ku-005"
+          ],
+          "en": "Check each course’s AI policy and ask the instructor if permission is unclear; policies should be stated in the syllabus.",
+          "zh": "先核对每门课程的AI规则，许可不清楚时询问教师；课程政策应写入教学大纲。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "cc-ku-005",
+            "cc-ku-007"
+          ],
+          "en": "Assessment rules depend on course purpose and assignment design; work should demonstrate the learner’s own reasoning even with AI.",
+          "zh": "考核规则取决于课程目标和任务设计；即使使用AI，也应展现学生自己的推理过程。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "cc-ku-011"
+          ],
+          "en": "Disclose the AI tool, timing and scope of use, distinguish AI contributions and follow the required citation format.",
+          "zh": "披露工具名称、使用时间和范围，区分本人及AI贡献，并按指定格式引用。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "cc-ku-012",
+            "cc-ku-009"
+          ],
+          "en": "Learners must not enter personal data, non-public learning materials or exam questions into external AI; instructor restrictions also cover academic records.",
+          "zh": "学生不得向外部AI输入个人信息、非公开学习材料或试题；教师还须保护学业记录等敏感内容。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-korea-university-institutional-ai-service-290",
+            "cc-ku-002"
+          ],
+          "en": "The record lists a conditionally available multilingual AI courseware service; the guideline also covers educational use of other AI tools.",
+          "zh": "记录列有有条件提供的多语言AI课程服务；指引原则亦涉及其他教育AI工具，不构成考核统一许可。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "cc-ku-004",
+            "cc-ku-008"
+          ],
+          "en": "Submitting AI content as one’s own or using it without permission is misconduct; AI detectors are supplementary, not sole proof.",
+          "zh": "把AI内容当作本人作品或未经许可使用属于违规；AI检测仅可作辅助参考，不可作为唯一依据。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "cc-ku-005",
+            "cc-ku-006",
+            "cc-ku-007"
+          ],
+          "en": "State the course policy in the syllabus, explain it at the first class and assess students’ own reasoning and process.",
+          "zh": "在大纲中明确AI政策，首次授课时说明，并考查学生本人的推理和过程。",
+          "status": "required"
+        },
+        "research_publication": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify a publication AI-use rule. Check the relevant journal or research-unit instructions.",
+          "zh": "现有已公开条款未明确AI发表规则，请查适用期刊或研究单位说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the course rule and ask if AI permission is unclear.",
+          "zh": "查看课程规则，许可不明时先询问教师。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cc-ku-010"
+          ]
+        },
+        {
+          "en": "Record the tool, timing and scope and distinguish your own contribution.",
+          "zh": "记录工具、时间和范围，区分本人贡献与AI参与。",
+          "kind": "requirement",
+          "claimIds": [
+            "cc-ku-011"
+          ]
+        },
+        {
+          "en": "Show your reasoning and problem-solving process.",
+          "zh": "展示自己的推理和解决问题过程。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cc-ku-007"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not present AI content as your own or use it without permission.",
+          "zh": "不要将AI内容当作本人作品，或未经许可使用。",
+          "kind": "requirement",
+          "claimIds": [
+            "cc-ku-004"
+          ]
+        },
+        {
+          "en": "Do not put non-public learning material or exam questions into external AI.",
+          "zh": "不要向外部AI输入非公开学习资料或试题。",
+          "kind": "requirement",
+          "claimIds": [
+            "cc-ku-012"
+          ]
+        },
+        {
+          "en": "Do not use an AI detector as the sole basis for a misconduct finding.",
+          "zh": "不要仅凭AI检测器作出违规认定。",
+          "kind": "requirement",
+          "claimIds": [
+            "cc-ku-008"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-korea-university-institutional-ai-service-290": "풀리캠퍼스 다국어 AI 코스웨어 서비스 is listed for Korea University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cc-ku-004": "Korea University states that submitting AI-generated content as one’s own, or using it without permission, is academic misconduct.",
+        "cc-ku-002": "Korea University states that its AI guideline primarily applies to generative AI used directly in teaching and learning, while its basic principles also apply to educational use of all AI tools.",
+        "cc-ku-008": "Korea University says AI-detection and plagiarism-prevention tools should be used only as supplementary references and not as the sole basis for misconduct findings.",
+        "cc-ku-009": "Korea University tells instructors not to enter personal information, academic records, assessment questions, or other sensitive or non-public materials into AI tools, with special caution for external AI services.",
+        "cc-ku-011": "Korea University tells learners to disclose the AI tool name, timing, and scope of use, distinguish their own work from AI contributions, and cite AI-generated content according to the required format.",
+        "cc-ku-001": "Korea University University College Distance Learning Center distributed 2026 AI utilization guidelines and a guidebook to support responsible and effective AI use in teaching and learning.",
+        "cc-ku-005": "Korea University instructs instructors to decide course AI-use policies based on course purpose, teaching method, and assignment nature, and to state the policy in the syllabus.",
+        "cc-ku-010": "Korea University tells learners to check each course’s AI-use guideline before coursework and ask the instructor if permission is unclear.",
+        "cc-ku-012": "Korea University tells learners not to enter personal information, non-public learning materials, or assessment questions into external AI tools, and to remember that AI inputs may be stored or reused.",
+        "cc-ku-003": "Korea University frames AI as a tool that assists education and learning, with human thought and judgment remaining central.",
+        "cc-ku-006": "Korea University says instructors should explain AI-use policies at the first class and notify learners that violations may be treated as academic integrity breaches.",
+        "cc-ku-007": "Korea University recommends designing assignments and assessments to show learners’ critical thinking, creativity, problem-solving process, and their own reasoning even when AI is used."
+      }
+    },
+    "duke-university": {
+      "recordSha256": "9413b1d656c1399e18756cee0c181f7b548dc6d82858286e2f7200ac43b3187c",
+      "claimsSha256": "a9d49b3d43f9c88d5fe23eb7084a704f7426353bd6d65d9a3d6c7697fe3995e6",
+      "scope": {
+        "en": "Coursework use depends on instructor permission. Secure-platform and research guidance do not automatically authorize assessment use.",
+        "zh": "课程作业按教师许可执行；安全平台或研究指引不能自动构成考核使用授权。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-duke-001",
+            "claim-duke-002"
+          ],
+          "en": "Instructor permission governs coursework AI; unauthorized GenAI use is academic misconduct under the Duke Community Standard.",
+          "zh": "课程作业使用AI须获教师许可；未经授权使用生成式AI属于Duke Community Standard所涉学术违规。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-duke-001",
+            "claim-duke-005"
+          ],
+          "en": "The instructor defines how, if and when AI may be used; confirm the rules for each exam rather than relying on platform access.",
+          "zh": "教师决定AI是否、何时及如何使用；每次考试应单独核对规则，不能仅凭平台可访问推定许可。",
+          "status": "conditionally_allowed"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-duke-007",
+            "claim-duke-004"
+          ],
+          "en": "Do not share personal information in AI assignments; the recorded ChatGPT sensitive-data terms exclude PHI and depend on institutional agreement.",
+          "zh": "AI作业不应分享个人信息；所载ChatGPT敏感数据条件不涵盖PHI，并受机构协议限制。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "claim-duke-003",
+            "claim-duke-004",
+            "cl-duke-university-institutional-ai-service-293"
+          ],
+          "en": "Duke provides AI platforms including DukeGPT and other listed services; access and sensitive-data conditions differ by service.",
+          "zh": "Duke提供DukeGPT等AI平台，各服务的访问资格及敏感数据条件不同，须分别核对。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-duke-008"
+          ],
+          "en": "Document and publish AI decision-making alongside research; authenticate chatbot-summarized information before citing it.",
+          "zh": "记录并随研究说明AI决策过程；引用聊天机器人摘要的信息前须核实原始事实。",
+          "status": "required"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-duke-002",
+            "claim-duke-001"
+          ],
+          "en": "Unauthorized AI software is listed among cheating-related conduct; instructor authorization remains necessary.",
+          "zh": "未经授权的AI软件使用列入作弊相关行为；须取得教师授权。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-duke-005",
+            "claim-duke-006"
+          ],
+          "en": "Set clear syllabus and assignment-specific policies, guided by whether AI advances course learning goals.",
+          "zh": "在大纲和具体作业中明确AI规则，并根据是否有助于课程学习目标来设计任务。",
+          "status": "recommended"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "claim-duke-004"
+          ],
+          "en": "The institutional ChatGPT sensitive-data allowance excludes protected health information; check agreement conditions.",
+          "zh": "机构ChatGPT的敏感数据使用条件不包含受保护健康信息，须核对协议范围。",
+          "status": "restricted"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Obtain instructor permission for coursework AI use.",
+          "zh": "课程作业使用AI前取得教师许可。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-duke-001"
+          ]
+        },
+        {
+          "en": "Check the syllabus and assignment-specific conditions.",
+          "zh": "核对教学大纲和本次作业的具体条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-duke-005"
+          ]
+        },
+        {
+          "en": "Authenticate information before citing a chatbot’s summary.",
+          "zh": "引用聊天机器人摘要前核实信息。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-duke-008"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use unauthorized AI assistance.",
+          "zh": "不要使用未经授权的AI辅助。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-duke-002"
+          ]
+        },
+        {
+          "en": "Do not share personal information through AI assignments.",
+          "zh": "不要在AI作业中分享个人信息。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-duke-007"
+          ]
+        },
+        {
+          "en": "Do not treat the institutional agreement as permission for PHI.",
+          "zh": "不要把机构协议当作输入受保护健康信息的许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-duke-004"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-duke-university-chatgpt-291": "ChatGPT Edu is listed for Duke University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-duke-university-institutional-ai-service-292": "AI Gateway is listed for Duke University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-duke-university-institutional-ai-service-293": "DukeGPT is listed for Duke University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: self hosted system.",
+        "cl-duke-university-institutional-ai-service-294": "MyGPT Builder is listed for Duke University in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-duke-university-microsoft-copilot-295": "Microsoft Copilot is listed for Duke University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "claim-duke-001": "Duke student-facing AI guidance says whether a student may use AI in coursework depends on instructor permission; unauthorized generative AI use is considered academic misconduct under the Duke Community Standard.",
+        "claim-duke-002": "Duke Community Standard academic-dishonesty guidance includes unauthorized use of artificial intelligence software among examples of cheating-related conduct.",
+        "claim-duke-003": "Duke states that it offers a suite of secure and accessible AI platforms to students, staff, and faculty.",
+        "claim-duke-005": "Duke CTL guidance tells instructors to update syllabi with clear guidance on generative AI use and says instructors may define how, if, and when generative AI may be used in their courses.",
+        "claim-duke-004": "Duke AI tool guidance describes ChatGPT as available to Duke University faculty, staff, and students, with sensitive-data use excluding PHI and governed by institutional agreement.",
+        "claim-duke-006": "Duke CTL assignment-design guidance says AI assignments should be accompanied by course and assignment-specific AI policies, with the primary consideration being whether AI use helps students achieve course learning goals.",
+        "claim-duke-008": "Duke research guidance says researchers should document and publish AI decision-making alongside research and should not cite chatbot-summarized information they have not authenticated.",
+        "claim-duke-007": "Duke CTL assignment-design guidance advises that personal information should not be shared when using AI in assignments, to minimize privacy threats to students and instructors."
+      }
+    },
+    "city-university-of-hong-kong": {
+      "recordSha256": "87abc9d35b6cc6de00f7dd3e91f31ca653d6c499f9cb0d727d28bc13464a5045",
+      "claimsSha256": "28baf9a95e9590b7110b0365e7debe10f4ebd33c4c33d2289e023ac7faa2521a",
+      "scope": {
+        "en": "The published record confirms a teaching/learning guideline index and institutional services; detailed assessment permissions require the applicable student guideline.",
+        "zh": "已公开记录确认教学指引目录及机构服务；具体考核许可须查适用学生指南，不从目录或工具供应推定。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-cityuhk-001"
+          ],
+          "en": "CityUHK has separate staff and student GenAI guidelines effective from Semester A 2025/26; the current Claim records the index, not detailed assessment permissions.",
+          "zh": "CityUHK自2025/26学年A学期设有师生分开的生成式AI指引；当前条款确认目录存在，未载具体考核许可。",
+          "status": "unclear"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-city-university-of-hong-kong-cityuhk-chatgpt-296",
+            "cl-city-university-of-hong-kong-cityuhk-deepseek-297",
+            "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-299",
+            "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-for-m365-300"
+          ],
+          "en": "The record lists CityUHK Chatbot services and enterprise Copilot, with additional conditions for Microsoft 365 Copilot.",
+          "zh": "记录列有CityUHK Chatbot及企业Copilot服务；Microsoft 365 Copilot另有条件，具体考核许可须单独核对。",
+          "status": "conditionally_allowed"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-cityuhk-001"
+          ],
+          "en": "Staff and student guidance are separate; use the document appropriate to your role.",
+          "zh": "教师和学生指引分别发布，应查阅与本人角色对应的文件。",
+          "status": "recommended"
+        },
+        "exams": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify whether GenAI is allowed in this school’s examinations. Check the exam instructions.",
+          "zh": "现有已公开条款未明确该校考试中的生成式AI许可，请核对本次考试说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "privacy_data": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not establish a university-wide AI data-use rule. Check the tool’s data terms before uploading.",
+          "zh": "现有已公开条款未确立全校AI数据使用规则，上传前应核对工具数据条款。",
+          "status": "insufficient_public_evidence"
+        },
+        "research_publication": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify a publication AI-use rule. Check the relevant journal or research-unit instructions.",
+          "zh": "现有已公开条款未明确AI发表规则，请查适用期刊或研究单位说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "academic_integrity": {
+          "claimIds": [],
+          "en": "The available Claims do not state a specific AI misconduct rule or procedure; do not infer one from tool access.",
+          "zh": "现有条款未载明具体AI违规规则或程序，不能从工具供应推定。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Read the student guideline linked from the official index.",
+          "zh": "从官方目录查阅学生版指引。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-cityuhk-001"
+          ]
+        },
+        {
+          "en": "Confirm the applicable course or assessment instructions.",
+          "zh": "另行确认课程或考核的具体说明。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-cityuhk-001"
+          ]
+        },
+        {
+          "en": "Check the access terms for the particular Copilot service.",
+          "zh": "核对所用Copilot具体版本的访问条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-299",
+            "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-for-m365-300"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not infer assessment permission from the existence of a guideline index.",
+          "zh": "不要从指引目录存在推定考核已获许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-cityuhk-001"
+          ]
+        },
+        {
+          "en": "Do not equate chatbot availability with permission in every course.",
+          "zh": "不要将聊天机器人可用等同于每门课程均允许使用。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-city-university-of-hong-kong-cityuhk-chatgpt-296"
+          ]
+        },
+        {
+          "en": "Do not assume every Copilot variant has the same eligibility.",
+          "zh": "不要假定所有Copilot版本的资格条件都相同。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-for-m365-300"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-city-university-of-hong-kong-cityuhk-chatgpt-296": "CityUHK Chatbot GPT-5.2 (ChatGPT) is listed for City University of Hong Kong (CityUHK) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutional ai service.",
+        "cl-city-university-of-hong-kong-cityuhk-deepseek-297": "CityUHK Chatbot DeepSeek R1 and V4 Flash is listed for City University of Hong Kong (CityUHK) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutional ai service.",
+        "cl-city-university-of-hong-kong-cityuhk-institutional-ai-service-298": "CityUHK Chatbot is listed for City University of Hong Kong (CityUHK) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutional ai service.",
+        "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-299": "Microsoft Copilot for Enterprise is listed for City University of Hong Kong (CityUHK) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-for-m365-300": "Microsoft Copilot for Microsoft 365 is listed for City University of Hong Kong (CityUHK) in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "claim-cityuhk-001": "CityUHK has an official guideline index for the use of generative AI tools in teaching and learning, effective from Semester A 2025/26, with separate staff and student guideline links."
+      }
+    },
+    "national-taiwan-university": {
+      "recordSha256": "5b41c103d46d80a50dff0733f30afd46b180a1b9dcb4bd12da6fe3a36ad339c6",
+      "claimsSha256": "b56d1841f42a1e4d5348def0948fa958ecfdb4d667c06f61d1a7887252f539c8",
+      "scope": {
+        "en": "University teaching guidance, DFLL assessment rules, Health Policy and Management rules and Social Work journal ethics have distinct scopes.",
+        "zh": "全校教学指引、外文系考核规则、健康政策与管理所规范及社会工作期刊伦理各有适用范围。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-ntu-002",
+            "claim-ntu-004",
+            "claim-ntu-005"
+          ],
+          "en": "Course AI rules should be stated early. NTU assignment guidance requires labeling and checking AI output; DFLL use depends on instructor decisions.",
+          "zh": "课程应及早说明AI规则；作业指引要求标注并核实AI内容，外文系另按教师决定使用。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-ntu-002",
+            "claim-ntu-005"
+          ],
+          "en": "Check which activities or assignments the instructor permits; DFLL guidance cannot be generalized into campus-wide exam permission.",
+          "zh": "核对教师明确允许的活动及任务；外文系指引不能扩为全校统一考试许可。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-ntu-004",
+            "claim-ntu-005",
+            "claim-ntu-007"
+          ],
+          "en": "Clearly label AI-generated content and assistance, fact-check outputs and follow the applicable academic-ethics rules.",
+          "zh": "清楚标注AI生成内容及协助来源，核实输出，并遵守适用的学术伦理规则。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-ntu-007",
+            "claim-ntu-009"
+          ],
+          "en": "Health Policy and Management rules require privacy safeguards. Social Work journal reviewers must not upload manuscripts or review material to GenAI.",
+          "zh": "健康政策与管理所规范要求保护隐私；社会工作期刊审稿人不得向生成式AI输入稿件或审稿材料。",
+          "status": "restricted"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-ntu-008",
+            "claim-ntu-006"
+          ],
+          "en": "Social Work journal authors retain responsibility, disclose AI use and cannot list AI as an author. DFLL degree work must be personally written.",
+          "zh": "社会工作期刊作者须负责并披露AI使用，不得将AI列为作者；外文系学位作品须由学生本人撰写。",
+          "status": "required"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-ntu-006",
+            "claim-ntu-003"
+          ],
+          "en": "DFLL rules connect AI cheating to NTU Academic Regulations. University guidance warns AI detectors alone are insufficient evidence.",
+          "zh": "外文系规定将AI作弊与台大学则处理相联系；全校指引提醒AI检测结果本身不足以确认学生使用AI。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-ntu-001",
+            "claim-ntu-002",
+            "claim-ntu-003"
+          ],
+          "en": "Explain permitted uses early, adapt teaching and assessment and use caution before relying on AI detectors.",
+          "zh": "及早说明允许的AI用法，调整教学及考核，并谨慎对待AI检测器。",
+          "status": "recommended"
+        },
+        "approved_tools": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not identify an institutionally available AI service or its access terms.",
+          "zh": "现有已公开条款未列明机构AI服务及其获取条件。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the instructor’s AI rules for the particular activity.",
+          "zh": "核对教师为具体活动设置的AI规则。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-ntu-002"
+          ]
+        },
+        {
+          "en": "Label and fact-check AI-generated assignment content.",
+          "zh": "标注并核实作业中的AI生成内容。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ntu-004"
+          ]
+        },
+        {
+          "en": "For Social Work journal submissions, disclose AI assistance and retain author responsibility.",
+          "zh": "向社会工作期刊投稿时披露AI辅助，并承担作者责任。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ntu-008"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not present AI-written DFLL degree work as personally authored.",
+          "zh": "不要将AI代写的外文系学位作品冒充本人创作。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ntu-006"
+          ]
+        },
+        {
+          "en": "As a Social Work journal reviewer, do not upload manuscripts to GenAI.",
+          "zh": "作为社会工作期刊审稿人，不要向生成式AI上传稿件。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ntu-009"
+          ]
+        },
+        {
+          "en": "Do not use a detector result alone to establish student AI use.",
+          "zh": "不要仅凭检测器结果确认学生使用AI。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-ntu-003"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "claim-ntu-005": "NTU DFLL guidance says instructors may decide whether students may use generative AI; if permitted, students should clearly label AI-generated content and follow academic ethics.",
+        "claim-ntu-006": "NTU DFLL guidance says student-submitted theses, works, written reports, technical reports or professional-practice reports should be personally written and created by the student; generative-AI cheating is subject to NTU Academic Regulations Articles 88 and 88-1.",
+        "claim-ntu-001": "National Taiwan University guidance says it takes a positive and constructive view of AI tools, encourages teachers to adjust course planning and learning assessment, and says students should understand AI-tool limitations for future learning.",
+        "claim-ntu-002": "National Taiwan University guidance recommends that instructors clarify AI-use principles and rules early in the course, preferably in the syllabus, including which activities and assignments may or may not use AI tools.",
+        "claim-ntu-004": "National Taiwan University guidance says students using ChatGPT for assignments or reports should clearly label AI-generated content, fact-check it, and comply with academic ethics and academic-integrity requirements.",
+        "claim-ntu-003": "National Taiwan University guidance says AI-detection tools have limited accuracy and are not sufficient evidence by themselves to confirm student AI use; it recommends caution before accusing students based only on such tools.",
+        "claim-ntu-007": "NTU Health Policy and Management conduct rules allow AI tools according to teaching and research needs, but require users to clearly explain the content and scope of use, respect privacy, disclose assistance sources, verify AI output, and take responsibility for results.",
+        "claim-ntu-008": "NTU Social Work journal publication ethics states that AI tools cannot assume responsibility for submitted research; authors remain fully responsible, must disclose AI use in the relevant section, and may not list or cite AI as an author.",
+        "claim-ntu-009": "NTU Social Work journal publication ethics says reviewers must not input manuscript content or review-related material into generative AI tools to help write review comments, in order to protect manuscript confidentiality and author rights."
+      }
+    },
+    "university-of-auckland": {
+      "recordSha256": "6e3dacd4660000dd2488514e8f0b6333febcdb519636f5d9b2444d819d7a63c3",
+      "claimsSha256": "6ac08f5dd19448cbcc273fc476128a46efe7dee0fadf4812af81e37b7a9455a8",
+      "scope": {
+        "en": "The university Two-Lane Approach and Law School graded-assignment rules must be read together in their own scopes; implementation is due by 2027 unless specified otherwise.",
+        "zh": "全校双轨考核框架与法学院计分作业规则须分别按范围核对；除另有规定外，项目应于2027年前落实双轨设计。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-auckland-001",
+            "claim-university-of-auckland-023",
+            "claim-university-of-auckland-024"
+          ],
+          "en": "The Two-Lane Approach distinguishes controlled Lane 1 from Lane 2. Law School separately prohibits listed AI in graded work unless a specific assignment permits it.",
+          "zh": "双轨框架区分受控Lane 1与Lane 2；法学院另禁止在计分作业使用所列AI，具体作业许可时须完整披露。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-university-of-auckland-028",
+            "claim-university-of-auckland-029"
+          ],
+          "en": "AI tools are not permitted in Lane 1 assessments; Lane 2 allows AI assistance. Confirm the lane and any applicable faculty rules.",
+          "zh": "Lane 1考核不允许AI，Lane 2允许AI辅助；须先确认本次所属轨道及适用学院规定。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-university-of-auckland-024",
+            "claim-auckland-003"
+          ],
+          "en": "Law School requires full and accurate disclosure where a specific assignment permits AI; students remain responsible for submissions.",
+          "zh": "法学院具体作业允许AI时须完整准确披露；学生仍对提交成果负责。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-university-of-auckland-025"
+          ],
+          "en": "Law School says not to enter confidential, client, personal, proprietary, copyrighted or legally protected information into AI.",
+          "zh": "法学院要求不得向AI输入保密、客户、个人、专有、受版权或其他法律保护的信息。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "claim-university-of-auckland-026",
+            "cl-university-of-auckland-gemini-301",
+            "cl-university-of-auckland-microsoft-copilot-302",
+            "cl-university-of-auckland-notebooklm-303"
+          ],
+          "en": "University services include Copilot, Gemini and NotebookLM using university accounts; secure access does not cancel assessment restrictions.",
+          "zh": "机构账号服务包括Copilot、Gemini及NotebookLM；安全访问不取消考核中的限制。",
+          "status": "conditionally_allowed"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-auckland-003",
+            "claim-auckland-004"
+          ],
+          "en": "Students remain responsible; using software not permitted for the assessment may breach academic integrity.",
+          "zh": "学生继续承担作品责任；使用该考核不允许的软件可能违反学术诚信要求。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-auckland-002",
+            "claim-university-of-auckland-022"
+          ],
+          "en": "Courses must identify Lane 1 and Lane 2 assessments; programmes implement the design by 2027 unless the faculty specifies otherwise.",
+          "zh": "课程须说明哪些考核属于Lane 1或Lane 2；除学院另有规定，项目应于2027年前落实双轨考核设计。",
+          "status": "required"
+        },
+        "research_publication": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify a publication AI-use rule. Check the relevant journal or research-unit instructions.",
+          "zh": "现有已公开条款未明确AI发表规则，请查适用期刊或研究单位说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Confirm the assessment lane and applicable faculty instructions.",
+          "zh": "先确认考核轨道及适用学院说明。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-auckland-001"
+          ]
+        },
+        {
+          "en": "For permitted Law School assignment AI, disclose use fully and accurately.",
+          "zh": "法学院作业获准使用AI时，完整准确披露。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-university-of-auckland-024"
+          ]
+        },
+        {
+          "en": "Remain responsible for the work you submit.",
+          "zh": "对自己提交的成果承担责任。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-auckland-003"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use AI in Lane 1 assessments.",
+          "zh": "不要在Lane 1考核中使用AI。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-university-of-auckland-028"
+          ]
+        },
+        {
+          "en": "Do not ignore the Law School’s separate graded-assignment restriction.",
+          "zh": "不要忽略法学院计分作业的独立限制。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-university-of-auckland-023"
+          ]
+        },
+        {
+          "en": "Under Law School rules, do not enter protected information into AI.",
+          "zh": "按法学院规则，不要向AI输入受保护信息。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-university-of-auckland-025"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "claim-auckland-001": "The University of Auckland's Assessment of Courses Procedures state that AI use in assessment tasks may only be restricted when the task is a controlled assessment, identified as Lane 1; AI may be used without restriction in other assessment tasks, identified as Lane 2.",
+        "claim-auckland-002": "The University of Auckland's Assessment of Courses Procedures require courses to use the two-lane nomenclature, including telling students which assessments align with Lane 1 or Lane 2, and require courses and programmes to implement the two-lane approach in assessment design by 2027.",
+        "cl-university-of-auckland-gemini-301": "Google Gemini is listed for University of Auckland in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-auckland-microsoft-copilot-302": "Microsoft 365 Copilot Chat is listed for University of Auckland in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-auckland-notebooklm-303": "Google Notebook LM is listed for University of Auckland in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "claim-auckland-003": "The University of Auckland's student AI advice states that AI has no agency, treats the student prompting an AI tool as the author, and says students are ultimately responsible for work submitted for assessment.",
+        "claim-auckland-004": "The University of Auckland's permitted-software assessment guideline says Gen-AI may not be permitted for assessment activities where the assessed skills overlap with functions performed by Gen-AI, and says use of non-permitted software may be considered a breach of academic integrity.",
+        "claim-auckland-005": "The University of Auckland TeachWell two-lane assessment guidance says the University does not endorse third-party AI detection tools, citing unreliability, false positives, and possible student-data training risks.",
+        "claim-auckland-007": "Auckland Law School's student AI guidelines for taught courses state that using AI to generate, draft, or assist in creating content for graded assignments is prohibited unless the instructor explicitly permits it in writing.",
+        "claim-auckland-006": "The University of Auckland's public TeachWell explainer for the AI Usage Standard says users should assess data against the University's data classification before submitting it to an AI tool, and says restricted data should not be used with AI chat services.",
+        "claim-university-of-auckland-020": "The University of Auckland says AI use may only be restricted in controlled Lane 1 assessment tasks.",
+        "claim-university-of-auckland-021": "The University of Auckland says AI may be used without restriction in Lane 2 assessment tasks.",
+        "claim-university-of-auckland-022": "The University of Auckland says all courses and programmes must implement the Two-Lane Approach in assessment design by 2027 unless a faculty specifies otherwise.",
+        "claim-university-of-auckland-023": "Auckland Law School says the graded-assignment AI prohibition applies to tools including ChatGPT, Claude, Gemini, DeepSeek, Microsoft Copilot, xAI, and similar tools.",
+        "claim-university-of-auckland-024": "Auckland Law School says permitted AI use for a specific assignment must be fully and accurately disclosed.",
+        "claim-university-of-auckland-025": "Auckland Law School tells students not to enter confidential, client, personal, proprietary, copyrighted, or legally protected information into AI tools.",
+        "claim-university-of-auckland-026": "Auckland Law School lists university-provided secure AI tools as Microsoft Copilot, Google Gemini, and NotebookLM when signed in with university accounts.",
+        "claim-university-of-auckland-027": "The University of Auckland uses a Two-Lane Approach that distinguishes controlled assessments where AI use is restricted from other assessments where AI may be used.",
+        "claim-university-of-auckland-028": "The University of Auckland says students are not permitted to use AI tools in Lane 1 assessments.",
+        "claim-university-of-auckland-029": "The University of Auckland says students may use AI assistance without restriction in Lane 2 assessments."
+      }
+    },
+    "university-of-california-san-diego": {
+      "recordSha256": "00a613c4555cf59024a72fd0a259acfdb17e9cd12d7aae5e83a2e06af5ad88ea",
+      "claimsSha256": "8aea07d82fbc158c73039224e802a2c27a6bd23abb29d9a47fd0d7736674b228",
+      "scope": {
+        "en": "Instructor authorization is assignment-specific. The 2025 research report contains proposals and must not be treated as a binding campus permission rule.",
+        "zh": "教师授权须按具体作业适用；2025研究报告包含建议，不可当作已生效的全校许可规则。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "cl-ucsd-001",
+            "cl-ucsd-002",
+            "cl-ucsd-003"
+          ],
+          "en": "AI needs explicit instructor authorization; silence is not permission, and authorization for one assignment does not extend to others.",
+          "zh": "AI须经教师明确授权；未表态不代表允许，某项作业的授权也不自动适用于其他任务。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "cl-ucsd-001",
+            "cl-ucsd-002"
+          ],
+          "en": "Unauthorized AI aids are prohibited in coursework or assessments; confirm explicit authorization for the examination.",
+          "zh": "课程作业及考核禁止未经授权的AI辅助；考试须另行确认明确许可。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "cl-ucsd-003"
+          ],
+          "en": "Use authorized AI only as permitted; the guidance advises saving interaction history and acknowledging use to the professor.",
+          "zh": "仅按获准方式使用AI；指引建议保存交互历史并向教师说明使用情况。",
+          "status": "recommended"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "cl-ucsd-006",
+            "cl-ucsd-009"
+          ],
+          "en": "TritonGPT is securely hosted under UCSD data control. The research report warns that protected data may not be suitable for non-secure GenAI.",
+          "zh": "TritonGPT在UCSD可控制数据的安全环境托管；研究报告提醒，受保护数据不应随意用于不安全的生成式AI。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-ucsd-006",
+            "cl-ucsd-007"
+          ],
+          "en": "UCSD identifies TritonGPT as preferred and evaluates supported AI against UC data/security policies; service-specific terms still apply.",
+          "zh": "UCSD将TritonGPT列为优先平台，按UC数据安全政策评估受支持AI；仍须核对各服务条件。",
+          "status": "recommended"
+        },
+        "research_publication": {
+          "claimIds": [
+            "cl-ucsd-008",
+            "cl-ucsd-009"
+          ],
+          "en": "A 2025 workgroup report proposes research integrity, human oversight and disciplinary norms; these proposals are not an adopted blanket permission.",
+          "zh": "2025工作组报告建议以研究诚信、人工监督及学科规范为原则；不能将建议当作已采纳的全面许可。",
+          "status": "recommended"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "cl-ucsd-001",
+            "cl-ucsd-005"
+          ],
+          "en": "Having a human or machine complete academic work or using unauthorized aids conflicts with the Academic Integrity Policy.",
+          "zh": "让他人或机器代做学术任务、使用未经授权的辅助，违反所载学术诚信要求。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "cl-ucsd-004"
+          ],
+          "en": "The Critical AI Literacy Canvas Module helps instructors teach ethical and responsible GenAI use.",
+          "zh": "Critical AI Literacy Canvas模块帮助教师开展AI素养、伦理及负责任使用教学。",
+          "status": "recommended"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "cl-ucsd-007"
+          ],
+          "en": "Supported services are assessed against UC security, communications, export-control and FERPA-related standards.",
+          "zh": "受支持服务按UC安全、通信、出口管制及FERPA等标准评估。",
+          "status": "required"
+        }
+      },
+      "do": [
+        {
+          "en": "Get explicit instructor authorization before using GenAI.",
+          "zh": "使用生成式AI前取得教师明确授权。",
+          "kind": "requirement",
+          "claimIds": [
+            "cl-ucsd-002"
+          ]
+        },
+        {
+          "en": "Stay within the assignment’s authorized use and save interaction history.",
+          "zh": "按本次作业的授权方式使用，并保存交互记录。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cl-ucsd-003"
+          ]
+        },
+        {
+          "en": "Check the preferred TritonGPT service and its applicable data terms.",
+          "zh": "核对优先平台TritonGPT及适用数据条件。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-ucsd-006"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not treat instructor silence as permission.",
+          "zh": "不要把教师未表态理解为允许。",
+          "kind": "requirement",
+          "claimIds": [
+            "cl-ucsd-002"
+          ]
+        },
+        {
+          "en": "Do not carry one assignment’s permission into another course or task.",
+          "zh": "不要把一项作业的许可套用于其他课程或任务。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cl-ucsd-003"
+          ]
+        },
+        {
+          "en": "Do not have AI complete academic work for you.",
+          "zh": "不要让AI代做本人的学术任务。",
+          "kind": "requirement",
+          "claimIds": [
+            "cl-ucsd-001"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-university-of-california-san-diego-gemini-304": "Google Gemini is listed for University of California, San Diego (UCSD) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-california-san-diego-institutional-ai-service-305": "TritonGPT is listed for University of California, San Diego (UCSD) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: self hosted system.",
+        "cl-university-of-california-san-diego-microsoft-copilot-306": "Microsoft Copilot with Data Protection is listed for University of California, San Diego (UCSD) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-california-san-diego-microsoft-copilot-for-m365-307": "Copilot for Microsoft 365 is listed for University of California, San Diego (UCSD) in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-university-of-california-san-diego-notebooklm-308": "NotebookLM is listed for University of California, San Diego (UCSD) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-california-san-diego-zoom-ai-companion-309": "Zoom AI Companion is listed for University of California, San Diego (UCSD) in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-ucsd-001": "UC San Diego's Academic Integrity Policy says students may not let academic work or academic credit be completed for them by another human or by machine/artificial intelligence, and may not use unauthorized aids including artificial intelligence in coursework or assessments.",
+        "cl-ucsd-002": "UC San Diego Academic Integrity Office student guidance says that if an instructor has not said a student can use GenAI for a class or assessment, the student cannot use it; silence does not equal permission.",
+        "cl-ucsd-003": "UC San Diego Academic Integrity Office guidance says students authorized to use a GenAI tool should use it only in the way authorized for that assignment, should not assume authorization extends to other assignments or courses, and are advised to save history and acknowledge use to the professor.",
+        "cl-ucsd-006": "UC San Diego Blink identifies TritonGPT as the university's preferred generative AI platform and says it is securely hosted at the San Diego Supercomputer Center so UC San Diego maintains full control over its data.",
+        "cl-ucsd-007": "UC San Diego Blink says the university evaluates and supports AI services integrated into supported platforms using criteria that reflect University of California data protection and security policies, including Electronic Information Security, Electronic Communication, Export Control, and FERPA standards.",
+        "cl-ucsd-004": "UC San Diego's Academic Integrity Office says its Critical AI Literacy Canvas Module is a resource to support instructors in introducing students to AI competencies and engaging students in ethical and responsible GenAI use.",
+        "cl-ucsd-005": "UC San Diego Library's GenAI academic-integrity guide says students might be cheating if they use a tool that has been prohibited or one that is not explicitly allowed by the course instructor.",
+        "cl-ucsd-008": "A 2025 UC San Diego Senate-Administration Workgroup report proposed that responsible GenAI use in research be grounded in research integrity, human oversight, disciplinary norms, responsible innovation, and principles over prescriptions.",
+        "cl-ucsd-009": "A 2025 UC San Diego Senate-Administration Workgroup report says researchers should understand UC San Diego data classification policies, including which protected health information, human subjects data, student work, intellectual property, and similar data may not be used with non-secure GenAI tools."
+      }
+    },
+    "kfupm": {
+      "recordSha256": "0ce7d2d570eccb5ee32f8f2a93ebdd4bf9092cdc0ed0f50e724e93987fac2515",
+      "claimsSha256": "2c08ce223b9d7ade108a8e2f480f992f1e25965bdb06b0dcfcb060a62ade8308",
+      "scope": {
+        "en": "The AI+X record establishes undergraduate AI coursework and a ChatGPT Edu initiative; it does not state detailed assessment or data-use permissions.",
+        "zh": "AI+X记录说明本科AI课程及ChatGPT Edu计划，未规定具体考核或数据使用许可。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "kfupm-claim-001",
+            "kfupm-claim-002"
+          ],
+          "en": "All undergraduates complete AI-focused coursework under AI+X; studying AI does not itself permit AI-generated assessed submissions.",
+          "zh": "AI+X要求本科生完成AI相关课程；学习AI课程本身不构成提交AI生成考核成果的许可。",
+          "status": "required"
+        },
+        "exams": {
+          "claimIds": [
+            "kfupm-claim-002"
+          ],
+          "en": "AI coursework requirements do not state an examination AI-use rule; obtain the instructions for the specific exam.",
+          "zh": "AI课程要求未说明考试中如何使用AI，应查本次考试的具体说明。",
+          "status": "unclear"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "kfupm-claim-003"
+          ],
+          "en": "KFUPM reports launching ChatGPT Edu with OpenAI for classroom and research integration; current account eligibility and limits are not detailed here.",
+          "zh": "KFUPM称与OpenAI推出ChatGPT Edu用于教学与研究；当前账号资格和限制未在该条款中详细说明。",
+          "status": "conditionally_allowed"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "kfupm-claim-001",
+            "kfupm-claim-003"
+          ],
+          "en": "AI+X combines foundational AI coursework with an institutional ChatGPT Edu initiative.",
+          "zh": "AI+X结合基础AI课程与机构ChatGPT Edu计划。",
+          "status": "recommended"
+        },
+        "research_publication": {
+          "claimIds": [
+            "kfupm-claim-003"
+          ],
+          "en": "The ChatGPT Edu announcement mentions research integration, but does not specify publication disclosure or authorship rules.",
+          "zh": "ChatGPT Edu公告提及研究整合，但未列明发表披露或署名规则。",
+          "status": "unclear"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        },
+        "privacy_data": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not establish a university-wide AI data-use rule. Check the tool’s data terms before uploading.",
+          "zh": "现有已公开条款未确立全校AI数据使用规则，上传前应核对工具数据条款。",
+          "status": "insufficient_public_evidence"
+        },
+        "academic_integrity": {
+          "claimIds": [],
+          "en": "The available Claims do not state a specific AI misconduct rule or procedure; do not infer one from tool access.",
+          "zh": "现有条款未载明具体AI违规规则或程序，不能从工具供应推定。",
+          "status": "insufficient_public_evidence"
+        },
+        "security_procurement": {
+          "claimIds": [],
+          "en": "The current reviewed Claims do not specify an AI security-review or procurement procedure.",
+          "zh": "现有已公开条款未明确AI安全审查或采购程序。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the AI+X coursework requirements for your undergraduate programme.",
+          "zh": "核对本科项目的AI+X课程要求。",
+          "kind": "site_advice",
+          "claimIds": [
+            "kfupm-claim-002"
+          ]
+        },
+        {
+          "en": "Obtain task-specific instructions before using AI in assessed work.",
+          "zh": "在考核任务使用AI前查明具体说明。",
+          "kind": "site_advice",
+          "claimIds": [
+            "kfupm-claim-001"
+          ]
+        },
+        {
+          "en": "Verify current ChatGPT Edu access through the university.",
+          "zh": "通过学校确认当前ChatGPT Edu访问资格。",
+          "kind": "site_advice",
+          "claimIds": [
+            "kfupm-claim-003"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not confuse required AI coursework with permission to use AI in an exam.",
+          "zh": "不要把必修AI课程等同于考试可使用AI。",
+          "kind": "site_advice",
+          "claimIds": [
+            "kfupm-claim-002"
+          ]
+        },
+        {
+          "en": "Do not infer unlimited accounts or data protection from a launch announcement.",
+          "zh": "不要从推出公告推定无限账号资格或数据保护承诺。",
+          "kind": "site_advice",
+          "claimIds": [
+            "kfupm-claim-003"
+          ]
+        },
+        {
+          "en": "Do not treat research integration as approval for every publication use.",
+          "zh": "不要把研究整合计划当作任何发表用法均获批。",
+          "kind": "site_advice",
+          "claimIds": [
+            "kfupm-claim-003"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "kfupm-claim-001": "KFUPM's AI+X page describes AI+X as an initiative designed to equip every undergraduate student with essential AI skills and says students begin with foundational AI coursework before their selected academic programs.",
+        "kfupm-claim-002": "KFUPM's AI+X page says all undergraduate students are required to complete AI-focused coursework and states an institutional goal to graduate 10,000 AI-skilled professionals by 2030.",
+        "kfupm-claim-003": "KFUPM's AI+X page states that KFUPM launched ChatGPT Edu in partnership with OpenAI and describes the initiative as integrating AI tools into classrooms and research environments."
+      }
+    },
+    "university-of-texas-at-austin": {
+      "recordSha256": "dc477146aac1e0b1a3607888f617700e889dd6a351e3837fcfd5b7801492b49d",
+      "claimsSha256": "ca7c25c67672b80caf50b7a993c1d691595fa85b0f65ad79c5cb9c8d1d92585d",
+      "scope": {
+        "en": "Teaching guidance, graduate research recommendations and tool/data restrictions address different tasks; institutional access does not authorize every assignment.",
+        "zh": "教学指引、研究生研究建议及工具数据限制针对不同任务；机构访问不意味着每份作业均获许可。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-ut-austin-010",
+            "claim-ut-austin-011"
+          ],
+          "en": "Instructor acceptance and syllabus rules govern assignment use; unaccepted AI-generated responses may be academic dishonesty.",
+          "zh": "作业使用AI须符合教师接受范围及大纲规则；以教师不接受的方式生成回答可能构成学术不诚信。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-ut-austin-010",
+            "claim-ut-austin-011"
+          ],
+          "en": "Check the instructor’s specific assessment policy; classroom AI adoption is not general examination permission.",
+          "zh": "核对教师针对本次考核的具体政策；课堂采用AI不等于统一考试许可。",
+          "status": "conditionally_allowed"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-ut-austin-001",
+            "claim-ut-austin-002"
+          ],
+          "en": "Public information may be used with AI; controlled/confidential information requires university-managed contracted tools with web search disabled.",
+          "zh": "公开大学信息可用于AI；受控或保密信息须使用有数据保护合同的大学管理工具，并关闭网页搜索。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-university-of-texas-at-austin-institutional-ai-service-313",
+            "cl-university-of-texas-at-austin-microsoft-copilot-for-m365-315",
+            "claim-ut-austin-001"
+          ],
+          "en": "UT Sage and other named services are listed with distinct terms; confidential-data use requires the specified university-managed safeguards.",
+          "zh": "记录列有UT Sage等服务且各有条件；处理保密数据须符合指定大学管理及保护条件。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-ut-austin-008",
+            "claim-ut-austin-009"
+          ],
+          "en": "Graduate recommendations require vetted contracted platforms for non-public data; students remain sole intellectual authors and must not cite AI as an author.",
+          "zh": "研究生建议要求非公开研究数据仅用于评估并签约的平台；学生保留唯一智力作者责任，不应将AI列为作者。",
+          "status": "required"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-ut-austin-005",
+            "claim-ut-austin-010"
+          ],
+          "en": "Honor-code, ownership and authorship principles apply; instructor-unaccepted AI assignment responses may be dishonesty.",
+          "zh": "AI使用涉及荣誉准则、成果归属及作者责任；教师不接受的AI作业回答可能构成不诚信。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-ut-austin-004",
+            "claim-ut-austin-011"
+          ],
+          "en": "Choose AI uses that support learning goals, state syllabus expectations and follow acceptable-use rules.",
+          "zh": "选择支持学习目标的AI用法，在大纲明确要求并遵守可接受使用规则。",
+          "status": "recommended"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "claim-ut-austin-003",
+            "claim-ut-austin-006",
+            "claim-ut-austin-007"
+          ],
+          "en": "Consequential autonomous AI requires CISO review. Third-party detectors used on student work require a university contract or purchase order.",
+          "zh": "自主作出重大决定的AI须经CISO审查；用第三方检测器评估学生作品须有大学合同或采购订单。",
+          "status": "required"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the instructor’s syllabus and assignment AI policy.",
+          "zh": "核对教师大纲及本次作业的AI政策。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-ut-austin-011"
+          ]
+        },
+        {
+          "en": "For confidential data, use the contracted university-managed tool with web search disabled.",
+          "zh": "保密数据只按规定使用大学管理签约工具，并关闭网页搜索。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ut-austin-001"
+          ]
+        },
+        {
+          "en": "Use vetted, contracted platforms for non-public graduate research data.",
+          "zh": "非公开研究生研究数据仅使用已评估和签约的平台。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ut-austin-008"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not put controlled or confidential information into unauthorized AI tools.",
+          "zh": "不要向未经授权的AI输入受控或保密信息。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ut-austin-002"
+          ]
+        },
+        {
+          "en": "Do not evaluate student work with third-party detectors without a university contract.",
+          "zh": "没有大学合同或采购订单，不要用第三方检测器评估学生作品。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ut-austin-006"
+          ]
+        },
+        {
+          "en": "Do not list AI as an author of graduate milestone work.",
+          "zh": "不要将AI列为研究生里程碑作品的作者。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-ut-austin-009"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-university-of-texas-at-austin-chatgpt-310": "ChatGPT EDU is listed for University of Texas at Austin in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-texas-at-austin-claude-311": "Anthropic Claude EDU is listed for University of Texas at Austin in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-texas-at-austin-gemini-312": "Google Gemini is listed for University of Texas at Austin in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-texas-at-austin-institutional-ai-service-313": "UT Sage is listed for University of Texas at Austin in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-texas-at-austin-microsoft-copilot-314": "Microsoft 365 Copilot Chat is listed for University of Texas at Austin in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-texas-at-austin-microsoft-copilot-for-m365-315": "Microsoft 365 Copilot is listed for University of Texas at Austin in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+        "claim-ut-austin-001": "UT Austin acceptable-use guidance says published university information may be used freely with AI tools, while controlled or confidential university information can be used only with university-managed AI tools covered by contracts that protect university data and disable web search functionality.",
+        "claim-ut-austin-002": "UT Austin acceptable-use guidance says unauthorized AI tools are not approved for controlled or confidential university information, including student records subject to FERPA, health information, proprietary information, and other controlled or confidential data.",
+        "claim-ut-austin-006": "UT Austin AI detection guidance prohibits third-party AI detection software from being used to evaluate student work or assignments unless a university contract or purchase order is in place.",
+        "claim-ut-austin-003": "UT Austin acceptable-use guidance says the CISO must review AI tools before procurement, development, deployment, or use when the tools are intended to autonomously make, or be a controlling factor in making, consequential decisions.",
+        "claim-ut-austin-004": "UT Austin responsible-adoption guidance defines responsible AI use in teaching and learning as adopting AI in ways that facilitate learning outcomes and foster human development for campus community members.",
+        "claim-ut-austin-007": "UT Austin AI detection guidance says submitting student work into AI detection or other third-party software without a university contract or purchase order may violate student copyright, intellectual property, or FERPA privacy rights.",
+        "claim-ut-austin-005": "UT Austin responsible-adoption guidance includes academic integrity as a principle for AI use, linking responsible use to the honor code, scholarly values, ownership, and appropriate authorship of tool outputs.",
+        "claim-ut-austin-008": "UT Austin graduate-education recommendations state that graduate students and mentors must use only vetted, university-contracted generative AI platforms for work involving non-public research data.",
+        "claim-ut-austin-010": "UT Austin CTL teaching-policy guidance says using generative AI tools to create course-assignment responses in a way the instructor does not accept may be considered academic dishonesty by the university.",
+        "claim-ut-austin-011": "UT Austin classroom guidance recommends that instructors requiring generative AI understand and abide by UT acceptable-use guidance, identify syllabus policies clearly, and submit specific software requirements through the University Co-Op.",
+        "claim-ut-austin-009": "UT Austin graduate-education recommendations say students should remain accountable as the sole intellectual author of milestone work and should never cite AI as an author."
+      }
+    },
+    "brown-university": {
+      "recordSha256": "484926940e308abda85c9633090dc99b70e1883716387161db0220b4c7130a96",
+      "claimsSha256": "4e110ef742c1110db4f25b98b85678f433aded176756d5bd032121f17ff73f3d",
+      "scope": {
+        "en": "Course expectations are set by faculty under the recorded Provost guidance. OIT data permissions and communications/research guidance have separate scopes.",
+        "zh": "所载教务指引由教师明确课程要求；OIT数据许可及传播、研究指引各有适用范围。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "cl-brown-001",
+            "cl-brown-002",
+            "cl-brown-003"
+          ],
+          "en": "Faculty set clear AI expectations for their courses; unapproved AI completion of assignments falls under the Academic Code.",
+          "zh": "教师为各课程明确AI使用要求；未经批准让AI完成作业适用学术准则。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "cl-brown-001",
+            "cl-brown-003"
+          ],
+          "en": "Follow the course’s explicit AI expectations; the recorded guidance does not supply a campus-wide examination permission.",
+          "zh": "遵循课程明确的AI要求；现有指引不构成全校统一考试许可。",
+          "status": "conditionally_allowed"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "cl-brown-004",
+            "cl-brown-006"
+          ],
+          "en": "Level 2/3 Brown data cannot enter public AI without a protective Brown contract. Institutional Gemini/NotebookLM are described as usable with Risk Level 3 data.",
+          "zh": "Level 2/3大学数据不得输入无保护合同的公共AI；机构Gemini及NotebookLM条款载有Risk Level 3数据的使用条件。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-brown-006",
+            "cl-brown-007"
+          ],
+          "en": "Gemini Chat and NotebookLM are optional no-cost tools for specified Brown students, staff and faculty; consumer services have different terms.",
+          "zh": "Gemini Chat和NotebookLM为指定Brown师生员工提供的自愿、免费工具，消费者服务的条件不同。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "cl-brown-009"
+          ],
+          "en": "OIT research guidance calls for deep review of AI-generated code for quality and efficiency; it does not itself set publication authorship rules.",
+          "zh": "OIT研究指引要求深入检查AI代码的质量和效率；该条款本身未规定发表署名规则。",
+          "status": "recommended"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "cl-brown-002"
+          ],
+          "en": "Unapproved AI used to complete assignments is covered by undergraduate and graduate Academic Codes.",
+          "zh": "未经批准用AI完成作业，适用本科或研究生学术准则。",
+          "status": "restricted"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "cl-brown-001",
+            "cl-brown-003"
+          ],
+          "en": "Faculty should give clear, unambiguous directions on whether and how students may use GenAI.",
+          "zh": "教师应明确无歧义地说明学生能否及如何使用生成式AI。",
+          "status": "recommended"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "cl-brown-005"
+          ],
+          "en": "AI use remains subject to acceptable-use, copyright, conduct and contract-review policies.",
+          "zh": "AI使用仍受可接受使用、版权、行为及合同审查政策约束。",
+          "status": "required"
+        },
+        "disclosure": {
+          "claimIds": [],
+          "en": "No specific AI disclosure format is established in the current reviewed Claims. Check the course or publication instructions.",
+          "zh": "现有已公开条款未明确具体AI披露格式，请查询适用课程或发表说明。",
+          "status": "insufficient_public_evidence"
+        }
+      },
+      "do": [
+        {
+          "en": "Check the faculty member’s explicit course expectations.",
+          "zh": "核对任课教师明确提出的课程要求。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-brown-001"
+          ]
+        },
+        {
+          "en": "Use the institutional Gemini/NotebookLM service when relying on its stated data protection.",
+          "zh": "依赖所载数据保护条件时，使用机构Gemini或NotebookLM。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-brown-006"
+          ]
+        },
+        {
+          "en": "Review generated research code for quality and efficiency.",
+          "zh": "检查AI生成研究代码的质量和效率。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "cl-brown-009"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use unapproved AI to complete an assignment.",
+          "zh": "不要用未经批准的AI完成作业。",
+          "kind": "requirement",
+          "claimIds": [
+            "cl-brown-002"
+          ]
+        },
+        {
+          "en": "Do not place Level 2/3 data in public AI without a protective Brown contract.",
+          "zh": "没有Brown数据保护合同，不要向公共AI输入Level 2/3数据。",
+          "kind": "requirement",
+          "claimIds": [
+            "cl-brown-004"
+          ]
+        },
+        {
+          "en": "Do not assume consumer tools have the institutional service’s data permission.",
+          "zh": "不要假定消费者工具享有机构服务相同的数据许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-brown-006"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-brown-university-gemini-316": "Google Gemini Chat is listed for Brown University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-brown-university-notebooklm-317": "NotebookLM is listed for Brown University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-brown-004": "Brown OIT guidance says users should not enter Level 2 or 3 Brown data into publicly available or vendor-enabled AI tools unless Brown has a contract for a specific service that protects the data.",
+        "cl-brown-006": "Brown OIT guidance says Google Gemini Chat and NotebookLM are accessible at no cost to Brown and can be used with data classified as Risk Level 3, unlike consumer AI services named on the page with which Brown does not have agreements.",
+        "cl-brown-002": "Brown Provost guidance says any unapproved use of AI to complete assignments would be covered by Brown’s Academic Code and Graduate Student Edition Academic Code.",
+        "cl-brown-001": "Brown University Provost guidance says the University is not prescribing specific AI policies, and that faculty should give clear, unambiguous information about what AI use is and is not allowed in their courses.",
+        "cl-brown-007": "Brown OIT guidance says Gemini and NotebookLM are optional tools available to Brown students, Brown staff, Brown-paid faculty, and Brown clinical/medical faculty.",
+        "cl-brown-003": "Brown Sheridan Center guidance says instructors should be explicit with students about expectations for generative AI use, including how students should, might, or cannot engage with it.",
+        "cl-brown-009": "Brown OIT research guidance says researchers should deeply review AI-generated code for quality and efficiency.",
+        "cl-brown-005": "Brown OIT guidance says AI tool use is subject to the same policies as other information technology resources, including acceptable use, copyright, conduct, and contract review policies.",
+        "cl-brown-008": "Brown University Communications guidance for Brown communicators says not to input identifying personal information or proprietary information into AI tools."
+      }
+    },
+    "university-of-illinois-urbana-champaign": {
+      "recordSha256": "0061847d045f744e788c4f2248980c856679c9e9ebc95cad6429bf38bf1ebcc0",
+      "claimsSha256": "5eae05d5160862fd227f837c76460dec04aa2a2258347c2edc62262d770cac98",
+      "scope": {
+        "en": "Enterprise GenAI and CITL teaching guidance are distinct from Graduate College doctoral-milestone expectations, which are left to programmes and committees.",
+        "zh": "Enterprise GenAI、CITL教学指引与研究生院博士里程碑要求须区分；后者由项目及委员会明确。"
+      },
+      "topics": {
+        "coursework": {
+          "claimIds": [
+            "claim-uiuc-005",
+            "claim-uiuc-006"
+          ],
+          "en": "Faculty define AI boundaries for student work; students should be transparent and cite AI according to faculty expectations.",
+          "zh": "教师明确学生作业的AI边界；学生须透明说明并按教师要求引用AI。",
+          "status": "conditionally_allowed"
+        },
+        "exams": {
+          "claimIds": [
+            "claim-uiuc-006"
+          ],
+          "en": "Follow the faculty-defined boundaries for the assessment; the current record does not provide a general examination permission.",
+          "zh": "按教师设置的考核边界执行；当前条款未提供统一考试AI许可。",
+          "status": "conditionally_allowed"
+        },
+        "disclosure": {
+          "claimIds": [
+            "claim-uiuc-005"
+          ],
+          "en": "Be transparent about coursework AI use and cite the tools according to faculty expectations.",
+          "zh": "透明说明课程作业中的AI使用，并按教师要求引用工具。",
+          "status": "required"
+        },
+        "privacy_data": {
+          "claimIds": [
+            "claim-uiuc-002",
+            "claim-uiuc-003",
+            "claim-uiuc-007"
+          ],
+          "en": "Follow privacy obligations, anonymize or remove identifying information where possible and safeguard student data under FERPA.",
+          "zh": "遵守隐私义务，尽可能匿名化或移除可识别信息，并按FERPA保护学生数据。",
+          "status": "restricted"
+        },
+        "approved_tools": {
+          "claimIds": [
+            "cl-university-of-illinois-urbana-champaign-chatgpt-318",
+            "cl-university-of-illinois-urbana-champaign-institutional-ai-service-321",
+            "cl-university-of-illinois-urbana-champaign-microsoft-copilot-for-m365-323",
+            "cl-university-of-illinois-urbana-champaign-teams-premium-325",
+            "cl-university-of-illinois-urbana-champaign-zoom-ai-companion-326"
+          ],
+          "en": "Illinois Chat, Illinois ChatGPT and other named services have service-specific access conditions; add-ons and premium services may be conditional.",
+          "zh": "Illinois Chat、Illinois ChatGPT等服务各有访问条件；附加或Premium服务可能有额外限制。",
+          "status": "conditionally_allowed"
+        },
+        "research_publication": {
+          "claimIds": [
+            "claim-uiuc-008",
+            "claim-uiuc-009"
+          ],
+          "en": "The Graduate College does not set GenAI permissibility for doctoral milestones; programmes/committees should clarify expectations and citation practices.",
+          "zh": "研究生院未统一规定博士里程碑能否用生成式AI；项目及委员会应明确要求及引用做法。",
+          "status": "unclear"
+        },
+        "academic_integrity": {
+          "claimIds": [
+            "claim-uiuc-005",
+            "claim-uiuc-001"
+          ],
+          "en": "Students should be transparent and retain human judgement; GenAI is a collaborator, not a replacement for human insight.",
+          "zh": "学生应透明说明并保留人工判断；生成式AI是协作辅助，而非取代人的见解。",
+          "status": "required"
+        },
+        "teaching_guidance": {
+          "claimIds": [
+            "claim-uiuc-006",
+            "claim-uiuc-007"
+          ],
+          "en": "Faculty should define AI boundaries, teach citation and not require registration with official university email for AI platforms.",
+          "zh": "教师应明确AI边界、教授引用方式，且不应要求学生以学校官方邮箱注册AI平台。",
+          "status": "recommended"
+        },
+        "security_procurement": {
+          "claimIds": [
+            "claim-uiuc-004"
+          ],
+          "en": "Service-provider guidance includes security controls, audits, MFA and data-privacy compliance for sensitive AI systems.",
+          "zh": "服务提供方指引涵盖安全控制、审计、多因素认证及敏感AI系统的数据隐私合规。",
+          "status": "required"
+        }
+      },
+      "do": [
+        {
+          "en": "Check faculty-defined AI boundaries before starting the assignment.",
+          "zh": "开始作业前核对教师设置的AI边界。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-uiuc-006"
+          ]
+        },
+        {
+          "en": "Disclose coursework AI use and cite it as your instructor expects.",
+          "zh": "披露课程作业中的AI使用，并按教师要求引用。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-uiuc-005"
+          ]
+        },
+        {
+          "en": "Anonymize or remove identifying information where possible.",
+          "zh": "尽可能匿名化或移除可识别个人信息。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-uiuc-003"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not require students to register for AI platforms with official university email.",
+          "zh": "不要要求学生用学校官方邮箱注册AI平台。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-uiuc-007"
+          ]
+        },
+        {
+          "en": "Do not present doctoral-milestone guidance as campus-wide assessment permission.",
+          "zh": "不要将博士里程碑指引当作全校考核许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "claim-uiuc-008"
+          ]
+        },
+        {
+          "en": "Do not replace your own judgement with AI output.",
+          "zh": "不要以AI输出取代自己的判断。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "claim-uiuc-001"
+          ]
+        }
+      ],
+      "claimTexts": {
+        "cl-university-of-illinois-urbana-champaign-chatgpt-318": "Illinois ChatGPT is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-illinois-urbana-champaign-gemini-319": "Google Gemini is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-university-of-illinois-urbana-champaign-github-copilot-320": "GitHub Copilot is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-illinois-urbana-champaign-institutional-ai-service-321": "Illinois Chat is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: allowed. Derived endorsement type: self hosted system.",
+        "cl-university-of-illinois-urbana-champaign-microsoft-copilot-322": "Microsoft Copilot Chat is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-illinois-urbana-champaign-microsoft-copilot-for-m365-323": "Microsoft 365 Copilot Add-On is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-illinois-urbana-champaign-notebooklm-324": "Google NotebookLM is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: allowed. Derived endorsement type: institutionally licensed or procured.",
+        "cl-university-of-illinois-urbana-champaign-teams-premium-325": "Microsoft Teams Premium is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: officially endorsed.",
+        "cl-university-of-illinois-urbana-champaign-zoom-ai-companion-326": "Zoom AI Companion is listed for University of Illinois Urbana-Champaign in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+        "claim-uiuc-001": "Illinois Enterprise GenAI guidance frames AI as a collaborator for efficiency and creativity rather than a replacement for human insight.",
+        "claim-uiuc-002": "Illinois Enterprise GenAI guidance tells users to handle data used with AI according to legal, institutional, and ethical standards, including privacy laws.",
+        "claim-uiuc-003": "Illinois Enterprise GenAI guidance says personally identifiable information should be anonymized, removed, or obfuscated before processing with AI systems where possible.",
+        "claim-uiuc-004": "Illinois Enterprise GenAI guidance for service providers includes security controls, audits, MFA, and data privacy compliance for AI systems and sensitive data.",
+        "claim-uiuc-005": "Illinois Enterprise GenAI transparency guidance says students need to be transparent about AI use in coursework and cite AI tools according to faculty expectations.",
+        "claim-uiuc-006": "Illinois CITL teaching guidance says faculty should define boundaries for AI use in student work and teach citation of AI-generated text and ideas.",
+        "claim-uiuc-007": "Illinois CITL teaching guidance says faculty should not require students to register for AI platforms using their official university email address and should safeguard student data under FERPA.",
+        "claim-uiuc-008": "The Illinois Graduate College states it does not have a policy on permissibility of generative AI in doctoral milestones, and encourages programs and committees to communicate their expectations.",
+        "claim-uiuc-009": "The Illinois Graduate College frames graduate AI-use discussions as involving disciplinary considerations, ethical use, and best practices for citing AI use."
+      }
+    }
+  }
+}

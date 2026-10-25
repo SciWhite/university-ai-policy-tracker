@@ -154,5 +154,10 @@
     "path": "revisions/qs51-70-v6-presentation-20261025.json",
     "sha256": "d1f06041c847d05b65be05087995a2d8cf0ff03dbebd8a0ac024f337cac67431",
     "releaseId": "qs51-70-v6-presentation-20261025"
+  },
+  "qs51-70-v6-complete-r4-20261025": {
+    "path": "revisions/qs51-70-v6-complete-r4-20261025.json",
+    "sha256": "04eaa3142f3d57d34261dc0fd7080fa3b32903beaeba7b8924dc1b3f77868372",
+    "releaseId": "qs51-70-v6-complete-r4-20261025"
   }
 }
