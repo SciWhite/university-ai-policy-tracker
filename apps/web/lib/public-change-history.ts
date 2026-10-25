@@ -63,7 +63,7 @@ export async function readPublicReleaseDiff(releaseId: string): Promise<ReleaseD
 /** Explicit package identity; never falls back from a missing revision to latest. */
 export class ChangeEventStore {
   readonly manifest: HistoryManifest;
-  constructor(readonly root: string, ref: {path:string;sha256:string}, expectedBasis?: string) {
+  constructor(readonly root: string, readonly ref: {path:string;sha256:string}, expectedBasis?: string) {
     this.manifest = readVerifiedArtifact<HistoryManifest>(root,ref.path,ref.sha256,2*1024*1024);
     if (this.manifest.schemaVersion !== "uapt-public-change-history-v2" || this.manifest.rulesVersion !== CHANGE_RULES_VERSION || !this.manifest.revision || !this.manifest.eventHistories || !this.manifest.projectionInput || !this.manifest.eventIndex || expectedBasis && this.manifest.basisSha256 !== expectedBasis) throw Error("Verified v2 change history unavailable or basis mismatch");
     assertChangeIdentity(this.manifest.revision);

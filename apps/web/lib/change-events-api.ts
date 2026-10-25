@@ -1,8 +1,9 @@
+import registeredProjections from '../../../data/public-change-history/revisions.json';
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { historyManifest, ChangeEventStore } from "./public-change-history";
 import { readV6ChangeOverview } from "./v6-change-overviews";
-import { readV6RecordCorrections } from "./v6-effective-records";
+import { readV6RecordCorrections,readV6RecordCorrectionRevision } from "./v6-effective-records";
 import { v6PublicDataRoot } from "./v6-artifact-store";
 import type { ChangeOverview } from "./change-events";
 import type { EventHistory } from "./change-events";
@@ -17,7 +18,7 @@ import type {SummaryChangeEvent} from "./change-summary-types";
 export type SelectedChangeOverview = {status:"ready";overview:ChangeOverview}|{status:"unavailable"|"failed";revision?:string};
 
 /** Development-only public artifact pilot; private inventory is never a loader. */
-async function selectedStore() {
+async function selectedStore(revision?:string) {
   if(process.env.NODE_ENV==="development"&&process.env.UAPT_LOCAL_QA_CHANGE_PACKAGE){
     const base=resolve(process.env.UAPT_LOCAL_QA_CHANGE_PACKAGE),root=resolve(base,"public-change-history");
     const ref=JSON.parse(readFileSync(resolve(root,"current.json"),'utf8'));
@@ -26,11 +27,13 @@ async function selectedStore() {
   const {root,manifest}=await historyManifest();
   if(manifest.schemaVersion!=="uapt-public-change-history-v2")return undefined;
   const ref=JSON.parse(readFileSync(resolve(root,"current.json"),'utf8'));
-  return {store:new ChangeEventStore(root,ref,manifest.basisSha256),overviewRoot:v6PublicDataRoot("public-v6-change-overviews")};
+  const registered=revision&&Object.hasOwn(registeredProjections,revision)?registeredProjections[revision as keyof typeof registeredProjections]:undefined;
+  const selected=registered??ref;
+  return {store:new ChangeEventStore(root,selected,selected.sha256===ref.sha256?manifest.basisSha256:undefined),overviewRoot:v6PublicDataRoot("public-v6-change-overviews")};
 }
 
 function withStudentSummary(event:ChangeEvent,store:ChangeEventStore):SummaryChangeEvent{
-  const ref=JSON.parse(readFileSync(resolve(store.root,"current.json"),"utf8"));
+  const ref=store.ref;
   const projection={projectionRevision:store.manifest.revision!,projectionSha256:ref.sha256,basisSha256:store.manifest.basisSha256,rulesVersion:store.manifest.rulesVersion!};
   return {...event,studentSummary:readLocalChangeSummaryPreview(event,projection)??readChangeStudentSummary(event,projection)};
 }
@@ -73,16 +76,16 @@ export async function loadSelectedHistoricalName(slug:string):Promise<string|und
   return rows.find(row=>typeof row.name==="string"&&row.name.trim())?.name;
 }
 /** Global browsing alone reads the light preview index; school pages never do. */
-export async function loadSelectedChangeEventIndex(){
-  const selected=await selectedStore();if(!selected)return undefined;
+export async function loadSelectedChangeEventIndex(revision?:string){
+  const selected=await selectedStore(revision);if(!selected)return undefined;
   const store=selected.store,rows=store.index(),ids=new Set<string>();
-  const policy=readV6RecordCorrections();if(policy&&policy.revision!==store.manifest.revision)throw Error("Event index does not match the selected public record");
+  const policy=readV6RecordCorrectionRevision(store.manifest.revision!);if(policy&&policy.revision!==store.manifest.revision)throw Error("Event index does not match the selected public record");
   for(const row of rows){
     if(!row||!Object.hasOwn(store.manifest.eventHistories!,row.slug)||!/^[a-z0-9-]+$/.test(row.revision)||row.id!==`${row.slug}:${row.revision}`||row.url!==`/changes/${row.revision}/${row.slug}`||ids.has(row.id)||!Array.isArray(row.categories)||row.categories.some(key=>!changeCategoryKeys.includes(key))||!Array.isArray(row.themes)||row.publishedAt!==null&&!Number.isFinite(Date.parse(row.publishedAt)))throw Error("Event index identity mismatch");
     ids.add(row.id);
   }
   rows.sort((a,b)=>(Date.parse(b.publishedAt??"")||0)-(Date.parse(a.publishedAt??"")||0)||a.id.localeCompare(b.id));
-  const ref=JSON.parse(readFileSync(resolve(store.root,"current.json"),"utf8"));
+  const ref=store.ref;
   return {identity:{revision:store.manifest.revision!,basisSha256:store.manifest.basisSha256,projectionSha256:ref.sha256 as string,rulesVersion:store.manifest.rulesVersion!},rows,history:(slug:string)=>store.history(store.manifest.revision!,slug),historicalName:(slug:string)=>{
     const entry=Object.hasOwn(store.manifest.entries,slug)?store.manifest.entries[slug]:undefined;if(!entry)return undefined;
     const values=readVerifiedArtifact<ChangeRecord[]>(store.root,entry.file,entry.sha256,4*1024*1024,entry.bytes);
@@ -94,13 +97,13 @@ export async function changeEventsResponse(request:Request,params:{revision:stri
   const headers={'Cache-Control':'private, no-store, no-transform'};
   if(!/^[a-z0-9-]+$/.test(params.revision)||!/^[a-z0-9-]+$/.test(params.slug))return Response.json({error:"Invalid change identity"},{status:400,headers});
   try{
-    const selected=await selectedStore();
+    const selected=await selectedStore(params.revision);
     if(!selected)return Response.json({error:"Verified event projection is not selected"},{status:503,headers});
     if(selected.store.manifest.revision!==params.revision)return Response.json({error:"Requested projection revision is unavailable"},{status:409,headers});
     if(params.kind==="overview"){
-      const policy=readV6RecordCorrections(),pin=policy?.recordRevisions[params.slug];
+      const policy=readV6RecordCorrectionRevision(params.revision),pin=policy?.recordRevisions[params.slug];
       if(!pin||policy?.revision!==params.revision)return Response.json({error:"Compatible university policy basis unavailable"},{status:503,headers});
-      const ref=JSON.parse(readFileSync(resolve(selected.store.root,"current.json"),'utf8'));
+      const ref=selected.store.ref;
       const overview=readV6ChangeOverview(params.revision,params.slug,{recordSha256:pin.recordSha256,projectionSha256:ref.sha256,basisSha256:selected.store.manifest.basisSha256},selected.overviewRoot);
       return Response.json(overview??{error:"Overview unavailable"},{status:overview?200:503,headers});
     }
