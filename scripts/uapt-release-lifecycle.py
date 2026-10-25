@@ -35,6 +35,8 @@ def audit():
         result['disk'] = {'root': str(root), 'freeBytes': fs.f_bavail * fs.f_frsize,
             'availableInodes': fs.f_favail, 'projectBytes': int(run('du', '-sx', '-B1', str(root)).split()[0]),
             'releaseRoots': sorted(p.name for p in (root / 'releases').iterdir() if p.is_dir() and not p.is_symlink())}
+        if policy.get('retentionEnforcement'):
+            result['disk']['temporaryPaths'] = temporary_paths(root, policy['retentionEnforcement'])
     return result
 
 def validate_disk_budget(plan, policy, observed):
@@ -60,7 +62,65 @@ def validate_disk_budget(plan, policy, observed):
     if type(cap) is not int or cap <= 0 or role not in guard['artifactMaxBytesByRole'] or cap > guard['artifactMaxBytesByRole'][role]:
         raise ValueError('Invalid per-role artifact size budget')
 
-def validate_retention_receipt(plan, observed):
+def retention_timestamp(value, label):
+    try:
+        parsed = datetime.datetime.fromisoformat(value.replace('Z', '+00:00'))
+        if parsed.tzinfo is None: raise ValueError('timezone required')
+        return parsed
+    except (ValueError, TypeError, AttributeError):
+        raise ValueError('Invalid retention ' + label + '; timezone required')
+
+def temporary_paths(root, guard):
+    root = Path(root).resolve()
+    paths = set()
+    for pattern in guard.get('temporaryGlobs', []):
+        if Path(pattern).is_absolute() or '..' in Path(pattern).parts: raise ValueError('Unsafe temporary artifact discovery pattern')
+        for path in root.glob(pattern):
+            if not path.is_symlink() and (path.is_file() or path.is_dir()): paths.add(str(path))
+    return sorted(paths)
+
+def validate_retention_deadlines(receipt, observed, policy, registered):
+    guard = policy.get('retentionEnforcement')
+    if not guard: return
+    current = datetime.datetime.now(datetime.timezone.utc)
+    checked = retention_timestamp(receipt['checkedAt'], 'checkedAt')
+    limit = datetime.timedelta(hours=guard['maxHoldHours'])
+    runtime_roots = set()
+    for details in observed.get('units', {}).values():
+        try:
+            parts = Path(details.get('WorkingDirectory', '')).relative_to(Path(observed['disk']['root']) / 'releases').parts
+            if parts: runtime_roots.add(parts[0])
+        except ValueError: pass
+    expected_temporary = set(observed['disk'].get('temporaryPaths', []))
+    temps = receipt.get('temporaryArtifacts', [])
+    paths = [entry.get('path') for entry in temps]
+    if len(paths) != len(set(paths)) or set(paths) != expected_temporary:
+        raise ValueError('Unclassified or changed temporary artifacts')
+    prior_releases = {e['name']: e for e in registered.get('entries', [])}
+    prior_temps = {e['path']: e for e in registered.get('temporaryArtifacts', [])}
+    for entries, previous, key in [(receipt['entries'], prior_releases, 'name'), (temps, prior_temps, 'path')]:
+        for entry in entries:
+            identity = entry[key]; prior = previous.get(identity)
+            if key == 'path' and (entry.get('disposition') != 'held' or not entry.get('reason')):
+                raise ValueError('Temporary artifacts require an explicit bounded hold: ' + identity)
+            if prior and prior.get('disposition') == 'held':
+                old_deadline = retention_timestamp(prior.get('reviewBefore'), 'registered reviewBefore')
+                if old_deadline <= current: raise ValueError('Expired registered hold; archive or resolve dependency before release: ' + identity)
+                if entry.get('disposition') != 'held':
+                    # A fresh name/classification cannot hide old archive debt.
+                    if key == 'path' or entry.get('disposition') != 'active' or identity not in runtime_roots:
+                        raise ValueError('Held artifact reclassified without an actual active runtime: ' + identity)
+            if entry.get('disposition') != 'held': continue
+            since = retention_timestamp(entry.get('heldSince'), 'heldSince')
+            deadline = retention_timestamp(entry.get('reviewBefore'), 'reviewBefore')
+            if not entry.get('nextAction') or since > checked + datetime.timedelta(minutes=5) or deadline <= since or deadline - since > limit:
+                raise ValueError('Missing or unbounded hold action/deadline: ' + identity)
+            if deadline <= current: raise ValueError('Expired hold; archive or resolve dependency before release: ' + identity)
+            if prior and prior.get('disposition') == 'held':
+                if since != retention_timestamp(prior.get('heldSince'), 'registered heldSince') or deadline > old_deadline:
+                    raise ValueError('Hold deadline cannot be renewed by refreshing the receipt: ' + identity)
+
+def validate_retention_receipt(plan, observed, policy=None):
     proof = plan.get('retentionReceipt', {})
     if not proof.get('path') or digest(proof['path']) != proof.get('sha256'): raise ValueError('Missing or changed retention receipt')
     receipt = json.loads(Path(proof['path']).read_text())
@@ -76,6 +136,11 @@ def validate_retention_receipt(plan, observed):
     for entry in entries:
         if entry.get('disposition') not in ['active', 'candidate', 'rollback', 'held'] or not entry.get('reason'):
             raise ValueError('Unresolved release retention/archive debt')
+    policy = policy or {}
+    if policy.get('retentionEnforcement'):
+        register = Path(policy['retentionRegister'])
+        if not register.is_file(): raise ValueError('Authoritative retention register missing')
+        validate_retention_deadlines(receipt, observed, policy, json.loads(register.read_text()))
 def validate_plan(plan, policy, observed):
     """Pure admission check; called again under the same lock immediately before routing."""
     if plan.get('schemaVersion') != 'uapt-release-lifecycle-plan-v1': raise ValueError('Wrong lifecycle plan schema')
@@ -105,7 +170,7 @@ def validate_plan(plan, policy, observed):
     if not plan.get('routingFiles') or not plan.get('candidateChecks') or not plan.get('retiredEndpoints'): raise ValueError('Missing routing/candidate/retirement endpoint scope')
     if not plan.get('staticArchiveReceipt') or not plan.get('publicChecks'): raise ValueError('Static archive and exact public readback checks required')
     validate_disk_budget(plan, policy, observed)
-    if policy.get('diskCapacity'): validate_retention_receipt(plan, observed)
+    if policy.get('diskCapacity'): validate_retention_receipt(plan, observed, policy)
     return True
 
 def validate_candidate_identity(plan, basis, prebuild=False):
@@ -289,7 +354,7 @@ def load_plan(path, prebuild=False):
     if policy.get('diskCapacity'):
         current = audit()
         validate_disk_budget(plan, policy, current)
-        validate_retention_receipt(plan, current)
+        validate_retention_receipt(plan, current, policy)
         actual_bytes = int(run('du', '-sx', '-B1', str(Path(basis['release']).resolve())).split()[0])
         if actual_bytes > plan['diskBudget']['artifactMaxBytes']: raise ValueError('Actual release artifact exceeds the declared per-role budget')
     return plan, policy
@@ -339,12 +404,18 @@ def recover(tx, reload_nginx=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['audit', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire'])
+    parser.add_argument('action', choices=['audit', 'retention', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire'])
     parser.add_argument('plan', nargs='?'); parser.add_argument('--boot', action='store_true'); parser.add_argument('--completion-ledger'); args = parser.parse_args()
     LOCK.parent.mkdir(parents=True, exist_ok=True)
     with LOCK.open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if args.action == 'audit': print(json.dumps(audit(), indent=2)); return
+        if args.action == 'retention':
+            policy = json.loads(POLICY.read_text()); register = Path(policy['retentionRegister'])
+            receipt = json.loads(register.read_text())
+            plan = {'basis': {'sha256': receipt['basisSha256']}, 'retentionReceipt': {'path': str(register), 'sha256': digest(register)}}
+            validate_retention_receipt(plan, audit(), policy)
+            print('Retention passed; no expired holds or unclassified temporary artifacts'); return
         pending = STATE / 'transaction.json'
         if args.action == 'expire':
             if pending.exists():

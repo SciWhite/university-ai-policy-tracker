@@ -231,4 +231,59 @@ class DiskAdmissionTests(unittest.TestCase):
    v.update(checkedAt=m.now(),basisSha256='other');m.write(p,v);self.plan['retentionReceipt']['sha256']=m.digest(p)
    with self.assertRaisesRegex(ValueError,'basis mismatch'):m.validate_retention_receipt(self.plan,self.observed)
 
+class RetentionDeadlineTests(unittest.TestCase):
+ def setUp(self):
+  self.time=m.datetime.datetime.now(m.datetime.timezone.utc)
+  self.held={'name':'failed','disposition':'held','reason':'Failed immutable candidate','heldSince':(self.time-m.datetime.timedelta(hours=1)).isoformat(),'reviewBefore':(self.time+m.datetime.timedelta(hours=1)).isoformat(),'nextAction':'Archive outside server, verify and remove exact inactive root'}
+  self.receipt={'checkedAt':self.time.isoformat(),'entries':[dict(self.held)],'temporaryArtifacts':[]}
+  self.observed={'disk':{'root':'/srv/uapt','temporaryPaths':[]},'units':{}}
+  self.policy={'retentionEnforcement':{'maxHoldHours':24}}
+  self.registered={'entries':[dict(self.held)]}
+ def validate(self):m.validate_retention_deadlines(self.receipt,self.observed,self.policy,self.registered)
+ def test_bounded_hold_with_action_passes(self):self.validate()
+ def test_expired_hold_refuses_even_after_receipt_timestamp_refresh(self):
+  self.registered['entries'][0]['reviewBefore']=(self.time-m.datetime.timedelta(seconds=1)).isoformat()
+  with self.assertRaisesRegex(ValueError,'Expired registered hold'):self.validate()
+ def test_fresh_receipt_cannot_extend_existing_deadline(self):
+  self.receipt['entries'][0]['reviewBefore']=(self.time+m.datetime.timedelta(hours=2)).isoformat()
+  with self.assertRaisesRegex(ValueError,'cannot be renewed'):self.validate()
+ def test_fresh_receipt_cannot_reset_original_hold_clock(self):
+  self.receipt['entries'][0]['heldSince']=(self.time-m.datetime.timedelta(minutes=30)).isoformat()
+  with self.assertRaisesRegex(ValueError,'cannot be renewed'):self.validate()
+ def test_missing_deadline_timezone_or_action_refuses(self):
+  for field,value in [('reviewBefore',None),('reviewBefore','2026-10-26T00:00:00'),('nextAction','')]:
+   with self.subTest(field=field,value=value):
+    self.receipt['entries']=[{**self.held,field:value}]
+    with self.assertRaises(ValueError):self.validate()
+ def test_hold_longer_than_one_day_refuses(self):
+  self.receipt['entries'][0]['reviewBefore']=(self.time+m.datetime.timedelta(days=7)).isoformat()
+  with self.assertRaisesRegex(ValueError,'unbounded'):self.validate()
+ def test_failed_artifact_cannot_be_disguised_as_rollback(self):
+  self.receipt['entries'][0]['disposition']='rollback'
+  with self.assertRaisesRegex(ValueError,'reclassified'):self.validate()
+ def test_active_runtime_transition_needs_actual_runtime(self):
+  self.receipt['entries'][0]['disposition']='active'
+  with self.assertRaisesRegex(ValueError,'reclassified'):self.validate()
+  self.observed['units']['shared']={'WorkingDirectory':'/srv/uapt/releases/failed/apps/tulsa-zone'};self.validate()
+ def test_unclassified_temporary_archive_refuses(self):
+  self.observed['disk']['temporaryPaths']=['/srv/uapt/operations/attempt/source.tar.gz']
+  with self.assertRaisesRegex(ValueError,'temporary artifacts'):self.validate()
+ def test_temporary_payload_hold_and_removed_offloaded_payload(self):
+  entry={**self.held,'path':'/srv/uapt/operations/attempt/source.tar.gz'};entry.pop('name')
+  self.receipt['temporaryArtifacts']=[entry];self.observed['disk']['temporaryPaths']=[entry['path']];self.registered['temporaryArtifacts']=[dict(entry)];self.validate()
+  self.receipt['temporaryArtifacts']=[];self.observed['disk']['temporaryPaths']=[];self.validate()
+ def test_receipt_validator_reads_authoritative_register_not_just_new_receipt(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d);register=root/'current.json';fresh=root/'fresh.json'
+   old={**self.receipt,'schemaVersion':'uapt-release-retention-v1','basisSha256':'basis'};m.write(register,old)
+   proposed=json.loads(json.dumps(old));proposed['entries'][0]['reviewBefore']=(self.time+m.datetime.timedelta(hours=2)).isoformat();m.write(fresh,proposed)
+   plan={'basis':{'sha256':'basis'},'retentionReceipt':{'path':str(fresh),'sha256':m.digest(fresh)}}
+   policy={**self.policy,'retentionRegister':str(register)};observed={**self.observed,'disk':{**self.observed['disk'],'releaseRoots':['failed']}}
+   with self.assertRaisesRegex(ValueError,'cannot be renewed'):m.validate_retention_receipt(plan,observed,policy)
+ def test_temporary_discovery_skips_runtime_symlinks_and_rejects_escape(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d);(root/'builds').mkdir();(root/'builds/failed').mkdir();(root/'builds/current').symlink_to(root/'builds/failed',target_is_directory=True)
+   self.assertEqual(m.temporary_paths(root,{'temporaryGlobs':['builds/*']}),[str((root/'builds/failed').resolve())])
+   with self.assertRaisesRegex(ValueError,'Unsafe'):m.temporary_paths(root,{'temporaryGlobs':['../*']})
+
 if __name__=='__main__':unittest.main()
