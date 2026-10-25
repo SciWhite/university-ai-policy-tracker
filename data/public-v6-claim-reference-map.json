@@ -388,7 +388,10 @@
         ],
         "security_procurement": []
       },
-      "submissionClaimIds": []
+      "submissionClaimIds": [
+        "claim-cityuhk-001"
+      ],
+      "submissionPermissionGap": true
     },
     "national-taiwan-university": {
       "recordSha256": "5b41c103d46d80a50dff0733f30afd46b180a1b9dcb4bd12da6fe3a36ad339c6",
@@ -498,7 +501,11 @@
           "cl-ucsd-007"
         ]
       },
-      "submissionClaimIds": []
+      "submissionClaimIds": [
+        "cl-ucsd-002",
+        "cl-ucsd-003",
+        "cl-ucsd-009"
+      ]
     },
     "kfupm": {
       "recordSha256": "0ce7d2d570eccb5ee32f8f2a93ebdd4bf9092cdc0ed0f50e724e93987fac2515",
@@ -592,7 +599,11 @@
           "cl-brown-005"
         ]
       },
-      "submissionClaimIds": []
+      "submissionClaimIds": [
+        "cl-brown-001",
+        "cl-brown-002",
+        "cl-brown-004"
+      ]
     },
     "university-of-illinois-urbana-champaign": {
       "recordSha256": "0061847d045f744e788c4f2248980c856679c9e9ebc95cad6429bf38bf1ebcc0",
