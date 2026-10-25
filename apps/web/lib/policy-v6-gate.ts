@@ -10,6 +10,16 @@ export const policyV6Slugs = [
 ] as const;
 /** Separate opt-in local bundle pilots, with their own evidence and acceptance. */
 export const policyV6BundlePreviewSlugs = [
+  "university-of-leeds",
+  "university-of-southampton",
+  "boston-university",
+  "freie-universitaet-berlin",
+  "purdue-university",
+  "university-of-washington",
+  "adelaide-university",
+  "pennsylvania-state-university",
+  "universidad-de-buenos-aires",
+  "tokyo-institute-of-technology",
   "university-of-birmingham",
   "the-university-of-western-australia",
   "kth-royal-institute-of-technology",

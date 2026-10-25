@@ -1,0 +1,14 @@
+import test from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';
+import{preparePresentationEvidence,acceptPresentationEvidence}from'../apps/web/lib/policy-v6-presentation-mapping';import{validateV6EditorialProjection}from'../apps/web/lib/policy-v6-editorial-projection';import{validatePublicClaimDispositions}from'../apps/web/lib/policy-v6-claim-disposition';import{acceptV6SchoolInput}from'../apps/web/lib/policy-v6-input';import{getLocalV6StudentActions}from'../apps/web/lib/policy-v6-bundle';
+const root=process.env.UAPT_QS86_90_FROZEN_ROOT!;
+for(const slug of['university-of-leeds','university-of-southampton','boston-university','freie-universitaet-berlin','purdue-university'])test(slug+' requires exact independent presentation receipt and rejects evidence/canonical/exclusion drift',()=>{
+ const original=JSON.parse(readFileSync(root+'/'+slug+'/view-input.json','utf8')),revision='synthetic-test-only-revision';const{target,requiredAcceptance}=preparePresentationEvidence(original,revision);
+ assert.throws(()=>validateV6EditorialProjection(target));assert.equal(getLocalV6StudentActions(target),undefined);
+ assert.throws(()=>acceptPresentationEvidence(original,revision,{...requiredAcceptance,reviewer:'',reviewedAt:''}));
+ // Synthetic receipt tests mechanics only; this is never emitted as a real school approval.
+ const receipt={...requiredAcceptance,reviewer:'synthetic unit test only',reviewedAt:'2026-10-25T22:00:00Z'};
+ const accepted=acceptPresentationEvidence(original,revision,receipt);const record=JSON.parse(readFileSync(root+'/'+slug+'/record.json','utf8'));assert.doesNotThrow(()=>acceptV6SchoolInput({school:accepted.school,bundle:accepted},record,accepted.school.fingerprint));assert.deepEqual(accepted.claims,original.claims);assert.deepEqual(accepted.tools,original.tools);assert.equal(accepted.candidateOnly,undefined);assert(!Object.values(accepted.studentActions!.claims).some((c:any)=>c.basisObjectType==='private_evidence'));
+ for(const mutate of[(v:any)=>v.studentActions.do[0].zh='篡改',(v:any)=>v.school.topics[0].claims[0].evidence[0].quote='forged',(v:any)=>v.presentationEvidenceAcceptance.evidenceSha256='0'.repeat(64),(v:any)=>v.school.fingerprint='0'.repeat(64),(v:any)=>v.candidateOnly=true,(v:any)=>v.studentActions.do[0].claimIds=[v.claimDispositions.find((d:any)=>d.mode!=='scoped_reference').claimId]]){const bad=structuredClone(accepted);mutate(bad);assert.throws(()=>{validatePublicClaimDispositions(bad);validateV6EditorialProjection(bad)});}
+ const privateEscape=structuredClone(original);privateEscape.publication={releaseId:revision,kind:'v6_presentation_integration'};assert.equal(getLocalV6StudentActions(privateEscape),undefined);
+ assert.throws(()=>acceptPresentationEvidence(original,'different-revision',receipt));
+});

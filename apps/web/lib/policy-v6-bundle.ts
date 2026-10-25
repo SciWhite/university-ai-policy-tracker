@@ -1,3 +1,4 @@
+import {acceptedPresentationEvidence,type PresentationEvidenceAcceptance} from './policy-v6-presentation-evidence';
 import {validatePrivateRecordContext,type PrivateRecordContext} from "./policy-v6-private-context";
 import { validateLocalV6AnalysisProjection, type LocalV6AnalysisProjection } from "./policy-v6-local-analysis";
 import type { V6StudentActions } from "./policy-v6-student-actions";
@@ -15,6 +16,7 @@ import type { SupportedLocale } from "./i18n";
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
   candidateOnly?: true;
+  presentationEvidenceAcceptance?: PresentationEvidenceAcceptance;
   editorialProjection?: import("./policy-v6-editorial-projection").V6EditorialProjection;
   toolDisplayMode?: "historical_discovery";
   publicReferenceGuide?: {topics:Record<string,string[]>;submissionClaimIds:string[];submissionPermissionGap?:boolean};
@@ -60,8 +62,8 @@ export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions 
     guide.topics?.[topic.key]?.zh !== view.topicSummaries?.[topic.key]?.zh)) return undefined;
   const claims = new Map(view.claims.map((claim) => [claim.id, claim]));
   for (const row of Object.values(guide.claims)) {
-    if (row.basisObjectType === "private_evidence") {
-      if (view.publication || !row.basisRef || row.id !== `${row.basisRef.topicKey}:${row.basisRef.groupId}`) return undefined;
+    if (row.basisObjectType === "private_evidence" || row.basisObjectType === "presentation_evidence") {
+      if ((row.basisObjectType === "private_evidence" ? Boolean(view.publication) : !acceptedPresentationEvidence(view)) || !row.basisRef || row.id !== `${row.basisRef.topicKey}:${row.basisRef.groupId}`) return undefined;
       const topic = [...view.school.topics, ...view.school.additionalTopics].find(t => t.key === row.basisRef!.topicKey);
       const group = topic?.claims.find(c => c.id === row.basisRef!.groupId);
       if (!group || !topic || row.text !== group.text || row.scope !== (topic.evidenceScope ?? topic.scope) ||

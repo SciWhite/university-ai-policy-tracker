@@ -1,0 +1,9 @@
+import{readFileSync,writeFileSync,mkdirSync,existsSync}from'node:fs';import{resolve}from'node:path';import{createHash}from'node:crypto';
+import{preparePresentationEvidence,acceptPresentationEvidence}from'../apps/web/lib/policy-v6-presentation-mapping';
+const args=process.argv.slice(2),value=(k:string)=>{const n=args.indexOf(k);return n<0?undefined:args[n+1]},source=value('--source'),out=value('--output'),revision=value('--revision'),receiptPath=value('--acceptance');
+if(!source||!out||!revision)throw Error('Required: --source <frozen view.json> --output <new dir> --revision <exact final revision> [--acceptance <independent receipt>]');
+if(existsSync(out))throw Error('Output directory must be new; frozen preparation is never overwritten');
+const raw=readFileSync(source),view=JSON.parse(raw.toString()),hash=(s:Buffer|string)=>createHash('sha256').update(s).digest('hex');
+const prepared=preparePresentationEvidence(view,revision);mkdirSync(out,{recursive:true});
+if(receiptPath){const receipt=JSON.parse(readFileSync(receiptPath,'utf8')),accepted=acceptPresentationEvidence(view,revision,receipt);writeFileSync(resolve(out,'accepted-view.json'),JSON.stringify(accepted,null,2)+'\n');writeFileSync(resolve(out,'receipt-binding.json'),JSON.stringify({sourceViewSha256:hash(raw),acceptanceSha256:hash(readFileSync(receiptPath)),revision,canonicalUnchanged:JSON.stringify(accepted.claims)===JSON.stringify(view.claims),toolsUnchanged:JSON.stringify(accepted.tools)===JSON.stringify(view.tools),policyApprovalGranted:false},null,2)+'\n');}
+else{writeFileSync(resolve(out,'review-target.json'),JSON.stringify(prepared.target,null,2)+'\n');writeFileSync(resolve(out,'acceptance-request.json'),JSON.stringify({slug:view.school.slug,sourceViewSha256:hash(raw),revision,requiredAcceptance:prepared.requiredAcceptance,reviewer:null,reviewedAt:null,status:'PENDING_INDEPENDENT_REVIEW_NOT_A_VALID_RECEIPT',policyApprovalGranted:false},null,2)+'\n');}

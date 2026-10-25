@@ -211,7 +211,7 @@ export default async function UniversityPage({
   const uiLab = isPolicyV6Preview(slug, pageQuery?.layout);
   const v6Input = uiLab ? getV6PageInput(slug, locale) : undefined;
   const localBundle = v6Input?.bundle;
-  const v6PublicSummary = uiLab && publishedV6Enabled() && publishedV6Slugs.includes(slug) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
+  const v6PublicSummary = uiLab && publishedV6Enabled() && (publishedV6Slugs.includes(slug) || Boolean(v6Input?.bundle || v6Input?.evidence)) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
   const v6JsonLd = v6PublicSummary ? <JsonLd data={universityPolicyStructuredData(v6PublicSummary, locale)} /> : null;
   if (localBundle) {
     const [identity, data, catalog, summaries] = await Promise.all([getCatalogUniversityBySlug(slug), getPolicyV6Data(locale, slug), getCatalogUniversities(), getStagedPublicSummaries()]);

@@ -11,3 +11,10 @@ test('excluded records use distinct popovers and preserve original Claim anchors
  const sample=readV6RecordCorrections()!.summaries[0].claims[0],claims=['old-one','old-two'].map(id=>({...sample,id}));const view={school:{slug:sample.entitySlug},claims,claimDispositions:claims.map(c=>({claimId:c.id,claimSha256:sha(c),mode:'historical_only',scope:'Historical audience',reason:'Not current permission',historyHref:'/changes/'+sample.entitySlug}))}as unknown as LocalV6Bundle;
  const html=renderToStaticMarkup(React.createElement(PolicyV6PublicClaimDisposition,{view,locale:'en'}));const ids=[...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);assert(ids.includes('claim-old-one')&&ids.includes('claim-old-two'));assert.match(html,/excluded-old-one-group/);assert.match(html,/excluded-old-two-group/);
 });
+
+test('independent draft evidence stays bounded to unpublished candidates and never revives excluded Claims',()=>{
+ const v=fixture();v.candidateOnly=true;v.publicationApproved=false;
+ v.studentActions={claims:{'coursework:draft':{basisObjectType:'private_evidence'}},do:[{claimIds:['coursework:draft']}],dont:[]} as never;
+ assert.doesNotThrow(()=>validatePublicClaimDispositions(v));
+ for(const mutate of [(x:LocalV6Bundle)=>{delete x.candidateOnly},(x:LocalV6Bundle)=>{x.publication={releaseId:'example',kind:'v6_presentation_integration'}},(x:LocalV6Bundle)=>{x.studentActions!.do[0].claimIds=['old']}]){const bad=structuredClone(v);mutate(bad);assert.throws(()=>validatePublicClaimDispositions(bad));}
+});

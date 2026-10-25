@@ -9,7 +9,7 @@ export type StudentActionKind = 'requirement' | 'source_guidance' | 'site_advice
 export interface StudentAction {en:string;zh:string;kind:StudentActionKind;claimIds:string[]}
 export interface StudentGuideClaim {
  id:string;text:string;claimType:string;
- summaryZh?:string;basisObjectType?:'published_supplement'|'private_evidence';scope?:string;
+ summaryZh?:string;basisObjectType?:'published_supplement'|'private_evidence'|'presentation_evidence';scope?:string;
  basisRef?:{topicKey:string;groupId:string};
  deadline?:{en:string;zh:string;quote:string;url:string};
  evidence:{quote:string;url:string;language:string;hash:string;location:string}[];
