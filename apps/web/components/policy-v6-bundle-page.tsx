@@ -1,4 +1,3 @@
-import {PolicyV6PublicClaimGuide} from "./policy-v6-public-claim-guide";
 import {PolicyV6BundlePageLegacy} from "./policy-v6-bundle-page-legacy";
 import {PolicyV6PrivateContext} from "./policy-v6-private-context";
 import {PolicyV6Changes} from "./policy-v6-changes";
@@ -44,7 +43,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />
       <PolicyV6Intro />
       <PolicyV6RecordTopics data={data} />
-      <PolicyV6PublicClaimGuide view={view} locale={locale} />
+      <PolicyV6BeforeTools />
       <UniversityAiTools draftPreview={!view.publication} records={onlyScopedTools ? scopedTools : unscopedTools} locale={locale} uiLab scopeNote={onlyScopedTools ? scopeNote : undefined} scopedTools={!onlyScopedTools && scopedTools.length ? <>
         <p>{locale === "zh" ? "以下工具限特定对象、模式或用途；不代表全体学生获得使用许可。" : "These tools have audience, mode or purpose limits; access is not established for all students."}</p>
         <UniversityAiTools draftPreview={!view.publication} records={scopedTools} locale={locale} uiLab standalone sectionId="university-ai-tools-scoped" />
@@ -69,7 +68,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
         <ul>{view.auditCoverage?.excludedClaims?.map((claim) => <li key={claim.id} data-i18n="preserve">{claim.id} — {claim.auditStatus}</li>)}</ul>
         <a href={`/api/public/v1/universities/${university.slug}.json`}>{locale === "zh" ? "当前已审核 JSON" : "Current reviewed JSON"}</a>
       </details></section>
-      <PolicyV6PublicClaimGuide view={view} locale={locale} faq />
+      <PolicyV6Faq />
     </PolicyReferenceLayout></PolicyV6Provider>
   </main>;
 }
