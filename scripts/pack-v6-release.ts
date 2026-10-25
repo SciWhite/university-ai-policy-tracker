@@ -1,3 +1,4 @@
+import {retainChangeRevisions} from './lib/retain-change-revisions';
 import {validateChangePackage,copyChangePackage} from "./lib/change-package";
 import {type ChangeOverviewPackage} from "../apps/web/lib/change-events";
 import {readFileSync, mkdirSync, existsSync, writeFileSync, realpathSync, renameSync} from 'node:fs';
@@ -109,9 +110,10 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
     const next=copyChangePackage(dirname(projection.path),{path:projection.path.split('/').at(-1)!,sha256:input.changeProjection!.sha256},resolve(target,'public-change-history'),changes.refs);
     renameSync(next,resolve(target,'public-change-history/current.json'));
   }
+  const retainedChanges=eventsEnabled?retainChangeRevisions(resolve('data'),target):undefined;
   const provenance = JSON.stringify(mergedProvenance,null,2)+'\n';
   writeFileSync(resolve(target,'source-hash-provenance.json'), provenance, {flag:'wx'});
-  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, ...(eventsEnabled?{projectionSha256:input.changeProjection!.sha256,overviewSha256:input.changeOverviews!.sha256}:{}), currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
+  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, ...(eventsEnabled?{projectionSha256:input.changeProjection!.sha256,overviewSha256:input.changeOverviews!.sha256}:{}), retainedChanges, currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
   writeFileSync(resolve(target,'receipt.json'), JSON.stringify(receipt,null,2)+'\n', {flag:'wx'});
   return receipt;
 }

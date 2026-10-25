@@ -42,7 +42,7 @@ export async function eventIndexResponse(request:Request,revision:string,kind:"i
   try{filters=eventIndexFilters(url.searchParams);}catch{return Response.json({error:"Invalid event filters"},{status:400,headers:eventApiHeaders});}
   try{
     const selected=await selectedEventIndex(locale,revision);
-    if(!selected)return Response.json({error:"Verified event projection is not selected"},{status:503,headers:eventApiHeaders});
+    if(!selected)return Response.json({error:"Requested projection revision is unavailable"},{status:409,headers:eventApiHeaders});
     if(selected.identity.revision!==revision)return Response.json({error:"Requested projection revision is unavailable"},{status:409,headers:eventApiHeaders});
     if(kind==="index")return Response.json(await getEventIndexPage(locale,filters,revision),{headers:eventApiHeaders});
     const dates=selected.rows.flatMap(row=>row.publishedAt?[row.publishedAt]:[]).sort((a,b)=>Date.parse(a)-Date.parse(b));

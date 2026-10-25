@@ -1,3 +1,5 @@
+import {existsSync,readFileSync} from "node:fs";
+import {resolve} from "node:path";
 import pointer from "../../../data/public-change-history/current.json";
 import { findRepoRoot } from "./repo-root";
 import { publicHistoryBasis, publicHistoryBasisV2 } from "./public-history-basis";
@@ -92,4 +94,18 @@ export async function readChangeEventHistory(revision:string,slug:string) {
   const {root,manifest}=await historyManifest();
   if(manifest.schemaVersion!=="uapt-public-change-history-v2")throw Error("Verified v2 change history unavailable");
   return new ChangeEventStore(root,pointer,manifest.basisSha256).history(revision,slug);
+}
+
+/** Explicit projection URLs select only their registered frozen manifest. */
+export function selectChangeEventStore(root:string,revision?:string,fallbackRegistry:Record<string,{path:string;sha256:string}>={}) {
+  const current=JSON.parse(readFileSync(resolve(root,"current.json"),'utf8'));
+  const currentStore=new ChangeEventStore(root,current);
+  const file=resolve(root,"revisions.json");
+  const registry=existsSync(file)?JSON.parse(readFileSync(file,'utf8')):fallbackRegistry;
+  const ref=!revision||revision===currentStore.manifest.revision?current:
+    Object.hasOwn(registry,revision)?registry[revision]:undefined;
+  if(!ref)return undefined;
+  const store=ref===current?currentStore:new ChangeEventStore(root,ref);
+  if(revision&&store.manifest.revision!==revision)throw Error("Registered projection revision mismatch");
+  return store;
 }

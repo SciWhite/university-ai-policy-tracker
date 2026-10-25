@@ -1,9 +1,9 @@
 import registeredProjections from '../../../data/public-change-history/revisions.json';
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { historyManifest, ChangeEventStore } from "./public-change-history";
+import { historyManifest, ChangeEventStore, selectChangeEventStore } from "./public-change-history";
 import { readV6ChangeOverview } from "./v6-change-overviews";
-import { readV6RecordCorrections,readV6RecordCorrectionRevision } from "./v6-effective-records";
+import { readV6RecordCorrections } from "./v6-effective-records";
 import { v6PublicDataRoot } from "./v6-artifact-store";
 import type { ChangeOverview } from "./change-events";
 import type { EventHistory } from "./change-events";
@@ -19,17 +19,12 @@ export type SelectedChangeOverview = {status:"ready";overview:ChangeOverview}|{s
 
 /** Development-only public artifact pilot; private inventory is never a loader. */
 async function selectedStore(revision?:string) {
-  if(process.env.NODE_ENV==="development"&&process.env.UAPT_LOCAL_QA_CHANGE_PACKAGE){
-    const base=resolve(process.env.UAPT_LOCAL_QA_CHANGE_PACKAGE),root=resolve(base,"public-change-history");
-    const ref=JSON.parse(readFileSync(resolve(root,"current.json"),'utf8'));
-    return {store:new ChangeEventStore(root,ref),overviewRoot:resolve(base,"public-v6-change-overviews")};
-  }
-  const {root,manifest}=await historyManifest();
-  if(manifest.schemaVersion!=="uapt-public-change-history-v2")return undefined;
-  const ref=JSON.parse(readFileSync(resolve(root,"current.json"),'utf8'));
-  const registered=revision&&Object.hasOwn(registeredProjections,revision)?registeredProjections[revision as keyof typeof registeredProjections]:undefined;
-  const selected=registered??ref;
-  return {store:new ChangeEventStore(root,selected,selected.sha256===ref.sha256?manifest.basisSha256:undefined),overviewRoot:v6PublicDataRoot("public-v6-change-overviews")};
+  const pilot=process.env.NODE_ENV==="development"&&process.env.UAPT_LOCAL_QA_CHANGE_PACKAGE;
+  const base=pilot?resolve(pilot):undefined;
+  const root=base?resolve(base,"public-change-history"):(await historyManifest()).root;
+  const store=selectChangeEventStore(root,revision,registeredProjections);
+  if(!store)return undefined;
+  return {store,overviewRoot:base?resolve(base,"public-v6-change-overviews"):v6PublicDataRoot("public-v6-change-overviews")};
 }
 
 function withStudentSummary(event:ChangeEvent,store:ChangeEventStore):SummaryChangeEvent{
@@ -79,7 +74,7 @@ export async function loadSelectedHistoricalName(slug:string):Promise<string|und
 export async function loadSelectedChangeEventIndex(revision?:string){
   const selected=await selectedStore(revision);if(!selected)return undefined;
   const store=selected.store,rows=store.index(),ids=new Set<string>();
-  const policy=readV6RecordCorrectionRevision(store.manifest.revision!);if(policy&&policy.revision!==store.manifest.revision)throw Error("Event index does not match the selected public record");
+  // Historical index identity is the verified frozen projection, independent of the active policy revision.
   for(const row of rows){
     if(!row||!Object.hasOwn(store.manifest.eventHistories!,row.slug)||!/^[a-z0-9-]+$/.test(row.revision)||row.id!==`${row.slug}:${row.revision}`||row.url!==`/changes/${row.revision}/${row.slug}`||ids.has(row.id)||!Array.isArray(row.categories)||row.categories.some(key=>!changeCategoryKeys.includes(key))||!Array.isArray(row.themes)||row.publishedAt!==null&&!Number.isFinite(Date.parse(row.publishedAt)))throw Error("Event index identity mismatch");
     ids.add(row.id);
@@ -98,13 +93,15 @@ export async function changeEventsResponse(request:Request,params:{revision:stri
   if(!/^[a-z0-9-]+$/.test(params.revision)||!/^[a-z0-9-]+$/.test(params.slug))return Response.json({error:"Invalid change identity"},{status:400,headers});
   try{
     const selected=await selectedStore(params.revision);
-    if(!selected)return Response.json({error:"Verified event projection is not selected"},{status:503,headers});
+    if(!selected)return Response.json({error:"Requested projection revision is unavailable"},{status:409,headers});
     if(selected.store.manifest.revision!==params.revision)return Response.json({error:"Requested projection revision is unavailable"},{status:409,headers});
     if(params.kind==="overview"){
-      const policy=readV6RecordCorrectionRevision(params.revision),pin=policy?.recordRevisions[params.slug];
-      if(!pin||policy?.revision!==params.revision)return Response.json({error:"Compatible university policy basis unavailable"},{status:503,headers});
+      // Read the record fingerprint frozen in this exact historical projection.
+      // Consulting today's record package would couple old URLs to active data.
+      const history=selected.store.history(params.revision,params.slug);
+      if(!history?.currentRecordSha256)return Response.json({error:"Compatible university policy basis unavailable"},{status:503,headers});
       const ref=selected.store.ref;
-      const overview=readV6ChangeOverview(params.revision,params.slug,{recordSha256:pin.recordSha256,projectionSha256:ref.sha256,basisSha256:selected.store.manifest.basisSha256},selected.overviewRoot);
+      const overview=readV6ChangeOverview(params.revision,params.slug,{recordSha256:history.currentRecordSha256,projectionSha256:ref.sha256,basisSha256:selected.store.manifest.basisSha256},selected.overviewRoot);
       return Response.json(overview??{error:"Overview unavailable"},{status:overview?200:503,headers});
     }
     const history=selected.store.history(params.revision,params.slug);
