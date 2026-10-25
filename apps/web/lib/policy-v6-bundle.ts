@@ -1,3 +1,4 @@
+import {validatePrivateRecordContext,type PrivateRecordContext} from "./policy-v6-private-context";
 import { validateLocalV6AnalysisProjection, type LocalV6AnalysisProjection } from "./policy-v6-local-analysis";
 import type { V6StudentActions } from "./policy-v6-student-actions";
 import {publishedV6Bundle} from "./policy-v6-published";
@@ -13,6 +14,7 @@ import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
+  privateRecordContext?: PrivateRecordContext;
   analysisProjection?: LocalV6AnalysisProjection;
   publication?: {releaseId:string;kind:string;publishedAt?:string};
   schemaVersion: "uapt-v6-local-view-v1";
@@ -42,14 +44,23 @@ export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions 
   const guide = view.studentActions;
   if (!guide || guide.slug !== view.school.slug || guide.name !== view.school.name ||
     !guide.claims || !Array.isArray(guide.do) || !Array.isArray(guide.dont) ||
-    guide.do.length !== 3 || guide.dont.length !== 3 || !guide.procedures ||
+    guide.do.length > 3 || guide.dont.length > 3 || !guide.procedures ||
     guide.schoolFingerprint !== view.school.fingerprint ||
     guide.recordSha256 !== createHash("sha256").update(JSON.stringify(view.claims)).digest("hex")) return undefined;
-  if (view.analysisProjection && [...view.school.topics, ...view.school.additionalTopics].some(topic =>
+  if ([...view.school.topics, ...view.school.additionalTopics].some(topic =>
     guide.topics?.[topic.key]?.en !== view.topicSummaries?.[topic.key]?.en ||
     guide.topics?.[topic.key]?.zh !== view.topicSummaries?.[topic.key]?.zh)) return undefined;
   const claims = new Map(view.claims.map((claim) => [claim.id, claim]));
   for (const row of Object.values(guide.claims)) {
+    if (row.basisObjectType === "private_evidence") {
+      if (view.publication || !row.basisRef || row.id !== `${row.basisRef.topicKey}:${row.basisRef.groupId}`) return undefined;
+      const topic = [...view.school.topics, ...view.school.additionalTopics].find(t => t.key === row.basisRef!.topicKey);
+      const group = topic?.claims.find(c => c.id === row.basisRef!.groupId);
+      if (!group || !topic || row.text !== group.text || row.scope !== (topic.evidenceScope ?? topic.scope) ||
+        group.evidence.some(e => !e.hash || !/^[a-f0-9]{64}$/.test(e.hash)) ||
+        JSON.stringify(row.evidence) !== JSON.stringify(group.evidence.map(e => ({quote:e.quote,url:e.url,language:e.language,hash:e.hash,location:e.location ?? ""})))) return undefined;
+      continue;
+    }
     const claim = claims.get(row.id);
     if (!claim || claim.reviewState !== "agent_reviewed" || row.text !== claim.claimText ||
       JSON.stringify(row.evidence) !== JSON.stringify(claim.evidence.map((e) => ({
@@ -57,9 +68,9 @@ export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions 
         hash: e.sourceSnapshotHash, location: e.snippetLocation ?? "",
       })))) return undefined;
   }
-  if ([...guide.do, ...guide.dont].some((action) => !action.claimIds.length || action.claimIds.some((id) => !guide.claims[id])) ||
+  if ([...guide.do, ...guide.dont].some((action) => !["requirement","source_guidance","site_advice"].includes(action.kind) || !action.en || !action.zh || !action.claimIds.length || action.claimIds.some((id) => !guide.claims[id])) ||
     Object.values(guide.procedures).flat().some((id) => !guide.claims[id])) return undefined;
-  return structuredClone(guide);
+  return structuredClone({...guide,privatePreview:!view.publication});
 }
 
 /** Explicit local registration only; no environment-selected unrelated candidates. */
@@ -103,15 +114,22 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
   const topics = [...view.school.topics, ...view.school.additionalTopics];
   if (view.school.topics.map((topic) => topic.key).join(",") !== "coursework,exams,disclosure,privacy_data,approved_tools,research_publication" || new Set(topics.map((topic) => topic.key)).size !== topics.length) throw new Error("Invalid V6 topic coverage");
   for (const topic of topics) {
-    if (topic.basisKind !== "local_reviewed_bundle" || !topic.claims.length || !topic.summary || topic.claims.some((claim) => !claim.evidence.length || claim.evidence.some((e) => !e.quote || !/^https?:\/\//.test(e.url)))) throw new Error("Invalid V6 topic evidence");
+    const explicitLocalGap = !view.publication && topic.status === "unclear" &&
+      typeof topic.evidenceGap === "string" && topic.evidenceGap.trim().length > 0 &&
+      topic.claims.length === 0 && topic.sources.length === 0 && topic.actions.length === 0;
+    if (topic.basisKind !== "local_reviewed_bundle" || (!topic.claims.length && !explicitLocalGap) || !topic.summary || topic.claims.some((claim) => !claim.evidence.length || claim.evidence.some((e) => !e.quote || !/^https?:\/\//.test(e.url)))) throw new Error("Invalid V6 topic evidence");
   }
+  for (const topic of topics) topic.evidenceScope = topic.scope;
+  validatePrivateRecordContext(view);
   validateLocalV6AnalysisProjection(view);
+  if (view.studentActions && !getLocalV6StudentActions(view)) throw new Error("Invalid local student action projection");
   const local = locale === "zh" ? "zh" : "en";
   for (const topic of [...view.school.topics, ...view.school.additionalTopics]) {
     topic.title = view.topicLabels[topic.key]?.[local] ?? topic.title;
     topic.statusLabel = view.topicLabels[`${topic.key}:status`]?.[local] ?? topic.statusLabel;
     if (view.topicSummaries?.[topic.key]?.[local]) {
       topic.summary = view.topicSummaries[topic.key][local];
+      topic.summaryLanguage = local;
     }
     if (view.topicScopes?.[topic.key]?.[local]) {
       topic.scope = view.topicScopes[topic.key][local];

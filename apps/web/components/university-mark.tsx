@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, type CSSProperties } from "react";
+import React, { useState, useRef, useEffect, type CSSProperties } from "react";
 import marks from "@/lib/university-marks.json";
 import displayOverrides from "@/lib/university-mark-display-overrides.json";
 import { getLocalCompactMark, getPublishedCompactMark, requiresPublishedCompactGeometry, requiresLocalCompactGeometry, type UniversityMarkSize } from "@/lib/local-university-marks";
@@ -39,6 +39,8 @@ export function UniversityMark({
     ? `/assets/university-marks/20261013/${mark[0]}/${detailed ? "hero" : "small"}.webp`
     : undefined;
   const imageAvailable = source && source !== failedSource;
+  const image = useRef<HTMLImageElement>(null);
+  useEffect(()=>{const node=image.current;if(source&&node?.complete&&node.naturalWidth===0)setFailedSource(source);},[source]);
   const localStyle = local ? {
     "--local-mark-width": `${local.displayWidth}px`,
     "--local-mark-height": `${local.displayHeight}px`,
@@ -57,6 +59,7 @@ export function UniversityMark({
     >
       {imageAvailable ? (
         <img
+          ref={image}
           src={source}
           alt=""
           width={local?.width ?? width}

@@ -7,6 +7,7 @@ const siteName = 'University AI Policy Tracker';
 // SEO labels only, verified against the university's own site. Formal H1s,
 // catalog identities, evidence and citation titles are not rewritten.
 const names: Record<string, {preferred: string; short: string; source: string}> = {
+  'the-london-school-of-economics-and-political-science': {preferred:'London School of Economics and Political Science',short:'LSE',source:'https://www.lse.ac.uk/'},
   'massachusetts-institute-of-technology': {preferred: 'Massachusetts Institute of Technology', short: 'MIT', source: 'https://www.mit.edu/'},
   'california-institute-of-technology': {preferred: 'California Institute of Technology', short: 'Caltech', source: 'https://www.caltech.edu/about/at-a-glance'},
   'eth-zurich': {preferred: 'ETH Zurich', short: 'ETH Zurich', source: 'https://ethz.ch/en.html'},
@@ -36,7 +37,7 @@ export function buildPolicyV6SeoTitle(slug: string, canonicalName: string, local
   const mapped = names[slug];
   const localized = getInstitutionLocalizedAliasesByLocale(slug, locale)[0];
   const preferred = localized ?? mapped?.preferred ?? canonicalName;
-  const candidates = [preferred, ...(!localized && mapped ? [mapped.short] : [])];
+  const candidates = [preferred, ...(mapped ? [mapped.short] : [])];
   const labels = options.emphasizeSources ? [copy[locale].sources, copy[locale].policy] : [copy[locale].policy];
   for (const name of candidates) {
     for (const label of labels) {

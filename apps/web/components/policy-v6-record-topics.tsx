@@ -43,7 +43,7 @@ export function PolicyV6RecordTopics({
             <p
               className="student-snapshot-card__sentence"
               data-i18n="preserve"
-              lang={readthrough&&zh?'zh':'en'}
+              lang={readthrough&&zh?'zh':topic.summaryLanguage ?? 'en'}
             >
               {readthrough?(zh?readthrough.zh:readthrough.en):topic.summary}
             </p>
@@ -51,7 +51,7 @@ export function PolicyV6RecordTopics({
         </div>
         <PolicyV6TopicControls
           dimensionKey={topic.key}
-          scopeDetail={readthrough?<><p lang={zh?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{topic.summary}</p></>:<p lang="en" data-i18n="preserve">{topic.scope}</p>}
+          scopeDetail={readthrough?<><p lang={zh&&/[\u3400-\u9fff]/.test(readthrough.meaningZh)?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{readthrough.en}</p></>:<p lang={zh&&/[\u3400-\u9fff]/.test(topic.scope)?'zh':'en'} data-i18n="preserve">{topic.scope}</p>}
           originalEvidence={
             <div className="student-snapshot-card__evidence">
               {topic.claims.length ? (
@@ -94,7 +94,7 @@ export function PolicyV6RecordTopics({
                   </article>
                 ))
               ) : (
-                <p>{ui.gap}</p>
+                <p data-evidence-gap="true">{topic.evidenceGap ?? ui.gap}</p>
               )}
             </div>
           }

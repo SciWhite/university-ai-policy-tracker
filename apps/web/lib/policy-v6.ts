@@ -24,6 +24,10 @@ import {
 export { isPolicyV6Preview } from "./policy-v6-gate";
 
 export interface LabTopic {
+  evidenceGap?: string;
+  /** Original scope retained by the parser before display localization. */
+  evidenceScope?: string;
+  summaryLanguage?: string;
   key: string;
   title: string;
   status: string;
@@ -45,6 +49,7 @@ export interface LabTopic {
       language: string;
       location?: string;
       retrievedAt?: string;
+      hash?: string;
     }[];
   }[];
 }
@@ -229,7 +234,7 @@ export async function getPolicyV6Data(
     locale,
     currentSlug,
     schools: schools.filter((s): s is NonNullable<typeof s> => Boolean(s)),
-    ...(localActions && localCurrent ? { studentActionsPilot: true, studentActions: localActions } : {}),
+    ...(localBundle && localCurrent ? { studentActionsPilot: true, studentActions: localActions } : {}),
   };
 }
 

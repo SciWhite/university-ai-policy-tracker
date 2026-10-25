@@ -5020,3 +5020,7 @@ ol.timeline-list {
   .policy-summary-emphasis--tool,.policy-summary-emphasis--danger { color:#000 !important; }
   .policy-supplements__candidates { display:none !important; }
 }
+
+/* Private candidate identities retain full text without widening compact pages. */
+.v6-private-context { min-width: 0; overflow-wrap: anywhere; }
+.v6-private-context .student-evidence { min-width: 0; }

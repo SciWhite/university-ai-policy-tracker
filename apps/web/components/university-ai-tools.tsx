@@ -85,7 +85,7 @@ export function UniversityAiTools({
       {scopeNote ? <p className="university-ai-tools__boundary">{scopeNote}</p> : null}
       {!uiLab ? <p className="university-ai-tools__boundary">{ui[1]}</p> : null}
       {!supported.length ? (
-        <p className="muted">{ui[3]}</p>
+        <p className="muted">{draft ? (locale === "zh" ? "工具对象及未决条件见下方候选与暂缓记录。" : "Tool objects and unresolved conditions are listed in the candidate and held records below.") : ui[3]}</p>
       ) : (
         <>
           {!uiLab ? (
@@ -168,7 +168,8 @@ export function UniversityAiTools({
                   </div>
                 ));
               return (
-                <li key={`${record.rawToolName}:${record.tool}:${index}`}>
+                <li key={`${record.rawToolName}:${record.tool}:${index}`} data-tool-review-state={record.reviewState}>
+                  {draft && !["agent_reviewed","human_reviewed"].includes(record.reviewState) ? <small data-private-tool-candidate="true">{locale === "zh" ? "本地候选 · 待审核；不授予考核许可" : "Local candidate · pending review; no assessment permission"}</small> : null}
                   <div className="university-ai-tools__heading">
                     <strong
                       className="policy-summary-emphasis policy-summary-emphasis--tool"

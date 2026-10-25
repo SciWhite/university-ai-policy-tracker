@@ -5105,6 +5105,867 @@
       "rawSha256": "2bdc4615f3b3d5d9a62b70d0102ea04a4e6e4a717c614e6be78139dbc8286211",
       "textSha256": "1da01c40a76586f21bee37373d349d533ba538e6bd77171b09a516bdb58b33cf",
       "verification": "frozen_captured_response_file_bytes"
+    },
+    {
+      "sourceUrl": "https://academicintegrity.ucsd.edu/choose-integrity/gen-ai/ai-in-education.html",
+      "snapshotHash": "449c8d28a33db9428207efbad67849a7d37a26ba37dfb58715318f7ddf4025e6",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://academicintegrity.ucsd.edu/choose-integrity/gen-ai/index.html",
+      "snapshotHash": "46f42673d809e872fec1e25668046db7f73229434b054b75b60daca1f7b8a6e2",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ai.duke.edu/ai-resources/learn-with-ai/",
+      "snapshotHash": "62ddf7efe141053e22bf93c2db2a5a011722d3d224c23bc65ef93c692d4f09ca",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ai.duke.edu/ai-tools/",
+      "snapshotHash": "88dc5bf815271e9068e6244dc68971944dc517f588e13d1546509f11d5fb32e4",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://blink.ucsd.edu/technology/ai/",
+      "snapshotHash": "86f3bae4e8244b1ee4d9d0d5b30d93299212dcf5e37dec1e2f94cce760a813dc",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://blink.ucsd.edu/technology/ai/index.html",
+      "snapshotHash": "1d8919e7f99998782c9668d96088a0b3db71b814149913fc84ec2d189a4a19e6",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://blink.ucsd.edu/technology/computers/software-acms/available-software/microsoft-individual.html",
+      "snapshotHash": "46e8495a4ffd9894fdd57f842b17aa6b54b706a9feda3702fd1747b8820dc242",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://blink.ucsd.edu/technology/file-sharing/google/gemini-notebooklm.html",
+      "snapshotHash": "da1a2e4538dab5eb0c3d40006b78d87258ad445e495f878beff2c17ed4c7d776",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://blink.ucsd.edu/technology/file-sharing/zoom/zoom-ai-companion.html",
+      "snapshotHash": "ef0f4c4811b72d11343c74a2dcedfeed1b4fe56e8763146bca01d965a216d9d3",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://citl.illinois.edu/generative-artificial-intelligence-gen-ai/teaching-implications",
+      "snapshotHash": "7c1579274ec9e393599db934df7cf97bdb0460d7b4f33ebc82a7a82f46f30c12",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+      "snapshotHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+      "snapshotHash": "e572e056a5eb30a5e00a7d1a90ce5d4c1b7531bfe6c198c87e0b1933d153eeba",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ctl.duke.edu/ai-and-teaching-at-duke-2/artificial-intelligence-and-assignment-design/",
+      "snapshotHash": "00bacd744f9d335f1e665fe38dee5307bebbc51c25cd0e9f1646048a757c2a47",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ctl.duke.edu/ai-and-teaching-at-duke-2/artificial-intelligence-policies-in-syllabi-guidelines-and-considerations/",
+      "snapshotHash": "89f7dd8b3d76a8623a39b3a3a92a4171db17a8952a3d080077480df53ba03fdb",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+      "snapshotHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311772&mode=download&totalBoardNo=&totalNoticeYn=",
+      "snapshotHash": "9044018067a4f051e6df9bece1154a7642174ebbd2af837023b78144a90492ad",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+      "snapshotHash": "8860c983ba867406f4684d24e8cf9f789963db9e333798d7825f8df7d4477154",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+      "snapshotHash": "fc141d191267ad4a10a0c09fc98096c89be7eb1c5811660a23c7fa8e9a77a103",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://dukecommunitystandard.students.duke.edu/policy/academic-dishonesty/",
+      "snapshotHash": "2af7c7e82948913fc6c2e807994a93035b4ce3c19caad5cb6f41fe69616de044",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+      "snapshotHash": "c879a79af0aa8ee1d8635b5b626f3b87d7aff51dce520b6724154d687987e476",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+      "snapshotHash": "d7998430cf65d139fc2b89ceceedfb9b3b6d9685380ba9c53edfbdb864d326bf",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://genai.illinois.edu/best-practice-ai-as-a-supportive-tool/",
+      "snapshotHash": "35460377c353210b20cfc22145e583f3eef8f727cd0978e816515c00dd926f95",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://genai.illinois.edu/best-practice-data-handling-and-intellectual-property/",
+      "snapshotHash": "34ef3de944a3395595c302d3807cb799700be7f04ca8187e7bde959eb532e777",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://genai.illinois.edu/best-practice-security-privacy-and-accessibility/",
+      "snapshotHash": "a1170c1fe776b9523791b1055ec08bc6b8e175791cf1d0d5593723f574f67eee",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://genai.illinois.edu/best-practice-transparency-in-ai-use/",
+      "snapshotHash": "4d2d774e44568af356e98f5ec13f3d6fe62e962602303c99ee53046caf48c0f8",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://grad.illinois.edu/academics/thesis-dissertation/writing-your-thesis/ai-guidance",
+      "snapshotHash": "3bab9d8a95e94b474073903c758b2bbb8f98cd3326fb078f7e99ec26e45b06b2",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://guides.nyu.edu/ai-tools",
+      "snapshotHash": "75289df1383e4c2d2739e4b42995a09918f6eda9fbc402b9a32e4d8abcf21b89",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ias.um.edu.my/Student%20Affairs/Guideline/Compilation%20Policy%20%26%20GP%20AI%20-%20Final%20V3.pdf",
+      "snapshotHash": "fa1acc518625d174f544265f4e84cab4283d40d501ac1ec9efc590d4a9c7941a",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+      "snapshotHash": "238a4d20ef5aff452f19bc3c5e6ba284a6e3684a9b31ba59591a66ec07bcb9c1",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/Anthropics-Claude-for-Education",
+      "snapshotHash": "6c73b0ef91eae1879b6718b2bc2f1de26248f05e138b4dac6d50e29a83c0136e",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/School-position-on-generative-AI",
+      "snapshotHash": "b9ab03932e412e7f898119c7d6ea3a0dce2569b2c771950867c49e448de66f2d",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Assets-EC/Documents/AI-guidelines-update-June-2025/LSE-Position-on-Generative-AI-in-Education-2025-26-FINAL.pdf",
+      "snapshotHash": "19740e21dc7d3f030b14aa2028d3f2d6992743694d847afe970c918484cc90e4",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://info.lse.ac.uk/staff/services/Policies-and-procedures/Assets/Documents/aiLegRegGui.pdf",
+      "snapshotHash": "21360bfa51bbfcbe544e969014dfdb524c6ea6ef309aae0350f25d069b906e71",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+      "snapshotHash": "6baa7056b92373108e9f841d56fb8ff3fc3d70c9717cbb51ff44b4ef50ab2064",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+      "snapshotHash": "5f6de8840f33aaad438252ad21684ce67247b3d473b5f521c3636afbd355206d",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+      "snapshotHash": "cb79f46782ed1c5422febec463707c17d373e9c0e56fb57889d22f47c1a62d87",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+      "snapshotHash": "2dc5cb9c76574f1c04449713c1490df8ea9acf287492ba4908499dd2f26df060",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://myresearchpath.duke.edu/using-generative-ai-artificial-intelligence-tools-research",
+      "snapshotHash": "0a952988e3f8d4c3df907331faaaace41f51692704eaa77b1163333369989a40",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+      "snapshotHash": "7608e80d7a9d5bd5a2d8d3ff8d3a573ce889815c3726d63561ee42066f6db89d",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://oit.duke.edu/ai-suite/",
+      "snapshotHash": "c928c4760e82dd35612718b79d83f7b8a9c640f1d5330fc13d93d95a2f278e13",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://oit.duke.edu/service/chatgpt-edu/",
+      "snapshotHash": "c928c4760e82dd35612718b79d83f7b8a9c640f1d5330fc13d93d95a2f278e13",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+      "snapshotHash": "d68530313ee8997cf940d0f4b8544083aac68e530f4abac97886e3410bc895a9",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://provost.brown.edu/communications/potential-impact-ai-our-academic-mission",
+      "snapshotHash": "31855bf7255585cb22686b19b076c2a8d9dc848b1f6c81667a60254ddf2b9b9a",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance/",
+      "snapshotHash": "9a2c53f763c0dab4a542eded123bd43bd72e362c1568e82a73fab24b38f3b557",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-use-in-graduate-education/",
+      "snapshotHash": "3b608ef2490886b6ee85f50b92fd1c8b81eaff5ec171bea961b13a5b29607765",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+      "snapshotHash": "93a8872c71bdae2fe6e3edd206de281c39018f4ffc8650a9434652544c140d23",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+      "snapshotHash": "e5d95fdfcc51a12417a0b3e41b9a45ede57358d43fb0611d4852ffdc582f2dac",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://research.kuleuven.be/en/integrity-ethics/integrity/practices/genai",
+      "snapshotHash": "cc24c98e41ff56470816652629ac52b682b4c1717682211b63a3bc2359a2f4a2",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://security.utexas.edu/ai-tools",
+      "snapshotHash": "f65f66948048f0c455452d6d095d831a0fe2b04c8b543234f058f86af5ddd094",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://senate.ucsd.edu/media/741013/sawg-on-impact-of-genai-in-research-final-report-10-27-25.pdf",
+      "snapshotHash": "af0994caa24a090d7ca07aff89ec7e7a4d3f828fd26747fe18241b0e797cdb0a",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://senate.ucsd.edu/operating-procedures/senate-manual/appendices/2",
+      "snapshotHash": "72da36732b579ef87895916d79265814055114f9352371439077c466733371c5",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://sheridan.brown.edu/resources/classroom-practices/intentional-pedagogy-ai-technology",
+      "snapshotHash": "40098b79579eeca4c86d2da6aa1b344ba8640d2833ed1906a23070ecbc6f4c28",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://spm.um.edu.my/policy-on-the-use-of-artificial-intelligence-ai-in-teaching-and-learning/",
+      "snapshotHash": "b25698e162e477192bed50f2c30759844718e30b5c690354f50d64032cde5281",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://spm.um.edu.my/student/ethical-use-of-artificial-intelligence-ai-in-teaching-and-learning/",
+      "snapshotHash": "f601f6ad12a9694acccb64b64de9e4a15203b9dec8fc826ab3bf4e26c79d159b",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://steinhardt.nyu.edu/faculty-and-staff/academic-affairs/steinhardt-ai-hub/academic-integrity-and-syllabus-support-age",
+      "snapshotHash": "344e1c9af3a02daa209a7290e72023cd1958db1acc9191f5823730abf36e7133",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://teachwell.auckland.ac.nz/assessment/ai-tools-in-coursework/",
+      "snapshotHash": "a616a2d91bceea48c70c1e8e81f1852f8919b2c899d82e3ed8a39dcdd96f4cf9",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://teachwell.auckland.ac.nz/assessment/two-lane-approach-to-assessment/",
+      "snapshotHash": "55496d6f9eb63c002c07e8a4a39bde95db1d217c40da0f1b31692bcbfdb3c8a7",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://teachwell.auckland.ac.nz/assessment/two-lane-approach-to-assessment/",
+      "snapshotHash": "761944312730600aaab8f00ff627cef0f2e8d0f7501379beab4f682aab771aac",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://teachwell.auckland.ac.nz/learning-technologies/technology-enhanced-learning/gen-ai-usage-standard/",
+      "snapshotHash": "06a9e04ba9faec6b2fb33ff8c410d865105706b75a19d8fcc1e0d0bd058709c4",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://tech.utexas.edu/services-tools/ai",
+      "snapshotHash": "2b26d29b904110209f6923912ec941b19e4393e67b4186c83992de2f14ef80fd",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+      "snapshotHash": "4aea837f5a7b825dc7adb3a289846b32ffe1177618366500a338d7a0be1122d8",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://tritonai.ucsd.edu/tritongpt/index.html",
+      "snapshotHash": "ca05ddf708139051f28ec72c85e40d2a93809461caad3b7baa6aa79620b536c9",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://ucsd.libguides.com/AI/academicintegrity",
+      "snapshotHash": "7702544ce2f911983068ff73ebc7c6ea55dce7fd357e65a8718f2fa35757fff0",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/about-us/about-the-university/policy-hub/education-student-experience/assessment/assessment-courses-procedures.html",
+      "snapshotHash": "cb08abc2372ce4a0201f7356b9e0f452ec6982a0a69869161eda38c4571162d7",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/law/current-students/llb-information/academic-information/student-use-of-ai.html",
+      "snapshotHash": "8bc2a31021263ac98b61f9a4b9d64233653ebc5f929bed9e738cbca59a1e123b",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/law/current-students/llb-information/academic-information/student-use-of-ai.html",
+      "snapshotHash": "f9903aef06d5f226dc4e15034ea1a052ae7143cfb815bd037e6fd11f7bb919d5",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/staff/education-office/academic-integrity/academic-integrity-policies-and-guidelines/guidelines-on-permitted-use-of-software-in-assessment-activities.html",
+      "snapshotHash": "443060225a8b30765c052ee58663057ed1240a64b6cf18ca70c6dd4b34e8077f",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/students/forms-policies-and-guidelines/student-policies-and-guidelines/academic-integrity-copyright/advice-for-student-on-using-ai.html",
+      "snapshotHash": "681059c6e06e7d6b2c4ae25fea4dbc57d5212c66d446dcef40373236d6bcb468",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/students/forms-policies-and-guidelines/student-policies-and-guidelines/academic-integrity-copyright/advice-for-student-on-using-ai.html",
+      "snapshotHash": "af6afff22fcf6c0427f63b00f846e70d644cd2437239e65f88baa3f28f51d1cd",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.auckland.ac.nz/en/students/my-tools/generative-ai.html",
+      "snapshotHash": "5baf2e617b5430ace6c4234440dad1a30cba51b72cd17f97b51fa380c108d1c3",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+      "snapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+      "snapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+      "snapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+      "snapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cityu.edu.hk/GenAI/",
+      "snapshotHash": "45603c9f6b8406cac1d78784a45e40d50415d01b71ec4f0b496c555f38fca1bf",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cityu.edu.hk/GenAI/get-started.htm",
+      "snapshotHash": "45603c9f6b8406cac1d78784a45e40d50415d01b71ec4f0b496c555f38fca1bf",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cityu.edu.hk/GenAI/gpt-services.htm",
+      "snapshotHash": "45603c9f6b8406cac1d78784a45e40d50415d01b71ec4f0b496c555f38fca1bf",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+      "snapshotHash": "768756bd75181794df07c8edc5a3606a757926a819f8b98b6a8fe2a595aa7f39",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cityu.edu.hk/its/news-events/news/2024/09/16/microsoft-copilot-enterprise-now-available-all-staff-and-students",
+      "snapshotHash": "45603c9f6b8406cac1d78784a45e40d50415d01b71ec4f0b496c555f38fca1bf",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+      "snapshotHash": "d762b0ba142b88fa572d56dc171ba1421176958e7752769d64a06b183d8122b0",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/computing/services/ai/meet-ai/secure-ai.html",
+      "snapshotHash": "89586f7939131dc3c9902d019e6b935c1a84aab8ff487f8ea9dbda08c967ac35",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+      "snapshotHash": "760a9fc6413debdf023c2a0351dd2ce1ac0ecd47011983faa04a41396ee1125e",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+      "snapshotHash": "924d9a08d6923f700f22a0b5b7540c398a65937d3ac5161a83e5880e86330f12",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+      "snapshotHash": "953acf3271ee7414e81bbe17c1d3216d9b1af043c2207a4966ae34b6cf7347bf",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/academicintegrity/index.html",
+      "snapshotHash": "ab658039adebce7fca30bef5badaf166b2e3a1c72cc117640a76e1d050a2dca6",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+      "snapshotHash": "1f5671e5b9d2e42098f4a178374ebb6aaa0c1bd582cae7abef88ea7894c4358d",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+      "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+      "snapshotHash": "82891b0f25ab17895e330553d227cb8052851169b0f84c58e78e404b10c29117",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+      "snapshotHash": "60f9fa8cbf494764eed529c81aaa42e709af37489f215c5f853a79ef9fc24436",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+      "snapshotHash": "bf75529996c0fa8f0faf0bb5ddcc468ad0f5f284825919548380cb4700f7f16e",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+      "snapshotHash": "9b09652a65366efdf7bdcdfd3bc9a11b3f5f2a55eac497a691ece97d8329af03",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+      "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.korea.ac.kr/bbs/ko/42/120466/artclView.do",
+      "snapshotHash": "7b37d53f2bf9de9d9f88874709030b525f6247723f49c651415b727f052269d4",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.kuleuven.be/english/education/leuvenlearninglab/support/genai/responsible-use-of-generative-ai-in-our-education",
+      "snapshotHash": "7ababb8b4225fa0d291b84fb463bab5f8f69e9b60e662350c18f12c9f4c9fbd5",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.kuleuven.be/english/education/leuvenlearninglab/support/tools-multimedia/toolguide/guidelines-for-safe-use-of-genai-tools",
+      "snapshotHash": "f68c9f404080c58273731c2e7046f4f5c22a8f4eb9d56e630d552bd06e3dd043",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.kuleuven.be/english/education/student/educational-tools/responsible-use-of-generative-artificial-intelligence",
+      "snapshotHash": "e40b1ab53f24191338e1b398eb81260530ff53b25ac644c23a27b5222cf47369",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.kuleuven.be/english/genai",
+      "snapshotHash": "5748132da23f133c50940ae5106cc2b9a5637eff8d7563e51092e69d769c1a58",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.kuleuven.be/english/genai",
+      "snapshotHash": "ecea24e9f3f3b11bd7c737d53e8fa70d358b8e31263ecd967987fb92ff1d1790",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.lmu.de/de/die-lmu/struktur/zentrale-universitaetsverwaltung/it-services-division/it-servicedesk/zentrale-it-angebote/microsoft-office-365/",
+      "snapshotHash": "1cc3e1b58aee26ecf35e60bfabb4a754ca94fc9666227a5b97d5f9253317b613",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.lmu.de/profil/de/aktuelles/veranstaltungsuebersicht/veranstaltung/pruefungsformat-hausarbeit-neu-denken-in-zeiten-von-ki-fde305b1.html",
+      "snapshotHash": "1cc3e1b58aee26ecf35e60bfabb4a754ca94fc9666227a5b97d5f9253317b613",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.lse.ac.uk/DSI/Assets/documents/LSE-Guidance-on-the-use-of-Generative-AI-for-research.pdf",
+      "snapshotHash": "61a62e350898b61414d3fe9570861817e1fdb32409f5852701cfc326c27a1d43",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+      "snapshotHash": "99c44e197380c05b23bdfbfbfe10f5b8cfd3b2725483f55a8d259432cc6bdda0",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+      "snapshotHash": "f5dfcb660994eab6f989284782cf48202dcf365db312e4886279c1e4d387b863",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+      "snapshotHash": "77f7c0c025a6698210e79a300d61e56085d6656eff4160820767bf4758b9b751",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+      "snapshotHash": "dc40ace18d3202f334370108c651e62d9ad331b01fe1f136b6482b51d72ec6a2",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html",
+      "snapshotHash": "dc40ace18d3202f334370108c651e62d9ad331b01fe1f136b6482b51d72ec6a2",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/ai-studio.html",
+      "snapshotHash": "9848444ca135890632479b0404e84263f1672a073a339c6a2f82a2df3a080682",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/gemini.html",
+      "snapshotHash": "9848444ca135890632479b0404e84263f1672a073a339c6a2f82a2df3a080682",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/notebooklm.html",
+      "snapshotHash": "9848444ca135890632479b0404e84263f1672a073a339c6a2f82a2df3a080682",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/life/information-technology/communication-and-collaboration/email-and-communication/nyu-zoom.html",
+      "snapshotHash": "9848444ca135890632479b0404e84263f1672a073a339c6a2f82a2df3a080682",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/life/information-technology/computing-support/software/software/adobe_express.html",
+      "snapshotHash": "9848444ca135890632479b0404e84263f1672a073a339c6a2f82a2df3a080682",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.nyu.edu/life/information-technology/computing-support/software/software/ms-office.html",
+      "snapshotHash": "9848444ca135890632479b0404e84263f1672a073a339c6a2f82a2df3a080682",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+      "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai/",
+      "snapshotHash": "ca2f62929994ec4b03f899c49ed342576638fa62f3f41675ece31ede42c4f1b0",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/academic-integrity/",
+      "snapshotHash": "7e278c73bc2106043483e3d859cbc464c34b54a7f40a5960551aeeec59b6400f",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/",
+      "snapshotHash": "8a6a3890e36e32f7805431177c86acdec781661f7128a185585d07ab4ea19444",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.polyu.edu.hk/its/it-services/polyu-genai/",
+      "snapshotHash": "3905398726e67fcea4d3d91ddce1074bf1711daad9dcbc45c8654e0c1406a8e2",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.polyu.edu.hk/its/news-and-events/its-enewsletter/get-connected/2025-apr/02-m365-copilot-chat-m365-copilot-and-copilot-studio/",
+      "snapshotHash": "5aa4715078e31d79991e7ff421cb0600b4f542c93a84599fe48d481c8891c69b",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.uva.nl/content/nieuws/nieuwsberichten/2025/08/uva-lanceert-eigen-ai-chat.html",
+      "snapshotHash": "c1eaa49ea274b2e83fc6f452a010f5a81b16bf262cc402207cf8ea0626f1332a",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+      "snapshotHash": "5510c80cc0df71bab8fa664f5c5463de825e0988024b8f145b7e823f52ef7544",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+      "snapshotHash": "5969f7a14500b66e9df64a3aa3c764d29fab54c5dd9a96b6dcb65c83779e211b",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+      "snapshotHash": "859ff4ab22762f3accc2f01a2e9032213ffd2e7d1d7e7f3fb938bc52c2d8d3ea",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+      "snapshotHash": "38493fe8850e666a8ba8116443bce528c2649da38d377958516a5923a1fefb5a",
+      "hashKind": "unknown_legacy",
+      "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
+      "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
     }
   ]
 }

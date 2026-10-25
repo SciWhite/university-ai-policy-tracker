@@ -9,11 +9,13 @@ export type StudentActionKind = 'requirement' | 'source_guidance' | 'site_advice
 export interface StudentAction {en:string;zh:string;kind:StudentActionKind;claimIds:string[]}
 export interface StudentGuideClaim {
  id:string;text:string;claimType:string;
- summaryZh?:string;basisObjectType?:'published_supplement';scope?:string;
+ summaryZh?:string;basisObjectType?:'published_supplement'|'private_evidence';scope?:string;
+ basisRef?:{topicKey:string;groupId:string};
  deadline?:{en:string;zh:string;quote:string;url:string};
  evidence:{quote:string;url:string;language:string;hash:string;location:string}[];
 }
 export interface V6StudentActions {
+ privatePreview?:boolean;
  slug?:string;experience?:'compact_evidence';presentationRevision?:string;
  topics?:Record<string,{en:string;zh:string;meaningEn:string;meaningZh:string}>;
  name:string;recordSha256:string;schoolFingerprint:string;universityRevisionId:string;

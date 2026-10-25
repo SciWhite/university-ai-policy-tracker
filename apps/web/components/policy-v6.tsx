@@ -957,6 +957,10 @@ export function PolicyV6Faq() {
       <div className="policy-v6-faqGrid">
         {keys.map((key, index) => {
           const topic = topics.find((t) => t.key === key);
+          const summary = topic?.summary ?? ui.gap;
+          const summaryLanguage = !topic ? data.locale
+            : data.locale === "zh" && /[\u3400-\u9fff]/.test(summary) ? "zh"
+            : topic.summaryLanguage === "zh" ? "en" : topic.summaryLanguage ?? "en";
           const question =
             index < 4
               ? ui[
@@ -970,8 +974,8 @@ export function PolicyV6Faq() {
           return (
             <details key={key}>
               <summary>{question}</summary>
-              <p lang="en" data-i18n="preserve">
-                {topic?.summary ?? ui.gap}
+              <p lang={summaryLanguage} data-i18n="preserve">
+                {summary}
               </p>
               {topic ? (
                 <a href={`#snapshot-evidence-${key}`}>{ui.evidence} →</a>

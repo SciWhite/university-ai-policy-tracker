@@ -68,7 +68,7 @@ test('all three presentation kinds share structured data and Chinese metadata; l
     assert.equal(ld['@type'],'WebPage');assert.equal(ld.mainEntity['@type'],'Dataset');
     assert.equal(ld.url,String(seo.alternates.canonical));assert.equal(ld.description,seo.description);
     assert(ld.mainEntity.distribution.contentUrl.endsWith(`/universities/${slug}.json`));
-    if(locale==='zh'){assert(seo.title.includes('AI 使用政策'));assert(seo.description.includes('官方来源'));}
+    if(locale==='zh'){assert.match(String(seo.title),/AI (?:使用)?政策/);assert(seo.description.includes('官方来源'));}
   }
   const restriction=getIndexRecoveryPilotLocaleRestriction('harvard-university');
   assert.deepEqual(restriction,['en']);

@@ -13,5 +13,10 @@
     "path": "revisions/qs46-50-v6-r1-20261023.json",
     "sha256": "63f3ea615aedd13d5457e432dec9ffa6bb49693edf017203e18d89ded97fb2a8",
     "basisRevision": "qs46-50-v6-r1-20261023"
+  },
+  "qs51-70-v6-presentation-20261025": {
+    "path": "revisions/qs51-70-v6-presentation-20261025.json",
+    "sha256": "7d615e712b84102c2cd4f239be70fe0c6b798fe65b3ede45bfffb6e5d8fe73ac",
+    "basisRevision": "qs51-70-v6-presentation-20261025"
   }
 }
