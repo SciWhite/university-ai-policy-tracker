@@ -9,7 +9,7 @@ import type {ChangeEvent,ChangeOverview,EventPreview} from "@/lib/change-events"
 import {changeWindow,utcDay,visibleChangeWindow} from "@/lib/v6-changes-window";
 import {changeCategoryKeys,v6ChangesCopy,v6ChangeTopicTitle,historicalChangeTopicOrder} from "@/lib/v6-changes-copy";
 
-const isPrimary=primaryChangeCategory;
+const isPrimary=(key:string)=>primaryChangeCategory(key)||key==="record_maintenance"||key==="page_update";
 type Props={slug:string;recordSha256?:string;locale:SupportedLocale;today:string;initial:SelectedChangeOverview;hasHeldRecords?:boolean};
 type EventState={status:"loading"}|{status:"failed"}|{status:"ready";event:ChangeEvent};
 

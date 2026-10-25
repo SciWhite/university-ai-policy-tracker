@@ -25,7 +25,7 @@ export function eventIndexFilters(params:URLSearchParams):EventIndexFilters{
 export function eventIndexQuery(filters:EventIndexFilters){
   const p=new URLSearchParams();if(filters.q)p.set("q",filters.q);if(filters.category!=="default")p.set("kind",filters.category);if(filters.topic!=="all")p.set("topic",filters.topic);if(filters.country!=="all")p.set("country",filters.country);if(filters.start!==undefined)p.set("from",filters.start);if(filters.end!==undefined)p.set("to",filters.end);if(filters.page>1)p.set("page",String(filters.page));return p;
 }
-export function matchesEventCategory(categories:ChangeCategory[],category:HistoryCategory){return categories.some(value=>category==="all"||category==="default"&&primaryChangeCategory(value)||value===category);}
+export function matchesEventCategory(categories:ChangeCategory[],category:HistoryCategory){return categories.some(value=>category==="all"||category==="default"&&(primaryChangeCategory(value)||value==="record_maintenance"||value==="page_update")||value===category);}
 export function eventIndexCandidates(rows:ChangeIndexEvent[],filters:EventIndexFilters){
   const q=filters.q.toLocaleLowerCase();
   return rows.filter(row=>matchesEventCategory(row.categories,filters.category)&&(filters.topic==="all"||row.themes.includes(filters.topic))&&(filters.country==="all"||row.country===filters.country)&&(!q||[row.name,row.localizedName,row.slug,row.revision].some(text=>text.toLocaleLowerCase().includes(q))));

@@ -7,7 +7,7 @@ export interface HistoryFilters {category:HistoryCategory;topic:string;start?:st
 export {primaryChangeCategory} from "./change-event-rules";
 export const itemHasTopic=(item:ChangeItem,topic:string)=>topic==="all"||item.theme===topic||Boolean(item.themes?.includes(topic));
 export function matchingChangeItems(event:ChangeEvent,filters:Pick<HistoryFilters,"category"|"topic">){
-  return event.items.filter(item=>(filters.category==="all"||filters.category==="default"&&primaryChangeCategory(item.category)||filters.category===item.category)&&itemHasTopic(item,filters.topic));
+  return event.items.filter(item=>(filters.category==="all"||filters.category==="default"&&(primaryChangeCategory(item.category)||item.category==="record_maintenance"||item.category==="page_update")||filters.category===item.category)&&itemHasTopic(item,filters.topic));
 }
 export function selectChangeHistory(history:EventHistory,filters:HistoryFilters){
   const custom=filters.start!==undefined||filters.end!==undefined;

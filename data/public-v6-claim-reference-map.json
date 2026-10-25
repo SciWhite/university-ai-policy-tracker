@@ -1,0 +1,642 @@
+{
+  "schemaVersion": "uapt-public-claim-reference-map-v1",
+  "universities": {
+    "university-of-bristol": {
+      "recordSha256": "283f82a20aa5102e43b825c78b8904c9227ede448ec134163c753d6fe7dac6ad",
+      "topics": {
+        "coursework": [
+          "claim-bristol-002"
+        ],
+        "disclosure": [],
+        "privacy_data": [],
+        "approved_tools": [],
+        "research_publication": [
+          "claim-bristol-004"
+        ],
+        "teaching_guidance": [
+          "claim-bristol-001",
+          "claim-bristol-003"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "claim-bristol-002"
+      ]
+    },
+    "carnegie-mellon-university": {
+      "recordSha256": "24594971d2c5ebc0c18d2fb3e845312ed602b7b3e163161590235a75b67c3f84",
+      "topics": {
+        "coursework": [
+          "cmu-claim-ai-detection-caution",
+          "cmu-claim-academic-integrity-assistance",
+          "cmu-claim-student-career-ai-originality"
+        ],
+        "disclosure": [
+          "cmu-claim-course-ai-policy-clarity",
+          "cmu-claim-academic-integrity-assistance"
+        ],
+        "privacy_data": [
+          "cmu-claim-no-public-ai-sensitive-data"
+        ],
+        "approved_tools": [
+          "cl-carnegie-mellon-university-chatgpt-266",
+          "cl-carnegie-mellon-university-gemini-267",
+          "cl-carnegie-mellon-university-institutional-ai-service-268",
+          "cl-carnegie-mellon-university-microsoft-copilot-269",
+          "cl-carnegie-mellon-university-notebooklm-270",
+          "cl-carnegie-mellon-university-zoom-ai-companion-271",
+          "cmu-claim-approved-ai-tools-list",
+          "cmu-claim-vetted-tools-ferpa"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "cmu-claim-course-ai-policy-clarity"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "cmu-claim-no-public-ai-sensitive-data",
+        "cmu-claim-ai-detection-caution",
+        "cmu-claim-academic-integrity-assistance"
+      ]
+    },
+    "university-of-amsterdam": {
+      "recordSha256": "8725ec9babcb98489d2ca656e6c413de3c2aaf7dab04b44ab9f52b8159e73247",
+      "topics": {
+        "coursework": [
+          "uva-claim-004"
+        ],
+        "disclosure": [],
+        "privacy_data": [],
+        "approved_tools": [
+          "cl-university-of-amsterdam-institutional-ai-service-272",
+          "uva-claim-002",
+          "uva-claim-003"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "uva-claim-001"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "uva-claim-004"
+      ]
+    },
+    "the-hong-kong-polytechnic-university": {
+      "recordSha256": "a168c3b37b300f05d1456429908a44fed229acf5a94ee7b24be0f7181669a081",
+      "topics": {
+        "coursework": [
+          "polyu-claim-2"
+        ],
+        "disclosure": [],
+        "privacy_data": [],
+        "approved_tools": [
+          "cl-the-hong-kong-polytechnic-university-institutional-ai-service-273",
+          "polyu-claim-1",
+          "polyu-claim-4"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "polyu-claim-5",
+          "polyu-claim-3"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "polyu-claim-2"
+      ]
+    },
+    "new-york-university": {
+      "recordSha256": "8a84dbcc8602b65cdf99d3216a8722cc4927611ea4099d59f7369bd3588fdc3c",
+      "topics": {
+        "coursework": [
+          "uapt-new-york-university-20260512-claim-002"
+        ],
+        "disclosure": [],
+        "privacy_data": [
+          "uapt-new-york-university-20260512-claim-004"
+        ],
+        "approved_tools": [
+          "cl-new-york-university-nyu-adobe-express-274",
+          "cl-new-york-university-nyu-gemini-275",
+          "cl-new-york-university-nyu-gemini-276",
+          "cl-new-york-university-nyu-google-ai-studio-277",
+          "cl-new-york-university-nyu-google-ai-studio-278",
+          "cl-new-york-university-nyu-microsoft-copilot-279",
+          "cl-new-york-university-nyu-notebooklm-280",
+          "cl-new-york-university-nyu-zoom-ai-companion-281",
+          "uapt-new-york-university-20260512-claim-003"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "uapt-new-york-university-20260512-claim-001"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "uapt-new-york-university-20260512-claim-002",
+        "uapt-new-york-university-20260512-claim-004"
+      ]
+    },
+    "the-london-school-of-economics-and-political-science": {
+      "recordSha256": "9c2bfc5d728bcff6b54c4f397372c2c1cb5413c288fd67bfca0b0ff6142941fa",
+      "topics": {
+        "coursework": [
+          "cc-lse-002"
+        ],
+        "disclosure": [],
+        "privacy_data": [
+          "cc-lse-006",
+          "cc-lse-007"
+        ],
+        "approved_tools": [
+          "cc-lse-003",
+          "cc-lse-001",
+          "cc-lse-004",
+          "cc-lse-008"
+        ],
+        "research_publication": [
+          "cc-lse-005"
+        ],
+        "teaching_guidance": [],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "cc-lse-006",
+        "cc-lse-007",
+        "cc-lse-002"
+      ]
+    },
+    "kyoto-university": {
+      "recordSha256": "32f687429915f2d044e3ff3676bd21d55f26c2ebb9093301fc71d5637c3657cd",
+      "topics": {
+        "coursework": [
+          "claim-kyoto-003",
+          "claim-kyoto-002"
+        ],
+        "disclosure": [
+          "claim-kyoto-002"
+        ],
+        "privacy_data": [
+          "claim-kyoto-005"
+        ],
+        "approved_tools": [
+          "cl-kyoto-university-gemini-282",
+          "cl-kyoto-university-institutional-ai-service-283",
+          "cl-kyoto-university-institutional-ai-service-284",
+          "cl-kyoto-university-microsoft-copilot-285",
+          "cl-kyoto-university-microsoft-copilot-for-m365-286",
+          "cl-kyoto-university-notebooklm-287",
+          "claim-kyoto-007"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "claim-kyoto-001",
+          "claim-kyoto-004"
+        ],
+        "security_procurement": [
+          "claim-kyoto-006"
+        ]
+      },
+      "submissionClaimIds": [
+        "claim-kyoto-003",
+        "claim-kyoto-002",
+        "claim-kyoto-005"
+      ]
+    },
+    "ludwig-maximilians-universitat-munchen": {
+      "recordSha256": "9c7f5c219091400bb13e65a0cb0c11d03a5e23d2435a05c91d510a391ed6fbe6",
+      "topics": {
+        "coursework": [
+          "claim-lmu-002",
+          "claim-lmu-003"
+        ],
+        "disclosure": [
+          "claim-lmu-005",
+          "claim-lmu-003"
+        ],
+        "privacy_data": [
+          "claim-lmu-004"
+        ],
+        "approved_tools": [
+          "cl-ludwig-maximilians-universitaet-muenchen-microsoft-copilot-288",
+          "claim-lmu-001"
+        ],
+        "research_publication": [
+          "claim-lmu-005"
+        ],
+        "teaching_guidance": [
+          "claim-lmu-006"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "claim-lmu-004",
+        "claim-lmu-002",
+        "claim-lmu-003"
+      ]
+    },
+    "universiti-malaya": {
+      "recordSha256": "1f1b63fae97fa6c1bce8512e1ce84e0703b08f4f9b76319c265839db9bee482e",
+      "topics": {
+        "coursework": [
+          "claim-um-ai-learning-support-originality",
+          "claim-um-ai-declaration-misconduct"
+        ],
+        "disclosure": [
+          "claim-um-ai-declaration-misconduct"
+        ],
+        "privacy_data": [
+          "claim-um-ai-public-platform-confidentiality",
+          "claim-um-ai-data-privacy-risk-awareness"
+        ],
+        "approved_tools": [],
+        "research_publication": [],
+        "teaching_guidance": [
+          "claim-um-ai-policy-scope",
+          "claim-um-ai-permitted-levels"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "claim-um-ai-learning-support-originality",
+        "claim-um-ai-declaration-misconduct",
+        "claim-um-ai-public-platform-confidentiality"
+      ]
+    },
+    "ku-leuven": {
+      "recordSha256": "d298ad7e9c77e0365e2daafd8f126e6dc4650168191733852bc916cc92ff9c45",
+      "topics": {
+        "coursework": [
+          "claim-kul-student-responsibility",
+          "claim-kul-genai-irregularity"
+        ],
+        "disclosure": [],
+        "privacy_data": [
+          "claim-kul-confidential-data-tooling",
+          "claim-kul-unsupported-tools-data-warning"
+        ],
+        "approved_tools": [
+          "cl-ku-leuven-microsoft-copilot-289",
+          "claim-kul-general-responsible-use"
+        ],
+        "research_publication": [
+          "claim-kul-research-transparency"
+        ],
+        "teaching_guidance": [
+          "claim-kul-teaching-transparency"
+        ],
+        "security_procurement": [
+          "claim-kul-copilot-preferred"
+        ]
+      },
+      "submissionClaimIds": [
+        "claim-kul-student-responsibility",
+        "claim-kul-genai-irregularity",
+        "claim-kul-confidential-data-tooling"
+      ]
+    },
+    "korea-university": {
+      "recordSha256": "93d92a370deb7991c078b26f28176e5cead4fc22281f9777bfafb5f4a84900b3",
+      "topics": {
+        "coursework": [
+          "cc-ku-004",
+          "cc-ku-008",
+          "cc-ku-011",
+          "cc-ku-006"
+        ],
+        "disclosure": [
+          "cc-ku-011"
+        ],
+        "privacy_data": [
+          "cc-ku-009",
+          "cc-ku-012"
+        ],
+        "approved_tools": [
+          "cl-korea-university-institutional-ai-service-290",
+          "cc-ku-002",
+          "cc-ku-010"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "cc-ku-005",
+          "cc-ku-003",
+          "cc-ku-007"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "cc-ku-004",
+        "cc-ku-008",
+        "cc-ku-009"
+      ]
+    },
+    "duke-university": {
+      "recordSha256": "9413b1d656c1399e18756cee0c181f7b548dc6d82858286e2f7200ac43b3187c",
+      "topics": {
+        "coursework": [
+          "claim-duke-002"
+        ],
+        "disclosure": [
+          "claim-duke-008"
+        ],
+        "privacy_data": [
+          "claim-duke-007"
+        ],
+        "approved_tools": [
+          "cl-duke-university-chatgpt-291",
+          "cl-duke-university-institutional-ai-service-292",
+          "cl-duke-university-institutional-ai-service-293",
+          "cl-duke-university-institutional-ai-service-294",
+          "cl-duke-university-microsoft-copilot-295",
+          "claim-duke-001",
+          "claim-duke-003"
+        ],
+        "research_publication": [
+          "claim-duke-008"
+        ],
+        "teaching_guidance": [
+          "claim-duke-005",
+          "claim-duke-006"
+        ],
+        "security_procurement": [
+          "claim-duke-004"
+        ]
+      },
+      "submissionClaimIds": [
+        "claim-duke-002",
+        "claim-duke-007"
+      ]
+    },
+    "city-university-of-hong-kong": {
+      "recordSha256": "87abc9d35b6cc6de00f7dd3e91f31ca653d6c499f9cb0d727d28bc13464a5045",
+      "topics": {
+        "coursework": [],
+        "disclosure": [],
+        "privacy_data": [],
+        "approved_tools": [
+          "cl-city-university-of-hong-kong-cityuhk-chatgpt-296",
+          "cl-city-university-of-hong-kong-cityuhk-deepseek-297",
+          "cl-city-university-of-hong-kong-cityuhk-institutional-ai-service-298",
+          "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-299",
+          "cl-city-university-of-hong-kong-cityuhk-microsoft-copilot-for-m365-300"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "claim-cityuhk-001"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": []
+    },
+    "national-taiwan-university": {
+      "recordSha256": "5b41c103d46d80a50dff0733f30afd46b180a1b9dcb4bd12da6fe3a36ad339c6",
+      "topics": {
+        "coursework": [
+          "claim-ntu-005",
+          "claim-ntu-006",
+          "claim-ntu-004"
+        ],
+        "disclosure": [
+          "claim-ntu-007",
+          "claim-ntu-008"
+        ],
+        "privacy_data": [
+          "claim-ntu-007",
+          "claim-ntu-009"
+        ],
+        "approved_tools": [],
+        "research_publication": [
+          "claim-ntu-008"
+        ],
+        "teaching_guidance": [
+          "claim-ntu-001",
+          "claim-ntu-002",
+          "claim-ntu-003"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "claim-ntu-005",
+        "claim-ntu-006",
+        "claim-ntu-004"
+      ]
+    },
+    "university-of-auckland": {
+      "recordSha256": "6e3dacd4660000dd2488514e8f0b6333febcdb519636f5d9b2444d819d7a63c3",
+      "topics": {
+        "coursework": [
+          "claim-auckland-003",
+          "claim-auckland-004",
+          "claim-auckland-007",
+          "claim-university-of-auckland-023",
+          "claim-university-of-auckland-024"
+        ],
+        "disclosure": [
+          "claim-university-of-auckland-024"
+        ],
+        "privacy_data": [
+          "claim-auckland-006",
+          "claim-university-of-auckland-025"
+        ],
+        "approved_tools": [
+          "claim-auckland-001",
+          "cl-university-of-auckland-gemini-301",
+          "cl-university-of-auckland-microsoft-copilot-302",
+          "cl-university-of-auckland-notebooklm-303",
+          "claim-auckland-005",
+          "claim-university-of-auckland-021",
+          "claim-university-of-auckland-026",
+          "claim-university-of-auckland-028",
+          "claim-university-of-auckland-029"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "claim-auckland-002",
+          "claim-university-of-auckland-020",
+          "claim-university-of-auckland-022",
+          "claim-university-of-auckland-027"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "claim-auckland-003",
+        "claim-auckland-004",
+        "claim-auckland-007"
+      ]
+    },
+    "university-of-california-san-diego": {
+      "recordSha256": "00a613c4555cf59024a72fd0a259acfdb17e9cd12d7aae5e83a2e06af5ad88ea",
+      "topics": {
+        "coursework": [
+          "cl-ucsd-001",
+          "cl-ucsd-002",
+          "cl-ucsd-003",
+          "cl-ucsd-005"
+        ],
+        "disclosure": [],
+        "privacy_data": [
+          "cl-ucsd-009"
+        ],
+        "approved_tools": [
+          "cl-university-of-california-san-diego-gemini-304",
+          "cl-university-of-california-san-diego-institutional-ai-service-305",
+          "cl-university-of-california-san-diego-microsoft-copilot-306",
+          "cl-university-of-california-san-diego-microsoft-copilot-for-m365-307",
+          "cl-university-of-california-san-diego-notebooklm-308",
+          "cl-university-of-california-san-diego-zoom-ai-companion-309",
+          "cl-ucsd-006"
+        ],
+        "research_publication": [
+          "cl-ucsd-008"
+        ],
+        "teaching_guidance": [
+          "cl-ucsd-004"
+        ],
+        "security_procurement": [
+          "cl-ucsd-007"
+        ]
+      },
+      "submissionClaimIds": []
+    },
+    "kfupm": {
+      "recordSha256": "0ce7d2d570eccb5ee32f8f2a93ebdd4bf9092cdc0ed0f50e724e93987fac2515",
+      "topics": {
+        "coursework": [],
+        "disclosure": [],
+        "privacy_data": [],
+        "approved_tools": [
+          "kfupm-claim-003"
+        ],
+        "research_publication": [],
+        "teaching_guidance": [
+          "kfupm-claim-001",
+          "kfupm-claim-002"
+        ],
+        "security_procurement": []
+      },
+      "submissionClaimIds": [
+        "kfupm-claim-001",
+        "kfupm-claim-003"
+      ],
+      "submissionPermissionGap": true
+    },
+    "university-of-texas-at-austin": {
+      "recordSha256": "dc477146aac1e0b1a3607888f617700e889dd6a351e3837fcfd5b7801492b49d",
+      "topics": {
+        "coursework": [
+          "claim-ut-austin-005",
+          "claim-ut-austin-010"
+        ],
+        "disclosure": [
+          "claim-ut-austin-009"
+        ],
+        "privacy_data": [
+          "claim-ut-austin-001",
+          "claim-ut-austin-002",
+          "claim-ut-austin-007"
+        ],
+        "approved_tools": [
+          "cl-university-of-texas-at-austin-chatgpt-310",
+          "cl-university-of-texas-at-austin-claude-311",
+          "cl-university-of-texas-at-austin-gemini-312",
+          "cl-university-of-texas-at-austin-institutional-ai-service-313",
+          "cl-university-of-texas-at-austin-microsoft-copilot-314",
+          "cl-university-of-texas-at-austin-microsoft-copilot-for-m365-315"
+        ],
+        "research_publication": [
+          "claim-ut-austin-008",
+          "claim-ut-austin-009"
+        ],
+        "teaching_guidance": [
+          "claim-ut-austin-004",
+          "claim-ut-austin-011"
+        ],
+        "security_procurement": [
+          "claim-ut-austin-006",
+          "claim-ut-austin-003"
+        ]
+      },
+      "submissionClaimIds": [
+        "claim-ut-austin-001",
+        "claim-ut-austin-002",
+        "claim-ut-austin-007"
+      ]
+    },
+    "brown-university": {
+      "recordSha256": "484926940e308abda85c9633090dc99b70e1883716387161db0220b4c7130a96",
+      "topics": {
+        "coursework": [
+          "cl-brown-002",
+          "cl-brown-003"
+        ],
+        "disclosure": [],
+        "privacy_data": [
+          "cl-brown-004",
+          "cl-brown-008"
+        ],
+        "approved_tools": [
+          "cl-brown-university-gemini-316",
+          "cl-brown-university-notebooklm-317",
+          "cl-brown-006",
+          "cl-brown-007"
+        ],
+        "research_publication": [
+          "cl-brown-009"
+        ],
+        "teaching_guidance": [
+          "cl-brown-001"
+        ],
+        "security_procurement": [
+          "cl-brown-005"
+        ]
+      },
+      "submissionClaimIds": []
+    },
+    "university-of-illinois-urbana-champaign": {
+      "recordSha256": "0061847d045f744e788c4f2248980c856679c9e9ebc95cad6429bf38bf1ebcc0",
+      "topics": {
+        "coursework": [
+          "claim-uiuc-005"
+        ],
+        "disclosure": [
+          "claim-uiuc-005",
+          "claim-uiuc-006"
+        ],
+        "privacy_data": [
+          "claim-uiuc-002",
+          "claim-uiuc-003",
+          "claim-uiuc-007"
+        ],
+        "approved_tools": [
+          "cl-university-of-illinois-urbana-champaign-chatgpt-318",
+          "cl-university-of-illinois-urbana-champaign-gemini-319",
+          "cl-university-of-illinois-urbana-champaign-github-copilot-320",
+          "cl-university-of-illinois-urbana-champaign-institutional-ai-service-321",
+          "cl-university-of-illinois-urbana-champaign-microsoft-copilot-322",
+          "cl-university-of-illinois-urbana-champaign-microsoft-copilot-for-m365-323",
+          "cl-university-of-illinois-urbana-champaign-notebooklm-324",
+          "cl-university-of-illinois-urbana-champaign-teams-premium-325",
+          "cl-university-of-illinois-urbana-champaign-zoom-ai-companion-326",
+          "claim-uiuc-001"
+        ],
+        "research_publication": [
+          "claim-uiuc-008",
+          "claim-uiuc-009"
+        ],
+        "teaching_guidance": [
+          "claim-uiuc-006"
+        ],
+        "security_procurement": [
+          "claim-uiuc-004"
+        ]
+      },
+      "submissionClaimIds": [
+        "claim-uiuc-002",
+        "claim-uiuc-003",
+        "claim-uiuc-005"
+      ]
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import {createHash} from "node:crypto";
+import evidenceSupplement from "../../../data/public-analysis-repairs/qs51-70-evidence-supplement.json";
 import {v6ReviewedAnalysisOverride} from "./v6-effective-records";
 import {scopedAnalysisRepair,scopedAnalysisRepairRevision} from "./scoped-analysis-repair";
 import mitAnalysisDimensions from "../../../data/public-record-repairs/mit-20261010/analysis-dimensions.json";
@@ -563,7 +565,11 @@ function buildDimension(
   const status =
     (repair?.status as AnalysisDimensionStatus | undefined) ??
     deriveStatus(definition, claims);
-  const basis = claims.map((claim) => {
+  // Additional evidence navigation does not recompute the established status or score.
+  const pin=(evidenceSupplement.universities as Record<string,{recordSha256:string;dimensions:Record<string,string[]>}>)[summary.entity.slug];
+  const extra=pin?.recordSha256===createHash('sha256').update(JSON.stringify(summary)).digest('hex')?pin.dimensions[definition.key]??[]:[];
+  const basisClaims=[...claims,...extra.filter(id=>!claims.some(c=>c.id===id)).map(id=>{const c=summary.claims.find(c=>c.id===id);if(!c?.evidence.length)throw Error('Analysis supplement missing published evidence: '+id);return c;})];
+  const basis = basisClaims.map((claim) => {
     const evidence = claim.evidence[0];
 
     return {
@@ -589,7 +595,7 @@ function buildDimension(
     ? isCandidateContext
       ? "Scoped university source interpretation from candidate claims listed in basis; pending independent secondary review (publicationApproved=false). This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
       : "Scoped university source interpretation from reviewed claims listed in basis. This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
-    : buildDimensionExplanation(definition, status, claims);
+    : buildDimensionExplanation(definition, status, basisClaims);
 
   const normalizedValue = scopedRepair
     ? `${scopedAnalysisRepairRevision}:${definition.key}:${status}`
@@ -606,7 +612,7 @@ function buildDimension(
     normalizedValue,
     summary:
       repair?.summary ??
-      buildDimensionSummary(summary.entity.name, definition, status, claims),
+      buildDimensionSummary(summary.entity.name, definition, status, basisClaims),
     explanation,
     evidenceClaimIds,
     evidenceSourceUrls,

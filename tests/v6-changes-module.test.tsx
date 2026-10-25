@@ -28,14 +28,14 @@ test("earlier revisions remain filterable; full result count is independent of t
   const earlier=visibleChangeWindow(view,"2026-10-19","2026-10-19");
   assert(earlier.kind!=="invalid");assert.deepEqual(earlier.previews.map(e=>e.revision),["r4"]);
 });
-test("invalid, before-coverage, partial and empty periods stay distinct; default omits page/source-only events",()=>{
+test("invalid, before-coverage, partial and empty periods stay distinct; default includes page maintenance while source-only events stay secondary",()=>{
   const view=overview([preview("source","2026-10-23",["source_update"]),preview("page","2026-10-22",["page_update"]),preview("metadata","2026-10-22",["record_maintenance"]),preview("held",null,["held"])]);
   assert.equal(visibleChangeWindow(view,"2026-02-30","2026-03-01").kind,"invalid");
   assert.equal(visibleChangeWindow(view,"2026-10-24","2026-10-23").kind,"invalid");
   assert.equal(visibleChangeWindow(view,"2026-01-01","2026-07-31").kind,"before");
   assert.equal(visibleChangeWindow(view,"2026-07-31","2026-08-03").kind,"partial");
   const result=visibleChangeWindow(view,"2026-10-01","2026-10-23");
-  assert(result.kind!=="invalid");assert.equal(result.kind,"empty");assert.equal(result.count,0);assert.equal(result.undated,1);
+  assert(result.kind!=="invalid");assert.equal(result.kind,"matches");assert.equal(result.count,2);assert.deepEqual(result.previews.map(e=>e.revision),["page","metadata"]);assert.equal(result.undated,1);
 });
 test("SSR is collapsed with at most three previews; all seven locales preserve labels and history destinations",()=>{
   const view=overview(Array.from({length:5},(_,i)=>preview(`r${i}`,`2026-10-${23-i}`)));
