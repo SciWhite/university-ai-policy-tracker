@@ -107,3 +107,10 @@ test('registry append preserves old versions and URLs, resolves gaps and refuses
   const gap={schemaVersion:'uapt-source-hash-registry-v1' as const,entries:[{sourceUrl:old.sourceUrl,snapshotHash:old.snapshotHash,hashKind:'unknown_legacy' as const,unresolvedReason:'pending'}]};
   assert.deepEqual(mergeSourceHashRegistry(gap,[old]).entries,[old]);
 });
+
+test('candidate preparation validates full records without granting production packaging approval',()=>{
+ const pages=JSON.parse(JSON.stringify(readPublishedV6()!)),records=JSON.parse(JSON.stringify(readV6RecordCorrections()!));
+ pages.candidateOnly=true;records.candidateOnly=true;pages.publicationApproved=false;records.publicationApproved=false;
+ assert.doesNotThrow(()=>acceptV6Release(pages,records,{candidateOnly:true}));assert.throws(()=>acceptV6Release(pages,records),/Unpaired/);
+ pages.publicationApproved=true;records.publicationApproved=true;assert.throws(()=>acceptV6Release(pages,records),/Unpaired/);
+});

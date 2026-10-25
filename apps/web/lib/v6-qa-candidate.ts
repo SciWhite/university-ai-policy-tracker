@@ -89,7 +89,7 @@ export function getLocalQACandidateRecords(): V6RecordPackage | undefined {
   }
 
   const pkg = JSON.parse(raw.toString("utf8")) as V6RecordPackage;
-  if (pkg.schemaVersion !== "uapt-v6-effective-records-v1" || pkg.publicationApproved !== true) {
+  if (pkg.schemaVersion !== "uapt-v6-effective-records-v1" || (pkg.publicationApproved !== true && !(pkg.candidateOnly===true && pkg.publicationApproved===false))) {
     throw new Error(`UAPT_LOCAL_QA_CANDIDATE_RECORDS invalid schema or publicationApproved`);
   }
 
@@ -137,7 +137,7 @@ export function getLocalQACandidatePages(): PublishedV6Package | undefined {
   }
 
   const pkg = JSON.parse(raw.toString("utf8")) as PublishedV6Package;
-  if (pkg.schemaVersion !== "uapt-v6-published-pages-v1" || pkg.publicationApproved !== true) {
+  if (pkg.schemaVersion !== "uapt-v6-published-pages-v1" || (pkg.publicationApproved !== true && !(pkg.candidateOnly===true && pkg.publicationApproved===false))) {
     throw new Error(`UAPT_LOCAL_QA_CANDIDATE_PAGES invalid schema or publicationApproved`);
   }
 

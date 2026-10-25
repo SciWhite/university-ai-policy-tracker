@@ -12,7 +12,7 @@ import {V6ArtifactStore, readVerifiedArtifact, v6PublicDataRoot, type ShardIndex
 import {getLocalQACandidatePages} from './v6-qa-candidate';
 export {publishedV6Slugs,publishedV6Enabled} from './policy-v6-published-gate';
 interface LocaleData {schools:LabSchool[];views:Record<string,LocalV6Bundle>;localEvidence:Record<string,LocalV6Evidence>;entities:Record<string,unknown>;related:Record<string,unknown>}
-export type PublishedV6Package={schemaVersion:string;publicationApproved:boolean;releaseId:string;slugs:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
+export type PublishedV6Package={schemaVersion:string;publicationApproved:boolean;candidateOnly?:true;releaseId:string;slugs:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
 const store = () => new V6ArtifactStore(v6PublicDataRoot('public-v6-pages'), shardIndex as ShardIndex);
 const useShards = (revision: string) => process.env.UAPT_V6_LEGACY_DATA !== '1' && Object.hasOwn(shardIndex.revisions, revision);
 
@@ -34,7 +34,7 @@ export function readPublishedV6Revision(revision:string): PublishedV6Package | u
   const value = useShards(revision)
     ? store().view<PublishedV6Package>(revision, entry?.sha256 ?? (revision === pointer.releaseId ? pointer.sha256 : undefined))
     : entry ? readVerifiedArtifact<PublishedV6Package>(v6PublicDataRoot('public-v6-pages'),entry.path,entry.sha256,128*1024*1024) : undefined;
-  if (value && (value.schemaVersion !== 'uapt-v6-published-pages-v1' || value.publicationApproved !== true || value.releaseId !== revision)) throw new Error('Published V6 identity mismatch');
+  if (value && (value.schemaVersion !== 'uapt-v6-published-pages-v1' || value.publicationApproved !== true || value.candidateOnly===true || value.releaseId !== revision)) throw new Error('Published V6 identity mismatch');
   return value;
 }
 export function publishedV6Locale(locale:SupportedLocale){return readPublishedV6()?.locales[locale];}

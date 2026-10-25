@@ -15,11 +15,13 @@ export function PolicyV6ClaimGroups({
   entitySlug,
   locale,
   claimScopes,
+  groupIdPrefix = "claim-group",
 }: {
   groups: ClaimGroup[];
   entitySlug: string;
   locale: SupportedLocale;
   claimScopes?: Record<string, string>;
+  groupIdPrefix?: string;
 }) {
   const ui = policyV6DensityCopy(locale);
   return (
@@ -27,7 +29,7 @@ export function PolicyV6ClaimGroups({
       {groups.map((group) => (
         <PolicyV6Popover
           key={group.key}
-          id={`claim-group-${group.key}`}
+          id={`${groupIdPrefix}-${group.key}`}
           label={
             <>
               <PolicyV6ActionIcon kind="document" />

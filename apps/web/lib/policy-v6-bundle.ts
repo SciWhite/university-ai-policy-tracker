@@ -14,6 +14,10 @@ import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
+  candidateOnly?: true;
+  toolDisplayMode?: "historical_discovery";
+  publicReferenceGuide?: {topics:Record<string,string[]>;submissionClaimIds:string[];submissionPermissionGap?:boolean};
+  claimDispositions?: import("./policy-v6-claim-disposition").PublicClaimDisposition[];
   /** Development-only navigation over retained, unchanged public Claims. */
   localReferenceGuide?: { topics: Record<string, string[]>; submissionClaimIds: string[]; submissionPermissionGap?: boolean };
   localChangeProposals?: { changeId: string; category: string; status: string; repairZh?: string; suggestedNewText?: string; recordKeysImpacted?: string[]; publicationApproved: false; productionChangeApplied?: false }[];

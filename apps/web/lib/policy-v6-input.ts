@@ -1,3 +1,4 @@
+import {validatePublicClaimDispositions} from './policy-v6-claim-disposition';
 import type {PublicEntitySummary} from '@uapt/shared';
 import type {LabSchool} from './policy-v6';
 import type {LocalV6Bundle} from './policy-v6-bundle';
@@ -31,5 +32,6 @@ export function acceptV6SchoolInput(input: V6SchoolInput, summary?: PublicEntity
   if (school.heldClaims.some(c => displayed.has(c.id)) || bundle?.heldDraftIds?.some(id => displayed.has(id))) throw Error('Held claim entered V6 conclusions: ' + school.slug);
   if (bundle && (!same(bundle.school, school) || (summary && !same(bundle.sources, summary.officialSources)))) throw Error('V6 bundle mapping drift: ' + school.slug);
   if (evidence && (evidence.record.entity.slug !== school.slug || evidence.fingerprint !== school.fingerprint || (summary && !same(evidence.record, summary)))) throw Error('V6 evidence mapping drift: ' + school.slug);
+  if(bundle)validatePublicClaimDispositions(bundle);
   return {...input, kind: bundle ? 'bundle' : evidence ? 'evidence' : 'record'};
 }
