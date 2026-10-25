@@ -280,6 +280,23 @@ class RetentionDeadlineTests(unittest.TestCase):
    plan={'basis':{'sha256':'basis'},'retentionReceipt':{'path':str(fresh),'sha256':m.digest(fresh)}}
    policy={**self.policy,'retentionRegister':str(register)};observed={**self.observed,'disk':{**self.observed['disk'],'releaseRoots':['failed']}}
    with self.assertRaisesRegex(ValueError,'cannot be renewed'):m.validate_retention_receipt(plan,observed,policy)
+ def test_separate_clock_survives_mutable_register_deadline_reset(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'clocks.json';m.write(p,{'schemaVersion':'uapt-retention-clocks-v1','entries':[self.held],'temporaryArtifacts':[]})
+   policy={**self.policy,'retentionEnforcement':{**self.policy['retentionEnforcement'],'clockRegister':str(p)}}
+   refreshed=json.loads(json.dumps(self.registered));refreshed['entries'][0]['reviewBefore']=(self.time+m.datetime.timedelta(hours=2)).isoformat()
+   self.receipt['entries'][0]=dict(refreshed['entries'][0])
+   with self.assertRaisesRegex(ValueError,'cannot be renewed'):m.validate_retention_deadlines(self.receipt,self.observed,policy,m.retention_with_clocks(refreshed,policy))
+ def test_checkpoint_records_new_hold_without_replacing_first_clock(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'clocks.json';m.write(p,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[]})
+   policy={'retentionEnforcement':{'clockRegister':str(p)}};m.checkpoint_hold_clocks(self.receipt,policy)
+   first=json.loads(p.read_text())['entries'];m.checkpoint_hold_clocks(self.receipt,policy);self.assertEqual(json.loads(p.read_text())['entries'],first)
+   self.receipt['entries'][0]['reviewBefore']=(self.time+m.datetime.timedelta(hours=2)).isoformat()
+   with self.assertRaisesRegex(ValueError,'cannot be overwritten'):m.checkpoint_hold_clocks(self.receipt,policy)
+ def test_missing_clock_register_fails_closed(self):
+  with tempfile.TemporaryDirectory() as d:
+   with self.assertRaisesRegex(ValueError,'register missing'):m.retention_with_clocks(self.registered,{'retentionEnforcement':{'clockRegister':str(Path(d)/'missing.json')}})
  def test_temporary_discovery_skips_runtime_symlinks_and_rejects_escape(self):
   with tempfile.TemporaryDirectory() as d:
    root=Path(d);(root/'builds').mkdir();(root/'builds/failed').mkdir();(root/'builds/current').symlink_to(root/'builds/failed',target_is_directory=True)

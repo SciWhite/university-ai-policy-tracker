@@ -60,3 +60,5 @@
 磁盘检查同时发现 policy 明确列出的 `builds/*`、`candidates/*`、operations 源码压缩包及暂存公开内容路径。它们须逐项列在收据 `temporaryArtifacts` 中，以绝对 `path` 为键，使用同样有界的 held 字段；遗漏、新增或软链接冒充普通材料均不能绕过检查。发现规则跳过符号链接，不把运行 catalog、证据或 operations 整目录归入垃圾。旧临时目录先登记现有用途和具体处理动作，按白名单另行归档。
 
 执行 `sudo /usr/local/libexec/uapt-release-lifecycle.py retention` 可只读核对当前台账、真实目录和暂留期限。prebuild、gate 及切流前也执行同样检查。新失败候选必须立即登记材料和期限；complete 后的台账更新必须保留全部现存 held 的原始时间，旧脚本若丢失字段会被拒绝。禁止为通过门禁清空权威台账、忽略临时材料或调高容量预算。
+
+首次暂留时钟另存 root 拥有的 `hold-clocks.json`，由 `retentionEnforcement.clockRegister` 指定。即使普通 current-retention 清单被整份重写，也不能延长已记录的期限。prebuild/gate 在同一发布锁中登记首次见到且已验证的 hold；失败/完成后的台账补写须执行 `record-retention` 校验并登记新增 hold，再只读执行 `retention`。归档移除后的旧时钟继续保留作追溯，禁止复用旧 release 路径或重置时钟文件。

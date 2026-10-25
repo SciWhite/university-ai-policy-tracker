@@ -120,6 +120,35 @@ def validate_retention_deadlines(receipt, observed, policy, registered):
                 if since != retention_timestamp(prior.get('heldSince'), 'registered heldSince') or deadline > old_deadline:
                     raise ValueError('Hold deadline cannot be renewed by refreshing the receipt: ' + identity)
 
+def retention_with_clocks(registered, policy):
+    path = policy.get('retentionEnforcement', {}).get('clockRegister')
+    if not path: return registered
+    if not Path(path).is_file(): raise ValueError('Immutable hold-clock register missing')
+    clocks = json.loads(Path(path).read_text())
+    if clocks.get('schemaVersion') != 'uapt-retention-clocks-v1': raise ValueError('Invalid hold-clock register')
+    merged = dict(registered)
+    for field, key in [('entries', 'name'), ('temporaryArtifacts', 'path')]:
+        entries = {e[key]: e for e in registered.get(field, [])}
+        entries.update({e[key]: e for e in clocks.get(field, [])})
+        merged[field] = list(entries.values())
+    return merged
+
+def checkpoint_hold_clocks(receipt, policy):
+    path = policy.get('retentionEnforcement', {}).get('clockRegister')
+    if not path: return
+    path = Path(path)
+    clocks = json.loads(path.read_text())
+    for field, key in [('entries', 'name'), ('temporaryArtifacts', 'path')]:
+        existing = {e[key]: e for e in clocks.get(field, [])}
+        for entry in receipt.get(field, []):
+            if entry.get('disposition') != 'held': continue
+            prior = existing.get(entry[key])
+            if prior and (retention_timestamp(entry['heldSince'], 'heldSince') != retention_timestamp(prior['heldSince'], 'registered heldSince') or retention_timestamp(entry['reviewBefore'], 'reviewBefore') > retention_timestamp(prior['reviewBefore'], 'registered reviewBefore')):
+                raise ValueError('Hold clock cannot be overwritten by a refreshed register: ' + entry[key])
+            if not prior: existing[entry[key]] = {k: entry[k] for k in [key, 'disposition', 'heldSince', 'reviewBefore', 'nextAction', 'reason']}
+        clocks[field] = list(existing.values())
+    clocks['checkedAt'] = now(); write(path, clocks)
+
 def validate_retention_receipt(plan, observed, policy=None):
     proof = plan.get('retentionReceipt', {})
     if not proof.get('path') or digest(proof['path']) != proof.get('sha256'): raise ValueError('Missing or changed retention receipt')
@@ -140,7 +169,7 @@ def validate_retention_receipt(plan, observed, policy=None):
     if policy.get('retentionEnforcement'):
         register = Path(policy['retentionRegister'])
         if not register.is_file(): raise ValueError('Authoritative retention register missing')
-        validate_retention_deadlines(receipt, observed, policy, json.loads(register.read_text()))
+        validate_retention_deadlines(receipt, observed, policy, retention_with_clocks(json.loads(register.read_text()), policy))
 def validate_plan(plan, policy, observed):
     """Pure admission check; called again under the same lock immediately before routing."""
     if plan.get('schemaVersion') != 'uapt-release-lifecycle-plan-v1': raise ValueError('Wrong lifecycle plan schema')
@@ -339,6 +368,8 @@ def validate_capacity(plan, capacity, prebuild=False, basis=None):
 def load_plan(path, prebuild=False):
     path = Path(path).resolve(); plan = json.loads(path.read_text()); policy = json.loads(POLICY.read_text()); policy['_sha256'] = digest(POLICY)
     validate_plan(plan, policy, audit())
+    if policy.get('retentionEnforcement'):
+        checkpoint_hold_clocks(json.loads(Path(plan['retentionReceipt']['path']).read_text()), policy)
     for unit in plan['candidateUnits']:
         limits = state(unit)
         if limits.get('MemoryHigh') in [None, 'infinity'] or limits.get('MemoryMax') in [None, 'infinity']: raise ValueError('Candidate limits must be installed before admission')
@@ -404,17 +435,18 @@ def recover(tx, reload_nginx=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['audit', 'retention', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire'])
+    parser.add_argument('action', choices=['audit', 'retention', 'record-retention', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire'])
     parser.add_argument('plan', nargs='?'); parser.add_argument('--boot', action='store_true'); parser.add_argument('--completion-ledger'); args = parser.parse_args()
     LOCK.parent.mkdir(parents=True, exist_ok=True)
     with LOCK.open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if args.action == 'audit': print(json.dumps(audit(), indent=2)); return
-        if args.action == 'retention':
+        if args.action in ['retention', 'record-retention']:
             policy = json.loads(POLICY.read_text()); register = Path(policy['retentionRegister'])
             receipt = json.loads(register.read_text())
             plan = {'basis': {'sha256': receipt['basisSha256']}, 'retentionReceipt': {'path': str(register), 'sha256': digest(register)}}
             validate_retention_receipt(plan, audit(), policy)
+            if args.action == 'record-retention': checkpoint_hold_clocks(receipt, policy)
             print('Retention passed; no expired holds or unclassified temporary artifacts'); return
         pending = STATE / 'transaction.json'
         if args.action == 'expire':
