@@ -7,6 +7,10 @@ import { ChangeEventStore } from "../apps/web/lib/public-change-history";
 import { buildEventHistories, buildChangeOverview, eventPreview, eventHash, type ChangeOverviewPackage } from "../apps/web/lib/change-events";
 
 const digest=(raw:Buffer)=>createHash('sha256').update(raw).digest('hex');
+/** RSS/recent limits apply to the global feed before restricting a release's school scope. */
+export function scopedEventWindow<T extends {slug:string;publishedAt:string|null}>(rows:T[],scope:Set<string>,window:{start:string;end:string;limit:number}):T[] {
+  return rows.filter(e=>e.publishedAt&&Date.parse(e.publishedAt)>=Date.parse(window.start)&&Date.parse(e.publishedAt)<=Date.parse(window.end)).slice(0,window.limit).filter(e=>scope.has(e.slug));
+}
 export function validateChangeEventReceipt(receiptPath:string,scopePath:string,dataPath:string,basisSha256:string,packageRoot=dirname(receiptPath)) {
   const root=realpathSync(packageRoot),receipt=JSON.parse(readFileSync(receiptPath,'utf8'));
   function proof(ref:{path:string;sha256:string;basisSha256:string}) {
@@ -49,7 +53,7 @@ export function validateChangeEventReceipt(receiptPath:string,scopePath:string,d
     if(name==='recentChanges'||name==='rss') {
       const w=surface.window;
       if(!w||typeof w.start!=='string'||typeof w.end!=='string'||!Number.isFinite(Date.parse(w.start))||!Number.isFinite(Date.parse(w.end))||Date.parse(w.start)>Date.parse(w.end)||!/(Z|[+-]\d{2}:\d{2})$/.test(w.start)||!/(Z|[+-]\d{2}:\d{2})$/.test(w.end)||!Number.isSafeInteger(w.limit)||w.limit<1||w.limit>100)throw Error(`Invalid event window: ${name}`);
-      wanted=wanted.filter(e=>e.publishedAt&&Date.parse(e.publishedAt)>=Date.parse(w.start)&&Date.parse(e.publishedAt)<=Date.parse(w.end)).slice(0,w.limit);
+      wanted=scopedEventWindow(wantedIndex,scopeSlugs,w);
     }
     if(!isDeepStrictEqual(surface.eventIds,wanted.map(e=>e.id)))throw Error(`Stale, duplicate or missing event surface: ${name}`);
   }
