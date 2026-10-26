@@ -241,6 +241,32 @@ class RetentionDeadlineTests(unittest.TestCase):
   self.registered={'entries':[dict(self.held)]}
  def validate(self):m.validate_retention_deadlines(self.receipt,self.observed,self.policy,self.registered)
  def test_bounded_hold_with_action_passes(self):self.validate()
+ def seven_day_window(self, age_hours=30):
+  self.policy['retentionEnforcement'].update(maxHoldHours=168,blockAfterHours=168)
+  entry={**self.held,'heldSince':(self.time-m.datetime.timedelta(hours=age_hours)).isoformat(),'reviewBefore':(self.time-m.datetime.timedelta(hours=age_hours-24)).isoformat()}
+  self.receipt['entries']=[dict(entry)];self.registered['entries']=[dict(entry)]
+ def test_overdue_review_inside_seven_days_passes_without_resetting_clock(self):
+  self.seven_day_window();before=json.dumps(self.registered);self.validate();self.assertEqual(before,json.dumps(self.registered))
+ def test_seven_day_window_still_blocks_after_original_first_hold(self):
+  self.seven_day_window(169)
+  with self.assertRaisesRegex(ValueError,'Expired registered hold'):self.validate()
+ def test_seven_day_window_cannot_be_renewed_by_receipt(self):
+  self.seven_day_window();self.receipt['entries'][0]['heldSince']=(self.time-m.datetime.timedelta(hours=29)).isoformat()
+  with self.assertRaisesRegex(ValueError,'cannot be renewed'):self.validate()
+ def test_seven_day_window_cannot_relabel_failed_artifact_rollback(self):
+  self.seven_day_window();self.receipt['entries'][0]['disposition']='rollback'
+  with self.assertRaisesRegex(ValueError,'reclassified'):self.validate()
+ def test_seven_day_window_covers_temporary_materials(self):
+  self.seven_day_window();entry={**self.receipt['entries'][0],'path':'/srv/uapt/builds/failed'};entry.pop('name')
+  self.receipt['temporaryArtifacts']=[entry];self.registered['temporaryArtifacts']=[dict(entry)];self.observed['disk']['temporaryPaths']=[entry['path']];self.validate()
+ def test_new_seven_day_deadline_passes_but_longer_hold_refuses(self):
+  self.seven_day_window(1);entry=self.receipt['entries'][0];entry['reviewBefore']=(m.retention_timestamp(entry['heldSince'],'heldSince')+m.datetime.timedelta(hours=168)).isoformat();self.registered['entries']=[dict(entry)];self.validate()
+  entry['reviewBefore']=(self.time+m.datetime.timedelta(days=8)).isoformat()
+  with self.assertRaisesRegex(ValueError,'unbounded'):self.validate()
+ def test_invalid_blocking_window_refuses(self):
+  for value in [-1,169,'168',True]:
+   self.seven_day_window();self.policy['retentionEnforcement']['blockAfterHours']=value
+   with self.assertRaisesRegex(ValueError,'blocking window'):self.validate()
  def deferral(self):
   old=(self.time-m.datetime.timedelta(minutes=1)).isoformat()
   self.receipt['entries'][0]['reviewBefore']=old;self.registered['entries'][0]['reviewBefore']=old

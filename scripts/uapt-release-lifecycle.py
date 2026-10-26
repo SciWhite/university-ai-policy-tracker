@@ -79,6 +79,15 @@ def temporary_paths(root, guard):
             if not path.is_symlink() and (path.is_file() or path.is_dir()): paths.add(str(path))
     return sorted(paths)
 
+def retention_blocking_deadline(entry, guard):
+    """Keep the original review clock; allow a separately bounded handling window."""
+    hours = guard.get('blockAfterHours', 0)
+    if type(hours) is not int or not 0 <= hours <= guard['maxHoldHours']:
+        raise ValueError('Invalid retention blocking window')
+    review = retention_timestamp(entry.get('reviewBefore'), 'reviewBefore')
+    since = retention_timestamp(entry.get('heldSince'), 'heldSince')
+    return max(review, since + datetime.timedelta(hours=hours))
+
 def authorized_retention_deferral(receipt, policy, entry, current):
     """Explicit, exact-basis operations exception; original hold clocks never change."""
     exception = policy.get('retentionEnforcement', {}).get('releaseDeferral')
@@ -118,7 +127,7 @@ def validate_retention_deadlines(receipt, observed, policy, registered):
                 raise ValueError('Temporary artifacts require an explicit bounded hold: ' + identity)
             if prior and prior.get('disposition') == 'held':
                 old_deadline = retention_timestamp(prior.get('reviewBefore'), 'registered reviewBefore')
-                if old_deadline <= current and not authorized_retention_deferral(receipt, policy, prior, current): raise ValueError('Expired registered hold; archive or resolve dependency before release: ' + identity)
+                if retention_blocking_deadline(prior, guard) <= current and not authorized_retention_deferral(receipt, policy, prior, current): raise ValueError('Expired registered hold; archive or resolve dependency before release: ' + identity)
                 if entry.get('disposition') != 'held':
                     # A fresh name/classification cannot hide old archive debt.
                     if key == 'path' or entry.get('disposition') != 'active' or identity not in runtime_roots:
@@ -128,7 +137,7 @@ def validate_retention_deadlines(receipt, observed, policy, registered):
             deadline = retention_timestamp(entry.get('reviewBefore'), 'reviewBefore')
             if not entry.get('nextAction') or since > checked + datetime.timedelta(minutes=5) or deadline <= since or deadline - since > limit:
                 raise ValueError('Missing or unbounded hold action/deadline: ' + identity)
-            if deadline <= current and not authorized_retention_deferral(receipt, policy, entry, current): raise ValueError('Expired hold; archive or resolve dependency before release: ' + identity)
+            if retention_blocking_deadline(entry, guard) <= current and not authorized_retention_deferral(receipt, policy, entry, current): raise ValueError('Expired hold; archive or resolve dependency before release: ' + identity)
             if prior and prior.get('disposition') == 'held':
                 if since != retention_timestamp(prior.get('heldSince'), 'registered heldSince') or deadline > old_deadline:
                     raise ValueError('Hold deadline cannot be renewed by refreshing the receipt: ' + identity)
@@ -460,7 +469,11 @@ def main():
             plan = {'basis': {'sha256': receipt['basisSha256']}, 'retentionReceipt': {'path': str(register), 'sha256': digest(register)}}
             validate_retention_receipt(plan, audit(), policy)
             if args.action == 'record-retention': checkpoint_hold_clocks(receipt, policy)
-            print('Retention passed; no expired holds or unclassified temporary artifacts'); return
+            current = datetime.datetime.now(datetime.timezone.utc)
+            for entry in receipt.get('entries', []) + receipt.get('temporaryArtifacts', []):
+                if entry.get('disposition') == 'held' and retention_timestamp(entry['reviewBefore'], 'reviewBefore') <= current:
+                    print('Review overdue (release handling window applies): ' + entry.get('name', entry.get('path', '')) + '; blocking deadline=' + retention_blocking_deadline(entry, policy['retentionEnforcement']).isoformat())
+            print('Retention passed; no blocking expired holds or unclassified temporary artifacts'); return
         pending = STATE / 'transaction.json'
         if args.action == 'expire':
             if pending.exists():
