@@ -1,0 +1,840 @@
+{
+  "schemaVersion": "uapt-v6-frozen-legacy-completeness-v1",
+  "releaseId": "qs71-90-v6-reviewed-r1-20261025",
+  "sourcePagesSha256": "d4c8cf7ea7189fad97cb5ec0b501b5e0d8b5ad476770d054bae006373dad7a20",
+  "repairSlugs": [
+    "universite-paris-saclay",
+    "lund-university",
+    "sorbonne-university",
+    "the-university-of-warwick",
+    "trinity-college-dublin-the-university-of-dublin",
+    "university-of-birmingham",
+    "the-university-of-western-australia",
+    "kth-royal-institute-of-technology",
+    "university-of-glasgow",
+    "universitat-heidelberg",
+    "university-of-washington",
+    "adelaide-university",
+    "pennsylvania-state-university",
+    "universidad-de-buenos-aires",
+    "tokyo-institute-of-technology",
+    "university-of-leeds",
+    "university-of-southampton",
+    "boston-university",
+    "freie-universitaet-berlin",
+    "purdue-university"
+  ],
+  "reason": "Exact accepted historical inputs only; changed or new school presentations require complete bilingual mappings. Never regenerate during packing.",
+  "inputs": {
+    "massachusetts-institute-of-technology": {
+      "en": "add16281becc1d26b99632ff5175bee72e4c4e00bf183205def645e45f84e7a7",
+      "zh": "74a09772c771dc37331aa7bafad8647341153e25fcee298e1a48a2748ff7ec11",
+      "fr": "7d6c4de8feb7106b378ed512250b5956b9c29cac13bb7c5b7e2d8f921fc5e584",
+      "pl": "43eec13ea5437293902f3c0cdb2b4ce90e0a9515ffd208df4542c91c71799335",
+      "es": "6ac7954103733e7a96ad8e2ddf6c3c4351a5e08722947e3c3f560e00ccb3181a",
+      "nl": "5f2de4383d57eb55d1d4dff624a5b97485d47ce61cdf92fbe030d0ce289c63b9",
+      "ms": "96a9ca1b0b47ec7ffedc1234bcd69d30c70d5d5de308a033ec5d83b0da848327"
+    },
+    "imperial-college-london": {
+      "en": "671401d0267a295f768d6396f40c134d019764de484a2af354230af2ef612b9c",
+      "zh": "4f4cad554fd607e2b2e24463157c5fde8f01706af8606997b9d65509de242bd8",
+      "fr": "0b781c7204bc5e89c2161210345659f126bc7505f80341ba14f77189b985447a",
+      "pl": "59fb083a4878adcd97a953dd931fd91564988005dd956380b045a8c99b9b17d6",
+      "es": "12a12e168c6efc5a1744fa956940c799d01971a58feef27c37176b93d0cbb53b",
+      "nl": "e1d6de92328c23e53a8e4da4317c6c95e4cdd58d6d2786c940bb0c1f5b0343d2",
+      "ms": "88c86ec93b58661856603129a08f5a763cbd8f1984c6bc19efcbf7a12870c33b"
+    },
+    "stanford-university": {
+      "en": "a0eb860254fc933c900b0ca6fb743e0dbb4e53e0481ebcfbc60327f88955ef5e",
+      "zh": "c5c400044edf07f68f326807cbfd299cdb890e3c31df97b112ecbf220651fb71",
+      "fr": "b7a20ba004dc7d48e5435fe0c4154f22429b84f62815d1e8df29ec818b535276",
+      "pl": "ed33276200e796deca64aee246d44b36aa40a973a7b59af50c621ddd1707cfd6",
+      "es": "4c7d48ee900afe4d5efc1d29cc07ea2296186e3a2e12da93b225b04fbee5b6cd",
+      "nl": "c6a83c6b4d7c5c2b3cbfd85d3320550ecb257faa97cefcaa133d90c4d936aafd",
+      "ms": "c7a2e9226b26a023937db3db753ae5c6d6efc57bf2026772d474e087ddb17851"
+    },
+    "university-of-oxford": {
+      "en": "670a043648f7ca13f80e1182a74eb3cb9e746f1dffe1596e44e348e1faba4ed1",
+      "zh": "7118c7def5f59e8991839da80c3adaefcb6a8a81f6e18125509e0ff520207743",
+      "fr": "7b7a005e131cbb68c7723ccae562f2b299de66e29f247a00f013e608fbb1e4f5",
+      "pl": "87a8228542e13e513a4c05dd0ce0b1bb51acfd2f94ecb2cce33a48e3cd273e19",
+      "es": "9a6b498a33fc5a2e4553d8392d16686f14750545e869abb85e4d1c6f1318c6a9",
+      "nl": "c78c039bfaa25d38a3d05d350cdb572a90d6a4722e76e15f301baa2082df9941",
+      "ms": "cefa646b0683fe4581b7e0a73d0a2f441e0505f9859f2cae83e5a8bb950d71da"
+    },
+    "harvard-university": {
+      "en": "e6e70ea2e5b4fc0b818c6984d0779014bb5eca1732f3a57117a64392299de7e1",
+      "zh": "b2be287c08b30240771f4e6841b929c02cd3964c36244470a016c460bd3fe7d1",
+      "fr": "b37de6f76bb7dc1d1923c2541604244b1df315f21954ec1dc533f745dacf367f",
+      "pl": "9a88d8e9a49b4719639bfe4f5ec13fc52bc9fe0feb98498ba13d9dd7f4b6398c",
+      "es": "06b13956d6f75ce3b60e871c25d3233639d73f57f93b88baf02a9469399a2ef2",
+      "nl": "060655ee071638779c00d1b8f9667e39a66b551c70b5dac986f84d4c5ff8c944",
+      "ms": "da4ff935472dc7e75e94ab13da4eb653cb6d41ad1ff72b3be472aed4025e8225"
+    },
+    "university-of-cambridge": {
+      "en": "24c07617f3f6c4a385f1890395962af3a03df49f3b054b989f2429f1b376dfe8",
+      "zh": "e263745c84ed17c9ace885fdb32fc56739d745661f7e4538f7d200b1052b43bc",
+      "fr": "26dc860d72134892814d951ba2f1bd058c8288b9261e047b2ab1249d68d1c7cd",
+      "pl": "22cd5769bce18bc5231ece4d705dfc7a83298f007b195b725166dc1d7b350189",
+      "es": "b1510ae5da99eaee4e86827f540c314b9856bf6a7b0950bfae265709ee495086",
+      "nl": "3704c017d94d23908163a2eaed30167e14cc60f61677e20ed41167f5f9ce08bf",
+      "ms": "df69f54810ac8d42811044b3c45e0139ebc36180405f357f53c3a3f816c62b30"
+    },
+    "eth-zurich": {
+      "en": "edb6923c294cbbc2449975c06d1824d54c081dc1fd83831e48084172be502e80",
+      "zh": "8cf9c1bb2af121406a027c904a2eb586ec4d55c9c0b0a9bdacf2873cede52d86",
+      "fr": "edb6923c294cbbc2449975c06d1824d54c081dc1fd83831e48084172be502e80",
+      "pl": "edb6923c294cbbc2449975c06d1824d54c081dc1fd83831e48084172be502e80",
+      "es": "edb6923c294cbbc2449975c06d1824d54c081dc1fd83831e48084172be502e80",
+      "nl": "edb6923c294cbbc2449975c06d1824d54c081dc1fd83831e48084172be502e80",
+      "ms": "edb6923c294cbbc2449975c06d1824d54c081dc1fd83831e48084172be502e80"
+    },
+    "national-university-of-singapore": {
+      "en": "33506156f22e6646fe242021ee4d32cd036d4e4211db6d0a79f2b119980c9eb6",
+      "zh": "a72c897de968af83a566c45343ea44b421306e95f727df1b54adda5cdbb244d1",
+      "fr": "33506156f22e6646fe242021ee4d32cd036d4e4211db6d0a79f2b119980c9eb6",
+      "pl": "33506156f22e6646fe242021ee4d32cd036d4e4211db6d0a79f2b119980c9eb6",
+      "es": "33506156f22e6646fe242021ee4d32cd036d4e4211db6d0a79f2b119980c9eb6",
+      "nl": "33506156f22e6646fe242021ee4d32cd036d4e4211db6d0a79f2b119980c9eb6",
+      "ms": "33506156f22e6646fe242021ee4d32cd036d4e4211db6d0a79f2b119980c9eb6"
+    },
+    "ucl": {
+      "en": "30666829ce1db2de65872734c62cb0954fb475cc0d3bf54400c4c36f4ae3ad7f",
+      "zh": "1f1f383e63723240eaf999ba7c81f670bb8eafdfcd2233df2da845091ddd199a",
+      "fr": "30666829ce1db2de65872734c62cb0954fb475cc0d3bf54400c4c36f4ae3ad7f",
+      "pl": "30666829ce1db2de65872734c62cb0954fb475cc0d3bf54400c4c36f4ae3ad7f",
+      "es": "30666829ce1db2de65872734c62cb0954fb475cc0d3bf54400c4c36f4ae3ad7f",
+      "nl": "30666829ce1db2de65872734c62cb0954fb475cc0d3bf54400c4c36f4ae3ad7f",
+      "ms": "30666829ce1db2de65872734c62cb0954fb475cc0d3bf54400c4c36f4ae3ad7f"
+    },
+    "california-institute-of-technology": {
+      "en": "935c837489ef8fafe85ba33772fa278a3caba0e07cb5e2d996b30ed1dfa10a93",
+      "zh": "3c48f7c3d64c3fc456734f42380f384edb8dfc315ae087605ba53dc49bed5bbe",
+      "fr": "935c837489ef8fafe85ba33772fa278a3caba0e07cb5e2d996b30ed1dfa10a93",
+      "pl": "935c837489ef8fafe85ba33772fa278a3caba0e07cb5e2d996b30ed1dfa10a93",
+      "es": "935c837489ef8fafe85ba33772fa278a3caba0e07cb5e2d996b30ed1dfa10a93",
+      "nl": "935c837489ef8fafe85ba33772fa278a3caba0e07cb5e2d996b30ed1dfa10a93",
+      "ms": "935c837489ef8fafe85ba33772fa278a3caba0e07cb5e2d996b30ed1dfa10a93"
+    },
+    "university-of-hong-kong": {
+      "en": "760cf28b9f9dc2b0dba8c0113eae403bca41c556fa48ef4276737d485560ccc4",
+      "zh": "15ce0280e11b45c7c42df975faf18083600694939bfd7dfc050adac1cc3881be",
+      "fr": "760cf28b9f9dc2b0dba8c0113eae403bca41c556fa48ef4276737d485560ccc4",
+      "pl": "760cf28b9f9dc2b0dba8c0113eae403bca41c556fa48ef4276737d485560ccc4",
+      "es": "760cf28b9f9dc2b0dba8c0113eae403bca41c556fa48ef4276737d485560ccc4",
+      "nl": "760cf28b9f9dc2b0dba8c0113eae403bca41c556fa48ef4276737d485560ccc4",
+      "ms": "760cf28b9f9dc2b0dba8c0113eae403bca41c556fa48ef4276737d485560ccc4"
+    },
+    "nanyang-technological-university": {
+      "en": "ccb827a92a08fa3405927a05e0e30d9abcf64aefe3f7d90b75c7d943c5942d2c",
+      "zh": "1fd07f5136cafa03a01c92809610a99d2b0ac9f6cf3ed4576c1be3edf7ccf3cf",
+      "fr": "ccb827a92a08fa3405927a05e0e30d9abcf64aefe3f7d90b75c7d943c5942d2c",
+      "pl": "ccb827a92a08fa3405927a05e0e30d9abcf64aefe3f7d90b75c7d943c5942d2c",
+      "es": "ccb827a92a08fa3405927a05e0e30d9abcf64aefe3f7d90b75c7d943c5942d2c",
+      "nl": "ccb827a92a08fa3405927a05e0e30d9abcf64aefe3f7d90b75c7d943c5942d2c",
+      "ms": "ccb827a92a08fa3405927a05e0e30d9abcf64aefe3f7d90b75c7d943c5942d2c"
+    },
+    "university-of-chicago": {
+      "en": "0cb8be7561a030586e71d9766b3e8d50e5549712f3a5c1e37d07c48df308002b",
+      "zh": "b49e84bbbc5420931c6678f7c58f55e16fad453c7b08f43ba576e7cf55e022e1",
+      "fr": "0cb8be7561a030586e71d9766b3e8d50e5549712f3a5c1e37d07c48df308002b",
+      "pl": "0cb8be7561a030586e71d9766b3e8d50e5549712f3a5c1e37d07c48df308002b",
+      "es": "0cb8be7561a030586e71d9766b3e8d50e5549712f3a5c1e37d07c48df308002b",
+      "nl": "0cb8be7561a030586e71d9766b3e8d50e5549712f3a5c1e37d07c48df308002b",
+      "ms": "0cb8be7561a030586e71d9766b3e8d50e5549712f3a5c1e37d07c48df308002b"
+    },
+    "peking-university": {
+      "en": "c31b87890e7746a7dff612d82c3498aaa244a8adafd8799d5165bcb44dad783b",
+      "zh": "fc0a22e4668d5b24f6bdbbf95bd2b249813ce234397f0eec8f0b73a43f0330d9",
+      "fr": "c31b87890e7746a7dff612d82c3498aaa244a8adafd8799d5165bcb44dad783b",
+      "pl": "c31b87890e7746a7dff612d82c3498aaa244a8adafd8799d5165bcb44dad783b",
+      "es": "c31b87890e7746a7dff612d82c3498aaa244a8adafd8799d5165bcb44dad783b",
+      "nl": "c31b87890e7746a7dff612d82c3498aaa244a8adafd8799d5165bcb44dad783b",
+      "ms": "c31b87890e7746a7dff612d82c3498aaa244a8adafd8799d5165bcb44dad783b"
+    },
+    "university-of-pennsylvania": {
+      "en": "947fd8e1a71d02e1c2d0a9fb63aac7f3a37972fe1fe7008dcea7f4340370d8a4",
+      "zh": "6b57385ab42efe00d3eeae122d75208fb523b3fbd4c2a8a9bbb7ea4447148489",
+      "fr": "947fd8e1a71d02e1c2d0a9fb63aac7f3a37972fe1fe7008dcea7f4340370d8a4",
+      "pl": "947fd8e1a71d02e1c2d0a9fb63aac7f3a37972fe1fe7008dcea7f4340370d8a4",
+      "es": "947fd8e1a71d02e1c2d0a9fb63aac7f3a37972fe1fe7008dcea7f4340370d8a4",
+      "nl": "947fd8e1a71d02e1c2d0a9fb63aac7f3a37972fe1fe7008dcea7f4340370d8a4",
+      "ms": "947fd8e1a71d02e1c2d0a9fb63aac7f3a37972fe1fe7008dcea7f4340370d8a4"
+    },
+    "cornell-university": {
+      "en": "d749589ea07d69cfe05151702a22578afa2c32da0af44287deda58855cbbaa4c",
+      "zh": "117fb1eff7a9b3b4061dfcd96f9f5ad19c3c1c59dab14408f26eaaad870b5ca0",
+      "fr": "d749589ea07d69cfe05151702a22578afa2c32da0af44287deda58855cbbaa4c",
+      "pl": "d749589ea07d69cfe05151702a22578afa2c32da0af44287deda58855cbbaa4c",
+      "es": "d749589ea07d69cfe05151702a22578afa2c32da0af44287deda58855cbbaa4c",
+      "nl": "d749589ea07d69cfe05151702a22578afa2c32da0af44287deda58855cbbaa4c",
+      "ms": "d749589ea07d69cfe05151702a22578afa2c32da0af44287deda58855cbbaa4c"
+    },
+    "tsinghua-university": {
+      "en": "7ef3c81717706a3174382a2f0ca3487f6a70e244bae60349003477058fbd724d",
+      "zh": "532063660dc678bacd3c3ac68d988d2f4c4eeb47dd6fa7e5c2761bf7b79d0108",
+      "fr": "7ef3c81717706a3174382a2f0ca3487f6a70e244bae60349003477058fbd724d",
+      "pl": "7ef3c81717706a3174382a2f0ca3487f6a70e244bae60349003477058fbd724d",
+      "es": "7ef3c81717706a3174382a2f0ca3487f6a70e244bae60349003477058fbd724d",
+      "nl": "7ef3c81717706a3174382a2f0ca3487f6a70e244bae60349003477058fbd724d",
+      "ms": "7ef3c81717706a3174382a2f0ca3487f6a70e244bae60349003477058fbd724d"
+    },
+    "university-of-california-berkeley": {
+      "en": "b87c1accea4bbcd9b2ee2d773942052e48d4f5cb536861f0e1f818805b12e30c",
+      "zh": "d813864bc710d29ed8e55d00c4c50c1e34de5db6a094f8b782553fa2ed8ffc6c",
+      "fr": "b87c1accea4bbcd9b2ee2d773942052e48d4f5cb536861f0e1f818805b12e30c",
+      "pl": "b87c1accea4bbcd9b2ee2d773942052e48d4f5cb536861f0e1f818805b12e30c",
+      "es": "b87c1accea4bbcd9b2ee2d773942052e48d4f5cb536861f0e1f818805b12e30c",
+      "nl": "b87c1accea4bbcd9b2ee2d773942052e48d4f5cb536861f0e1f818805b12e30c",
+      "ms": "b87c1accea4bbcd9b2ee2d773942052e48d4f5cb536861f0e1f818805b12e30c"
+    },
+    "university-of-melbourne": {
+      "en": "8e26d82f1ba90efa1eeafcbb90a7da645308e38cc69d1674821b54b04dbe2dfd",
+      "zh": "8115c6bacb76ce7d10c9b756425992ef339cf209e5783c813daa43b18d5f700a",
+      "fr": "8e26d82f1ba90efa1eeafcbb90a7da645308e38cc69d1674821b54b04dbe2dfd",
+      "pl": "8e26d82f1ba90efa1eeafcbb90a7da645308e38cc69d1674821b54b04dbe2dfd",
+      "es": "8e26d82f1ba90efa1eeafcbb90a7da645308e38cc69d1674821b54b04dbe2dfd",
+      "nl": "8e26d82f1ba90efa1eeafcbb90a7da645308e38cc69d1674821b54b04dbe2dfd",
+      "ms": "8e26d82f1ba90efa1eeafcbb90a7da645308e38cc69d1674821b54b04dbe2dfd"
+    },
+    "unsw-sydney": {
+      "en": "16cdd9b2ad598be9635253cb1c814dedb95cc42ed91de1b71cb2c506bf785459",
+      "zh": "887fa0e7ea958ebde14d5b2cac915f43ec167450eb6e24c90f646db5b7e1656b",
+      "fr": "16cdd9b2ad598be9635253cb1c814dedb95cc42ed91de1b71cb2c506bf785459",
+      "pl": "16cdd9b2ad598be9635253cb1c814dedb95cc42ed91de1b71cb2c506bf785459",
+      "es": "16cdd9b2ad598be9635253cb1c814dedb95cc42ed91de1b71cb2c506bf785459",
+      "nl": "16cdd9b2ad598be9635253cb1c814dedb95cc42ed91de1b71cb2c506bf785459",
+      "ms": "16cdd9b2ad598be9635253cb1c814dedb95cc42ed91de1b71cb2c506bf785459"
+    },
+    "yale-university": {
+      "en": "25bacac09abc197d94a02029debf90fe1995e065bc76259ef49700593352b7e6",
+      "zh": "1bea7835f660b93a2aeb985087ec0ae44e0a3b82fcd26c6ae8e439da6c7bb9bb",
+      "fr": "25bacac09abc197d94a02029debf90fe1995e065bc76259ef49700593352b7e6",
+      "pl": "25bacac09abc197d94a02029debf90fe1995e065bc76259ef49700593352b7e6",
+      "es": "25bacac09abc197d94a02029debf90fe1995e065bc76259ef49700593352b7e6",
+      "nl": "25bacac09abc197d94a02029debf90fe1995e065bc76259ef49700593352b7e6",
+      "ms": "25bacac09abc197d94a02029debf90fe1995e065bc76259ef49700593352b7e6"
+    },
+    "epfl": {
+      "en": "b9eeb244f52e3b3d266912ac5f252eb49d8d0f6a3a305ed2317137f615aaa989",
+      "zh": "1dfd255df624e10ce9ee68698e4098c878e52fb626505ccea17c3902365b0553",
+      "fr": "b9eeb244f52e3b3d266912ac5f252eb49d8d0f6a3a305ed2317137f615aaa989",
+      "pl": "b9eeb244f52e3b3d266912ac5f252eb49d8d0f6a3a305ed2317137f615aaa989",
+      "es": "b9eeb244f52e3b3d266912ac5f252eb49d8d0f6a3a305ed2317137f615aaa989",
+      "nl": "b9eeb244f52e3b3d266912ac5f252eb49d8d0f6a3a305ed2317137f615aaa989",
+      "ms": "b9eeb244f52e3b3d266912ac5f252eb49d8d0f6a3a305ed2317137f615aaa989"
+    },
+    "technical-university-of-munich": {
+      "en": "11bfa5ba2d7ea200ee753a949ac0ba01b02b3275123fe083c252bcc575843755",
+      "zh": "122088f7e94ef2455f468be1e568dbb1eceb43d5ddae81ac04cb023387859c37",
+      "fr": "11bfa5ba2d7ea200ee753a949ac0ba01b02b3275123fe083c252bcc575843755",
+      "pl": "11bfa5ba2d7ea200ee753a949ac0ba01b02b3275123fe083c252bcc575843755",
+      "es": "11bfa5ba2d7ea200ee753a949ac0ba01b02b3275123fe083c252bcc575843755",
+      "nl": "11bfa5ba2d7ea200ee753a949ac0ba01b02b3275123fe083c252bcc575843755",
+      "ms": "11bfa5ba2d7ea200ee753a949ac0ba01b02b3275123fe083c252bcc575843755"
+    },
+    "jhu": {
+      "en": "5d680b9e8d063ea8affdf9e9e2df55e3db79e911d2b9c0e008938bafa0b01ee1",
+      "zh": "06c5f9b819ca72e61352db4e28a136828383269ed876144644ac77f67ba088eb",
+      "fr": "5d680b9e8d063ea8affdf9e9e2df55e3db79e911d2b9c0e008938bafa0b01ee1",
+      "pl": "5d680b9e8d063ea8affdf9e9e2df55e3db79e911d2b9c0e008938bafa0b01ee1",
+      "es": "5d680b9e8d063ea8affdf9e9e2df55e3db79e911d2b9c0e008938bafa0b01ee1",
+      "nl": "5d680b9e8d063ea8affdf9e9e2df55e3db79e911d2b9c0e008938bafa0b01ee1",
+      "ms": "5d680b9e8d063ea8affdf9e9e2df55e3db79e911d2b9c0e008938bafa0b01ee1"
+    },
+    "princeton-university": {
+      "en": "da567d6d2969b726f2371566547cbf6686909ee34fe76bcac455d9e7bbea6c84",
+      "zh": "4bc7802a5ebf07910cefc4d2997fd5fd204a582ead55043a3afa3695516abdbe",
+      "fr": "da567d6d2969b726f2371566547cbf6686909ee34fe76bcac455d9e7bbea6c84",
+      "pl": "da567d6d2969b726f2371566547cbf6686909ee34fe76bcac455d9e7bbea6c84",
+      "es": "da567d6d2969b726f2371566547cbf6686909ee34fe76bcac455d9e7bbea6c84",
+      "nl": "da567d6d2969b726f2371566547cbf6686909ee34fe76bcac455d9e7bbea6c84",
+      "ms": "da567d6d2969b726f2371566547cbf6686909ee34fe76bcac455d9e7bbea6c84"
+    },
+    "university-of-sydney": {
+      "en": "fe39f6eb8df4b276c7ecd4f1942f2718c5dc1c4bfa29836ef7454ee52ddce447",
+      "zh": "8cae050eb62419914aa65390898085002fcb2a02d3f2a9230621c04dbee5f475",
+      "fr": "fe39f6eb8df4b276c7ecd4f1942f2718c5dc1c4bfa29836ef7454ee52ddce447",
+      "pl": "fe39f6eb8df4b276c7ecd4f1942f2718c5dc1c4bfa29836ef7454ee52ddce447",
+      "es": "fe39f6eb8df4b276c7ecd4f1942f2718c5dc1c4bfa29836ef7454ee52ddce447",
+      "nl": "fe39f6eb8df4b276c7ecd4f1942f2718c5dc1c4bfa29836ef7454ee52ddce447",
+      "ms": "fe39f6eb8df4b276c7ecd4f1942f2718c5dc1c4bfa29836ef7454ee52ddce447"
+    },
+    "mcgill-university": {
+      "en": "0ea269b9d4d057767246a2fd19906bbbffc8865a4ff9010652e20cf320de47b2",
+      "zh": "e05842da0317c8dc4dc978adcea4d1d3b957ecca381a14622baa0574adaff4ac",
+      "fr": "0ea269b9d4d057767246a2fd19906bbbffc8865a4ff9010652e20cf320de47b2",
+      "pl": "0ea269b9d4d057767246a2fd19906bbbffc8865a4ff9010652e20cf320de47b2",
+      "es": "0ea269b9d4d057767246a2fd19906bbbffc8865a4ff9010652e20cf320de47b2",
+      "nl": "0ea269b9d4d057767246a2fd19906bbbffc8865a4ff9010652e20cf320de47b2",
+      "ms": "0ea269b9d4d057767246a2fd19906bbbffc8865a4ff9010652e20cf320de47b2"
+    },
+    "universite-psl": {
+      "en": "e32d802448c677dfe9b2e64a5a04d3b4e36838734fdaa8539032b3a05a77ebf3",
+      "zh": "fd13e17c227787e7f5b8f0caf778c43ae5e8eea483239bc853db382fcc50cadf",
+      "fr": "e32d802448c677dfe9b2e64a5a04d3b4e36838734fdaa8539032b3a05a77ebf3",
+      "pl": "e32d802448c677dfe9b2e64a5a04d3b4e36838734fdaa8539032b3a05a77ebf3",
+      "es": "e32d802448c677dfe9b2e64a5a04d3b4e36838734fdaa8539032b3a05a77ebf3",
+      "nl": "e32d802448c677dfe9b2e64a5a04d3b4e36838734fdaa8539032b3a05a77ebf3",
+      "ms": "e32d802448c677dfe9b2e64a5a04d3b4e36838734fdaa8539032b3a05a77ebf3"
+    },
+    "university-of-toronto": {
+      "en": "b5479d8fade8f8405c362350c6f116530605f8a2a04a0de192307a60e59342a6",
+      "zh": "7c439b05067462c69661ad46c04f9b413e85896269368dd78aed0fdc0b8465e5",
+      "fr": "b5479d8fade8f8405c362350c6f116530605f8a2a04a0de192307a60e59342a6",
+      "pl": "b5479d8fade8f8405c362350c6f116530605f8a2a04a0de192307a60e59342a6",
+      "es": "b5479d8fade8f8405c362350c6f116530605f8a2a04a0de192307a60e59342a6",
+      "nl": "b5479d8fade8f8405c362350c6f116530605f8a2a04a0de192307a60e59342a6",
+      "ms": "b5479d8fade8f8405c362350c6f116530605f8a2a04a0de192307a60e59342a6"
+    },
+    "fudan-university": {
+      "en": "d38aa0ecb3a8dd92a535105ac7a0c83e879cfa7bbc3f60d7b6e2d278ac66eedc",
+      "zh": "184bb23db6b0a48274cb5dc0233cac352fb6d1b9168884ef16897b48916f9576",
+      "fr": "d38aa0ecb3a8dd92a535105ac7a0c83e879cfa7bbc3f60d7b6e2d278ac66eedc",
+      "pl": "d38aa0ecb3a8dd92a535105ac7a0c83e879cfa7bbc3f60d7b6e2d278ac66eedc",
+      "es": "d38aa0ecb3a8dd92a535105ac7a0c83e879cfa7bbc3f60d7b6e2d278ac66eedc",
+      "nl": "d38aa0ecb3a8dd92a535105ac7a0c83e879cfa7bbc3f60d7b6e2d278ac66eedc",
+      "ms": "d38aa0ecb3a8dd92a535105ac7a0c83e879cfa7bbc3f60d7b6e2d278ac66eedc"
+    },
+    "kcl": {
+      "en": "a57ff3ab38c62e9867f5d9545bc9316e50e0023fe7ba8d6d06b0a7c9bc8351a9",
+      "zh": "e6f4538b7a401ff9e735ff14d63b5e2c2e608ad2f8ad557b119b9515e7cf254c",
+      "fr": "a57ff3ab38c62e9867f5d9545bc9316e50e0023fe7ba8d6d06b0a7c9bc8351a9",
+      "pl": "a57ff3ab38c62e9867f5d9545bc9316e50e0023fe7ba8d6d06b0a7c9bc8351a9",
+      "es": "a57ff3ab38c62e9867f5d9545bc9316e50e0023fe7ba8d6d06b0a7c9bc8351a9",
+      "nl": "a57ff3ab38c62e9867f5d9545bc9316e50e0023fe7ba8d6d06b0a7c9bc8351a9",
+      "ms": "a57ff3ab38c62e9867f5d9545bc9316e50e0023fe7ba8d6d06b0a7c9bc8351a9"
+    },
+    "anu": {
+      "en": "b6578a27b9f0793fbd7cb582dd2288568951086bd016b446a2085fd92d1a446c",
+      "zh": "9d473636d61cebe3f88cfb76c16c6b819b9cfe8ab3ddd9261b0fd54954d17118",
+      "fr": "b6578a27b9f0793fbd7cb582dd2288568951086bd016b446a2085fd92d1a446c",
+      "pl": "b6578a27b9f0793fbd7cb582dd2288568951086bd016b446a2085fd92d1a446c",
+      "es": "b6578a27b9f0793fbd7cb582dd2288568951086bd016b446a2085fd92d1a446c",
+      "nl": "b6578a27b9f0793fbd7cb582dd2288568951086bd016b446a2085fd92d1a446c",
+      "ms": "b6578a27b9f0793fbd7cb582dd2288568951086bd016b446a2085fd92d1a446c"
+    },
+    "edinburgh": {
+      "en": "a890d06b53c2d824f1cf9356125bf897ab0e22502c8bb44a468b0ade3194b653",
+      "zh": "55ecad49f94af5ae23e6c49d9baf7c8e1ecaf6a14484c12643d404e02c31c47b",
+      "fr": "a890d06b53c2d824f1cf9356125bf897ab0e22502c8bb44a468b0ade3194b653",
+      "pl": "a890d06b53c2d824f1cf9356125bf897ab0e22502c8bb44a468b0ade3194b653",
+      "es": "a890d06b53c2d824f1cf9356125bf897ab0e22502c8bb44a468b0ade3194b653",
+      "nl": "a890d06b53c2d824f1cf9356125bf897ab0e22502c8bb44a468b0ade3194b653",
+      "ms": "a890d06b53c2d824f1cf9356125bf897ab0e22502c8bb44a468b0ade3194b653"
+    },
+    "cuhk": {
+      "en": "d599fa5e678c3b18478bd2d9e906deac9974acf9c99805c16f86fc6edd665cf9",
+      "zh": "9db0dfbc0bc9c2f3fecd1058ddbe4640d0a33849a6d8f6393dc39ac8d9e37714",
+      "fr": "d599fa5e678c3b18478bd2d9e906deac9974acf9c99805c16f86fc6edd665cf9",
+      "pl": "d599fa5e678c3b18478bd2d9e906deac9974acf9c99805c16f86fc6edd665cf9",
+      "es": "d599fa5e678c3b18478bd2d9e906deac9974acf9c99805c16f86fc6edd665cf9",
+      "nl": "d599fa5e678c3b18478bd2d9e906deac9974acf9c99805c16f86fc6edd665cf9",
+      "ms": "d599fa5e678c3b18478bd2d9e906deac9974acf9c99805c16f86fc6edd665cf9"
+    },
+    "snu": {
+      "en": "087bd9dcf756ca9739f3275136abc330479268c25f6a6a25fe9eafd3b9fd5dc1",
+      "zh": "fcf6fdf72c1a8125c6ef368a8117661abe02ff994c6515ab25062212d1349f5f",
+      "fr": "087bd9dcf756ca9739f3275136abc330479268c25f6a6a25fe9eafd3b9fd5dc1",
+      "pl": "087bd9dcf756ca9739f3275136abc330479268c25f6a6a25fe9eafd3b9fd5dc1",
+      "es": "087bd9dcf756ca9739f3275136abc330479268c25f6a6a25fe9eafd3b9fd5dc1",
+      "nl": "087bd9dcf756ca9739f3275136abc330479268c25f6a6a25fe9eafd3b9fd5dc1",
+      "ms": "087bd9dcf756ca9739f3275136abc330479268c25f6a6a25fe9eafd3b9fd5dc1"
+    },
+    "manchester": {
+      "en": "7cdea877162251af87f8e89197e7a8fbfde22b6ecdc254876abc2c771e46acd4",
+      "zh": "e41cf4df6d2f5a39c3c05a25df41fa85507bb5d3fa42a307e3b84e822317ce08",
+      "fr": "7cdea877162251af87f8e89197e7a8fbfde22b6ecdc254876abc2c771e46acd4",
+      "pl": "7cdea877162251af87f8e89197e7a8fbfde22b6ecdc254876abc2c771e46acd4",
+      "es": "7cdea877162251af87f8e89197e7a8fbfde22b6ecdc254876abc2c771e46acd4",
+      "nl": "7cdea877162251af87f8e89197e7a8fbfde22b6ecdc254876abc2c771e46acd4",
+      "ms": "7cdea877162251af87f8e89197e7a8fbfde22b6ecdc254876abc2c771e46acd4"
+    },
+    "monash": {
+      "en": "704c97ba9301f68d31ebf24aed4e01c054d88b05d1efbfff7cbb1f8c9b2b5f46",
+      "zh": "81c740ac6401bbaf5ddccb1e095d526e7d562adbfa58f6928c105c9140bff8cf",
+      "fr": "704c97ba9301f68d31ebf24aed4e01c054d88b05d1efbfff7cbb1f8c9b2b5f46",
+      "pl": "704c97ba9301f68d31ebf24aed4e01c054d88b05d1efbfff7cbb1f8c9b2b5f46",
+      "es": "704c97ba9301f68d31ebf24aed4e01c054d88b05d1efbfff7cbb1f8c9b2b5f46",
+      "nl": "704c97ba9301f68d31ebf24aed4e01c054d88b05d1efbfff7cbb1f8c9b2b5f46",
+      "ms": "704c97ba9301f68d31ebf24aed4e01c054d88b05d1efbfff7cbb1f8c9b2b5f46"
+    },
+    "ubc": {
+      "en": "9ae7995ebf60cb4de9e6832b39dcf66269f77674397a0df056e78be3f33469ca",
+      "zh": "ba387d18195eba0a93f396bb7eeb45cf6f16f1f2cbf3f913703b3959ec6857e8",
+      "fr": "9ae7995ebf60cb4de9e6832b39dcf66269f77674397a0df056e78be3f33469ca",
+      "pl": "9ae7995ebf60cb4de9e6832b39dcf66269f77674397a0df056e78be3f33469ca",
+      "es": "9ae7995ebf60cb4de9e6832b39dcf66269f77674397a0df056e78be3f33469ca",
+      "nl": "9ae7995ebf60cb4de9e6832b39dcf66269f77674397a0df056e78be3f33469ca",
+      "ms": "9ae7995ebf60cb4de9e6832b39dcf66269f77674397a0df056e78be3f33469ca"
+    },
+    "columbia": {
+      "en": "c073d7b00a1cfa961294281acd2ab3687cb40e14918c862cead1afd3033bbc66",
+      "zh": "f6f50cc3233335c5200ae0b2e07b1b496c24ecf6ada7a5d4db53be4e733d0ebb",
+      "fr": "c073d7b00a1cfa961294281acd2ab3687cb40e14918c862cead1afd3033bbc66",
+      "pl": "c073d7b00a1cfa961294281acd2ab3687cb40e14918c862cead1afd3033bbc66",
+      "es": "c073d7b00a1cfa961294281acd2ab3687cb40e14918c862cead1afd3033bbc66",
+      "nl": "c073d7b00a1cfa961294281acd2ab3687cb40e14918c862cead1afd3033bbc66",
+      "ms": "c073d7b00a1cfa961294281acd2ab3687cb40e14918c862cead1afd3033bbc66"
+    },
+    "u-tokyo": {
+      "en": "8c676c55f4921b84648fd2e99281fea9d39d5399d1f1e6699a1d5a7e2a0fed07",
+      "zh": "caf40eb85e9b9d609e785d4a50a0793d656d63b424c2862e4f5d1d09778fb7a1",
+      "fr": "8c676c55f4921b84648fd2e99281fea9d39d5399d1f1e6699a1d5a7e2a0fed07",
+      "pl": "8c676c55f4921b84648fd2e99281fea9d39d5399d1f1e6699a1d5a7e2a0fed07",
+      "es": "8c676c55f4921b84648fd2e99281fea9d39d5399d1f1e6699a1d5a7e2a0fed07",
+      "nl": "8c676c55f4921b84648fd2e99281fea9d39d5399d1f1e6699a1d5a7e2a0fed07",
+      "ms": "8c676c55f4921b84648fd2e99281fea9d39d5399d1f1e6699a1d5a7e2a0fed07"
+    },
+    "institut-polytechnique-de-paris": {
+      "en": "b57135370c1c5a3b39dee3576fdf0442340aed4d192b6d1c88e4d4ddae6cb24a",
+      "zh": "c4bacde86db2c7c1d105840802553d745f75e9e1ae755c6c0f204231bb7be67f",
+      "fr": "b57135370c1c5a3b39dee3576fdf0442340aed4d192b6d1c88e4d4ddae6cb24a",
+      "pl": "b57135370c1c5a3b39dee3576fdf0442340aed4d192b6d1c88e4d4ddae6cb24a",
+      "es": "b57135370c1c5a3b39dee3576fdf0442340aed4d192b6d1c88e4d4ddae6cb24a",
+      "nl": "b57135370c1c5a3b39dee3576fdf0442340aed4d192b6d1c88e4d4ddae6cb24a",
+      "ms": "b57135370c1c5a3b39dee3576fdf0442340aed4d192b6d1c88e4d4ddae6cb24a"
+    },
+    "northwestern-university": {
+      "en": "d42570e087e091085ff06712e244520e1fa67fba702e77ad02f85017f2b9a266",
+      "zh": "88b2e55569c9babb0a28221f3880070830027ec57ad866f18bca81ceff259e97",
+      "fr": "d42570e087e091085ff06712e244520e1fa67fba702e77ad02f85017f2b9a266",
+      "pl": "d42570e087e091085ff06712e244520e1fa67fba702e77ad02f85017f2b9a266",
+      "es": "d42570e087e091085ff06712e244520e1fa67fba702e77ad02f85017f2b9a266",
+      "nl": "d42570e087e091085ff06712e244520e1fa67fba702e77ad02f85017f2b9a266",
+      "ms": "d42570e087e091085ff06712e244520e1fa67fba702e77ad02f85017f2b9a266"
+    },
+    "university-of-queensland": {
+      "en": "46aad343753b543ba38b5d589326aa839ed88d8a5e247e54f659037bb0210e60",
+      "zh": "d88fa39bee2ddc09e60af9490a217e4afcb22d123307eea71c6f6a38606e6707",
+      "fr": "46aad343753b543ba38b5d589326aa839ed88d8a5e247e54f659037bb0210e60",
+      "pl": "46aad343753b543ba38b5d589326aa839ed88d8a5e247e54f659037bb0210e60",
+      "es": "46aad343753b543ba38b5d589326aa839ed88d8a5e247e54f659037bb0210e60",
+      "nl": "46aad343753b543ba38b5d589326aa839ed88d8a5e247e54f659037bb0210e60",
+      "ms": "46aad343753b543ba38b5d589326aa839ed88d8a5e247e54f659037bb0210e60"
+    },
+    "hkust": {
+      "en": "33d96b82fe58c7f52f9aa29f41a26594c7fdbbdbb143eda099d69d01db05d448",
+      "zh": "f86f5c3a37a2925a7ed300f86d288b7fff4123290a8e58a4e703461bcf51e55c",
+      "fr": "33d96b82fe58c7f52f9aa29f41a26594c7fdbbdbb143eda099d69d01db05d448",
+      "pl": "33d96b82fe58c7f52f9aa29f41a26594c7fdbbdbb143eda099d69d01db05d448",
+      "es": "33d96b82fe58c7f52f9aa29f41a26594c7fdbbdbb143eda099d69d01db05d448",
+      "nl": "33d96b82fe58c7f52f9aa29f41a26594c7fdbbdbb143eda099d69d01db05d448",
+      "ms": "33d96b82fe58c7f52f9aa29f41a26594c7fdbbdbb143eda099d69d01db05d448"
+    },
+    "university-of-michigan-ann-arbor": {
+      "en": "8ad969441ca97faf4093b89c5871760fa89b5a1e778012e991e565875410274c",
+      "zh": "b1b6c0d6ba72809ba34e44960f8dddda04d5f78fd206517b0acb199782897568",
+      "fr": "8ad969441ca97faf4093b89c5871760fa89b5a1e778012e991e565875410274c",
+      "pl": "8ad969441ca97faf4093b89c5871760fa89b5a1e778012e991e565875410274c",
+      "es": "8ad969441ca97faf4093b89c5871760fa89b5a1e778012e991e565875410274c",
+      "nl": "8ad969441ca97faf4093b89c5871760fa89b5a1e778012e991e565875410274c",
+      "ms": "8ad969441ca97faf4093b89c5871760fa89b5a1e778012e991e565875410274c"
+    },
+    "ucla": {
+      "en": "ca2a3072b56898421be75a9070eafbcd7155845065a06c0f37e2bebc4d90bce8",
+      "zh": "8a6c4a10eed496adc22371a6472722c78f3dace5abef84918efe1cb5ab2afa2a",
+      "fr": "ca2a3072b56898421be75a9070eafbcd7155845065a06c0f37e2bebc4d90bce8",
+      "pl": "ca2a3072b56898421be75a9070eafbcd7155845065a06c0f37e2bebc4d90bce8",
+      "es": "ca2a3072b56898421be75a9070eafbcd7155845065a06c0f37e2bebc4d90bce8",
+      "nl": "ca2a3072b56898421be75a9070eafbcd7155845065a06c0f37e2bebc4d90bce8",
+      "ms": "ca2a3072b56898421be75a9070eafbcd7155845065a06c0f37e2bebc4d90bce8"
+    },
+    "delft-university-of-technology": {
+      "en": "9d65a6ad5654a8da58b5662e73a45fb75a5b59dc53042b32a9c3835edb10c234",
+      "zh": "a307de713570268e8e418cfa55f953eeb8933ed06e3897888611beb04b335ee9",
+      "fr": "9d65a6ad5654a8da58b5662e73a45fb75a5b59dc53042b32a9c3835edb10c234",
+      "pl": "9d65a6ad5654a8da58b5662e73a45fb75a5b59dc53042b32a9c3835edb10c234",
+      "es": "9d65a6ad5654a8da58b5662e73a45fb75a5b59dc53042b32a9c3835edb10c234",
+      "nl": "9d65a6ad5654a8da58b5662e73a45fb75a5b59dc53042b32a9c3835edb10c234",
+      "ms": "9d65a6ad5654a8da58b5662e73a45fb75a5b59dc53042b32a9c3835edb10c234"
+    },
+    "shanghai-jiao-tong-university": {
+      "en": "f7612d0775d474fe284b11aa3c54745067ff32007dd75993fc33667ac03dce4f",
+      "zh": "c499426738a7c284ef0f2376cc7678efead5601ca16a8dcf337334e2d0ba25ca",
+      "fr": "f7612d0775d474fe284b11aa3c54745067ff32007dd75993fc33667ac03dce4f",
+      "pl": "f7612d0775d474fe284b11aa3c54745067ff32007dd75993fc33667ac03dce4f",
+      "es": "f7612d0775d474fe284b11aa3c54745067ff32007dd75993fc33667ac03dce4f",
+      "nl": "f7612d0775d474fe284b11aa3c54745067ff32007dd75993fc33667ac03dce4f",
+      "ms": "f7612d0775d474fe284b11aa3c54745067ff32007dd75993fc33667ac03dce4f"
+    },
+    "zhejiang-university": {
+      "en": "c6f27849db816ab9e504c6198c22cffe50a6ad86f2193f0545f5f8e22799520c",
+      "zh": "0e0efffb9c2b0c465a127666279ab967e78e761ddf29e0bc0cf1d4b1b71b0614",
+      "fr": "c6f27849db816ab9e504c6198c22cffe50a6ad86f2193f0545f5f8e22799520c",
+      "pl": "c6f27849db816ab9e504c6198c22cffe50a6ad86f2193f0545f5f8e22799520c",
+      "es": "c6f27849db816ab9e504c6198c22cffe50a6ad86f2193f0545f5f8e22799520c",
+      "nl": "c6f27849db816ab9e504c6198c22cffe50a6ad86f2193f0545f5f8e22799520c",
+      "ms": "c6f27849db816ab9e504c6198c22cffe50a6ad86f2193f0545f5f8e22799520c"
+    },
+    "yonsei-university": {
+      "en": "b4fa55b67e9489ee3ace235db7f0e1dbd9437b615b5be4830471367141db10a2",
+      "zh": "3b52f1e21354676a7ccc4e89f2ac5bb30514b51397a8f55d519504ad15e1a886",
+      "fr": "b4fa55b67e9489ee3ace235db7f0e1dbd9437b615b5be4830471367141db10a2",
+      "pl": "b4fa55b67e9489ee3ace235db7f0e1dbd9437b615b5be4830471367141db10a2",
+      "es": "b4fa55b67e9489ee3ace235db7f0e1dbd9437b615b5be4830471367141db10a2",
+      "nl": "b4fa55b67e9489ee3ace235db7f0e1dbd9437b615b5be4830471367141db10a2",
+      "ms": "b4fa55b67e9489ee3ace235db7f0e1dbd9437b615b5be4830471367141db10a2"
+    },
+    "university-of-bristol": {
+      "en": "d93b8108da2c8d4873ed83f8bf7e0bcb46d827ba4c584ac99d4d255aa6f24eae",
+      "zh": "6d94936c75b55c5b82b95f88b2f504d1d3c95d42a138bc1226603c1f82cb2841",
+      "fr": "d93b8108da2c8d4873ed83f8bf7e0bcb46d827ba4c584ac99d4d255aa6f24eae",
+      "pl": "d93b8108da2c8d4873ed83f8bf7e0bcb46d827ba4c584ac99d4d255aa6f24eae",
+      "es": "d93b8108da2c8d4873ed83f8bf7e0bcb46d827ba4c584ac99d4d255aa6f24eae",
+      "nl": "d93b8108da2c8d4873ed83f8bf7e0bcb46d827ba4c584ac99d4d255aa6f24eae",
+      "ms": "d93b8108da2c8d4873ed83f8bf7e0bcb46d827ba4c584ac99d4d255aa6f24eae"
+    },
+    "carnegie-mellon-university": {
+      "en": "2ba84943d292029aa5ba263f2eb63448a09a5d98c489ca68bfcc4c42ce115438",
+      "zh": "249840afaa0ae84abeb7a808f36c84bd9616717cf18f256c420b17cc2fc9f5f3",
+      "fr": "2ba84943d292029aa5ba263f2eb63448a09a5d98c489ca68bfcc4c42ce115438",
+      "pl": "2ba84943d292029aa5ba263f2eb63448a09a5d98c489ca68bfcc4c42ce115438",
+      "es": "2ba84943d292029aa5ba263f2eb63448a09a5d98c489ca68bfcc4c42ce115438",
+      "nl": "2ba84943d292029aa5ba263f2eb63448a09a5d98c489ca68bfcc4c42ce115438",
+      "ms": "2ba84943d292029aa5ba263f2eb63448a09a5d98c489ca68bfcc4c42ce115438"
+    },
+    "university-of-amsterdam": {
+      "en": "c2b5231016f0239b5309abcddaff7bf0fced32d098f3d474c4e067f49c01f09b",
+      "zh": "4e31b26fdf233602f56fdc61b598f18530fc80d7419d015231c754a1c4f9ad4e",
+      "fr": "c2b5231016f0239b5309abcddaff7bf0fced32d098f3d474c4e067f49c01f09b",
+      "pl": "c2b5231016f0239b5309abcddaff7bf0fced32d098f3d474c4e067f49c01f09b",
+      "es": "c2b5231016f0239b5309abcddaff7bf0fced32d098f3d474c4e067f49c01f09b",
+      "nl": "c2b5231016f0239b5309abcddaff7bf0fced32d098f3d474c4e067f49c01f09b",
+      "ms": "c2b5231016f0239b5309abcddaff7bf0fced32d098f3d474c4e067f49c01f09b"
+    },
+    "the-hong-kong-polytechnic-university": {
+      "en": "4cd6fe36094800f728423383452d5105fcf51f9d18de2284c4bfc9d8adf6e5b6",
+      "zh": "356891f55feca866adcbe5241b41d85369a537c8666ac128bf0288eb6882d0fa",
+      "fr": "4cd6fe36094800f728423383452d5105fcf51f9d18de2284c4bfc9d8adf6e5b6",
+      "pl": "4cd6fe36094800f728423383452d5105fcf51f9d18de2284c4bfc9d8adf6e5b6",
+      "es": "4cd6fe36094800f728423383452d5105fcf51f9d18de2284c4bfc9d8adf6e5b6",
+      "nl": "4cd6fe36094800f728423383452d5105fcf51f9d18de2284c4bfc9d8adf6e5b6",
+      "ms": "4cd6fe36094800f728423383452d5105fcf51f9d18de2284c4bfc9d8adf6e5b6"
+    },
+    "new-york-university": {
+      "en": "932f5371ac3305719440a1ad8083cc1152dc9a7765280847680c88bb2faaa830",
+      "zh": "b528d10e9059d3cf030dc062b628da165dc19acf12464ce5fc321f551e5cacfb",
+      "fr": "932f5371ac3305719440a1ad8083cc1152dc9a7765280847680c88bb2faaa830",
+      "pl": "932f5371ac3305719440a1ad8083cc1152dc9a7765280847680c88bb2faaa830",
+      "es": "932f5371ac3305719440a1ad8083cc1152dc9a7765280847680c88bb2faaa830",
+      "nl": "932f5371ac3305719440a1ad8083cc1152dc9a7765280847680c88bb2faaa830",
+      "ms": "932f5371ac3305719440a1ad8083cc1152dc9a7765280847680c88bb2faaa830"
+    },
+    "the-london-school-of-economics-and-political-science": {
+      "en": "4677c2d6b630c1b903d0a1b62f9d09c4a6da84cdf15b41efeaf2776cf8525d4c",
+      "zh": "365fba7b1eb89860296cd8ec26010745550f44f150ff773a59509fdbe2f2be12",
+      "fr": "4677c2d6b630c1b903d0a1b62f9d09c4a6da84cdf15b41efeaf2776cf8525d4c",
+      "pl": "4677c2d6b630c1b903d0a1b62f9d09c4a6da84cdf15b41efeaf2776cf8525d4c",
+      "es": "4677c2d6b630c1b903d0a1b62f9d09c4a6da84cdf15b41efeaf2776cf8525d4c",
+      "nl": "4677c2d6b630c1b903d0a1b62f9d09c4a6da84cdf15b41efeaf2776cf8525d4c",
+      "ms": "4677c2d6b630c1b903d0a1b62f9d09c4a6da84cdf15b41efeaf2776cf8525d4c"
+    },
+    "kyoto-university": {
+      "en": "fc893ead5324b04ad22dbc165bf857abbd33dbedb3c6a248edbabbcbbec94f15",
+      "zh": "f154a399f50d7cef29d62887621d66e4ef63154b5494e09bc7ce033051e0016b",
+      "fr": "fc893ead5324b04ad22dbc165bf857abbd33dbedb3c6a248edbabbcbbec94f15",
+      "pl": "fc893ead5324b04ad22dbc165bf857abbd33dbedb3c6a248edbabbcbbec94f15",
+      "es": "fc893ead5324b04ad22dbc165bf857abbd33dbedb3c6a248edbabbcbbec94f15",
+      "nl": "fc893ead5324b04ad22dbc165bf857abbd33dbedb3c6a248edbabbcbbec94f15",
+      "ms": "fc893ead5324b04ad22dbc165bf857abbd33dbedb3c6a248edbabbcbbec94f15"
+    },
+    "ludwig-maximilians-universitat-munchen": {
+      "en": "865a8c985d7c089262bcbca43f919de53d59e91c76074fb16eef82a4487ff91e",
+      "zh": "bd3fd551c7486c5c2d99015cd5b9993e5cc8307072b6ff8e792b0fac5093eb77",
+      "fr": "865a8c985d7c089262bcbca43f919de53d59e91c76074fb16eef82a4487ff91e",
+      "pl": "865a8c985d7c089262bcbca43f919de53d59e91c76074fb16eef82a4487ff91e",
+      "es": "865a8c985d7c089262bcbca43f919de53d59e91c76074fb16eef82a4487ff91e",
+      "nl": "865a8c985d7c089262bcbca43f919de53d59e91c76074fb16eef82a4487ff91e",
+      "ms": "865a8c985d7c089262bcbca43f919de53d59e91c76074fb16eef82a4487ff91e"
+    },
+    "universiti-malaya": {
+      "en": "26485deec160b294e2564db44bc3175d259921e9abe05e1f6d4d36df96b0646c",
+      "zh": "c167896a7b1f6f9ee9fb6a26f7c41e38128897d3171cbe5f8b64695b040a3e4e",
+      "fr": "26485deec160b294e2564db44bc3175d259921e9abe05e1f6d4d36df96b0646c",
+      "pl": "26485deec160b294e2564db44bc3175d259921e9abe05e1f6d4d36df96b0646c",
+      "es": "26485deec160b294e2564db44bc3175d259921e9abe05e1f6d4d36df96b0646c",
+      "nl": "26485deec160b294e2564db44bc3175d259921e9abe05e1f6d4d36df96b0646c",
+      "ms": "26485deec160b294e2564db44bc3175d259921e9abe05e1f6d4d36df96b0646c"
+    },
+    "ku-leuven": {
+      "en": "9aacc705ddcfcf7c52044588538ac6d31b32fea8bce613a232a5023ef660486d",
+      "zh": "3eff3b61a0405ad3d585771ef119d06f2b2affb02bdb17b353b19b21265677d2",
+      "fr": "9aacc705ddcfcf7c52044588538ac6d31b32fea8bce613a232a5023ef660486d",
+      "pl": "9aacc705ddcfcf7c52044588538ac6d31b32fea8bce613a232a5023ef660486d",
+      "es": "9aacc705ddcfcf7c52044588538ac6d31b32fea8bce613a232a5023ef660486d",
+      "nl": "9aacc705ddcfcf7c52044588538ac6d31b32fea8bce613a232a5023ef660486d",
+      "ms": "9aacc705ddcfcf7c52044588538ac6d31b32fea8bce613a232a5023ef660486d"
+    },
+    "korea-university": {
+      "en": "2771b4e0f6229f36a3f208a4f68007981238a7d8fcbb9949185c0c2ee4874e14",
+      "zh": "e78aa24456240de5feffa0f3adf236074fe29742e26707b888c47e0eadc27085",
+      "fr": "2771b4e0f6229f36a3f208a4f68007981238a7d8fcbb9949185c0c2ee4874e14",
+      "pl": "2771b4e0f6229f36a3f208a4f68007981238a7d8fcbb9949185c0c2ee4874e14",
+      "es": "2771b4e0f6229f36a3f208a4f68007981238a7d8fcbb9949185c0c2ee4874e14",
+      "nl": "2771b4e0f6229f36a3f208a4f68007981238a7d8fcbb9949185c0c2ee4874e14",
+      "ms": "2771b4e0f6229f36a3f208a4f68007981238a7d8fcbb9949185c0c2ee4874e14"
+    },
+    "duke-university": {
+      "en": "77ab7b5653a08a9f5ec72dede61c0fc9df881659a43884d5fda8d1b1e267d2ad",
+      "zh": "372c3c85af14e9f83e1df2525853fccedb8c73f7a82d775dbef32b78edf4f290",
+      "fr": "77ab7b5653a08a9f5ec72dede61c0fc9df881659a43884d5fda8d1b1e267d2ad",
+      "pl": "77ab7b5653a08a9f5ec72dede61c0fc9df881659a43884d5fda8d1b1e267d2ad",
+      "es": "77ab7b5653a08a9f5ec72dede61c0fc9df881659a43884d5fda8d1b1e267d2ad",
+      "nl": "77ab7b5653a08a9f5ec72dede61c0fc9df881659a43884d5fda8d1b1e267d2ad",
+      "ms": "77ab7b5653a08a9f5ec72dede61c0fc9df881659a43884d5fda8d1b1e267d2ad"
+    },
+    "city-university-of-hong-kong": {
+      "en": "d03aafcc11cd78617986e96dfaeccfa50c22d213b6ef3a3c850bf781e233569f",
+      "zh": "4f397322fe85dad08420ee9070ccf73fad344c0fb844af1fee63c7a5c2cc87e4",
+      "fr": "d03aafcc11cd78617986e96dfaeccfa50c22d213b6ef3a3c850bf781e233569f",
+      "pl": "d03aafcc11cd78617986e96dfaeccfa50c22d213b6ef3a3c850bf781e233569f",
+      "es": "d03aafcc11cd78617986e96dfaeccfa50c22d213b6ef3a3c850bf781e233569f",
+      "nl": "d03aafcc11cd78617986e96dfaeccfa50c22d213b6ef3a3c850bf781e233569f",
+      "ms": "d03aafcc11cd78617986e96dfaeccfa50c22d213b6ef3a3c850bf781e233569f"
+    },
+    "national-taiwan-university": {
+      "en": "45471b473c2a930854ec2a671b08fa73c1381affccd9737a196ef6fb5a5f7c9c",
+      "zh": "2fd7ef6029b7511469ac43c5f3e1a0442e9012e8d112a60c78c7649965c66a99",
+      "fr": "45471b473c2a930854ec2a671b08fa73c1381affccd9737a196ef6fb5a5f7c9c",
+      "pl": "45471b473c2a930854ec2a671b08fa73c1381affccd9737a196ef6fb5a5f7c9c",
+      "es": "45471b473c2a930854ec2a671b08fa73c1381affccd9737a196ef6fb5a5f7c9c",
+      "nl": "45471b473c2a930854ec2a671b08fa73c1381affccd9737a196ef6fb5a5f7c9c",
+      "ms": "45471b473c2a930854ec2a671b08fa73c1381affccd9737a196ef6fb5a5f7c9c"
+    },
+    "university-of-auckland": {
+      "en": "af05a261dfc589b7ada38f1792fff9c294881c6332e2a92ec2dfc241611c26a1",
+      "zh": "b2b1cd1915715006b64925beee39e8da1bf96f7a0a0476549c8c1b9f6f6c86e4",
+      "fr": "af05a261dfc589b7ada38f1792fff9c294881c6332e2a92ec2dfc241611c26a1",
+      "pl": "af05a261dfc589b7ada38f1792fff9c294881c6332e2a92ec2dfc241611c26a1",
+      "es": "af05a261dfc589b7ada38f1792fff9c294881c6332e2a92ec2dfc241611c26a1",
+      "nl": "af05a261dfc589b7ada38f1792fff9c294881c6332e2a92ec2dfc241611c26a1",
+      "ms": "af05a261dfc589b7ada38f1792fff9c294881c6332e2a92ec2dfc241611c26a1"
+    },
+    "university-of-california-san-diego": {
+      "en": "cf795ca8fd6c69ce3d98a1b61b1a8dbba3332354f285ecaa757f48d601114830",
+      "zh": "4a167caeeba7ce282b602d9ea1d4168359e3fdf74dc437af9b858b75edd206ba",
+      "fr": "cf795ca8fd6c69ce3d98a1b61b1a8dbba3332354f285ecaa757f48d601114830",
+      "pl": "cf795ca8fd6c69ce3d98a1b61b1a8dbba3332354f285ecaa757f48d601114830",
+      "es": "cf795ca8fd6c69ce3d98a1b61b1a8dbba3332354f285ecaa757f48d601114830",
+      "nl": "cf795ca8fd6c69ce3d98a1b61b1a8dbba3332354f285ecaa757f48d601114830",
+      "ms": "cf795ca8fd6c69ce3d98a1b61b1a8dbba3332354f285ecaa757f48d601114830"
+    },
+    "kfupm": {
+      "en": "fe69058b4e6b81f2b56ea710c63e9c4cd597f823246c5f745bf74d462af1bf86",
+      "zh": "599495ee8ea177dc59096f6e28efe19ed02eb752ecaea4327dd8fd1609c9abc8",
+      "fr": "fe69058b4e6b81f2b56ea710c63e9c4cd597f823246c5f745bf74d462af1bf86",
+      "pl": "fe69058b4e6b81f2b56ea710c63e9c4cd597f823246c5f745bf74d462af1bf86",
+      "es": "fe69058b4e6b81f2b56ea710c63e9c4cd597f823246c5f745bf74d462af1bf86",
+      "nl": "fe69058b4e6b81f2b56ea710c63e9c4cd597f823246c5f745bf74d462af1bf86",
+      "ms": "fe69058b4e6b81f2b56ea710c63e9c4cd597f823246c5f745bf74d462af1bf86"
+    },
+    "university-of-texas-at-austin": {
+      "en": "6c2eaada1621417d5288f1d9f1fdd2447d81711955fa3ffcf669a28ba7ae32dc",
+      "zh": "e8ad0f0579a2dbefcc823358bf7465019685d12d99fa941223a13c23f808f517",
+      "fr": "6c2eaada1621417d5288f1d9f1fdd2447d81711955fa3ffcf669a28ba7ae32dc",
+      "pl": "6c2eaada1621417d5288f1d9f1fdd2447d81711955fa3ffcf669a28ba7ae32dc",
+      "es": "6c2eaada1621417d5288f1d9f1fdd2447d81711955fa3ffcf669a28ba7ae32dc",
+      "nl": "6c2eaada1621417d5288f1d9f1fdd2447d81711955fa3ffcf669a28ba7ae32dc",
+      "ms": "6c2eaada1621417d5288f1d9f1fdd2447d81711955fa3ffcf669a28ba7ae32dc"
+    },
+    "brown-university": {
+      "en": "3066095580de4c3a438ab5a3a7f4afcaf6c45e9386a9328dc690b26f67901359",
+      "zh": "a0f607f38ac971b6e2ca078799bfc2291023625e4b526d5ad15d808aca917c95",
+      "fr": "3066095580de4c3a438ab5a3a7f4afcaf6c45e9386a9328dc690b26f67901359",
+      "pl": "3066095580de4c3a438ab5a3a7f4afcaf6c45e9386a9328dc690b26f67901359",
+      "es": "3066095580de4c3a438ab5a3a7f4afcaf6c45e9386a9328dc690b26f67901359",
+      "nl": "3066095580de4c3a438ab5a3a7f4afcaf6c45e9386a9328dc690b26f67901359",
+      "ms": "3066095580de4c3a438ab5a3a7f4afcaf6c45e9386a9328dc690b26f67901359"
+    },
+    "university-of-illinois-urbana-champaign": {
+      "en": "79a693520890a9397f07eafbabfdc695392f07304a1f803f20a69135e68a7715",
+      "zh": "07a90d74c620acc0e7ab58822672e306851615e3db52169863a96703bf2a4c62",
+      "fr": "79a693520890a9397f07eafbabfdc695392f07304a1f803f20a69135e68a7715",
+      "pl": "79a693520890a9397f07eafbabfdc695392f07304a1f803f20a69135e68a7715",
+      "es": "79a693520890a9397f07eafbabfdc695392f07304a1f803f20a69135e68a7715",
+      "nl": "79a693520890a9397f07eafbabfdc695392f07304a1f803f20a69135e68a7715",
+      "ms": "79a693520890a9397f07eafbabfdc695392f07304a1f803f20a69135e68a7715"
+    },
+    "universite-paris-saclay": {
+      "en": "3c5c1ae96711459b70dcde5ddd90d7e0d00d07313aa52299dcb7056be0288763",
+      "zh": "d52a369c04e6ebdcc95180c3a4687dfb416c0b56f8103d00cef5372ff62fb382",
+      "fr": "3c5c1ae96711459b70dcde5ddd90d7e0d00d07313aa52299dcb7056be0288763",
+      "pl": "3c5c1ae96711459b70dcde5ddd90d7e0d00d07313aa52299dcb7056be0288763",
+      "es": "3c5c1ae96711459b70dcde5ddd90d7e0d00d07313aa52299dcb7056be0288763",
+      "nl": "3c5c1ae96711459b70dcde5ddd90d7e0d00d07313aa52299dcb7056be0288763",
+      "ms": "3c5c1ae96711459b70dcde5ddd90d7e0d00d07313aa52299dcb7056be0288763"
+    },
+    "lund-university": {
+      "en": "2f5aeb3df394ccf833a024799e31eb594b24c83979a513acdd976960a1fa6d8f",
+      "zh": "81c4843d7330175e0206334bb534e76e57d92ee3ece00c33fc70efb43b770ef3",
+      "fr": "2f5aeb3df394ccf833a024799e31eb594b24c83979a513acdd976960a1fa6d8f",
+      "pl": "2f5aeb3df394ccf833a024799e31eb594b24c83979a513acdd976960a1fa6d8f",
+      "es": "2f5aeb3df394ccf833a024799e31eb594b24c83979a513acdd976960a1fa6d8f",
+      "nl": "2f5aeb3df394ccf833a024799e31eb594b24c83979a513acdd976960a1fa6d8f",
+      "ms": "2f5aeb3df394ccf833a024799e31eb594b24c83979a513acdd976960a1fa6d8f"
+    },
+    "sorbonne-university": {
+      "en": "d2891cab99752c0456c1bd5291ea6dfa15d26f73d29e601b0373ac23fcd73264",
+      "zh": "1fee283eadf35217a9378f1e40e9ed4d3e23ba79eb42f62b7153210fbbf5d9c0",
+      "fr": "d2891cab99752c0456c1bd5291ea6dfa15d26f73d29e601b0373ac23fcd73264",
+      "pl": "d2891cab99752c0456c1bd5291ea6dfa15d26f73d29e601b0373ac23fcd73264",
+      "es": "d2891cab99752c0456c1bd5291ea6dfa15d26f73d29e601b0373ac23fcd73264",
+      "nl": "d2891cab99752c0456c1bd5291ea6dfa15d26f73d29e601b0373ac23fcd73264",
+      "ms": "d2891cab99752c0456c1bd5291ea6dfa15d26f73d29e601b0373ac23fcd73264"
+    },
+    "the-university-of-warwick": {
+      "en": "3344b68d56f7afed670beb69e0450cc529830c65adb1621a8cdd6d50c384d36c",
+      "zh": "68d81b85db997139b1d7d98b045cfe18f20d6a41e5f4d11b07058a0ecc9fc09f",
+      "fr": "3344b68d56f7afed670beb69e0450cc529830c65adb1621a8cdd6d50c384d36c",
+      "pl": "3344b68d56f7afed670beb69e0450cc529830c65adb1621a8cdd6d50c384d36c",
+      "es": "3344b68d56f7afed670beb69e0450cc529830c65adb1621a8cdd6d50c384d36c",
+      "nl": "3344b68d56f7afed670beb69e0450cc529830c65adb1621a8cdd6d50c384d36c",
+      "ms": "3344b68d56f7afed670beb69e0450cc529830c65adb1621a8cdd6d50c384d36c"
+    },
+    "trinity-college-dublin-the-university-of-dublin": {
+      "en": "d2be3e3b9516e82b80eb1ee56953edbb44e3b63e3a711fb538487c4868e81fb7",
+      "zh": "37dffd81409941c7e971bbda6372989056f4d6ddca4fc844a6c72c8eb1f0dad1",
+      "fr": "d2be3e3b9516e82b80eb1ee56953edbb44e3b63e3a711fb538487c4868e81fb7",
+      "pl": "d2be3e3b9516e82b80eb1ee56953edbb44e3b63e3a711fb538487c4868e81fb7",
+      "es": "d2be3e3b9516e82b80eb1ee56953edbb44e3b63e3a711fb538487c4868e81fb7",
+      "nl": "d2be3e3b9516e82b80eb1ee56953edbb44e3b63e3a711fb538487c4868e81fb7",
+      "ms": "d2be3e3b9516e82b80eb1ee56953edbb44e3b63e3a711fb538487c4868e81fb7"
+    },
+    "university-of-birmingham": {
+      "en": "cddae7fffac76ea9ee3c07e98b668e16a276d2c9db50056c824de12b2fd2041b",
+      "zh": "12635ff3a22be81468c6fe6da2c1b68029652a3a1823f98358dd246431c32181",
+      "fr": "cddae7fffac76ea9ee3c07e98b668e16a276d2c9db50056c824de12b2fd2041b",
+      "pl": "cddae7fffac76ea9ee3c07e98b668e16a276d2c9db50056c824de12b2fd2041b",
+      "es": "cddae7fffac76ea9ee3c07e98b668e16a276d2c9db50056c824de12b2fd2041b",
+      "nl": "cddae7fffac76ea9ee3c07e98b668e16a276d2c9db50056c824de12b2fd2041b",
+      "ms": "cddae7fffac76ea9ee3c07e98b668e16a276d2c9db50056c824de12b2fd2041b"
+    },
+    "the-university-of-western-australia": {
+      "en": "dbd07faa860686f5dbf920e41cb30f3c2de75eceb65794d131bb1cc77ac5c3b4",
+      "zh": "473b0f4cb8b41fc0ec7db096c0b765eaced69f251113bf4630c6fe13a8c8a2f0",
+      "fr": "dbd07faa860686f5dbf920e41cb30f3c2de75eceb65794d131bb1cc77ac5c3b4",
+      "pl": "dbd07faa860686f5dbf920e41cb30f3c2de75eceb65794d131bb1cc77ac5c3b4",
+      "es": "dbd07faa860686f5dbf920e41cb30f3c2de75eceb65794d131bb1cc77ac5c3b4",
+      "nl": "dbd07faa860686f5dbf920e41cb30f3c2de75eceb65794d131bb1cc77ac5c3b4",
+      "ms": "dbd07faa860686f5dbf920e41cb30f3c2de75eceb65794d131bb1cc77ac5c3b4"
+    },
+    "kth-royal-institute-of-technology": {
+      "en": "f48aaba9714347e86887e109bd9775b31039c3cda0dce5ff43ea86acfd2788dc",
+      "zh": "0cdc6ca2b9b6cc66873a8105e37414bf5dbb930e504871cf80d8a50725711972",
+      "fr": "f48aaba9714347e86887e109bd9775b31039c3cda0dce5ff43ea86acfd2788dc",
+      "pl": "f48aaba9714347e86887e109bd9775b31039c3cda0dce5ff43ea86acfd2788dc",
+      "es": "f48aaba9714347e86887e109bd9775b31039c3cda0dce5ff43ea86acfd2788dc",
+      "nl": "f48aaba9714347e86887e109bd9775b31039c3cda0dce5ff43ea86acfd2788dc",
+      "ms": "f48aaba9714347e86887e109bd9775b31039c3cda0dce5ff43ea86acfd2788dc"
+    },
+    "university-of-glasgow": {
+      "en": "2cd28a27c16081ad2a3c2143f1199b81558ab15c6e9d33868d039c1b83d2fb3c",
+      "zh": "8a80e87e41db2af3fd94a51361e4b79920095f3999d5b883f7a730e3cd9beb37",
+      "fr": "2cd28a27c16081ad2a3c2143f1199b81558ab15c6e9d33868d039c1b83d2fb3c",
+      "pl": "2cd28a27c16081ad2a3c2143f1199b81558ab15c6e9d33868d039c1b83d2fb3c",
+      "es": "2cd28a27c16081ad2a3c2143f1199b81558ab15c6e9d33868d039c1b83d2fb3c",
+      "nl": "2cd28a27c16081ad2a3c2143f1199b81558ab15c6e9d33868d039c1b83d2fb3c",
+      "ms": "2cd28a27c16081ad2a3c2143f1199b81558ab15c6e9d33868d039c1b83d2fb3c"
+    },
+    "universitat-heidelberg": {
+      "en": "ae927fc16aaa27d8b828315e9cb1d7d03ca2957b8caad18a07921213b1c0bb05",
+      "zh": "198cd51bd237ed3c3952cdc30f90428f44f031f03e7a77feedb5a3d1fd6a8ff2",
+      "fr": "ae927fc16aaa27d8b828315e9cb1d7d03ca2957b8caad18a07921213b1c0bb05",
+      "pl": "ae927fc16aaa27d8b828315e9cb1d7d03ca2957b8caad18a07921213b1c0bb05",
+      "es": "ae927fc16aaa27d8b828315e9cb1d7d03ca2957b8caad18a07921213b1c0bb05",
+      "nl": "ae927fc16aaa27d8b828315e9cb1d7d03ca2957b8caad18a07921213b1c0bb05",
+      "ms": "ae927fc16aaa27d8b828315e9cb1d7d03ca2957b8caad18a07921213b1c0bb05"
+    },
+    "university-of-washington": {
+      "en": "1c34a2fe00fb4fdff447840db7ecc456d8168289e70af13d8e0aac388412b983",
+      "zh": "f7863597c2e79d5f8215259cd1347dab679df49745c831bbd1626dbfd19b65a9",
+      "fr": "1c34a2fe00fb4fdff447840db7ecc456d8168289e70af13d8e0aac388412b983",
+      "pl": "1c34a2fe00fb4fdff447840db7ecc456d8168289e70af13d8e0aac388412b983",
+      "es": "1c34a2fe00fb4fdff447840db7ecc456d8168289e70af13d8e0aac388412b983",
+      "nl": "1c34a2fe00fb4fdff447840db7ecc456d8168289e70af13d8e0aac388412b983",
+      "ms": "1c34a2fe00fb4fdff447840db7ecc456d8168289e70af13d8e0aac388412b983"
+    },
+    "adelaide-university": {
+      "en": "aa5fc41e60905273c348ac7a173a8a24ecd217d9314e81e62513dfde92625843",
+      "zh": "d210aed91f44023b17e5cb8069f782badfa43861589ea40190fc0861384c804a",
+      "fr": "aa5fc41e60905273c348ac7a173a8a24ecd217d9314e81e62513dfde92625843",
+      "pl": "aa5fc41e60905273c348ac7a173a8a24ecd217d9314e81e62513dfde92625843",
+      "es": "aa5fc41e60905273c348ac7a173a8a24ecd217d9314e81e62513dfde92625843",
+      "nl": "aa5fc41e60905273c348ac7a173a8a24ecd217d9314e81e62513dfde92625843",
+      "ms": "aa5fc41e60905273c348ac7a173a8a24ecd217d9314e81e62513dfde92625843"
+    },
+    "pennsylvania-state-university": {
+      "en": "1d88af96f56d7588fd2a2d0102749bdf168e7b5c642949e6ca5c9b637d6a6c7d",
+      "zh": "816afed08f17a8ffb0dfa588402fbb6210a579e15e05d06d27e3a262940d8fa8",
+      "fr": "1d88af96f56d7588fd2a2d0102749bdf168e7b5c642949e6ca5c9b637d6a6c7d",
+      "pl": "1d88af96f56d7588fd2a2d0102749bdf168e7b5c642949e6ca5c9b637d6a6c7d",
+      "es": "1d88af96f56d7588fd2a2d0102749bdf168e7b5c642949e6ca5c9b637d6a6c7d",
+      "nl": "1d88af96f56d7588fd2a2d0102749bdf168e7b5c642949e6ca5c9b637d6a6c7d",
+      "ms": "1d88af96f56d7588fd2a2d0102749bdf168e7b5c642949e6ca5c9b637d6a6c7d"
+    },
+    "universidad-de-buenos-aires": {
+      "en": "f8b21920fa4ce3423ea266f824fa91648cb9fdd20fc121d193e8531d588b1f20",
+      "zh": "1026ea8f4a4326fb1d88d7112c69da98837a05288a1d35a078460c14423e74d9",
+      "fr": "f8b21920fa4ce3423ea266f824fa91648cb9fdd20fc121d193e8531d588b1f20",
+      "pl": "f8b21920fa4ce3423ea266f824fa91648cb9fdd20fc121d193e8531d588b1f20",
+      "es": "f8b21920fa4ce3423ea266f824fa91648cb9fdd20fc121d193e8531d588b1f20",
+      "nl": "f8b21920fa4ce3423ea266f824fa91648cb9fdd20fc121d193e8531d588b1f20",
+      "ms": "f8b21920fa4ce3423ea266f824fa91648cb9fdd20fc121d193e8531d588b1f20"
+    },
+    "tokyo-institute-of-technology": {
+      "en": "209e2d6037776697fc333c2b1aac19743fcb419a38590e79e0263d3e24dad75b",
+      "zh": "56c3bdee0c29017cc296041cefe76f8e2b7bd21ea4ad46e0a6a075817635ae91",
+      "fr": "209e2d6037776697fc333c2b1aac19743fcb419a38590e79e0263d3e24dad75b",
+      "pl": "209e2d6037776697fc333c2b1aac19743fcb419a38590e79e0263d3e24dad75b",
+      "es": "209e2d6037776697fc333c2b1aac19743fcb419a38590e79e0263d3e24dad75b",
+      "nl": "209e2d6037776697fc333c2b1aac19743fcb419a38590e79e0263d3e24dad75b",
+      "ms": "209e2d6037776697fc333c2b1aac19743fcb419a38590e79e0263d3e24dad75b"
+    },
+    "university-of-leeds": {
+      "en": "9d7fecaac589edd62bb7416a0ab055c7924c91e5d1944dde6f1a79139633dcc3",
+      "zh": "48fedd238d02ffd9863c75dc451ed5f7deaeefe91d4cb535b024bdebcf3392e4",
+      "fr": "9d7fecaac589edd62bb7416a0ab055c7924c91e5d1944dde6f1a79139633dcc3",
+      "pl": "9d7fecaac589edd62bb7416a0ab055c7924c91e5d1944dde6f1a79139633dcc3",
+      "es": "9d7fecaac589edd62bb7416a0ab055c7924c91e5d1944dde6f1a79139633dcc3",
+      "nl": "9d7fecaac589edd62bb7416a0ab055c7924c91e5d1944dde6f1a79139633dcc3",
+      "ms": "9d7fecaac589edd62bb7416a0ab055c7924c91e5d1944dde6f1a79139633dcc3"
+    },
+    "university-of-southampton": {
+      "en": "643e02279207501440a685e4649adc3124c0c17734725f4320d91ea57d021d90",
+      "zh": "6c2a3d2e58706bb7696e5ad1f5bd74df64b858dade6cf136dcd606552a55b839",
+      "fr": "643e02279207501440a685e4649adc3124c0c17734725f4320d91ea57d021d90",
+      "pl": "643e02279207501440a685e4649adc3124c0c17734725f4320d91ea57d021d90",
+      "es": "643e02279207501440a685e4649adc3124c0c17734725f4320d91ea57d021d90",
+      "nl": "643e02279207501440a685e4649adc3124c0c17734725f4320d91ea57d021d90",
+      "ms": "643e02279207501440a685e4649adc3124c0c17734725f4320d91ea57d021d90"
+    },
+    "boston-university": {
+      "en": "0843914022db1163ac6b9a41ee4a9713e55f48ce5bbdf92ae762dc240688c761",
+      "zh": "4b75958fdff094bfb265cd7fcec37a7b06d26731d6f79d63ee189f2625cf1a58",
+      "fr": "0843914022db1163ac6b9a41ee4a9713e55f48ce5bbdf92ae762dc240688c761",
+      "pl": "0843914022db1163ac6b9a41ee4a9713e55f48ce5bbdf92ae762dc240688c761",
+      "es": "0843914022db1163ac6b9a41ee4a9713e55f48ce5bbdf92ae762dc240688c761",
+      "nl": "0843914022db1163ac6b9a41ee4a9713e55f48ce5bbdf92ae762dc240688c761",
+      "ms": "0843914022db1163ac6b9a41ee4a9713e55f48ce5bbdf92ae762dc240688c761"
+    },
+    "freie-universitaet-berlin": {
+      "en": "f77b3905773719a8ba7b7d2f3b6c0718630be762d3fbb2336abc6da21c8fff9e",
+      "zh": "2eeac52b3659d2cbf9d394000f907d291a38eb44e3252a466945fa6433e58810",
+      "fr": "f77b3905773719a8ba7b7d2f3b6c0718630be762d3fbb2336abc6da21c8fff9e",
+      "pl": "f77b3905773719a8ba7b7d2f3b6c0718630be762d3fbb2336abc6da21c8fff9e",
+      "es": "f77b3905773719a8ba7b7d2f3b6c0718630be762d3fbb2336abc6da21c8fff9e",
+      "nl": "f77b3905773719a8ba7b7d2f3b6c0718630be762d3fbb2336abc6da21c8fff9e",
+      "ms": "f77b3905773719a8ba7b7d2f3b6c0718630be762d3fbb2336abc6da21c8fff9e"
+    },
+    "purdue-university": {
+      "en": "dbc53eb2c5a7896d243faaac5390e7e192845186568cb278d4d7bcad902dd866",
+      "zh": "2f777c9f3f6d556c095afb8bbfc3bd7fc7b4e9fb6c800f8945494d270c0de03d",
+      "fr": "dbc53eb2c5a7896d243faaac5390e7e192845186568cb278d4d7bcad902dd866",
+      "pl": "dbc53eb2c5a7896d243faaac5390e7e192845186568cb278d4d7bcad902dd866",
+      "es": "dbc53eb2c5a7896d243faaac5390e7e192845186568cb278d4d7bcad902dd866",
+      "nl": "dbc53eb2c5a7896d243faaac5390e7e192845186568cb278d4d7bcad902dd866",
+      "ms": "dbc53eb2c5a7896d243faaac5390e7e192845186568cb278d4d7bcad902dd866"
+    }
+  }
+}

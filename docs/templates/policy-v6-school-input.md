@@ -2,6 +2,14 @@
 
 填写后交给集成线程。不是公开 schema，不是审批。
 
+## 新增或修改内容的强制合同（2026-10-25）
+
+所有新增或修改学校输入必须通过共享 `validateV6Completeness`，由发布打包和实际页面入口共同调用。完整输入必须显式提供九主题的 EN/ZH 摘要、范围、标题、状态和 `studentActions`；不能通过省略可选字段绕开审核。Do/Don't 各 1–3 项，逐项绑定本校有效依据并区分 requirement/source_guidance/site_advice。缺证据写具体 gap，不编许可，也不为凑满三项编动作。
+
+school 的实际渲染字段必须等于该语言映射；FAQ/行动主题必须使用同一摘要与范围。中文状态及快捷入口不能回落为英文审计占位。未翻译官方引文保留原语言，不参与界面中文断言。发布内容还须绑定 `completenessReview` 的实际内容 hash；该 hash 覆盖标题、状态、摘要、范围和行动，原文及 held 状态不因展示批准升级。
+
+`data/policy-v6-legacy-completeness.json` 只冻结原已发布输入用于未变学校和历史回查。编辑任一字段即失去豁免；打包不得重生成豁免表，不得以旧学校验收代替新内容验收。新发布必须重新检查 QS71–90 全集。
+
 ```yaml
 canonicalSlug: <catalog canonical slug>
 name: <actual university name>

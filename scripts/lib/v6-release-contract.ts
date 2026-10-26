@@ -5,6 +5,8 @@ import type {V6RecordPackage} from '../../apps/web/lib/v6-effective-records';
 import {acceptV6SchoolInput} from '../../apps/web/lib/policy-v6-input';
 import {validatePolicySnapshotAgainstPublicData} from '../../apps/web/lib/policy-snapshots';
 import {SUPPORTED_LOCALES} from '../../apps/web/lib/i18n';
+import frozenLegacy from '../../data/policy-v6-legacy-completeness.json';
+import {validateV6Completeness} from '../../apps/web/lib/policy-v6-completeness';
 
 export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPackage, options: {candidateOnly?:boolean} = {}) {
   const sameSet = (a: string[], b: string[]) => new Set(a).size === a.length && new Set(b).size === b.length && [...a].sort().join(',') === [...b].sort().join(',');
@@ -32,7 +34,9 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
       const data = pages.locales[locale];
       if (!sameSet(pages.slugs, data.schools.map(school => school.slug)) || [...Object.keys(data.views), ...Object.keys(data.localEvidence)].some(key => !pages.slugs.includes(key))) throw Error('V6 locale adapter scope drift: ' + locale);
       const school = data.schools.find(school => school.slug === slug)!;
-      acceptV6SchoolInput({school, bundle: data.views[slug], evidence: data.localEvidence[slug]}, s, fingerprint);
+      const allowFrozenLegacy = pages.releaseId === frozenLegacy.releaseId || !frozenLegacy.repairSlugs.includes(slug);
+      const input={school, bundle: data.views[slug], evidence: data.localEvidence[slug]};
+      acceptV6SchoolInput(input, s, fingerprint);
       const adapterTools = data.views[slug]?.tools ?? data.localEvidence[slug]?.tools;
       if (adapterTools) {
         // relationship is a presentation-only directory label; source-bearing fields must match.
@@ -52,6 +56,7 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
         if (extraCard || missingTool || unboundRow) throw Error('V6 tool mapping drift: ' + slug);
       }
       if (!sameSet(school.heldClaims.map(c => c.id), held.map(c => c.id!))) throw Error('V6 held mapping drift: ' + slug);
+      validateV6Completeness(input,locale,allowFrozenLegacy);
     }
   }
   return {slugs: scope, locales: [...SUPPORTED_LOCALES], claims: records.summaries.reduce((n,s) => n+s.claims.length,0), tools: Object.values(records.toolsBySlug).reduce((n,t) => n+t.length,0), held: Object.values(records.heldBySlug).reduce((n,t) => n+t.length,0)};

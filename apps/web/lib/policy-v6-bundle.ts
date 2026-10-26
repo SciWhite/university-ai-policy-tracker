@@ -15,6 +15,7 @@ import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
+  completenessReview?: {schemaVersion:'uapt-v6-completeness-review-v1';contentSha256:string;reviewer:string;reviewedAt:string;scope:'presentation_only';policySemanticsApproved:false};
   candidateOnly?: true;
   presentationEvidenceAcceptance?: PresentationEvidenceAcceptance;
   editorialProjection?: import("./policy-v6-editorial-projection").V6EditorialProjection;
@@ -48,6 +49,9 @@ export interface LocalV6Bundle {
   topicActions?: Record<string, { en: string[]; zh: string[] }>;
   hero: { title: { en: string; zh: string }; scope: { en: string; zh: string }; images: { hero: string; do: string; dont: string }; actions: { do: { key: string; en: string; zh: string }[]; dont: { key: string; en: string; zh: string }[] } };
 }
+
+/** Required for every new/edited presentation; LocalV6Bundle also reads frozen legacy history. */
+export type CompleteV6Bundle = LocalV6Bundle & Required<Pick<LocalV6Bundle,'studentActions'|'topicSummaries'|'topicScopes'>>;
 
 /** Private projections bind to this exact local claim set, independently of published approvals. */
 export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions | undefined {

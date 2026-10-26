@@ -1,1 +1,176 @@
-{"schemaVersion":"uapt-v6-shard-index-v1","family":"public-v6-records","revisions":{"v6-audit-fix-20261014":{"path":"sharded/revisions/v6-audit-fix-20261014-e830f02e25aecab5986c7c9766d1c73fac04632ead1436c1039a93c07e277c0b.json","sha256":"e830f02e25aecab5986c7c9766d1c73fac04632ead1436c1039a93c07e277c0b","sourceSha256":"45e501702f0eb89b9714f8817c2d20719d57cece4de69d1c2fa9b3dc92f5dbdc"},"v6-followup-20261014":{"path":"sharded/revisions/v6-followup-20261014-7ff8f83f7c30ea35bbe4e9c3fee38db20f05ea007a3e606a5b3ad6fb2714df9b.json","sha256":"7ff8f83f7c30ea35bbe4e9c3fee38db20f05ea007a3e606a5b3ad6fb2714df9b","sourceSha256":"e8f1305be9a89fb6f809dfa4279ffa86f4b0aff16d1455deef7c3a77ddeef672"},"v6-hku-20261014-r2":{"path":"sharded/revisions/v6-hku-20261014-r2-e975d83ccb54034f9aae70e0dc7b216ebab805ea8620b8226f7b301bfdf1a667.json","sha256":"e975d83ccb54034f9aae70e0dc7b216ebab805ea8620b8226f7b301bfdf1a667","sourceSha256":"29ca5b0f3be176eddd514da2f86cb2210161c8ffbbc8fc623186a3cffa93c9f5"},"v6-hku-20261014-r3":{"path":"sharded/revisions/v6-hku-20261014-r3-c8201b55c4a72b55fcb7b32c19c651168efbd810a4a47fd301c0cb650d3926e7.json","sha256":"c8201b55c4a72b55fcb7b32c19c651168efbd810a4a47fd301c0cb650d3926e7","sourceSha256":"edc8d435aaf23efe60986a8a725d5fff6788de4c7b0094c34874c2374e573fa7"},"v6-ntu-chicago-20261014":{"path":"sharded/revisions/v6-ntu-chicago-20261014-154093d8199382c8d57b3c2045c1fc37fc0c39b52b7e67393c655c9d1eda39b2.json","sha256":"154093d8199382c8d57b3c2045c1fc37fc0c39b52b7e67393c655c9d1eda39b2","sourceSha256":"1ef9576acb5e34c66c9b183dca3251ebe9d0cd346738a3634a23a039dd3b4919"},"v6-ntu-chicago-20261014-r2":{"path":"sharded/revisions/v6-ntu-chicago-20261014-r2-2333e0ab6112e656eb4faa9ecb9dd4a7303762dd6480f5a55cf6b29a264a6734.json","sha256":"2333e0ab6112e656eb4faa9ecb9dd4a7303762dd6480f5a55cf6b29a264a6734","sourceSha256":"541987cb785d6b3e659297ff9e680792c4dd8cf604442e1b8f59df7e8aa7515f"},"v6-chicago-tools-20261014":{"path":"sharded/revisions/v6-chicago-tools-20261014-d85f17ec397955b2b809fa91af9561b9ae9f40e9477c3b5f1b765afbe1e9ddf7.json","sha256":"d85f17ec397955b2b809fa91af9561b9ae9f40e9477c3b5f1b765afbe1e9ddf7","sourceSha256":"c78593eb7c0bcbb81f5ce8750ee7bd47f683141cc851697a1f77728e0fbcd18f"},"pku-v5-20261014":{"path":"sharded/revisions/pku-v5-20261014-261f17ece82bdd798fc2e4e98cb157498ba06d00773468f21f4fdfe456b01ffd.json","sha256":"261f17ece82bdd798fc2e4e98cb157498ba06d00773468f21f4fdfe456b01ffd","sourceSha256":"2f48a8ec3db8c2a7aa294f4a21fe8e7a769d84e9be7352c23abe357ae45c65d3"},"pku-v5-20261014-r2":{"path":"sharded/revisions/pku-v5-20261014-r2-d5bfdcd51dd955c1a6c9d53535b7f813a200f756f15c9f213543ea3f36b03373.json","sha256":"d5bfdcd51dd955c1a6c9d53535b7f813a200f756f15c9f213543ea3f36b03373","sourceSha256":"43c50116d0b1fccaae5f1dcd4d5b54c9256e829e1dad64f36b7efac6b4268dcd"},"pku-v5-20261014-r3":{"path":"sharded/revisions/pku-v5-20261014-r3-403a452c5067665873056cb2632a1959a4f4fa822659500f06211d24fa41d90d.json","sha256":"403a452c5067665873056cb2632a1959a4f4fa822659500f06211d24fa41d90d","sourceSha256":"49e4b8e3d0a466e373b2872db416e8fb11a7ab83fb03877dba8acc13489fc22f"},"upenn-v6-20261016":{"path":"sharded/revisions/upenn-v6-20261016-b02758cf139293f0f8822c4d3aef6bb9760cc3d4533c14f8477e026791e73820.json","sha256":"b02758cf139293f0f8822c4d3aef6bb9760cc3d4533c14f8477e026791e73820","sourceSha256":"c7d025ad645093955fe506955fb18a0474eabba5368294f6e34283c488aa78a6"},"cornell-v6-20261016":{"path":"sharded/revisions/cornell-v6-20261016-ee5a0246aabdb1759a5ed8669eed1a638aa4f349897e9f0e672bca78e97fbd19.json","sha256":"ee5a0246aabdb1759a5ed8669eed1a638aa4f349897e9f0e672bca78e97fbd19","sourceSha256":"630e638a007050c1eb1a8fe4dfd3eac69436438804f2af339bf77bdd72ef705f"},"cornell-v6-r2-20261016":{"path":"sharded/revisions/cornell-v6-r2-20261016-8ed241139207da9fb15f3a9e5faf623f119d0a6062d3472d72a0ef8cf9439e7e.json","sha256":"8ed241139207da9fb15f3a9e5faf623f119d0a6062d3472d72a0ef8cf9439e7e","sourceSha256":"663b3238c4d1e1d25ba3fee3f7a4fcdc3c1945e48669819b8a26ef2fccceb63c"},"tsinghua-v6-r2-20261017":{"path":"sharded/revisions/tsinghua-v6-r2-20261017-9a5f41cb4df4d8d2318cb255b0711c44767b90f8c3e073502b168b10554e693c.json","sha256":"9a5f41cb4df4d8d2318cb255b0711c44767b90f8c3e073502b168b10554e693c","sourceSha256":"d5553947db031859d64edbf2c36f180d8d04b96f6f00de04122369f61998e84b"},"berkeley-v6-r1-20261017":{"path":"sharded/revisions/berkeley-v6-r1-20261017-4f60955f970f468fcef8c1bd9c34423dee161458d4401f2c82beaa531e1d7f12.json","sha256":"4f60955f970f468fcef8c1bd9c34423dee161458d4401f2c82beaa531e1d7f12","sourceSha256":"9f0be508ed5c1ec71c8c0f7e6e83aeca8b79d1a1b22d95ec5695d570a920663a"},"berkeley-v6-r2-20261017":{"path":"sharded/revisions/berkeley-v6-r2-20261017-8a7ddf56cacb4a7c5256d4be0623189c5dec1f592ae5de9e272b7b18994f63e3.json","sha256":"8a7ddf56cacb4a7c5256d4be0623189c5dec1f592ae5de9e272b7b18994f63e3","sourceSha256":"5a13e534e94ed24aa556df5a7b39939b39755e93293a491d4274842475af8c4b"},"berkeley-v6-r3-20261017":{"path":"sharded/revisions/berkeley-v6-r3-20261017-64aaf30ca0f901eeffd8c78016af5f90ccf131c9f08cf7701b7e33604b809d6f.json","sha256":"64aaf30ca0f901eeffd8c78016af5f90ccf131c9f08cf7701b7e33604b809d6f","sourceSha256":"33bc02502d3bda3da5cd8c2444d44f53e66384881d9bc0b89ea70bc757916b8e"},"melbourne-v6-r1-20261018":{"path":"sharded/revisions/melbourne-v6-r1-20261018-6c647b8c3060df04b70581623cbf6bb407f9a6f2ffeb88f275a1be2d9ee9cbf0.json","sha256":"6c647b8c3060df04b70581623cbf6bb407f9a6f2ffeb88f275a1be2d9ee9cbf0","sourceSha256":"aed6fecd60bbc5371faacbb63b3abfe761eda3276ef641548edd4fe149fbbbbd"},"melbourne-v6-r2-20261018":{"path":"sharded/revisions/melbourne-v6-r2-20261018-4b98ee6bb6b71365d98ba10aa1238d6e3ac8ef47e8eb058a879572ed9f6d23a4.json","sha256":"4b98ee6bb6b71365d98ba10aa1238d6e3ac8ef47e8eb058a879572ed9f6d23a4","sourceSha256":"a61103cf0fdc53de9dd434ab0e9a6412b5d6975408e4fe25f3a7c08a081647bf"},"melbourne-v6-r3-20261018":{"path":"sharded/revisions/melbourne-v6-r3-20261018-af4598275ba13e7fe9eb229377bc025728794c9ed559ceba9b8d481e0270a7a4.json","sha256":"af4598275ba13e7fe9eb229377bc025728794c9ed559ceba9b8d481e0270a7a4","sourceSha256":"1015c20b2b6a51b826914d7ff39096bb107b881684628de88c84998715e5cda3"},"qs20-22-v6-r1-20261018":{"path":"sharded/revisions/qs20-22-v6-r1-20261018-ec701b3eef3dc02198c647b2421887e3b16dcbaac9278e66802f271b2b9b06e7.json","sha256":"ec701b3eef3dc02198c647b2421887e3b16dcbaac9278e66802f271b2b9b06e7","sourceSha256":"1fa85d0b9e799978445f4315294d97723b19ef2946935a8b01f087af800b25d0"},"qs23-24-v6-r3-20261019":{"path":"sharded/revisions/qs23-24-v6-r3-20261019-8f002d1acec089f4acd8479b8850eb1af3782e689061f5711a389b3a623f3f54.json","sha256":"8f002d1acec089f4acd8479b8850eb1af3782e689061f5711a389b3a623f3f54","sourceSha256":"3c6d03a1be9ddc5e2d7685bf7d7a51a2a58960dc19d7c269c204ee0e7621a5fb"},"qs20-24-v6-r6-20261020":{"path":"sharded/revisions/qs20-24-v6-r6-20261020-11cfe1066d770e36d885a14fe76fe2f4ff8c44730b6a8ef56c83c96ea7fae68a.json","sha256":"11cfe1066d770e36d885a14fe76fe2f4ff8c44730b6a8ef56c83c96ea7fae68a","sourceSha256":"98663e2c511ae5a94b33525657d8ef44baff96c4fee8aba4478f3bad3cc03426"},"qs25-31-v6-r1-20261020":{"path":"sharded/revisions/qs25-31-v6-r1-20261020-9c33809edeec0830ea52ac2e32217e3c35bd2fe638c7f22247f3f6ae7dc70248.json","sha256":"9c33809edeec0830ea52ac2e32217e3c35bd2fe638c7f22247f3f6ae7dc70248","sourceSha256":"cddfe36da028bb65fd6405b47d70759eecfe884442a46193dcc80da3476aa439"},"qs20-24-v6-r7-20261020":{"path":"sharded/revisions/qs20-24-v6-r7-20261020-eb0154fd18f4ed1f7dc5aa676b8f5553213b78f979e07c1c30492a3b9e045af6.json","sha256":"eb0154fd18f4ed1f7dc5aa676b8f5553213b78f979e07c1c30492a3b9e045af6","sourceSha256":"41cfdd72310f2da8f23788220af28d74b0617960cff6a70f5dd1cc7f979390fc"},"v6-target-r7-candidate-20261021":{"path":"sharded/revisions/v6-target-r7-candidate-20261021-c209ef7fdf5a70003410f4ce9239bc5ab925edabf698cbdb7ed436d175aeeb5b.json","sha256":"c209ef7fdf5a70003410f4ce9239bc5ab925edabf698cbdb7ed436d175aeeb5b","sourceSha256":"0ed69c30cd0a68282f76209a1fc426f619608a6fe5cb39c550ff335d3aa505c1"},"qs35-40-v6-r3-20261022":{"path":"sharded/revisions/qs35-40-v6-r3-20261022-cf19de33564bae8a6b6e1197028462cc9235042fa89b0f6b84aa212fde0cc9cf.json","sha256":"cf19de33564bae8a6b6e1197028462cc9235042fa89b0f6b84aa212fde0cc9cf","sourceSha256":"7378087f566cf6a829e05940d6983d87a49666ec3c0e7e2d57e4f3a9021bbdca"},"qs35-40-v6-r4-meta-20261022":{"path":"sharded/revisions/qs35-40-v6-r4-meta-20261022-20eb9c2f66ba9a3e85e0957df148346854fee5706f1d676ef8b0476001cd38c6.json","sha256":"20eb9c2f66ba9a3e85e0957df148346854fee5706f1d676ef8b0476001cd38c6","sourceSha256":"b41d31f7d49bd2f946667f30f3521ac9821c790fafaff5f92b7a54d3f4c2240f"},"paris-northwestern-v6-r1-20261022":{"path":"sharded/revisions/paris-northwestern-v6-r1-20261022-daa89bcc75db3228fd107c6eebb824d61c6fd00e868dd816ca732752ece93e41.json","sha256":"daa89bcc75db3228fd107c6eebb824d61c6fd00e868dd816ca732752ece93e41","sourceSha256":"4e7ad03e917cc0d25425d3aa440f24d3a99089219d938f93947250daa7310c4e"},"uq-hkust-michigan-v6-r4-20261022":{"path":"sharded/revisions/uq-hkust-michigan-v6-r4-20261022-66794fb5472cf6cc554a9963e9600c14e0b10e992f01b3a2a85dce7ceca0399b.json","sha256":"66794fb5472cf6cc554a9963e9600c14e0b10e992f01b3a2a85dce7ceca0399b","sourceSha256":"d5cb3aadc857e8ae8b7800d78d8dd489a366095be8224f2096209a1d0dfda893"},"qs46-50-v6-r1-20261023":{"path":"sharded/revisions/qs46-50-v6-r1-20261023-fd261b58140923956398f6e54821951058e21d4815dcffa067ac2f548ff62f74.json","sha256":"fd261b58140923956398f6e54821951058e21d4815dcffa067ac2f548ff62f74","sourceSha256":"dbd9fbbe976c92d942f46cfcf80e7aff701d628875b9f59aa8fd582b0aa48f1a"},"qs51-70-v6-presentation-20261025":{"path":"sharded/revisions/qs51-70-v6-presentation-20261025-6553c0f4ece212a9166550e1231853b7686ce90239c14a90dbdfe4d3c5646f45.json","sha256":"6553c0f4ece212a9166550e1231853b7686ce90239c14a90dbdfe4d3c5646f45","sourceSha256":"196cb6a29eb408c2504846f8dafed0bdf9f6ae201b28306df7a1d1b749dff34e"},"qs51-70-v6-complete-r4-20261025":{"path":"sharded/revisions/qs51-70-v6-complete-r4-20261025-270900194c9673d0d46171f0c44b2b698f8fdb629a175380ec3e5439f2550da2.json","sha256":"270900194c9673d0d46171f0c44b2b698f8fdb629a175380ec3e5439f2550da2","sourceSha256":"4ba38727fa9d2643b9841fc4d1e4839bd3fd24134e795f6ff99ffc814e3219e5"}}}
+{
+  "schemaVersion": "uapt-v6-shard-index-v1",
+  "family": "public-v6-records",
+  "revisions": {
+    "v6-audit-fix-20261014": {
+      "path": "sharded/revisions/v6-audit-fix-20261014-e830f02e25aecab5986c7c9766d1c73fac04632ead1436c1039a93c07e277c0b.json",
+      "sha256": "e830f02e25aecab5986c7c9766d1c73fac04632ead1436c1039a93c07e277c0b",
+      "sourceSha256": "45e501702f0eb89b9714f8817c2d20719d57cece4de69d1c2fa9b3dc92f5dbdc"
+    },
+    "v6-followup-20261014": {
+      "path": "sharded/revisions/v6-followup-20261014-7ff8f83f7c30ea35bbe4e9c3fee38db20f05ea007a3e606a5b3ad6fb2714df9b.json",
+      "sha256": "7ff8f83f7c30ea35bbe4e9c3fee38db20f05ea007a3e606a5b3ad6fb2714df9b",
+      "sourceSha256": "e8f1305be9a89fb6f809dfa4279ffa86f4b0aff16d1455deef7c3a77ddeef672"
+    },
+    "v6-hku-20261014-r2": {
+      "path": "sharded/revisions/v6-hku-20261014-r2-e975d83ccb54034f9aae70e0dc7b216ebab805ea8620b8226f7b301bfdf1a667.json",
+      "sha256": "e975d83ccb54034f9aae70e0dc7b216ebab805ea8620b8226f7b301bfdf1a667",
+      "sourceSha256": "29ca5b0f3be176eddd514da2f86cb2210161c8ffbbc8fc623186a3cffa93c9f5"
+    },
+    "v6-hku-20261014-r3": {
+      "path": "sharded/revisions/v6-hku-20261014-r3-c8201b55c4a72b55fcb7b32c19c651168efbd810a4a47fd301c0cb650d3926e7.json",
+      "sha256": "c8201b55c4a72b55fcb7b32c19c651168efbd810a4a47fd301c0cb650d3926e7",
+      "sourceSha256": "edc8d435aaf23efe60986a8a725d5fff6788de4c7b0094c34874c2374e573fa7"
+    },
+    "v6-ntu-chicago-20261014": {
+      "path": "sharded/revisions/v6-ntu-chicago-20261014-154093d8199382c8d57b3c2045c1fc37fc0c39b52b7e67393c655c9d1eda39b2.json",
+      "sha256": "154093d8199382c8d57b3c2045c1fc37fc0c39b52b7e67393c655c9d1eda39b2",
+      "sourceSha256": "1ef9576acb5e34c66c9b183dca3251ebe9d0cd346738a3634a23a039dd3b4919"
+    },
+    "v6-ntu-chicago-20261014-r2": {
+      "path": "sharded/revisions/v6-ntu-chicago-20261014-r2-2333e0ab6112e656eb4faa9ecb9dd4a7303762dd6480f5a55cf6b29a264a6734.json",
+      "sha256": "2333e0ab6112e656eb4faa9ecb9dd4a7303762dd6480f5a55cf6b29a264a6734",
+      "sourceSha256": "541987cb785d6b3e659297ff9e680792c4dd8cf604442e1b8f59df7e8aa7515f"
+    },
+    "v6-chicago-tools-20261014": {
+      "path": "sharded/revisions/v6-chicago-tools-20261014-d85f17ec397955b2b809fa91af9561b9ae9f40e9477c3b5f1b765afbe1e9ddf7.json",
+      "sha256": "d85f17ec397955b2b809fa91af9561b9ae9f40e9477c3b5f1b765afbe1e9ddf7",
+      "sourceSha256": "c78593eb7c0bcbb81f5ce8750ee7bd47f683141cc851697a1f77728e0fbcd18f"
+    },
+    "pku-v5-20261014": {
+      "path": "sharded/revisions/pku-v5-20261014-261f17ece82bdd798fc2e4e98cb157498ba06d00773468f21f4fdfe456b01ffd.json",
+      "sha256": "261f17ece82bdd798fc2e4e98cb157498ba06d00773468f21f4fdfe456b01ffd",
+      "sourceSha256": "2f48a8ec3db8c2a7aa294f4a21fe8e7a769d84e9be7352c23abe357ae45c65d3"
+    },
+    "pku-v5-20261014-r2": {
+      "path": "sharded/revisions/pku-v5-20261014-r2-d5bfdcd51dd955c1a6c9d53535b7f813a200f756f15c9f213543ea3f36b03373.json",
+      "sha256": "d5bfdcd51dd955c1a6c9d53535b7f813a200f756f15c9f213543ea3f36b03373",
+      "sourceSha256": "43c50116d0b1fccaae5f1dcd4d5b54c9256e829e1dad64f36b7efac6b4268dcd"
+    },
+    "pku-v5-20261014-r3": {
+      "path": "sharded/revisions/pku-v5-20261014-r3-403a452c5067665873056cb2632a1959a4f4fa822659500f06211d24fa41d90d.json",
+      "sha256": "403a452c5067665873056cb2632a1959a4f4fa822659500f06211d24fa41d90d",
+      "sourceSha256": "49e4b8e3d0a466e373b2872db416e8fb11a7ab83fb03877dba8acc13489fc22f"
+    },
+    "upenn-v6-20261016": {
+      "path": "sharded/revisions/upenn-v6-20261016-b02758cf139293f0f8822c4d3aef6bb9760cc3d4533c14f8477e026791e73820.json",
+      "sha256": "b02758cf139293f0f8822c4d3aef6bb9760cc3d4533c14f8477e026791e73820",
+      "sourceSha256": "c7d025ad645093955fe506955fb18a0474eabba5368294f6e34283c488aa78a6"
+    },
+    "cornell-v6-20261016": {
+      "path": "sharded/revisions/cornell-v6-20261016-ee5a0246aabdb1759a5ed8669eed1a638aa4f349897e9f0e672bca78e97fbd19.json",
+      "sha256": "ee5a0246aabdb1759a5ed8669eed1a638aa4f349897e9f0e672bca78e97fbd19",
+      "sourceSha256": "630e638a007050c1eb1a8fe4dfd3eac69436438804f2af339bf77bdd72ef705f"
+    },
+    "cornell-v6-r2-20261016": {
+      "path": "sharded/revisions/cornell-v6-r2-20261016-8ed241139207da9fb15f3a9e5faf623f119d0a6062d3472d72a0ef8cf9439e7e.json",
+      "sha256": "8ed241139207da9fb15f3a9e5faf623f119d0a6062d3472d72a0ef8cf9439e7e",
+      "sourceSha256": "663b3238c4d1e1d25ba3fee3f7a4fcdc3c1945e48669819b8a26ef2fccceb63c"
+    },
+    "tsinghua-v6-r2-20261017": {
+      "path": "sharded/revisions/tsinghua-v6-r2-20261017-9a5f41cb4df4d8d2318cb255b0711c44767b90f8c3e073502b168b10554e693c.json",
+      "sha256": "9a5f41cb4df4d8d2318cb255b0711c44767b90f8c3e073502b168b10554e693c",
+      "sourceSha256": "d5553947db031859d64edbf2c36f180d8d04b96f6f00de04122369f61998e84b"
+    },
+    "berkeley-v6-r1-20261017": {
+      "path": "sharded/revisions/berkeley-v6-r1-20261017-4f60955f970f468fcef8c1bd9c34423dee161458d4401f2c82beaa531e1d7f12.json",
+      "sha256": "4f60955f970f468fcef8c1bd9c34423dee161458d4401f2c82beaa531e1d7f12",
+      "sourceSha256": "9f0be508ed5c1ec71c8c0f7e6e83aeca8b79d1a1b22d95ec5695d570a920663a"
+    },
+    "berkeley-v6-r2-20261017": {
+      "path": "sharded/revisions/berkeley-v6-r2-20261017-8a7ddf56cacb4a7c5256d4be0623189c5dec1f592ae5de9e272b7b18994f63e3.json",
+      "sha256": "8a7ddf56cacb4a7c5256d4be0623189c5dec1f592ae5de9e272b7b18994f63e3",
+      "sourceSha256": "5a13e534e94ed24aa556df5a7b39939b39755e93293a491d4274842475af8c4b"
+    },
+    "berkeley-v6-r3-20261017": {
+      "path": "sharded/revisions/berkeley-v6-r3-20261017-64aaf30ca0f901eeffd8c78016af5f90ccf131c9f08cf7701b7e33604b809d6f.json",
+      "sha256": "64aaf30ca0f901eeffd8c78016af5f90ccf131c9f08cf7701b7e33604b809d6f",
+      "sourceSha256": "33bc02502d3bda3da5cd8c2444d44f53e66384881d9bc0b89ea70bc757916b8e"
+    },
+    "melbourne-v6-r1-20261018": {
+      "path": "sharded/revisions/melbourne-v6-r1-20261018-6c647b8c3060df04b70581623cbf6bb407f9a6f2ffeb88f275a1be2d9ee9cbf0.json",
+      "sha256": "6c647b8c3060df04b70581623cbf6bb407f9a6f2ffeb88f275a1be2d9ee9cbf0",
+      "sourceSha256": "aed6fecd60bbc5371faacbb63b3abfe761eda3276ef641548edd4fe149fbbbbd"
+    },
+    "melbourne-v6-r2-20261018": {
+      "path": "sharded/revisions/melbourne-v6-r2-20261018-4b98ee6bb6b71365d98ba10aa1238d6e3ac8ef47e8eb058a879572ed9f6d23a4.json",
+      "sha256": "4b98ee6bb6b71365d98ba10aa1238d6e3ac8ef47e8eb058a879572ed9f6d23a4",
+      "sourceSha256": "a61103cf0fdc53de9dd434ab0e9a6412b5d6975408e4fe25f3a7c08a081647bf"
+    },
+    "melbourne-v6-r3-20261018": {
+      "path": "sharded/revisions/melbourne-v6-r3-20261018-af4598275ba13e7fe9eb229377bc025728794c9ed559ceba9b8d481e0270a7a4.json",
+      "sha256": "af4598275ba13e7fe9eb229377bc025728794c9ed559ceba9b8d481e0270a7a4",
+      "sourceSha256": "1015c20b2b6a51b826914d7ff39096bb107b881684628de88c84998715e5cda3"
+    },
+    "qs20-22-v6-r1-20261018": {
+      "path": "sharded/revisions/qs20-22-v6-r1-20261018-ec701b3eef3dc02198c647b2421887e3b16dcbaac9278e66802f271b2b9b06e7.json",
+      "sha256": "ec701b3eef3dc02198c647b2421887e3b16dcbaac9278e66802f271b2b9b06e7",
+      "sourceSha256": "1fa85d0b9e799978445f4315294d97723b19ef2946935a8b01f087af800b25d0"
+    },
+    "qs23-24-v6-r3-20261019": {
+      "path": "sharded/revisions/qs23-24-v6-r3-20261019-8f002d1acec089f4acd8479b8850eb1af3782e689061f5711a389b3a623f3f54.json",
+      "sha256": "8f002d1acec089f4acd8479b8850eb1af3782e689061f5711a389b3a623f3f54",
+      "sourceSha256": "3c6d03a1be9ddc5e2d7685bf7d7a51a2a58960dc19d7c269c204ee0e7621a5fb"
+    },
+    "qs20-24-v6-r6-20261020": {
+      "path": "sharded/revisions/qs20-24-v6-r6-20261020-11cfe1066d770e36d885a14fe76fe2f4ff8c44730b6a8ef56c83c96ea7fae68a.json",
+      "sha256": "11cfe1066d770e36d885a14fe76fe2f4ff8c44730b6a8ef56c83c96ea7fae68a",
+      "sourceSha256": "98663e2c511ae5a94b33525657d8ef44baff96c4fee8aba4478f3bad3cc03426"
+    },
+    "qs25-31-v6-r1-20261020": {
+      "path": "sharded/revisions/qs25-31-v6-r1-20261020-9c33809edeec0830ea52ac2e32217e3c35bd2fe638c7f22247f3f6ae7dc70248.json",
+      "sha256": "9c33809edeec0830ea52ac2e32217e3c35bd2fe638c7f22247f3f6ae7dc70248",
+      "sourceSha256": "cddfe36da028bb65fd6405b47d70759eecfe884442a46193dcc80da3476aa439"
+    },
+    "qs20-24-v6-r7-20261020": {
+      "path": "sharded/revisions/qs20-24-v6-r7-20261020-eb0154fd18f4ed1f7dc5aa676b8f5553213b78f979e07c1c30492a3b9e045af6.json",
+      "sha256": "eb0154fd18f4ed1f7dc5aa676b8f5553213b78f979e07c1c30492a3b9e045af6",
+      "sourceSha256": "41cfdd72310f2da8f23788220af28d74b0617960cff6a70f5dd1cc7f979390fc"
+    },
+    "v6-target-r7-candidate-20261021": {
+      "path": "sharded/revisions/v6-target-r7-candidate-20261021-c209ef7fdf5a70003410f4ce9239bc5ab925edabf698cbdb7ed436d175aeeb5b.json",
+      "sha256": "c209ef7fdf5a70003410f4ce9239bc5ab925edabf698cbdb7ed436d175aeeb5b",
+      "sourceSha256": "0ed69c30cd0a68282f76209a1fc426f619608a6fe5cb39c550ff335d3aa505c1"
+    },
+    "qs35-40-v6-r3-20261022": {
+      "path": "sharded/revisions/qs35-40-v6-r3-20261022-cf19de33564bae8a6b6e1197028462cc9235042fa89b0f6b84aa212fde0cc9cf.json",
+      "sha256": "cf19de33564bae8a6b6e1197028462cc9235042fa89b0f6b84aa212fde0cc9cf",
+      "sourceSha256": "7378087f566cf6a829e05940d6983d87a49666ec3c0e7e2d57e4f3a9021bbdca"
+    },
+    "qs35-40-v6-r4-meta-20261022": {
+      "path": "sharded/revisions/qs35-40-v6-r4-meta-20261022-20eb9c2f66ba9a3e85e0957df148346854fee5706f1d676ef8b0476001cd38c6.json",
+      "sha256": "20eb9c2f66ba9a3e85e0957df148346854fee5706f1d676ef8b0476001cd38c6",
+      "sourceSha256": "b41d31f7d49bd2f946667f30f3521ac9821c790fafaff5f92b7a54d3f4c2240f"
+    },
+    "paris-northwestern-v6-r1-20261022": {
+      "path": "sharded/revisions/paris-northwestern-v6-r1-20261022-daa89bcc75db3228fd107c6eebb824d61c6fd00e868dd816ca732752ece93e41.json",
+      "sha256": "daa89bcc75db3228fd107c6eebb824d61c6fd00e868dd816ca732752ece93e41",
+      "sourceSha256": "4e7ad03e917cc0d25425d3aa440f24d3a99089219d938f93947250daa7310c4e"
+    },
+    "uq-hkust-michigan-v6-r4-20261022": {
+      "path": "sharded/revisions/uq-hkust-michigan-v6-r4-20261022-66794fb5472cf6cc554a9963e9600c14e0b10e992f01b3a2a85dce7ceca0399b.json",
+      "sha256": "66794fb5472cf6cc554a9963e9600c14e0b10e992f01b3a2a85dce7ceca0399b",
+      "sourceSha256": "d5cb3aadc857e8ae8b7800d78d8dd489a366095be8224f2096209a1d0dfda893"
+    },
+    "qs46-50-v6-r1-20261023": {
+      "path": "sharded/revisions/qs46-50-v6-r1-20261023-fd261b58140923956398f6e54821951058e21d4815dcffa067ac2f548ff62f74.json",
+      "sha256": "fd261b58140923956398f6e54821951058e21d4815dcffa067ac2f548ff62f74",
+      "sourceSha256": "dbd9fbbe976c92d942f46cfcf80e7aff701d628875b9f59aa8fd582b0aa48f1a"
+    },
+    "qs51-70-v6-presentation-20261025": {
+      "path": "sharded/revisions/qs51-70-v6-presentation-20261025-6553c0f4ece212a9166550e1231853b7686ce90239c14a90dbdfe4d3c5646f45.json",
+      "sha256": "6553c0f4ece212a9166550e1231853b7686ce90239c14a90dbdfe4d3c5646f45",
+      "sourceSha256": "196cb6a29eb408c2504846f8dafed0bdf9f6ae201b28306df7a1d1b749dff34e"
+    },
+    "qs51-70-v6-complete-r4-20261025": {
+      "path": "sharded/revisions/qs51-70-v6-complete-r4-20261025-270900194c9673d0d46171f0c44b2b698f8fdb629a175380ec3e5439f2550da2.json",
+      "sha256": "270900194c9673d0d46171f0c44b2b698f8fdb629a175380ec3e5439f2550da2",
+      "sourceSha256": "4ba38727fa9d2643b9841fc4d1e4839bd3fd24134e795f6ff99ffc814e3219e5"
+    },
+    "qs71-90-v6-reviewed-r1-20261025": {
+      "path": "sharded/revisions/qs71-90-v6-reviewed-r1-20261025-af800f5aac359f0f54f335d8539c8e757f765062a771d05a7f5dff015d69c375.json",
+      "sha256": "af800f5aac359f0f54f335d8539c8e757f765062a771d05a7f5dff015d69c375",
+      "sourceSha256": "16868367c534f9838aee0e260b1ba359655d633c118ecdd3d072c2f8b05dd25d"
+    }
+  }
+}

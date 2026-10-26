@@ -11,5 +11,5 @@ export function getV6PageInput(slug: string, locale: SupportedLocale) {
   const school = publishedV6School(slug, locale) ?? bundle?.school;
   // Legacy private evidence has its own frozen-record gate; no public identity is inferred.
   if (!school) return {kind: evidence ? 'evidence' as const : 'record' as const, bundle, evidence};
-  return acceptV6SchoolInput({school, bundle, evidence}, v6CorrectedSummary(slug), v6RecordRevision(slug)?.recordSha256);
+  return acceptV6SchoolInput({school, bundle, evidence}, v6CorrectedSummary(slug), v6RecordRevision(slug)?.recordSha256, {locale});
 }

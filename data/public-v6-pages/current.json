@@ -1,7 +1,7 @@
 {
-  "path": "revisions/qs51-70-v6-complete-r4-20261025.json",
-  "sha256": "04eaa3142f3d57d34261dc0fd7080fa3b32903beaeba7b8924dc1b3f77868372",
-  "releaseId": "qs51-70-v6-complete-r4-20261025",
+  "path": "revisions/qs71-90-v6-reviewed-r1-20261025.json",
+  "sha256": "d4c8cf7ea7189fad97cb5ec0b501b5e0d8b5ad476770d054bae006373dad7a20",
+  "releaseId": "qs71-90-v6-reviewed-r1-20261025",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -72,7 +72,27 @@
     "kfupm",
     "university-of-texas-at-austin",
     "brown-university",
-    "university-of-illinois-urbana-champaign"
+    "university-of-illinois-urbana-champaign",
+    "universite-paris-saclay",
+    "lund-university",
+    "sorbonne-university",
+    "the-university-of-warwick",
+    "trinity-college-dublin-the-university-of-dublin",
+    "university-of-birmingham",
+    "the-university-of-western-australia",
+    "kth-royal-institute-of-technology",
+    "university-of-glasgow",
+    "universitat-heidelberg",
+    "university-of-washington",
+    "adelaide-university",
+    "pennsylvania-state-university",
+    "universidad-de-buenos-aires",
+    "tokyo-institute-of-technology",
+    "university-of-leeds",
+    "university-of-southampton",
+    "boston-university",
+    "freie-universitaet-berlin",
+    "purdue-university"
   ],
   "v5Slugs": []
 }
