@@ -241,6 +241,26 @@ class RetentionDeadlineTests(unittest.TestCase):
   self.registered={'entries':[dict(self.held)]}
  def validate(self):m.validate_retention_deadlines(self.receipt,self.observed,self.policy,self.registered)
  def test_bounded_hold_with_action_passes(self):self.validate()
+ def deferral(self):
+  old=(self.time-m.datetime.timedelta(minutes=1)).isoformat()
+  self.receipt['entries'][0]['reviewBefore']=old;self.registered['entries'][0]['reviewBefore']=old
+  self.receipt['basisSha256']='exact-release'
+  self.policy['retentionEnforcement']['releaseDeferral']={'schemaVersion':'uapt-retention-release-deferral-v1','basisSha256':'exact-release','approvedAt':self.time.isoformat(),'expiresAt':(self.time+m.datetime.timedelta(hours=4)).isoformat(),'authorization':'Explicit human instruction to relax release restriction','nextAction':'Review named old dependencies after this exact release; preserve original clocks','holds':[dict(self.registered['entries'][0])]}
+ def test_explicit_exact_basis_deferral_keeps_original_clock(self):
+  self.deferral();before=json.dumps(self.registered);self.validate();self.assertEqual(json.dumps(self.registered),before)
+ def test_deferral_cannot_cover_different_release(self):
+  self.deferral();self.receipt['basisSha256']='different'
+  with self.assertRaisesRegex(ValueError,'Expired registered hold'):self.validate()
+ def test_deferral_cannot_cover_another_hold(self):
+  self.deferral();self.policy['retentionEnforcement']['releaseDeferral']['holds']=[]
+  with self.assertRaisesRegex(ValueError,'Expired registered hold'):self.validate()
+ def test_deferral_does_not_renew_clock(self):
+  self.deferral();self.receipt['entries'][0]['reviewBefore']=(self.time+m.datetime.timedelta(hours=1)).isoformat()
+  with self.assertRaisesRegex(ValueError,'cannot be renewed'):self.validate()
+ def test_expired_or_unbounded_deferral_refuses(self):
+  for hours in [-1,25]:
+   self.deferral();self.policy['retentionEnforcement']['releaseDeferral']['expiresAt']=(self.time+m.datetime.timedelta(hours=hours)).isoformat()
+   with self.assertRaisesRegex(ValueError,'deferral'):self.validate()
  def test_expired_hold_refuses_even_after_receipt_timestamp_refresh(self):
   self.registered['entries'][0]['reviewBefore']=(self.time-m.datetime.timedelta(seconds=1)).isoformat()
   with self.assertRaisesRegex(ValueError,'Expired registered hold'):self.validate()

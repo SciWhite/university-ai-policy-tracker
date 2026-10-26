@@ -79,6 +79,19 @@ def temporary_paths(root, guard):
             if not path.is_symlink() and (path.is_file() or path.is_dir()): paths.add(str(path))
     return sorted(paths)
 
+def authorized_retention_deferral(receipt, policy, entry, current):
+    """Explicit, exact-basis operations exception; original hold clocks never change."""
+    exception = policy.get('retentionEnforcement', {}).get('releaseDeferral')
+    if not exception: return False
+    approved = retention_timestamp(exception.get('approvedAt'), 'deferral approvedAt')
+    expires = retention_timestamp(exception.get('expiresAt'), 'deferral expiresAt')
+    if exception.get('schemaVersion') != 'uapt-retention-release-deferral-v1' or not exception.get('authorization') or not exception.get('nextAction') or expires <= current or approved > current + datetime.timedelta(minutes=5) or expires <= approved or expires - approved > datetime.timedelta(hours=24):
+        raise ValueError('Invalid or expired explicit retention deferral')
+    if receipt.get('basisSha256') != exception.get('basisSha256'): return False
+    key = 'path' if 'path' in entry else 'name'
+    row = next((item for item in exception.get('holds', []) if item.get(key) == entry.get(key)), None)
+    return bool(row and row.get('heldSince') == entry.get('heldSince') and row.get('reviewBefore') == entry.get('reviewBefore'))
+
 def validate_retention_deadlines(receipt, observed, policy, registered):
     guard = policy.get('retentionEnforcement')
     if not guard: return
@@ -105,7 +118,7 @@ def validate_retention_deadlines(receipt, observed, policy, registered):
                 raise ValueError('Temporary artifacts require an explicit bounded hold: ' + identity)
             if prior and prior.get('disposition') == 'held':
                 old_deadline = retention_timestamp(prior.get('reviewBefore'), 'registered reviewBefore')
-                if old_deadline <= current: raise ValueError('Expired registered hold; archive or resolve dependency before release: ' + identity)
+                if old_deadline <= current and not authorized_retention_deferral(receipt, policy, prior, current): raise ValueError('Expired registered hold; archive or resolve dependency before release: ' + identity)
                 if entry.get('disposition') != 'held':
                     # A fresh name/classification cannot hide old archive debt.
                     if key == 'path' or entry.get('disposition') != 'active' or identity not in runtime_roots:
@@ -115,7 +128,7 @@ def validate_retention_deadlines(receipt, observed, policy, registered):
             deadline = retention_timestamp(entry.get('reviewBefore'), 'reviewBefore')
             if not entry.get('nextAction') or since > checked + datetime.timedelta(minutes=5) or deadline <= since or deadline - since > limit:
                 raise ValueError('Missing or unbounded hold action/deadline: ' + identity)
-            if deadline <= current: raise ValueError('Expired hold; archive or resolve dependency before release: ' + identity)
+            if deadline <= current and not authorized_retention_deferral(receipt, policy, entry, current): raise ValueError('Expired hold; archive or resolve dependency before release: ' + identity)
             if prior and prior.get('disposition') == 'held':
                 if since != retention_timestamp(prior.get('heldSince'), 'registered heldSince') or deadline > old_deadline:
                     raise ValueError('Hold deadline cannot be renewed by refreshing the receipt: ' + identity)

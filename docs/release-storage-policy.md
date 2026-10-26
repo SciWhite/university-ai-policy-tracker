@@ -62,3 +62,7 @@
 执行 `sudo /usr/local/libexec/uapt-release-lifecycle.py retention` 可只读核对当前台账、真实目录和暂留期限。prebuild、gate 及切流前也执行同样检查。新失败候选必须立即登记材料和期限；complete 后的台账更新必须保留全部现存 held 的原始时间，旧脚本若丢失字段会被拒绝。禁止为通过门禁清空权威台账、忽略临时材料或调高容量预算。
 
 首次暂留时钟另存 root 拥有的 `hold-clocks.json`，由 `retentionEnforcement.clockRegister` 指定。即使普通 current-retention 清单被整份重写，也不能延长已记录的期限。prebuild/gate 在同一发布锁中登记首次见到且已验证的 hold；失败/完成后的台账补写须执行 `record-retention` 校验并登记新增 hold，再只读执行 `retention`。归档移除后的旧时钟继续保留作追溯，禁止复用旧 release 路径或重置时钟文件。
+
+## 明确授权的单次发布豁免
+
+用户明确授权放宽发布限制时，运维可在 `retentionEnforcement.releaseDeferral` 记录精确依据的限时豁免：schema `uapt-retention-release-deferral-v1`、basisSha256、authorization、approvedAt、expiresAt、nextAction 和逐项原始 name/path、heldSince、reviewBefore。最长24小时，只跳过列明材料的到期阻断；不延长原始时钟、不删除材料、不豁免容量、未分类材料、证据或回滚检查，也不自动适用于下一版本。到期仍需处理依赖或归档，不能自动续期。豁免及控制器变更单独备份审计；不重建已经验收的页面产物。
