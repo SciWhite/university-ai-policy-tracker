@@ -43,7 +43,7 @@ export function validateChangeEventReceipt(receiptPath:string,scopePath:string,d
   if(overview.schemaVersion!=='uapt-v6-change-overviews-v1'||overview.revision!==input.revision||overview.rulesVersion!==input.rulesVersion||overview.basisSha256!==input.basisSha256||overview.projectionSha256!==receipt.projectionArtifact.sha256)throw Error('Overview package basis mismatch');
   const wantedOverviews=Object.fromEntries(Object.entries(expected).filter(([,h])=>h.currentRecordSha256).map(([slug,h])=>[slug,buildChangeOverview(h,receipt.projectionArtifact.sha256)]));
   if(!isDeepStrictEqual(overview.schools,JSON.parse(JSON.stringify(wantedOverviews))))throw Error('Overview scope/content mismatch');
-  const scopeSlugs=new Set(scope.universities.map((s:{slug:string})=>s.slug));
+  const scopeSlugs=new Set<string>(scope.universities.map((s:{slug:string})=>s.slug));
   // Each observed surface stores actual ordered event IDs, not a success boolean.
   for(const name of ['history','universityChanges','latestDiff','changesIndex','recentChanges','rss']) {
     const surface=proof(receipt.eventSurfaces?.[name]).value;
