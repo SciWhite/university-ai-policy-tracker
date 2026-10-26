@@ -27,6 +27,7 @@ async (page) => {
       for(const topic of value.topics)if(!faqAnswers.some(a=>norm(a)===norm(topic.summary)))throw Error('FAQ projection differs '+topic.key);
       const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
       if(overflow)throw Error('Overflow '+school.slug+'/'+locale+'/'+width);
+      if(await page.locator('#record-changes [data-event-id]').count()<1)throw Error('Verified Changes timeline missing or unavailable '+school.slug);
       const opened=[];
       // Every action on both languages, plus narrow/wide popover interaction.
       if(width!==720)for(const action of value.actions){
