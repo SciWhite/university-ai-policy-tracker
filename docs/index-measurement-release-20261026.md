@@ -8,11 +8,12 @@ Build only the existing shared web zone. Main and MCP remain on their accepted
 artifacts. Replace the shared web role through the installed lifecycle controller;
 retain all its existing route ownership and resource fallbacks. Additional ownership
 is an exact allowlist of 1,613 English empty diffs, their 9,678 language controls,
-five changed sitemap sections, and the analytics event collector. The unchanged
+the analytics event collector. Five changed sitemap sections remain static. The unchanged
 core sitemap can remain on main. No generic school/API/locale prefix is taken over.
 
-The sitemap adapter fetches the unchanged main service at 127.0.0.1:3100 and
-removes only frozen members from `data/index-sitemap-removal-scope.json`. Preserve
+The sitemap builder reads byte-frozen accepted public XML in
+`data/index-sitemap-source/` and removes only frozen members from
+`data/index-sitemap-removal-scope.json`. Preserve
 all retained XML entries and dates. Expect 1,673 membership removals: 1,613 empty
 English diffs, 52 aliases, eight duplicate members. Verify actual before/after
 sets and bytes, never infer acceptance from counts alone.

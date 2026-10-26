@@ -14,17 +14,3 @@ export function applyIndexSitemapOverlay(xml: string, section: string): string {
     return excluded.has(url) ? "" : entry;
   });
 }
-
-export async function readIndexSitemapOverlay(section: string, sourceBase: string): Promise<Response> {
-  // Never allow the public host or this zone to recurse back into its own route.
-  if (sourceBase !== "http://127.0.0.1:3100" || !removals.has(section)) {
-    throw new Error("Sitemap overlay requires the unchanged canonical main runtime");
-  }
-  const source = await fetch(`${sourceBase}/sitemaps/${section}`, {
-    cache: "no-store", redirect: "error", signal: AbortSignal.timeout(15_000),
-    headers: {"user-agent": "UAPT-Monitor/1.0", host: "eduaipolicy.org"}
-  });
-  if (!source.ok) return new Response("Sitemap source unavailable", {status: 503, headers: {"Cache-Control": "no-store"}});
-  const xml = applyIndexSitemapOverlay(await source.text(), section);
-  return new Response(xml, {headers: {"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "no-store, no-transform"}});
-}
