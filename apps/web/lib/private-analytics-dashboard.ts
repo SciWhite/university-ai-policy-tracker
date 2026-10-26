@@ -99,7 +99,7 @@ export function parseAnalyticsDashboardQuery(
   return {
     compare: rawCompare !== "none",
     filters: {
-      countries: getRepeatedValues(params, "country"),
+      countries: getRepeatedValues(params, "country").map(normalizeCountry),
       devices: getRepeatedValues(params, "device"),
       locales: getRepeatedValues(params, "locale"),
       sources: getRepeatedValues(params, "source")

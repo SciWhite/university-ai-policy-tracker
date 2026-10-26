@@ -71,6 +71,9 @@ test("dashboard totals, conversion events and source shares use the same exclusi
   assert.equal(data.onsite.current.quality.excludedTestPageViews,1);
   assert.equal(data.onsite.current.unknownSourceShare,0);
   assert.equal(data.meta.measurement.complete,true);
+  const countryFiltered=await getAnalyticsDashboard(parseAnalyticsDashboardQuery(new URLSearchParams({from:"2026-10-19",to:"2026-10-25",compare:"none",country:"ca"})));
+  assert.equal(countryFiltered.onsite.current.summary.pageViews,1);
+  assert.equal(countryFiltered.onsite.current.quality.excludedTestEvents,2);
   globalThis.fetch=async()=>new Response("failed fixture",{status:503});
   const failed=await getAnalyticsDashboard(parseAnalyticsDashboardQuery(new URLSearchParams({from:"2026-10-19",to:"2026-10-25"})));
   assert.equal(failed.meta.measurement.complete,false);assert.equal(failed.meta.measurement.error,"event_window_unavailable");assert.equal(failed.meta.comparison.onsite.eligible,false);
