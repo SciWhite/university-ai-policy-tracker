@@ -5966,6 +5966,1413 @@
       "hashKind": "unknown_legacy",
       "verification": "Previously published attribution; original byte capture not verified by this presentation release.",
       "unresolvedReason": "Historical public source hash retained; cannot infer raw/text representation without source bytes."
+    },
+    {
+      "sourceUrl": "https://actesreglementaires.sorbonne-universite.fr/_resources/CAC/ComFVU/DEL/Sorbonne-Universite-CFVU-Delib-20240620.pdf?download=true",
+      "snapshotHash": "56c3231d216f05a052bd71c531bc03d07da9bc81cef4257a6abed65fcb7e45b8",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/about/policies/academic-integrity-policy/",
+      "snapshotHash": "dab458386e900f4d5a9b3122cba9d849e1d9ef1d9dfa9c2bfecbe3ad1d370fb0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/about/policies/academic-integrity-policy/academic-misconduct-procedure/",
+      "snapshotHash": "4b29ea26c6b9b4fd75fa0479dcc392910873dda16a4c94cff1ff25d8ba9a578a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/about/policies/assessment-policy/assessment-procedure/",
+      "snapshotHash": "d7f74391d0a0c8fc0c759fb1e3ec58ad23d1cb821725b1295d30e0b9d8603311",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/about/policies/cyber-security-policy/",
+      "snapshotHash": "945cf29f614f18dda7b06c4807d1ec0cdd7a7d79e7969386edf5d4b827df68be",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/about/policies/research-integrity-policy/research-integrity-authorship-procedure/",
+      "snapshotHash": "51693b3d379b6fa9b5d8f473b0c3c8cb58a5f3a2f7c490849db948da88e99de3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/research/graduate-research-school/graduate-research-handbook/conduct-of-research/",
+      "snapshotHash": "38e94448e37af95ef43529924bdf11c9b3aa58255f86a4217b46288ed4e3ea8f",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://adelaideuni.edu.au/students/manage-study/assessments-exams/online-exam-rules/",
+      "snapshotHash": "9c5d5891bb42e1af818865b12c6b90e2938641b37275d52442907324c2ae6419",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ai.psu.edu/ai-literacy/data-protection",
+      "snapshotHash": "f216db46b75e8b3fb06e84796a68dbf64bd6d7e79d7c4dec6639e641b318e4a5",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ai.psu.edu/ai-services/ai-studio",
+      "snapshotHash": "831d5e5df7408844eae56164aa9761354810982017331b23d8e10c190db66c55",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ai.psu.edu/resources/frequently-asked-questions",
+      "snapshotHash": "4d696d6ad6cfceae8330c95b0de47c7d342de6ace50918d6de3bf8e84dbf8ac7",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ai.psu.edu/resources/guidelines",
+      "snapshotHash": "5de52d642e36d38ee47dca61977ee089c1ebf33f08133d9f2e44453ea5cbf8a2",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://assist.ki.fu-berlin.de/",
+      "snapshotHash": "b59c0c13deb28b4f37c348550d3322ffdc4779963d0d21eea08f7adf912f2b99",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://au.libguides.com/aistudy/genaitools",
+      "snapshotHash": "18ae051da089c659adf8dfd92dad4184630d35614bac591573c6fb5d8677cfdb",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-leitlinie-de/download",
+      "snapshotHash": "0537188b668d1f123514721a7c63aaef339b03987c600f119dad1405b56dcecd",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://capsule.sorbonne-universite.fr/ressources-capsule/",
+      "snapshotHash": "bcae85926c0c31a63907edb74dabcf17aa3edf41666ec347f496f63c3f29210b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "snapshotHash": "221e2a570ee0f05193c1c10adf79de564f2d41ecbc1b47022911bc621811ff5b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "snapshotHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2025/08/27/assessment-and-marking-in-light-of-generative-ai/",
+      "snapshotHash": "1389b66974862e4fff2fea15285fd78f4603e27555e1ee323e9b762ed57e3301",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://depts.washington.edu/comply/docs/comp_308.pdf",
+      "snapshotHash": "f320db29dac1ed548157616bc127803010458a620e6d6e76ff383c2f474adf26",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://economicas.uba.ar/nuevos-criterios-para-el-uso-de-chatbot-de-uba-economicas/",
+      "snapshotHash": "a6cc6cadc279718d25a11fd58d7bd95fc366a9ac1420a5663971cd74c4b8b03c",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://educationexpress.uts.edu.au/collections/artificial-intelligence-in-learning-and-teaching/resources/developing-guidelines-for-generative-ai-in-your-subject/",
+      "snapshotHash": "0a5f3b7aeae157881563bad612dfc0a94f2d9dcfb0a26d55f9e03147c58c1b0b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-and-assessments/",
+      "snapshotHash": "08bcf5f89c261c37d580f4ffe58c3770af35e6262b278c09221ea4c217b30768",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-and-assessments/acknowledging-use-of-ai/",
+      "snapshotHash": "25ccd5aed5099f753df34dc71349f110ecb5fc7ed600e22816118a73d3804455",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-and-assessments/categories-of-assessments/",
+      "snapshotHash": "fbcaefde265f6f87e50b3f1aaaa0d1ea9fc2d8ee57c675453b01096e74c8f2ea",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-use-in-research/data-restrictions/",
+      "snapshotHash": "b144d346ae7eb851757f5103791272a6a7cb002866abe6aa11e8cce9ba4e7206",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-use-in-research/postgraduate-researcher-guidance/assessment-categories-for-research-degrees/",
+      "snapshotHash": "dbcc24137898c9f060067ccb0149deb47b20e68aeb9bb3bedc2f6dfdc35be8be",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/intro-gen-ai/generative-ai-tools/",
+      "snapshotHash": "105d4fe095e3a6d0ff68e0f09c5e2f4938390296d4a3a4d6f9bc6fa5832660d3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/intro-gen-ai/generative-ai-tools/",
+      "snapshotHash": "89fcf87b07482b9284e7b67b3488ec0c5be27586557626635ae106cfe7bbe469",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://grad.uw.edu/advice/effective-and-responsible-use-of-ai-in-research/",
+      "snapshotHash": "904ffde774de8c3db8b2f151e2b1eca6e357a0738f8da21a79ca05f7dfe6eefa",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://guides.library.uwa.edu.au/RDMtoolkit/ethics-compliance",
+      "snapshotHash": "1e6982799da49ddea4d649e5a91adc8cc134c45b5d3b35294a331cafd9ff8f19",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://guides.library.uwa.edu.au/artificial_intelligence/ethical_considerations",
+      "snapshotHash": "62a6901a6cc8096246abf95d6b5d8e5beea42d260cae19bd49deb6dd373ef4b5",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://guides.library.uwa.edu.au/ld.php?content_id=51340425",
+      "snapshotHash": "b575b9aa7fabe1d121391d3b6b421f1c08ae2dbc86cd220747cdcf2969b9c3a8",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
+      "snapshotHash": "793c4dafc44a4fb90d4fcf5596fa93edfb607fe8e16774208597a2c26946a3d4",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://integrity.psu.edu/ai",
+      "snapshotHash": "987a9933f1c0209325e945c1b873b5a9497ebfe70261aa7172ed4a7d8ad143b6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/it/natverk/regler-policys/rekommendationer-vid-anvandning-av-ai-1.1446862",
+      "snapshotHash": "721db9c6ede8999e26f1973969511b9a2c82b2f85f261e9c1905c042c6e50a6a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/it/programvara-o-system/programvara/installera/download/ai-services/ai-tjanster-1.1292301",
+      "snapshotHash": "2a6ef0bb5cd2837cd7ca04482d301e55889615eb4660e12a784d5c4c04f1487e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/it/programvara-o-system/programvara/installera/download/ai-services/copilot-chat/microsoft-copilot-chat-1.1446477",
+      "snapshotHash": "f375d3c47eb7ecd80532a0b49c60e40e9c6bc7660279136d12b0de64e691a27b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/utbildning/e-larande/faqs/faq-generativ-ai-1.1417039",
+      "snapshotHash": "6a54ee67b843ee169029e4629ef31dc9ca618d60941b50ba4c70603c42eea615",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/utbildning/systemstod/generativ-ai/assessing-knowledge/prevent-and-discourage-prohibited-use-1.1253705",
+      "snapshotHash": "df293e42089e678e1f3dc8e37f68305dc63d821c9c60c576bb2b6632c8448a6e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/utbildning/systemstod/generativ-ai/kursspecifik-information-1.1404880",
+      "snapshotHash": "1399c1c998c0e71c959de0223af1fdc203b41aa3e6c5ea792c416d2795a1de05",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/utbildning/systemstod/generativ-ai/legal-aspects-1.1253707",
+      "snapshotHash": "09386eed6a2fc3d2bde1e7a6b6605724b0a3ddd4206eda8330c485f37a3b8089",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intra.kth.se/en/utbildning/systemstod/generativ-ai/riktlinjer-1.1405092",
+      "snapshotHash": "c7dd05d24f221bdfcef2adb6817ee0da7a559fb66348095283cca84114e45c90",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intranet.birmingham.ac.uk/student/libraries/asc/student-guidance-gai.aspx",
+      "snapshotHash": "69cc1b8d6cebf68bcfe715214c72f09554cd432764d662b208f8f47551b26912",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/ai-tools-licensing-review-guidance.aspx",
+      "snapshotHash": "6e3fb5750799f5240135a628cf67bd72b2907e32a88b47b0a6a7abdd4902eecb",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/responsible-ai-tool-selection.aspx",
+      "snapshotHash": "998c2811ee1e4503a9a476fd0275fd4123f5df648617bdc4a44d0f6bb5799841",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://intranet.birmingham.ac.uk/student/news/public/2024/oct-dec-2024/microsoft-copilot-genai-now-available-for-students.aspx",
+      "snapshotHash": "1cccf2fb4274236daaa7465bfdd9e7ccfca1001a484543821a5a71fe856f7106",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ipoint.uwa.edu.au/app/answers/detail/a_id/3432/~/using-chatgpt-and-other-ai-tools-in-your-assessments",
+      "snapshotHash": "67d46aef682f8ad511a5efc2b24d6415ff570b9f0ab1a9bd3d71cae6f3bba6d3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ipoint.uwa.edu.au/app/answers/detail/a_id/3433/~/use-of-ai-tools-for-editorial-assistance",
+      "snapshotHash": "a3893eb59dc4f71babc3315c424791beb95492c82dee5f3ace97a69efc5b49c9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ipoint.uwa.edu.au/app/answers/detail/a_id/3434/~/how-to-cite-and-reference-chatgpt-and-other-generative-ai-tools-in-assessments",
+      "snapshotHash": "ae089d1b613621cd46a6e963b53180973f1907325dacdaefd096a0d3ff1dee70",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://ipoint.uwa.edu.au/app/answers/detail/a_id/3675/~/use-of-deepseek-at-uwa",
+      "snapshotHash": "013b58a8850c450239d578075eeae5e911056c97dc8d7c16f9be802c1bd3d2dd",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://it.uw.edu/guides/security-authentication/artificial-intelligence-guidelines/",
+      "snapshotHash": "d44a4e062f937a8c477ca7c9549aa623a37242ba6688b7a42b0d5f389cec9369",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://it.uw.edu/software/",
+      "snapshotHash": "3ac6f73eaf0cc760d2a43db8cd59afc53fd6649dfabb18e8d8759e77f958922b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://libguides.tcd.ie/gen-ai/acknowledging-referencing",
+      "snapshotHash": "23a950167e55d8ca60c9bf5dfab8ed2c68b14670604687b914e9ec753e7ac76f",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://library.leeds.ac.uk/info/1401/academic-skills/46/academic-integrity-and-plagiarism/3",
+      "snapshotHash": "b4082eccc9d05f817aa425d4b28e9f53ee1d0979f866938d7aa87bc447ec2e0e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://library.soton.ac.uk/sash/generative-ai",
+      "snapshotHash": "3f3bfaa78236641ef0c9c481e9a922e9aefc6cdc104c6017764370b22805ecf4",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://observatoriocitep.rec.uba.ar/la-brujul-ia-orientaciones-para-la-integracion-de-la-ia-en-la-educacion-superior/",
+      "snapshotHash": "a7070768f42649a23b93dab100fe8ae6f559858d36b2d4141468b8c5b79d9d3a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://researchsupport.psu.edu/orp/education/generative-ai-in-research/",
+      "snapshotHash": "c3e96519681157945855587aa1d3cad5b2db438608b2d2aa8668d4944d237ded",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sante.sorbonne-universite.fr/sites/default/files/media/2026-02/Recommandations%20d%27utilisation%20de%20l%27IA%20ge%CC%81ne%CC%81rative%20dans%20le%20cadre%20de%20la%20recherche2.pdf",
+      "snapshotHash": "4f480b67eed570a9911ace9fa1a31e5969fa1abaa655584c16057882add2e63e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://scai-education.sorbonne-universite.fr/?lang=en",
+      "snapshotHash": "08b632649b94b1cf58ad3033ec0c20ed5350e80ea0bac7c731e37df157b1fe1b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://scai.sorbonne-universite.fr/projects/sorbonne-ai",
+      "snapshotHash": "8794fff58a3145d5d21557dbfad6d705116abec431e047b77d8d382f6a2bd458",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://secretariat.leeds.ac.uk/policies-procedures-and-codes-of-practice/guidance-to-staff-on-the-use-of-artificial-intelligence/",
+      "snapshotHash": "bcf18d76845fa7bcb6b7f2213263395accc99adee3b89a6532d6acf4cc95a85d",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/it-services/generative-ai-principles-productivity",
+      "snapshotHash": "f4c294ec78b016fe8c3ac74538c025d45900833dc63ffa92199c56479364a160",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/library/copyright/generative-artificial-intelligence-genai-and-copyright",
+      "snapshotHash": "8aa36c8dc8bdb0a83b2c8760bf93a4693b9bc6d804c8a95adcaa5198e2d3abf8",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/our-education/ai-principles",
+      "snapshotHash": "a02a017bb4341d37a5bf5109289b9fbcf985971ef4436b00475867d4a3671d35",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/rpi/pgr/guidance-pgrs-use-genai",
+      "snapshotHash": "5121cdd790a5d215a8d0c61f4844ac464eda97aebe81d356c06f4527e47407f9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/rpi/pgr/guidance-pgrs-use-genai",
+      "snapshotHash": "d85ed5a2ef1bb263369110d5b2dfddf2ab6acbbd64d85a3dc3c485fde2849065",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/study-skills/assessment/academic-integrity/ai-and-academic-integrity",
+      "snapshotHash": "4defbbab80f34be3e14426d65d60b92266f0ac28237d993b698320a50735f90c",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/study-skills/assessment/academic-integrity/ai-and-academic-integrity",
+      "snapshotHash": "88af9e4429b7a5207e4bac397c87d3552227bc7d3f36b469d63a179acd6387d4",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/study-skills/digital/generative-ai/assessment",
+      "snapshotHash": "5bf63f04eeb929a8f8596b6d7f167e3ae522062a7d28082b2c19331e7ddae651",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://sheffield.ac.uk/study-skills/digital/generative-ai/assessment",
+      "snapshotHash": "d8f1bac0975c6095eb58e7566010f21e269fcf322790bfa135377ab4a877e645",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://studyguides.lib.uts.edu.au/genai/ethics",
+      "snapshotHash": "a4304f2456029aca63b30299f56f50bf7f8c74843a7156d2422dc326649a74d0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://studyguides.lib.uts.edu.au/genai/referencing",
+      "snapshotHash": "928da82cdfe04a69d14d7c2ac1ef24c03fb67dc9f4634c9ed61d2fecf7942aab",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://studyguides.lib.uts.edu.au/genai/utstools",
+      "snapshotHash": "2de7d2cf12dad764db037b3c29a2b99ff6b224ca4722abd5c2309cd52d6d9c5b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://studyguides.lib.uts.edu.au/genai/utstools",
+      "snapshotHash": "40f6d6299541a1f159271e9e9b7cb74fcf4465cfbbc2e6c00d66d783b5e03b7f",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://teaching.washington.edu/course-design/ai/",
+      "snapshotHash": "93bbd1702d6f566b35eb54150c541c0c300bdc33603eb792afe5019b1523aad5",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://teaching.washington.edu/course-design/ai/sample-ai-syllabus-statements/",
+      "snapshotHash": "8ca499dc9bbfe41a4b9cb7b287ce3648b79e42ba8b4070d87fcd4cd56b20f0d6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwconnect.uw.edu/it?id=kb_article_view&sysparm_article=KB0034403",
+      "snapshotHash": "89034878e42b9c2e0b3bcfcbae6871d2a3a95af8c4c485c39d91b2fdb7362ede",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://warwick.ac.uk/fac/cross_fac/academic-development/ai/assessment/",
+      "snapshotHash": "c8778870c27eb60e1857cf5af569aa6e52c267782801abaa0715c75a1d54fb32",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://warwick.ac.uk/fac/cross_fac/academic-development/ai/more/responsible-use/",
+      "snapshotHash": "4356f58aa1414208de3428defac59acb5c56892702f221bd6289197a647c2cfa",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://warwick.ac.uk/fac/cross_fac/academic-development/ai/tools/",
+      "snapshotHash": "463ea04d7e3277e54765ceaee7180fd840e6d59aae2e0a72463187fbe93eec65",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://warwick.ac.uk/services/ris/research-integrity/airesearch/",
+      "snapshotHash": "1a449b904c0f60a6da8bca48b656f747dc49d6fcd795977119d90335f6329b1d",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://warwick.ac.uk/services/secretarytocouncil/info-security/im-policy-framework/policies/imp02/",
+      "snapshotHash": "b3469285b32f952808d46b3255197d884ec334304f6aa6f30b066787f6ea2d95",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://warwick.ac.uk/students/academic-essentials/academic-integrity/artificial-intelligence/",
+      "snapshotHash": "f80891d64ee96bdeb9ffc903c76f6b5e7415f586a6fe7f7fcbe87bbbb414c9d6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ai.uzh.ch/en/research/ai-policies.html",
+      "snapshotHash": "72a4e86040820679726a42f096d01361901ff40481364a56dad4b65ce853e5c0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/Documents/research/ethics-integrity/guidance-for-use-of-ai-in-research.docx",
+      "snapshotHash": "a666e661d48bdbbf7356a56c3897931a0d6039f0fc3e2c98debbe2ca55ea4115",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/libraries/education-excellence/gai",
+      "snapshotHash": "e3477cdf3dfc7f0943407c07c9de1b41d319e2c989789358bc919e6ee360d5e9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/libraries/education-excellence/gai/acknowledging-gai-by-students",
+      "snapshotHash": "def6296b7eaf74cb72b60191f583d7f9ee38fa05ec749fc956cfca84cccc0976",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/libraries/education-excellence/gai/guidance-pgt-dissertations",
+      "snapshotHash": "0a408a47ec310bf70d97adcd538be9fc04e7922fd580806c88db58386c944f50",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/libraries/education-excellence/gai/handbook-canvas-gai-use",
+      "snapshotHash": "19df847972390388a283eed461e8da41250a24675f4293bb826463c7a7d35bd1",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/libraries/education-excellence/gai/principles-on-the-use-of-ai",
+      "snapshotHash": "85b28c0834c81217a47a5e36d3fdcbf7745a749fa17853222d0a15e4a8a1f869",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.birmingham.ac.uk/libraries/education-excellence/gai/student-facing-module-statement-ai-marking-feedback",
+      "snapshotHash": "450ecfc450f89aecb3bc2dc6c53cc9ac50e993f57e062ce2bfbb3016cf2a7262",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/about/frequently-asked-questions/",
+      "snapshotHash": "0485983f7f846d0ca14f0376012e13aac3d132100d70e380371ef1da7c8a5197",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/ai-tools/",
+      "snapshotHash": "adb0b6fb731fafccaa6941a21fb44dfce64f8d6771d403e0d93cfd08e4a29672",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/ai-tools/terriergpt/",
+      "snapshotHash": "4bfdb1e389376fdbc61808b2e044c8b514e9fa05108217ebc892a29190d890d0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/ai-tools/terriergpt/",
+      "snapshotHash": "75fb539f3e2338146f7182777c5e9d4f241627c97772001d8b4daf1cf875b95c",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/guidance/generative-ai-guidelines-for-bu-faculty-staff/",
+      "snapshotHash": "a307258212213fb34bb78a2c31ad42bed8cb37c0be98d243ee86f6903d25f01a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/guidance/generative-ai-guidelines-for-classroom-use/",
+      "snapshotHash": "cef00315b9e86c06b951ab29cbcad44347e6e954959ac128fad4e7734af6874d",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/aida/guidance/generative-ai-guidelines-for-students/",
+      "snapshotHash": "01352aaeedc6f5d5c558cdbdd6bbcced84420d4d574b5300c5377e0a10091a5d",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/google-gemini/",
+      "snapshotHash": "24b11cddd3c76ee72d4556d7461c55860af8e36ee74ec80e14c1d1c20e0f7fe9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/microsoft-copilot/",
+      "snapshotHash": "a1105646f1607fd9f75d81c655d352a51e29e042d745c83610a995a984dce970",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.campusonline.lu.se/en/learning-strategies/how-use-generative-ai-responsibly",
+      "snapshotHash": "d98e2627a0c485eaef1055c32ccc7e6084b80a88703084abcc6589594789b3b6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.citl.titech.ac.jp/download/annual/citl_annualreport_2024.pdf",
+      "snapshotHash": "19c293b82f04b24d0f5fc0574229da15ff99cd4e37ee8fe1e75bb038550882da",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.durham.ac.uk/departments/academic/common-awards/policies-processes/assessment/academic-misconductai-policy-and-guidance/",
+      "snapshotHash": "6bd5492147814398f3b03f2c6582dec73f9e4fcc5f8c2d65bc374eb8a2489432",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.durham.ac.uk/global-durham/global-opportunities/ai-guidance/",
+      "snapshotHash": "ba5fed62f973242d6badd63c3179a12ddf500109aa5f7ecc8c5e234c7fb5b787",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.education.lu.se/en/current-themes/generative-ai-tools/questions-and-answers-genai-tools",
+      "snapshotHash": "f63436f46cefa8b4b4f1d498bb617dc2713ba930cf0dc7482258a36c52aa0ac0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.education.lu.se/en/teaching-tips/ai-education/general-guidance",
+      "snapshotHash": "811076a3f7b53ebd4788a49d0e34add584ff2904a73e3efe00c3a716cc352871",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.faculte-sciences-sport.universite-paris-saclay.fr/sites/default/files/2025-09/reglement_des_etudes_licence_charte_des_examens_mcc-1er_cycle_25-26.pdf",
+      "snapshotHash": "7903b0c55e2e9f0e9e7767e13fd83982d9b72941d0301fc334ae7373e88bc7da",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.faculte-sciences-sport.universite-paris-saclay.fr/sites/default/files/2025-09/reglement_des_etudes_master_charte_des_examens_mcc_-_master_25-26.pdf",
+      "snapshotHash": "1ae3590206bb232349583c96445c44bd006ad0ec4539b166e28d1e5e02edde65",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/apg/policies/uniregs/regulations2025-26/feesandgeneral/studentsupportandconductmatters/reg32/",
+      "snapshotHash": "b7688dc589908531dbc4834858d94c486a298d26459ef94d0dbcf140f8bcd977",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/it/365/copilot/guidance/",
+      "snapshotHash": "9cb739458f4ca0b919f497cd58f760f7028cc334b3dab326df960086fc43789c",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/it/365/copilot/guidance/",
+      "snapshotHash": "fd643676207edaa067f40f29865aa980c50bc209929a51ae8cab24cffcfc6d6f",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/learningandteaching/af-aiguidance/",
+      "snapshotHash": "bf70fcc33ddcf66d601c3c6816bd9c4c69c4b0b68dab3876b965ef22ba425627",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/learningandteaching/af-aiguidance/howcaniadaptassessmenttodealwithgenai/",
+      "snapshotHash": "4f7cc9de635d75b7f50fcb54e91d39692f54bbf1501e23c5dd4463a112abb5b6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/sld/ai/staff/",
+      "snapshotHash": "c5e3f1330f9e51f81d5d8230316172b173c211a89d2c245215c53cbcdadc3b45",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/myglasgow/sld/ai/students/",
+      "snapshotHash": "fbe160c7e8c4720f978e5751563a0bf76f60aff1317cca27621a403cb0ea1c3b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/research/ourresearchenvironment/prs/pgrpolicystrategyqualityassurance/genaiforpgrschecklist/",
+      "snapshotHash": "5819d22ad20725ecca4c32b513a6281e9080fe10417db5481cf5ed2007b557c6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.gla.ac.uk/research/strategy/ourpolicies/ai-for-researchers/",
+      "snapshotHash": "deb3bed4773dd4c37f31ab98db96e3303a26a12077e5418477dcb33fc53129ac",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.graduateacademy.uni-heidelberg.de/promovieren/ai_en.html",
+      "snapshotHash": "b26f13c210d110b0ef164fbf0b2721419f1c10b9c72f305204336b98674f2bfd",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.informatik.kit.edu/downloads/studium/Leitfaden_Generative_KI_Informatik.pdf",
+      "snapshotHash": "9315e3f9f41398d8ec9d6081362fe0146ee6efe81d713962fdad8565c83fb12b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.isct.ac.jp/en/news/fqsr7lxwvnbe",
+      "snapshotHash": "505dc55a2b9f908818445946b59cedd71dbc5fcf59e11bf11d99a080fd770280",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "snapshotHash": "3ad356bb7d7ca2abcdc08a9c53b7df2da4365bf6e96e1ab404d53285f943e9d0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ki.fu-berlin.de/",
+      "snapshotHash": "3413cc1d778fca476c0081f9d0165463f5d65134ccd2af1f396c033538f4d64e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ki.fu-berlin.de/_dokumente/Eckpunkte-zum-Umgang-mit-KI-basierten-Systemen-und-Tools-in-Studium-und-Lehre.pdf",
+      "snapshotHash": "ddeb27c86885e42cb70953285853f09e10c4bd1105d3fec9b3a8bdd679971ca2",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ki.fu-berlin.de/_dokumente/KI-Chatbot---Nutzungsbedingungen.pdf",
+      "snapshotHash": "f227f8a8f939b3e3fe3f6e1d5a0b8397006d58cb855ec63117af48d31b4261a9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ki.fu-berlin.de/chatbot/index.html",
+      "snapshotHash": "1cac029e2c86ec0ccc06de4e48e7c424ea70eddb7b514192e328e2f134dc8c3d",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.kit.edu/downloads/KI-Leitlinien-de.pdf",
+      "snapshotHash": "5f2f5e7481fadc6aadfc7a20d104a80842b542874e730bde43df51f063af68d1",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.kth.se/en/student/studier/kurs/generativ-ai/avvagningar-1.1410997",
+      "snapshotHash": "583a8f5fd0110274a0786c6e245af7861e48204ce1df2a041601a099238b1689",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.kth.se/en/student/studier/kurs/generativ-ai/kursspecifik-information-1.1410307",
+      "snapshotHash": "4c8618f7549139175b9f44c15f86ce52fe044f728117495d2bda8d88d96d9890",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.medarbetarwebben.lu.se/sites/medarbetarwebben.lu.se/files/2025-12/policy-med-principer-for-anvandning-av-generativ-AI-inom-LU.pdf",
+      "snapshotHash": "9f79df69b0f3917129e3bf2c6e8ffa2fc3fbaa7b01704990290a13f8e698bcc3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.mlt.polimi.it/en/",
+      "snapshotHash": "989ddd6ed3dbd1e184560e857ce379059206f0cf38057cba5d5094f2727c1ec2",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.normativa.polimi.it/fileadmin/user_upload/regolamenti/privacy_e_sicurezza/REGOLAMENTO_trattamento_dati_e_ICT__marzo2025.pdf",
+      "snapshotHash": "dbe08ea76543489ee36e16e84154af62b8b8a68a69ead6aa97f49a93efa4d31e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nottingham.ac.uk/qualitymanual/assessment-awards-and-deg-classification/pol-academic-misconduct.aspx",
+      "snapshotHash": "f832520e83b4b11988bf981ee0108fa6415e0c533cd67fe36666758627b99d8d",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nottingham.ac.uk/studyingeffectively/ai/ai-assessment.aspx",
+      "snapshotHash": "25a1ffa354fe32b4acf90475ca45d3b25110e2f03793cb3add32bf9bb530bebe",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nottingham.ac.uk/studyingeffectively/ai/ai-assessment.aspx",
+      "snapshotHash": "be7378941be1fd5eb9892b4ebc0576c0d7e9dee4c23344ccc050c521e9dda19a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nottingham.ac.uk/studyingeffectively/ai/ai-support.aspx",
+      "snapshotHash": "57d04e1a4bef10cadbef375f7d1057bc3f05a6277b34590edd42ef57258e5ba3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nottingham.ac.uk/studyingeffectively/ai/ai-support.aspx",
+      "snapshotHash": "e71f3e95651202984e886a811dce58a746ca7308b825f5077b83ca0ae48b7e2f",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nottingham.ac.uk/studyingeffectively/ai/ai.aspx",
+      "snapshotHash": "d67a490aa5e3a14714c61d8b0a587397d98561ae3b7b7f53a918038b14968c1a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.osaka-u.ac.jp/ja/guide/public-relations/press_release/2024/05/20240530_01",
+      "snapshotHash": "dff4120676e015a53015c757b82b27748a15370398861a05df444a4ae114eb34",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.osaka-u.ac.jp/ja/news/topics/2023/04/17001",
+      "snapshotHash": "1cba8f9aea2ff45bbb87770b6e6374cd21b6baf0a3102fef8dd134b7dee381a9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.phil.uzh.ch/en/studies/studyessentials/assessments.html",
+      "snapshotHash": "bf1b0c859424483ac12a62e105a619757668930521f2f7873cf449bd9e8622f2",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.purdue.edu/ai/ai-governance-and-review/",
+      "snapshotHash": "981126e39c50499c499cb0af7abdc2e07edf5a31ef5d4c05dadd1c8cbd5ef0a2",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.purdue.edu/ai/generative-ai-toolkit/",
+      "snapshotHash": "21ac7b13d0b52bae7e2229fd74a9fe89a3b5c3157f62e96ab30fb207688e3d75",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.purdue.edu/ai/generative-ai-toolkit/",
+      "snapshotHash": "8372412f2bb944a83755ffebc8ddbd741ccb2d2bad1cf93420d979a312149dc5",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.purdue.edu/securepurdue/it-policies-standards/Application%20of%20AI.php",
+      "snapshotHash": "44aab7670e0a692c49482566f3469506be4483ee02e81d408f2c85a99c4ce9e6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.purdue.edu/teaching-learning/instructors/ai.php",
+      "snapshotHash": "c1008eb0705bfb6063e04440402a7294e07a4715cc3348e858f9c48e19dd8011",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.purdue.edu/vpec/policies/information-technology/viia5/",
+      "snapshotHash": "2a9bc01844dcb4e1016786b35baacb98da11e4cf65f6f867c444f51bb674dbd2",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.rcac.purdue.edu/news/6928",
+      "snapshotHash": "b02c3fe62393ae7be72c02db245ee643e02ede93badaccbf14629fea37a55068",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.scc.kit.edu/dienste/ki-toolbox-termsofuse.php",
+      "snapshotHash": "ad76733295a0e2b9b415967c1af4c199db48931229748125c33ca16a8adc22a3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.scc.kit.edu/dienste/ki-toolbox.php",
+      "snapshotHash": "c0e7f4d36f1361c7763ee507e6844480184e46a17de3b321ee6d1c011e90d178",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.scc.kit.edu/en/services/ki-toolbox-termsofuse.php",
+      "snapshotHash": "708dc2297a51b34945d01e3628c561615ddc6ca642844e677192eab3e561eefd",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.southampton.ac.uk/about/governance/regulations-policies/policies/using-gen-ai-during-your-studies",
+      "snapshotHash": "6caa1f010a31f49907a4dc02eda1c8e2b1cd84721742507198288369be245cf9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.southampton.ac.uk/about/governance/regulations-policies/policies/using-gen-ai-during-your-studies",
+      "snapshotHash": "92bf7b3a10035a5b5aee80e011e9ac87d4b9bac923d9c7dcc486b6d034798625",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "snapshotHash": "0898924449cbcd289abef0b7c3e64caf87fb7175a2f32ababf0459d073e9dc08",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "snapshotHash": "44c3f81d6316da2ad64cb8702aa2891cfa191bdd8c5f0f596e891e001ce7be9a",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "snapshotHash": "fe675d991284a7b014f6719cd0dd0c26c5c37751361ea90c13bf436283547ac8",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/academicpractice/resources/academic-integrity/policies--supports/",
+      "snapshotHash": "21ec9f3f9a2211f503bfbfae617c7b442959cff928f01d8feab2a24d87bab8ec",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/academicpractice/resources/gen-ai-hub/",
+      "snapshotHash": "ea8893c2f0eb81e5e6c0a674e10ad041d318b5536497e8ccafc8978921dd11bb",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/academicpractice/resources/gen-ai-hub/genai-and-assessment/",
+      "snapshotHash": "1f4fa97613d43d96619a03f59d6f0682ac168d021e2d01da5f4b0d340c8ec3c4",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/academicpractice/resources/gen-ai-hub/genai-in-research/",
+      "snapshotHash": "f05d1e69e2465c782b0de6eed2c74a370e7935b46e3d815d01251ef308f51be0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/academicpractice/resources/gen-ai-hub/using-genai-in-teaching-and-learning/",
+      "snapshotHash": "bda88d18355cfb359d20565741158b795ad4d3c188ba0557e2a8d9a73e8bc4d3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/itservices/keeping-it-secure/artificial-intelligence-ai/",
+      "snapshotHash": "9181e6c67cfe97a00f544d0069cdd5a72d96728cd143f6d6cea230dba0b612a3",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
+      "snapshotHash": "67b2a1c29ae6b790fd9f51f7f5cd468f0b4fab0bd07ff3cef405c442e8f81859",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tlsc.osaka-u.ac.jp/project/generative_ai/",
+      "snapshotHash": "7446cbb30fbe59d8814da8fc8108a487065b29694b49d5dde0f00487d1ced0c6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tlsc.osaka-u.ac.jp/project/generative_ai/assessment_ai.html",
+      "snapshotHash": "2fb69db889bbc2df70d34b0c72b7136e21c7010320c8fc7a4775da4d2512b0a6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.tlsc.osaka-u.ac.jp/project/generative_ai/important_point.html",
+      "snapshotHash": "fcdbf6ac0c5c9b8f9ae42356af07701383cd79f08ea7db9da5802deec463d3c9",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/artificial-intelligence/artificial-intelligence-data-safety-guidelines.html",
+      "snapshotHash": "c306f76db27cf0708a83d6fc155e6c044095e65834a3aa3c8a4e53efd6562ab1",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/artificial-intelligence/artificial-intelligence-data-safety-guidelines.html",
+      "snapshotHash": "dcaff7e880d15937149e88fab4792d2a764a90ae2ffe33e2b02fdfa782366f78",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/artificial-intelligence/artificial-intelligence-framework.html",
+      "snapshotHash": "6ff902afbfa3ba777b7bd38cdd38a1b10f987512eadd0671432f2cf326e2c87f",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/artificial-intelligence/index.html",
+      "snapshotHash": "e95f547881a4ee7be7fde60d5827f9bb41ad0a9e4f38b4ca1b714670102f37d4",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/centre-for-teaching-and-learning/resources/generative-ai/ai-in-teaching-and-learning.html",
+      "snapshotHash": "17221aded71c084297e1c2f6b56947a42443c415d859c86babd3da7e30a5a3d6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/information-services-and-technology/news/2025/get-started-with-gemini-app.html",
+      "snapshotHash": "c8bdae2cf3502599f23378bdd799bb8f802e0edcc57e7e02064b418a3e48295b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/information-services-and-technology/news/2025/get-started-with-notebooklm.html",
+      "snapshotHash": "e81a5714c007a312987d9066d5c222a9bb528e96de29847e0877d1f4db73511e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/research/services/using-gen-ai-in-research-grant-development/ethical-considerations-guidelines-development.html",
+      "snapshotHash": "2bcde8dd6f88210676cb23b50732d4c582b691fc4e6b608e4f055c9ae10a06d1",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ualberta.ca/en/student-success-experience/services/student-conduct-accountability/academic-integrity-training-resources/academic-integrity-students/academic-integrity-ai.html",
+      "snapshotHash": "a4359bbbd935398b6a253bd9437dfe496c3b57627f6c3dda78d03c7d1af20518",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.universite-paris-saclay.fr/actualites/groupe-de-travail-intelligence-artificielle-generative-iag",
+      "snapshotHash": "dac655c6b64abc55ae559fefc65ed6376d6bed2e14d762f272eeb33c85e3f273",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.urz.uni-heidelberg.de/de/forschung-und-lehre/kuenstliche-intelligenz-ki",
+      "snapshotHash": "abe4acc5783f30054efd92698b2e85862a23177c2d35393e499ce3dd50494a63",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.urz.uni-heidelberg.de/en/newsroom/ai-for-all-urz-establishes-a-language-model-platform-for-the-university",
+      "snapshotHash": "82b1edbea7497786ea7c27b5a9a675224cd5d56c8718b5add9011defa13e6438",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uts.edu.au/about/leadership-governance/policies/a-z/artificial-intelligence-operations-policy",
+      "snapshotHash": "78437f79631f8ab40e13dee4a8fc87deaad8f192aed5689093d721f38bbf0fc6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uts.edu.au/about/leadership-governance/policies/a-z/artificial-intelligence-operations-procedure",
+      "snapshotHash": "46766c8e484b98ce85d72c7e9f3bf18ba878ae38e5d25bfc43911567962790b7",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uts.edu.au/about/leadership-governance/policies/a-z/use-of-ai-in-research-guidelines",
+      "snapshotHash": "2c624a69c29d1a4f1db9007f522aec514dd3ecacc55eda98e98daa95b049f231",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/download/18.276f2c9519372d0c8471658a/1733143599767/01%20Riktlinjer%20AI%20i%20undervisning%20och%20examination%20UFV%202023%202129%20Kopia.pdf",
+      "snapshotHash": "486996c87eca67fbaf98fc059cfde6a437f72f7028aa296f3295743baf64e9d5",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/en/staff/gateway/teaching/ai-in-teaching-and-learning/generative-ai-and-assessment/using-ai-in-examinations",
+      "snapshotHash": "93bd58a7a86377dcf13dbfe37957af1f2402edd7e213eccae18e80e5c6989fb6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/en/students/it-for-students/generative-ai-and-studies",
+      "snapshotHash": "762f5f7fa2104a268f75fa168e7100a38551e7701a6933ed6c36bd056c6ae6b6",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/en/students/it-for-students/software/ai-tool",
+      "snapshotHash": "2f303427084376f0d0e3e3ce52f085a4adb40ca77c7f2aa00e9afcf0ca32367e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/en/students/it-for-students/software/ai-tool",
+      "snapshotHash": "3acf265249f083fa0729ddfcf907dca6417eb1587d9579f6114ed416d9689ac1",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/medarbetare/organisation-styrning/regler/faculty-of-law-guidelines-on-restrictions-on-generative-ai-gai-in-assessment",
+      "snapshotHash": "4a5b77117ca1a24b02dc2b8442f06f4aa6064fe6826bd9e6fa9b9b5cd0ad6f53",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/medarbetare/stod-och-verktyg/ai/introduktion-for-ai-i-forskning",
+      "snapshotHash": "d0aebded125abb8ef356619c04a6ef277c185769e3661c455a19df292baa14b0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.se/medarbetare/stod-och-verktyg/ai/lokala-riktlinjer-for-ai",
+      "snapshotHash": "693c2365c604d142d51bfb3246943301c2b0f686ef9ca7e64662e85c565914c8",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uwa.edu.au/policy/-/media/project/uwa/uwa/policy-library/policy/student-administration/academic-integrity/academic-integrity-policy.doc",
+      "snapshotHash": "99d55905697d2a40828dedf98167b7ed69aec9242c5f0fe28a0aac8cdedd319b",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/ai-assessment-guidelines-student_2025_final.pdf",
+      "snapshotHash": "eb1ec0c7babc8809ebff607aa99e431594110f2fefc48f52f9126a840b5c0d70",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "snapshotHash": "aecf591a0b5e39661c96b374c2dbcf4ddd6fcc67601adf912458167884fb893c",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uzh.ch/en/explore/basics/ai.html",
+      "snapshotHash": "c31e362781178c85b1e071cd56477f0f719b521ed8c6392e3ad437cf9fe17a5e",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uzh.ch/en/explore/basics/ai/recommendations.html",
+      "snapshotHash": "9e51b284734d826d0237c6b301b47fa1e1496a61c116f373662b5698a3b63b04",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.washington.edu/studentlife/2023/10/11/ai-tools-and-academic-integrity/",
+      "snapshotHash": "28f8ff2d0d83ca7671f566ad7e1eb1c01f8b8a435a6d86784de9e3bee4f6d472",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.zi.uzh.ch/en/staff/software-elearning/microsoft/Microsoft-Copilot.html",
+      "snapshotHash": "81d724b8bbfcb7a0694f80c4ad791283439ee710c8ef7be5fed631e062e7dba0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.zml.kit.edu/downloads/KI.Toolbox_API-AS-v2_ENG.pdf",
+      "snapshotHash": "b95860747acc31c5bf84625525c58146c492e4265489df2993116359e1a7e3ec",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.zml.kit.edu/ki-policy.php",
+      "snapshotHash": "3cae76a7ccdf9595d026dbef5559d6fe423108919c0fff0459aee0d3a85781c0",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.zml.kit.edu/ki-toolbox-studierende.php",
+      "snapshotHash": "e1ef09fe17c14d898d753bf6f0e0d8012f402c3aa4052e968daa0586406f4714",
+      "hashKind": "unknown_legacy",
+      "verification": "unverified",
+      "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
     }
   ]
 }
