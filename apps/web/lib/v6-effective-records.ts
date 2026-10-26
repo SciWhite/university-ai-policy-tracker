@@ -57,6 +57,11 @@ export function v6SummaryAtRevision(slug:string,revision?:string):PublicEntitySu
   if(!selected)return undefined;
   const targetRevision = revision ?? selected.revision ?? pointer.revision;
   if(selected.revision === targetRevision) {
+    // A keyed shard read must not inflate every school while looking up one slug.
+    // Keep the development candidate's separate loader and legacy packages intact.
+    if(useShards(targetRevision) && !(process.env.NODE_ENV === "development" && process.env.UAPT_LOCAL_QA_CANDIDATE_RECORDS)) {
+      return store().field<PublicEntitySummary>(targetRevision,['summaries',slug]);
+    }
     const s = selected.summaries.find(s=>s.entity.slug===slug);
     if (s) return structuredClone(s);
   }

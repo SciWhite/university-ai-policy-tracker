@@ -10,7 +10,7 @@ import { DiffBlock } from "@/components/diff-block";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
-import { getReleaseChangeRecords } from "@/lib/change-records";
+import { getReleaseChangeRecord } from "@/lib/change-records";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getLatestReleaseDiff } from "@/lib/release-diffs";
@@ -48,9 +48,7 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
   const eventMetadata=await changeHistoryMetadata(slug,locale,releaseId);
   if(eventMetadata)return eventMetadata;
-  const record = (await getReleaseChangeRecords(releaseId))?.find(
-    (item) => item.slug === slug
-  );
+  const record = await getReleaseChangeRecord(releaseId, slug);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`);
   const displayName = record
     ? getLocalizedInstitutionName(record.slug, record.name, locale)
@@ -87,9 +85,7 @@ export default async function ReleaseEntityChangePage({
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
   const eventPage=await ChangeRevisionPage({slug,revision:releaseId,locale});
   if(eventPage)return eventPage;
-  const record = (await getReleaseChangeRecords(releaseId))?.find(
-    (item) => item.slug === slug
-  );
+  const record = await getReleaseChangeRecord(releaseId, slug);
 
   if (!record) {
     notFound();

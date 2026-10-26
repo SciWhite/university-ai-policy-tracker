@@ -36,3 +36,12 @@ The March/September-style legacy public diff bodies must be compared to main:
 metadata/noindex changes cannot silently replace policy/history meaning. If
 candidate body/data or protected routes drift, stop before cutover and narrow the
 adapter. Policy APIs, MCP, school history and all 881 event identities are controls.
+
+The first isolated built candidate timed out on the newly owned legacy diff path.
+A CPU profile identified repeated whole-cohort summary inflation during a
+single-school lookup. The candidate was stopped without routing public traffic.
+The next candidate uses the existing verified keyed shard reader and selects the
+requested release entity before resolving its record. Unknown schools/revisions
+remain unavailable; no policy/source/snapshot approval is introduced. Validate
+all 100 school records and all 1,613 legacy empty records against the unchanged
+complete loaders before freezing, then repeat cold HTTP and memory acceptance.

@@ -1,4 +1,5 @@
 import { countCorrectionIds, selectChangeSummary } from "./change-presentation";
+import { cache } from "react";
 import {v6HistoryRepair} from "./v6-history-repair";
 import {BoundedAsyncCache} from './bounded-cache';
 import {v6FrozenHistory} from "./v6-history-cache";
@@ -262,6 +263,17 @@ async function buildAggregatedChangeRecords(): Promise<ChangeRecord[]> {
     .filter((record) => record.diffRows.length)
     .sort(compareFreshness);
 }
+
+/** Detail pages select one entity before resolving policy shards. Global listings
+ * retain their existing complete-record loader. Cache only within this request. */
+export const getReleaseChangeRecord = cache(async (releaseId: string, slug: string): Promise<ChangeRecord | undefined> => {
+  const releaseDiff = await getReleaseDiff(releaseId);
+  const entity = releaseDiff?.entities.find(row => row.entitySlug === slug);
+  if (!releaseDiff || !entity) return undefined;
+  const corrected = (releaseDiff.releaseId ? v6SummaryAtRevision(slug, releaseDiff.releaseId) : undefined) ?? v6SummaryAtRevision(slug);
+  const summary = corrected ?? (await getStagedPublicDataset()).publicSummaries.find(row => row.entity.slug === slug);
+  return summary ? buildChangeRecord(summary, entity) : buildDiffOnlyChangeRecord(entity);
+});
 
 export async function getReleaseChangeRecords(
   releaseId: string
