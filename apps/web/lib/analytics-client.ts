@@ -1,5 +1,7 @@
 "use client";
 
+import { browserTrafficKind, ANALYTICS_MEASUREMENT_VERSION } from "./analytics-traffic";
+
 import { analyticsOptedOut } from "@/lib/analytics-preference";
 
 import {
@@ -19,7 +21,9 @@ export function trackResearchEvent(
 
   const sanitized = sanitizeAnalyticsProperties({
     collectorVersion: ANALYTICS_COLLECTOR_VERSION,
+    ...getLandingAnalyticsProperties(pathname, getAnalyticsSessionId()),
     ...properties,
+    trafficKind: browserTrafficKind(),
     pathname
   });
 
@@ -43,6 +47,7 @@ export function trackPageView(properties: AnalyticsProperties = {}) {
       collectorVersion: ANALYTICS_COLLECTOR_VERSION,
       ...getLandingAnalyticsProperties(pathname, sessionId),
       ...properties,
+      trafficKind: browserTrafficKind(),
       pathname
     });
 
@@ -110,7 +115,7 @@ function getCurrentPathname(): string {
   return window.location.pathname || "/";
 }
 
-const ANALYTICS_COLLECTOR_VERSION = "2026-07-13-v2";
+const ANALYTICS_COLLECTOR_VERSION = ANALYTICS_MEASUREMENT_VERSION;
 const ANALYTICS_SESSION_KEY = "uapt.analytics.session_state";
 const ANALYTICS_SESSION_TIMEOUT_MS = 30 * 60 * 1000;
 const LANDING_CONTEXT_KEY = "uapt.analytics.landing_context";
@@ -225,6 +230,9 @@ function classifyInboundSource(
 
   if (matchesAny(candidate, ["chatgpt", "openai", "oai"])) {
     return { category: "ai", name: "chatgpt" };
+  }
+  if (matchesAny(candidate, ["doubao", "deepseek", "kimi", "youcom"])) {
+    return { category: "ai", name: candidate };
   }
   if (candidate.includes("perplexity")) {
     return { category: "ai", name: "perplexity" };

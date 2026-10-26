@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { releaseDiffEventState } from "@/lib/change-index-evidence";
+import { isConfirmedEmptyDiff, emptyDiffMetadata } from "@/lib/change-index-policy";
 import {ChangeRevisionPage} from "@/components/change-history-pages";
 import {changeHistoryMetadata} from "@/lib/change-history-view";
 import Link from "next/link";
@@ -39,7 +42,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: ReleaseEntityChangePageProps) {
+export async function generateMetadata({ params }: ReleaseEntityChangePageProps): Promise<Metadata> {
   const { locale: localeParam, releaseId, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
@@ -59,10 +62,14 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
     ? `${displayName} tracker release diff for ${releaseId}: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
     : "University AI Policy Tracker release change record not found.";
 
+  const confirmedEmpty = record && isConfirmedEmptyDiff(record, {releaseId, locale: "en", alias: false, eventState: await releaseDiffEventState(releaseId, slug)});
+  const empty = confirmedEmpty && locale === "en";
   return {
     title,
     description,
     alternates: getLocalizedAlternates(`/changes/${releaseId}/${slug}`, "en"),
+    ...(confirmedEmpty ? {alternates: {canonical: getAbsoluteSiteUrl((locale === "en" ? "" : `/${locale}`) + `/changes/${releaseId}/${slug}`), languages: {}}} : {}),
+    ...(empty ? emptyDiffMetadata(canonical) : {}),
     openGraph: {
       title,
       description,

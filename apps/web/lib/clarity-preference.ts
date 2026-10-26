@@ -1,3 +1,4 @@
+import { browserTrafficKind } from "./analytics-traffic";
 import { analyticsOptedOut } from "./analytics-preference";
 
 export const CLARITY_CONSENT_KEY = "uapt.clarity.consent.v1";
@@ -22,7 +23,7 @@ export function clarityChoice(): ClarityChoice | null {
 }
 
 export function clarityAllowed(): boolean {
-  return !analyticsOptedOut() && !browserRejectsClarity() && clarityChoice() === "granted";
+  return browserTrafficKind() === "unclassified" && !analyticsOptedOut() && !browserRejectsClarity() && clarityChoice() === "granted";
 }
 
 export function clearClarityCookies() {

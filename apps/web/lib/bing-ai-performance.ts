@@ -34,6 +34,11 @@ export interface BingAiOpportunityQueryRow {
 }
 
 export interface BingAiPerformanceSnapshot {
+  window?: {
+    from: string; to: string; complete: boolean; missingDays: number;
+    coverageStart?: string; coverageEnd?: string; dateRows: BingAiPerformanceDateRow[];
+    citations: number | null; averageCitedPages: number | null; observedCitations: number; detailScope: string;
+  };
   available: boolean;
   coverageEnd?: string;
   coverageStart?: string;
@@ -169,11 +174,9 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
 export function parseBingAiOverviewCsv(csv: string): BingAiPerformanceDateRow[] {
   const rows = parseCsv(csv);
   assertHeaders(rows[0], ["Date", "Citations", "Cited Pages"]);
-  return rows.slice(1).map((row) => ({
-    citations: parseCount(row[1]),
-    citedPages: parseCount(row[2]),
-    key: parseBingDate(row[0])
-  })).sort((a, b) => a.key.localeCompare(b.key));
+  const result = rows.slice(1).map((row) => ({citations: parseCount(row[1]), citedPages: parseCount(row[2]), key: parseBingDate(row[0])})).sort((a,b)=>a.key.localeCompare(b.key));
+  if (new Set(result.map(row=>row.key)).size !== result.length) throw new Error("Duplicate Bing AI date rows");
+  return result;
 }
 
 export function parseBingAiPagesCsv(csv: string): BingAiPerformancePageRow[] {
@@ -348,5 +351,7 @@ function parsePercent(value: string | undefined) {
 function parseBingDate(value: string | undefined) {
   const match = value?.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
   if (!match) throw new Error(`Invalid Bing AI date: ${value}`);
-  return `${match[3]}-${match[1].padStart(2, "0")}-${match[2].padStart(2, "0")}`;
+  const key = `${match[3]}-${match[1].padStart(2, "0")}-${match[2].padStart(2, "0")}`;
+  if (!Number.isFinite(Date.parse(key + "T00:00:00Z")) || new Date(key + "T00:00:00Z").toISOString().slice(0,10) !== key) throw new Error(`Invalid Bing AI date: ${value}`);
+  return key;
 }

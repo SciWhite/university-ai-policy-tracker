@@ -1,8 +1,11 @@
+import { withBingAiWindow } from "./analytics-window";
+import { inheritSessionTrafficKinds, splitMeasuredTraffic, ANALYTICS_MEASUREMENT_VERSION } from "./analytics-traffic";
 import type { AnalyticsEventRow } from "@uapt/db";
 import {
   getMirroredAnalyticsRollup,
   hasAnalyticsStore,
-  listMirroredAnalyticsEvents,
+  listMirroredAnalyticsEventWindow,
+  type AnalyticsEventWindow,
   type AnalyticsStoreRollup
 } from "@/lib/analytics-store";
 import {
@@ -159,7 +162,7 @@ export async function getAnalyticsDashboard(
         )
       : Promise.resolve(emptyBingSummary())
   ]);
-  const bingAiPromise = getBingAiPerformanceSnapshot();
+  const bingAiPromise = getBingAiPerformanceSnapshot().then(snapshot => withBingAiWindow(snapshot, query.from, query.to));
   const clarityPromise = getClarityLiveInsightsSnapshot();
   const [currentRollup, previousRollup] = await Promise.all([
     currentRollupPromise,
@@ -171,7 +174,7 @@ export async function getAnalyticsDashboard(
     : ANALYTICS_COLLECTOR_BASELINE;
   const botDiagnosticRowsPromise = rollupReady && query.to >= ANALYTICS_COLLECTOR_BASELINE
     ? loadRows(dateAtUtcNoon(shiftDate(botDiagnosticFrom, -1)), { excludeBots: false })
-    : Promise.resolve([]);
+    : Promise.resolve({rows: [], complete: true, limit: null} as AnalyticsEventWindow);
   const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc], [currentBing, previousBing], bingAi, clarity] = await Promise.all([
     loadRows(since, { excludeBots: rollupReady }),
     botDiagnosticRowsPromise,
@@ -180,16 +183,16 @@ export async function getAnalyticsDashboard(
     bingAiPromise,
     clarityPromise
   ]);
-  const allRows = rollupReady
-    ? primaryRows.concat(botDiagnosticRows.filter(isBotAnalyticsRow))
-    : primaryRows;
+  const allRows = inheritSessionTrafficKinds(rollupReady
+    ? primaryRows.rows.concat(botDiagnosticRows.rows.filter(isBotAnalyticsRow))
+    : primaryRows.rows);
 
   const currentRangeRows = filterRowsByDate(allRows, query.from, query.to);
   const previousRangeRows = query.compare
     ? filterRowsByDate(allRows, query.previousFrom, query.previousTo)
     : [];
   const filterOptions = buildFilterOptions(
-    currentRangeRows.filter((row) => !isBotAnalyticsRow(row))
+    splitMeasuredTraffic(currentRangeRows).included.filter((row) => !isBotAnalyticsRow(row))
   );
   const currentRows = applyFilters(currentRangeRows, query.filters);
   const previousRows = applyFilters(previousRangeRows, query.filters);
@@ -221,6 +224,11 @@ export async function getAnalyticsDashboard(
   const bingPageMovers = buildBingMovers(currentBing.pageRows, previousBing.pageRows);
   const opportunities = buildQueryOpportunities(currentGsc);
   const comparison = buildComparisonEligibility(query, currentGsc, currentBing);
+  if (!primaryRows.complete || !botDiagnosticRows.complete) {
+    const reason = {en: "Onsite event query is incomplete; comparison is unavailable.", zh: "站内事件查询未完整返回，暂不比较增减。"};
+    comparison.onsite = {eligible: false, reason};
+    comparison.sources = {eligible: false, reason};
+  }
   const insights = buildAnalyticsInsights({
     analyticsStoreAvailable,
     current,
@@ -269,6 +277,14 @@ export async function getAnalyticsDashboard(
         gsc: currentGsc.available ? "connected" : "unavailable",
         onsite: analyticsStoreAvailable ? "connected" : "unavailable",
         rpc: rollupReady ? "ready" : "fallback"
+      },
+      measurement: {
+        version: ANALYTICS_MEASUREMENT_VERSION,
+        complete: primaryRows.complete && botDiagnosticRows.complete,
+        rowLimit: primaryRows.limit,
+        fetchedRows: primaryRows.rows.length,
+        error: primaryRows.error,
+        definition: "Client events excluding known bots and explicitly marked QA/internal/monitor sessions. Unmarked legacy events are not verified human traffic."
       },
       generatedAt: new Date().toISOString(),
       gscCompleteThrough: currentGsc.dateRows.at(-1)?.key,
@@ -413,7 +429,8 @@ function buildDashboardPeriod(
   grain: AnalyticsPeriod,
   rollup: AnalyticsStoreRollup | null
 ): AnalyticsDashboardPeriod {
-  const humanRows = rows.filter(
+  const measured = splitMeasuredTraffic(rows);
+  const humanRows = measured.included.filter(
     (row) => !isBotAnalyticsRow(row) && row.source !== "server"
   );
   const apiRows = rows.filter(
@@ -439,12 +456,10 @@ function buildDashboardPeriod(
         }))
       : botSummary.trend,
     latestEventAt: rollup?.latestEventAt ?? rows.at(-1)?.createdAt,
-    quality: buildQualityMetrics(humanRows),
+    quality: {...buildQualityMetrics(humanRows), excludedTestEvents: measured.excluded.length, excludedTestPageViews: measured.excluded.filter(row => row.eventName === "page_view").length, legacyUnclassifiedEvents: humanRows.filter(row => getPayloadText(row, "collector_version") !== ANALYTICS_MEASUREMENT_VERSION).length},
     sourceTrend: buildSourceTrend(humanRows, summary.trend, grain),
     summary,
-    unknownSourceShare: rollup?.humanPageViews
-      ? rollup.unknownSourcePageViews / rollup.humanPageViews
-      : unknown?.share ?? 0
+    unknownSourceShare: unknown?.share ?? 0
   };
 }
 
@@ -823,12 +838,12 @@ function makeInsight(
 async function loadRows(
   since: Date,
   options: { excludeBots?: boolean }
-): Promise<AnalyticsEventRow[]> {
-  if (!hasAnalyticsStore()) return [];
+): Promise<AnalyticsEventWindow> {
+  if (!hasAnalyticsStore()) return {rows: [], complete: false, error: "not_configured", limit: null};
   try {
-    return await listMirroredAnalyticsEvents(since, options);
+    return await listMirroredAnalyticsEventWindow(since, options);
   } catch {
-    return [];
+    return {rows: [], complete: false, error: "event_window_unavailable", limit: null};
   }
 }
 

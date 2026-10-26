@@ -69,16 +69,20 @@ export async function recordMirroredAnalyticsEvent(
   return recordAnalyticsEvent(input);
 }
 
-export async function listMirroredAnalyticsEvents(
-  since: Date,
-  options: { excludeBots?: boolean } = {}
-): Promise<AnalyticsEventRow[]> {
-  if (hasSupabaseAnalyticsStore()) {
-    return listSupabaseAnalyticsEvents(since, options);
-  }
-
-  if (!process.env.DATABASE_URL) return [];
-  return listAnalyticsEvents(since);
+export interface AnalyticsEventWindow {
+  rows: AnalyticsEventRow[];
+  complete: boolean;
+  error?: string;
+  limit: number | null;
+}
+export async function listMirroredAnalyticsEvents(since: Date, options: { excludeBots?: boolean; until?: Date } = {}): Promise<AnalyticsEventRow[]> {
+  return (await listMirroredAnalyticsEventWindow(since, options)).rows;
+}
+export async function listMirroredAnalyticsEventWindow(since: Date, options: { excludeBots?: boolean; until?: Date } = {}): Promise<AnalyticsEventWindow> {
+  if (hasSupabaseAnalyticsStore()) return listSupabaseAnalyticsEvents(since, options);
+  if (!process.env.DATABASE_URL) return {rows: [], complete: false, error: "not_configured", limit: null};
+  const rows = await listAnalyticsEvents(since);
+  return {rows: rows.filter(row => !options.until || Date.parse(row.createdAt) < options.until.getTime()), complete: true, limit: null};
 }
 
 export interface AnalyticsStoreRollup {
@@ -189,9 +193,11 @@ const SUPABASE_ANALYTICS_MAX_ROWS = 20000;
 
 async function listSupabaseAnalyticsEvents(
   since: Date,
-  options: { excludeBots?: boolean }
-): Promise<AnalyticsEventRow[]> {
+  options: { excludeBots?: boolean; until?: Date }
+): Promise<AnalyticsEventWindow> {
   const rows: SupabaseAnalyticsEventRow[] = [];
+  const windowOptions = {...options, until: options.until ?? new Date()};
+  let complete = false;
 
   for (
     let offset = 0;
@@ -204,27 +210,27 @@ async function listSupabaseAnalyticsEvents(
     ).filter((pageOffset) => pageOffset < SUPABASE_ANALYTICS_MAX_ROWS);
     const pages = await Promise.all(
       offsets.map((pageOffset) =>
-        listSupabaseAnalyticsEventsPage(since, pageOffset, options)
+        listSupabaseAnalyticsEventsPage(since, pageOffset, windowOptions)
       )
     );
     for (const page of pages) rows.push(...page);
-    if (pages.some((page) => page.length < SUPABASE_ANALYTICS_PAGE_SIZE)) break;
+    if (pages.some((page) => page.length < SUPABASE_ANALYTICS_PAGE_SIZE)) {complete = true; break;}
   }
 
-  return rows
+  return {complete, limit: SUPABASE_ANALYTICS_MAX_ROWS, rows: rows
     .map(mapSupabaseAnalyticsRow)
     .sort((left, right) => {
       const dateOrder =
         new Date(left.createdAt).getTime() - new Date(right.createdAt).getTime();
       if (dateOrder !== 0) return dateOrder;
       return left.id.localeCompare(right.id);
-    });
+    })};
 }
 
 async function listSupabaseAnalyticsEventsPage(
   since: Date,
   offset: number,
-  options: { excludeBots?: boolean }
+  options: { excludeBots?: boolean; until: Date }
 ): Promise<SupabaseAnalyticsEventRow[]> {
   return callSupabaseRpc<SupabaseAnalyticsEventRow[]>(
     "uapt_list_analytics_events_window",
@@ -234,7 +240,7 @@ async function listSupabaseAnalyticsEventsPage(
       p_offset: offset,
       p_secret: process.env.SUPABASE_ANALYTICS_SECRET,
       p_since: since.toISOString(),
-      p_until: new Date(Date.now() + 60_000).toISOString()
+      p_until: options.until.toISOString()
     }
   );
 }

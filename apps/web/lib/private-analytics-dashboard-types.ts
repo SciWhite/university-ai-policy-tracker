@@ -76,6 +76,9 @@ export interface AnalyticsDashboardBotDiagnostics {
 }
 
 export interface AnalyticsDashboardQuality {
+  excludedTestEvents: number;
+  excludedTestPageViews: number;
+  legacyUnclassifiedEvents: number;
   collectorVersions: Array<{ count: number; label: string }>;
   sessionIdCoverage: number;
   visitorIdCoverage: number;
@@ -162,6 +165,7 @@ export interface AnalyticsDashboardResponse {
       onsite: "connected" | "unavailable";
       rpc: "fallback" | "ready";
     };
+    measurement: {version: string; complete: boolean; rowLimit: number | null; fetchedRows: number; error?: string; definition: string};
     generatedAt: string;
     gscCompleteThrough?: string;
     partialDay: boolean;

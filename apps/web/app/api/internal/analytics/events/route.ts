@@ -1,3 +1,4 @@
+import { requestTrafficKind, normalizeTrafficKind, ANALYTICS_MEASUREMENT_VERSION } from "@/lib/analytics-traffic";
 import { requestAnalyticsOptedOut } from "@/lib/analytics-preference";
 import { NextResponse } from "next/server";
 import {
@@ -79,6 +80,9 @@ export async function POST(request: Request) {
   const properties = sanitizeAnalyticsProperties(
     isAnalyticsProperties(body.properties) ? body.properties : {}
   );
+  const requestKind = requestTrafficKind(request.headers);
+  properties.traffic_kind = requestKind !== "unclassified" ? requestKind : normalizeTrafficKind(properties.traffic_kind);
+  properties.measurement_version = ANALYTICS_MEASUREMENT_VERSION;
   const requestAnalyticsContext = getRequestAnalyticsContext(request);
   if (requestAnalyticsContext.botFamily) {
     properties.bot_family = requestAnalyticsContext.botFamily;

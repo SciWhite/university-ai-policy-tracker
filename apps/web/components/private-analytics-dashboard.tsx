@@ -547,6 +547,13 @@ export function PrivateAnalyticsDashboard({
         {data.meta.partialDay ? <span className="is-warning">{t.partial}</span> : null}
       </section>
 
+      <p className="analytics-comparison-note" role="status">
+        {locale === "zh"
+          ? `站内口径 ${data.meta.measurement?.version ?? "旧版"}：排除已标记测试/内部/巡检会话；未标记客户端不等于已验证真人。本期排除测试 ${current.quality.excludedTestPageViews ?? 0} 次浏览；旧口径事件 ${current.quality.legacyUnclassifiedEvents ?? 0} 条。${data.meta.measurement?.complete === false ? "事件结果不完整或读取失败，不可作为完整总量，已停用增减比较。" : ""}`
+          : `Onsite: exclude marked QA/internal/monitor sessions; unmarked clients are not verified humans. Excluded test page views: ${current.quality.excludedTestPageViews ?? 0}. Legacy events: ${current.quality.legacyUnclassifiedEvents ?? 0}. ${data.meta.measurement?.complete === false ? "Incomplete event query; totals are partial and comparisons disabled." : ""}`}
+      </p>
+      {bingAi.window ? <p className="analytics-comparison-note">{locale === "zh" ? `Bing AI 日趋势按所选日期过滤；${bingAi.window.complete ? "日期覆盖完整" : `缺少 ${bingAi.window.missingDays} 天，完整期间总量不显示，不能将缺数当作零`}。页面/查询/主题表仍是各自导出范围，不随本页日期筛选。` : `Bing AI daily trend uses selected dates; ${bingAi.window.complete ? "complete date coverage" : `${bingAi.window.missingDays} missing days; period totals unavailable`}. Page/query/topic tables retain their independent export ranges.`}</p> : null}
+      <p className="analytics-comparison-note">{locale === "zh" ? "Clarity 是独立滚动 72 小时、用户同意后的已上线 V6 样本，不随本站 7/30 天或筛选条件变化；按 URL 分组的会话/用户之和可能重复，不代表全站去重总量。站内按 Toronto 日界统计，GSC/Bing 保留各来源的报告日。Direct 表示未识别到来源；会话归因的浏览量、搜索点击和 AI 引用分别计算。" : "Clarity is a separate rolling 72h consented V6 sample, independent of date and onsite filters. URL-group session/user sums may overlap and are not deduplicated site totals. Onsite uses Toronto days; search retains provider report dates. Direct means no identified source. Session-attributed page views, search clicks and AI citations are distinct."}</p>
       <section className="analytics-trust-strip" aria-label={t.trust}>
         <strong>{t.trust}</strong>
         <TrustItem date={data.meta.baselines.tracking} label={locale === "zh" ? "站内埋点开始" : "Onsite tracking started"} />
@@ -579,17 +586,17 @@ export function PrivateAnalyticsDashboard({
       </section>
 
       <section className="analytics-kpi-grid" aria-label="Dashboard metrics">
-        <KpiCard comparable={data.meta.comparison.onsite.eligible} current={current.summary.visitors} label={t.visitors} onClick={() => openMetric("visitors", t.visitors, current.summary.visitors, previous.summary.visitors, data.meta.comparison.onsite.eligible)} previous={previous.summary.visitors} spark={current.summary.trend.map((row) => row.visitors)} />
-        <KpiCard comparable={data.meta.comparison.onsite.eligible} current={current.summary.sessions} label={t.sessions} onClick={() => openMetric("sessions", t.sessions, current.summary.sessions, previous.summary.sessions, data.meta.comparison.onsite.eligible)} previous={previous.summary.sessions} spark={current.summary.trend.map((row) => row.sessions)} />
-        <KpiCard comparable={data.meta.comparison.onsite.eligible} current={current.summary.pageViews} label={t.pageViews} onClick={() => openMetric("pageViews", t.pageViews, current.summary.pageViews, previous.summary.pageViews, data.meta.comparison.onsite.eligible)} previous={previous.summary.pageViews} spark={current.summary.trend.map((row) => row.pageViews)} />
-        <KpiCard comparable={data.meta.comparison.onsite.eligible} current={engagedRate} format="percent" label={t.engaged} onClick={() => openMetric("rate", t.engaged, engagedRate, previousEngagedRate, data.meta.comparison.onsite.eligible)} previous={previousEngagedRate} spark={[engagedRate]} />
-        <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.clicks} label={t.clicks} onClick={() => openMetric("clicks", t.clicks, gsc.totals.clicks, previousGsc.totals.clicks, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.clicks} spark={gsc.dateRows.map((row) => row.clicks)} />
-        <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.impressions} label={t.impressions} onClick={() => openMetric("impressions", t.impressions, gsc.totals.impressions, previousGsc.totals.impressions, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.impressions} spark={gsc.dateRows.map((row) => row.impressions)} />
-        <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.ctr} format="percent" label={t.ctr} onClick={() => openMetric("rate", t.ctr, gsc.totals.ctr, previousGsc.totals.ctr, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.ctr} spark={gsc.dateRows.map((row) => row.ctr * 100)} />
-        <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.position} format="decimal" label={t.avgPosition} onClick={() => openMetric("position", t.avgPosition, gsc.totals.position, previousGsc.totals.position, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.position} reverseTone spark={gsc.dateRows.map((row) => row.position)} />
-        <KpiCard comparable={data.meta.comparison.bing.eligible} current={bing.totals.clicks} label={t.bingClicks} onClick={() => openMetric("bingClicks", t.bingClicks, bing.totals.clicks, previousBing.totals.clicks, data.meta.comparison.bing.eligible)} previous={previousBing.totals.clicks} spark={bing.dateRows.map((row) => row.clicks)} />
-        <KpiCard comparable={data.meta.comparison.bing.eligible} current={bing.totals.impressions} label={t.bingImpressions} onClick={() => openMetric("bingImpressions", t.bingImpressions, bing.totals.impressions, previousBing.totals.impressions, data.meta.comparison.bing.eligible)} previous={previousBing.totals.impressions} spark={bing.dateRows.map((row) => row.impressions)} />
-        <KpiCard comparable={data.meta.comparison.bing.eligible} current={bing.totals.ctr} format="percent" label={t.bingCtr} onClick={() => openMetric("rate", t.bingCtr, bing.totals.ctr, previousBing.totals.ctr, data.meta.comparison.bing.eligible)} previous={previousBing.totals.ctr} spark={bing.dateRows.map((row) => row.ctr * 100)} />
+        <KpiCard available={!data.meta.measurement?.error} partial={data.meta.measurement?.complete === false} comparable={data.meta.comparison.onsite.eligible} current={current.summary.visitors} label={t.visitors} onClick={() => openMetric("visitors", t.visitors, current.summary.visitors, previous.summary.visitors, data.meta.comparison.onsite.eligible)} previous={previous.summary.visitors} spark={current.summary.trend.map((row) => row.visitors)} />
+        <KpiCard available={!data.meta.measurement?.error} partial={data.meta.measurement?.complete === false} comparable={data.meta.comparison.onsite.eligible} current={current.summary.sessions} label={t.sessions} onClick={() => openMetric("sessions", t.sessions, current.summary.sessions, previous.summary.sessions, data.meta.comparison.onsite.eligible)} previous={previous.summary.sessions} spark={current.summary.trend.map((row) => row.sessions)} />
+        <KpiCard available={!data.meta.measurement?.error} partial={data.meta.measurement?.complete === false} comparable={data.meta.comparison.onsite.eligible} current={current.summary.pageViews} label={t.pageViews} onClick={() => openMetric("pageViews", t.pageViews, current.summary.pageViews, previous.summary.pageViews, data.meta.comparison.onsite.eligible)} previous={previous.summary.pageViews} spark={current.summary.trend.map((row) => row.pageViews)} />
+        <KpiCard available={!data.meta.measurement?.error} partial={data.meta.measurement?.complete === false} comparable={data.meta.comparison.onsite.eligible} current={engagedRate} format="percent" label={t.engaged} onClick={() => openMetric("rate", t.engaged, engagedRate, previousEngagedRate, data.meta.comparison.onsite.eligible)} previous={previousEngagedRate} spark={[engagedRate]} />
+        <KpiCard available={gsc.available} comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.clicks} label={t.clicks} onClick={() => openMetric("clicks", t.clicks, gsc.totals.clicks, previousGsc.totals.clicks, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.clicks} spark={gsc.dateRows.map((row) => row.clicks)} />
+        <KpiCard available={gsc.available} comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.impressions} label={t.impressions} onClick={() => openMetric("impressions", t.impressions, gsc.totals.impressions, previousGsc.totals.impressions, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.impressions} spark={gsc.dateRows.map((row) => row.impressions)} />
+        <KpiCard available={gsc.available} comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.ctr} format="percent" label={t.ctr} onClick={() => openMetric("rate", t.ctr, gsc.totals.ctr, previousGsc.totals.ctr, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.ctr} spark={gsc.dateRows.map((row) => row.ctr * 100)} />
+        <KpiCard available={gsc.available} comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.position} format="decimal" label={t.avgPosition} onClick={() => openMetric("position", t.avgPosition, gsc.totals.position, previousGsc.totals.position, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.position} reverseTone spark={gsc.dateRows.map((row) => row.position)} />
+        <KpiCard available={bing.available} comparable={data.meta.comparison.bing.eligible} current={bing.totals.clicks} label={t.bingClicks} onClick={() => openMetric("bingClicks", t.bingClicks, bing.totals.clicks, previousBing.totals.clicks, data.meta.comparison.bing.eligible)} previous={previousBing.totals.clicks} spark={bing.dateRows.map((row) => row.clicks)} />
+        <KpiCard available={bing.available} comparable={data.meta.comparison.bing.eligible} current={bing.totals.impressions} label={t.bingImpressions} onClick={() => openMetric("bingImpressions", t.bingImpressions, bing.totals.impressions, previousBing.totals.impressions, data.meta.comparison.bing.eligible)} previous={previousBing.totals.impressions} spark={bing.dateRows.map((row) => row.impressions)} />
+        <KpiCard available={bing.available} comparable={data.meta.comparison.bing.eligible} current={bing.totals.ctr} format="percent" label={t.bingCtr} onClick={() => openMetric("rate", t.bingCtr, bing.totals.ctr, previousBing.totals.ctr, data.meta.comparison.bing.eligible)} previous={previousBing.totals.ctr} spark={bing.dateRows.map((row) => row.ctr * 100)} />
       </section>
 
       <section className="analytics-growth-grid">
@@ -644,8 +651,8 @@ export function PrivateAnalyticsDashboard({
           {bingAi.available ? (
             <>
               <div className="analytics-ai-summary">
-                <MetricSummary label={t.citations} value={formatCount(bingAi.totals.citations)} />
-                <MetricSummary label={t.avgCitedPages} value={formatDecimal(bingAi.totals.averageCitedPages)} />
+                <MetricSummary label={t.citations} value={bingAi.window ? bingAi.window.citations === null ? "—" : formatCount(bingAi.window.citations) : formatCount(bingAi.totals.citations)} />
+                <MetricSummary label={t.avgCitedPages} value={bingAi.window ? bingAi.window.averageCitedPages === null ? "—" : formatDecimal(bingAi.window.averageCitedPages) : formatDecimal(bingAi.totals.averageCitedPages)} />
                 {bingAi.totals.topicsCount ? (
                   <MetricSummary label={t.topicsCount} value={formatCount(bingAi.totals.topicsCount)} />
                 ) : null}
@@ -655,10 +662,10 @@ export function PrivateAnalyticsDashboard({
               </div>
               <DashboardLineChart
                 emptyLabel={t.noData}
-                labels={bingAi.dateRows.map((row) => row.key.slice(5))}
+                labels={(bingAi.window?.dateRows ?? bingAi.dateRows).map((row) => row.key.slice(5))}
                 series={[
-                  { color: "var(--analytics-ai)", key: "citations", label: t.citations, values: bingAi.dateRows.map((row) => row.citations) },
-                  { color: "var(--analytics-search)", key: "citedPages", label: t.citedPages, values: bingAi.dateRows.map((row) => row.citedPages) }
+                  { color: "var(--analytics-ai)", key: "citations", label: t.citations, values: (bingAi.window?.dateRows ?? bingAi.dateRows).map((row) => row.citations) },
+                  { color: "var(--analytics-search)", key: "citedPages", label: t.citedPages, values: (bingAi.window?.dateRows ?? bingAi.dateRows).map((row) => row.citedPages) }
                 ]}
               />
             </>
@@ -674,10 +681,10 @@ export function PrivateAnalyticsDashboard({
             <>
               <div className="analytics-ai-summary">
                 <MetricSummary
-                  label={t.claritySessions}
+                  label={locale === "zh" ? "页面会话累计（可能重复）" : "Page session sum (may overlap)"}
                   value={`${formatCount(clarity.totals.sessions)}${clarity.totals.botSessions ? ` (Bot: ${formatCount(clarity.totals.botSessions)})` : ""}`}
                 />
-                <MetricSummary label={t.clarityUsers} value={formatCount(clarity.totals.distinctUsers)} />
+                <MetricSummary label={locale === "zh" ? "页面用户累计（可能重复）" : "Page user sum (may overlap)"} value={formatCount(clarity.totals.distinctUsers)} />
                 <MetricSummary
                   label={t.clarityActiveTime}
                   value={`${formatDecimal(clarity.totals.avgActiveTimeSec)}s / ${formatDecimal(clarity.totals.avgTotalTimeSec)}s`}
@@ -928,10 +935,10 @@ function DetailSection({ children, index, open = false, title }: { children: Rea
   return <details className="analytics-detail-section" open={open}><summary><span>{index}</span><strong>{title}</strong><i /></summary><div>{children}</div></details>;
 }
 
-function KpiCard({ comparable, current, format = "count", label, onClick, previous, reverseTone = false, spark }: { comparable: boolean; current: number; format?: "count" | "decimal" | "percent"; label: string; onClick: () => void; previous: number; reverseTone?: boolean; spark: number[] }) {
+function KpiCard({ available = true, partial = false, comparable, current, format = "count", label, onClick, previous, reverseTone = false, spark }: { available?: boolean; partial?: boolean; comparable: boolean; current: number; format?: "count" | "decimal" | "percent"; label: string; onClick: () => void; previous: number; reverseTone?: boolean; spark: number[] }) {
   const change = previous ? (current - previous) / previous : current ? null : 0;
   const positive = change !== null && (reverseTone ? change < 0 : change >= 0);
-  return <button className="analytics-kpi-card" onClick={onClick} type="button"><span>{label}</span><strong>{format === "percent" ? formatPercent(current) : format === "decimal" ? formatDecimal(current) : formatCount(current)}</strong><em className={!comparable ? "is-unavailable" : change === null ? "is-new" : positive ? "is-positive" : "is-negative"}>{!comparable ? "N/A" : change === null ? "NEW" : formatSignedPercent(change)}</em><DashboardSparkline values={spark} /></button>;
+  return <button className="analytics-kpi-card" disabled={!available} onClick={onClick} type="button"><span>{label}</span><strong>{!available ? "—" : `${partial ? format === "count" ? "≥" : "~" : ""}${format === "percent" ? formatPercent(current) : format === "decimal" ? formatDecimal(current) : formatCount(current)}`}</strong><em className={!comparable ? "is-unavailable" : change === null ? "is-new" : positive ? "is-positive" : "is-negative"}>{!comparable ? "N/A" : change === null ? "NEW" : formatSignedPercent(change)}</em><DashboardSparkline values={spark} /></button>;
 }
 
 function FilterSelect({ label, onChange, options, value }: { label: string; onChange: (value: string) => void; options: Array<{ count: number; label: string; value: string }>; value: string }) {

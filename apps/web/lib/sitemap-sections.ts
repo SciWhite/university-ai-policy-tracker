@@ -1,3 +1,6 @@
+import { isConfirmedEmptyDiff, isIndexPolicySitemapAlias } from "./change-index-policy";
+import { getEntityAliasResolver } from "./entity-aliases";
+import { loadSelectedChangeEventIndex } from "./change-events-api";
 import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import type { CatalogPolicySource } from "@uapt/shared";
 import { getCatalogUniversities } from "@/lib/catalog";
@@ -164,7 +167,8 @@ async function buildCoreSection(): Promise<SitemapEntry[]> {
 async function buildUniversitiesSection(): Promise<SitemapEntry[]> {
   const baseUrl = getSiteBaseUrl();
   const publishedAt = await getSitemapLastPublishedAt();
-  const universities = await getCatalogUniversities();
+  const aliases = await getEntityAliasResolver();
+  const universities = (await getCatalogUniversities()).filter(row => !aliases.slugAliases.has(row.slug) && !isIndexPolicySitemapAlias(row.slug));
 
   const universityEntries = await Promise.all(universities.map(async (university) => {
     const latestSourceDate = getLatestSourceDate(university.sources);
@@ -187,13 +191,17 @@ async function buildChangesSection(): Promise<SitemapEntry[]> {
   const publishedAt = await getSitemapLastPublishedAt();
   const changeRecords = (await getChangeIndexData()).data.records;
   const releases = await getKnownReleaseSummaries();
+  const aliases = await getEntityAliasResolver();
+  // Failure to load current protected history keeps every legacy candidate.
+  const eventIndex = await loadSelectedChangeEventIndex().catch(() => undefined);
+  const protectedEvents = new Set(eventIndex?.rows.map(row => `${row.revision}/${row.slug}`));
   const recentReleases = [...releases.slice(-RECENT_RELEASE_SITEMAP_COUNT), ...(await readRecordCorrectionChanges()).map(entry => ({releaseId: entry.revision, publishedAt: entry.publishedAt}))];
   const releaseEntries = await Promise.all(
     recentReleases.map(async ({ releaseId, publishedAt: releasePublishedAt }) => {
       const records = (await getReleaseChangeRecords(releaseId)) ?? [];
       const releaseDate = toValidDate(releasePublishedAt) ?? publishedAt;
 
-      return [`/changes/${releaseId}`, ...records.map((record) => `/changes/${releaseId}/${record.slug}`)].map(
+      return [`/changes/${releaseId}`, ...records.filter(record => !isConfirmedEmptyDiff(record, {releaseId, locale: "en", alias: aliases.slugAliases.has(record.slug), eventState: !eventIndex ? "unknown" : protectedEvents.has(`${releaseId}/${record.slug}`) ? "present" : "none"})).map((record) => `/changes/${releaseId}/${record.slug}`)].map(
         (route) => ({
           url: new URL(route, baseUrl).toString(),
           lastModified: releaseDate
@@ -203,7 +211,7 @@ async function buildChangesSection(): Promise<SitemapEntry[]> {
   );
 
   return [
-    ...changeRecords.map((record) => ({
+    ...changeRecords.filter(record => !/^\/(?:zh\/|fr\/|pl\/)?universities\//.test(record.changeUrl)).map((record) => ({
       url: new URL(record.changeUrl, baseUrl).toString(),
       lastModified:
         toValidDate(record.lastChangedAt ?? record.lastCheckedAt) ?? publishedAt
@@ -219,7 +227,8 @@ async function buildLocaleSection(
   const publishedAt = await getSitemapLastPublishedAt();
   const phaseTwoEnabled = isMultilingualPhaseTwoEnabled();
   const analysisThemeRoutes = await getAnalysisThemeRoutes();
-  const universities = await getCatalogUniversities();
+  const aliases = await getEntityAliasResolver();
+  const universities = (await getCatalogUniversities()).filter(row => !aliases.slugAliases.has(row.slug) && !isIndexPolicySitemapAlias(row.slug));
   const staticEntries = [
     ...phaseOneLocalizedStaticRoutes,
     ...(phaseTwoEnabled ? phaseTwoLocalizedStaticRoutes : []),

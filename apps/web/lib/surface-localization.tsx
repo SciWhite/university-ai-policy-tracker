@@ -229,7 +229,9 @@ export function localizeSurfaceMetadata(
     ...localized,
     alternates: {
       ...localized.alternates,
-      ...alternates
+      ...alternates,
+      // A locale wrapper must not reintroduce alternates on an excluded URL.
+      ...((metadata.alternates?.languages !== undefined && Object.keys(metadata.alternates.languages).length === 0) || typeof metadata.robots === "object" && metadata.robots?.index === false ? {languages: {}} : {})
     },
     openGraph: localized.openGraph
       ? { ...localized.openGraph, url: canonical }

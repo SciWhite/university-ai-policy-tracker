@@ -1,5 +1,7 @@
 // playwright-cli run-code --filename adapter; expected data is frozen by the caller.
 async (page) => {
+  await page.context().setExtraHTTPHeaders({"x-uapt-traffic-kind":"qa"});
+  await page.context().addCookies([{name:"uapt_traffic_kind",value:"qa",url:BASE_V6_URL}]);
   const expected = EXPECTED_V6_INPUT;
   const base = BASE_V6_URL;
   const rows = [], errors = [];
