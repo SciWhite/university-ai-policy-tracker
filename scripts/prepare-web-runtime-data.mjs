@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const defaultRepoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // Only public loader dependencies: never .local, private inventories or review caches.
 const publicDirectories = [
-  "data/public-releases", "data/rankings", "data/policy-snapshots",
+  "data/public-releases", "data/rankings", "data/ranking-browser", "data/policy-snapshots",
   "data/public-record-repairs", "data/public-change-history", "data/public-v6-history/repairs"
 ];
 const identityFiles = [

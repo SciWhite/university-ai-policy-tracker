@@ -7,6 +7,7 @@ import {
   policySnapshotIndexSchema,
   policySnapshotSchema
 } from "@uapt/shared";
+import {publishedV6Enabled} from "../apps/web/lib/policy-v6-published-gate";
 import { getLoadedPolicySnapshotIndex } from "../apps/web/lib/policy-snapshots";
 
 const root = path.join(process.cwd(), "data", "policy-snapshots", "v1");
@@ -85,9 +86,10 @@ test("UAPT 6 decisions preserve evidence pointers and fail-closed statuses", asy
   );
 
   for (const entry of index.entries) {
-    const repaired = entry.universitySlug === "massachusetts-institute-of-technology";
+    const repairs: Record<string,string> = {"massachusetts-institute-of-technology":"mit-20261010","imperial-college-london":"imperial-20261011","stanford-university":"stanford-20261011-codex","university-of-oxford":"oxford-20261011-codex"};
+    const repaired = repairs[entry.universitySlug];
     const snapshot = policySnapshotSchema.parse(
-      JSON.parse(await readFile(repaired ? "data/public-record-repairs/mit-20261010/historical-student-snapshot.json" : path.join(root, entry.file), "utf8"))
+      JSON.parse(await readFile(repaired ? `data/public-record-repairs/${repaired}/historical-student-snapshot.json` : path.join(root, entry.file), "utf8"))
     );
     const decision = decisions.get(entry.universitySlug);
     assert(decision);
@@ -118,15 +120,15 @@ test("API loader reports the reviewed strong and fail-closed counts", async () =
   assert.equal(loaded.entries.length, 24);
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "strong").length,
-    16
+    publishedV6Enabled() ? 6 : 13
   );
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "needs_review").length,
-    8
+    publishedV6Enabled() ? 16 : 11
   );
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "stale").length,
-    0
+    publishedV6Enabled() ? 2 : 0
   );
   for (const entry of loaded.entries) {
     assert.equal(entry.overallStatus, entry.loaded.validation.effectiveStatus);

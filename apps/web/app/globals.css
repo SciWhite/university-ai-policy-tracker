@@ -4,6 +4,7 @@
 @import "../components/home-rankings-v6.css";
 @import "../components/mockup-alignment.css";
 @import "../components/local-university-marks.css";
+@import "../components/ranking-browser.css";
 
 :root {
   color-scheme: light;

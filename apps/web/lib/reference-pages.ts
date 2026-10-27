@@ -1,3 +1,4 @@
+import { rankingEditions } from "./ranking-editions";
 import {
   NO_ADVICE_BOUNDARY,
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
@@ -5,11 +6,11 @@ import {
   type CatalogUniversityRanking,
   type PolicyClaim,
   type PublicEntitySummary,
-  type RankingSystemId
+  type RankingSystemId,
 } from "@uapt/shared";
 import {
   getStaticUniversityIndexRecords,
-  type StaticUniversityIndexRecord
+  type StaticUniversityIndexRecord,
 } from "./university-index-records";
 import { getStagedPublicDataset } from "./staged-public-data";
 
@@ -49,7 +50,7 @@ export interface ThemeRecord {
   record: PublicReferenceRecord;
 }
 
-export const rankingLandingSpecs: RankingLandingSpec[] = [
+const legacyRankingLandingSpecs: RankingLandingSpec[] = [
   {
     slug: "qs-2026",
     systemId: "qs",
@@ -62,7 +63,7 @@ export const rankingLandingSpecs: RankingLandingSpec[] = [
     caveat:
       "QS 2026 coverage is a crawl batching and filtering surface here, not a tracker-created policy ranking.",
     description:
-      "Public university AI policy records that match the QS World University Rankings 2026 index."
+      "Public university AI policy records that match the QS World University Rankings 2026 index.",
   },
   {
     slug: "the-2026",
@@ -70,13 +71,12 @@ export const rankingLandingSpecs: RankingLandingSpec[] = [
     label: "THE 2026",
     title: "THE 2026 indexed university policy records",
     yearLabel: "2026",
-    sourceRole:
-      "THE 2026 is supported as a ranking index and filter source.",
+    sourceRole: "THE 2026 is supported as a ranking index and filter source.",
     rankTypeNote: "Official ordinal ranking rows are used as an index source.",
     caveat:
       "THE 2026 rows are not merged into a unified 2026 ranking with QS, ARWU, U.S. News, or CWTS.",
     description:
-      "Public university AI policy records that match the Times Higher Education 2026 index."
+      "Public university AI policy records that match the Times Higher Education 2026 index.",
   },
   {
     slug: "arwu-2025",
@@ -84,13 +84,12 @@ export const rankingLandingSpecs: RankingLandingSpec[] = [
     label: "ARWU 2025",
     title: "ARWU 2025 indexed university policy records",
     yearLabel: "2025",
-    sourceRole:
-      "ARWU 2025 is supported as a ranking index and filter source.",
+    sourceRole: "ARWU 2025 is supported as a ranking index and filter source.",
     rankTypeNote: "Official ordinal ranking rows are used as an index source.",
     caveat:
       "ARWU 2025 remains a separate source year and is not presented as a 2026 ranking.",
     description:
-      "Public university AI policy records that match the Academic Ranking of World Universities 2025 index."
+      "Public university AI policy records that match the Academic Ranking of World Universities 2025 index.",
   },
   {
     slug: "usnews-2025-2026",
@@ -104,7 +103,7 @@ export const rankingLandingSpecs: RankingLandingSpec[] = [
     caveat:
       "U.S. News 2025-2026 is kept as its own source period and is not normalized into a single 2026 ranking.",
     description:
-      "Public university AI policy records that match the U.S. News Best Global Universities 2025-2026 index."
+      "Public university AI policy records that match the U.S. News Best Global Universities 2025-2026 index.",
   },
   {
     slug: "cwts-leiden-2025",
@@ -112,15 +111,36 @@ export const rankingLandingSpecs: RankingLandingSpec[] = [
     label: "CWTS Leiden 2025",
     title: "CWTS Leiden 2025 indexed university policy records",
     yearLabel: "2025",
-    sourceRole:
-      "CWTS Leiden 2025 is supported as an index and filter source.",
+    sourceRole: "CWTS Leiden 2025 is supported as an index and filter source.",
     rankTypeNote:
       "CWTS rows are a derived metric order, not an overall global university rank.",
     caveat:
       "CWTS Leiden 2025 must not be described as an overall global university ranking or merged into a unified 2026 ranking.",
     description:
-      "Public university AI policy records that match the CWTS Leiden 2025 derived metric order."
-  }
+      "Public university AI policy records that match the CWTS Leiden 2025 derived metric order.",
+  },
+];
+
+// Discovery editions are explicit; legacy catalog and crawl defaults remain separate.
+export const rankingLandingSpecs: RankingLandingSpec[] = [
+  ...legacyRankingLandingSpecs,
+  ...rankingEditions
+    .filter(
+      (edition) =>
+        !legacyRankingLandingSpecs.some((spec) => spec.slug === edition.slug),
+    )
+    .map((edition) => ({
+      ...legacyRankingLandingSpecs.find(
+        (spec) => spec.systemId === edition.systemId,
+      )!,
+      ...edition,
+      title: `${edition.label} university ranking records`,
+      description: `Browse the ${edition.label} source ranking independently of policy coverage.`,
+      sourceRole:
+        "Independent ranking source records; QS 2026 remains the crawl batching basis.",
+      caveat:
+        "Identity links require an existing catalog binding, a reviewed explicit identity link or an unambiguous exact name and country. Unresolved source identities remain separate.",
+    })),
 ];
 
 export const regionLandingSpecs: RegionLandingSpec[] = [
@@ -130,7 +150,7 @@ export const regionLandingSpecs: RegionLandingSpec[] = [
     title: "United States university AI policy records",
     countries: ["United States", "United States of America", "USA", "U.S."],
     description:
-      "Public source-backed AI policy records for universities in the United States."
+      "Public source-backed AI policy records for universities in the United States.",
   },
   {
     slug: "united-kingdom",
@@ -138,8 +158,8 @@ export const regionLandingSpecs: RegionLandingSpec[] = [
     title: "United Kingdom university AI policy records",
     countries: ["United Kingdom", "UK", "U.K.", "England", "Scotland", "Wales"],
     description:
-      "Public source-backed AI policy records for universities in the United Kingdom."
-  }
+      "Public source-backed AI policy records for universities in the United Kingdom.",
+  },
 ];
 
 export const themeLandingSpecs: ThemeLandingSpec[] = [
@@ -148,48 +168,48 @@ export const themeLandingSpecs: ThemeLandingSpec[] = [
     label: "AI disclosure",
     title: "Which universities mention AI disclosure?",
     description:
-      "Published claim records where the visible claim or original evidence mentions disclosure, declaration, citation, attribution, transparency, or assignment-level permission."
+      "Published claim records where the visible claim or original evidence mentions disclosure, declaration, citation, attribution, transparency, or assignment-level permission.",
   },
   {
     slug: "approved-ai-tools",
     label: "Approved AI tools",
     title: "Which universities mention approved AI tools?",
     description:
-      "Published claim records where the visible claim or original evidence concerns named AI tools, licensed services, approved tools, procurement, or security review."
+      "Published claim records where the visible claim or original evidence concerns named AI tools, licensed services, approved tools, procurement, or security review.",
   },
   {
     slug: "chatgpt-coursework-policy",
     label: "ChatGPT coursework",
     title: "Which universities mention ChatGPT or AI in coursework?",
     description:
-      "Published claim records where the visible claim or original evidence mentions ChatGPT, OpenAI, GPT, coursework, assignments, syllabi, teaching, classroom use, or assessment context."
+      "Published claim records where the visible claim or original evidence mentions ChatGPT, OpenAI, GPT, coursework, assignments, syllabi, teaching, classroom use, or assessment context.",
   },
   {
     slug: "ai-in-exams",
     label: "AI in exams",
     title: "Which universities mention AI in exams or assessments?",
     description:
-      "Published claim records where the visible claim or original evidence mentions exams, tests, quizzes, proctoring, assessment rules, or assessment-related AI restrictions."
+      "Published claim records where the visible claim or original evidence mentions exams, tests, quizzes, proctoring, assessment rules, or assessment-related AI restrictions.",
   },
   {
     slug: "ai-detectors",
     label: "AI detectors",
     title: "Which universities mention AI detection or detector tools?",
     description:
-      "Published claim records where the visible claim or original evidence mentions AI detection, detector tools, originality checks, Turnitin, plagiarism detection, or AI-generated text checks."
+      "Published claim records where the visible claim or original evidence mentions AI detection, detector tools, originality checks, Turnitin, plagiarism detection, or AI-generated text checks.",
   },
   {
     slug: "privacy-data-entry",
     label: "Privacy and data entry",
     title: "Which universities mention AI privacy or data-entry rules?",
     description:
-      "Published claim records where the visible claim or original evidence mentions privacy, personal data, confidential information, sensitive data, data entry, FERPA, GDPR, security, or information-protection rules."
-  }
+      "Published claim records where the visible claim or original evidence mentions privacy, personal data, confidential information, sensitive data, data entry, FERPA, GDPR, security, or information-protection rules.",
+  },
 ];
 
 export const publicJsonPaths = {
   index: `/api/public/${PUBLIC_API_VERSION}/index.json`,
-  universities: `/api/public/${PUBLIC_API_VERSION}/universities.json`
+  universities: `/api/public/${PUBLIC_API_VERSION}/universities.json`,
 } as const;
 
 export const referencePageCaveats = [
@@ -197,7 +217,7 @@ export const referencePageCaveats = [
   "Original-language evidence is canonical. Translations and display summaries are auxiliary.",
   "Confidence is separate from reviewState; reviewState describes workflow status.",
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
-  NO_ADVICE_BOUNDARY
+  NO_ADVICE_BOUNDARY,
 ] as const;
 
 export async function getPublicReferenceRecords(): Promise<
@@ -205,52 +225,52 @@ export async function getPublicReferenceRecords(): Promise<
 > {
   const [records, dataset] = await Promise.all([
     getStaticUniversityIndexRecords(),
-    getStagedPublicDataset()
+    getStagedPublicDataset(),
   ]);
   const summariesBySlug = new Map(
-    dataset.publicSummaries.map((summary) => [summary.entity.slug, summary])
+    dataset.publicSummaries.map((summary) => [summary.entity.slug, summary]),
   );
 
   return records.map((record) => ({
     ...record,
-    summaryRecord: summariesBySlug.get(record.slug)
+    summaryRecord: summariesBySlug.get(record.slug),
   }));
 }
 
 export function getRankingLandingSpec(
-  slug: string
+  slug: string,
 ): RankingLandingSpec | undefined {
   return rankingLandingSpecs.find((spec) => spec.slug === slug);
 }
 
 export function getRegionLandingSpec(
-  slug: string
+  slug: string,
 ): RegionLandingSpec | undefined {
   return regionLandingSpecs.find((spec) => spec.slug === slug);
 }
 
 export function getThemeLandingSpec(
-  slug: string
+  slug: string,
 ): ThemeLandingSpec | undefined {
   return themeLandingSpecs.find((spec) => spec.slug === slug);
 }
 
 export function getSelectedRanking(
   record: PublicReferenceRecord,
-  systemId: RankingSystemId
+  systemId: RankingSystemId,
 ): CatalogUniversityRanking | undefined {
   return record.rankings.find((ranking) => ranking.systemId === systemId);
 }
 
 export function getThemeRecords(
   records: PublicReferenceRecord[],
-  slug: string
+  slug: string,
 ): ThemeRecord[] {
   return records
     .map((record) => {
       const claims =
         record.summaryRecord?.claims.filter((claim) =>
-          matchesThemeClaim(claim, slug)
+          matchesThemeClaim(claim, slug),
         ) ?? [];
 
       return { record, claims };
@@ -269,7 +289,7 @@ export function buildThemeCitationReadySummary(
   records: ThemeRecord[],
   claimCount: number,
   evidenceCount: number,
-  sourceCount: number
+  sourceCount: number,
 ): string {
   return `University AI Policy Tracker currently indexes ${records.length} public university record${records.length === 1 ? "" : "s"} with ${claimCount} source-backed claim${claimCount === 1 ? "" : "s"} related to ${spec.label.toLowerCase()}, supported by ${evidenceCount} evidence record${evidenceCount === 1 ? "" : "s"} and ${sourceCount} official source attribution${sourceCount === 1 ? "" : "s"}. This page is a public dataset slice generated from promoted claim/evidence records; it does not create new policy conclusions. Original-language evidence remains canonical, and each linked university record exposes review state, confidence, source URLs, snapshot hashes, and public JSON.`;
 }
@@ -277,7 +297,7 @@ export function buildThemeCitationReadySummary(
 export function countReviewedClaims(record: PublicReferenceRecord): number {
   return (
     record.summaryRecord?.claims.filter((claim) =>
-      isReviewedClaim(claim.reviewState)
+      isReviewedClaim(claim.reviewState),
     ).length ?? record.reviewedClaimCount
   );
 }
@@ -291,7 +311,7 @@ export function formatDate(value: string | undefined, locale = "en"): string {
 
   return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
-    timeZone: "UTC"
+    timeZone: "UTC",
   }).format(new Date(value));
 }
 
@@ -305,7 +325,7 @@ export function formatClaimType(value: string): string {
     security_review: "Security review",
     procurement: "Procurement",
     source_status: "Source status",
-    other: "Other"
+    other: "Other",
   };
 
   if (labels[value]) return labels[value];
@@ -327,8 +347,8 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
     ...claim.evidence.flatMap((evidence) => [
       evidence.evidenceSnippet,
       evidence.evidenceSnippetDisplay,
-      evidence.attribution.citationTitle
-    ])
+      evidence.attribution.citationTitle,
+    ]),
   ]
     .filter(Boolean)
     .join(" ")
@@ -344,7 +364,7 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
       "transparen",
       "acknowledg",
       "assignment",
-      "course"
+      "course",
     ].some((keyword) => haystack.includes(keyword));
   }
 
@@ -362,7 +382,7 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
         "gemini",
         "service",
         "procurement",
-        "security review"
+        "security review",
       ].some((keyword) => haystack.includes(keyword))
     );
   }
@@ -379,7 +399,7 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
       "course",
       "classroom",
       "teaching",
-      "assessment"
+      "assessment",
     ].some((keyword) => haystack.includes(keyword));
   }
 
@@ -391,7 +411,7 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
       "assessment",
       "proctor",
       "invigil",
-      "take-home"
+      "take-home",
     ].some((keyword) => haystack.includes(keyword));
   }
 
@@ -403,7 +423,7 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
       "originality",
       "plagiarism",
       "ai-generated",
-      "ai generated"
+      "ai generated",
     ].some((keyword) => haystack.includes(keyword));
   }
 
@@ -420,7 +440,7 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
         "ferpa",
         "gdpr",
         "security",
-        "information protection"
+        "information protection",
       ].some((keyword) => haystack.includes(keyword))
     );
   }
