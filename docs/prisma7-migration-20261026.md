@@ -1,5 +1,10 @@
 # Prisma 7 isolated migration acceptance — 2026-10-26
 
+Historical migration acceptance below is preserved. The subsequent MCP exporter
+repair and expanded preflight are recorded in [the follow-up](prisma7-mcp-preflight-20261026.md).
+That follow-up resolves the two MCP failures listed in this original report;
+neither report authorizes or claims a production cutover.
+
 The isolated candidate upgrades the PostgreSQL access layer from Prisma 6.19.3 to
 7.10.1. Migration-specific acceptance passes. This is **not a production release**:
 the existing MCP suite still has two baseline failures, and actual production

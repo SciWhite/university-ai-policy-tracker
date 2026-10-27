@@ -19,6 +19,8 @@ export const catalogPayloadSchema = z.object({
     snapshot: policySnapshotSchema.optional(),
     universityRevisionId: z.string().optional(),
     recordSha256: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+    // Catalog schema-normalized digest; recordSha256 retains original source bytes/order.
+    summarySha256: z.string().regex(/^[a-f0-9]{64}$/).optional(),
     recordPublishedAt: z.string().datetime().optional(),
     snapshotUnavailableReason: z.enum(["pending_review","not_published"]).optional(),
     historicalClaimIds: z.array(z.string()).optional(),
@@ -51,6 +53,12 @@ export async function loadCatalog(file: string): Promise<Catalog> {
     seen.add(slug);
     if (eligibleClaims(record).length !== record.summary.claims.length) throw new Error("Ineligible catalog claim");
     if (new Set(record.summary.claims.map(c => c.id)).size !== record.summary.claims.length) throw new Error("Duplicate catalog claim");
+    const revisionFields = [record.universityRevisionId, record.recordSha256, record.recordPublishedAt];
+    if (revisionFields.some(value => value !== undefined)) {
+      if (revisionFields.some(value => !value) || (record.summarySha256 && record.summarySha256 !== digest(record.summary))) throw new Error("Published record fingerprint mismatch");
+      if (record.historicalClaimIds?.some(id => record.summary.claims.some(c => c.id === id))) throw new Error("Held claim selected as current");
+      if (record.snapshot && record.snapshotUnavailableReason) throw new Error("Conflicting snapshot availability");
+    }
     for (const tool of record.tools ?? []) {
       if (tool.universitySlug !== slug || !["agent_reviewed", "human_reviewed"].includes(tool.reviewState) ||
         tool.evidence.some(e => !["agent_reviewed", "human_reviewed"].includes(e.reviewState) || !["https:", "http:"].includes(new URL(e.sourceUrl).protocol))) throw new Error("Ineligible catalog tool");
