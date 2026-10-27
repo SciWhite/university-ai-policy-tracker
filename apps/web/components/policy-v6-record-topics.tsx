@@ -1,5 +1,6 @@
 import {policyV6ScopeLabel,policyV6EvidenceLabel} from "@/lib/policy-v6-evidence-labels";
 import React from "react";
+import { PolicyV6TopicEvidence } from "./policy-v6-topic-evidence";
 import type { PolicyV6Data, LabTopic } from "@/lib/policy-v6";
 import { policyV6RecordCopy } from "@/lib/policy-v6-record-copy";
 import { policyV6Copy } from "@/lib/policy-v6-copy";
@@ -10,9 +11,11 @@ import { PolicyV6TopicControls } from "./policy-v6";
 export function PolicyV6RecordTopics({
   data,
   additionalOnly = false,
+  readingLayout = true,
 }: {
   data: PolicyV6Data;
   additionalOnly?: boolean;
+  readingLayout?: boolean;
 }) {
   const school = data.schools.find((s) => s.slug === data.currentSlug);
   if (!school) return null;
@@ -52,7 +55,7 @@ export function PolicyV6RecordTopics({
         <PolicyV6TopicControls
           dimensionKey={topic.key}
           scopeDetail={readthrough?<><p lang={zh&&/[\u3400-\u9fff]/.test(readthrough.meaningZh)?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{readthrough.en}</p></>:<p lang={zh&&/[\u3400-\u9fff]/.test(topic.scope)?'zh':'en'} data-i18n="preserve">{topic.scope}</p>}
-          originalEvidence={
+          originalEvidence={readingLayout ? <PolicyV6TopicEvidence topic={topic} locale={data.locale} /> :
             <div className="student-snapshot-card__evidence">
               {topic.claims.length ? (
                 topic.claims.map((claim) => (
@@ -115,7 +118,8 @@ export function PolicyV6RecordTopics({
           <div className="student-policy__grid">{school.topics.map(card)}</div>
         </>
       ) : null}
-      <details className="policy-v6-additional" id="v6-additional-topics">
+      {/* Native fragment navigation may open this uncontrolled disclosure before hydration. */}
+      <details suppressHydrationWarning className="policy-v6-additional" id="v6-additional-topics">
         <summary id="v6-additional-title">{copy.more}</summary>
         <div className="student-policy__grid">
           {school.additionalTopics.map(card)}

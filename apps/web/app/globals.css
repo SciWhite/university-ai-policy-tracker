@@ -1,9 +1,11 @@
 @import "../components/change-history.css";
 @import "../components/policy-v6.css";
+@import "../components/policy-v6-reading-layout.css";
 @import "../components/discovery.css";
 @import "../components/home-rankings-v6.css";
 @import "../components/mockup-alignment.css";
 @import "../components/local-university-marks.css";
+@import "../components/ranking-browser.css";
 
 :root {
   color-scheme: light;

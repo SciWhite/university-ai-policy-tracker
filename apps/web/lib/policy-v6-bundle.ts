@@ -18,6 +18,7 @@ export interface LocalV6Bundle {
   completenessReview?: {schemaVersion:'uapt-v6-completeness-review-v1';contentSha256:string;reviewer:string;reviewedAt:string;scope:'presentation_only';policySemanticsApproved:false};
   candidateOnly?: true;
   presentationEvidenceAcceptance?: PresentationEvidenceAcceptance;
+  toolPresentationAcceptance?: import('./policy-v6-tool-presentation').ToolPresentationAcceptance;
   editorialProjection?: import("./policy-v6-editorial-projection").V6EditorialProjection;
   toolDisplayMode?: "historical_discovery";
   publicReferenceGuide?: {topics:Record<string,string[]>;submissionClaimIds:string[];submissionPermissionGap?:boolean};
@@ -35,6 +36,8 @@ export interface LocalV6Bundle {
   claims: PolicyClaim[];
   sources: SourceAttribution[];
   tools: PageToolRecord[];
+  /** Display prose only; canonical tool objects and official quotations stay unchanged. */
+  toolDisplayCopy?: { zh: import("@/components/university-ai-tools").ToolDisplayCopy };
   scopedToolNames?: string[];
   gaps: string[];
   remainingRecordKeys: string[];
@@ -59,6 +62,7 @@ export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions 
   if (!guide || guide.slug !== view.school.slug || guide.name !== view.school.name ||
     !guide.claims || !Array.isArray(guide.do) || !Array.isArray(guide.dont) ||
     guide.do.length > 3 || guide.dont.length > 3 || !guide.procedures ||
+    (['investigation','outcomes','appeal'] as const).some(key => !Array.isArray(guide.procedures[key])) ||
     guide.schoolFingerprint !== view.school.fingerprint ||
     guide.recordSha256 !== createHash("sha256").update(JSON.stringify(view.claims)).digest("hex")) return undefined;
   if ([...view.school.topics, ...view.school.additionalTopics].some(topic =>
@@ -113,6 +117,11 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
     universityToolRecordSchema.omit({ tool: true }).parse(tool);
     if (!aiTools.some((code) => code === tool.tool) && !/^proposed:[a-z0-9-]+$/.test(tool.tool)) throw new Error("Invalid local product identity");
   }
+  for (const [name, copy] of Object.entries(view.toolDisplayCopy?.zh ?? {})) {
+    const tool = view.tools.find(t => t.rawToolName === name);
+    if (!tool || copy.basisSha256 !== createHash("sha256").update(JSON.stringify(tool)).digest("hex") ||
+      [copy.description,copy.howToObtain,copy.costToUser].some(s => typeof s !== "string" || !/[\u3400-\u9fff]/.test(s))) throw Error("Unbound Chinese tool display copy");
+  }
   if (new Set(view.claims.map((claim) => claim.id)).size !== view.claims.length || view.claims.some((claim) => claim.entitySlug !== slug || claim.reviewState !== "agent_reviewed")) throw new Error("Invalid local claim coverage");
   const displayedIds = new Set(view.claims.map((claim) => claim.id));
   if (view.localReferenceGuide || view.localChangeProposals) {
@@ -134,7 +143,7 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
   const topics = [...view.school.topics, ...view.school.additionalTopics];
   if (view.school.topics.map((topic) => topic.key).join(",") !== "coursework,exams,disclosure,privacy_data,approved_tools,research_publication" || new Set(topics.map((topic) => topic.key)).size !== topics.length) throw new Error("Invalid V6 topic coverage");
   for (const topic of topics) {
-    const explicitLocalGap = !view.publication && topic.status === "unclear" &&
+    const explicitLocalGap = (!view.publication || acceptedPresentationEvidence(view)) && topic.status === "unclear" &&
       typeof topic.evidenceGap === "string" && topic.evidenceGap.trim().length > 0 &&
       topic.claims.length === 0 && topic.sources.length === 0 && topic.actions.length === 0;
     if (topic.basisKind !== "local_reviewed_bundle" || (!topic.claims.length && !explicitLocalGap) || !topic.summary || topic.claims.some((claim) => !claim.evidence.length || claim.evidence.some((e) => !e.quote || !/^https?:\/\//.test(e.url)))) throw new Error("Invalid V6 topic evidence");

@@ -4,7 +4,10 @@ import {getPolicyV6Data}from'../apps/web/lib/policy-v6';
 process.env.UAPT_V6_PUBLISHED_PAGES='1';process.env.NEXT_PUBLIC_UAPT_V6_PUBLISHED_PAGES='1';process.env.UAPT_DISABLE_INTERNAL_FETCH='1';
 const read=async(p:string)=>JSON.parse(await readFile(p,'utf8'));
 test('MIT retains its accepted pilot, with complete original quotations and reviewed action/procedure scope',async()=>{
- const p=await read('data/policy-v6-student-actions.json');assert.deepEqual(Object.keys(p.schools).sort(),['imperial-college-london','massachusetts-institute-of-technology']);
+ const p=await read('data/policy-v6-student-actions.json');
+ // This test owns MIT's accepted guide, not the size of the growing registry.
+ assert(p.schools['massachusetts-institute-of-technology']);
+ assert(p.schools['imperial-college-london']);
  const data=await getPolicyV6Data('en','massachusetts-institute-of-technology'),g=data.studentActions!;assert(data.studentActionsPilot&&g);
  assert.equal(g.do.length,3);assert.equal(g.dont.length,3);assert.deepEqual(g.procedures.appeal,['mit-fact-01','mit-fact-02']);
  for(const row of Object.values(g.claims)){assert(row.evidence.length);assert(!row.text.includes('all students must disclose'));}

@@ -48,6 +48,8 @@ export interface ScopedEventSource {
   gaps: string[];
   // Explicit presentation/metadata changes are distinct from missing history.
   metadataChanged: boolean;
+  /** Explicit tracker presentation change; never a university-policy amendment. */
+  pageUpdate?: string;
   claimThemes?: Record<string,string[]>;
 }
 export type ChangeEventSource = LegacyEventSource | ScopedEventSource;
@@ -154,6 +156,7 @@ function scopedEvent(source: ScopedEventSource): ChangeEvent | undefined {
       event.items.push({id:`source:${url}`,category:"source_update",theme:"sources",matchMethod:"none",sourceUrls:[url]});
     }
   }
+  if (source.pageUpdate) event.items.push({id:"page-presentation",category:"page_update",theme:"other",matchMethod:"explicit_page_update",newText:source.pageUpdate,sourceUrls:[]});
   if (source.metadataChanged && !event.items.length) event.items.push({id:"record-metadata",category:"record_maintenance",theme:"other",matchMethod:"none",sourceUrls:[]});
   event.provenance.push({kind:source.kind,sha256:eventHash(source)});
   return event.items.length ? normalize(event) : undefined;

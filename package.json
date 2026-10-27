@@ -88,7 +88,8 @@
     "validate:mcp-export": "tsc --noEmit -p scripts/tsconfig.mcp-export.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-mcp-export.ts",
     "test:mcp-acceptance": "pnpm mcp:export && pnpm validate:mcp-export && pnpm test:mcp",
     "test:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && node --test tests/web-runtime-data.test.mjs",
-    "validate:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-web-runtime-data.ts"
+    "validate:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-web-runtime-data.ts",
+    "test:v6-reading-preview": "tsx --tsconfig apps/web/tsconfig.json --test tests/policy-v6-reading-preview.test.tsx"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

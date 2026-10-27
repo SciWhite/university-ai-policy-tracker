@@ -7,6 +7,7 @@ import {validatePolicySnapshotAgainstPublicData} from '../../apps/web/lib/policy
 import {SUPPORTED_LOCALES} from '../../apps/web/lib/i18n';
 import frozenLegacy from '../../data/policy-v6-legacy-completeness.json';
 import {validateV6Completeness} from '../../apps/web/lib/policy-v6-completeness';
+import {acceptedToolPresentation} from '../../apps/web/lib/policy-v6-tool-presentation';
 
 export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPackage, options: {candidateOnly?:boolean} = {}) {
   const sameSet = (a: string[], b: string[]) => new Set(a).size === a.length && new Set(b).size === b.length && [...a].sort().join(',') === [...b].sort().join(',');
@@ -53,7 +54,10 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
         const extraCard = stripped.some(tool => !canonical.some(t => sameTool(t, tool)));
         const missingTool = canonical.some(tool => !inCards(tool) && !rows.some(row => rowMatches(row, tool)));
         const unboundRow = rows.some(row => !s.claims.some(c => c.id === row.claimId) || !canonical.some(tool => rowMatches(row, tool)));
-        if (extraCard || missingTool || unboundRow) throw Error('V6 tool mapping drift: ' + slug);
+        if ((extraCard || missingTool || unboundRow) &&
+            (!data.views[slug] || !acceptedToolPresentation(data.views[slug], canonical) || unboundRow)) {
+          throw Error('V6 tool mapping drift: ' + slug);
+        }
       }
       if (!sameSet(school.heldClaims.map(c => c.id), held.map(c => c.id!))) throw Error('V6 held mapping drift: ' + slug);
       validateV6Completeness(input,locale,allowFrozenLegacy);

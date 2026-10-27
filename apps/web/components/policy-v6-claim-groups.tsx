@@ -16,14 +16,19 @@ export function PolicyV6ClaimGroups({
   locale,
   claimScopes,
   groupIdPrefix = "claim-group",
+  readingLayout = true,
 }: {
   groups: ClaimGroup[];
   entitySlug: string;
   locale: SupportedLocale;
   claimScopes?: Record<string, string>;
   groupIdPrefix?: string;
+  readingLayout?: boolean;
 }) {
   const ui = policyV6DensityCopy(locale);
+  const groupTitle = (key: string, title: string) =>
+    readingLayout && locale === "en" && key === "ai_tool_treatment"
+      ? "AI tool use" : translate(title, locale);
   return (
     <div className="policy-v6-claimGroups">
       {groups.map((group) => (
@@ -34,7 +39,7 @@ export function PolicyV6ClaimGroups({
             <>
               <PolicyV6ActionIcon kind="document" />
               <span className="policy-v6-categoryText">
-                <strong>{translate(group.title, locale)}</strong>
+                <strong>{groupTitle(group.key, group.title)}</strong>
                 <small>
                   {translate(
                     formatClaimGroupCount(group.claims.length),
@@ -49,7 +54,7 @@ export function PolicyV6ClaimGroups({
           }
           title={
             <>
-              {translate(group.title, locale)}{" "}
+              {groupTitle(group.key, group.title)}{" "}
               <small>
                 {translate(formatClaimGroupCount(group.claims.length), locale)}
               </small>
@@ -58,6 +63,8 @@ export function PolicyV6ClaimGroups({
           closeLabel={policyV6Copy(locale).close}
           triggerClassName="policy-v6-categoryCard"
           className="policy-v6-claimPanel"
+          reader={readingLayout}
+          mobileReading={readingLayout}
           width={1040}
           align="content"
         >

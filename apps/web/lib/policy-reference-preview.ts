@@ -93,7 +93,7 @@ export function preservePolicyReferenceSearch(href: string, currentSearch: strin
   }
   const slug = target.pathname.split("/").at(-1) ?? "";
   if (isPolicyV6Preview(slug, layout, environment)) {
-    target.searchParams.set('layout', 'v6');
+    target.searchParams.set('layout', "v6");
     const source = new URLSearchParams(currentSearch);
     for (const key of ['compare', 'view', 'differences']) {
       const value = source.get(key); if (value) target.searchParams.set(key, value);

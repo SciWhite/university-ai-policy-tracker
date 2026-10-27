@@ -70,6 +70,7 @@ export function PolicyV6Popover({
   align = "trigger",
   accessibleLabel,
   mobileReading = false,
+  reader = false,
 }: {
   label: ReactNode;
   title?: ReactNode;
@@ -85,6 +86,8 @@ export function PolicyV6Popover({
   accessibleLabel?: string;
   /** Opt-in reading space for long evidence; other schools retain their placement. */
   mobileReading?: boolean;
+  /** Local presentation pilot: fixed reading overlay without page reflow. */
+  reader?: boolean;
 }) {
   const generatedId = useId();
   const id = suppliedId ?? generatedId;
@@ -99,6 +102,8 @@ export function PolicyV6Popover({
     const node = panel.current,
       button = trigger.current;
     if (!node || !button) return;
+    // Reader dimensions come from CSS, including before hydration and in print.
+    if (reader) return;
     const box = button.getBoundingClientRect();
     const gutter = 12,
       gap = 8;
@@ -138,6 +143,9 @@ export function PolicyV6Popover({
   useEffect(() => {
     const node = panel.current;
     if (!node) return;
+    // React 19 serializes hidden as a boolean, so set its enumerated value
+    // after hydration. CSS keeps closed SSR readers collapsed in the meantime.
+    if (reader && !node.matches(":popover-open")) readerBody(node)?.setAttribute("hidden", "until-found");
     // A native trigger can be used before hydration; adopt and position that state.
     if (controlledOpen === undefined) {
       if (node.matches(":popover-open")) {
@@ -164,7 +172,20 @@ export function PolicyV6Popover({
       window.removeEventListener("resize", place);
       window.removeEventListener("scroll", place, true);
     };
-  }, [open, width, align, mobileReading]);
+  }, [open, width, align, mobileReading, reader]);
+  useEffect(() => {
+    if (!reader || !open) return;
+    // Fragment navigation can move focus to the document body. Escape must still
+    // return to this reader's trigger, rather than relying on native focus return.
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || !panel.current?.matches(":popover-open")) return;
+      event.preventDefault();
+      panel.current.hidePopover();
+      trigger.current?.focus({ preventScroll: true });
+    };
+    document.addEventListener("keydown", closeOnEscape, true);
+    return () => document.removeEventListener("keydown", closeOnEscape, true);
+  }, [reader, open]);
   return (
     <span className="policy-v6-popoverAnchor">
       <button
@@ -196,43 +217,54 @@ export function PolicyV6Popover({
         aria-modal="false"
         aria-labelledby={`${id}-title`}
         className={`policy-v6-popover ${className}`}
-        style={{ width }}
-        onKeyDown={mobileReading ? (event) => {
+        data-reader={reader || undefined}
+        style={reader ? undefined : { width }}
+        onKeyDown={mobileReading || reader ? (event) => {
           if (event.key === "Escape") {
             event.preventDefault();
             panel.current?.hidePopover();
-            trigger.current?.focus();
+            trigger.current?.focus(reader ? { preventScroll: true } : undefined);
           }
         } : undefined}
         onToggle={(event) => {
           const isOpen = (event.nativeEvent as ToggleEvent).newState === "open";
           change(isOpen);
           if (isOpen) {
+            if (reader) {
+              readerBody(panel.current)?.removeAttribute("hidden");
+              panel.current?.removeAttribute("data-reader-search-prepared");
+            }
             place();
-            if (mobileReading) {
+            if ((mobileReading || reader) && !panel.current?.hasAttribute("data-reader-find-reveal")) {
               nodeHeading(panel.current)?.focus({ preventScroll: true });
             }
             document.dispatchEvent(
               new CustomEvent("policy-v6-popover-open", { detail: id }),
             );
+          } else if (reader) {
+            // A user may start page-find before this queued close toggle runs.
+            // Keep the body searchable if the keyboard fallback already prepared it.
+            if (!panel.current?.hasAttribute("data-reader-search-prepared")) readerBody(panel.current)?.setAttribute("hidden", "until-found");
+            panel.current?.removeAttribute("data-reader-find-reveal");
+            if (nodeHeading(panel.current) === document.activeElement) trigger.current?.focus({ preventScroll: true });
           }
         }}
       >
         <header className="policy-v6-popoverHeader">
-          <h3 id={`${id}-title`} tabIndex={mobileReading ? -1 : undefined}>{title}</h3>
+          <h3 id={`${id}-title`} tabIndex={mobileReading || reader ? -1 : undefined}>{title}</h3>
           <button
             type="button"
             aria-label={closeLabel}
             className="policy-v6-popoverClose"
             onClick={() => {
               panel.current?.hidePopover();
-              trigger.current?.focus();
+              trigger.current?.focus(reader ? { preventScroll: true } : undefined);
             }}
           >
             ×
           </button>
         </header>
-        <div className="policy-v6-popoverBody">{children}</div>
+        <div className="policy-v6-popoverBody" hidden={reader || undefined}>{children}</div>
       </div>
     </span>
   );
@@ -240,4 +272,8 @@ export function PolicyV6Popover({
 
 function nodeHeading(panel: HTMLDivElement | null) {
   return panel?.querySelector<HTMLElement>(".policy-v6-popoverHeader h3");
+}
+
+function readerBody(panel: HTMLDivElement | null) {
+  return panel?.querySelector<HTMLElement>(".policy-v6-popoverBody");
 }

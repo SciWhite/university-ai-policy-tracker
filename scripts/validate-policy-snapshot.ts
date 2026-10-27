@@ -9,6 +9,7 @@ import {
 } from "@uapt/shared";
 import {
   buildPolicySnapshotResponse,
+  getLoadedPolicySnapshotBySlug,
   loadPolicySnapshotFixture,
   validatePolicySnapshotAgainstPublicData
 } from "../apps/web/lib/policy-snapshots";
@@ -16,6 +17,8 @@ import {
   getCurrentPublicReleaseManifest,
   getStagedPublicSummaryBySlug
 } from "../apps/web/lib/staged-public-data";
+
+import { readV6RecordCorrections } from "../apps/web/lib/v6-effective-records";
 
 const COHORT_SLUGS = [
   "unsw-sydney",
@@ -172,6 +175,9 @@ async function validateCandidateCohort(
     independentReview.decisions.map((decision) => [decision.universitySlug, decision])
   );
 
+  const selectedV6 = readV6RecordCorrections();
+  const currentVersions: Array<Record<string, unknown>> = [];
+
   for (const [position, slug] of ALL_COHORT_SLUGS.entries()) {
     const entry = index.entries[position];
     assert(entry, `Missing candidate index entry ${slug}`);
@@ -205,7 +211,7 @@ async function validateCandidateCohort(
         JSON.stringify(reviewDecision.evidence.claimIds) === JSON.stringify(historical.basis.claimIds) &&
         JSON.stringify(reviewDecision.evidence.sourceRefs) === JSON.stringify(historical.basis.sources),
         "Historical MIT independent-review evidence changed");
-      const current = await getStagedPublicSummaryBySlug(slug);
+      const current = selectedV6?.historical[slug]?.baseline ?? await getStagedPublicSummaryBySlug(slug);
       assert(current, "Missing repaired MIT record");
       const checked = validatePolicySnapshotAgainstPublicData(snapshot, current, releaseId);
       assert(snapshot.overallStatus === "needs_review" && entry.overallStatus === "needs_review" &&
@@ -216,8 +222,10 @@ async function validateCandidateCohort(
         "Repaired MIT snapshot must remain held with a current basis");
       continue;
     }
-    const summary = await getStagedPublicSummaryBySlug(slug);
-    assert(summary, `Missing current public summary for candidate ${slug}`);
+    // Independent decisions belong to their frozen historical basis. Current
+    // V6 snapshots are checked separately below, without inheriting approval.
+    const summary = selectedV6?.historical[slug]?.baseline ?? await getStagedPublicSummaryBySlug(slug);
+    assert(summary, `Missing reviewed basis for candidate ${slug}`);
     assert(snapshot.universitySlug === summary.entity.slug, `${slug} slug mismatch`);
     assert(
       snapshot.universityName === summary.entity.name,
@@ -301,6 +309,34 @@ async function validateCandidateCohort(
       assert(validation.issues.length >= 1, `${slug} fail-closed snapshot has no validation issue`);
     }
   }
+
+  // Audit the same selection used by the public API for every indexed school.
+  // Existing drift remains visible and fail-closed; this validator never re-pins
+  // a snapshot or converts a historical approval into a current approval.
+  for (const slug of ALL_COHORT_SLUGS) {
+    const loaded = await getLoadedPolicySnapshotBySlug(slug);
+    assert(loaded, `Missing runtime snapshot for ${slug}`);
+    const selected = selectedV6?.snapshots[slug];
+    if (selected) {
+      assert(JSON.stringify(loaded.snapshot) === JSON.stringify(selected), `${slug} runtime did not select the V6 snapshot`);
+      if (selected.overallStatus === "needs_review") {
+        assert(selected.review.reviewState === "needs_review" &&
+          selected.review.secondary.decision === "needs_review" &&
+          loaded.validation.effectiveStatus === "needs_review", `${slug} V6 hold was lost`);
+      }
+    }
+    const { effectiveStatus, expectedBasisFingerprint, issues } = loaded.validation;
+    if (effectiveStatus === "strong") {
+      assert(issues.length === 0 && expectedBasisFingerprint === loaded.snapshot.basisFingerprint,
+        `${slug} current strong snapshot has unresolved basis or review issues`);
+    } else {
+      assert((effectiveStatus === "needs_review" || effectiveStatus === "stale") && issues.length > 0,
+        `${slug} current withheld snapshot needs explicit validation issues`);
+    }
+    currentVersions.push({slug, status: effectiveStatus, basisFingerprint: loaded.snapshot.basisFingerprint,
+      expectedBasisFingerprint, issueCodes: issues.map(issue => issue.code)});
+  }
+  console.log(`Current runtime snapshot versions (historical decisions remain separate): ${JSON.stringify(currentVersions)}`);
 
   const scopedHolds = ["massachusetts-institute-of-technology", "imperial-college-london", "stanford-university", "university-of-oxford"].filter(slug => index.entries.some(entry => entry.universitySlug === slug && entry.overallStatus === "needs_review") && reviewBySlug.get(slug)?.decision === "pass").length;
   assert(

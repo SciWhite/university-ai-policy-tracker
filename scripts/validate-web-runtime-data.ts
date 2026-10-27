@@ -63,8 +63,18 @@ async function main() {
     }
     const atomMilliseconds = Math.round(performance.now() - feedStarted);
     if (atomMilliseconds > 120000) throw Error("Packaged Atom feed exceeds the prebuild 120s limit");
+    const {getDiscoveryPage} = await import("../apps/web/lib/rankings-view-data");
+    const {rankingEditions} = await import("../apps/web/lib/ranking-editions");
+    const discoveryEditions = [];
+    for (const edition of rankingEditions) {
+      const expectedDoc = JSON.parse(await readFile(path.join(sourceRoot,"data/ranking-browser",edition.slug+".json"),"utf8"));
+      const observed = await getDiscoveryPage("rankings", {}, "en", edition.slug);
+      if (observed.rankingCount !== expectedDoc.rows.length || observed.query.size !== 25 || observed.rows.length !== 25)
+        throw Error(`Packaged ranking edition/default page failed: ${edition.slug}`);
+      discoveryEditions.push({slug:edition.slug,records:observed.rankingCount,pageSize:observed.query.size});
+    }
     if (fetchAttempts) throw Error("Runtime validation attempted a live API fallback");
-    console.log(JSON.stringify({status:"PASS",runtimeRoot,universities:summaries.length,canonicalRecordsSha256:expected,events:store.index().length,analysisControls:controls,historyApi:"ucl",atomFeed:{records:feedRecords.length,milliseconds:atomMilliseconds,publishedIndexMatched:true},liveFetchDisabled:true,fetchAttempts}));
+    console.log(JSON.stringify({status:"PASS",runtimeRoot,universities:summaries.length,canonicalRecordsSha256:expected,events:store.index().length,analysisControls:controls,discoveryEditions,atomFeed:{records:feedRecords.length,milliseconds:atomMilliseconds,publishedIndexMatched:true},historyApi:"ucl",liveFetchDisabled:true,fetchAttempts}));
   } finally { process.chdir(originalCwd); globalThis.fetch = originalFetch; }
 }
 main().catch(error => {console.error(error);process.exitCode=1;});

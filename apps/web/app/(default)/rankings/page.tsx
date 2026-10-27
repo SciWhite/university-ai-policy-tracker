@@ -1,10 +1,12 @@
+import type { DiscoverySearchParams } from "@/lib/discovery-query";
 import { RankingsIndexView } from "@/components/rankings-index-view";
 import { normalizeLocale } from "@/lib/i18n";
 import { rankingsCopy } from "@/lib/rankings-copy";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const revalidate = false;
 interface Props {
+  searchParams?: Promise<DiscoverySearchParams>;
   params?: Promise<{ locale?: string }>;
 }
 export async function generateMetadata({ params }: Props) {
@@ -23,6 +25,11 @@ export async function generateMetadata({ params }: Props) {
     },
   };
 }
-export default async function RankingsPage({ params }: Props) {
-  return <RankingsIndexView locale={normalizeLocale((await params)?.locale)} />;
+export default async function RankingsPage({ params, searchParams }: Props) {
+  return (
+    <RankingsIndexView
+      locale={normalizeLocale((await params)?.locale)}
+      searchParams={(await searchParams) ?? {}}
+    />
+  );
 }

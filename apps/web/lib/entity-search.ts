@@ -528,7 +528,10 @@ function scoreRecord(
   }
 
   if (directEntityMatch) {
-    score += getStableQualityBonus(record);
+    // Keep metadata quality below the exact/partial alias gap for CJK
+    // names. A rank phrase in an older summary must not outrank an exact name.
+    const quality = getStableQualityBonus(record);
+    score += cjkQuery ? Math.min(quality, 20) : quality;
   }
 
   const matchingTokens = queryTokens.filter((token) =>

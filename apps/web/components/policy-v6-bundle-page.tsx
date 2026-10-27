@@ -1,3 +1,4 @@
+import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import {currentReferenceClaims} from "@/lib/policy-v6-claim-disposition";
 import {PolicyV6PublicClaimDisposition} from "./policy-v6-public-claim-disposition";
 import {PolicyV6PublicClaimGuide} from "./policy-v6-public-claim-guide";
@@ -34,6 +35,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   data: PolicyV6Data; view: LocalV6Bundle; locale: SupportedLocale; relatedUniversities: RelatedUniversityRef[];
 }) {
   if (view.publication && view.publication.kind !== "v6_presentation_integration") return <PolicyV6BundlePageLegacy university={university} data={data} view={view} locale={locale} relatedUniversities={relatedUniversities} />;
+  data = bindPolicyV6ReadingEvidence(data, view.claims);
   const t = (s: string) => translate(s, locale);
   const scopedNames = new Set(view.scopedToolNames ?? []);
   const scopedTools = view.tools.filter((tool) => scopedNames.has(tool.rawToolName));
@@ -48,9 +50,9 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
       <PolicyV6Intro />
       <PolicyV6RecordTopics data={data} />
       {!view.studentActions && (view.publicReferenceGuide || view.localReferenceGuide) ? <PolicyV6PublicClaimGuide view={view} locale={locale} /> : <PolicyV6BeforeTools />}
-      {view.toolDisplayMode === "historical_discovery" ? <PolicyV6PublicToolContext view={view} locale={locale} /> : <UniversityAiTools draftPreview={!view.publication} records={onlyScopedTools ? scopedTools : unscopedTools} locale={locale} uiLab scopeNote={onlyScopedTools ? scopeNote : undefined} scopedTools={!onlyScopedTools && scopedTools.length ? <>
+      {view.toolDisplayMode === "historical_discovery" ? <PolicyV6PublicToolContext view={view} locale={locale} /> : <UniversityAiTools displayCopy={locale === "zh" ? view.toolDisplayCopy?.zh : undefined} draftPreview={!view.publication} records={onlyScopedTools ? scopedTools : unscopedTools} locale={locale} uiLab scopeNote={onlyScopedTools ? scopeNote : undefined} scopedTools={!onlyScopedTools && scopedTools.length ? <>
         <p>{locale === "zh" ? "以下工具限特定对象、模式或用途；不代表全体学生获得使用许可。" : "These tools have audience, mode or purpose limits; access is not established for all students."}</p>
-        <UniversityAiTools draftPreview={!view.publication} records={scopedTools} locale={locale} uiLab standalone sectionId="university-ai-tools-scoped" />
+        <UniversityAiTools displayCopy={locale === "zh" ? view.toolDisplayCopy?.zh : undefined} draftPreview={!view.publication} records={scopedTools} locale={locale} uiLab standalone sectionId="university-ai-tools-scoped" />
       </> : undefined} />}
       <PolicyV6PrivateContext view={view} locale={locale} kind="tool" />
       <PolicyReferenceInteractions />

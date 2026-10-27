@@ -1,0 +1,208 @@
+/* Shared V6 reading layout. Non-V6 pages have no matching root marker. */
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content > .entity-header {
+  margin-bottom: 14px;
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .entity-header h1 {
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.15;
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .v6-compact-independence { margin: 4px 0 12px; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-intro { margin: 12px 0 20px; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-introHeading { margin-bottom: 10px; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-questions > a { min-height: 90px; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-introFoot { margin-top: 6px; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .student-policy .student-policy__grid {
+  display: block;
+  columns: 400px 2;
+  column-gap: 16px;
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .student-policy .student-snapshot-card {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  break-inside: avoid;
+  margin-bottom: 16px;
+  min-height: 0;
+  gap: 14px;
+  padding: 20px;
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .student-policy .student-snapshot-card__summary { flex: none; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .student-policy .student-snapshot-card__status {
+  display: inline-block;
+  margin: 3px 0 8px;
+  padding: 3px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .student-policy .student-snapshot-card__sentence {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-topicFooter {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 44px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 10px;
+  align-items: center;
+  gap: 6px;
+  font-size: clamp(12px, 1.1vw, 14px);
+}
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-topicFooter > .policy-v6-popoverAnchor { grid-column: 1; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-topicFooter > a { order: 1; grid-column: 2; }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-v6-topicFooter .policy-v6-copyIcon {
+  order: 2;
+  grid-column: 3;
+  margin-inline-start: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  border-radius: 6px;
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] {
+  --v6-reader-gutter: clamp(6px, calc(1vw - 2px), 12px);
+  inset: var(--v6-reader-gutter) var(--v6-reader-gutter) var(--v6-reader-gutter) auto;
+  width: min(640px, calc(100vw - 2 * var(--v6-reader-gutter)));
+  max-width: calc(100vw - 2 * var(--v6-reader-gutter));
+  height: calc(100dvh - 2 * var(--v6-reader-gutter));
+  max-height: calc(100dvh - 2 * var(--v6-reader-gutter));
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader]:popover-open { display: flex; flex-direction: column; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-popoverHeader {
+  position: static;
+  flex: none;
+  align-items: center;
+  padding: clamp(10px, 1.5vw, 16px) clamp(16px, 2.2vw, 22px);
+  border-bottom: 1px solid var(--color-border);
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-popoverHeader h3 { font-size: 21px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-popoverClose { min-height: 44px; min-width: 44px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-popoverBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(12px, 1.5vw, 16px) clamp(18px, 2.4vw, 24px) clamp(24px, 2.8vw, 28px);
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerScope { margin: 0 0 18px; font-size: 14px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerScope summary, [data-v6-reading-layout].policy-v6-lab .policy-v6-readerRecord summary {
+  cursor: pointer;
+  color: var(--color-text-muted);
+  min-height: 44px;
+  padding: 9px 0;
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerDirectory { margin: 0 0 16px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerDirectory a { font-size: 14px; line-height: 1.5; padding: 6px 0; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerSource { padding: 0 0 24px; margin: 0 0 24px; border-bottom: 1px solid var(--color-border); }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-readerSource > h4 { font-size: 18px; margin: 0 0 18px; line-height: 1.5; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .student-evidence__quote {
+  margin: 0 0 12px;
+  padding: 2px 0 2px 16px;
+  border-inline-start: 2px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1.8;
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .student-evidence__quote > p { margin: 0; white-space: pre-wrap; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerDates { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--color-text-muted); }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerRecord { margin: 2px 0 20px; font-size: 13px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerSourceLink { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-claimGrid { grid-template-columns: minmax(0, 1fr); }
+[data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab :is(a, button, summary):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+@media (max-width: 600px) {
+  [data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content .student-policy .student-snapshot-card { padding: 16px; }
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-copyIcon .policy-v6-actionIcon {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+}
+@media print {
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border: 0;
+    box-shadow: none;
+  }
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-popoverBody { overflow: visible; height: auto; max-height: none; }
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-readerDirectory { display: none; }
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-readerBindings::details-content, [data-v6-reading-layout].policy-v6-lab .policy-v6-readerRecord::details-content, [data-v6-reading-layout].policy-v6-lab .policy-v6-readerScope::details-content { content-visibility: visible !important; }
+}
+
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerDirectory > summary { cursor: pointer; font-size: 14px; min-height: 44px; padding: 9px 0; color: var(--color-accent); }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerDirectory nav { display: grid; gap: 4px; }
+
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] .policy-v6-readerSchool { display:block; margin-top:3px; font-size:13px; line-height:1.5; font-weight:400; color:var(--color-text-muted); }
+
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerBindings { margin: 14px 0 20px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerBindingsLabel { color: var(--color-text-muted); font-size: 13px; cursor: pointer; min-height: 44px; padding: 9px 0; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerBinding + .policy-v6-readerBinding { border-top: 1px solid var(--color-border); padding-top: 12px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerBindingTitle { font-size: 14px; line-height: 1.65; }
+
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerVersion { margin: -8px 0 18px; font-size: 13px; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerVersion summary { cursor: pointer; min-height: 44px; padding: 9px 0; color: var(--color-text-muted); }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-readerVersion .hash-value { overflow-wrap: anywhere; }
+/* Keep the popover shell clipped and stationary while its BODY participates
+   in native until-found search. Hiding the popover itself with content-visibility
+   can crash Blink during fragment navigation after a viewport change. */
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader]:not(:popover-open) {
+  display: block;
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: min(640px, calc(100vw - 12px));
+  height: 1px;
+  clip-path: inset(50%);
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader]:not(:popover-open) > .policy-v6-popoverHeader { visibility: hidden; }
+[data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader]:popover-open > .policy-v6-popoverBody {
+  display: block;
+  content-visibility: visible;
+}
+@media print {
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader]:not(:popover-open) {
+    display: block !important; width: 100% !important; height: auto !important;
+    overflow: visible !important; content-visibility: visible !important;
+    clip-path: none !important;
+  }
+}
+
+/* Long translated category names must wrap within the existing card columns. */
+[data-v6-reading-layout].policy-v6-lab .policy-v6-categoryText {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media print {
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] > .policy-v6-popoverBody {
+    display: block !important;
+    content-visibility: visible !important;
+  }
+}
+@media print {
+  [data-v6-reading-layout].policy-v6-lab .policy-v6-popover[data-reader] > .policy-v6-popoverHeader { visibility: visible; }
+}

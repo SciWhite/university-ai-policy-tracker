@@ -1,4 +1,5 @@
 "use client";
+import { policyV6ReaderCopy } from "@/lib/policy-v6-reader-copy";
 import {v6ChangesCopy} from "@/lib/v6-changes-copy";
 
 import React, {
@@ -54,6 +55,7 @@ const v6Classes = {
 
 type LabContext = {
   data: PolicyV6Data;
+  readingLayout: boolean;
   ui: ReturnType<typeof policyV6Copy>;
   copy: (url: string) => Promise<boolean>;
   shareUrl: () => string;
@@ -70,6 +72,7 @@ const schoolPath = (slug: string, locale: string) =>
 const topicUrl = (key: string) => {
   const url = new URL(window.location.href);
   url.hash = `snapshot-evidence-${key}`;
+  url.searchParams.set("layout", "v6");
   url.searchParams.delete("compare");
   url.searchParams.delete("view");
   return url.href;
@@ -79,9 +82,11 @@ const domain = (url: string) => new URL(url).hostname;
 export function PolicyV6Provider({
   data,
   children,
+  readingLayout = true,
 }: {
   data?: PolicyV6Data;
   children: ReactNode;
+  readingLayout?: boolean;
 }) {
   const [compareOpen, setCompareOpen] = useState(false);
   const [compareView, setCompareView] = useState(false);
@@ -410,7 +415,7 @@ export function PolicyV6Provider({
                           {s.name}
                         </span>
                         <small>
-                          {s.revision} ·{" "}
+                          {!readingLayout ? <>{s.revision} · </> : null}
                           {["local_reviewed_bundle_not_public_snapshot","published_reviewed_page_supplement"].includes(s.snapshotStatus)
                             ? `${policyV6AgentReviewLabel(data.locale)} · ${data.locale === "zh" ? (data.published ? "已发布页面补充；整校审计 PARTIAL" : "本地证据包；整校审计 PARTIAL") : (data.published ? "Published page supplement; institutional audit PARTIAL" : "Local evidence bundle; institutional audit PARTIAL")}`
                             : s.v6ReviewState === "agent_reviewed"
@@ -494,6 +499,7 @@ export function PolicyV6Provider({
     <Context.Provider
       value={{
         data,
+        readingLayout,
         ui,
         copy,
         shareUrl,
@@ -504,7 +510,7 @@ export function PolicyV6Provider({
         openCompare,
       }}
     >
-      <div className={v6Classes.lab} data-policy-v6>
+      <div className={v6Classes.lab} data-policy-v6 data-v6-reading-layout={readingLayout || undefined}>
         {children}
       </div>
       {selected.length >= 2 && !compareOpen ? (
@@ -586,7 +592,9 @@ export function PolicyV6Intro() {
   if (!lab) return null;
   const { ui, data } = lab;
   const current = data.schools.find((s) => s.slug === data.currentSlug);
-  const questionKeys = ["coursework", "approved_tools", "research_publication", "teaching_guidance"] as const;
+  const questionKeys = lab.readingLayout
+    ? ["coursework", "disclosure", "privacy_data", "approved_tools"] as const
+    : ["coursework", "approved_tools", "research_publication", "teaching_guidance"] as const;
   const compactQuestions: Record<string, string> = data.locale === "zh"
     ? { coursework: "作业里可以用 AI 吗？", approved_tools: "有哪些工具可以使用？", research_publication: "研究发表如何使用 AI？", teaching_guidance: "教学中如何使用 AI？" }
     : { coursework: "Can I use AI in coursework?", approved_tools: "Which AI tools can I access?", research_publication: "How can I use AI in research?", teaching_guidance: "How can I use AI in teaching?" };
@@ -610,7 +618,7 @@ export function PolicyV6Intro() {
           return (
             <a href={`#snapshot-${key}`} key={key}>
 
-              <strong>{compactQuestions[key]}</strong>
+              <strong>{lab.readingLayout ? ui[key as "coursework" | "disclosure" | "privacy_data" | "approved_tools"] : compactQuestions[key]}</strong>
               <small
                 data-policy-tone={policyV6StatusTone(
                   topic?.status ?? "unclear",
@@ -696,6 +704,17 @@ export function PolicyV6TopicControls({
       )}
     </div>
   );
+  const copyControl = (
+    <button
+        className={`policy-v6-textAction${lab.readingLayout ? " policy-v6-copyIcon" : ""}`}
+        title={`${lab.ui.copy}: ${topic.title}`}
+        aria-label={`${lab.ui.copy}: ${topic.title}`}
+        onClick={() => lab.copy(topicUrl(topic.key))}
+      >
+        <PolicyV6ActionIcon kind="copy" />
+        {!lab.readingLayout ? lab.ui.copy : null}
+      </button>
+  );
   return (
     <div className="policy-v6-topicFooter">
       <PolicyV6Popover
@@ -706,11 +725,12 @@ export function PolicyV6TopicControls({
             {lab.ui.evidence}
           </>
         }
-        title={topic.title}
+        title={lab.readingLayout ? <>{topic.title}<small className="policy-v6-readerSchool">{school?.name}</small></> : topic.title}
         closeLabel={lab.ui.close}
         triggerClassName="policy-v6-evidenceTrigger"
         className="policy-v6-originalPopover"
         mobileReading
+        reader={lab.readingLayout}
         width={480}
         align="start"
       >
@@ -721,7 +741,13 @@ export function PolicyV6TopicControls({
           {topic.statusLabel}
         </p>
 
-        {topic.basisKind !== "record_analysis" ? (
+        {lab.readingLayout && scopeDetail ? (
+          <details className="policy-v6-readerScope" id={`snapshot-scope-${topic.key}`}>
+            <summary>{policyV6ReaderCopy(lab.data.locale).scope}</summary>
+            {scopeDetail}
+          </details>
+        ) : null}
+        {!lab.readingLayout && topic.basisKind !== "record_analysis" ? (
           <p className="policy-v6-muted">{topic.scope}</p>
         ) : null}
         {topic.actions.length ? (
@@ -731,7 +757,7 @@ export function PolicyV6TopicControls({
             ))}
           </ul>
         ) : null}
-        {topic.sources.map((source) => (
+        {!lab.readingLayout && topic.sources.map((source) => (
           <p key={`${source.url}:${source.hash}`}>
             <a href={source.url} target="_blank" rel="noopener noreferrer">
               {domain(source.url)} ↗
@@ -743,7 +769,7 @@ export function PolicyV6TopicControls({
           {originals}
         </div>
       </PolicyV6Popover>
-      {scopeDetail ? <PolicyV6Popover
+      {scopeDetail && !lab.readingLayout ? <PolicyV6Popover
         id={`snapshot-scope-${topic.key}`}
         label={lab.data.locale === "zh" ? "状态与范围" : "Status & scope"}
         title={`${topic.title} · ${lab.data.locale === "zh" ? "状态与范围" : "Status & scope"}`}
@@ -754,14 +780,7 @@ export function PolicyV6TopicControls({
         align="start"
         mobileReading
       >{scopeDetail}</PolicyV6Popover> : null}
-      <button
-        className="policy-v6-textAction"
-        aria-label={`${lab.ui.copy}: ${topic.title}`}
-        onClick={() => lab.copy(topicUrl(topic.key))}
-      >
-        <PolicyV6ActionIcon kind="copy" />
-        {lab.ui.copy}
-      </button>
+      {!lab.readingLayout ? copyControl : null}
       {topic.sources[0] ? (
         <a
           href={topic.sources[0].url}
@@ -772,6 +791,7 @@ export function PolicyV6TopicControls({
           {lab.ui.source} ↗
         </a>
       ) : null}
+      {lab.readingLayout ? copyControl : null}
     </div>
   );
 }

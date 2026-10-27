@@ -3,11 +3,11 @@
 import React, { useState, useRef, useEffect, type CSSProperties } from "react";
 import marks from "@/lib/university-marks.json";
 import displayOverrides from "@/lib/university-mark-display-overrides.json";
-import { getLocalCompactMark, getPublishedCompactMark, requiresPublishedCompactGeometry, requiresLocalCompactGeometry, type UniversityMarkSize } from "@/lib/local-university-marks";
+import { getLocalTitleMark, getLocalCompactMark, getPublishedCompactMark, requiresPublishedCompactGeometry, requiresLocalCompactGeometry, type UniversityMarkSize } from "@/lib/local-university-marks";
 import { universityIdentitySlugs } from "@/lib/canonical-university-slug";
 
 /** Accepted assets win; additional compact candidates are development-only. */
-const compactMark = (slug: string, size: UniversityMarkSize) => getPublishedCompactMark(slug, size) ?? getLocalCompactMark(slug, size);
+const compactMark = (slug: string, size: UniversityMarkSize) => getLocalTitleMark(slug, size) ?? getPublishedCompactMark(slug, size) ?? getLocalCompactMark(slug, size);
 
 export function UniversityMark({
   slug: requestedSlug,

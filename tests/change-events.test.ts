@@ -5,6 +5,16 @@ import{resetV6ArtifactCache,v6ArtifactStats}from'../apps/web/lib/v6-artifact-sto
 import{fixtureInput,summary,createChangeFixture}from'./fixtures/change-event-fixture';
 const temporary=(fn:(root:string)=>void)=>{const root=mkdtempSync(join(tmpdir(),'uapt-events-'));try{fn(root)}finally{rmSync(root,{recursive:true,force:true})}};
 
+test('explicit page updates retain canonical Claims and never count as a university-policy correction',()=>{
+ const input=fixtureInput(),source=input.schools.school.sources[0] as ScopedEventSource;
+ source.before=structuredClone(source.current);source.changes={addedClaimIds:[],updatedClaimIds:[],heldClaimIds:[]};
+ source.pageUpdate='Shared V6 evidence reader updated; original public policy records retained.';
+ const event=buildEventHistories(input).school.events[0];
+ assert.equal(event.items.length,1);assert.equal(event.items[0].category,'page_update');
+ assert.equal(event.items[0].newText,source.pageUpdate);assert.equal(event.items[0].claimId,undefined);
+ assert.equal(event.counts.added,0);assert.equal(event.counts.modified,0);assert.equal(event.counts.held,0);
+});
+
 test('two revisions keep their own dates, real Claim text and stable IDs even when text is reverted',()=>{
  const input=fixtureInput(),first=input.schools.school.sources[0] as ScopedEventSource;
  input.schools.school.sources.push({...first,revision:'event-r2',previousRevision:'event-r1',publishedAt:'2026-10-24T00:00:00Z',before:first.current,current:first.before!});

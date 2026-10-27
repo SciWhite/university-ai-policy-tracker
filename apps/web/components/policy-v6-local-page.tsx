@@ -1,3 +1,4 @@
+import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import {PolicyV6Changes} from "./policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
@@ -42,13 +43,16 @@ export function PolicyV6LocalPage({
   evidence,
   locale,
   relatedUniversities = [],
+  readingLayout = true,
 }: {
   university: { slug: string; name: string; region: string; country: string };
   data: PolicyV6Data;
   evidence: LocalV6Evidence;
   locale: SupportedLocale;
   relatedUniversities?: RelatedUniversityRef[];
+  readingLayout?: boolean;
 }) {
+  if (readingLayout) data = bindPolicyV6ReadingEvidence(data, evidence.record.claims);
   const school = data.schools.find((s) => s.slug === university.slug)!;
   const scene = getPolicyV6IllustratedScene(school, locale);
   const zh = locale === "zh",
@@ -186,7 +190,7 @@ export function PolicyV6LocalPage({
       data-v6-basis={evidence.fingerprint}
       data-v6-review-state="agent_reviewed"
     >
-      <PolicyV6Provider data={data}>
+      <PolicyV6Provider data={data} readingLayout={readingLayout}>
         <PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
           <EntityHeader
             actions={
@@ -208,7 +212,7 @@ export function PolicyV6LocalPage({
               tools
             />
           ) : null}
-          <PolicyV6RecordTopics data={data} />
+          <PolicyV6RecordTopics data={data} readingLayout={readingLayout} />
           <details
             className="policy-v6-school-insights"
             aria-labelledby="v6-school-insights-title"
@@ -252,6 +256,7 @@ export function PolicyV6LocalPage({
               </p>
             </div>
             <PolicyV6ClaimGroups
+              readingLayout={readingLayout}
               entitySlug={university.slug}
               groups={groupReviewedClaimsByClaimType(evidence.record.claims)}
               locale={locale}

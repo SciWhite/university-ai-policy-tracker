@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "uapt-ranking-identity-links-v1",
+  "scope": "Explicit publisher-record identity links. Policy review states and dates are unchanged; identity linking does not grant policy approval.",
+  "links": [
+    {
+      "edition": "qs-2027",
+      "sourceId": "587",
+      "sourceName": "The University of Technology Sydney (UTS)",
+      "country": "Australia",
+      "slug": "university-of-technology-sydney",
+      "sourceUrl": "https://www.topuniversities.com/universities/university-technology-sydney-uts"
+    },
+    {
+      "edition": "qs-2027",
+      "sourceId": "387",
+      "sourceName": "Universiti Teknologi Malaysia (UTM)",
+      "country": "Malaysia",
+      "slug": "universiti-teknologi-malaysia",
+      "sourceUrl": "https://www.topuniversities.com/universities/universiti-teknologi-malaysia-utm"
+    },
+    {
+      "edition": "qs-2027",
+      "sourceId": "439",
+      "sourceName": "National Sun Yat-sen University (NSYSU)",
+      "country": "Taiwan",
+      "slug": "national-sun-yat-sen-university",
+      "sourceUrl": "https://www.topuniversities.com/universities/national-sun-yat-sen-university-nsysu"
+    },
+    {
+      "edition": "qs-2027",
+      "sourceId": "50507",
+      "sourceName": "Chandigarh University (Punjab)",
+      "country": "India",
+      "slug": "chandigarh-university",
+      "sourceUrl": "https://www.topuniversities.com/universities/chandigarh-university-punjab"
+    },
+    {
+      "edition": "qs-2027",
+      "sourceId": "210",
+      "sourceName": "Florida International University (FIU)",
+      "country": "United States",
+      "slug": "florida-international-university",
+      "sourceUrl": "https://www.topuniversities.com/universities/florida-international-university-fiu"
+    },
+    {
+      "edition": "qs-2027",
+      "sourceId": "2293",
+      "sourceName": "The University of Texas at San Antonio",
+      "country": "United States",
+      "slug": "university-of-texas-at-san-antonio",
+      "sourceUrl": "https://www.topuniversities.com/universities/university-texas-san-antonio"
+    }
+  ]
+}

@@ -26,6 +26,8 @@ test("isolated production loaders preserve canonical records, repairs and frozen
     assert.equal(receipt.atomFeed.publishedIndexMatched,true);
     assert.ok(receipt.atomFeed.records > 0 && receipt.atomFeed.records <= 30);
     assert.ok(receipt.atomFeed.milliseconds < 120000);
+    assert.equal(receipt.discoveryEditions.length,9);
+    assert.ok(receipt.discoveryEditions.every(edition=>edition.pageSize===25));
   } finally {await rm(root,{recursive:true,force:true});}
 });
 
@@ -46,7 +48,7 @@ test("missing public repair directory preserves the previous complete runtime", 
   const root=await mkdtemp(path.join(tmpdir(),"uapt-runtime-missing-"));
   try {
     const target=path.join(root,"runtime");await mkdir(path.join(root,"data/public-releases/history"),{recursive:true});await mkdir(target);await writeFile(path.join(target,"keep"),"previous complete package");
-    await mkdir(path.join(root,"data/rankings"));await mkdir(path.join(root,"data/policy-snapshots"));
+    await mkdir(path.join(root,"data/rankings"));await mkdir(path.join(root,"data/ranking-browser"));await mkdir(path.join(root,"data/policy-snapshots"));
     await writeFile(path.join(root,"data/public-releases/current.json"),JSON.stringify({schemaVersion:"uapt-public-release-manifest-v1",candidateOnly:false,includeStagedArtifactDirectories:[]}));
     await assert.rejects(prepareWebRuntimeData({repoRoot:root,targetRoot:target}), error => error.code === "ENOENT" && error.path.includes("public-record-repairs"));
     assert.equal(await readFile(path.join(target,"keep"),"utf8"),"previous complete package");
