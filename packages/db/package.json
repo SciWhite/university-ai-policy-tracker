@@ -13,13 +13,20 @@
     "studio": "prisma studio",
     "build": "tsc -p tsconfig.json",
     "lint": "tsc --noEmit -p tsconfig.json",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "tsx --test test/connection.test.ts",
+    "typecheck:test": "tsc --noEmit -p tsconfig.test.json",
+    "test:integration": "tsx test/prisma7.integration.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.0.0",
-    "@uapt/shared": "workspace:*"
+    "@prisma/client": "7.10.1",
+    "@uapt/shared": "workspace:*",
+    "@prisma/adapter-pg": "7.10.1",
+    "pg": "8.23.1",
+    "dotenv": "18.0.9"
   },
   "devDependencies": {
-    "prisma": "^6.0.0"
+    "prisma": "7.10.1",
+    "@types/pg": "8.23.1"
   }
 }

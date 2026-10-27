@@ -14,7 +14,7 @@
   },
   "packageManager": "pnpm@10.0.0",
   "engines": {
-    "node": ">=20"
+    "node": "^20.19 || ^22.12 || >=24.0"
   },
   "scripts": {
     "validate:v6-shards": "tsx scripts/validate-v6-shards.ts",
@@ -84,7 +84,9 @@
     "mcp:start": "pnpm --filter @uapt/mcp start",
     "test:mcp": "pnpm --filter @uapt/mcp test",
     "v6:pack": "tsx --tsconfig apps/web/tsconfig.json scripts/pack-v6-release.ts",
-    "validate:v6-release": "tsc --noEmit -p scripts/tsconfig.v6.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-v6-release.ts"
+    "validate:v6-release": "tsc --noEmit -p scripts/tsconfig.v6.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-v6-release.ts",
+    "validate:mcp-export": "tsc --noEmit -p scripts/tsconfig.mcp-export.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-mcp-export.ts",
+    "test:mcp-acceptance": "pnpm mcp:export && pnpm validate:mcp-export && pnpm test:mcp"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

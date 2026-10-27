@@ -12,7 +12,7 @@ import {
   ReviewState as PrismaReviewState,
   ServiceTreatment as PrismaServiceTreatment,
   type PrismaClient
-} from "@prisma/client";
+} from "./prisma-client.js";
 import { getPrismaClient } from "./client.js";
 import { toDbEnum } from "./enums.js";
 import type { Prisma } from "./prisma-client.js";

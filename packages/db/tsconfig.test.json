@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": true, "rootDir": "../..", "experimentalDecorators": true, "emitDecoratorMetadata": true },
+  "include": ["src/**/*.ts", "test/**/*.ts", "../../apps/api/test/prisma7.integration.ts", "../../scripts/prisma7-web-worker-smoke.ts"]
+}

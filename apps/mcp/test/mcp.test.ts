@@ -50,6 +50,22 @@ test("stale fingerprints and mismatched school identity fail closed", async () =
   await writeFile(path.join(dir,"candidate.json"),JSON.stringify(mismatch));
   await assert.rejects(loadCatalog(path.join(dir,"candidate.json")));
 });
+test("published correction metadata and held claims fail closed after envelope rehash", async () => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), "uapt-corrected-"));
+  const envelope = JSON.parse(await readFile(file, "utf8"));
+  const target = envelope.payload.records.find((r: {universityRevisionId?:string}) => r.universityRevisionId);
+  assert.ok(target, "Exporter must retain published correction metadata");
+  target.summary.claims[0].claimText += " altered";
+  envelope.sha256 = digest(envelope.payload);
+  await writeFile(path.join(dir, "bad.json"), JSON.stringify(envelope));
+  await assert.rejects(loadCatalog(path.join(dir, "bad.json")), /fingerprint/);
+  target.recordSha256 = digest(target.summary);
+  target.summarySha256 = digest(target.summary);
+  target.historicalClaimIds = [target.summary.claims[0].id];
+  envelope.sha256 = digest(envelope.payload);
+  await writeFile(path.join(dir, "bad.json"), JSON.stringify(envelope));
+  await assert.rejects(loadCatalog(path.join(dir, "bad.json")), /Held claim/);
+});
 test("entity aliases, ambiguous names and private candidate exclusion", async () => {
   const catalog=await loadCatalog(file); const p = new PolicyService(catalog);
   const record=catalog.records.find(r=>r.summary.entity.slug==="national-university-of-singapore")!;
@@ -163,6 +179,14 @@ test("real no-auth Streamable HTTP initialize, tools and all three calls", async
     assert.equal(result.status,"ok"); assert.ok(result.trackerUrl.startsWith("https://eduaipolicy.org/")); assert.ok(result.claims.length);
     const evidence=await client.callTool({name:"get_policy_evidence",arguments:{slug:data.slug,claim_ids:[result.claims[0].id]}});
     assert.equal((evidence.structuredContent as {status:string}).status,"ok");
+    const exams = await client.callTool({name:"get_student_policy",arguments:{slug:"ucl",topics:["exams"]}});
+    assert.ok((exams.structuredContent as {claims:{id:string}[]}).claims.some(c => c.id === "clm-ucl-clie-genai-assessment-2026-27"));
+    const toronto = await client.callTool({name:"get_student_policy",arguments:{slug:"university-of-toronto"}});
+    const corrected = toronto.structuredContent as {claims:{id:string}[];tools:unknown[];universityRevisionId:string;snapshotStatus:string};
+    assert.ok(corrected.claims.some(c => c.id === "draft-claim-uoft-course-materials-upload"));
+    assert.ok(corrected.tools.length > 0);
+    assert.ok(corrected.universityRevisionId);
+    assert.equal(corrected.snapshotStatus,"unavailable");
     const invalid=await client.callTool({name:"get_student_policy",arguments:{slug:"../../.local"}}); assert.equal(invalid.isError,true);
     assert.equal((await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json",Origin:"https://untrusted.example"},body:"{}"})).status,403);
     assert.equal((await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:"{"})).status,400);

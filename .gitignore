@@ -72,3 +72,5 @@ apps/mcp/.runtime-data/
 
 # Python diagnostics (retain locally, never publish).
 __pycache__/
+
+packages/db/src/generated/
