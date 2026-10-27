@@ -48,8 +48,23 @@ async function main() {
     }
     const history = await events.changeEventsResponse(new Request("https://eduaipolicy.org/api/public/v1/changes/events/test/ucl.json"), {revision: store.manifest.revision!, slug: "ucl"});
     if (history.status !== 200 || (await history.json()).slug !== "ucl") throw Error("Packaged public history API failed");
+    const feedStarted = performance.now();
+    const atom = await import("../apps/web/app/feeds/atom.xml/route");
+    const atomResponse = await atom.GET();
+    const atomXml = await atomResponse.text();
+    const {getChangeIndexData} = await import("../apps/web/lib/change-records");
+    const {xmlEscape} = await import("../apps/web/lib/feed");
+    const feedRecords = (await getChangeIndexData()).data.records.slice(0, 30);
+    if (atomResponse.status !== 200 || !atomXml.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) throw Error("Packaged Atom feed failed");
+    for (const record of feedRecords) {
+      const id = xmlEscape(new URL(record.changeUrl, "https://eduaipolicy.org").href);
+      const summary = xmlEscape(`${record.summary} Review state: ${record.reviewState}. Claims: ${record.claimCount}.`);
+      if (!atomXml.includes(`<id>${id}</id>`) || !atomXml.includes(`<summary>${summary}</summary>`)) throw Error(`Packaged Atom record differs: ${record.slug}`);
+    }
+    const atomMilliseconds = Math.round(performance.now() - feedStarted);
+    if (atomMilliseconds > 120000) throw Error("Packaged Atom feed exceeds the prebuild 120s limit");
     if (fetchAttempts) throw Error("Runtime validation attempted a live API fallback");
-    console.log(JSON.stringify({status:"PASS",runtimeRoot,universities:summaries.length,canonicalRecordsSha256:expected,events:store.index().length,analysisControls:controls,historyApi:"ucl",liveFetchDisabled:true,fetchAttempts}));
+    console.log(JSON.stringify({status:"PASS",runtimeRoot,universities:summaries.length,canonicalRecordsSha256:expected,events:store.index().length,analysisControls:controls,historyApi:"ucl",atomFeed:{records:feedRecords.length,milliseconds:atomMilliseconds,publishedIndexMatched:true},liveFetchDisabled:true,fetchAttempts}));
   } finally { process.chdir(originalCwd); globalThis.fetch = originalFetch; }
 }
 main().catch(error => {console.error(error);process.exitCode=1;});
