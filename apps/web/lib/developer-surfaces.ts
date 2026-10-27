@@ -5,9 +5,9 @@ import {
   TRACKER_METADATA_LICENSE,
   buildPublicApiCitation
 } from "@uapt/shared";
-import { getChangeRecords } from "./change-records";
+import { getChangeIndexData } from "./change-records";
 import {
-  getPolicyAnalysisProfileBySlug
+  buildPolicyAnalysisProfile
 } from "./policy-analysis";
 import { getSourceHealthDashboardData } from "./review-dashboards";
 import { getAbsoluteSiteUrl } from "./site-url";
@@ -293,12 +293,11 @@ export function buildUniversityStatusWidget(summary: PublicEntitySummary) {
 }
 
 export async function getPolicyCoverageWidget(slug: string) {
-  const profile = await getPolicyAnalysisProfileBySlug(slug);
   const summary = await getStagedPublicSummaryBySlug(slug);
 
-  if (!profile || !summary) return undefined;
+  if (!summary) return undefined;
 
-  return buildPolicyCoverageWidget(profile, summary);
+  return buildPolicyCoverageWidget(buildPolicyAnalysisProfile(summary), summary);
 }
 
 export function buildPolicyCoverageWidget(
@@ -448,7 +447,9 @@ export function buildReviewStateWidget(summary: PublicEntitySummary) {
 }
 
 export async function getRecentChangesWidget(limit = 5) {
-  const records = (await getChangeRecords()).slice(0, clampLimit(limit));
+  // The published index already contains the metadata displayed by this card.
+  // Do not reconstruct every historical release to render five preview rows.
+  const records = (await getChangeIndexData()).data.records.slice(0, clampLimit(limit));
 
   return {
     apiVersion: PUBLIC_API_VERSION,
@@ -479,7 +480,7 @@ export async function getRecentChangesWidget(limit = 5) {
         reviewState: record.reviewState,
         claimCount: record.claimCount,
         reviewedClaimCount: record.reviewedClaimCount,
-        candidateClaimCount: record.candidateClaimCount,
+        candidateClaimCount: record.claimCount - record.reviewedClaimCount,
         sourceCount: record.sourceCount
       }))
     }
