@@ -25,6 +25,17 @@ export function getLocalCompactMark(slug: string, size: UniversityMarkSize) {
   return selectCompactMark(registry.entries, slug, size);
 }
 
+/** Two explicitly selected local title candidates; never read by production. */
+export function getLocalTitleMark(slug: string, size: UniversityMarkSize) {
+  if (process.env.NODE_ENV !== "development" || size !== "hero") return undefined;
+  const mark = (registry.titleEntries as Record<string, LocalCompactMark>)[slug];
+  if (!mark || mark.role !== "title") return undefined;
+  const scale = Math.min(1, (mark.maximumWidth ?? 96) / mark.width);
+  if (mark.width * scale < mark.minimumWidth) return undefined;
+  return {...mark, displayWidth:mark.width * scale, displayHeight:mark.height * scale,
+    frameWidth:undefined, frameHeight:undefined};
+}
+
 /** Explicitly exported compact assets; source approval flags and use limits stay intact. */
 export function getPublishedCompactMark(slug: string, size: UniversityMarkSize) {
   if (size === "hero") return undefined;
@@ -53,7 +64,7 @@ function selectCompactMark(entries: Record<string, LocalCompactMark>, slug: stri
 
 export function isLocalMarkFile(filename: string) {
   return process.env.NODE_ENV === "development" && /^[a-f0-9]{64}\.webp$/.test(filename)
-    && Object.values(registry.entries).some(mark => mark.file === filename);
+    && [...Object.values(registry.entries),...Object.values(registry.titleEntries)].some(mark => mark.file === filename);
 }
 
 /** Prevent an old undersized image from bypassing the current role minimum. */

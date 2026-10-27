@@ -1,3 +1,4 @@
+import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import {PolicyV6Changes} from "@/components/policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "@/components/policy-v6-held-records";
@@ -247,7 +248,7 @@ export default async function UniversityPage({
     draftPreview || isReviewedClaim(claim.reviewState)
   );
   const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
-  const labData = uiLab ? await getPolicyV6Data(locale, slug) : undefined;
+  const labData = uiLab ? bindPolicyV6ReadingEvidence(await getPolicyV6Data(locale, slug), reviewedClaims) : undefined;
   const LabProvider = labData ? PolicyV6Provider : Fragment;
   const role = isStudentOnlyPolicyPage(slug) ? "student" : normalizeStudentSnapshotRole(pageQuery?.for);
   const citationReadySummary = buildCitationSummary(

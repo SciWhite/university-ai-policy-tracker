@@ -7373,6 +7373,258 @@
       "hashKind": "unknown_legacy",
       "verification": "unverified",
       "unresolvedReason": "Original published source hash retained unchanged; whole original bytes have not been independently bound in this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.utwente.nl/en/learning-teaching/assessment/additional-topics/AI_Assessment/",
+      "snapshotHash": "d2c50a3a06282e2cf3394afd1c154c3211781760f612a0217837e8d77c0cd6d4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.utwente.nl/en/service-portal/dossiers/ai/",
+      "snapshotHash": "de0cb0858c11a8c8a2208852a20d081620006d62c93a69252cfaa56126666bce",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.utwente.nl/en/learning-teaching/Expertise/ai-in-education/",
+      "snapshotHash": "b44fc861a1b76115f44bbe3606bb7a8fc9b04156f492ba0d16015e79ebeb4514",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.utwente.nl/en/learning-teaching/Expertise/ai-in-education/use-of-ai-in-education-at-the-university-of-twente.pdf",
+      "snapshotHash": "8426f526e3e668052c52805f6e712044b2685f1cb93e40cf88ec92556fd35af8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.utwente.nl/en/news/2025/10/655534/ut-takes-first-step-toward-a-shared-vision-on-artificial-intelligence",
+      "snapshotHash": "e339eacf3d7eff4f7b8155865846023e9ddcf72c252753724172471483bf476e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.ul.ie/provost/functions-processes/academic-integrity-unit/academic-misconduct-and-gen-ai",
+      "snapshotHash": "07c65bc24d734000fb71b9fc5a2669d348e109b6cb8b785fd305e4fa947099b3",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.ul.ie/provost/functions-processes/academic-integrity-unit/assessment-and-gen-ai",
+      "snapshotHash": "895db1df092c14ba0d9213066318180141b7cd5624876162e2c7cc51ab24bd81",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.ul.ie/provost/functions-processes/academic-integrity-unit/generative-artificial-intelligence",
+      "snapshotHash": "3fb3c0866dd388578e5fa5893080d43d60822fefa6e372cef5c06bd73a1a5262",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.ul.ie/provost/functions-processes/academic-integrity-unit/generative-artificial-intelligence-principles",
+      "snapshotHash": "9a0425f7b5d3871c8e4f3cb04fa873c2bdde77990a4c6f5236b1951d529d0b5c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.ul.ie/provost/functions-processes/academic-integrity-unit/tips-for-students-on-the-use-of-gen-ai",
+      "snapshotHash": "7bbfcf4b6a59a8e20218eb19f558d68adde1b4cf92924a7e682fc7e47589f5ea",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+      "snapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.cardiff.ac.uk/__data/assets/pdf_file/0006/1549878/Academic-Integrity-Policy.pdf",
+      "snapshotHash": "30f259949dd92baeb135fa5c965fb867c828b7d8332828dad413154c112d2e78",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.cardiff.ac.uk/__data/assets/pdf_file/0009/432666/Academic-Regulations-and-Policies-Handbook-2025-26-English-Nov25.pdf",
+      "snapshotHash": "9e766787a5760b9187b4732bd46fd35a135c04a8564b269774d478b510c7c6bf",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://blogs.cardiff.ac.uk/LTAcademy/ai-in-education-at-cardiff-university/",
+      "snapshotHash": "027cde52fc4222fb7385dcb1d347bfa932aaedcc063640a41d6885279c10bc4f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://sites.cardiff.ac.uk/ilrb/using-gen-ai-to-support-your-literature-searching/",
+      "snapshotHash": "ca5c1bb77561c39996c7b81021220d8f9c479be2cd1ff19b712190e0e29d49b5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.uoguelph.ca/vpacademic/avpa/generative-ai-teaching-and-learning",
+      "snapshotHash": "85b0b651395ffad5dfa646fa6f781cabac915b52abd4296af0a77b679d2609e7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://learningcommons.lib.uoguelph.ca/item/ai-and-your-unpublished-writing-risks-using-large-language-models/",
+      "snapshotHash": "5b26a2edf17dcab0ea1d19546d7ffd683b2d03f274f1dfec36c42efce3a9af30",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://ithelp.uoguelph.ca/ai-guidelines",
+      "snapshotHash": "323605fcca67b9e499316b9fa76fdb9586133fc0ee9acead7b31b1f69d88389a",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://guides.lib.uoguelph.ca/GenAIStudents",
+      "snapshotHash": "300ff463137deab8c9f947b63e6caf4b8adc1da04a4e4dba0f73d801c510ecd7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "snapshotHash": "91c2a7f2abcb970ffb4591017563872a6db1daccf9ee4add204f0445e5f6e71d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "snapshotHash": "a0d485b93352af793975113b1d3dcee2aca7039efc3ba61b203fbdbebdaee449",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://news.uoguelph.ca/2023/03/university-of-guelph-statement-on-artificial-intelligence-systems-chatgpt-academic-integrity/",
+      "snapshotHash": "0ba49670f4bff4e5861f73e16e2134b29c4addbafe468e7b59e939539765e9d5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://cdae.usm.my/images/DownloadPDF/GARIS%20PANDUAN%20PENGGUNAAN%20TEKNOLOGI%20KECERDASAN%20BUATAN%20GENERATIF%20KBG%20DALAM%20PENGAJARAN%20DAN%20PEMBELAJARAN%20PdP%20PENDIDIKAN%20TINGGI.pdf",
+      "snapshotHash": "3ebf932cb88bbdb0bc2a96631b8501be6b62b7821ae1b69d6dc7c45bf182fe80",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://ijaps.usm.my/?page_id=3049",
+      "snapshotHash": "d61dfff8779ce432bba64029a5fad817573b8889205497a34facf983344db978",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "http://web.usm.my/km/policy.html",
+      "snapshotHash": "6b49dc1e13b0b6d3a51018f7d47f79a5c9c62c2f59945ae3e235693077bf16cd",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.keele.ac.uk/media/keeleuniversity/policyzone20/studentandacademicservices/AI-in-Education-Framework-2025-1.pdf",
+      "snapshotHash": "469ee5e74f5ed59820c9304b8271f53c613bc6b079afa7e70a04ada000641296",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.keele.ac.uk/media/keeleuniversity/policyzone20/studentandacademicservices/Student-Academic-Misconduct-CoP-2025.pdf",
+      "snapshotHash": "22f0bddb4a8fd45bf97879687f4df1674253f5d355afc56965ed2855422eaa59",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.uj.ac.za/wp-content/uploads/2023/08/uj-ai-guidelines-staff.pdf",
+      "snapshotHash": "71a0a789d9a83ee75461cf4bdae6d80207c06ae02a1ea747591cd9385eeea2ba",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.uj.ac.za/wp-content/uploads/2023/08/uj-ai-practice-guide-2023.pdf",
+      "snapshotHash": "7b2880ce8629bb364ffb084039bab0f526d1632d9718e00c560ff28e3be6d448",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.uj.ac.za/wp-content/uploads/2023/08/uj-ai-guidelines-students-2023.pdf",
+      "snapshotHash": "3bb6efba73e2b30a475b8c80807062f5d4900bfa9a6228ad4723083f0a2d5ca5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/acknowledging-your-use",
+      "snapshotHash": "092af377e157be4a8c16f800c05ec663587d51495ca33031d5fd9c217754f643",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/approved-genai-tools-for-learning/",
+      "snapshotHash": "6e12c09bcb348b9f391ed1cad916562143fe98bfcb4a039c6d8fdbccf72d23f8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/approved-genai-tools-for-learning",
+      "snapshotHash": "5bc327e91b8bbd7b631fa9b431bd3efae8224f615922b342308eadca28608956",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/about-deakin/why-deakin/generative-artificial-intelligence",
+      "snapshotHash": "4c579fc1f6855533c016fd71d5588056b820aa9959f1fc296aa0edfe762ccf99",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/research/our-research/research-integrity/generative-artificial-intelligence-ai",
+      "snapshotHash": "695308c4afd3dde5ba3f6a00692cdb7d6a46953aaebb43047fee5dc9de0fd8fd",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/study-and-assessments",
+      "snapshotHash": "6df784e51b3a0f9b23591a010f63885b58413092f0eee149f0eeed16cdfa3ecf",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.exeter.ac.uk/about/strategies/enabling-ai/",
+      "snapshotHash": "438fec11ac56885c14c8db429945cd0a6e1e39cc83b9ae2404b6b0461ad92ac6",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.exeter.ac.uk/about/strategies/enabling-ai/",
+      "snapshotHash": "8c4c62ee2ab01cb4fa96c7207c36ec93c9a50ba8ea4bbdca9e720a450b800e74",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://libguides.exeter.ac.uk/referencing/generativeai",
+      "snapshotHash": "660a29b5aa3ce9afd86e6c4a94f8dd719ff79fcba3dd1acd95f5f6c36ee02d55",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://libguides.exeter.ac.uk/c.php?g=693244&p=5313980",
+      "snapshotHash": "3311252ded697e3aca04e487178167ceb48fe28ca337e7ae2c9fb18a1858f8a2",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.exeter.ac.uk/research/doctoralcollege/currentstudents/pgrstudenthandbook/researchtrainingandskills/",
+      "snapshotHash": "617da000c045498aeac49c1b4d149e75fe0fcf0992970757d60eb66a05e84d3e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://www.exeter.ac.uk/about/strategies/enabling-ai/ai-for-researchers/",
+      "snapshotHash": "3895092c8a628da9bc5f88dfcbfd6d36c516fc4c729eca8a9169a1401ec6fee8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
     }
   ]
 }

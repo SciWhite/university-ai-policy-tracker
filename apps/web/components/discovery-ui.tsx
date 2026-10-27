@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { DocumentLink as Link } from "./document-link";
+import { rankingBrowserCopy } from "@/lib/ranking-browser-copy";
 import { UniversityMark } from "./university-mark";
 import { mockupCopy } from "@/lib/mockup-copy";
 import { discoveryPrimaryTopics } from "@/lib/discovery-topic-groups";
@@ -132,6 +133,7 @@ export function DiscoveryUniversityCard({
   analyticsSource,
   featured = false,
   showDate = true,
+  returnTo,
 }: {
   record: DiscoveryUniversity;
   locale: SupportedLocale;
@@ -141,6 +143,7 @@ export function DiscoveryUniversityCard({
   analyticsSource?: string;
   featured?: boolean;
   showDate?: boolean;
+  returnTo?: string;
 }) {
   const copy = discoveryCopy(locale);
   const name = getLocalizedInstitutionName(record.slug, record.name, locale);
@@ -164,7 +167,7 @@ export function DiscoveryUniversityCard({
       <div className="discovery-card-content">
         <h3>
           <Link
-            href={`/universities/${record.slug}`}
+            href={`/universities/${record.slug}${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ""}`}
             data-analytics-event={
               analyticsSource ? "search_result_record_click" : "nav_click"
             }
@@ -207,7 +210,7 @@ export function DiscoveryUniversityCard({
         <div className="discovery-actions">
           <Link
             className="discovery-outline-link"
-            href={`/universities/${record.slug}`}
+            href={`/universities/${record.slug}${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ""}`}
             data-analytics-event={
               analyticsSource ? "search_result_record_click" : "nav_click"
             }
@@ -219,7 +222,7 @@ export function DiscoveryUniversityCard({
           </Link>
           <Link
             className={featured ? "discovery-outline-link" : undefined}
-            href={`/universities/${record.slug}#claims`}
+            href={`/universities/${record.slug}${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ""}#claims`}
           >
             {featured ? <DiscoveryIcon name="document" /> : null}
             {featured ? copy.viewEvidence : copy.evidence}
@@ -242,10 +245,29 @@ export function DiscoveryPagination({
   onPage: (page: number) => void;
   locale: SupportedLocale;
 }) {
-  const copy = discoveryCopy(locale);
-  if (pageCount <= 1) return null;
+  const copy = discoveryCopy(locale),
+    extra = rankingBrowserCopy(locale);
+  const [jump, setJump] = useState(String(page));
+  useEffect(() => setJump(String(page)), [page]);
+  const numbers = [
+    ...new Set([
+      1,
+      Math.max(1, page - 1),
+      page,
+      Math.min(pageCount, page + 1),
+      pageCount,
+    ]),
+  ].sort((a, b) => a - b);
   return (
     <nav className="discovery-pagination" aria-label={copy.page}>
+      <button
+        type="button"
+        aria-label={extra.first}
+        disabled={page <= 1}
+        onClick={() => onPage(1)}
+      >
+        «
+      </button>
       <button
         type="button"
         disabled={page <= 1}
@@ -253,43 +275,61 @@ export function DiscoveryPagination({
       >
         {copy.previous}
       </button>
-      <span className="visually-hidden" aria-live="polite">
-        {copy.page} {page} {copy.of} {pageCount}
-      </span>
-      {[
-        ...new Set([
-          1,
-          Math.max(1, page - 1),
-          page,
-          Math.min(pageCount, page + 1),
-          Math.min(pageCount, 3),
-        ]),
-      ]
-        .sort((a, b) => a - b)
-        .map((p, i, all) => (
-          <span className="discovery-page-number" key={p}>
-            {i > 0 && p - all[i - 1] > 1 ? (
-              <span aria-hidden="true">…</span>
-            ) : null}
-            <button
-              type="button"
-              aria-label={`${copy.page} ${p}`}
-              aria-current={p === page ? "page" : undefined}
-              onClick={() => onPage(p)}
-            >
-              {p.toLocaleString(locale)}
-            </button>
-          </span>
-        ))}
-      {page < pageCount - 1 ? <span aria-hidden="true">…</span> : null}
+      {numbers.map((p, i) => (
+        <span className="discovery-page-number" key={p}>
+          {i > 0 && p - numbers[i - 1] > 1 ? (
+            <span aria-hidden="true">…</span>
+          ) : null}
+          <button
+            type="button"
+            aria-label={`${copy.page} ${p}`}
+            aria-current={p === page ? "page" : undefined}
+            onClick={() => onPage(p)}
+          >
+            {p.toLocaleString(locale)}
+          </button>
+        </span>
+      ))}
       <button
         type="button"
         disabled={page >= pageCount}
         onClick={() => onPage(page + 1)}
       >
         {copy.next}
-        <DiscoveryIcon name="arrow" />
       </button>
+      <button
+        type="button"
+        aria-label={extra.last}
+        disabled={page >= pageCount}
+        onClick={() => onPage(pageCount)}
+      >
+        »
+      </button>
+      <form
+        className="discovery-page-jump"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (/^\d+$/.test(jump) && Number.isSafeInteger(Number(jump)))
+            onPage(Math.min(pageCount, Math.max(1, Number(jump))));
+        }}
+      >
+        <label>
+          {extra.jump}
+          <input
+            type="number"
+            inputMode="numeric"
+            min="1"
+            max={pageCount}
+            step="1"
+            value={jump}
+            onChange={(e) => setJump(e.target.value)}
+          />
+        </label>
+        <button type="submit">{extra.go}</button>
+      </form>
+      <span className="visually-hidden" aria-live="polite">
+        {copy.page} {page} {copy.of} {pageCount}
+      </span>
     </nav>
   );
 }

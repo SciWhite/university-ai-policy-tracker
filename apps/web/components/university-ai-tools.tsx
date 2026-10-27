@@ -14,6 +14,7 @@ export type PageToolRecord = Omit<UniversityToolRecord, "tool"> & {
   sourceLanguage?: string;
   relationship?: "institutional_directory";
 };
+export type ToolDisplayCopy = Record<string, { basisSha256: string; description: string; howToObtain: string; costToUser: string }>;
 const endorsementIndex = {
   institutionally_licensed_or_procured: 5,
   officially_endorsed: 6,
@@ -51,6 +52,7 @@ export function UniversityAiTools({
   scopeNote,
   sectionId = "university-ai-tools",
   standalone = false,
+  displayCopy,
 }: {
   records: PageToolRecord[];
   locale: SupportedLocale;
@@ -61,6 +63,7 @@ export function UniversityAiTools({
   scopeNote?: ReactNode;
   sectionId?: string;
   standalone?: boolean;
+  displayCopy?: ToolDisplayCopy;
 }) {
   const ui = universityToolsUi(locale);
   const draft = draftPreview && process.env.NODE_ENV !== "production";
@@ -119,15 +122,17 @@ export function UniversityAiTools({
             }
           >
             {supported.map((record, index) => {
+              const prose = displayCopy?.[record.rawToolName] ?? record;
+              const proseLanguage = displayCopy?.[record.rawToolName] ? locale : record.sourceLanguage || "en";
               const access = (
                 <>
                   <div
                     data-i18n="preserve"
-                    lang={record.sourceLanguage || "und"}
+                    lang={proseLanguage}
                   >
-                    {record.description ? <p>{record.description}</p> : null}
-                    {record.howToObtain ? <p>{record.howToObtain}</p> : null}
-                    {record.costToUser ? <p>{record.costToUser}</p> : null}
+                    {prose.description ? <p>{prose.description}</p> : null}
+                    {prose.howToObtain ? <p>{prose.howToObtain}</p> : null}
+                    {prose.costToUser ? <p>{prose.costToUser}</p> : null}
                   </div>
                   {record.checkedAt ? (
                     <p className="policy-v6-muted">
@@ -201,13 +206,13 @@ export function UniversityAiTools({
                       {ui[availabilityIndex[record.availability]]}
                     </span>
                   </div>
-                  {uiLab && (record.howToObtain || record.description) ? (
+                  {uiLab && (prose.howToObtain || prose.description) ? (
                     <p
                       className="policy-v6-tool-summary"
                       data-i18n="preserve"
-                      lang={record.sourceLanguage || "und"}
+                      lang={proseLanguage}
                     >
-                      {record.howToObtain || record.description}
+                      {prose.howToObtain || prose.description}
                     </p>
                   ) : null}
                   {uiLab ? (

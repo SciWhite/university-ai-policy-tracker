@@ -1,8 +1,35 @@
 # V6 大学页接入规范
 
-更新：2026-10-15。适用：V6 本地适配及已发布数据接入；保留六校历史基准、UCL 和三校试点凭据。页面接入、政策语义审核、学生摘要资格及发布验收分别成立。生产操作另遵循 release-routing-policy.md。
+更新：2026-10-26。适用：V6 本地适配及已发布数据接入；保留六校历史基准、UCL 和三校试点凭据。页面接入、政策语义审核、学生摘要资格及发布验收分别成立。生产操作另遵循 release-routing-policy.md。
 
 ## 先读这一段
+
+### 共享阅读模板（2026-10-26，本地实现）
+
+当前共享 V6 模板采用已独立验收的 Harvard R3 阅读方式，覆盖 record、bundle（含历史适配器）、evidence 三条组合路径。它是共享组件的本地实现更新，**不是学校上线或政策批准**；数据 allowlist、正式快照、学校结论、held 和发布门禁不随界面改变。下列条目取代早期“作业/工具/研究/教学”、卡片等高和窄屏操作自然换行要求；历史实测记录保留原结论。
+
+- 四问固定为作业、披露、数据、工具，直接读取对应主题的原有状态，不生成新状态词或一句话政策结论。保留六核心主题和补充主题、FAQ、Do/Don't、对比的语义和范围。
+- 主题卡按内容高度双列排列，窄屏单列；列边缘与首卡顶部对齐，不强制同行底边齐平，不删除长条件换取短卡。DOM、键盘和视觉阅读顺序均为先左列再右列。
+- 操作为查看证据、官方来源、44px 复制按钮，320px 中英文保持同一行、文字无溢出；不以隐藏图标通过验收。
+- 原文在覆盖式阅读面板中阅读，正文不重排。状态与范围在顶部可展开；保留 `snapshot-*`、`snapshot-evidence-*`、`snapshot-scope-*`、Claim 深链，点外和 Esc 关闭，合理返回焦点。面板外框及正文内边距连续变化。
+- 证据始终 SSR，原文逐字保留。同一主题内只合并 URL、逐条已绑定版本、语言、原文完全相同的展示块；未知或歧义版本不合并，不跨主题/学校/版本去重。每条关联的文字、ID、日期、定位、语言和哈希完整保留。
+- 已验证 view/来源对象中每条证据自带的版本直接保留；canonical Claim 投影漏掉版本时，只按 Claim ID + URL/原文/标题/语言/定位/取回日期完整匹配原始证据。禁止使用 `topic.sources`、URL 唯一哈希或“当前版本”替缺失证据猜版本。完整来源引文与 canonical 分段 Claim 不是同一对象，不能强行覆盖已绑定版本。
+- 来源版本默认折叠，展开显示完整哈希；单条及共享引文的取回/主张核查日期均在引文下方显示。多个日期分别列出，不合成日期；来源检查、取回、主张检查与政策生效日期不互相替代。
+- Ctrl/Cmd+F 命中关闭面板的原文时展开对应阅读器并保留选区；同时处理原生 `beforematch`。打印和禁用 JS 必须保留完整原文与关联。真实 Safari/iOS、读屏和菜单查找仍要候选阶段人工验收；自动化不代替这些结果。
+- `?layout=v6` 为共享入口；旧 Harvard `?layout=harvard-ui-lab` 只保留已有开发入口兼容，分享、对比和语言切换统一输出 `layout=v6`。非 V6 学校及 V4/V5 不接入阅读标记或新 CSS。
+
+通用接入不得复制 Harvard 的 HLS/HMS 规则或工具表。来源数据仍使用各校通过原合同的输入；改正文/状态/范围等内容仍须走 2026-10-25 完整性及独立审核合同。只改共享展示不重写 frozen 包或重算内容批准 hash。
+
+
+### 校徽合同的增量整合（2026-10-26）
+
+共享阅读模板和 2026-10-25 完整性条款继续有效；校徽补齐只补以下合同，不恢复旧四问、等高卡片、插画或独立提交清单。
+
+- 先读 [统一入口](university-marks-current.md) 与 [校徽接入合同](policy-v6-mark-integration.md)。当前入口覆盖 1099 校/2198 角色；以主工作区 `.local/university-marks/current.json` 的校验指针为准，不使用旧 211 用途增量表充当完整库。
+- 按 canonical slug + QS core ID 核身份；Hero 使用 title，搜索/对比/相关大学使用 compact。核对变体实际 hash/像素、DPR、最小/最大槽位、底色和原生限制；不满足保留建筑回退，不以排名或近似校名匹配。
+- 保留现有合适的已公开资源。技术候选通过、available、私有本地展示与公开用途批准分别成立；`publicationApproved:false` 和 held/reject 不随接入变化。
+- 单校任务只交私有角色选择和实际页面检查；共享资产适配器/注册表/资源导出/CSS 由集成人串行处理。当前线上已有 published compact 适配，但未实现统一 manifest 的通用导入器；不得压成旧 tuple 丢失条件。
+- 输入及验收记录新增角色、manifest/资源 hash、实际尺寸/DPR、背景、限制、状态、保留/回退理由及触达页面，不要求改政策文字或重绘页面。
 
 ### V6 SEO 标题统一合同（2026-10-18）
 
@@ -42,7 +69,7 @@ Claim、工具、held 与记录指纹。新增已发布 V6 学校的工具模块
 | 区域 | 固定行为 | 学校需要提供 |
 | --- | --- | --- |
 | 身份 Hero | 左侧校徽；正式全名（已核对缩写）作为主标题；城市、国家、检查日期在校名上方；右侧对比/分享；不另加 Reviewed 徽章 | canonical slug、校名、地理字段、真实日期；已验收校徽或建筑图标 |
-| 四个快捷问题 | 作业、工具、研究发表、教学；无编号紧凑卡，宽屏一行四项；教学跳转自动展开补充主题 | 来自本校对应主题状态，不额外创造结论 |
+| 四个快捷问题 | 作业、披露、数据、工具；无编号紧凑卡，宽屏一行四项，状态来自相应主题 | 来自本校对应主题状态，不额外创造结论 |
 | 提交前快速检查 / Do / Don't | 主题后、工具前；四问下保留快捷入口；各最多三项，逐项证据默认显示原引文 | EN/ZH 行动、kind、Claim IDs；每校独立绑定，缺证据不填规则 |
 | 学校特殊情境 | 可选；只有真实院系/课程/学位例外才添加 | 明确范围和证据，不复制 HLS/HMS/Engineering 文案 |
 | 六个主题 | coursework、exams、disclosure、privacy_data、approved_tools、research_publication | 摘要、状态、证据、条件/例外；缺资料保留明确缺口 |
@@ -63,13 +90,14 @@ Claim、工具、held 与记录指纹。新增已发布 V6 学校的工具模块
 | 入口 | 职责 |
 | --- | --- |
 | `apps/web/lib/policy-v6-gate.ts` | 历史基准/本地试点与已发布 allowlist 分开；本地 development + 显式参数，生产由 published gate 控制 |
+| `apps/web/lib/policy-v6-reading-evidence.ts` | 展示层逐条证据版本绑定，保留已验证原有版本，不改原始包或按 URL 猜版本 |
 | `apps/web/lib/policy-v6.ts` | `LabSchool` / `LabTopic` 展示合同；strong snapshot / published analysis / 本地包依据分开 |
 | `apps/web/lib/policy-v6-bundle.ts` | 通用本地 view 读取、哈希/身份/基本合同验证；生产拒绝读取 |
 | `scripts/prepare-v6-local-bundle.py` | 显式 mapping 驱动的修复包转换；不调用模型、不联网、不选指针、不发布 |
 | `apps/web/components/policy-v6-bundle-page.tsx` | 通用本地包页面组合，无 UCL 专属布局 |
 | `apps/web/lib/policy-v6-local-evidence.ts`、`components/policy-v6-local-page.tsx` | Harvard/Cambridge 历史特例；不照搬它的两校名单、HMS 表或六校审核声明 |
 | `components/policy-v6.tsx` | Provider、快捷入口、三个主题操作、对比、工具展开、清单、FAQ |
-| `components/policy-v6-popover.tsx` | native popover，非模态、点外/Escape关闭、无背景遮罩和页面重排 |
+| `components/policy-v6-popover.tsx`、`policy-v6-reading-layout.css` | 共享阅读面板、搜索揭示、非模态点外/Escape关闭、连续尺寸与无页面重排 |
 | `components/policy-v6-record-topics.tsx`、`student-policy-snapshot.tsx` | analysis/local 与有效 strong snapshot 的主题呈现；原文 SSR |
 | `components/university-ai-tools.tsx` | 获取条件与官方原文 **两个独立入口、两个浮层**；无切换 Tab |
 | `components/policy-v6-claim-groups.tsx`、`policy-v6-sources.tsx` | 条款分类浮层和来源网格 |
@@ -113,8 +141,8 @@ python3 scripts/prepare-v6-local-bundle.py \
   --output "$V6_NEW_VIEW_JSON"
 
 pnpm --filter @uapt/web typecheck
-pnpm exec tsx --tsconfig apps/web/tsconfig.json --test \
-  tests/policy-v6-bundle.test.ts tests/policy-v6.test.tsx tests/policy-v6-local-evidence.test.tsx
+pnpm test:v6-template
+pnpm exec tsx --tsconfig apps/web/tsconfig.json --test tests/policy-v6-bundle.test.ts
 pnpm check
 git diff --check
 ```
@@ -126,8 +154,8 @@ git diff --check
 ## 响应式与图像规范
 
 - 按内容容器宽度，不按“手机/iPad”用户代理。工具最大列数 2 → 3（640px）→ 4（900px）→ 5（1180px），实际工具少则不生成空卡；默认显示当前一行，只有更多工具或 scopedTools 才显示展开按钮。
-- 主题文字完整显示、不 ellipsis；图框 16:9 contain，不裁嵌字。同一网格行用现有 stretch/flex 对齐图片和操作基线，短文可以留空，不用伪造内容填高度。保留图片原始尺寸/比例字段。
-- 主题操作只留“查看证据 / 复制链接 / 官方来源”，flex-wrap 窄时自然两行，不压到文字不可读；浮层不把下一行推开。
+- 主题文字完整显示、不 ellipsis；图框 16:9 contain，不裁嵌字。主题采用自然高度双列，窄屏单列；不强制等高，不用伪造内容填高度。保留图片原始尺寸/比例字段。
+- 主题操作只留“查看证据 / 官方来源 / 复制图标”，320px 保持同一行且可读，复制目标至少44px；阅读面板不推挤正文。
 - 条款分类窄两列、容器850px三列；条款浮层内容窄一列、700px两列。清单620px两列；来源540px两列、850px三列。FAQ宽两列、窄一列。
 - 新图通常不必要。已审核 Hero/Do/Don't优先复用；主题共享中性图可复用。学校特定图须绑定新 fingerprint，不沿用旧特定范围文案。后半段不配图。
 - 校徽按验收 registry 读取小图/hero两档，保留完整字标；小图 lazy、Hero eager。QS表格行号不能作为校徽身份。未验收使用建筑图标。
@@ -232,7 +260,7 @@ PDF 从同一保存原件完成文件类型检查、原始哈希、文本提取�
 
 - 唯一共享实现：`policy-v6-compact-guide.tsx`、`policy-v6-record-topics.tsx` 与 `policy-v6.css`；`data-ui-experience=compact-evidence`。不得复制帝国理工的学校规则、期限或 JSX 给其他学校。历史 Imperial import 路径仅作兼容导出。
 - 身份标题后只保留低调的“独立整理 · 免费开放 · 非学校官方页面”；不恢复已移除的翻译免责声明、开发解释、额外 Banner、无意义分隔线。
-- 四问覆盖作业、工具、研究与教学，无序号；四问下紧凑提交检查入口。六主题宽屏等高、手机单列自然高度；中文导读与完整英文范围说明分层，原文直接从证据入口阅读。
+- 四问覆盖作业、工具、研究与教学，无序号；四问下紧凑提交检查入口。六主题宽屏等高、手机单列自然高度；中文导读与完整英文范围说明分层，原文直接从证据入口阅读。 **此条为 2026-10-15 历史实现；新接入改按顶部 2026-10-26 共享阅读模板执行。**
 - 不显示任何情境插画及配图按钮，不生成新图，不删除历史资产或审核记录。
 - 主题之后、工具之前显示紧凑 Do/Don't 与 AI 疑虑入口。要求/来源建议/本站建议独立标识，标签至少 12px、证据触控区域至少 44px；正文深色，红绿用于标题和边线。有条件为黄，受限为红，建议为绿，未提及为灰；颜色不改变状态或规范强度。
 - 疑虑详情支持 `?guide=concerns`、关闭返回、复制链接、打印；手机全屏。各组只呈现本校已发布的适用程序；无已核实程序/期限显示证据缺口，禁止复制 MIT COD、Imperial D17 或其他学校期限。MIT 原有补充对象维持 `published_supplement` 身份和 scope/deadline 全文。

@@ -93,3 +93,12 @@ test('English source content remains lang=en under Chinese UI fallback',()=>{
   assert.equal(isPolicyV6Preview(slug,'v6','production'),false);
  }
 });
+
+test('Chinese tool prose binds the unchanged canonical tool and rejects stale or orphan copy',()=>{
+ const f=fixture() as any;
+ const tool={universitySlug:'test-school',universityName:'Test School',rawToolName:'Microsoft Copilot',tool:'microsoft_copilot',description:'Official tool access is conditional.',howToObtain:'Use the university account.',costToUser:'Cost not established.',availability:'conditionally_allowed',endorsementType:'officially_endorsed',reviewState:'agent_reviewed',evidence:[{sourceUrl:'https://example.edu/tools',evidenceSnippet:'Original English quotation.',snapshotHash:'c'.repeat(64),reviewState:'agent_reviewed'}]};
+ f.tools=[tool];f.toolDisplayCopy={zh:{'Microsoft Copilot':{basisSha256:createHash('sha256').update(JSON.stringify(tool)).digest('hex'),description:'机构工具访问附带条件。',howToObtain:'使用大学账户。',costToUser:'费用尚未核实。'}}};
+ const parsed=parse(f);assert.deepEqual(parsed.tools,[tool]);assert.equal(parsed.toolDisplayCopy?.zh['Microsoft Copilot'].howToObtain,'使用大学账户。');
+ tool.howToObtain='Different account condition.';assert.throws(()=>parse(f),/Unbound Chinese tool display copy/);
+ tool.howToObtain='Use the university account.';f.toolDisplayCopy.zh['Unlisted tool']=f.toolDisplayCopy.zh['Microsoft Copilot'];assert.throws(()=>parse(f),/Unbound Chinese tool display copy/);
+});

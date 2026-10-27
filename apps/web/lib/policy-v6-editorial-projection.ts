@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import {getLocalV6StudentActions, type LocalV6Bundle} from './policy-v6-bundle';
+import {V6_REQUIRED_TOPIC_KEYS} from './policy-v6-completeness';
 
 export interface V6EditorialProjection {
   schemaVersion: 'uapt-v6-editorial-projection-v1';
@@ -39,7 +40,8 @@ export function validateV6EditorialProjection(view: LocalV6Bundle) {
     throw Error('Editorial projection identity/evidence drift');
   }
   const topics = [...view.school.topics, ...view.school.additionalTopics];
-  if (topics.length !== 9 || topics.some(topic =>
+  if (V6_REQUIRED_TOPIC_KEYS.some(key => !topics.some(topic => topic.key === key)) ||
+      new Set(topics.map(topic => topic.key)).size !== topics.length || topics.some(topic =>
     !view.topicSummaries?.[topic.key]?.en ||
     !/[\u3400-\u9fff]/.test(view.topicSummaries?.[topic.key]?.zh ?? ''))) {
     throw Error('Nine bilingual editorial summaries required');

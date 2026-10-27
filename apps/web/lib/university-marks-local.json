@@ -5869,5 +5869,37 @@
       "legacyGeometryCorrection": false,
       "nativeRasterUpscaleAllowed": false
     }
+  },
+  "titleEntries": {
+    "university-of-limerick": {
+      "file": "1da62d45708a3e8720ae3811fc59110a8d389c00c14b20b4cf910b76e72cd37a.webp",
+      "width": 192,
+      "height": 88,
+      "minimumWidth": 48,
+      "maximumWidth": 96,
+      "actual32Accepted": false,
+      "backing": "dark",
+      "role": "title",
+      "limitations": [
+        "dark_required"
+      ],
+      "publicationApproved": false,
+      "publicUseReviewRequired": true
+    },
+    "keele-university": {
+      "file": "b986e3f60c4a44a2c482cf16565d5227bec657db823cbd6448d5c8f69f085fe5.webp",
+      "width": 192,
+      "height": 51,
+      "minimumWidth": 48,
+      "maximumWidth": 96,
+      "actual32Accepted": false,
+      "backing": "light",
+      "role": "title",
+      "limitations": [
+        "wordmark_not_compact"
+      ],
+      "publicationApproved": false,
+      "publicUseReviewRequired": true
+    }
   }
 }

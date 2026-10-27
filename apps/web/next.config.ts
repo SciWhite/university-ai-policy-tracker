@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const publicDataTraceFiles = [
   ".runtime-data/**/*",
+  "../../data/ranking-browser/*.json",
   "../../data/public-v6-pages/sharded/**/*.json",
   "../../data/public-v6-records/sharded/**/*.json",
   "../../data/public-v6-history/sharded/**/*.json",
@@ -29,10 +30,10 @@ const nextConfig: NextConfig = {
     webpackMemoryOptimizations: true,
     webpackBuildWorker: true,
     staticGenerationMaxConcurrency: 1,
-    staticGenerationMinPagesPerWorker: 50
+    staticGenerationMinPagesPerWorker: 50,
   },
   turbopack: {
-    root: workspaceRoot
+    root: workspaceRoot,
   },
   transpilePackages: ["@uapt/db", "@uapt/shared"],
   outputFileTracingRoot: workspaceRoot,
@@ -45,10 +46,15 @@ const nextConfig: NextConfig = {
     "/[locale]/changes/[releaseId]": publicDataTraceFiles,
     "/[locale]/changes/[releaseId]/[slug]": publicDataTraceFiles,
     "/[locale]/datasets": publicDataTraceFiles,
+    "/rankings": publicDataTraceFiles,
+    "/rankings/[slug]": publicDataTraceFiles,
+    "/universities": publicDataTraceFiles,
+    "/[locale]/rankings": publicDataTraceFiles,
+    "/[locale]/rankings/[slug]": publicDataTraceFiles,
     "/[locale]/universities": publicDataTraceFiles,
     "/[locale]/universities/[slug]": publicDataTraceFiles,
-    "/api/public/v1/**/*": publicDataTraceFiles
-  }
+    "/api/public/v1/**/*": publicDataTraceFiles,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");

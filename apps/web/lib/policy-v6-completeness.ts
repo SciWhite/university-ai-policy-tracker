@@ -31,6 +31,11 @@ export function validateV6Completeness(input: V6SchoolInput, locale: SupportedLo
   if (!view?.studentActions || !view.topicSummaries || !view.topicScopes) fail('explicit bilingual summaries, scopes and studentActions required');
   const bundle = view!;
   const guide = bundle.studentActions!;
+  for (const key of ['investigation','outcomes','appeal'] as const) {
+    const ids = guide.procedures?.[key];
+    if (!Array.isArray(ids)) fail(`${key}: procedure evidence array required`);
+    if (ids.some(id => !text(id) || !guide.claims?.[id]?.evidence?.length)) fail(`${key}: dangling procedure evidence`);
+  }
   const topics = [...input.school.topics,...input.school.additionalTopics];
   if (V6_REQUIRED_TOPIC_KEYS.some(key => !topics.some(t => t.key === key))) fail('six core and three supplementary topics required');
   const language = locale === 'zh' ? 'zh' : 'en';

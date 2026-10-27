@@ -1,3 +1,5 @@
+import { rankingBrowserCopy } from "@/lib/ranking-browser-copy";
+import type { DiscoverySearchParams } from "@/lib/discovery-query";
 import { RankingEditionView } from "@/components/ranking-edition-view";
 import {
   getRankingLandingSpec,
@@ -7,9 +9,10 @@ import { rankingsCopy } from "@/lib/rankings-copy";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 interface RankingPageProps {
+  searchParams?: Promise<DiscoverySearchParams>;
   params: Promise<{ locale?: string; slug: string }>;
 }
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const dynamicParams = false;
 export const revalidate = false;
 export function generateStaticParams() {
@@ -20,23 +23,32 @@ export async function generateMetadata({ params }: RankingPageProps) {
   const locale = normalizeLocale(localeParam),
     spec = getRankingLandingSpec(slug),
     copy = rankingsCopy(locale);
-  const title = spec ? `${spec.label} ${copy.heading}` : copy.title;
+  const title = spec
+    ? `${spec.label} · ${rankingBrowserCopy(locale).rankings}`
+    : copy.title;
   const alternates = getLocalizedAlternates(`/rankings/${slug}`, locale);
   return {
     title: `${title} | University AI Policy Tracker`,
-    description: copy.lead,
+    description: rankingBrowserCopy(locale).rankingNote,
     alternates,
     openGraph: {
       title,
-      description: copy.lead,
+      description: rankingBrowserCopy(locale).rankingNote,
       url: String(alternates.canonical),
       type: "website",
     },
   };
 }
-export default async function RankingPage({ params }: RankingPageProps) {
+export default async function RankingPage({
+  params,
+  searchParams,
+}: RankingPageProps) {
   const { slug, locale: localeParam } = await params;
   return (
-    <RankingEditionView locale={normalizeLocale(localeParam)} slug={slug} />
+    <RankingEditionView
+      locale={normalizeLocale(localeParam)}
+      slug={slug}
+      searchParams={(await searchParams) ?? {}}
+    />
   );
 }

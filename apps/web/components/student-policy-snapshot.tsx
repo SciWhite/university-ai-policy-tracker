@@ -1,3 +1,5 @@
+import { PolicyV6TopicEvidence } from "./policy-v6-topic-evidence";
+import type { LabTopic } from "@/lib/policy-v6";
 import { PolicyV6Artwork } from './policy-v6-artwork';
 import { PolicyV6TopicControls } from './policy-v6';
 import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
@@ -482,6 +484,16 @@ function SnapshotDimensionCard({
       .filter((claim) => dimension.basis.claimIds.includes(claim.id ?? ""))
       .map((claim) => [claim.id, claim])
   );
+  const evidenceTopic: LabTopic = {
+    key: dimension.key, title: t(copy.title), status: dimension.status,
+    statusLabel: t(statusCopy[dimension.status]), summary: dimension.summary,
+    scope: scopeCopy[snapshot.scope], basisKind: "strong_snapshot", actions: [],
+    sources: dimension.basis.sources.map(s => ({ url: s.sourceUrl, hash: s.sourceSnapshotHash })),
+    claims: [...basisClaims.values()].map(c => ({ id: c.id ?? "", text: c.claimText, checkedAt: c.lastCheckedAt,
+      evidence: c.evidence.map(e => ({ quote: e.evidenceSnippet, url: e.sourceUrl,
+        title: e.attribution.citationTitle, language: e.sourceLanguage ?? "und",
+        location: e.snippetLocation, retrievedAt: e.retrievedAt, hash: e.sourceSnapshotHash })) })),
+  };
   const sourceAttributions = dimension.basis.sources.map((source) => ({
     ...source,
     title:
@@ -544,7 +556,7 @@ function SnapshotDimensionCard({
         </details>
       ) : null}
 
-      {uiLab ? <PolicyV6TopicControls dimensionKey={dimension.key} originalEvidence={        <div className="student-snapshot-card__evidence" >
+      {uiLab ? <PolicyV6TopicControls dimensionKey={dimension.key} scopeDetail={<p>{t("Scope")}: {t(scopeCopy[snapshot.scope])}</p>} originalEvidence={        <div className="student-snapshot-card__evidence" >
           {compact ? (
             <div className="student-snapshot-card__full-context">
               <p>{dimension.summary}</p>
@@ -565,43 +577,7 @@ function SnapshotDimensionCard({
               </div>
             </div>
           ) : null}
-          {basisClaims.size ? (
-            <div>
-              <h4>{t("Reviewed evidence")}</h4>
-              <div className="student-evidence-list">
-                {[...basisClaims.values()].map((claim) => (
-                  <article className="student-evidence" key={claim.id}>
-                    <div className="student-evidence__heading">
-                      <h5>{claim.claimText}</h5>
-                      <StateLabel locale={locale} prefix="" reviewState={claim.reviewState} />
-                    </div>
-                    {claim.evidence.map((evidence, index) => (
-                      <blockquote
-                        className="student-evidence__quote"
-                        key={`${evidence.sourceUrl}:${index}`}
-                      >
-                        {evidence.evidenceSnippet}
-                        <footer>
-                          <a
-                            data-analytics-entity-slug={entitySlug}
-                            data-analytics-event="snapshot_evidence"
-                            data-analytics-snapshot-dimension={dimension.key}
-                            data-analytics-snapshot-evidence="claim"
-                            data-analytics-source-domain={getSourceDomain(evidence.sourceUrl)}
-                            href={evidence.sourceUrl}
-                          >
-                            {evidence.attribution.citationTitle}
-                          </a>
-                        </footer>
-                      </blockquote>
-                    ))}
-                  </article>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <p className="muted">{t("No reviewed evidence is included in this dimension.")}</p>
-          )}
+          <PolicyV6TopicEvidence topic={evidenceTopic} locale={locale} />
 
           {sourceAttributions.length ? (
             <div>

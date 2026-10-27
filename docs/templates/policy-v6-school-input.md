@@ -2,6 +2,14 @@
 
 填写后交给集成线程。不是公开 schema，不是审批。
 
+## 共享阅读模板输入要求（2026-10-26）
+
+复用共享 V6 阅读组件，不复制 Harvard JSX/CSS 或其政策内容。固定学生四问为作业/披露/数据/工具，复用本校对应状态；六核心和补充主题的完整摘要、范围、条件、FAQ 和行动不为布局压缩而改写。
+
+逐条 evidence 提供其原始 `hash` / `sourceSnapshotHash`、URL、原文、语言、定位和取回日期。已绑定版本保留；缺版本只在完整 Claim/evidence 身份与原始记录精确匹配时补齐，不从主题来源列表或同 URL 猜测。完整来源引文与 canonical 分段主张可分别保留其证据身份；未知版本明确记录且不得合并。共享展示改动不重写内容包或批准 hash。
+
+预览统一使用 `?layout=v6`。自然高度卡片、覆盖阅读面板、来源版本详情、日期、手机单行操作、深链/搜索/打印由共享组件提供。学校只填写真实数据和可选通用模块，HLS/HMS 等例外不得跨校复用。
+
 ## 新增或修改内容的强制合同（2026-10-25）
 
 所有新增或修改学校输入必须通过共享 `validateV6Completeness`，由发布打包和实际页面入口共同调用。完整输入必须显式提供九主题的 EN/ZH 摘要、范围、标题、状态和 `studentActions`；不能通过省略可选字段绕开审核。Do/Don't 各 1–3 项，逐项绑定本校有效依据并区分 requirement/source_guidance/site_advice。缺证据写具体 gap，不编许可，也不为凑满三项编动作。
@@ -68,3 +76,7 @@ detailEntryCoverage: <existing card/evidence/changes entry -> full public materi
 2026-10-15 模板补充：页面采用共享 compact-evidence 实现。历史 local-view 转换合同中的 `hero.images` 等字段只在需要维持旧输入兼容时保留原有值，不再作为页面展示或新图生成要求；缺图不得编造资源，新形输入仍须显式适配。当前行动/中文导读投影另绑定学校 fingerprint、recordSha256、英文主题正文和逐项证据，不通过自动重算 pin 获得批准。学校按公开 V6 slugs 接入，V5 slugs 维持原布局。
 
 - 正式首页：学校级 URL（非政策/IT/院系页）、独立联网核对凭据；填写 shared university-homepages registry，标题校徽使用共享链接组件。
+
+## 统一校徽角色交付（2026-10-26）
+
+遵循 [校徽合同](../policy-v6-mark-integration.md) 和 [当前入口](../university-marks-current.md)。`universityMarks` 为私有选择记录：canonicalSlug、qsCoreId、manifestSha256、title/compact 各自角色/来源/变体 hash、实际 width/height、CSS slot/DPR、requiredBacking、minimum/maximum/原生限制、publicationApproved、保留现有资源或 fallback 理由。公开资源不因 private available 自动替换；单校任务不写共享注册表。

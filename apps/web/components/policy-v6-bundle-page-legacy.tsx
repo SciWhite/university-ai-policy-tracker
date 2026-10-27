@@ -1,3 +1,4 @@
+import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import {PolicyV6Changes} from "./policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
@@ -27,6 +28,7 @@ export function PolicyV6BundlePageLegacy({ university, data, view, locale, relat
   university: { slug: string; name: string; region: string; country: string };
   data: PolicyV6Data; view: LocalV6Bundle; locale: SupportedLocale; relatedUniversities: RelatedUniversityRef[];
 }) {
+  data = bindPolicyV6ReadingEvidence(data, view.claims);
   const t = (s: string) => translate(s, locale);
   const scopedNames = new Set(view.scopedToolNames ?? []);
   const scopedTools = view.tools.filter((tool) => scopedNames.has(tool.rawToolName));
