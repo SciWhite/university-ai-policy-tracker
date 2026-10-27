@@ -788,7 +788,7 @@
     font-size: 0.73rem;
     line-height: 1.5;
   }
-  .discovery-browser .ranking-browser-review {
+  .discovery-browser .ranking-v6-table td.ranking-browser-review {
     display: flex !important;
     align-items: center;
     flex-wrap: wrap;
@@ -803,7 +803,7 @@
     margin: 0;
     font-size: 0.66rem;
   }
-  .discovery-browser .ranking-v6-row-actions {
+  .discovery-browser .ranking-v6-table td.ranking-v6-row-actions {
     display: flex !important;
     align-items: center;
     justify-content: space-between;
