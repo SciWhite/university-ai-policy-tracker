@@ -1,0 +1,13 @@
+{
+  "extends": "../apps/web/tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "paths": {
+      "@/*": ["../apps/web/*"],
+      "@uapt/db": ["../packages/db/src/index.ts"],
+      "@uapt/shared": ["../packages/shared/src/index.ts"]
+    }
+  },
+  "include": ["validate-web-runtime-data.ts"],
+  "exclude": ["../node_modules"]
+}
