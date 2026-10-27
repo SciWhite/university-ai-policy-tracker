@@ -1,4 +1,4 @@
-import { getChangeRecords } from "@/lib/change-records";
+import { getChangeIndexData } from "@/lib/change-records";
 import { toAtomDate, xmlEscape, xmlResponse } from "@/lib/feed";
 import { getReportsIndex } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -6,9 +6,9 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 export const dynamic = "force-static";
 
 export async function GET() {
-  const [reports, changes] = await Promise.all([
+  const [reports, changeIndex] = await Promise.all([
     getReportsIndex(),
-    getChangeRecords()
+    getChangeIndexData()
   ]);
   const siteUrl = getAbsoluteSiteUrl("/");
   const feedUrl = getAbsoluteSiteUrl("/feeds/atom.xml");
@@ -19,7 +19,8 @@ export async function GET() {
     updatedAt: report.publishedAt,
     summary: report.description
   }));
-  const changeEntries = changes.slice(0, 30).map((record) => ({
+  // The feed needs published index fields, not every historical Claim diff.
+  const changeEntries = changeIndex.data.records.slice(0, 30).map((record) => ({
     id: getAbsoluteSiteUrl(record.changeUrl),
     title: `${record.name} AI policy change record`,
     url: getAbsoluteSiteUrl(record.changeUrl),

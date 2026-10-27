@@ -23,6 +23,9 @@ test("isolated production loaders preserve canonical records, repairs and frozen
     t.diagnostic(JSON.stringify(receipt));
     assert.equal(receipt.status,"PASS");assert.equal(receipt.liveFetchDisabled,true);
     assert.ok(receipt.analysisControls.includes("massachusetts-institute-of-technology"));
+    assert.equal(receipt.atomFeed.publishedIndexMatched,true);
+    assert.ok(receipt.atomFeed.records > 0 && receipt.atomFeed.records <= 30);
+    assert.ok(receipt.atomFeed.milliseconds < 120000);
   } finally {await rm(root,{recursive:true,force:true});}
 });
 
