@@ -1,4 +1,4 @@
-export { PrismaClient } from "@prisma/client";
+export { PrismaClient } from "./prisma-client.js";
 export {
   disconnectPrismaClient,
   getPrismaClient

@@ -27,7 +27,7 @@ import {
 import {
   CanonicalEntityType as PrismaCanonicalEntityType,
   type PrismaClient
-} from "@prisma/client";
+} from "./prisma-client.js";
 import { getPrismaClient } from "./client.js";
 import type { Prisma } from "./prisma-client.js";
 
@@ -50,7 +50,7 @@ const publicUniversityInclude = {
       }
     }
   }
-} as any;
+} satisfies Prisma.UniversityInclude;
 
 const policyClaimInclude = {
   evidence: {
@@ -61,24 +61,24 @@ const policyClaimInclude = {
       sourceSnapshot: true
     }
   }
-} as any;
+} satisfies Prisma.PolicyClaimInclude;
 
-type PublicUniversityRecord = any;
+type PublicUniversityRecord = Prisma.UniversityGetPayload<{ include: typeof publicUniversityInclude }>;
 
-type StoredPolicyClaim = any;
+type StoredPolicyClaim = Prisma.PolicyClaimGetPayload<{ include: typeof policyClaimInclude }>;
 
 export async function getPublicUniversitySummaryBySlug(
   slug: string,
   client: PrismaClient = getPrismaClient()
 ): Promise<PublicEntitySummary | null> {
-  const university = (await client.university.findUnique({
+  const university = await client.university.findUnique({
     where: { slug },
     include: publicUniversityInclude
-  })) as any;
+  });
 
   if (!university) return null;
 
-  const canonicalEntity = (await client.canonicalEntity.findUnique({
+  const canonicalEntity = await client.canonicalEntity.findUnique({
     where: {
       type_slug: {
         type: PrismaCanonicalEntityType.UNIVERSITY,
@@ -91,35 +91,35 @@ export async function getPublicUniversitySummaryBySlug(
         include: policyClaimInclude
       }
     }
-  })) as any;
+  });
 
   const canonicalUrl =
     canonicalEntity?.canonicalUrl ?? buildCanonicalUniversityUrl(university.slug);
-  const storedClaims = ((canonicalEntity?.policyClaims ?? []) as any[])
-    .map((claim: any) => mapStoredClaim(university.slug, claim))
+  const storedClaims = (canonicalEntity?.policyClaims ?? [])
+    .map((claim) => mapStoredClaim(university.slug, claim))
     .filter(Boolean) as PolicyClaim[];
   const claims = storedClaims.length
     ? storedClaims
     : buildFallbackClaims(university, canonicalUrl);
   const officialSources = mergeOfficialSources([
     ...university.policySources
-      .map((source: any) => buildSourceAttribution(university, source))
-      .filter((source: any): source is SourceAttribution => Boolean(source)),
-    ...claims.flatMap((claim: any) =>
-      claim.evidence.map((evidence: any) => evidence.attribution)
+      .map((source) => buildSourceAttribution(university, source))
+      .filter((source): source is SourceAttribution => Boolean(source)),
+    ...claims.flatMap((claim) =>
+      claim.evidence.map((evidence) => evidence.attribution)
     )
   ]);
   const lastCheckedAt = latestIso([
-    ...university.policySources.map((source: any) =>
+    ...university.policySources.map((source) =>
       source.lastCheckedAt?.toISOString()
     ),
-    ...claims.map((claim: any) => claim.lastCheckedAt)
+    ...claims.map((claim) => claim.lastCheckedAt)
   ]);
   const lastChangedAt = latestIso([
-    ...university.policySources.map((source: any) =>
+    ...university.policySources.map((source) =>
       source.lastChangedAt?.toISOString()
     ),
-    ...claims.map((claim: any) => claim.lastChangedAt)
+    ...claims.map((claim) => claim.lastChangedAt)
   ]);
 
   return publicEntitySummarySchema.parse({
@@ -183,7 +183,7 @@ export async function listPublicUniversitySummaries(
 
   return (
     await Promise.all(
-      universities.map((university: any) =>
+      universities.map((university) =>
         getPublicUniversitySummaryBySlug(university.slug, client)
       )
     )
@@ -207,20 +207,20 @@ export async function listPublicRecentChanges(
   limit = 25,
   client: PrismaClient = getPrismaClient()
 ): Promise<PublicRecentChangesResponse> {
-  const changedSources = (await client.policySource.findMany({
+  const changedSources = await client.policySource.findMany({
     where: { active: true },
     orderBy: [{ lastChangedAt: "desc" }, { lastCheckedAt: "desc" }],
     take: limit * 2,
     include: {
       university: true
     }
-  })) as any[];
+  });
   const slugs = Array.from(
-    new Set(changedSources.map((source: any) => source.university.slug))
+    new Set(changedSources.map((source) => source.university.slug))
   ).slice(0, limit);
   const summaries = (
     await Promise.all(
-      slugs.map((slug: any) => getPublicUniversitySummaryBySlug(slug, client))
+      slugs.map((slug) => getPublicUniversitySummaryBySlug(slug, client))
     )
   ).filter((summary): summary is PublicEntitySummary => Boolean(summary));
 
@@ -262,8 +262,8 @@ function mapStoredClaim(
   if (claim.reviewState === "REJECTED") return null;
 
   const evidence = claim.evidence
-    .map((item: any) => mapStoredEvidence(item))
-    .filter((item: any): item is ClaimEvidence => Boolean(item));
+    .map((item) => mapStoredEvidence(item))
+    .filter((item): item is ClaimEvidence => Boolean(item));
 
   if (!evidence.length) return null;
 
@@ -341,7 +341,7 @@ function buildFallbackClaims(
   university: PublicUniversityRecord,
   canonicalUrl: string
 ): PolicyClaim[] {
-  return university.policySources.flatMap((source: any) => {
+  return university.policySources.flatMap((source) => {
     const snapshot = source.snapshots[0];
     if (!snapshot || !isSnapshotHash(snapshot.contentHash)) return [];
 
@@ -382,7 +382,7 @@ function buildFallbackClaims(
     return [
       {
         ...claim.data,
-        evidence: claim.data.evidence.map((evidence: any) => ({
+        evidence: claim.data.evidence.map((evidence) => ({
           ...evidence,
           attribution: {
             ...evidence.attribution,

@@ -153,7 +153,7 @@ export async function listAnalyticsEvents(
     orderBy: [{ createdAt: "asc" }, { id: "asc" }]
   });
 
-  return rows.map((row: any) => ({
+  return rows.map((row) => ({
     countryCode: row.countryCode,
     createdAt: row.createdAt.toISOString(),
     copyTarget: row.copyTarget,

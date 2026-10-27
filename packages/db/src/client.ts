@@ -1,9 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "./prisma-client.js";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { getDatabaseConnection } from "./connection.js";
 
 let prisma: PrismaClient | undefined;
 
 export function getPrismaClient(): PrismaClient {
-  prisma ??= new PrismaClient();
+  if (!prisma) {
+    const { pool, schema, transactionOptions } = getDatabaseConnection();
+    prisma = new PrismaClient({ adapter: new PrismaPg(pool, { schema }), transactionOptions });
+  }
   return prisma;
 }
 
