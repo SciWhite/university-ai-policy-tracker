@@ -1,6 +1,6 @@
 {
   "schemaVersion": "uapt-ranking-identity-links-v1",
-  "scope": "Explicit local candidate identity links only. No policy review, date change or publication approval.",
+  "scope": "Explicit publisher-record identity links. Policy review states and dates are unchanged; identity linking does not grant policy approval.",
   "links": [
     {
       "edition": "qs-2027",
