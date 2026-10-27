@@ -1,6 +1,18 @@
 import { z } from "zod";
-import { policyClaimSchema, policySnapshotSchema, universityToolRecordSchema } from "@uapt/shared";
+import { claimEvidenceSchema, policyClaimSchema, policySnapshotSchema, sourceAttributionSchema, universityToolRecordSchema } from "@uapt/shared";
 import { topicSchema } from "./catalog.js";
+
+// Recorded HTTP URLs use WHATWG URL validation, which accepts bracketed query
+// parameters. JSON Schema's RFC URI format rejects those unchanged source URLs.
+// Keep runtime URL validation and an HTTP prefix contract without rewriting evidence.
+const recordedSourceUrl = z.string().url().regex(/^https?:\/\//).meta({ format: undefined });
+const recordedEvidence = claimEvidenceSchema.extend({
+  sourceUrl: recordedSourceUrl,
+  attribution: sourceAttributionSchema.extend({
+    sourceUrl: recordedSourceUrl,
+    finalUrl: recordedSourceUrl.optional()
+  })
+});
 
 const base = {
   releaseId: z.string(),
@@ -35,7 +47,7 @@ export const policyOutput = z.object({
   claims: z.array(z.object({
     id: z.string(), claimType: policyClaimSchema.shape.claimType, text: z.string(),
     confidence: z.number(), reviewState: policyClaimSchema.shape.reviewState,
-    lastCheckedAt: z.string().datetime().optional(), trackerEvidenceUrl: z.string().url(), officialSourceUrls: z.array(z.string().url())
+    lastCheckedAt: z.string().datetime().optional(), trackerEvidenceUrl: z.string().url(), officialSourceUrls: z.array(recordedSourceUrl)
   })).optional(),
   tools: z.array(universityToolRecordSchema).optional(),
   totalToolRecords: z.number().int().nonnegative().optional(),
@@ -48,5 +60,5 @@ export const evidenceOutput = z.object({
   ...base,
   status: z.enum(["ok", "insufficient_evidence", "not_found"]),
   slug: z.string().optional(), trackerUrl: z.string().url().optional(), evidenceUrl: z.string().url().optional(),
-  claims: z.array(policyClaimSchema.extend({ trackerEvidenceUrl: z.string().url() })), missingClaimIds: z.array(z.string()).optional()
+  claims: z.array(policyClaimSchema.extend({ evidence: z.array(recordedEvidence).min(1), trackerEvidenceUrl: z.string().url() })), missingClaimIds: z.array(z.string()).optional()
 });

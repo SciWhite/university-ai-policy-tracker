@@ -9,8 +9,35 @@ import { loadCatalog, digest, eligibleClaims } from "../src/catalog.js";
 import { PolicyService } from "../src/policy.js";
 import { DailyTelemetry, retentionCutoff } from "../src/telemetry.js";
 import { createMcpHttpServer } from "../src/server.js";
+import { evidenceOutput, policyOutput } from "../src/output-schemas.js";
 
 const file = path.resolve(import.meta.dirname,"../.runtime-data/catalog.json");
+test("standard MCP clients accept original bracketed source URLs without rewriting evidence", async () => {
+  const catalog = await loadCatalog(file);
+  const p = new PolicyService(catalog);
+  const record = catalog.records.find(r => r.summary.entity.slug === "technical-university-of-munich")!;
+  const claim = record.summary.claims.find(c => c.evidence.some(e => e.sourceUrl.includes("[action]")))!;
+  assert.ok(claim);
+  const http = createMcpHttpServer(p, new DailyTelemetry());
+  await new Promise<void>(resolve => http.listen(0, "127.0.0.1", resolve));
+  const address = http.address(); assert.ok(address && typeof address !== "string");
+  const client = new Client({name: "uapt-original-source-url-regression", version: "1.0.0"});
+  try {
+    await client.connect(new StreamableHTTPClientTransport(new URL(`http://127.0.0.1:${address.port}/api/mcp`)));
+    const response = await client.callTool({name: "get_student_policy", arguments: {slug: record.summary.entity.slug}});
+    assert.ok(!response.isError);
+    const evidence = await client.callTool({name: "get_policy_evidence", arguments: {slug: record.summary.entity.slug, claim_ids: [claim.id]}});
+    const result = evidence.structuredContent as {claims: typeof record.summary.claims};
+    assert.deepEqual(result.claims[0].evidence, claim.evidence);
+    const invalidPolicy = structuredClone(p.policy(record.summary.entity.slug));
+    assert.ok("claims" in invalidPolicy);
+    invalidPolicy.claims![0].officialSourceUrls = ["not-a-url"];
+    assert.equal(policyOutput.safeParse(invalidPolicy).success, false);
+    const invalidEvidence = structuredClone(p.evidence(record.summary.entity.slug, [claim.id!]));
+    invalidEvidence.claims[0].evidence[0].sourceUrl = "https://";
+    assert.equal(evidenceOutput.safeParse(invalidEvidence).success, false);
+  } finally { await client.close(); await new Promise<void>(resolve => http.close(() => resolve())); }
+});
 test("catalog contains only published reviewed, attributable evidence", async () => {
   const c = await loadCatalog(file);
   assert.ok(c.records.length > 800, "All eligible published universities, not a top-100 whitelist");
