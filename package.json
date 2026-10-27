@@ -86,7 +86,9 @@
     "v6:pack": "tsx --tsconfig apps/web/tsconfig.json scripts/pack-v6-release.ts",
     "validate:v6-release": "tsc --noEmit -p scripts/tsconfig.v6.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-v6-release.ts",
     "validate:mcp-export": "tsc --noEmit -p scripts/tsconfig.mcp-export.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-mcp-export.ts",
-    "test:mcp-acceptance": "pnpm mcp:export && pnpm validate:mcp-export && pnpm test:mcp"
+    "test:mcp-acceptance": "pnpm mcp:export && pnpm validate:mcp-export && pnpm test:mcp",
+    "test:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && node --test tests/web-runtime-data.test.mjs",
+    "validate:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-web-runtime-data.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
