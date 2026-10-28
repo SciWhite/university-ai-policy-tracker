@@ -180,6 +180,13 @@ def run_job(job, timeout, backend="agy", config=None, thinking="high"):
     if backend == "openclaw": prompt += "\nRequired complete JSON schema:\n" + json.dumps(schema)
     prompt_sha = sha(prompt.encode())
     result_path = directory / "translations.json"
+    if directory.exists() and not result_path.exists():
+        previous = json.loads((directory / "receipt.json").read_text())
+        saved = json.loads((directory / "input.json").read_text())
+        if (previous.get("structuralStatus") != "FAIL" or previous.get("sourceSha256") != source_sha or
+                previous.get("locale") != locale or saved.get("strings") != units or saved.get("sourceIds") != ids):
+            raise ValueError("Existing interrupted candidate requires operator review: " + str(directory))
+        return previous  # Keep its evidence and defer it, rather than retrying in place.
     if result_path.exists():
         previous = json.loads((directory / "receipt.json").read_text())
         saved = json.loads((directory / "input.json").read_text())
@@ -339,9 +346,26 @@ def main():
     if args.limit_jobs:
         jobs = jobs[:args.limit_jobs]
     args.output.mkdir(parents=True, exist_ok=True)
-    completed, failures = [], []
+    completed, failures, pending = [], [], {}
+    backlog_path = args.output / "review-backlog.json"
+    backlog = {}
+    if backlog_path.exists():
+        saved = json.loads(backlog_path.read_text())
+        if saved.get("schemaVersion") != "uapt-translation-review-backlog-v1" or saved.get("sourceSha256") != source_sha:
+            raise ValueError("Review backlog has a different frozen source")
+        backlog = {item["job"]: item for item in saved["items"]}
+
+    def record_backlog(event, item):
+        with (args.output / "review-backlog-events.jsonl").open("a") as ledger:
+            ledger.write(json.dumps({"event": event, "recordedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), **item}) + "\n")
+
     def progress(stage):
-        state = {"stage": stage, "updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "backend": args.backend, "model": MODEL, "thinking": args.thinking, "reviewThinking": args.review_thinking, "implementationSha256": sha(pathlib.Path(__file__).read_bytes()), "sourceSha256": source_sha, "totalJobs": len(jobs), "completedJobs": len(completed), "completedStrings": sum(row.get("checkedStrings", row.get("translatedStrings", 0)) for row in completed), "failedJobs": failures, "concurrency": args.concurrency, "publicationApproved": False}
+        now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        pending_review = {"schemaVersion": "uapt-translation-review-backlog-v1", "sourceSha256": source_sha, "updatedAt": now, "items": list(backlog.values()), "publicationApproved": False}
+        temporary = args.output / "review-backlog.next.json"
+        temporary.write_text(json.dumps(pending_review, indent=2) + "\n")
+        temporary.replace(backlog_path)
+        state = {"stage": stage, "updatedAt": now, "backend": args.backend, "model": MODEL, "thinking": args.thinking, "reviewThinking": args.review_thinking, "implementationSha256": sha(pathlib.Path(__file__).read_bytes()), "sourceSha256": source_sha, "totalJobs": len(jobs), "completedJobs": len(completed), "completedStrings": sum(row.get("checkedStrings", row.get("translatedStrings", 0)) for row in completed), "failedJobs": failures, "deferredJobs": len(backlog), "deferredStrings": sum(row["strings"] for row in backlog.values()), "activeJobs": len(pending), "operatorRepairSlotReserved": (args.output / "OPERATOR_REPAIR_SLOT").exists(), "concurrency": args.concurrency, "publicationApproved": False}
         temporary = args.output / "progress.next.json"
         temporary.write_text(json.dumps(state, indent=2) + "\n")
         temporary.replace(args.output / "progress.json")
@@ -351,12 +375,18 @@ def main():
     progress("running")
     print(json.dumps({"event": "queue-started", "sourceSha256": source_sha, "locales": locales, "batchCount": len(batches), "jobCount": len(jobs), "concurrency": args.concurrency, "candidateOnly": True}), flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
-        pending = {}
         iterator = iter(jobs)
-        for _ in range(min(args.concurrency, len(jobs))):
-            job = next(iterator)
-            pending[pool.submit(generate_and_review, job, args.timeout, args.semantic_review, args.backend, args.openclaw_config, args.review_thinking, args.thinking)] = job
-        failed = False
+        def fill_pending():
+            # The operator can borrow one slot for a deferred repair while the
+            # other workers continue. Never launch the repair until progress
+            # confirms this reservation and the reduced active-job count.
+            limit = max(1, args.concurrency - int((args.output / "OPERATOR_REPAIR_SLOT").exists()))
+            while len(pending) < limit and not (args.output / "PAUSE").exists():
+                job = next(iterator, None)
+                if job is None: break
+                pending[pool.submit(generate_and_review, job, args.timeout, args.semantic_review, args.backend, args.openclaw_config, args.review_thinking, args.thinking)] = job
+        fill_pending()
+        progress("running_with_review_backlog" if backlog else "running")
         while pending:
             done, _ = concurrent.futures.wait(pending, return_when=concurrent.futures.FIRST_COMPLETED)
             for future in done:
@@ -365,18 +395,23 @@ def main():
                     receipt = future.result()
                 except Exception as error:
                     receipt = {"structuralStatus": "FAIL", "error": str(error)}
-                failed = failed or receipt["structuralStatus"] != "PASS"
-                if receipt["structuralStatus"] == "PASS": completed.append(receipt)
-                else: failures.append({"job": str(finished_job[0]), "error": receipt.get("error", "Output not accepted")})
-                progress("stopping_after_failure" if failed else "pausing" if (args.output / "PAUSE").exists() else "running")
-                if not failed and not (args.output / "PAUSE").exists():
-                    job = next(iterator, None)
-                    if job:
-                        pending[pool.submit(generate_and_review, job, args.timeout, args.semantic_review, args.backend, args.openclaw_config, args.review_thinking, args.thinking)] = job
-        if failed:
-            progress("failed_requires_review")
-            raise SystemExit("Stopped after an invalid output; inspect preserved evidence before scheduling further jobs")
-        progress("paused" if (args.output / "PAUSE").exists() else "complete")
+                key = str(finished_job[0])
+                if receipt["structuralStatus"] == "PASS":
+                    completed.append(receipt)
+                    resolved = backlog.pop(key, None)
+                    if resolved: record_backlog("resolved_after_validation", resolved)
+                else:
+                    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                    failure = {"job": key, "locale": finished_job[1], "batch": finished_job[0].name,
+                               "sourceSha256": source_sha, "strings": len(finished_job[2]),
+                               "error": receipt.get("error", "Output not accepted"),
+                               "firstFailedAt": backlog.get(key, {}).get("firstFailedAt", now), "lastFailedAt": now}
+                    backlog[key] = failure
+                    failures.append(failure)
+                    record_backlog("deferred_for_operator_review", failure)
+                fill_pending()
+                progress("pausing" if (args.output / "PAUSE").exists() else "running_with_review_backlog" if backlog else "running")
+        progress("paused" if (args.output / "PAUSE").exists() else "generation_finished_with_review_backlog" if backlog else "complete")
 
 
 if __name__ == "__main__":

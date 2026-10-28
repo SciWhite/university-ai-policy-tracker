@@ -2,6 +2,11 @@ import importlib.util
 import json
 import pathlib
 import tempfile
+import sys
+import contextlib
+import io
+import threading
+import time
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
@@ -153,6 +158,94 @@ class AgyOutputAcceptance(unittest.TestCase):
             self.assertEqual(model.call_count, 1)
             self.assertEqual(json.loads((directory / "numeric-repair/receipt.json").read_text())["structuralStatus"], "FAIL")
             self.assertTrue((directory / "numeric-repair/stdout.json").exists())
+
+    def test_queue_defers_failed_results_and_exceptions_but_dispatches_every_later_job(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            source = {"units": {batch.sha(text.encode()): {"source": text, "sourceSha256": batch.sha(text.encode())} for text in ["First display.", "Second display.", "Third display."]}}
+            source_path, output = root / "source.json", root / "out"
+            source_path.write_text(json.dumps(source))
+            argv = ["batch", "--source", str(source_path), "--output", str(output), "--locales", "ja,fr", "--batch-chars", "1", "--concurrency", "2", "--semantic-review"]
+            called = []
+            def generate(job, *args):
+                directory, locale = job[:2]
+                called.append((locale, directory.name))
+                directory.mkdir(parents=True, exist_ok=True)
+                (directory / "stdout.json").write_text('{"original":"preserved"}')
+                if directory.name == "batch-0000":
+                    if locale == "ja": raise ValueError("Synthetic incomplete model output")
+                    return {"structuralStatus": "FAIL", "error": "Synthetic unresolved semantic review"}
+                return {"structuralStatus": "PASS", "semanticStatus": "machine_review_complete", "checkedStrings": 1}
+            with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", side_effect=generate), contextlib.redirect_stdout(io.StringIO()):
+                batch.main()
+            self.assertEqual(len(called), 6)
+            progress = json.loads((output / "progress.json").read_text())
+            self.assertEqual(progress["stage"], "generation_finished_with_review_backlog")
+            self.assertEqual(progress["completedJobs"], 4)
+            self.assertEqual(progress["completedStrings"], 4)
+            self.assertEqual(progress["deferredJobs"], 2)
+            self.assertEqual(progress["deferredStrings"], 2)
+            backlog = json.loads((output / "review-backlog.json").read_text())
+            self.assertEqual(len(backlog["items"]), 2)
+            self.assertTrue(all(item["sourceSha256"] == batch.sha(source_path.read_bytes()) for item in backlog["items"]))
+            self.assertEqual((output / "ja/batch-0000/stdout.json").read_text(), '{"original":"preserved"}')
+            # Reconciliation only removes a deferred job after a successful validated result.
+            with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", return_value={"structuralStatus": "PASS", "semanticStatus": "machine_review_complete", "checkedStrings": 1}), contextlib.redirect_stdout(io.StringIO()):
+                batch.main()
+            progress = json.loads((output / "progress.json").read_text())
+            self.assertEqual(progress["stage"], "complete")
+            self.assertEqual(progress["completedJobs"], 6)
+            self.assertEqual(progress["deferredJobs"], 0)
+            events = [json.loads(line) for line in (output / "review-backlog-events.jsonl").read_text().splitlines()]
+            self.assertEqual(sum(event["event"] == "deferred_for_operator_review" for event in events), 2)
+            self.assertEqual(sum(event["event"] == "resolved_after_validation" for event in events), 2)
+
+    def test_explicit_pause_still_prevents_dispatch(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary); output = root / "out"; output.mkdir()
+            text = "Synthetic display."
+            source = root / "source.json"; source.write_text(json.dumps({"units": {batch.sha(text.encode()): {"source": text, "sourceSha256": batch.sha(text.encode())}}}))
+            (output / "PAUSE").write_text("Operator instruction")
+            with patch.object(sys, "argv", ["batch", "--source", str(source), "--output", str(output), "--locales", "ja"]), patch.object(batch, "generate_and_review", side_effect=AssertionError("Paused queue dispatched a job")), contextlib.redirect_stdout(io.StringIO()):
+                batch.main()
+            self.assertEqual(json.loads((output / "progress.json").read_text())["stage"], "paused_before_dispatch")
+
+    def test_operator_can_borrow_one_slot_while_remaining_jobs_continue(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary); output = root / "out"; output.mkdir()
+            text = "Synthetic display."
+            source = root / "source.json"; source.write_text(json.dumps({"units": {batch.sha(text.encode()): {"source": text, "sourceSha256": batch.sha(text.encode())}}}))
+            (output / "OPERATOR_REPAIR_SLOT").write_text("One operator repair in progress")
+            active, peak, calls = 0, 0, 0
+            lock = threading.Lock()
+            def generate(*args):
+                nonlocal active, peak, calls
+                with lock:
+                    active += 1; calls += 1; peak = max(peak, active)
+                time.sleep(0.02)
+                with lock: active -= 1
+                return {"structuralStatus": "PASS", "checkedStrings": 1}
+            argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja,fr,pl,es,nl,ms", "--concurrency", "4"]
+            with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", side_effect=generate), contextlib.redirect_stdout(io.StringIO()):
+                batch.main()
+            self.assertEqual(calls, 6)
+            self.assertLessEqual(peak, 3)
+            progress = json.loads((output / "progress.json").read_text())
+            self.assertTrue(progress["operatorRepairSlotReserved"])
+            self.assertEqual(progress["stage"], "complete")
+
+    def test_prior_failed_generation_is_deferred_with_its_original_error_without_model_calls(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = pathlib.Path(temporary)
+            job = self.reviewed_fixture(directory)
+            (directory / "translations.json").unlink()
+            receipt = json.loads((directory / "receipt.json").read_text())
+            receipt.update(structuralStatus="FAIL", error="Protected token mismatch: u0 ChatGPT Edu")
+            (directory / "receipt.json").write_text(json.dumps(receipt))
+            with patch.object(batch.subprocess, "run", side_effect=AssertionError("Unexpected model invocation")):
+                result = batch.run_job(job, 900, "openclaw", "unused", "low")
+            self.assertEqual(result["error"], receipt["error"])
+            self.assertEqual(result["structuralStatus"], "FAIL")
 
 
 if __name__ == "__main__":
