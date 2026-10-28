@@ -17,6 +17,7 @@ export interface ReadingTranslationBundle {
   recordSha256: string;
   originalEvidenceSha256: string;
   review: { status: "accepted"; receiptSha256: string };
+  protectedClaimIds: string[];
   requiredSourceHashes: string[];
   strings: Record<string, ReadingTranslation>;
 }
@@ -35,19 +36,31 @@ export type ReadingTranslationResult =
 const digest = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
 const sha = (value: unknown): value is string => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
 const safeSlug = (value: string) => /^(?:_shared|[a-z0-9]+(?:-[a-z0-9]+)*)$/.test(value);
+const protectedTokens = (text: string) => [...text.matchAll(/https?:\/\/[^\s<>]+|\{[^{}]+\}|\b[a-f0-9]{64}\b|\b[a-z]+(?:_[a-z]+)+\b/g)].map(match => match[0]).sort();
+const occurrences = (text: string, token: string) => text.split(token).length - 1;
+function literalNumbers(text: string, claimIds: readonly string[]): Map<string, number> {
+  for (const token of [...protectedTokens(text), ...claimIds].sort((a, b) => b.length - a.length)) text = text.split(token).join(" ");
+  const counts = new Map<string, number>();
+  for (const [number] of text.matchAll(/(?<![A-Za-z0-9_])\d+(?:[.,:/-]\d+)*(?![A-Za-z0-9_])/g)) counts.set(number, (counts.get(number) ?? 0) + 1);
+  return counts;
+}
 
-/** A display-only package: quotation, URL, ID, dates, approval and policy data never enter this map. */
+/** Display-only translations; original evidence and canonical records remain separate. */
 export function validateReadingTranslationBundle(value: ReadingTranslationBundle, expected: { sourceSha256: string; locale: ReadingLocale; slug: string }): ReadingTranslationBundle {
   if (value.schemaVersion !== "uapt-reading-translations-v1" || value.sourceSha256 !== expected.sourceSha256 || !sha(value.sourceSha256) || value.locale !== expected.locale || value.slug !== expected.slug || !safeSlug(value.slug) || !sha(value.recordSha256) || !sha(value.originalEvidenceSha256) || value.review?.status !== "accepted" || !sha(value.review.receiptSha256)) throw Error("Invalid translation identity or review");
+  if (!Array.isArray(value.protectedClaimIds) || new Set(value.protectedClaimIds).size !== value.protectedClaimIds.length || value.protectedClaimIds.some(id => typeof id !== "string" || !id || id.length > 300)) throw Error("Invalid protected Claim inventory");
   if (!Array.isArray(value.requiredSourceHashes) || new Set(value.requiredSourceHashes).size !== value.requiredSourceHashes.length || !value.requiredSourceHashes.length || !value.strings || typeof value.strings !== "object" || Array.isArray(value.strings)) throw Error("Invalid translation coverage");
   const keys = Object.keys(value.strings);
   if (keys.length !== value.requiredSourceHashes.length || value.requiredSourceHashes.some(key => !sha(key) || !Object.hasOwn(value.strings, key))) throw Error("Incomplete display translations");
   for (const [key, unit] of Object.entries(value.strings)) {
     if (!unit || key !== unit.sourceSha256 || typeof unit.source !== "string" || digest(unit.source) !== key || typeof unit.translation !== "string" || !unit.translation.trim() || /[\u202a-\u202e\u2066-\u2069]/u.test(unit.translation)) throw Error("Invalid translation source or text");
-    const protectedTokens = (text: string) => [...text.matchAll(/https?:\/\/[^\s<>]+|\{[^{}]+\}|\b(?:clm?|claim|cc)-[A-Za-z0-9_-]+|\b[a-f0-9]{64}\b|\b[a-z]+(?:_[a-z]+)+\b/g)].map(match => match[0]).sort();
     if (JSON.stringify(protectedTokens(unit.source)) !== JSON.stringify(protectedTokens(unit.translation))) throw Error("Translation changed protected tokens");
-    const numbers = (text: string) => [...text.matchAll(/\d+(?:[.,:/%-]\d+)*/g)].map(match => match[0]).sort();
-    if (JSON.stringify(numbers(unit.source)) !== JSON.stringify(numbers(unit.translation))) throw Error("Translation changed numeric facts");
+    for (const id of value.protectedClaimIds) if (occurrences(unit.source, id) !== occurrences(unit.translation, id)) throw Error("Translation changed protected Claim ID");
+    const sourceNumbers = literalNumbers(unit.source, value.protectedClaimIds), targetNumbers = literalNumbers(unit.translation, value.protectedClaimIds);
+    // Preserve each existing literal and its count, as the generator does. A
+    // reviewed word-to-digit rendering (three -> 3) may add a target numeral;
+    // its meaning is covered by the accepted, hash-bound semantic receipt.
+    for (const [number, count] of sourceNumbers) if (targetNumbers.get(number) !== count) throw Error("Translation changed numeric facts");
   }
   return value;
 }

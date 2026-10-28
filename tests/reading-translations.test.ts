@@ -10,8 +10,39 @@ const sha = (text: string) => createHash("sha256").update(text).digest("hex");
 // Synthetic fixtures verify transport/invariants only, never translation quality.
 function bundle(slug = "ucl"): ReadingTranslationBundle {
   const source = "Test display {name} conditionally_allowed";
-  return { schemaVersion: "uapt-reading-translations-v1", sourceSha256: "a".repeat(64), locale: "ar", slug, recordSha256: "b".repeat(64), originalEvidenceSha256: "c".repeat(64), review: { status: "accepted", receiptSha256: "d".repeat(64) }, requiredSourceHashes: [sha(source)], strings: { [sha(source)]: { source, sourceSha256: sha(source), translation: "Synthetic fixture {name} conditionally_allowed" } } };
+  return { schemaVersion: "uapt-reading-translations-v1", sourceSha256: "a".repeat(64), locale: "ar", slug, recordSha256: "b".repeat(64), originalEvidenceSha256: "c".repeat(64), review: { status: "accepted", receiptSha256: "d".repeat(64) }, protectedClaimIds: [], requiredSourceHashes: [sha(source)], strings: { [sha(source)]: { source, sourceSha256: sha(source), translation: "Synthetic fixture {name} conditionally_allowed" } } };
 }
+function displayPair(source: string, translation: string, claimIds: string[] = []) {
+  const value = bundle();
+  value.protectedClaimIds = claimIds;
+  value.requiredSourceHashes = [sha(source)];
+  value.strings = { [sha(source)]: { source, sourceSha256: sha(source), translation } };
+  return value;
+}
+test("reviewed word-number rendering may add a digit while existing numeric facts stay exact", () => {
+  const value = displayPair("Three scenarios with 2 conditions.", "Synthetic fixture: 3 scenarios with 2 conditions.");
+  assert.doesNotThrow(() => validateReadingTranslationBundle(value, value));
+  for (const target of ["Fixture: 3 conditions.", "Fixture: 2 conditions plus 2.", "Fixture without a count."]) {
+    const invalid = displayPair("Two scenarios with 2 conditions.", target);
+    assert.throws(() => validateReadingTranslationBundle(invalid, invalid), /numeric facts/);
+  }
+  const facts = "Rule 19 and 20; 12.50 per month; 2026-10-28.";
+  for (const target of [facts.replace("19", "18"), facts.replace("20", "twenty"), facts.replace("12.50", "12.00"), facts.replace("2026-10-28", "2026-10-29")]) {
+    const invalid = displayPair(facts, target);
+    assert.throws(() => validateReadingTranslationBundle(invalid, invalid), /numeric facts/);
+  }
+});
+test("frozen Claim IDs remain exact while ordinary claim-level prose can be localized", () => {
+  const source = "Use claim-level guidance for claim-ucl-001 and cl-ucl-record-a.";
+  const value = displayPair(source, "Synthetic guidance: claim-ucl-001; cl-ucl-record-a.", ["claim-ucl-001", "cl-ucl-record-a"]);
+  assert.doesNotThrow(() => validateReadingTranslationBundle(value, value));
+  for (const target of ["Fixture claim-ucl-002; cl-ucl-record-a.", "Fixture claim-ucl-001 twice claim-ucl-001; cl-ucl-record-a.", "Fixture claim-ucl-001."]) {
+    const invalid = displayPair(source, target, value.protectedClaimIds);
+    assert.throws(() => validateReadingTranslationBundle(invalid, invalid), /protected Claim ID/);
+  }
+  const invalid = { ...value, protectedClaimIds: undefined } as unknown as ReadingTranslationBundle;
+  assert.throws(() => validateReadingTranslationBundle(invalid, value), /Claim inventory/);
+});
 test("only complete, reviewed exact source strings enter a display bundle", () => {
   const value = bundle(), expected = { sourceSha256: value.sourceSha256, locale: value.locale, slug: value.slug };
   assert.doesNotThrow(() => validateReadingTranslationBundle(value, expected));

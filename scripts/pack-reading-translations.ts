@@ -7,7 +7,7 @@ import { validateReadingTranslationBundle, type ReadingTranslationBundle, type R
 interface SourceUse { slug: string; source?: string; sourceSha256?: string; substitutions?: Record<string, string> }
 interface Source {
   schemaVersion: string;
-  schools: { slug: string; recordSha256: string; originalEvidenceSha256: string }[];
+  schools: { slug: string; recordSha256: string; originalEvidenceSha256: string; publicClaimIds: string[] }[];
   units: Record<string, { source: string; sourceSha256: string; uses: SourceUse[] }>;
 }
 interface Delivery {
@@ -28,6 +28,10 @@ export async function packReadingTranslations(sourcePath: string, sourceSha256: 
   const source = JSON.parse(raw.toString("utf8")) as Source;
   const delivery = JSON.parse(await readFile(deliveryPath, "utf8")) as Delivery;
   if (source.schemaVersion !== "uapt-multilingual-source-v1" || !source.schools?.length || !source.units || new Set(source.schools.map(s => s.slug)).size !== source.schools.length) throw Error("Invalid source inventory");
+  if (source.schools.some(school => !Array.isArray(school.publicClaimIds) || school.publicClaimIds.some(id => typeof id !== "string" || !id || id.length > 300))) throw Error("Invalid frozen Claim inventory");
+  const claimIds = [...new Set(source.schools.flatMap(school => school.publicClaimIds))].sort((a, b) => b.length - a.length);
+  const claimIdPattern = claimIds.length ? new RegExp(claimIds.map(id => id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g") : undefined;
+  const claimIdsBySource = new Map<string, string[]>();
   if (delivery.schemaVersion !== "uapt-reviewed-translation-delivery-v1" || delivery.sourceSha256 !== sourceSha256) throw Error("Reviewed delivery basis mismatch");
   const locales = READING_LOCALES.filter(locale => locale !== "en");
   const requiredIds = Object.keys(source.units);
@@ -53,12 +57,15 @@ export async function packReadingTranslations(sourcePath: string, sourceSha256: 
     for (const locale of locales) {
       const accepted = delivery.locales[locale]!;
       const bySlug = new Map<string, ReadingTranslationBundle>();
-      for (const school of [{ slug: "_shared", recordSha256: sourceSha256, originalEvidenceSha256: sourceSha256 }, ...source.schools]) bySlug.set(school.slug, { schemaVersion: "uapt-reading-translations-v1", sourceSha256, locale, ...school, review: { status: "accepted", receiptSha256: accepted.receipt.sha256 }, requiredSourceHashes: [], strings: {} });
+      for (const school of [{ slug: "_shared", recordSha256: sourceSha256, originalEvidenceSha256: sourceSha256 }, ...source.schools]) bySlug.set(school.slug, { schemaVersion: "uapt-reading-translations-v1", sourceSha256, locale, slug: school.slug, recordSha256: school.recordSha256, originalEvidenceSha256: school.originalEvidenceSha256, review: { status: "accepted", receiptSha256: accepted.receipt.sha256 }, protectedClaimIds: [], requiredSourceHashes: [], strings: {} });
       for (const [id, unit] of Object.entries(source.units)) for (const use of unit.uses) {
         const bundle = bySlug.get(use.slug);
         if (!bundle) throw Error("Translation points outside source school set");
         const original = use.source ?? unit.source;
         const sourceId = digest(original);
+        let sourceClaimIds = claimIdsBySource.get(sourceId);
+        if (!sourceClaimIds) { sourceClaimIds = claimIdPattern ? [...new Set(original.match(claimIdPattern) ?? [])] : []; claimIdsBySource.set(sourceId, sourceClaimIds); }
+        bundle.protectedClaimIds.push(...sourceClaimIds);
         if (use.sourceSha256 && use.sourceSha256 !== sourceId) throw Error("Display source substitution changed");
         const substitute = (text: string) => text.replace(/\{([^{}]+)\}/g, (token, key: string) => use.substitutions?.[key] ?? token);
         if (use.source && substitute(unit.source) !== original) throw Error("Source template no longer reproduces its display");
@@ -68,6 +75,7 @@ export async function packReadingTranslations(sourcePath: string, sourceSha256: 
         bundle.strings[sourceId] = { source: original, sourceSha256: sourceId, translation: translated };
       }
       for (const [slug, bundle] of bySlug) {
+        bundle.protectedClaimIds = [...new Set(bundle.protectedClaimIds)].sort();
         bundle.requiredSourceHashes = Object.keys(bundle.strings).sort();
         validateReadingTranslationBundle(bundle, { sourceSha256, locale, slug });
         const filename = `${locale}/${slug}.json`;
