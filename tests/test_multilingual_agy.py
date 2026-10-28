@@ -225,14 +225,29 @@ class AgyOutputAcceptance(unittest.TestCase):
                 time.sleep(0.02)
                 with lock: active -= 1
                 return {"structuralStatus": "PASS", "checkedStrings": 1}
-            argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja,fr,pl,es,nl,ms", "--concurrency", "4"]
+            argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja,fr,pl,es,nl,ms", "--concurrency", "2"]
             with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", side_effect=generate), contextlib.redirect_stdout(io.StringIO()):
                 batch.main()
             self.assertEqual(calls, 6)
-            self.assertLessEqual(peak, 3)
+            self.assertLessEqual(peak, 1)
             progress = json.loads((output / "progress.json").read_text())
             self.assertTrue(progress["operatorRepairSlotReserved"])
             self.assertEqual(progress["stage"], "complete")
+
+    def test_concurrency_defaults_to_two_and_rejects_larger_runs(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary); output = root / "out"; output.mkdir()
+            text = "Synthetic display."
+            source = root / "source.json"; source.write_text(json.dumps({"units": {batch.sha(text.encode()): {"source": text, "sourceSha256": batch.sha(text.encode())}}}))
+            (output / "PAUSE").write_text("Do not invoke models in this configuration test")
+            argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja"]
+            with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", side_effect=AssertionError("Unexpected model call")):
+                batch.main()
+            self.assertEqual(json.loads((output / "progress.json").read_text())["concurrency"], 2)
+            for limit in [3, 4]:
+                with patch.object(sys, "argv", argv + ["--concurrency", str(limit)]), contextlib.redirect_stderr(io.StringIO()):
+                    with self.assertRaises(SystemExit) as error: batch.main()
+                self.assertEqual(error.exception.code, 2)
 
     def test_prior_failed_generation_is_deferred_with_its_original_error_without_model_calls(self):
         with tempfile.TemporaryDirectory() as temporary:
