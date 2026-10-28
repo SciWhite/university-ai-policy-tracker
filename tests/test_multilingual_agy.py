@@ -2,6 +2,7 @@ import importlib.util
 import json
 import pathlib
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -103,6 +104,55 @@ class AgyOutputAcceptance(unittest.TestCase):
                 with patch.object(batch.subprocess, "run", side_effect=AssertionError("Unexpected model invocation")):
                     with self.assertRaises((ValueError, FileNotFoundError)):
                         batch.run_job(job, 900, "openclaw", "unused", "low")
+
+    def numeric_fixture(self):
+        units = {"u0": "Rule No.79."}
+        units.update({"u" + str(i): "Synthetic display text." for i in range(1, 20)})
+        target = {**units, "u0": "Fixture 79 (Rule No.79)."}
+        return units, target
+
+    def model_result(self, value):
+        wrapper = {"ok": True, "status": "ok", "model": "cliproxy/" + batch.MODEL, "final": json.dumps(value), "bridgeCalls": {}}
+        return SimpleNamespace(returncode=0, stdout=json.dumps(wrapper).encode(), stderr=b"")
+
+    def test_openclaw_numeric_repair_is_one_bounded_call_and_generation_stays_review_pending(self):
+        units, target = self.numeric_fixture()
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = pathlib.Path(temporary) / "batch"
+            job = directory, "ru", units, {key: key for key in units}, "a" * 64, set()
+            with patch.object(batch.subprocess, "run", side_effect=[self.model_result(target), self.model_result({"u0": "Synthetic fixture No.79."})]) as model:
+                receipt = batch.run_job(job, 900, "openclaw", "unused", "low")
+            self.assertEqual(model.call_count, 2)  # One generation plus one correction, never a loop.
+            self.assertEqual(receipt["structuralStatus"], "PASS")
+            self.assertEqual(receipt["semanticStatus"], "pending")
+            self.assertEqual(receipt["repairedKeys"], ["u0"])
+            self.assertEqual(json.loads((directory / "stdout.json").read_text())["final"], json.dumps(target))
+            accepted = json.loads((directory / "translations.json").read_text())
+            batch.validate(accepted, units)
+            self.assertNotEqual(accepted["u0"], target["u0"])
+            self.assertFalse((directory / "reviewed-translations.json").exists())
+
+    def test_numeric_repair_refuses_incomplete_dense_or_non_numeric_defects_without_model_calls(self):
+        units, target = self.numeric_fixture()
+        cases = [({}, units), ({"u0": "Fixture"}, {"u0": "Preserve {name} and 79."}),
+                 ({"u0": "1", "u1": "1"}, {"u0": "2", "u1": "2"})]
+        for targets, sources in cases:
+            with tempfile.TemporaryDirectory() as temporary, patch.object(batch.subprocess, "run", side_effect=AssertionError("Unexpected model invocation")):
+                with self.assertRaises(ValueError):
+                    batch.repair_numeric_output(pathlib.Path(temporary), "ru", targets, sources, set(), "a" * 64, 900, "unused", "low")
+
+    def test_invalid_numeric_correction_is_preserved_and_never_retried_automatically(self):
+        units, target = self.numeric_fixture()
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = pathlib.Path(temporary)
+            with patch.object(batch.subprocess, "run", return_value=self.model_result({"u0": "Still 79 twice 79."})) as model:
+                with self.assertRaises(ValueError):
+                    batch.repair_numeric_output(directory, "ru", target, units, set(), "a" * 64, 900, "unused", "low")
+                with self.assertRaises(FileExistsError):
+                    batch.repair_numeric_output(directory, "ru", target, units, set(), "a" * 64, 900, "unused", "low")
+            self.assertEqual(model.call_count, 1)
+            self.assertEqual(json.loads((directory / "numeric-repair/receipt.json").read_text())["structuralStatus"], "FAIL")
+            self.assertTrue((directory / "numeric-repair/stdout.json").exists())
 
 
 if __name__ == "__main__":

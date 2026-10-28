@@ -115,6 +115,61 @@ def verified_review(directory, locale, units, source_sha, immutable_ids, backend
     return receipt
 
 
+def repair_numeric_output(directory, locale, strings, units, immutable_ids, source_sha, timeout, config, thinking):
+    """One model correction for a small, completely inspected numeric-only failure."""
+    if not isinstance(strings, dict) or set(strings) != set(units):
+        raise ValueError("Numeric repair requires a complete original object")
+    bad = {}
+    for key, source in units.items():
+        try:
+            validate({key: strings[key]}, {key: source}, immutable_ids)
+        except ValueError as error:
+            if not str(error).startswith("Numeric amount, duration or count mismatch:"):
+                raise
+            bad[key] = source
+    if not bad or len(bad) > max(1, len(units) // 20):
+        raise ValueError("Numeric repair exceeds the small numeric-only correction scope")
+    repair_dir = directory / "numeric-repair"
+    repair_dir.mkdir(exist_ok=False)  # An existing attempt requires operator inspection.
+    prompt = ("Correct these complete translations into " + LANGUAGES[locale] +
+              ". Return ONLY one complete JSON object keyed by the supplied IDs. No tools, browsing, commands, edits or subagents. "
+              "Preserve every policy fact, modality, negation, audience, scope, condition, uncertainty and evidence gap. "
+              "Fix the numeric rendering without adding English numbered glosses. Keep URLs, placeholders, Claim IDs, hashes and code identifiers exactly. "
+              "No Markdown, HTML or bidi control characters. " + NUMERIC_CONTROLS + "\n" +
+              json.dumps({key: {"source": source, "translation": strings[key]} for key, source in bad.items()}, ensure_ascii=False))
+    (repair_dir / "prompt.txt").write_text(prompt)
+    (repair_dir / "input.json").write_text(json.dumps(bad, ensure_ascii=False, indent=2) + "\n")
+    receipt = {"locale": locale, "sourceSha256": source_sha, "promptSha256": sha(prompt.encode()),
+               "repairedKeys": list(bad), "attempt": 1, "publicationApproved": False}
+    started = time.monotonic()
+    try:
+        result = subprocess.run(model_command(repair_dir, prompt, timeout, "openclaw", config, thinking),
+                                cwd=repair_dir, capture_output=True, timeout=timeout + 30)
+        (repair_dir / "stdout.json").write_bytes(result.stdout)
+        (repair_dir / "stderr.txt").write_bytes(result.stderr)
+        if result.returncode:
+            raise ValueError("Numeric correction CLI failed")
+        corrected, _ = model_response(json.loads(result.stdout), "openclaw")
+        validate(corrected, bad, immutable_ids)
+        merged = {**strings, **corrected}
+        validate(merged, units, immutable_ids)
+        target = repair_dir / "translations.json"
+        target.write_text(json.dumps(corrected, ensure_ascii=False, indent=2) + "\n")
+        receipt.update(structuralStatus="PASS", translationsSha256=sha(target.read_bytes()))
+        return merged, receipt
+    except subprocess.TimeoutExpired as error:
+        (repair_dir / "stdout.json").write_bytes(error.stdout or b"")
+        (repair_dir / "stderr.txt").write_bytes(error.stderr or b"")
+        receipt.update(structuralStatus="FAIL", error="Numeric correction process timeout")
+        raise ValueError("Numeric correction process timeout") from error
+    except Exception as error:
+        receipt.update(structuralStatus="FAIL", error=str(error))
+        raise
+    finally:
+        receipt.update(elapsedSeconds=round(time.monotonic() - started, 2), completedAt=datetime.datetime.now(datetime.timezone.utc).isoformat())
+        (repair_dir / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
+
+
 def run_job(job, timeout, backend="agy", config=None, thinking="high"):
     directory, locale, units, ids, source_sha, immutable_ids = job
     prompt = ("You are a precise professional translator for a university AI-policy tracker. Translate EVERY supplied string into " + LANGUAGES[locale] + ". Use no tools, no browsing, no commands, no edits, no subagents. Return ONLY the complete JSON object required by the schema. This is translation, not policy authoring. Preserve every sentence, modality (may/should/must), negation, conditions, uncertainty, audience, school/unit/course/assessment scope, dates, and evidence gaps. Never infer permission from absence of evidence or access to tools. Coursework means AI use in assignments/assessment, not studying AI courses. 'Not established' and 'reviewed evidence did not establish' are evidentiary findings: explicitly retain that the materials examined did not establish the rule, NEVER say that the university did not enact/adopt a rule. 'Reviewed' means examined, NEVER revised/amended. Tool availability is not assessment permission. Keep product names, acronyms, T0-T5, AI+X, PARTIAL and IDs exactly. Preserve EVERY URL, {placeholder}, numeric amount, date, duration, source hash and Claim ID byte-for-byte, including any English code labels. Do not translate original quotations: none are supplied as translation targets. If a supplied string quotes a policy term inside explanatory prose, retain the quoted term exactly when it is a code, named category or product. Do not add Markdown, HTML, bidi control characters or factual content. Translate naturally with standard target-language punctuation and spacing. Output strings keyed by the immutable input keys.\n\n" + json.dumps(units, ensure_ascii=False))
@@ -155,9 +210,15 @@ def run_job(job, timeout, backend="agy", config=None, thinking="high"):
         receipt.update(returnCode=result.returncode, stdoutBytes=len(result.stdout))
         wrapper = json.loads(result.stdout)
         response, document_count = model_response(wrapper, backend)
-        strings = validate(response, units, immutable_ids)
         if result.returncode:
             raise ValueError("CLI did not complete successfully")
+        try:
+            strings = validate(response, units, immutable_ids)
+        except ValueError as error:
+            if backend != "openclaw" or not str(error).startswith("Numeric amount, duration or count mismatch:"):
+                raise
+            strings, repair = repair_numeric_output(directory, locale, response, units, immutable_ids, source_sha, timeout, config, thinking)
+            receipt.update(numericRepairReceiptSha256=sha((directory / "numeric-repair/receipt.json").read_bytes()), repairedKeys=repair["repairedKeys"])
         result_path.write_text(json.dumps(strings, ensure_ascii=False, indent=2) + "\n")
         raw_response = wrapper.get("final" if backend == "openclaw" else "response")
         receipt.update(structuralStatus="PASS", translatedStrings=len(strings), wrapperStatus=wrapper.get("status"), completeResultDocuments=document_count, completeJsonCodeFence=isinstance(raw_response, str) and raw_response.strip().startswith("```"), translationsSha256=sha(result_path.read_bytes()), usage=wrapper.get("usage"), actualModel=wrapper.get("model", MODEL), provider=wrapper.get("provider"))
