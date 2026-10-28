@@ -18,6 +18,8 @@ import { translateSurfaceText } from "@/lib/surface-localization";
 import { policyV6DensityCopy } from "@/lib/policy-v6-density-copy";
 import { policyV6AgentReviewLabel } from "@/lib/policy-v6-review";
 
+import { PolicyBidiText } from "@/components/policy-bidi-text";
+
 interface ClaimEvidenceCardProps {
   claim: PolicyClaim;
   entitySlug?: string;
@@ -169,8 +171,8 @@ function EvidenceBlock({
         </span>
       </div>
 
-      <blockquote className="evidence-snippet">
-        {evidence.evidenceSnippet}
+      <blockquote className="evidence-snippet" dir="auto" lang={evidence.sourceLanguage}>
+        <PolicyBidiText text={evidence.evidenceSnippet} />
         <footer>
           {translateSurfaceText("Source", locale)}:{" "}
           <a

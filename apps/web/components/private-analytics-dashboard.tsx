@@ -17,6 +17,8 @@ import {
 import type { BingMetricRow } from "@/lib/bing-webmaster";
 import type { ClaritySignalMetricName } from "@/lib/clarity-insights";
 import type { GscMetricRow } from "@/lib/google-search-console";
+import { matchReadingLocale } from "@/lib/language-catalog";
+import { PrivateSeoGeoReports } from "@/components/private-seo-geo-reports";
 import type {
   AnalyticsDashboardFocus,
   AnalyticsDashboardMover,
@@ -747,9 +749,13 @@ export function PrivateAnalyticsDashboard({
               <p className="analytics-comparison-note">
                 {t.bingAiCaveat} {bingAi.coverageStart && bingAi.coverageEnd ? `${t.coverage}: ${bingAi.coverageStart} → ${bingAi.coverageEnd} · ` : ""}{t.imported}: {bingAi.importedAt ? formatDateTime(bingAi.importedAt, locale) : "—"}
               </p>
+              {bingAi.tables ? <DataTable
+                headers={locale === "zh" ? ["Bing AI 表", "文件更新", "实际覆盖范围", "记录数"] : ["Bing AI table", "File modified", "Observed coverage", "Rows"]}
+                rows={Object.entries(bingAi.tables).map(([key, table]) => ({ key, values: [key, formatDateTime(table.modifiedAt, locale), table.coverage === "dated_rows" ? `${table.coverageStart} → ${table.coverageEnd}` : locale === "zh" ? "独立导出期间未注明；不是当前筛选日期" : "Independent export period unspecified; not the selected dates", formatCount(table.rowCount)] }))}
+              /> : null}
               <div className="analytics-detail-grid">
                 <DataTable headers={[t.queries, t.intent, t.topic, t.citations, t.citationShare]} rows={bingAi.queryRows.map((row) => ({ key: row.key, values: [row.key, row.intent ?? "—", row.topic ?? "—", formatCount(row.citations), formatPercent(row.citationShare)] }))} />
-                <DataTable headers={[t.pages, t.citations]} rows={bingAi.pageRows.map((row) => ({ key: row.key, values: [shortPath(row.key), formatCount(row.citations)] }))} />
+                <DataTable headers={[t.pages, t.locale, t.citations]} rows={bingAi.pageRows.map((row) => ({ key: row.key, values: [<BingCitedPage key={row.key} url={row.key} />, citedPageLocale(row.key), formatCount(row.citations)] }))} />
               </div>
             </>
           ) : <p className="analytics-empty">{bingAi.error ?? t.noData}</p>}
@@ -876,6 +882,7 @@ export function PrivateAnalyticsDashboard({
             </>
           ) : <p className="analytics-empty">{clarity.error ?? t.noData}</p>}
         </DetailSection>
+        <PrivateSeoGeoReports reports={data.seoGeo} locale={locale} />
         <DetailSection index="08" title={t.behavior}>
           <div className="analytics-detail-grid">
             <RateList locale={locale} rows={current.summary.funnel} />
@@ -956,8 +963,21 @@ function MetricTabs({ includePosition = true, metric, onChange }: { includePosit
   return <div className="analytics-segmented">{metrics.map((item) => <button aria-pressed={metric === item} key={item} onClick={() => onChange(item)} type="button">{item === "impressions" ? "Impr." : item === "position" ? "Pos." : item.toUpperCase()}</button>)}</div>;
 }
 
-function DataTable({ headers, rows }: { headers: string[]; rows: Array<{ key: string; onClick?: () => void; values: string[] }> }) {
+function DataTable({ headers, rows }: { headers: string[]; rows: Array<{ key: string; onClick?: () => void; values: ReactNode[] }> }) {
   return <div className="analytics-table-wrap"><table className="analytics-table"><thead><tr>{headers.map((header) => <th key={header}>{header}</th>)}</tr></thead><tbody>{rows.map((row) => <tr className={row.onClick ? "is-clickable" : undefined} key={row.key} onClick={row.onClick}>{row.values.map((value, index) => <td key={`${row.key}:${index}`}>{value}</td>)}</tr>)}</tbody></table></div>;
+}
+
+function BingCitedPage({ url }: { url: string }) {
+  try {
+    const parsed = new URL(url);
+    if (["https:", "http:"].includes(parsed.protocol)) return <a href={parsed.href} rel="noopener noreferrer" target="_blank" title={parsed.href}>{shortPath(url)}</a>;
+  } catch { /* Keep invalid CSV values as plain text. */ }
+  return <span>{shortPath(url)}</span>;
+}
+
+function citedPageLocale(url: string): string {
+  try { return matchReadingLocale(new URL(url).pathname.split("/")[1]) ?? "en"; }
+  catch { return "—"; }
 }
 
 function RateList({ locale, rows }: { locale: DashboardLocale; rows: Array<{ count: number; label: string; share: number }> }) {

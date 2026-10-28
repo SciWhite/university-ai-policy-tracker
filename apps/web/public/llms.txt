@@ -2,8 +2,16 @@
 
 University AI Policy Tracker is an open, evidence-backed database of university AI policy pages, source snapshots, policy claims, and citation-ready public JSON.
 
-> For substantive content including key findings, university summaries, and FAQ, see /llms-full.txt.
+> For substantive content including key findings, university summaries, and FAQ, see [llms-full.txt](https://eduaipolicy.org/llms-full.txt).
 > This file (/llms.txt) is a concise directory of endpoints and retrieval guidance.
+
+## Retrieval entry points
+
+- [University directory](https://eduaipolicy.org/universities): resolve the university before using its policy record.
+- [Public API index](https://eduaipolicy.org/api/public/v1/index.json): discover canonical public JSON resources.
+- [Read-only MCP manifest](https://eduaipolicy.org/api/public/v1/mcp/manifest.json): discover policy retrieval tools.
+- [Methodology](https://eduaipolicy.org/methodology): evidence, review and scope conventions.
+- [Citation guidance](https://eduaipolicy.org/citation): cite the tracker record and its official university evidence.
 
 ## Scope
 - University policies and guidance for GenAI, ChatGPT, DeepSeek, Microsoft Copilot, institutional AI services, academic integrity, privacy, teaching, research, security review, procurement, and related governance.
@@ -68,6 +76,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Cite the canonical page URL and the public JSON URL when using tracker metadata.
 - Treat each claim as valid only with its source URL, source snapshot hash, and short evidence snippet.
 - Original-language evidence is canonical. Localized summaries or translations are display helpers only.
+- A translation timestamp records translation work, not a new university policy check. Retain the original source dates, scope, evidence gaps and review state.
+- Historical and held records remain provenance material; their presence does not establish a current permission or obligation.
 - Confidence is machine confidence in extraction or classification.
 - Review state is separate from confidence and indicates machine_candidate, agent_reviewed, human_reviewed, needs_review, or rejected.
 
@@ -88,7 +98,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - This llms.txt file is an auxiliary guide for agents and developers. Google does not require llms.txt for AI features, and this file is not a guaranteed ranking signal.
 
 ## Security Boundary
-- OpenClaw orchestrates agents and crawling only.
+- OpenClaw performs source maintenance and isolated candidate translation tasks.
 - OpenClaw must not deploy the public website, write the production database directly, push main, or hold production deployment credentials.
 - The MCP alpha design is read-only and must not mutate public records, operate OpenClaw, or publish canonical claims.
 - MCP tool catalog entries are retrieval shapes over public JSON endpoints, not write tools.

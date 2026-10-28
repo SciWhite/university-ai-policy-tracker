@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   DEFAULT_LOCALE,
-  SUPPORTED_LOCALES,
   getLocaleFromPathname,
   getLocaleLabel,
   getPathnameWithoutLocale,
   isLocalizablePath,
+  isSupportedLocale,
   localizeHref,
-  normalizeLocale,
   type SupportedLocale
 } from "@/lib/i18n";
 import { getShellMessages, interpolate } from "@/lib/i18n-messages";
 import { trackResearchEvent } from "@/lib/analytics-client";
+import { preferredReadingLocale } from "@/lib/language-catalog";
 
 const DISMISS_STORAGE_KEY = "uapt-locale-suggestion-dismissed";
 const CHOICE_STORAGE_KEY = "uapt-locale-choice";
@@ -44,13 +44,8 @@ export function LanguageSuggestion() {
     // Every supported browser locale gets the same consent banner; silently
     // redirecting readers into a locale the switcher does not advertise left
     // them with no visible way back.
-    const browserLocale = window.navigator.languages
-      ?.map((value) => normalizeLocale(value))
-      .find(
-        (value) => value !== DEFAULT_LOCALE && SUPPORTED_LOCALES.includes(value)
-      );
-
-    setSuggestedLocale(browserLocale ?? null);
+    const browserLocale = preferredReadingLocale(window.navigator.languages ?? []);
+    setSuggestedLocale(browserLocale && browserLocale !== DEFAULT_LOCALE && isSupportedLocale(browserLocale) ? browserLocale : null);
   }, [locale, pathname]);
 
   if (!suggestedLocale) return null;

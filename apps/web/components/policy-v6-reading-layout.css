@@ -1,4 +1,14 @@
 /* Shared V6 reading layout. Non-V6 pages have no matching root marker. */
+[data-v6-reading-layout] .policy-v6-sourceCard > details > summary {
+  min-height: 44px;
+  padding-block: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+[data-v6-reading-layout] .policy-v6-sourceCard > details > summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 [data-ui-experience="compact-evidence"] [data-v6-reading-layout].policy-v6-lab .policy-reference-content > .entity-header {
   margin-bottom: 14px;
 }

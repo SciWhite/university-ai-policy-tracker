@@ -2,6 +2,7 @@ import type { BingMetricRow, BingSummary } from "@/lib/bing-webmaster";
 import type { BingAiPerformanceSnapshot } from "@/lib/bing-ai-performance";
 import type { ClarityLiveInsightsSnapshot } from "@/lib/clarity-insights";
 import type { GscMetricRow, GscSummary } from "@/lib/google-search-console";
+import type { SeoGeoReports } from "./seo-geo-report-types";
 import type {
   AnalyticsPeriod,
   PrivateAnalyticsSummary,
@@ -124,6 +125,7 @@ export interface AnalyticsDashboardDetail {
 }
 
 export interface AnalyticsDashboardResponse {
+  seoGeo: SeoGeoReports;
   bingAi: BingAiPerformanceSnapshot;
   bing: {
     current: BingSummary;

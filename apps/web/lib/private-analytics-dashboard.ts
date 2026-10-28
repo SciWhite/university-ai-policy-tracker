@@ -15,6 +15,7 @@ import {
 } from "@/lib/bing-webmaster";
 import { getBingAiPerformanceSnapshot } from "@/lib/bing-ai-performance";
 import { getClarityLiveInsightsSnapshot } from "@/lib/clarity-insights";
+import { getSeoGeoReports } from "./seo-geo-reports";
 import {
   getGoogleSearchConsoleSummary,
   type GscMetricRow,
@@ -164,6 +165,7 @@ export async function getAnalyticsDashboard(
   ]);
   const bingAiPromise = getBingAiPerformanceSnapshot().then(snapshot => withBingAiWindow(snapshot, query.from, query.to));
   const clarityPromise = getClarityLiveInsightsSnapshot();
+  const seoGeoPromise = getSeoGeoReports();
   const [currentRollup, previousRollup] = await Promise.all([
     currentRollupPromise,
     previousRollupPromise
@@ -175,13 +177,14 @@ export async function getAnalyticsDashboard(
   const botDiagnosticRowsPromise = rollupReady && query.to >= ANALYTICS_COLLECTOR_BASELINE
     ? loadRows(dateAtUtcNoon(shiftDate(botDiagnosticFrom, -1)), { excludeBots: false })
     : Promise.resolve({rows: [], complete: true, limit: null} as AnalyticsEventWindow);
-  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc], [currentBing, previousBing], bingAi, clarity] = await Promise.all([
+  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc], [currentBing, previousBing], bingAi, clarity, seoGeo] = await Promise.all([
     loadRows(since, { excludeBots: rollupReady }),
     botDiagnosticRowsPromise,
     gscPromise,
     bingPromise,
     bingAiPromise,
-    clarityPromise
+    clarityPromise,
+    seoGeoPromise
   ]);
   const allRows = inheritSessionTrafficKinds(rollupReady
     ? primaryRows.rows.concat(botDiagnosticRows.rows.filter(isBotAnalyticsRow))
@@ -242,6 +245,7 @@ export async function getAnalyticsDashboard(
   });
 
   return {
+    seoGeo,
     bingAi,
     bing: {
       current: currentBing,

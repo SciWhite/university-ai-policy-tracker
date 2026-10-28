@@ -88,7 +88,8 @@ test("accepted Harvard content remains verbatim in both SSR presentations and re
     assert(pilot.includes(textHtml(topic.scope)));
     for (const claim of topic.claims) for (const evidence of claim.evidence) {
       assert(old.includes(textHtml(evidence.quote)));
-      assert(pilot.includes(textHtml(evidence.quote)));
+      // Bidi isolation adds semantic wrappers without changing original text.
+      assert(pilot.replace(/<\/?bdi\b[^>]*>/g, "").includes(textHtml(evidence.quote)));
     }
   }
   assert.equal(JSON.stringify(data), before);

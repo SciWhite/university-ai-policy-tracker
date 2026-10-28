@@ -1,4 +1,5 @@
 import { policyV6ReaderCopy } from "@/lib/policy-v6-reader-copy";
+import { PolicyBidiText } from "@/components/policy-bidi-text";
 import React from "react";
 import type { LabTopic } from "@/lib/policy-v6";
 import type { SupportedLocale } from "@/lib/i18n";
@@ -59,8 +60,8 @@ export function PolicyV6TopicEvidence({ topic, locale }: { topic: LabTopic; loca
         const shared = bindings.length > 1;
         const BindingsContainer = shared ? "details" : "div";
         return <article className="student-evidence" key={key} data-evidence-binding-count={bindings.length}>
-          <blockquote className="student-evidence__quote">
-            <p data-i18n="preserve" lang={evidence.language}>{evidence.quote}</p>
+          <blockquote className="student-evidence__quote" dir="auto">
+            <p data-i18n="preserve" lang={evidence.language}><PolicyBidiText text={evidence.quote} /></p>
           </blockquote>
           <div className="policy-v6-readerDates" data-quote-dates>
             <span>{copy.retrieved}: {[...new Set(bindings.map(b => b.evidence.retrievedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)))].join(", ")}</span>

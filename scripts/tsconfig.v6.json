@@ -15,6 +15,9 @@
     }
   },
   "include": [
+    "import-seo-geo-report.ts",
+    "pack-reading-translations.ts",
+    "build-university-locale-policy.ts",
     "pack-v6-release.ts",
     "change-summary-workflow.ts",
     "prepare-change-summary-cohort.ts",

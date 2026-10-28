@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { ThemeScript } from "@/components/theme-script";
 import { ClarityIntegration } from "@/components/clarity-integration";
 import type { SupportedLocale } from "@/lib/i18n";
+import { readingDirection } from "@/lib/language-catalog";
 
 interface RootDocumentProps {
   children: ReactNode;
@@ -12,7 +13,7 @@ interface RootDocumentProps {
 
 export function RootDocument({ children, locale, enableClarity = false }: RootDocumentProps) {
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={readingDirection(locale)} suppressHydrationWarning>
       <head>
         <ThemeScript />
         <link href="/feeds/reports.xml" rel="alternate" title="University AI Policy Tracker reports RSS" type="application/rss+xml" />

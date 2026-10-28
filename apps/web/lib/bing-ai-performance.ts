@@ -1,5 +1,15 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
+
+export interface BingAiTableProvenance {
+  modifiedAt: string;
+  sha256: string;
+  rowCount: number;
+  coverageStart?: string;
+  coverageEnd?: string;
+  coverage: "dated_rows" | "unspecified_export_period";
+}
 
 export interface BingAiPerformanceDateRow {
   citations: number;
@@ -45,6 +55,7 @@ export interface BingAiPerformanceSnapshot {
   dateRows: BingAiPerformanceDateRow[];
   error?: string;
   importedAt?: string;
+  tables?: Partial<Record<"overview" | "pages" | "queries" | "topics" | "opportunities", BingAiTableProvenance>>;
   opportunityQueryRows: BingAiOpportunityQueryRow[];
   pageRows: BingAiPerformancePageRow[];
   queryRows: BingAiPerformanceQueryRow[];
@@ -68,6 +79,7 @@ const SNAPSHOT_FILES = {
 export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceSnapshot> {
   try {
     const directory = await resolveSnapshotDirectory();
+    const tables: NonNullable<BingAiPerformanceSnapshot["tables"]> = {};
     const paths = Object.fromEntries(
       Object.entries(SNAPSHOT_FILES).map(([key, file]) => [key, path.join(directory, file)])
     ) as Record<keyof typeof SNAPSHOT_FILES, string>;
@@ -90,6 +102,7 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
       try {
         const topicCsv = await readFile(topicPortfolioMatch.path, "utf8");
         topicPortfolioRows = parseBingAiTopicPortfolioCsv(topicCsv);
+        tables.topics = tableProvenance(topicCsv, topicPortfolioMatch.mtimeMs, topicPortfolioRows.length);
       } catch {
         // Continue with empty topic portfolio on read/parse error
       }
@@ -100,6 +113,7 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
       try {
         const oppCsv = await readFile(opportunityQueriesMatch.path, "utf8");
         opportunityQueryRows = parseBingAiOpportunityQueriesCsv(oppCsv);
+        tables.opportunities = tableProvenance(oppCsv, opportunityQueriesMatch.mtimeMs, opportunityQueryRows.length);
       } catch {
         // Continue with empty opportunity queries on read/parse error
       }
@@ -125,15 +139,12 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
       queryRows = parseBingAiQueriesCsv(queriesCsv);
       if (!dateRows.length) throw new Error("Bing AI overview snapshot is empty.");
       coreMtimes = fileStats.map((value) => value.mtimeMs);
+      tables.overview = { ...tableProvenance(overviewCsv, fileStats[0].mtimeMs, dateRows.length), coverage: "dated_rows", coverageStart: dateRows[0]?.key, coverageEnd: dateRows.at(-1)?.key };
+      tables.pages = tableProvenance(pagesCsv, fileStats[1].mtimeMs, pageRows.length);
+      tables.queries = tableProvenance(queriesCsv, fileStats[2].mtimeMs, queryRows.length);
     } catch (error) {
       coreError = error instanceof Error ? error.message : String(error);
     }
-
-    const mtimes = [
-      ...coreMtimes,
-      ...(topicPortfolioMatch ? [topicPortfolioMatch.mtimeMs] : []),
-      ...(opportunityQueriesMatch ? [opportunityQueriesMatch.mtimeMs] : [])
-    ];
 
     if (!dateRows.length && !topicPortfolioRows.length && !opportunityQueryRows.length) {
       return emptyBingAiPerformanceSnapshot(coreError ?? "Bing AI snapshot is unavailable.");
@@ -150,7 +161,8 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
       coverageStart: dateRows[0]?.key,
       dateRows,
       error: dateRows.length ? undefined : coreError,
-      importedAt: mtimes.length ? new Date(Math.max(...mtimes)).toISOString() : undefined,
+      importedAt: coreMtimes.length ? new Date(Math.max(...coreMtimes)).toISOString() : undefined,
+      tables,
       opportunityQueryRows,
       pageRows,
       queryRows,
@@ -169,6 +181,10 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
       error instanceof Error ? error.message : String(error)
     );
   }
+}
+
+function tableProvenance(csv: string, modifiedMs: number, rowCount: number): BingAiTableProvenance {
+  return { modifiedAt: new Date(modifiedMs).toISOString(), sha256: createHash("sha256").update(csv).digest("hex"), rowCount, coverage: "unspecified_export_period" };
 }
 
 export function parseBingAiOverviewCsv(csv: string): BingAiPerformanceDateRow[] {

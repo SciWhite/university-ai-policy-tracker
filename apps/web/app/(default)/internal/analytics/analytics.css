@@ -85,6 +85,15 @@
 }
 
 /* Private analytics growth dashboard */
+.analytics-seo-reports { min-width: 0; }
+.analytics-seo-reports code, .analytics-seo-provenance dd { overflow-wrap: anywhere; }
+.analytics-seo-page { border-bottom: 1px solid var(--color-border); padding: 12px 0; }
+.analytics-seo-page > summary { cursor: pointer; overflow-wrap: anywhere; }
+.analytics-seo-page > summary strong { display: block; font-weight: 500; margin-top: 6px; }
+.analytics-seo-provenance { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 12px; font-size: var(--text-xs); }
+.analytics-seo-provenance dd { margin: 0; }
+.analytics-seo-issue { padding-block: 12px; border-bottom: 1px solid var(--color-border); }
+.analytics-seo-answer { white-space: pre-wrap; overflow-wrap: anywhere; }
 .analytics-dashboard {
   --analytics-onsite: var(--color-accent);
   --analytics-search: var(--color-reviewed);
