@@ -39,7 +39,9 @@ async function main() {
       assert.deepEqual(record.tools, wire((corrections.toolsBySlug[slug] ?? []).map(tool => universityToolRecordSchema.parse(tool))));
       assert.deepEqual(record.historicalClaimIds, (corrections.heldBySlug[slug] ?? []).map(c => c.id));
       const snapshot = corrections.snapshots[slug];
-      const valid = snapshot && validatePolicySnapshotAgainstPublicData(snapshot, record.summary, catalog.releaseId).effectiveStatus === "strong";
+      const exclusions = corrections.mcpPresentationExclusions?.[slug] ?? [];
+      assert.deepEqual(record.presentationExcludedClaimIds ?? [], exclusions);
+      const valid = snapshot && !snapshot.basis.claimIds.some(id => exclusions.includes(id)) && validatePolicySnapshotAgainstPublicData(snapshot, record.summary, catalog.releaseId).effectiveStatus === "strong";
       assert.deepEqual(record.snapshot, valid ? wire(snapshot) : undefined, `${slug}: no inherited approval or historical snapshot`);
       if (!valid) assert.equal(record.snapshotUnavailableReason, snapshot ? "pending_review" : "not_published");
       for (const id of record.historicalClaimIds ?? []) assert(!record.summary.claims.some(c => c.id === id));
@@ -50,7 +52,15 @@ async function main() {
     resolutionOutput.parse(service.resolve(slug));
     const response = policyOutput.parse(service.policy(slug));
     const ids = [...response.claims!.map(c => c.id), ...response.remainingClaimIds!];
-    assert.deepEqual(ids.slice().sort(), record.summary.claims.map(c => c.id).sort());
+    const excluded = record.presentationExcludedClaimIds ?? [];
+    assert.deepEqual(ids.slice().sort(), record.summary.claims.filter(c => !excluded.includes(c.id!)).map(c => c.id).sort());
+    for (const id of excluded) {
+      assert(record.summary.claims.some(c => c.id === id), `${slug}: excluded original remains in catalog`);
+      const held = evidenceOutput.parse(service.evidence(slug, [id]));
+      assert.equal(held.status, "insufficient_evidence");
+      assert.deepEqual(held.claims, []);
+      assert.deepEqual(held.missingClaimIds, [id]);
+    }
     for (let i = 0; i < ids.length; i += 10) {
       const evidence = evidenceOutput.parse(service.evidence(slug, ids.slice(i, i + 10)));
       assert.deepEqual(evidence.missingClaimIds, []);

@@ -7,6 +7,8 @@ import { getEntityResolutionRecords } from "../apps/web/lib/entity-search";
 import { getLoadedPolicySnapshotIndex, validatePolicySnapshotAgainstPublicData } from "../apps/web/lib/policy-snapshots";
 import { readV6RecordCorrections, v6RecordSlugs, v6SummaryAtRevision } from "../apps/web/lib/v6-effective-records";
 import { catalogPayloadSchema, digest, eligibleClaims, loadCatalog, type Record as CatalogRecord } from "../apps/mcp/src/catalog";
+import { publishedV6Bundle } from "../apps/web/lib/policy-v6-published";
+import { validatePublicClaimDispositions } from "../apps/web/lib/policy-v6-claim-disposition";
 
 export async function exportMcpCatalog() {
   // CLI exports the committed public selection, never a local preview or a live self-fetch.
@@ -49,11 +51,22 @@ export async function exportMcpCatalog() {
       aliases: [...new Set([...(entity?.aliases.map(a => a.alias) ?? []), ...(revision ? corrections.aliasesBySlug[slug] ?? [] : []), ...summary.entity.aliases])],
       country: entity?.country
     };
+    const selectedExclusions = corrections.mcpPresentationExclusions?.[slug];
+    const view = selectedExclusions ? publishedV6Bundle(slug, "en") : undefined;
+    if (selectedExclusions) {
+      if (!view?.claimDispositions) throw Error(`Missing published presentation dispositions: ${slug}`);
+      validatePublicClaimDispositions(view);
+      if (view.school.fingerprint !== revision?.recordSha256 || JSON.stringify(view.claims) !== JSON.stringify(summary.claims)) throw Error(`Presentation/record mismatch: ${slug}`);
+      const exclusions = view.claimDispositions.filter(d => d.mode !== "scoped_reference").map(d => d.claimId);
+      if (JSON.stringify([...exclusions].sort()) !== JSON.stringify([...selectedExclusions].sort())) throw Error(`Presentation exclusion drift: ${slug}`);
+      if (exclusions.length) record.presentationExcludedClaimIds = exclusions;
+    }
     const claims = eligibleClaims(record);
     if (revision && claims.length !== summary.claims.length) throw new Error(`Ineligible published correction claim: ${slug}`);
     record.summary = { ...summary, claims };
     const snapshot = revision ? corrections.snapshots[slug] : snapshotsBySlug.get(slug)?.snapshot;
     if (snapshot && validatePolicySnapshotAgainstPublicData(snapshot, record.summary, manifest.releaseId).effectiveStatus === "strong" &&
+      !snapshot.basis.claimIds.some(id => record.presentationExcludedClaimIds?.includes(id)) &&
       snapshot.basis.claimIds.every(id => claims.some(c => c.id === id))) record.snapshot = snapshot;
     if (revision) Object.assign(record, {
       universityRevisionId: revision.universityRevisionId,

@@ -7625,6 +7625,768 @@
       "snapshotHash": "3895092c8a628da9bc5f88dfcbfd6d36c516fc4c729eca8a9169a1401ec6fee8",
       "hashKind": "unknown_legacy",
       "unresolvedReason": "Original canonical record digest retained. Raw-byte versus extracted-text representation has not been independently established for this legacy source; no new version or current-policy approval is inferred."
+    },
+    {
+      "sourceUrl": "https://ai-hub.wp.st-andrews.ac.uk/key-principles/",
+      "snapshotHash": "6566a68849375ca4f930e6f645f17226dc2cdbb67ed2135d2abb35754bfd76f7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://cee.ucdavis.edu/generative-ai-and-teaching",
+      "snapshotHash": "3d4e7fc3c1f95841632ff89a198774a8049096b2020d11b70407bcef61b78888",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://cls.rwth-aachen.de/cms/cls/Services-und-Projekte/RWTHgpt/~blbtga/Dokumente/lidx/1/",
+      "snapshotHash": "b0b72667fbe4e5a4805fdf15c85d4d929aa8e5a98d971b5b95684916b15fc7a5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://cls.rwth-aachen.de/cms/cls/services-und-projekte/~bilrqx/rwthgpt/?lidx=1",
+      "snapshotHash": "0606cc2d24a7c918d618add76436c28a31866f3d29c144496664b53d2a74d22c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://cls.rwth-aachen.de/global/show_document.asp?id=aaaaaaaacnbbvyv",
+      "snapshotHash": "020cd5464546e5394b4124c869904c7e47b9f00554689d644a32b4ecc3d0cc76",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://cls.rwth-aachen.de/global/show_document.asp?id=aaaaaaaacnbbwxm",
+      "snapshotHash": "debfc8ac155bbe9c00ca1830f8dac2fb4e3df203b30a3944f924eff81eabff7e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://cls.rwth-aachen.de/global/show_document.asp?id=aaaaaaaacocblkv",
+      "snapshotHash": "3e93ea90e6ac6d5f2a614b101a4392ccb5abe21c1d63090293b25689469b703d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://conduct.students.wisc.edu/artificial-intelligence/",
+      "snapshotHash": "c0ac98377ae302b12b1e163d3a5ae8f9d7278ee2edef1ece4ce6d68dc17fa540",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://ctlm.wisc.edu/generativeai/ai-statements-for-course-syllabi/",
+      "snapshotHash": "7df7357460e45600e98296b59a8734e019cf95d53689175c3b9c51208a5d8656",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://ctlm.wisc.edu/generativeai/uw-madison-guiding-principles-for-generative-ai-in-teaching/",
+      "snapshotHash": "8d771add88669ee61e0b715b93a22b231ddc5099d856c3ba82bc4bb91ca1b627",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://direito.usp.br/noticia/6832b14ea608-relatorio-traz-procedimentos-de-governanca-para-uso-de-inteligencia-artificial-para-fins-academicos-e-educacionais",
+      "snapshotHash": "ac6d1d0c4aaae6fcb1d114ea5977edf022f51b37e734bc596e82c47c58abebb3",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://direito.usp.br/pca/arquivos/7f3299eb3386_relatorio-iag.pdf",
+      "snapshotHash": "c57e715622df09a69f52d7588b24411ccb7c4d71f91a4db50642b2f39e8f27d4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://docencia.ia.uc.cl/",
+      "snapshotHash": "068e347c0a21b847123434685f8f0f8244120c356efad3a543ae84a457e2f8cb",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://docencia.ia.uc.cl/integridad-academica/",
+      "snapshotHash": "6b02968d7e5093a0b5b915b982719eea8a097b6524ed7e340ae080ecb1e2f1e4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://health.ucdavis.edu/compliance/regulatory/guidelines-for-using-ai",
+      "snapshotHash": "caad04b4e71a66d3b09cad358bd7b72b9eb4bb84585d8b875d3333b22b1719ee",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://health.ucdavis.edu/compliance/regulatory/guidelines-for-using-ai",
+      "snapshotHash": "df8e22c388a1c6b614c37fe512088f5df44c0766407ce24ce106b84a7386fe6b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://health.ucdavis.edu/mdprogram-polices/curricular/Acceptable%20use%20of%20Generative%20Artificial%20Intelligence.html",
+      "snapshotHash": "d17ca79a705b3a6cb99d3581daa061c2143887114dd941f45cba0dc386dc4c54",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://help.itc.rwth-aachen.de/en/service/1808737e10424937b76e564ed15d8028/",
+      "snapshotHash": "65927097dd6439bc9acb50cca43d326468c7565892ee6dc5364e5ce1bbefe14e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://helpdesk.it.helsinki.fi/en/instructions/information-security-and-cloud-services/cloud-services/generative-ai-university",
+      "snapshotHash": "0f160808e4d77d909cf3c30aa19142de91ed7c28cabf7834f681c925f12d6375",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://helpdesk.it.helsinki.fi/en/instructions/information-security-and-cloud-services/cloud-services/generative-ai-university",
+      "snapshotHash": "ff4d2b61b3a3fe72cf8b70302c086f486e1790d3af68bc88cc026d9831642440",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://honor.rice.edu/ai-policy-information/",
+      "snapshotHash": "ad9410537dd6505b1eb1ee5e5647c121d9e98412f7fe72a32e3db10630d49c1d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://hub.ucd.ie/usis/W_HU_MENU.P_DOWNLOAD_FILE?p_filename=Academic%20Integrity%20Policy.pdf&p_parameters=36F8A0AC5B0D6F23FA1EEB8E7C5668E87D47F894CE813A2C5A31FE1A69D113A3E1C278129BDAF0CFDDCE3164583EBA5375F8415E6CDF572FA156DC54645D6B52",
+      "snapshotHash": "f1397e48aea3c1fe7b0c93ed8ef3c00f175a0a2cec3f31522c1e44ed273ff654",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-guidance",
+      "snapshotHash": "547df81055cf3b67676074544cbb746972c2b35e14e751b5c24b0ba853dba681",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+      "snapshotHash": "3da962a5c5ba4c264cb93598d88eb75cff711681d9582de9000e99d5e9e27d61",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+      "snapshotHash": "bbe6055c81ff4c02cf7ee2a7b256d5da204487b750ba3e7f0d583d6810acd853",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools/microsoft-copilot",
+      "snapshotHash": "007050bfdc0d371996a52e533f092b10e65e2d900b68c1b303d077ccf96bbaa4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/student-guide-gen-ai",
+      "snapshotHash": "7e2fb6eeac582946e7849907344be833b767bd4f8f5a86fbe9d0fc8fa3daa3d0",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+      "snapshotHash": "3b67322e64f3419aaaf128c9d71b836f18e2e5757094b5d912152a4f68fb629b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+      "snapshotHash": "f9fc7cb96444700247c99d4cc8a370f7fe172e4f79fdc698b6549bc2805369da",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/generative-ai-uw-madison-use-policies/",
+      "snapshotHash": "4dd9996caac8875a2b41fb8daa5745c35c3e33951ebeb5efa8fcaf86653eee11",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/statement-on-use-of-generative-ai/",
+      "snapshotHash": "160b00ca7ba45ae9ecdd16f848f2524b47ebd6943dfaff06d8b50bc3025e7164",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://itsc.nju.edu.cn/5d/45/c21558a744773/pagem.htm",
+      "snapshotHash": "a707ce6594759015349e3c50799a07665dd6802c11491f3e529fd9953723785c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://jw.nju.edu.cn/_upload/article/files/ab/85/1f49e9e9434dbf23018539b4c338/a550b349-9828-4a05-a5ec-d088b442bee1.pdf",
+      "snapshotHash": "9e7308778586e061a443132eca5000bcc5866320965044a5e406424a06079614",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+      "snapshotHash": "81fba56eccad163f68e18c62cbdcf75f5ac54a39baa8c158a396740a65a0c56c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://kub.ku.dk/english/researchsupport/tools-for-researchers/",
+      "snapshotHash": "0f9d8d1410c7ef8bfbf2a1586fc301b905e1239e3cc251e1c91ac84d555f13af",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://kub.ku.dk/english/researchsupport/tools-for-researchers/",
+      "snapshotHash": "43ee56966fdd2006de8abd14963e5986a53510b95cd31699b1b50dcc732f4934",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://lib.nju.edu.cn/info/1013/4266.htm",
+      "snapshotHash": "ff5adc402ee3bd40d05d4e19e95df3c02fb27e105a3731ea6d8fd334ceb34ce5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://libguides.postech.ac.kr/c.php?g=976922&p=7112398",
+      "snapshotHash": "1aaaeed90c0694d87170bdf859c91ad47aa205d3582a50f6efffaf2ec710c2a0",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://libguides.ucd.ie/GENAI/usingAI",
+      "snapshotHash": "f9ae0cef0a2248752b60abea01a890a992b551b9178422ce334cec1df0857bb4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://msu.ru/news/novosti-mgu/mgu-podderzhivaet-vnedrenie-ii-v-obrazovatelnye-protsessy-.html",
+      "snapshotHash": "cacd52da33f2ab6a6d396942dc0639ba0582a6c9e94dca5acd3a52e5df1da9f1",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://olg.cds.tohoku.ac.jp/forstaff/ai-tools",
+      "snapshotHash": "d617c34d4477facf9bab1096b7877022ddd1b49eabaa8339295fc08bbdc7171d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://olg.cds.tohoku.ac.jp/forstudents/ai-tools",
+      "snapshotHash": "74e46595ac81815d02273cd879cf8d3061443dd2ae38a8e6893a05ac2fccc928",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://phd.ku.dk/english/regulations/ai-assisted-technologies/2026-01-05_Guideline_on_the_use_of_Ai-assisted_technologies.pdf",
+      "snapshotHash": "30c3a8ee532752bf0c3e091e7292c31506b46ee6d0f66667bc112397061ffa86",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://pkunet-shared.ku.dk/newsroom/news/Pages/Three-guidelines-and-a-new-tool-for-using-AI.aspx",
+      "snapshotHash": "78f1eb1ac066448aa2842c6e4b01d8d05789d4d4cfcfacb632a985b316207682",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://praksisudvalget.ku.dk/english/rules_guide/University_of_Copenhagen_guidelines_on_authorship_of_scholarly_publications.pdf",
+      "snapshotHash": "2fbd9f81a9cb1ab68af31f0bfd5d0d4c5b771b2a1d366050d9fbb566f82b2fa8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://provost.rice.edu/communications/faculty-guidance-generative-ai",
+      "snapshotHash": "2a21d10ea6c4c833b3d3211175bc3a1db3e5ddb339d6963a5c4d40653a20b4ec",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://registrar.wisc.edu/ferpa-and-artificial-intelligence-ai/",
+      "snapshotHash": "f54dac77907aae65797f18f179e0d1255af963ac231fd01cc34fdec9ecb76231",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://responsibleai.rice.edu/guidelines-resources-faculty-staff",
+      "snapshotHash": "c739dfe72a782c3e9996a2a0a2555964be0a38b923f59f16974da7a18a4568f8",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://responsibleai.rice.edu/guidelines-resources-students",
+      "snapshotHash": "435fa45f5978a72ab71616627f4ea6fa1b7f2a71ff893a189e2de11a306de0c9",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://student.dtu.dk/studieregler/eksamen/snyd-ved-eksamen-og-anden-bedoemmelse",
+      "snapshotHash": "8cc287bd22b060911139e24e6892caceb8c45e35bbf1f162ff1cc6a2a5e6c406",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://studies.helsinki.fi/instructions/article/using-ai-support-learning",
+      "snapshotHash": "4f5db1fc3f218272c88db5f4bc630a6552547e857f34a39fe654a2983984c00c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://studies.helsinki.fi/instructions/article/what-cheating-and-plagiarism",
+      "snapshotHash": "ecd13d658f149fda2d14dfe00a2b9b114126b44e5b7a923022ba132cac87822f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://teaching.helsinki.fi/instructions/article/artificial-intelligence-teaching",
+      "snapshotHash": "ef7c3d7900b4d6820921a30c9da6c4c7b792b3978e1683513b4f4e9f4723a3c2",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://tss.rice.edu/ai-usage-guidelines",
+      "snapshotHash": "492371448cb284371c8cdd5eb660125bbe1919e13c6369474c25a185a6dbe770",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://tss.rice.edu/ai-usage-guidelines",
+      "snapshotHash": "b267cfb29f80cc4e56600ea8d81fedbf49571f2772ebaae402796f98591b1bca",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/academic-integrity/artificial-intelligence-and-chatgpt",
+      "snapshotHash": "a47628bb9926eaf08f22307335012942ca3d19499de086fff1388a79199042a4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "snapshotHash": "781408155c679d31c2e9c2708afa5b739845d0960357555e0096884ecc1a3acd",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "snapshotHash": "f8498504ab46f2e4f4a0c0b6055ef94811d821f7fe0f36fbcba85bea026cbc6b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/uw-course-outline-suggestions-generative-artificial",
+      "snapshotHash": "688a4e459ab2d5c9100b6c5d0526ee331d6368a7d8113cd640b55634f8e072a0",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/current-graduate-students/academics/governing-rules-and-regulations/generative-artificial-intelligence-genai-guidance-graduate",
+      "snapshotHash": "ea545b07945525d95b88230a95e7f903458d807b9a53b48012f13e6cfe27a6cd",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/information-systems-technology/about/policies-standards-and-guidelines/artificial-intelligence-ai/responsible-use-ai-tools-university-data",
+      "snapshotHash": "d6710a150de911427572bbc6923692a1bde05d5d2e87675acc7746bd537bfc17",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/information-systems-technology/about/policies-standards-and-guidelines/artificial-intelligence-ai/responsible-use-ai-tools-university-data/ai-tools",
+      "snapshotHash": "16fa4a45dabcd2e61acf815937ad2b7961842a6bc3409bf53f9812b26785be28",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/information-systems-technology/about/policies-standards-and-guidelines/responsible-use-ai-tools-university-data/ai-system-deployment",
+      "snapshotHash": "cd5c3695804ab4ebcd3ec368a9e68dc2d0e796b4fdff0f7699b42f49ec0b3326",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://uwaterloo.ca/microsoft-365/blog/microsoft-copilot-and-artificial-intelligence-ai-guidance",
+      "snapshotHash": "ebc963f98087aa303855397e1c02c680f8058174f05724bca112256fb3a92e0b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/services/aalto-ai-assistant",
+      "snapshotHash": "2afab0a383d41e67a1853041440745ffef1502713e8ac57fabeaaad75ae0abbd",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/services/aalto-ai-assistant",
+      "snapshotHash": "330183fc23fddc499069006a28597089b36901f76566019d6fe2760d3cedc9ef",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/services/ai-services",
+      "snapshotHash": "886b062e76d07d69036c049d926cc3a7c73de370d69953eafcba4b8a7bafba4d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/services/guidance-for-the-use-of-artificial-intelligence-in-teaching-and-learning-at-aalto-university",
+      "snapshotHash": "4db4b642cb227232de72c398741283540631c0a4ba8b59ebe4f19606ab856c18",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/services/responsible-use-of-artificial-intelligence-in-the-research-process",
+      "snapshotHash": "7f99c4162b26beaa0cccc86a7f23aeef160309fcdb96bb6928f5784979fa6356",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/services/tips-for-using-artificial-intelligence-for-students",
+      "snapshotHash": "6d22f359e1a1d060578395e55f242fe6905940732e59d2476cfa8c080196a9ff",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.aalto.fi/en/student-guide/students-using-ai-in-your-studies-tools-tips-and-best-practices",
+      "snapshotHash": "2d6381f33736ee3efc43fbe18ed3088928496cd86bc5f7a38823cd0fa4834e81",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.abcd.usp.br/noticias/ia-e-o-ensino-nas-universidades/",
+      "snapshotHash": "0d1321dfe15666b97445d1f13b9cc9194659a463f48d657d1b4802e4430a611f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ai.dtu.dk/rules/",
+      "snapshotHash": "e000aed661673f3cf68095b4ebdb32143dcc3d7fc221d6d44bc153c01b6718df",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ai.dtu.dk/tools/",
+      "snapshotHash": "6643e0cda490d437829e51542f0d90b7ffc8ea64bb6b61e7448bcde0fc17d997",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ai.dtu.dk/tools/",
+      "snapshotHash": "d1e1144604cbc8dd3462b589599f22bf0ee5ffe494b9c416cd8d33298d281563",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ai.dtu.dk/tools/mscopilot/",
+      "snapshotHash": "a2d2f131bcc333caeea627e989862f77714336039751d952ea5751d3ce36cffb",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.bibliotek.dtu.dk/en/publishing/reference-management/kunstig-intelligens/eksempler",
+      "snapshotHash": "de1679c69cfb523befbb95597dc0f91de4f1a272926ab6832478eaeaa8931ed1",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.dx.tohoku.ac.jp/internal/for-staff/",
+      "snapshotHash": "d7366615e84a0bcc391742f98c9f0ce9b059ef136a1df99669dbc0624d0475a9",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.econ.msu.ru/students/aied/",
+      "snapshotHash": "ba0a9cadb4d953a68cea117e0cfa565e0944259fa9bcb98263e899fa5000eafb",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.econ.msu.ru/students/aied/st/",
+      "snapshotHash": "81a704075a4e296393ffd52d151d373dea85de497f5005b6866c29fa7673289b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.econ.msu.ru/students/aied/tr/",
+      "snapshotHash": "15409c009943e7f5df96fa8a143c3150ff491974a60750851d945b9390580eb9",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.econ.msu.ru/sys/raw.php?o=138653&p=attachment",
+      "snapshotHash": "990dff9396c18ad48f3abe573c2396d2cd1d5f2fb86beb9d8696cda950c18a99",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.helsinki.fi/en/helsinki-university-library/using-collections/ai-services",
+      "snapshotHash": "8c8223fbf8d548de13bfd0987633cf694c229450a8674ae8e335b0a68f481802",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.helsinki.fi/en/research/research-integrity/ai-research",
+      "snapshotHash": "dcbeabc3bd2c2619392df8822bdf2684fe4cb3bc148ac4bf2024e53a96be669b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.iea.usp.br/noticias/os-desafios-do-chatgpt-para-a-universidade",
+      "snapshotHash": "fde9ec3256b26d3fa533e135addde7f6790662fa4f643f27fa30f97a65d75f08",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.itc.rwth-aachen.de/cms/it-center/services/kollaboration/~bndnjc/ki-connect/?lidx=1",
+      "snapshotHash": "98acb9dc2ceb9ce3d1063b6a8e95a94d47f11eccb86de4218e47a70b0a0d3188",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.library.universiteitleiden.nl/subject-guides/ai-academic-databases",
+      "snapshotHash": "78ef76b4a773743f08355fe1adad1e71a0669b02192a5b7d55f8be3c4def3730",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.medewerkers.universiteitleiden.nl/veiligheid/informatiebeveiliging-en-privacy/veilig-digitaal-werken/werken-met-ai",
+      "snapshotHash": "ac8f29a6855b65520cc2c37cd8d953c5746242e8717a289ae42c6b313088bea6",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.medewerkers.universiteitleiden.nl/veiligheid/informatiebeveiliging-en-privacy/veilig-digitaal-werken/werken-met-ai",
+      "snapshotHash": "fab97718562eb51f4a489b60b9849443c3d94f5d19616da6341c56e38928c31c",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.nju.edu.cn/info/1055/459451.htm",
+      "snapshotHash": "13c1bc931c7b348ad8d043f2034534cfde4cd128a8f1edadb15d6c61c9f719a2",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.organisatiegids.universiteitleiden.nl/en/faculties-and-institutes/law/faculty-bureau/department-of-research-e.m.-meijers-institute/research/use-of-genai",
+      "snapshotHash": "32f1364847df603038c53a853b377c3a0cc4d2c78312966f928956d219d12f7a",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.postech.ac.kr/kor/newscenter/university-blog.do?article.offset=0&articleLimit=12&articleNo=44243&mode=view",
+      "snapshotHash": "83d273d963827dab5ff7041035b0e83d49f2ca1d534fe3612c6f3679cc91a514",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.postech.ac.kr/kor/newscenter/university-news.do?articleNo=25702&mode=view",
+      "snapshotHash": "08efa0b21933e54d9393c8b87944c992be28083bd1518c78383c20479d4ac090",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/doctoralcollege/skills-training/training-and-development-tools/ai-guidance-for-pgrs/",
+      "snapshotHash": "79a8536d26e0ae53053485d47fdb01103a880d29ebb985c99f61060cd63f1d16",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/governance-and-legal-services/media/dgls-media/policy/current-policies/Academic-Integrity-&-Misconduct-Policy.pdf",
+      "snapshotHash": "415e04cdb99a4009d7210ec7b1419787f15d217be9fcf0f85aee36ea06be7363",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/its/basic-introduction-to-ai/ai-faqs/",
+      "snapshotHash": "1a1bf4282dfd2194dbe81ec57c8e42b7483eda512f89f24cd30785bc25e02fef",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/its/basic-introduction-to-ai/ai-faqs/",
+      "snapshotHash": "a3057967c7e9bc50b446019ff77fb26ceead8758e718056a321c8abab26928a6",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/library/academic-skills/student-guide-to-generative-ai/",
+      "snapshotHash": "8cd5cde03c31b7ed6a52c8da1a836128a8446c296cf4884d5e7209243848acc7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/queenmaryacademy/educators/innovation-and-scholarship/innovative-pedagogies/centre-for-excellence-in-ai-in-education/resources/university-guidance-and-policies/",
+      "snapshotHash": "d80971638c14197a8f0e112fdde95eb0819423a3a8c5d92351f835c30dfcf866",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qmul.ac.uk/queenmaryacademy/educators/resources/assessment-and-feedback/resources/generative-ai-and-chat-gpt/",
+      "snapshotHash": "2186e211e6f9d96ad33259eead5f1edbc6bc1fa4c321b2803650558a581d0a2f",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qu.edu.qa/en-us/Offices/its/Pages/default.aspx",
+      "snapshotHash": "8cf62005254f0fac122d5cc011ff045197a07192322380a3b12bbd23c37d56e5",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qu.edu.qa/en-us/about/policy/Documents/Instructions%20onThe%20Use%20of%20Generative%20Artificial%20Intelligence%20Tools%20at%20Qatar%20University-Approved.pdf",
+      "snapshotHash": "734ec3c53d9a8dca6ba4610d45300ee713faaa0fa44bd5463df36fff3bfa261e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qu.edu.qa/en-us/about/policy/Pages/policy-search.aspx",
+      "snapshotHash": "943e8eabd21555c2061c483ac02139c57236493282da7576b1864ba4cd285424",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.qu.edu.qa/en-us/qu-ai/Pages/terms_and_conditions.aspx",
+      "snapshotHash": "bceda67c1d6f29cf0cc191c10cd2abc46d9d6b6e9dd7c2ea2d0a448240cab0da",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.st-andrews.ac.uk/policy/academic-policies-assessment-examination-and-award-good-academic-practice/generative-ai-faqs-students-guidance.pdf",
+      "snapshotHash": "91f0365c6d4331de61f8326ab68af80d46e92266fddacecce0090b2c2fd31d82",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.st-andrews.ac.uk/policy/academic-policies-assessment-examination-and-award-good-academic-practice/good-academic-practice-staff-guide.pdf",
+      "snapshotHash": "5abad49a08c58ac9d1fb9d678a4355a932a50def7579c1ebe9c4f31ab3b6c74e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.st-andrews.ac.uk/policy/academic-policies-assessment-examination-and-award-good-academic-practice/good-academic-practice.pdf",
+      "snapshotHash": "17d5b9a5c408f323e8d1158ab30a8c63f7c049c84da668fc8e717cf10d3c3b1d",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.st-andrews.ac.uk/policy/information-governance-and-management-information-security/use-of-generative-ai---llm.pdf",
+      "snapshotHash": "917ca69caf642ad71bffabd067244b6df949fc66d3f1b5db452033255b90a888",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.staff.universiteitleiden.nl/binaries/content/assets/ai-gidsen/scale-of-ai-use-at-universiteit-leiden.pdf",
+      "snapshotHash": "56b50935cd5303acb2144ba046455b9024a22190f748410cf9a92dbad03bb126",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.staff.universiteitleiden.nl/education/it-and-education/ai-in-education",
+      "snapshotHash": "f0887f7e0ee514d29dd8d9168df3a3c23b43eee9a438a238b8118484208f3691",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uc.cl/noticias/ayudantia-el-innovador-proyecto-que-busca-integrar-la-ia-a-las-clases-en-la-uc/",
+      "snapshotHash": "1375e10a2bc45e1c03b74e2d0e70693da8170fc04702b2b228e0820959918203",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ucd.ie/itservices/ourservices/communicationcollaboration/officeproductivity/aiservices/",
+      "snapshotHash": "40425943bcda56e968a1fcea211cd37437fba861ef09c01a95a7df8739abf960",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ucd.ie/itservices/ourservices/communicationcollaboration/officeproductivity/aiservices/",
+      "snapshotHash": "decb4f56287f79ae7c346a85bea10b96aa12836bcfe17e49bac094fbd13fce2a",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ucd.ie/registrar/t4media/Faculty%20Guidelines%20for%20the%20Use%20of%20AI%20in%20T&L.pdf",
+      "snapshotHash": "d119069349fe549da88113c50e90583802f4b65af10bb55dbe1995c7b88a44c4",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ucd.ie/registrar/ucdstrategicpoliciesandinitatives/ai-at-ucd/ai-at-UCD",
+      "snapshotHash": "ac3bf03b546c8d44125fafa017da8cf3c606462d08ac5d529c623cf664c4d3a3",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.ucd.ie/teaching/resources/generativeai/genaiassessmentdesign/",
+      "snapshotHash": "89a76669b9fde4b4e925a43a3b5f1e2a8f8d086a6ef103c2964b81b7603d17f2",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uio.no/english/services/ai/teacher/",
+      "snapshotHash": "55048bf3e497f26313359d44f4d84b61db40c2b1778019f346de6b222eee9a6e",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uio.no/studier/ressurser/ki-student.html",
+      "snapshotHash": "f08489db4467fc67f80afdb0a216370e76b7c1304ad1b6bebbed66aaa337ae32",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uio.no/tjenester/it/ki/",
+      "snapshotHash": "20bca446e3441f648989995968742daa7a312be3b50909ccb9d9bd6830a1bcbc",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uio.no/tjenester/it/ki/gpt-uio/",
+      "snapshotHash": "d302eb43856d1517a7f554eaf26e4219204a973d3496fef42e2173858b3ee8ed",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy",
+      "snapshotHash": "d3db7180d3d8adb4bf6e2abefda459bd20960452fd8932c3018a7e7f9b719483",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/employees",
+      "snapshotHash": "05462c04bde3883385773919370e1a7564be7f8d39c3f5290e1c2940d4633be1",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/researchers/risks-and-limitations",
+      "snapshotHash": "5b6e9fe5ccc2973699356533d4d4ce447953f182e924866ece6cb6ac13393263",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/students/ai-index",
+      "snapshotHash": "40924ad17b0105194d875f42dbab9ce4d834d67d239cae32fb5039424a6252a7",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/students/conditions-of-use-of-ai-tools",
+      "snapshotHash": "f51ecf39e9973f15e4057fef99c5e170510fa8b10e03f58be1d934266da7245b",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/teachers",
+      "snapshotHash": "70586afe8393c2b0d76ab322b3cee8b764aa31bddcf4ce170444204055008dfe",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
+    },
+    {
+      "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/teachers",
+      "snapshotHash": "a998d39e74207e3df88c4c9b498aed8686e9ca831126d73329da1824efead112",
+      "hashKind": "unknown_legacy",
+      "unresolvedReason": "Retained canonical source version; original representation not newly established by this presentation release."
     }
   ]
 }

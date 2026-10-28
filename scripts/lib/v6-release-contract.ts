@@ -13,6 +13,14 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
   const sameSet = (a: string[], b: string[]) => new Set(a).size === a.length && new Set(b).size === b.length && [...a].sort().join(',') === [...b].sort().join(',');
   if (pages.schemaVersion !== 'uapt-v6-published-pages-v1' || records.schemaVersion !== 'uapt-v6-effective-records-v1' || (options.candidateOnly ? pages.candidateOnly!==true || records.candidateOnly!==true || pages.publicationApproved!==false || records.publicationApproved!==false : !pages.publicationApproved || !records.publicationApproved || pages.candidateOnly===true || records.candidateOnly===true) || pages.releaseId !== records.revision) throw Error('Unpaired V6 release identity');
   const scope = [...pages.slugs, ...(pages.v5Slugs ?? [])];
+  for (const [slug, ids] of Object.entries(records.mcpPresentationExclusions ?? {})) {
+    if (!pages.slugs.includes(slug) || !Array.isArray(ids) || new Set(ids).size !== ids.length) throw Error('Invalid MCP presentation exclusion scope: ' + slug);
+    for (const locale of SUPPORTED_LOCALES) {
+      const view = pages.locales[locale]?.views[slug];
+      const excluded = view?.claimDispositions?.filter(d => d.mode !== 'scoped_reference').map(d => d.claimId);
+      if (!excluded || !sameSet(ids, excluded)) throw Error('MCP presentation exclusion drift: ' + slug + '/' + locale);
+    }
+  }
   if (!sameSet(scope, records.summaries.map(s => s.entity.slug)) || !sameSet(Object.keys(pages.locales), [...SUPPORTED_LOCALES])) throw Error('Incomplete V6 school/locale coverage');
   for (const key of ['recordRevisions','toolsBySlug','heldBySlug','historical','changesBySlug'] as const) if (!sameSet(scope, Object.keys(records[key]))) throw Error('Incomplete V6 record surface: ' + key);
   for (const slug of Object.keys(records.snapshots)) if (!scope.includes(slug)) throw Error('Orphan V6 snapshot');

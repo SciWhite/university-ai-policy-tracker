@@ -230,3 +230,40 @@ test("real no-auth Streamable HTTP initialize, tools and all three calls", async
     assert.equal(Object.values(totals.days)[0][`get_student_policy|${data.slug}|all|error`].calls,1);
   } finally { await client.close(); await new Promise<void>(r=>http.close(()=>r())); }
 });
+
+test("presentation exclusions retain original records but never return them as current policy or evidence", async () => {
+  const catalog = await loadCatalog(file);
+  const record = structuredClone(catalog.records.find(r => r.summary.claims.length >= 2 && !r.snapshot)!);
+  assert.ok(record);
+  const excluded = record.summary.claims[0].id!;
+  const retained = structuredClone(record.summary.claims[0]);
+  record.presentationExcludedClaimIds = [excluded];
+  const service = new PolicyService({...catalog, records: [record]});
+  const policy = service.policy(record.summary.entity.slug);
+  assert.ok('claims' in policy && 'remainingClaimIds' in policy && 'presentationExcludedClaimIds' in policy);
+  assert.ok(!policy.claims?.some(c => c.id === excluded));
+  assert.ok(!policy.remainingClaimIds?.includes(excluded));
+  assert.deepEqual(policy.presentationExcludedClaimIds, [excluded]);
+  assert.ok(policy.limitations.some(x => x.includes('excluded from current policy guidance')));
+  const evidence = service.evidence(record.summary.entity.slug, [excluded]);
+  assert.ok('missingClaimIds' in evidence);
+  assert.equal(evidence.status, 'insufficient_evidence');
+  assert.deepEqual(evidence.missingClaimIds, [excluded]);
+  assert.deepEqual(record.summary.claims[0], retained);
+});
+
+test("catalog rejects invalid exclusions and snapshots based on excluded claims", async () => {
+  const envelope = JSON.parse(await readFile(file, 'utf8'));
+  const target = envelope.payload.records.find((r: any) => r.snapshot && r.snapshot.basis.claimIds.length);
+  assert.ok(target);
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'uapt-exclusions-'));
+  const candidate = path.join(dir, 'catalog.json');
+  target.presentationExcludedClaimIds = ['not-a-published-claim'];
+  envelope.sha256 = digest(envelope.payload);
+  await writeFile(candidate, JSON.stringify(envelope));
+  await assert.rejects(loadCatalog(candidate), /Invalid presentation exclusion/);
+  target.presentationExcludedClaimIds = [target.snapshot.basis.claimIds[0]];
+  envelope.sha256 = digest(envelope.payload);
+  await writeFile(candidate, JSON.stringify(envelope));
+  await assert.rejects(loadCatalog(candidate), /Snapshot depends on excluded claim/);
+});

@@ -11,7 +11,7 @@ export class PolicyService {
     "Live availability of official URLs is not checked by these tools. If a source cannot be opened, identify the answer as based on recorded evidence and do not claim fresh verification."] }; }
   private recordBase(record: Record) {
     const base = this.base();
-    return {...base,...(record.universityRevisionId?{datasetReleaseId:this.catalog.releaseId,universityRevisionId:record.universityRevisionId,recordSha256:record.recordSha256,recordPublishedAt:record.recordPublishedAt,snapshotUnavailableReason:record.snapshotUnavailableReason,historicalClaimIds:record.historicalClaimIds}:{}), limitations:[...new Set([...base.limitations,"releaseId identifies the historical base dataset; universityRevisionId and recordPublishedAt identify this school record correction. Claim reviewState applies to individual claims, not to the separately generated machine-candidate Analysis API or approval of student snapshots.",...record.summary.limitations,...(record.snapshot?.limitations ?? [])])]};
+    return {...base,...(record.universityRevisionId?{datasetReleaseId:this.catalog.releaseId,universityRevisionId:record.universityRevisionId,recordSha256:record.recordSha256,recordPublishedAt:record.recordPublishedAt,snapshotUnavailableReason:record.snapshotUnavailableReason,historicalClaimIds:record.historicalClaimIds}:{}),...(record.presentationExcludedClaimIds?.length?{presentationExcludedClaimIds:record.presentationExcludedClaimIds}:{}), limitations:[...new Set([...base.limitations,"releaseId identifies the historical base dataset; universityRevisionId and recordPublishedAt identify this school record correction. Claim reviewState applies to individual claims, not to the separately generated machine-candidate Analysis API or approval of student snapshots.",...record.summary.limitations,...(record.snapshot?.limitations ?? [])])]};
   }
   resolve(name: string) {
     const query = normalizeForSearch(name);
@@ -32,20 +32,23 @@ export class PolicyService {
     const record = this.bySlug.get(slug);
     if (!record) return { ...this.base(), status: "not_found", message: "No eligible published record matched this slug. Resolve the university first." };
     const tools = !requested.length || requested.includes("approved_tools") ? record.tools : undefined;
+    const excluded = new Set(record.presentationExcludedClaimIds ?? []);
+    const currentClaims = record.summary.claims.filter(c => !excluded.has(c.id!));
     const snapshot = record.snapshot;
     const dimensions = snapshot?.dimensions.filter(d => (!requested.length || requested.includes(d.key)) &&
       !["not_mentioned", "insufficient_public_evidence"].includes(d.status)) ?? [];
-    const relevantClaims = (requested.length ? record.summary.claims.filter(c =>
-      dimensions.some(d => d.basis.claimIds.includes(c.id!)) || requested.some(t => claimMatchesTopic(c, t))) : [...record.summary.claims])
+    const relevantClaims = (requested.length ? currentClaims.filter(c =>
+      dimensions.some(d => d.basis.claimIds.includes(c.id!)) || requested.some(t => claimMatchesTopic(c, t))) : [...currentClaims])
       // Keep permission and assessment conditions ahead of tool catalogue entries.
       .sort((a,b) => Number(isToolClaim(a)) - Number(isToolClaim(b)));
     const claims = relevantClaims.slice(0,15);
     const remainingClaimIds = relevantClaims.slice(15).map(c => c.id!);
     const insufficientTopics = requested.filter(t => !(t === "approved_tools" && tools?.length) && !dimensions.some(d => d.key === t) && !relevantClaims.some(c => claimMatchesTopic(c,t)));
     const base = this.recordBase(record);
+    if (excluded.size) base.limitations.push('Some retained public records are excluded from current policy guidance pending review or because they are historical. Consult the tracker record for their disposition.');
     return { ...base, limitations: [...base.limitations, ...(remainingClaimIds.length ? ["This response contains only the first 15 relevant claims. Before presenting a complete account of the requested rules, call get_policy_evidence with remainingClaimIds in batches of at most 10. Preserve the scope of each returned claim."] : [])], status: claims.length || dimensions.length || tools?.length ? "ok" : "insufficient_evidence", university: record.summary.entity.name, slug,
       lastCheckedAt: record.summary.lastCheckedAt, trackerUrl: tracker(slug), publicJsonUrl: `https://eduaipolicy.org/api/public/v1/universities/${slug}.json`,
-      ...(snapshot ? { snapshotStatus: "strong", scope: snapshot.scope, audiences: snapshot.audiences, summary: requested.length ? undefined : snapshot.summary } : { snapshotStatus: "unavailable", summary: record.summary.claims.length ? "Reviewed claims are provided below; no eligible current student summary is available." : "No eligible reviewed claims are currently available. This does not mean the university has no policy." }),
+      ...(snapshot ? { snapshotStatus: "strong", scope: snapshot.scope, audiences: snapshot.audiences, summary: requested.length ? undefined : snapshot.summary } : { snapshotStatus: "unavailable", summary: currentClaims.length ? "Reviewed claims are provided below; no eligible current student summary is available." : "No eligible reviewed claims are currently available. This does not mean the university has no policy." }),
       dimensions, claims: claims.map(c => ({ id: c.id, claimType: c.claimType, text: c.claimText, confidence: c.confidence, reviewState: c.reviewState,
         lastCheckedAt: c.lastCheckedAt, trackerEvidenceUrl: `${tracker(slug)}#claim-${encodeURIComponent(c.id!)}`, officialSourceUrls: [...new Set(c.evidence.map(e => e.sourceUrl))] })),
       ...(tools ? { tools, totalToolRecords: tools.length, toolEvidenceNotice: "These are separately published tool and access records, not additional policy claims. Preserve procurement, cost, user eligibility, data and service-mode conditions. Access or a catalogue listing does not establish course, assessment or sensitive-data permission." } : {}),
@@ -55,7 +58,8 @@ export class PolicyService {
   evidence(slug: string, ids: string[]) {
     const record = this.bySlug.get(slug);
     if (!record) return { ...this.base(), status: "not_found", claims: [] };
-    const claims = record.summary.claims.filter(c => ids.includes(c.id!));
+    const excluded = new Set(record.presentationExcludedClaimIds ?? []);
+    const claims = record.summary.claims.filter(c => ids.includes(c.id!) && !excluded.has(c.id!));
     const missingClaimIds = ids.filter(id => !claims.some(c => c.id === id));
     return { ...this.recordBase(record), status: missingClaimIds.length ? "insufficient_evidence" : "ok", slug, trackerUrl: tracker(slug),
       evidenceUrl: `https://eduaipolicy.org/api/public/v1/universities/${slug}.json`,

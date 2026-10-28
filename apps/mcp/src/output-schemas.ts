@@ -23,7 +23,8 @@ const base = {
   recordSha256: z.string().regex(/^[a-f0-9]{64}$/).optional(),
   recordPublishedAt: z.string().datetime().optional(),
   snapshotUnavailableReason: z.enum(["pending_review","not_published"]).optional(),
-  historicalClaimIds: z.array(z.string()).optional()
+  historicalClaimIds: z.array(z.string()).optional(),
+  presentationExcludedClaimIds: z.array(z.string()).optional()
 };
 export const resolutionOutput = z.object({
   ...base,

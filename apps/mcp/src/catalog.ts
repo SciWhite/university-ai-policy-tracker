@@ -24,6 +24,7 @@ export const catalogPayloadSchema = z.object({
     recordPublishedAt: z.string().datetime().optional(),
     snapshotUnavailableReason: z.enum(["pending_review","not_published"]).optional(),
     historicalClaimIds: z.array(z.string()).optional(),
+    presentationExcludedClaimIds: z.array(z.string()).optional(),
     tools: z.array(universityToolRecordSchema).optional()
   }))
 });
@@ -53,6 +54,9 @@ export async function loadCatalog(file: string): Promise<Catalog> {
     seen.add(slug);
     if (eligibleClaims(record).length !== record.summary.claims.length) throw new Error("Ineligible catalog claim");
     if (new Set(record.summary.claims.map(c => c.id)).size !== record.summary.claims.length) throw new Error("Duplicate catalog claim");
+    const excluded = record.presentationExcludedClaimIds ?? [];
+    if (new Set(excluded).size !== excluded.length || excluded.some(id => !record.summary.claims.some(c => c.id === id))) throw new Error("Invalid presentation exclusion");
+    if (record.snapshot?.basis.claimIds.some(id => excluded.includes(id))) throw new Error("Snapshot depends on excluded claim");
     const revisionFields = [record.universityRevisionId, record.recordSha256, record.recordPublishedAt];
     if (revisionFields.some(value => value !== undefined)) {
       if (revisionFields.some(value => !value) || (record.summarySha256 && record.summarySha256 !== digest(record.summary))) throw new Error("Published record fingerprint mismatch");
