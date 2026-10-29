@@ -306,7 +306,7 @@ def main():
     parser.add_argument("--source", type=pathlib.Path, required=True)
     parser.add_argument("--output", type=pathlib.Path, required=True)
     parser.add_argument("--locales", required=True)
-    parser.add_argument("--concurrency", type=int, default=2, choices=range(1, 3))
+    parser.add_argument("--concurrency", type=int, default=3, choices=range(1, 4))
     parser.add_argument("--batch-chars", type=int, default=12000)
     parser.add_argument("--limit-jobs", type=int)
     parser.add_argument("--timeout", type=int, default=900)
