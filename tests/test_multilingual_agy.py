@@ -17,6 +17,23 @@ spec.loader.exec_module(batch)
 
 
 class AgyOutputAcceptance(unittest.TestCase):
+    def test_numeric_spans_adjacent_to_words_are_counted_whole(self):
+        cases = [
+            ("January2026 and named2026/27 programmes.", "January 2026 and named 2026/27 programmes.", True),
+            ("Policy2024 applies.", "Policy applies.", False),
+            ("The2024 text and The2024 appendix.", "The2024 text and appendix.", False),
+            ("named2026/27 programmes", "named2027/28 programmes", False),
+            ("See https://example.edu/rules2024.", "See https://example.edu/rules2025.", False),
+            ("Sections8–11 are defaults.", "Sections8–11 (8–11) are defaults.", False),
+        ]
+        for source, target, accepted in cases:
+            with self.subTest(source=source, target=target):
+                if accepted:
+                    batch.validate({"u0": target}, {"u0": source})
+                else:
+                    with self.assertRaises(ValueError):
+                        batch.validate({"u0": target}, {"u0": source})
+
     def test_truncated_or_conflicting_success_payload_is_rejected(self):
         for payload in ['{"u0":"x"', '{"u0":"x"}\n{"u0":', '{"u0":"x"}\n{"u0":"y"}', '']:
             with self.assertRaises(ValueError):
@@ -225,16 +242,16 @@ class AgyOutputAcceptance(unittest.TestCase):
                 time.sleep(0.02)
                 with lock: active -= 1
                 return {"structuralStatus": "PASS", "checkedStrings": 1}
-            argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja,fr,pl,es,nl,ms", "--concurrency", "3"]
+            argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja,fr,pl,es,nl,ms", "--concurrency", "2"]
             with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", side_effect=generate), contextlib.redirect_stdout(io.StringIO()):
                 batch.main()
             self.assertEqual(calls, 6)
-            self.assertEqual(peak, 2)
+            self.assertEqual(peak, 1)
             progress = json.loads((output / "progress.json").read_text())
             self.assertTrue(progress["operatorRepairSlotReserved"])
             self.assertEqual(progress["stage"], "complete")
 
-    def test_concurrency_defaults_to_three_and_rejects_larger_runs(self):
+    def test_concurrency_defaults_to_two_and_rejects_larger_runs(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary); output = root / "out"; output.mkdir()
             text = "Synthetic display."
@@ -243,8 +260,8 @@ class AgyOutputAcceptance(unittest.TestCase):
             argv = ["batch", "--source", str(source), "--output", str(output), "--locales", "ja"]
             with patch.object(sys, "argv", argv), patch.object(batch, "generate_and_review", side_effect=AssertionError("Unexpected model call")):
                 batch.main()
-            self.assertEqual(json.loads((output / "progress.json").read_text())["concurrency"], 3)
-            for limit in [4, 5]:
+            self.assertEqual(json.loads((output / "progress.json").read_text())["concurrency"], 2)
+            for limit in [3, 4]:
                 with patch.object(sys, "argv", argv + ["--concurrency", str(limit)]), contextlib.redirect_stderr(io.StringIO()):
                     with self.assertRaises(SystemExit) as error: batch.main()
                 self.assertEqual(error.exception.code, 2)

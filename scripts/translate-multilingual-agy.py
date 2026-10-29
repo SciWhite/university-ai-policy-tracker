@@ -15,6 +15,10 @@ NUMERIC_CONTROLS = ("Keep every literal digit sequence exactly as written and wi
                     "For example Article 19 and Article 20 must retain 19 and 20, never Chinese numeral characters. "
                     "A numbered rule such as Rule No.79 must contain 79 only once: do not duplicate it in a translated label plus an English parenthetical gloss. "
                     "Apply these controls to your final corrections as well as the initial translation.")
+SCOPE_CONTROLS = ("An unqualified graduate/postgraduate student scope includes master's and doctoral students; "
+                  "do not narrow it to doctoral, postdoctoral, master's-only, alumni or non-degree continuing education. "
+                  "Preserve any explicit narrower scope in the source. Academic disciplinary probation is not suspension "
+                  "or expulsion, and a disciplinary demerit is not an invented points deduction.")
 LANGUAGES = {"zh": "Simplified Chinese", "fr": "French", "pl": "Polish", "es": "Spanish", "nl": "Dutch", "ms": "Malay", "ja": "Japanese", "ko": "Korean", "pt": "Portuguese, neutral across Portugal and Brazil", "ar": "Modern Standard Arabic", "ru": "Russian", "de": "German", "it": "Italian", "cs": "Czech", "tr": "Turkish", "fi": "Finnish", "sv": "Swedish", "da": "Danish", "nb": "Norwegian Bokmal", "hu": "Hungarian", "lt": "Lithuanian", "id": "Indonesian", "vi": "Vietnamese", "th": "Thai", "fa": "Persian", "he": "Hebrew", "hi": "Hindi", "ur": "Urdu", "bn": "Bengali", "uk": "Ukrainian", "el": "Greek", "zh-Hant": "Traditional Chinese"}
 
 
@@ -70,7 +74,7 @@ def validate(strings, units, immutable_ids=()):
         def numbers(value):
             for token in sorted(protected(value, immutable_ids), key=len, reverse=True):
                 value = value.replace(token, " ")
-            return collections.Counter(re.findall(r"(?<![A-Za-z0-9_])\d+(?:[.,:/-]\d+)*(?![A-Za-z0-9_])", value))
+            return collections.Counter(re.findall(r"(?<!\d)\d+(?:[.,:/-]\d+)*(?!\d)", value))
         # A written-out source number may naturally become a digit in a target
         # language. Require existing literal amounts/counts to survive; the
         # semantic review checks any additional target numerals against prose.
@@ -175,7 +179,7 @@ def run_job(job, timeout, backend="agy", config=None, thinking="high"):
     prompt = ("You are a precise professional translator for a university AI-policy tracker. Translate EVERY supplied string into " + LANGUAGES[locale] + ". Use no tools, no browsing, no commands, no edits, no subagents. Return ONLY the complete JSON object required by the schema. This is translation, not policy authoring. Preserve every sentence, modality (may/should/must), negation, conditions, uncertainty, audience, school/unit/course/assessment scope, dates, and evidence gaps. Never infer permission from absence of evidence or access to tools. Coursework means AI use in assignments/assessment, not studying AI courses. 'Not established' and 'reviewed evidence did not establish' are evidentiary findings: explicitly retain that the materials examined did not establish the rule, NEVER say that the university did not enact/adopt a rule. 'Reviewed' means examined, NEVER revised/amended. Tool availability is not assessment permission. Keep product names, acronyms, T0-T5, AI+X, PARTIAL and IDs exactly. Preserve EVERY URL, {placeholder}, numeric amount, date, duration, source hash and Claim ID byte-for-byte, including any English code labels. Do not translate original quotations: none are supplied as translation targets. If a supplied string quotes a policy term inside explanatory prose, retain the quoted term exactly when it is a code, named category or product. Do not add Markdown, HTML, bidi control characters or factual content. Translate naturally with standard target-language punctuation and spacing. Output strings keyed by the immutable input keys.\n\n" + json.dumps(units, ensure_ascii=False))
     prompt += "\nIMPORTANT QUALITY CONTROLS: Translate natural-language tool conditions and eligibility descriptions, even when an English table/category label is embedded in explanatory prose. Preserve only genuine product names, acronyms and code/status identifiers, not entire English condition sentences. Ordinary meanings such as Paid, Required, Recommended and Unavailable must be translated; they are not immutable code markers. A previous Japanese candidate incorrectly made 'students should clarify' into a necessity: preserve 'should' as a recommendation, never an obligation. Do not copy long English fragments into a translated paragraph."
     prompt += "\nSnake_case identifiers such as conditionally_allowed are genuine code markers: preserve them byte-for-byte, including underscores. Translate surrounding human-readable labels and explanations."
-    prompt += "\n" + NUMERIC_CONTROLS
+    prompt += "\n" + NUMERIC_CONTROLS + "\n" + SCOPE_CONTROLS
     schema = {"type": "object", "properties": {key: {"type": "string", "minLength": 1} for key in units}, "required": list(units), "additionalProperties": False}
     if backend == "openclaw": prompt += "\nRequired complete JSON schema:\n" + json.dumps(schema)
     prompt_sha = sha(prompt.encode())
@@ -255,7 +259,7 @@ def review_job(job, timeout, backend="agy", config=None, thinking="high"):
     schema = {"type": "object", "properties": {"checkedIds": {"type": "array", "items": {"type": "string"}}, "unresolvedIds": {"type": "array", "items": {"type": "string"}}, "issues": {"type": "array", "items": {"type": "object", "properties": {"id": {"type": "string"}, "reasonEn": {"type": "string"}, "translation": {"type": "string"}}, "required": ["id", "reasonEn", "translation"], "additionalProperties": False}}}, "required": ["checkedIds", "unresolvedIds", "issues"], "additionalProperties": False}
     (review_dir / "schema.json").write_text(json.dumps(schema))
     prompt = ("Independently review EVERY paired university AI-policy/display translation into " + LANGUAGES[locale] + ". No tools, commands, browsing, edits or subagents. Return ONLY a complete JSON object matching the schema. Check every sentence and ID for equivalence, modality, negation, conditions, audience, unit/course/assessment scope, uncertainty, evidence gaps, dates, durations, amounts, identifiers and placeholders. Include all input IDs exactly once in checkedIds. Use unresolvedIds for any item you cannot assess. For every defect include its ID, a specific English reason and the complete corrected target translation. Internally recheck each correction before returning it. Do not include faithful translations in issues. Preserve URLs, {placeholders}, Claim IDs, hashes, product names, T0-T5, AI+X, PARTIAL and other genuine code markers exactly. Snake_case identifiers such as conditionally_allowed must remain byte-for-byte; translate their surrounding human-readable labels and explanations. Translate natural-language tool conditions and ordinary Paid/Required/Recommended/Unavailable labels fully; do not leave English sentences untranslated. 'Should' is a recommendation, not a mandatory rule. 'Not established' is a finding from materials examined, not a claim that a university enacted no policy. 'Reviewed' means examined, not revised/amended. Coursework means AI use in assignments/assessment, not studying AI courses. Tool availability is not assessment permission. Keep teacher/student and university/unit/course scope distinct. The inputs are explanatory display prose, not original evidence quotations. Do not add factual content, Markdown, HTML or bidi controls. Review ordinary UI strings and dynamic placeholders for natural grammar as well.\n" + json.dumps({key: {"source": source, "translation": translations[key]} for key, source in units.items()}, ensure_ascii=False))
-    prompt += "\n" + NUMERIC_CONTROLS
+    prompt += "\n" + NUMERIC_CONTROLS + "\n" + SCOPE_CONTROLS
     if backend == "openclaw": prompt += "\nRequired complete JSON schema:\n" + json.dumps(schema)
     (review_dir / "prompt.txt").write_text(prompt)
     receipt = {"locale": locale, "model": MODEL, "backend": backend, "thinking": thinking, "sourceSha256": source_sha, "promptSha256": sha(prompt.encode()), "inputTranslationsSha256": target_sha, "nativeSpeakerAcceptance": False, "publicationApproved": False}
@@ -306,7 +310,7 @@ def main():
     parser.add_argument("--source", type=pathlib.Path, required=True)
     parser.add_argument("--output", type=pathlib.Path, required=True)
     parser.add_argument("--locales", required=True)
-    parser.add_argument("--concurrency", type=int, default=3, choices=range(1, 4))
+    parser.add_argument("--concurrency", type=int, default=2, choices=range(1, 3))
     parser.add_argument("--batch-chars", type=int, default=12000)
     parser.add_argument("--limit-jobs", type=int)
     parser.add_argument("--timeout", type=int, default=900)
