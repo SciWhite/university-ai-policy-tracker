@@ -44,24 +44,29 @@ const metadataCopy:Record<SupportedLocale,readonly string[]>={
  nl:['Reikwijdte niet vastgesteld','Studenten','Docenten','Docenten','Beschrijving','Verboden','Verplicht','Aanbevolen'],
  ms:['Skop belum ditetapkan','Pelajar','Guru','Pengajar','Pernyataan deskriptif','Dilarang','Diperlukan','Disyorkan']
 };
+export const policySupplementsAcceptedUiSources = [
+ ...copy.en, ...reviewedCopy.en, ...processCopy.en, ...metadataCopy.en,
+ designCopy.en, summaryCopy.en, sourceCopy.en,
+];
+const acceptedUi = (text:string, sharedUiText?:Record<string,string>) => sharedUiText?.[text] ?? text;
 const topicNames=['assessment_permission','disclosure','privacy_data','ai_grading','accessibility','misconduct_classification','procedure','sanctions','appeal','support','detection','assessment_design'];
 function supplementTopicLabel(topic:string,locale:SupportedLocale){const i=topicNames.indexOf(topic);return i<0?topic:i<5?reviewedCopy[locale][i+2]:i<11?processCopy[locale][i-5]:designCopy[locale];}
-function SupplementCard({record:r,locale,reviewed}:{record:SupplementRecord;locale:SupportedLocale;reviewed:boolean}) {
- const u=copy[locale];const f=r.fact;
- const m=metadataCopy[locale];const audience=m[{students:1,teachers:2,instructors:3}[f.scope.audience as 'students']??-1]??f.scope.audience;
+function SupplementCard({record:r,locale,reviewed,sharedUiText}:{record:SupplementRecord;locale:SupportedLocale;reviewed:boolean;sharedUiText?:Record<string,string>}) {
+ const u=copy[locale].map(text=>acceptedUi(text,sharedUiText));const f=r.fact;
+ const m=metadataCopy[locale].map(text=>acceptedUi(text,sharedUiText));const audience=m[{students:1,teachers:2,instructors:3}[f.scope.audience as 'students']??-1]??f.scope.audience;
  const modality=m[{descriptive:4,prohibited:5,must:6,should:7,recommended:7}[f.modality as 'descriptive']??-1]??f.modality;
  const translated=locale==='zh'&&f.localSummary?.zh&&f.translationSourceHash===createHash('sha256').update(f.statement).digest('hex');
  const text=translated ? f.localSummary!.zh : f.statement;
  return <article id={`supplement-${f.id}`} className={`policy-supplements__record${reviewed?' policy-supplements__record--reviewed':''}`}>
-  <p className="muted">{f.appliesToAI === "general_misconduct_framework" ? processCopy[locale][6] : f.appliesToAI === "explicit_ai" ? processCopy[locale][7] : sourceCopy[locale]}</p>
-  {reviewed?<p className="muted">{summaryCopy[locale]}</p>:null}
-  <p data-i18n="preserve"><PolicySummaryEmphasis text={text} phrases={reviewed?(translated?f.emphasis?.zh:[])??[]:policyToolNames} policy={reviewed}/></p>
-  <dl><dt>{u[3]}</dt><dd data-i18n="preserve">{[audience,f.scope.level==='unknown'?m[0]:f.scope.level,f.scope.unit,...f.scope.qualifiers??[]].filter(Boolean).join(' · ')}</dd><dt>{u[4]}</dt><dd>{supplementTopicLabel(f.topic,locale)}</dd><dt>{u[5]}</dt><dd>{modality}</dd></dl>
+  <p className="muted">{acceptedUi(f.appliesToAI === "general_misconduct_framework" ? processCopy[locale][6] : f.appliesToAI === "explicit_ai" ? processCopy[locale][7] : sourceCopy[locale],sharedUiText)}</p>
+  {reviewed?<p className="muted">{acceptedUi(summaryCopy[locale],sharedUiText)}</p>:null}
+  <p data-i18n="preserve" lang={translated ? "zh" : "en"}><PolicySummaryEmphasis text={text} phrases={reviewed?(translated?f.emphasis?.zh:[])??[]:policyToolNames} policy={reviewed}/></p>
+  <dl><dt>{u[3]}</dt><dd data-i18n="preserve" lang="en">{[audience,f.scope.level==='unknown'?m[0]:f.scope.level,f.scope.unit,...f.scope.qualifiers??[]].filter(Boolean).join(' · ')}</dd><dt>{u[4]}</dt><dd>{acceptedUi(supplementTopicLabel(f.topic,locale),sharedUiText)}</dd><dt>{u[5]}</dt><dd>{modality}</dd></dl>
   <details><summary>{u[6]}</summary>{f.evidence.map((e,j)=><div key={j}><a href={e.sourceUrl} target="_blank" rel="noopener noreferrer">{u[6]} ↗</a><blockquote lang={e.sourceLanguage || 'und'} data-i18n="preserve">{e.quote}</blockquote><p>{u[7]}: <time dateTime={e.retrievedAt}>{e.retrievedAt.slice(0,10)}</time> · {u[9]}: {e.lineStart}–{e.lineEnd}</p><p>{u[8]}: <code>{e.sourceSnapshotHash}</code></p></div>)}</details>
  </article>;
 }
-export async function PolicySupplements({slug,locale,claims}:{slug:string;locale:SupportedLocale;claims:PolicyClaim[]}) {
- const records=getApprovedPolicySupplements(slug);const u=copy[locale];const v=reviewedCopy[locale];
+export async function PolicySupplements({slug,locale,claims,sharedUiText}:{slug:string;locale:SupportedLocale;claims:PolicyClaim[];sharedUiText?:Record<string,string>}) {
+ const records=getApprovedPolicySupplements(slug);const u=copy[locale].map(text=>acceptedUi(text,sharedUiText));const v=reviewedCopy[locale].map(text=>acceptedUi(text,sharedUiText));
  const reviewed=records.filter(r=>['prior_local_review_retained','current_local_source_review'].includes(r.semanticReview));
  const topics=['assessment_permission','disclosure','privacy_data','ai_grading','accessibility','misconduct_classification','procedure','sanctions','appeal','support','detection','assessment_design'];
  const topicLabel=(i:number)=>i<5?v[i+2]:i<11?processCopy[locale][i-5]:designCopy[locale];
@@ -72,7 +77,7 @@ export async function PolicySupplements({slug,locale,claims}:{slug:string;locale
   <h2 id="policy-supplements-title">{u[0]}</h2>
   {reviewed.length?<div className="policy-supplements__reviewed"><h3>{v[0]} ({reviewed.length})</h3><p className="muted">{v[1]}</p>
    <nav aria-label={v[0]}>{topics.map((topic,i)=>reviewed.some(r=>r.fact.topic===topic)?<a key={topic} href={`#supplement-topic-${topic}`}>{topicLabel(i)}</a>:null)}</nav>
-   {topics.map((topic,i)=>{const fs=reviewed.filter(r=>r.fact.topic===topic);return fs.length?<section id={`supplement-topic-${topic}`} key={topic}><h3>{topicLabel(i)}</h3>{fs.map(r=><SupplementCard key={r.key} record={r} locale={locale} reviewed/>)}</section>:null;})}
+   {topics.map((topic,i)=>{const fs=reviewed.filter(r=>r.fact.topic===topic);return fs.length?<section id={`supplement-topic-${topic}`} key={topic}><h3>{acceptedUi(topicLabel(i),sharedUiText)}</h3>{fs.map(r=><SupplementCard key={r.key} record={r} locale={locale} reviewed sharedUiText={sharedUiText}/>)}</section>:null;})}
   </div>:null}
   {links.some(g=>g.length)?<details><summary>{u[12]}</summary>{links.map((group,i)=>group.length?<section key={i}><h3>{u[13+i]}</h3><ul>{group.map(c=><li key={c.id}><a href={`#claim-${c.id}`} data-i18n="preserve"><PolicySummaryEmphasis text={c.claimText} policy/></a></li>)}</ul></section>:null)}</details>:null}
  </section>;

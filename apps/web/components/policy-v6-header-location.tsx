@@ -9,12 +9,14 @@ export function PolicyV6HeaderLocation({
   checkedAt,
   changedAt,
   locale,
+  sharedUiText = {},
 }: {
   region: string;
   country: string;
   checkedAt?: string;
   changedAt?: string;
   locale: SupportedLocale;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
   const date = checkedAt ?? changedAt;
   return (
@@ -23,7 +25,7 @@ export function PolicyV6HeaderLocation({
       {date ? (
         <span className="policy-v6-headerDate">
           {checkedAt
-            ? policyV6DensityCopy(locale).checked
+            ? sharedUiText["Last checked"] ?? policyV6DensityCopy(locale).checked
             : translatePolicyReferenceUi("Updated", locale)}{" "}
           <time dateTime={date}>
             {new Intl.DateTimeFormat(locale, {

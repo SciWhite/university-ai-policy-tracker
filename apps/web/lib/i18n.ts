@@ -1,40 +1,22 @@
-export const SUPPORTED_LOCALES = [
-  "en",
-  "zh",
-  "fr",
-  "pl",
-  "es",
-  "nl",
-  "ms"
-] as const;
+import { READING_LOCALES, LANGUAGE_NAMES, readingDirection, isReadingLocale, type ReadingLocale } from "./language-catalog";
+
+export const SUPPORTED_LOCALES = ["en", "zh", "fr", "pl", "es", "nl", "ms"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
+export const ROUTED_LOCALES = READING_LOCALES;
 export type LocalizedValue = Partial<Record<SupportedLocale, string>>;
 
 export const DEFAULT_LOCALE = "en" satisfies SupportedLocale;
-export const NON_DEFAULT_LOCALES = SUPPORTED_LOCALES.filter(
+export const NON_DEFAULT_LOCALES: readonly ReadingLocale[] = ROUTED_LOCALES.filter(
   (locale) => locale !== DEFAULT_LOCALE
 );
-export const VISIBLE_LOCALES: readonly SupportedLocale[] = [
-  "en",
-  "zh",
-  "fr",
-  "pl"
-];
-export const HIDDEN_AUTO_LOCALES: readonly SupportedLocale[] = [
+export const VISIBLE_LOCALES: readonly SupportedLocale[] = SUPPORTED_LOCALES;
+export const HIDDEN_AUTO_LOCALES: readonly string[] = [
   "es",
   "nl",
   "ms"
 ];
 
-const localeLabels: Record<SupportedLocale, string> = {
-  en: "English",
-  zh: "中文",
-  fr: "Français",
-  pl: "Polski",
-  es: "Español",
-  nl: "Nederlands",
-  ms: "Bahasa Melayu"
-};
+const localeLabels: Record<ReadingLocale, string> = LANGUAGE_NAMES;
 
 const uiStrings = {
   originalEvidence: {
@@ -131,8 +113,43 @@ export function isSupportedLocale(value: string): value is SupportedLocale {
 export function normalizeLocale(value: string | undefined): SupportedLocale {
   if (!value) return DEFAULT_LOCALE;
 
-  const normalized = value.toLowerCase().split("-")[0];
+  const normalizedTag = value.trim().replaceAll("_", "-");
+  if (/^zh-(?:Hant|TW|HK|MO)(?:-|$)/i.test(normalizedTag)) return DEFAULT_LOCALE;
+  const normalized = normalizedTag.toLowerCase().split("-")[0];
   return isSupportedLocale(normalized) ? normalized : DEFAULT_LOCALE;
+}
+
+export function normalizeReadingLocale(value: string | undefined): ReadingLocale {
+  if (!value) return DEFAULT_LOCALE;
+  const normalized = value.trim().replaceAll("_", "-");
+  if (isReadingLocale(normalized)) return normalized;
+  const lower = normalized.toLowerCase();
+  const exact = ROUTED_LOCALES.find(locale => locale.toLowerCase() === lower);
+  if (exact) return exact;
+  const [language, ...subtags] = lower.split("-");
+  if (language === "zh") return subtags.some(part => ["hant", "tw", "hk", "mo"].includes(part)) ? "zh-Hant" : "zh";
+  if (language === "no") return "nb";
+  if (language === "iw") return "he";
+  if (language === "in") return "id";
+  return isReadingLocale(language) ? language : DEFAULT_LOCALE;
+}
+
+export function getReadingLocaleFromPathname(pathname: string): ReadingLocale {
+  const maybeLocale = pathname.split("/").filter(Boolean)[0];
+  return maybeLocale && isReadingLocale(maybeLocale) ? maybeLocale : DEFAULT_LOCALE;
+}
+
+export function readingLocaleForLink(pathname: string, override?: ReadingLocale): ReadingLocale {
+  const routeLocale = getReadingLocaleFromPathname(pathname);
+  return override === undefined || override === legacyLocale(routeLocale) ? routeLocale : override;
+}
+
+export function legacyLocale(locale: ReadingLocale): SupportedLocale {
+  return isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
+}
+
+export function localeDirection(locale: ReadingLocale): "ltr" | "rtl" {
+  return readingDirection(locale);
 }
 
 export function stripLocalePrefix(pathname: string): {
@@ -158,9 +175,23 @@ export function stripLocalePrefix(pathname: string): {
   };
 }
 
+/** Route/auth parsing for all reading versions; legacy dictionaries stay seven-locale. */
+export function stripReadingLocalePrefix(pathname: string): {
+  locale: ReadingLocale;
+  pathname: string;
+  hadLocalePrefix: boolean;
+} {
+  const segments = pathname.split("/").filter(Boolean);
+  const maybeLocale = segments[0];
+  if (maybeLocale && isReadingLocale(maybeLocale)) {
+    return { locale: maybeLocale, pathname: `/${segments.slice(1).join("/")}`, hadLocalePrefix: true };
+  }
+  return { locale: DEFAULT_LOCALE, pathname, hadLocalePrefix: false };
+}
+
 export function withLocalePrefix(
   pathname: string,
-  locale: SupportedLocale
+  locale: ReadingLocale
 ): string {
   if (locale === DEFAULT_LOCALE) return pathname;
 
@@ -174,6 +205,8 @@ export function getLocaleFromPathname(pathname: string): SupportedLocale {
 }
 
 export function getPathnameWithoutLocale(pathname: string): string {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments[0] && isReadingLocale(segments[0])) return `/${segments.slice(1).join("/")}` || "/";
   return stripLocalePrefix(pathname).pathname || "/";
 }
 
@@ -195,7 +228,7 @@ export function isLocalizablePath(pathname: string): boolean {
 
 export function localizeHref(
   href: string,
-  locale: SupportedLocale
+  locale: ReadingLocale
 ): string {
   if (!href.startsWith("/") || isDocumentHref(href)) return href;
   if (!isLocalizablePath(href)) return href;
@@ -219,7 +252,7 @@ export function getUiString(
 }
 
 export function getLocaleLabel(locale: string | undefined): string {
-  const normalized = normalizeLocale(locale);
+  const normalized = normalizeReadingLocale(locale);
   return localeLabels[normalized];
 }
 

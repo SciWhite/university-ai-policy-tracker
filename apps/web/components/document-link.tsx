@@ -2,14 +2,14 @@
 
 import type { ReactNode } from "react";
 import type { ComponentPropsWithoutRef } from "react";
-import type { SupportedLocale } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { LocalizedLink } from "@/components/localized-link";
 
 interface DocumentLinkProps
   extends Omit<ComponentPropsWithoutRef<"a">, "href"> {
   children: ReactNode;
   href: string;
-  localeOverride?: SupportedLocale;
+  localeOverride?: ReadingLocale;
 }
 
 export function DocumentLink({

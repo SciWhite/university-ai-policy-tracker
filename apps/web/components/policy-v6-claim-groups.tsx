@@ -17,6 +17,7 @@ export function PolicyV6ClaimGroups({
   claimScopes,
   groupIdPrefix = "claim-group",
   readingLayout = true,
+  sharedUiText = {},
 }: {
   groups: ClaimGroup[];
   entitySlug: string;
@@ -24,11 +25,20 @@ export function PolicyV6ClaimGroups({
   claimScopes?: Record<string, string>;
   groupIdPrefix?: string;
   readingLayout?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
-  const ui = policyV6DensityCopy(locale);
+  const translateAccepted = (value: string) => sharedUiText[value] ?? value;
+  const baseUi = policyV6DensityCopy(locale);
+  const ui = { ...baseUi, allTools: translateAccepted(baseUi.allTools), fewerTools: translateAccepted(baseUi.fewerTools), viewClaims: translateAccepted(baseUi.viewClaims), allSources: translateAccepted(baseUi.allSources), fewerSources: translateAccepted(baseUi.fewerSources), checked: translateAccepted(baseUi.checked) };
   const groupTitle = (key: string, title: string) =>
     readingLayout && locale === "en" && key === "ai_tool_treatment"
-      ? "AI tool use" : translate(title, locale);
+      ? translateAccepted("AI tool use") : translateAccepted(translate(title, locale));
+  const claimCount = (count: number) => {
+    const source = formatClaimGroupCount(count);
+    if (sharedUiText[source]) return sharedUiText[source];
+    const phrase = sharedUiText["reviewed claims"];
+    return phrase ? `${count} ${phrase}` : translateAccepted(translate(source, locale));
+  };
   return (
     <div className="policy-v6-claimGroups">
       {groups.map((group) => (
@@ -41,10 +51,7 @@ export function PolicyV6ClaimGroups({
               <span className="policy-v6-categoryText">
                 <strong>{groupTitle(group.key, group.title)}</strong>
                 <small>
-                  {translate(
-                    formatClaimGroupCount(group.claims.length),
-                    locale,
-                  )}
+                  {claimCount(group.claims.length)}
                 </small>
               </span>
               <span className="policy-v6-categoryAction">
@@ -56,11 +63,11 @@ export function PolicyV6ClaimGroups({
             <>
               {groupTitle(group.key, group.title)}{" "}
               <small>
-                {translate(formatClaimGroupCount(group.claims.length), locale)}
+                {claimCount(group.claims.length)}
               </small>
             </>
           }
-          closeLabel={policyV6Copy(locale).close}
+          closeLabel={translateAccepted(policyV6Copy(locale).close)}
           triggerClassName="policy-v6-categoryCard"
           className="policy-v6-claimPanel"
           reader={readingLayout}
@@ -79,6 +86,7 @@ export function PolicyV6ClaimGroups({
                 showConfidence={false}
                 compact
                 scopeNote={claim.id && claimScopes?.[claim.id] ? policyV6ScopeLabel(claimScopes[claim.id],locale) : undefined}
+                sharedUiText={sharedUiText}
               />
             ))}
           </div>

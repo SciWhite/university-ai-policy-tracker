@@ -1,22 +1,23 @@
 "use client";
 
 import { preservePolicyReferenceSearch } from "@/lib/policy-reference-preview";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
   DEFAULT_LOCALE,
-  HIDDEN_AUTO_LOCALES,
-  VISIBLE_LOCALES,
-  getLocaleFromPathname,
+  ROUTED_LOCALES,
+  getReadingLocaleFromPathname,
   getLocaleLabel,
   getPathnameWithoutLocale,
   isLocalizablePath,
   localizeHref,
-  normalizeLocale,
-  type SupportedLocale
 } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { getShellMessages } from "@/lib/i18n-messages";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
+import { useReadingUiText } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
+import { isReadingLocale } from "@/lib/language-catalog";
 
 const LOCALE_STORAGE_KEY = "uapt-locale-choice";
 
@@ -39,30 +40,16 @@ function LanguageSwitcherWithSearch() {
 
 function LanguageSwitcherLinks({ search }: { search: string }) {
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
-  const messages = getShellMessages(locale).locale;
+  const locale = getReadingLocaleFromPathname(pathname);
+  const sharedUiText = useReadingUiText();
+  const messages = applyAcceptedReadingUiText(getShellMessages(locale).locale, sharedUiText);
   const unprefixedPathname = getPathnameWithoutLocale(pathname);
   const isLocalizable = isLocalizablePath(pathname);
-  const [browserLocale, setBrowserLocale] = useState<SupportedLocale | null>(
-    null
-  );
+  // Every accepted reading version is directly selectable. Legacy UI message
+  // dictionaries remain a separate seven-locale concern.
+  const locales: ReadingLocale[] = [...ROUTED_LOCALES];
 
-  useEffect(() => {
-    const preferred = window.navigator.languages
-      ?.map((value) => normalizeLocale(value))
-      .find((value) => HIDDEN_AUTO_LOCALES.includes(value));
-
-    setBrowserLocale(preferred ?? null);
-  }, []);
-
-  // Hidden locales stay reachable for the readers they concern: the locale
-  // the page is on now, and the browser's preferred one.
-  const locales: SupportedLocale[] = [...VISIBLE_LOCALES];
-  for (const extra of [locale, browserLocale]) {
-    if (extra && !locales.includes(extra)) locales.push(extra);
-  }
-
-  function hrefFor(target: SupportedLocale): string {
+  function hrefFor(target: ReadingLocale): string {
     // Pages without localized variants keep the reader in place on the
     // default locale and fall back to the localized home elsewhere.
     if (!isLocalizable) {
@@ -74,11 +61,10 @@ function LanguageSwitcherLinks({ search }: { search: string }) {
     return localizeHref(`${unprefixedPathname}${search}`, target);
   }
 
-  function rememberLocale(nextLocale: SupportedLocale) {
-    trackResearchEvent("locale_switch", {
-      from_locale: locale,
-      to_locale: nextLocale
-    });
+  function rememberLocale(nextLocale: ReadingLocale) {
+    if (isReadingLocale(locale) && isReadingLocale(nextLocale)) {
+      trackResearchEvent("locale_switch", { from_locale: locale, to_locale: nextLocale });
+    }
 
     try {
       window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);

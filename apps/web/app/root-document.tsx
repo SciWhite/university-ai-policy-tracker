@@ -2,16 +2,18 @@ import type { ReactNode } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { ThemeScript } from "@/components/theme-script";
 import { ClarityIntegration } from "@/components/clarity-integration";
-import type { SupportedLocale } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { readingDirection } from "@/lib/language-catalog";
+import { ReadingUiTextProvider } from "@/components/reading-ui-text-provider";
 
 interface RootDocumentProps {
   children: ReactNode;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   enableClarity?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
-export function RootDocument({ children, locale, enableClarity = false }: RootDocumentProps) {
+export function RootDocument({ children, locale, enableClarity = false, sharedUiText = {} }: RootDocumentProps) {
   return (
     <html lang={locale} dir={readingDirection(locale)} suppressHydrationWarning>
       <head>
@@ -21,8 +23,10 @@ export function RootDocument({ children, locale, enableClarity = false }: RootDo
         <link href="/feeds/atom.xml" rel="alternate" title="University AI Policy Tracker Atom feed" type="application/atom+xml" />
       </head>
       <body data-clarity-mask={enableClarity ? "true" : undefined} data-uapt-clarity={enableClarity ? "consent-v1" : undefined}>
-        <SiteShell>{children}</SiteShell>
-        {enableClarity ? <ClarityIntegration /> : null}
+        <ReadingUiTextProvider value={sharedUiText}>
+          <SiteShell>{children}</SiteShell>
+          {enableClarity ? <ClarityIntegration /> : null}
+        </ReadingUiTextProvider>
       </body>
     </html>
   );

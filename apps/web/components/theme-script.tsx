@@ -3,7 +3,7 @@ const themeInitScript = `
   const root = document.documentElement;
   try {
     const firstSegment = window.location.pathname.split("/").filter(Boolean)[0];
-    root.lang = ["zh", "fr", "pl", "es", "nl", "ms"].includes(firstSegment)
+    root.lang = ["zh", "fr", "pl", "es", "nl", "ms", "ja", "ko", "pt", "ar", "ru", "de", "it", "cs", "tr", "fi", "sv", "da", "nb", "hu", "lt", "id", "vi", "th", "fa", "he", "hi", "ur", "bn", "uk", "el", "zh-Hant"].includes(firstSegment)
       ? firstSegment
       : "en";
   } catch {

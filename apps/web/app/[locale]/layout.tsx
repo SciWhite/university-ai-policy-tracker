@@ -2,9 +2,12 @@ import "../globals.css";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { RootDocument } from "../root-document";
-import { NON_DEFAULT_LOCALES, isSupportedLocale } from "@/lib/i18n";
+import { NON_DEFAULT_LOCALES, legacyLocale, normalizeReadingLocale } from "@/lib/i18n";
+import { isReadingLocale } from "@/lib/language-catalog";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import { getSiteOgImageUrl } from "@/components/site-opengraph";
+import { getEnglishShellTextSources } from "@/lib/i18n-messages";
+import { getReadingSharedUiText } from "@/lib/reading-translations";
 
 export async function generateMetadata({
   params
@@ -15,7 +18,7 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(getSiteBaseUrl()),
     openGraph: {
-      images: [getSiteOgImageUrl(isSupportedLocale(locale) ? locale : "en")],
+      images: [getSiteOgImageUrl(legacyLocale(normalizeReadingLocale(locale)))],
       siteName: "University AI Policy Tracker",
       type: "website" as const
     }
@@ -35,9 +38,10 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!isSupportedLocale(locale) || locale === "en") {
+  if (!isReadingLocale(locale) || locale === "en") {
     notFound();
   }
 
-  return <RootDocument locale={locale}>{children}</RootDocument>;
+  const sharedUiText = await getReadingSharedUiText(locale, getEnglishShellTextSources());
+  return <RootDocument locale={locale} sharedUiText={sharedUiText}>{children}</RootDocument>;
 }

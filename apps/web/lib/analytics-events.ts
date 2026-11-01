@@ -1,5 +1,5 @@
 import type { AnalyticsEventRecordInput } from "@uapt/db";
-import { getLocaleFromPathname } from "@/lib/i18n";
+import { getReadingLocaleFromPathname, stripReadingLocalePrefix } from "@/lib/i18n";
 
 export const ANALYTICS_EVENT_NAMES = [
   "api_link_click",
@@ -85,7 +85,7 @@ export function buildAnalyticsEventRecord(
   const pathname = normalizePathname(input.pathname);
   const sanitized = sanitizeAnalyticsProperties(input.properties);
   const locale =
-    getStringProperty(sanitized, "locale") ?? getLocaleFromPathname(pathname);
+    getStringProperty(sanitized, "locale") ?? getReadingLocaleFromPathname(pathname);
   const pageType =
     getStringProperty(sanitized, "page_type") ?? getPageType(pathname);
   const entitySlug =
@@ -301,7 +301,7 @@ function getNumberProperty(
 }
 
 function stripLocalePrefix(pathname: string): string {
-  return pathname.replace(/^\/(zh|fr|pl|es|nl|ms)(?=\/|$)/, "") || "/";
+  return stripReadingLocalePrefix(pathname).pathname || "/";
 }
 
 function truncateAnalyticsString(value: string): string {

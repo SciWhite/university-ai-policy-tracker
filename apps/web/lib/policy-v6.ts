@@ -14,6 +14,7 @@ import { getRepairAnalysisContext } from "./public-record-repairs";
 import mitPin from "../../../data/public-record-repairs/current.json";
 import { policyV6Slugs, policyV6BundlePreviewSlugs } from "./policy-v6-gate";
 import type { SupportedLocale } from "./i18n";
+import type { ReadingLocale } from "./language-catalog";
 import { policyV6ReviewState } from "./policy-v6-review";
 import {getV6StudentActions,type V6StudentActions} from './policy-v6-student-actions';
 import { getLocalV6Bundle, getLocalV6StudentActions } from "./policy-v6-bundle";
@@ -70,6 +71,7 @@ export interface LabSchool {
 }
 export interface PolicyV6Data {
   locale: SupportedLocale;
+  readingLocale?: ReadingLocale;
   published?: boolean;
   currentSlug: string;
   /** Names only; other schools' evidence is fetched when selected for comparison. */
@@ -77,6 +79,8 @@ export interface PolicyV6Data {
   schools: LabSchool[];
   studentActions?: V6StudentActions;
   studentActionsPilot?: boolean;
+  /** True only when every policy display field in the active guide has an accepted target string. */
+  studentGuideTranslated?: boolean;
 }
 const titles: Record<string, string> = {
   coursework: "Coursework",

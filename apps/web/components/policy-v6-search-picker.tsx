@@ -7,16 +7,19 @@ import type { SupportedLocale } from "@/lib/i18n";
 type Result = { entitySlug: string; entityName: string };
 export function PolicyV6SearchPicker({
   locale,
+  sharedUiText = {},
   selected,
   names,
   onToggle,
 }: {
   locale: SupportedLocale;
+  sharedUiText?: Readonly<Record<string, string>>;
   selected: string[];
   names: Record<string, string>;
   onToggle: (slug: string) => void;
 }) {
-  const ui = policyV6InteractionCopy(locale);
+  const baseUi = policyV6InteractionCopy(locale);
+  const ui = Object.fromEntries(Object.entries(baseUi).map(([key, value]) => [key, Array.isArray(value) ? value.map(item => sharedUiText[item] ?? item) : sharedUiText[value] ?? value])) as typeof baseUi;
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Result[]>([]);
   const [status, setStatus] = useState("idle");

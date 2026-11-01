@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { getLocaleFromPathname } from "@/lib/i18n";
+import { getReadingLocaleFromPathname, legacyLocale } from "@/lib/i18n";
 import { getShellMessages, interpolate } from "@/lib/i18n-messages";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
+import { useReadingUiText } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
 
 const THEME_STORAGE_KEY = "uapt-theme";
@@ -14,8 +16,9 @@ type ThemePreference = (typeof themePreferences)[number];
 export function ThemeToggle() {
   const [preference, setPreference] = useState<ThemePreference>("system");
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
-  const messages = getShellMessages(locale).theme;
+  const readingLocale = getReadingLocaleFromPathname(pathname);
+  const locale = legacyLocale(readingLocale);
+  const messages = applyAcceptedReadingUiText(getShellMessages(readingLocale).theme, useReadingUiText());
 
   useEffect(() => {
     const stored = readStoredPreference();
@@ -30,7 +33,7 @@ export function ThemeToggle() {
     applyThemePreference(nextPreference);
     trackResearchEvent("theme_change", {
       from_theme: preference,
-      locale,
+      locale: readingLocale,
       to_theme: nextPreference
     });
   }

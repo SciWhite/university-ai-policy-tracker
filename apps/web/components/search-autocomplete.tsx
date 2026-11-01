@@ -13,7 +13,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { trackResearchEvent } from "@/lib/analytics-client";
 import { getQueryAnalytics } from "@/lib/analytics-events";
-import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
+import { getReadingLocaleFromPathname, legacyLocale, localizeHref } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { localizeMatchReason } from "@/lib/match-reason-labels";
 
@@ -140,7 +140,8 @@ export function SearchAutocomplete({
   const controllerRef = useRef<AbortController | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
+  const readingLocale = getReadingLocaleFromPathname(pathname);
+  const locale = legacyLocale(readingLocale);
   const copy = autocompleteCopy[locale];
   const trimmedQuery = query.trim();
   const queryAnalytics = getQueryAnalytics(trimmedQuery);
@@ -212,13 +213,13 @@ export function SearchAutocomplete({
   function openResult(result: SuggestionResult, rank: number) {
     trackResearchEvent("autocomplete_keyboard_open", {
       entity_slug: result.entitySlug,
-      locale,
+      locale: readingLocale,
       page_type: "search",
       result_rank: rank,
       ...queryAnalytics,
     });
     window.location.assign(
-      localizeHref(`/universities/${result.entitySlug}`, locale),
+      localizeHref(`/universities/${result.entitySlug}`, readingLocale),
     );
   }
 

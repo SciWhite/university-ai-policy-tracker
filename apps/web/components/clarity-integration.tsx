@@ -6,7 +6,9 @@ import { analyticsOptedOut } from "@/lib/analytics-preference";
 import { browserRejectsClarity, clarityAllowed, clarityChoice, setClarityChoice, CLARITY_PREFERENCE_EVENT } from "@/lib/clarity-preference";
 import { CLARITY_PROJECT_ID, installClarity, isClarityPageEligible } from "@/lib/clarity-client";
 import { clarityCopy } from "@/lib/clarity-copy";
-import { getLocaleFromPathname, withLocalePrefix, type SupportedLocale } from "@/lib/i18n";
+import { getReadingLocaleFromPathname, legacyLocale, withLocalePrefix, type SupportedLocale } from "@/lib/i18n";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
+import { useReadingUiText } from "@/components/reading-ui-text-provider";
 import styles from "./clarity-integration.module.css";
 
 function subscribe(update: () => void) {
@@ -20,8 +22,9 @@ function usePreference() { return useSyncExternalStore(subscribe, snapshot, () =
 export function ClarityIntegration() {
   const pathname = usePathname();
   const state = usePreference();
-  const locale = getLocaleFromPathname(pathname);
-  const copy = clarityCopy[locale];
+  const readingLocale = getReadingLocaleFromPathname(pathname);
+  const locale = legacyLocale(readingLocale);
+  const copy = applyAcceptedReadingUiText(clarityCopy[locale], useReadingUiText());
   useEffect(() => {
     installClarity();
     window.dispatchEvent(new Event(CLARITY_PREFERENCE_EVENT));
@@ -29,7 +32,7 @@ export function ClarityIntegration() {
   if (!CLARITY_PROJECT_ID || state !== "unset:false:false" || typeof window === "undefined" || !isClarityPageEligible(location.href, document.referrer)) return null;
   if (browserRejectsClarity()) return null;
   return <aside className={styles.banner} aria-label={copy.title} data-clarity-mask="true" data-i18n="preserve">
-    <p><strong>{copy.title}</strong> {copy.description} <a href={withLocalePrefix("/privacy", locale)}>{copy.privacy}</a></p>
+    <p><strong>{copy.title}</strong> {copy.description} <a href={withLocalePrefix("/privacy", readingLocale)}>{copy.privacy}</a></p>
     <div className={styles.actions}>
       <button className="button button--secondary" type="button" onClick={() => setClarityChoice("granted")}>{copy.accept}</button>
       <button className="button button--secondary" type="button" onClick={() => setClarityChoice("denied")}>{copy.reject}</button>
@@ -39,7 +42,7 @@ export function ClarityIntegration() {
 
 export function ClarityPrivacyControl({ locale }: {locale: SupportedLocale}) {
   const state = usePreference();
-  const copy = clarityCopy[locale];
+  const copy = applyAcceptedReadingUiText(clarityCopy[locale], useReadingUiText());
   const enabled = state.split(":")[1] === "true";
   return <div data-clarity-mask="true">
     <button className="button button--secondary" type="button" disabled={state === "pending" || analyticsOptedOut() || browserRejectsClarity()}

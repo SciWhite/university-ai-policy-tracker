@@ -8,6 +8,7 @@ interface RelatedUniversitiesProps {
   locale?: SupportedLocale;
   localizeUi?: boolean;
   uiLab?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
 /**
@@ -21,10 +22,11 @@ export function RelatedUniversities({
   locale = "en",
   localizeUi = false,
   uiLab = false,
+  sharedUiText = {},
 }: RelatedUniversitiesProps) {
   if (!universities.length) return null;
-  const t = (value: string) =>
-    localizeUi ? translatePolicyReferenceUi(value, locale) : value;
+  const t = (value: string) => sharedUiText[value] ??
+    (localizeUi ? translatePolicyReferenceUi(value, locale) : value);
 
   return (
     <section className="student-record-section" id="related-universities">

@@ -5,12 +5,14 @@ import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { DocumentLink } from "@/components/document-link";
 import {
-  getLocaleFromPathname,
+  getReadingLocaleFromPathname,
   getPathnameWithoutLocale,
-  localizeHref,
-  type SupportedLocale,
+  localizeHref
 } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { getShellMessages } from "@/lib/i18n-messages";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
+import { useReadingUiText } from "@/components/reading-ui-text-provider";
 
 interface SiteNavigationLink {
   href: string;
@@ -27,15 +29,18 @@ type SiteNavigationItem = SiteNavigationLink | SiteNavigationGroup;
 interface SiteNavigationProps {
   items: readonly SiteNavigationItem[];
   mobileUtilities?: ReactNode;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
 export function SiteNavigation({
   items,
   mobileUtilities,
+  sharedUiText,
 }: SiteNavigationProps) {
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
-  const shell = getShellMessages(locale);
+  const readingLocale = getReadingLocaleFromPathname(pathname);
+  const contextText = useReadingUiText();
+  const shell = applyAcceptedReadingUiText(getShellMessages(readingLocale), sharedUiText ?? contextText);
   const labels = {
     ...shell.navigation,
     ...shell.footer,
@@ -64,7 +69,7 @@ export function SiteNavigation({
                         <NavigationLink
                           item={link}
                           label={labelFor(labels, link.labelKey)}
-                          locale={locale}
+                          locale={readingLocale}
                           navArea="primary"
                           pathname={unprefixedPathname}
                           className="site-nav__menu-link"
@@ -79,7 +84,7 @@ export function SiteNavigation({
                 <NavigationLink
                   item={item}
                   label={labelFor(labels, item.labelKey)}
-                  locale={locale}
+                  locale={readingLocale}
                   navArea="primary"
                   pathname={unprefixedPathname}
                   className="site-nav__link"
@@ -118,7 +123,7 @@ export function SiteNavigation({
                         <NavigationLink
                           item={link}
                           label={labelFor(labels, link.labelKey)}
-                          locale={locale}
+                          locale={readingLocale}
                           navArea="mobile_menu"
                           pathname={unprefixedPathname}
                           className="site-nav__mobile-sub-link"
@@ -132,7 +137,7 @@ export function SiteNavigation({
                   item={item}
                   key={item.href}
                   label={labelFor(labels, item.labelKey)}
-                  locale={locale}
+                  locale={readingLocale}
                   navArea="mobile_menu"
                   pathname={unprefixedPathname}
                   className="site-nav__mobile-link"
@@ -158,7 +163,7 @@ interface NavigationLinkProps {
   className: string;
   item: SiteNavigationLink;
   label: string;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   navArea: "primary" | "mobile_menu";
   pathname: string;
 }

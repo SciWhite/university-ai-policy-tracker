@@ -12,19 +12,22 @@ export function PolicyV6RecordTopics({
   data,
   additionalOnly = false,
   readingLayout = true,
+  sharedUiText = {},
 }: {
   data: PolicyV6Data;
   additionalOnly?: boolean;
   readingLayout?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
   const school = data.schools.find((s) => s.slug === data.currentSlug);
   if (!school) return null;
   const basisFingerprint = school.fingerprint;
-  const copy = policyV6RecordCopy(data.locale);
-  const ui = policyV6Copy(data.locale);
+  const baseCopy = policyV6RecordCopy(data.locale), baseUi = policyV6Copy(data.locale);
+  const copy = Object.fromEntries(Object.entries(baseCopy).map(([key, value]) => [key, sharedUiText[value] ?? value])) as typeof baseCopy;
+  const ui = Object.fromEntries(Object.entries(baseUi).map(([key, value]) => [key, sharedUiText[value] ?? value])) as typeof baseUi;
   function card(topic: LabTopic) {
     const readthrough=data.studentActions?.topics?.[topic.key];
-    const zh=data.locale==='zh';
+    const zh=data.readingLocale?.startsWith('zh') ?? data.locale==='zh';
     return (
       <article
         className="student-snapshot-card"
@@ -36,7 +39,7 @@ export function PolicyV6RecordTopics({
       >
         <div className="student-snapshot-card__summary">
           <div className="student-snapshot-card__content">
-            <h3>{topic.title}</h3>
+            <h3 lang={data.readingLocale ?? data.locale}>{sharedUiText[topic.title] ?? topic.title}</h3>
             <p
               className="student-snapshot-card__status"
               data-policy-tone={policyV6StatusTone(topic.status, data.currentSlug)}
@@ -46,7 +49,7 @@ export function PolicyV6RecordTopics({
             <p
               className="student-snapshot-card__sentence"
               data-i18n="preserve"
-              lang={readthrough&&zh?'zh':topic.summaryLanguage ?? 'en'}
+              lang={readthrough&&zh?(data.readingLocale??'zh'):topic.summaryLanguage ?? 'en'}
             >
               {readthrough?(zh?readthrough.zh:readthrough.en):topic.summary}
             </p>
@@ -55,7 +58,7 @@ export function PolicyV6RecordTopics({
         <PolicyV6TopicControls
           dimensionKey={topic.key}
           scopeDetail={readthrough?<><p lang={zh&&/[\u3400-\u9fff]/.test(readthrough.meaningZh)?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{readthrough.en}</p></>:<p lang={zh&&/[\u3400-\u9fff]/.test(topic.scope)?'zh':'en'} data-i18n="preserve">{topic.scope}</p>}
-          originalEvidence={readingLayout ? <PolicyV6TopicEvidence topic={topic} locale={data.locale} /> :
+            originalEvidence={readingLayout ? <PolicyV6TopicEvidence topic={topic} locale={data.locale} sharedUiText={sharedUiText} /> :
             <div className="student-snapshot-card__evidence">
               {topic.claims.length ? (
                 topic.claims.map((claim) => (

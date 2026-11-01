@@ -1,10 +1,10 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import {
-  HIDDEN_AUTO_LOCALES,
-  VISIBLE_LOCALES,
+  ROUTED_LOCALES,
   localizeHref
 } from "../apps/web/lib/i18n";
+import { READING_LOCALES } from "../apps/web/lib/language-catalog";
 import { getLocalizedInstitutionName } from "../apps/web/lib/institution-localization";
 
 const locales = ["zh", "fr", "pl", "es", "nl", "ms"] as const;
@@ -83,14 +83,7 @@ async function main() {
     })
   );
 
-  assert(
-    JSON.stringify(VISIBLE_LOCALES) === JSON.stringify(["en", "zh", "fr", "pl"]),
-    "Language switcher locale contract changed"
-  );
-  assert(
-    JSON.stringify(HIDDEN_AUTO_LOCALES) === JSON.stringify(["es", "nl", "ms"]),
-    "Hidden auto-locale contract changed"
-  );
+  assert(JSON.stringify(ROUTED_LOCALES) === JSON.stringify(READING_LOCALES), "Reading locale selector contract changed");
   assert(localizeHref("/tools", "es") === "/es/tools", "Localized public link failed");
   assert(
     localizeHref("/search?q=harvard.edu", "zh") === "/zh/search?q=harvard.edu",
@@ -105,7 +98,7 @@ async function main() {
   );
 
   console.log(
-    `i18n validation passed: 7 locales, ${publicRouteFiles.length} public route families, ${surfaceSource.length} extended-surface strings`
+    `i18n validation passed: ${ROUTED_LOCALES.length} reading locales, 7 UI dictionary locales, ${publicRouteFiles.length} public route families, ${surfaceSource.length} extended-surface strings`
   );
 }
 

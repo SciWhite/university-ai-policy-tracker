@@ -44,6 +44,7 @@ export function PolicyV6LocalPage({
   locale,
   relatedUniversities = [],
   readingLayout = true,
+  sharedUiText = {},
 }: {
   university: { slug: string; name: string; region: string; country: string };
   data: PolicyV6Data;
@@ -51,13 +52,14 @@ export function PolicyV6LocalPage({
   locale: SupportedLocale;
   relatedUniversities?: RelatedUniversityRef[];
   readingLayout?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
   if (readingLayout) data = bindPolicyV6ReadingEvidence(data, evidence.record.claims);
   const school = data.schools.find((s) => s.slug === university.slug)!;
   const scene = getPolicyV6IllustratedScene(school, locale);
   const zh = locale === "zh",
     harvard = university.slug === "harvard-university";
-  const t = (s: string) => translate(s, locale);
+  const t = (s: string) => sharedUiText[s] ?? translate(s, locale);
   const insights = harvard
     ? [
         {
@@ -190,7 +192,7 @@ export function PolicyV6LocalPage({
       data-v6-basis={evidence.fingerprint}
       data-v6-review-state="agent_reviewed"
     >
-      <PolicyV6Provider data={data} readingLayout={readingLayout}>
+      <PolicyV6Provider data={data} readingLayout={readingLayout} sharedUiText={sharedUiText}>
         <PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
           <EntityHeader
             actions={
@@ -200,7 +202,7 @@ export function PolicyV6LocalPage({
             }
             leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />}
             title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
-            eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={evidence.record.lastCheckedAt} locale={locale} />}
+            eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={evidence.record.lastCheckedAt} locale={locale} sharedUiText={sharedUiText} />}
           />
           <PolicyV6Intro />
           {scene ? (
@@ -212,7 +214,7 @@ export function PolicyV6LocalPage({
               tools
             />
           ) : null}
-          <PolicyV6RecordTopics data={data} readingLayout={readingLayout} />
+          <PolicyV6RecordTopics data={data} readingLayout={readingLayout} sharedUiText={sharedUiText} />
           <details
             className="policy-v6-school-insights"
             aria-labelledby="v6-school-insights-title"
@@ -240,10 +242,11 @@ export function PolicyV6LocalPage({
             locale={locale}
             uiLab
             currentEvidenceCheckedAt={evidence.record.lastCheckedAt}
+            sharedUiText={sharedUiText}
           />
           <PolicyV6ChecklistFaq includeFaq={false} />
           <PolicyReferenceInteractions />
-          <PolicyV6Changes slug={university.slug} recordSha256={evidence.fingerprint} locale={locale}/>
+          <PolicyV6Changes slug={university.slug} recordSha256={evidence.fingerprint} locale={locale} sharedUiText={sharedUiText}/>
           <section
             className="student-record-section student-record-section--compact"
             id="claims"
@@ -260,9 +263,10 @@ export function PolicyV6LocalPage({
               entitySlug={university.slug}
               groups={groupReviewedClaimsByClaimType(evidence.record.claims)}
               locale={locale}
+              sharedUiText={sharedUiText}
             />
           </section>
-          <PolicyV6HeldRecords slug={university.slug} locale={locale}/>
+      <PolicyV6HeldRecords slug={university.slug} locale={locale} sharedUiText={sharedUiText}/>
           <section
             className="student-record-section student-record-section--compact"
             id="sources"
@@ -272,6 +276,7 @@ export function PolicyV6LocalPage({
               sources={evidence.record.officialSources}
               slug={university.slug}
               locale={locale}
+              sharedUiText={sharedUiText}
             />
           </section>
           <RelatedUniversities
@@ -279,6 +284,7 @@ export function PolicyV6LocalPage({
             locale={locale}
             localizeUi
             uiLab
+            sharedUiText={sharedUiText}
           />
           <section className="student-record-info" id="record-info">
             <details>

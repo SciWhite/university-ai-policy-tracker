@@ -15,10 +15,12 @@ import nlStrings from "@/messages/surfaces/nl.json";
 import msStrings from "@/messages/surfaces/ms.json";
 import {
   DEFAULT_LOCALE,
+  legacyLocale,
   localizeHref,
-  normalizeLocale,
+  normalizeReadingLocale,
   type SupportedLocale
 } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import {
   getIndexRecoveryPilotLocaleRestriction,
@@ -42,7 +44,7 @@ const translationMaps = Object.fromEntries(
     }
     return [locale, new Map(enStrings.map((value, index) => [value, values[index]]))];
   })
-) as Record<Exclude<SupportedLocale, "en">, Map<string, string>>;
+) as Partial<Record<Exclude<SupportedLocale, "en">, Map<string, string>>>;
 
 const patternTranslations = Object.fromEntries(
   Object.entries(translationMaps).map(([locale, values]) => [
@@ -56,14 +58,14 @@ const patternTranslations = Object.fromEntries(
         translation
       }))
   ])
-) as Record<Exclude<SupportedLocale, "en">, Array<{ regex: RegExp; translation: string }>>;
+) as Partial<Record<Exclude<SupportedLocale, "en">, Array<{ regex: RegExp; translation: string }>>>;
 
 const caseInsensitiveTranslationMaps = Object.fromEntries(
   Object.entries(translationMaps).map(([locale, values]) => [
     locale,
     new Map([...values.entries()].map(([source, translation]) => [source.toLowerCase(), translation]))
   ])
-) as Record<Exclude<SupportedLocale, "en">, Map<string, string>>;
+) as Partial<Record<Exclude<SupportedLocale, "en">, Map<string, string>>>;
 
 const translatableProps = new Set([
   "actions",
@@ -96,7 +98,7 @@ const structuredDataTextKeys = new Set([
 ]);
 
 export function getSurfaceLocale(params: { locale?: string } | undefined) {
-  return normalizeLocale(params?.locale);
+  return normalizeReadingLocale(params?.locale);
 }
 
 export async function resolveSurfaceLocale(props: {
@@ -142,23 +144,27 @@ export function createLocalizedSurfaceMetadata(
   };
 }
 
-export function translateSurfaceText(value: string, locale: SupportedLocale) {
+export function translateSurfaceText(value: string, locale: ReadingLocale) {
   if (locale === DEFAULT_LOCALE) return value;
   const leading = value.match(/^\s*/)?.[0] ?? "";
   const trailing = value.match(/\s*$/)?.[0] ?? "";
   const normalized = value.replace(/\s+/g, " ").trim();
-  const translated = translationMaps[locale].get(normalized);
+  const dictionaryLocale = legacyLocale(locale);
+  if (dictionaryLocale === DEFAULT_LOCALE) return value;
+  const localeMap = translationMaps[dictionaryLocale];
+  if (!localeMap) return value;
+  const translated = localeMap.get(normalized);
   if (translated) return `${leading}${translated}${trailing}`;
 
-  for (const pattern of patternTranslations[locale]) {
+  for (const pattern of patternTranslations[dictionaryLocale] ?? []) {
     const match = normalized.match(pattern.regex);
     if (!match) continue;
     const localized = pattern.translation.replace(/\{(\d+)\}/g, (_, index) => {
       const captured = match[Number(index) + 1] ?? "";
       return (
         localizeAbsoluteSiteUrl(captured, locale) ??
-        translationMaps[locale].get(captured) ??
-        caseInsensitiveTranslationMaps[locale].get(captured.toLowerCase()) ??
+        localeMap.get(captured) ??
+        caseInsensitiveTranslationMaps[dictionaryLocale]?.get(captured.toLowerCase()) ??
         captured
       );
     });
@@ -170,7 +176,7 @@ export function translateSurfaceText(value: string, locale: SupportedLocale) {
 
 export function localizeSurfaceTree(
   node: ReactNode,
-  locale: SupportedLocale
+  locale: ReadingLocale
 ): ReactNode {
   if (locale === DEFAULT_LOCALE || node == null || typeof node === "boolean") {
     return node;
@@ -184,7 +190,7 @@ export function localizeSurfaceTree(
   const props = { ...element.props };
   const preserveChildren = props["data-i18n"] === "preserve";
   if (typeof element.type !== "string" && !("locale" in props)) {
-    props.locale = locale;
+    props.locale = legacyLocale(locale);
   }
   for (const [key, value] of Object.entries(props)) {
     if (key === "href" || key === "action") {
@@ -210,9 +216,16 @@ export function localizeSurfaceTree(
 export function localizeSurfaceMetadata(
   metadata: Metadata,
   pathname: string,
-  locale: SupportedLocale
+  locale: ReadingLocale
 ): Metadata {
   const localized = localizeSurfaceValue(metadata, locale) as Metadata;
+  if (locale !== DEFAULT_LOCALE && legacyLocale(locale) === DEFAULT_LOCALE) {
+    const canonical = getAbsoluteSiteUrl(localizeHref(pathname, locale));
+    const universityDetail = /^\/universities\/[a-z0-9-]+\/?$/.test(pathname);
+    const acceptedUpstreamIndexDecision = universityDetail && Boolean(metadata.robots && typeof metadata.robots === "object" && metadata.robots.index === true) && Boolean(metadata.alternates?.languages && Object.keys(metadata.alternates.languages).length > 0);
+    if (acceptedUpstreamIndexDecision) return { ...localized, alternates: metadata.alternates, robots: metadata.robots };
+    return { ...localized, alternates: { canonical }, robots: { index: false, follow: true }, openGraph: localized.openGraph ? { ...localized.openGraph, url: canonical } : undefined };
+  }
   // University detail pages in the index-recovery pilot declare only the
   // English alternate because their substantive body (claims, evidence,
   // snapshot prose) has not passed translation review in other locales.
@@ -221,9 +234,9 @@ export function localizeSurfaceMetadata(
   const pilotRestriction = getIndexRecoveryPilotLocaleRestriction(
     getIndexRecoveryPilotSlugFromPath(pathname)
   );
-  const alternates = getLocalizedAlternates(pathname, locale, {
-    restrictLocales: pilotRestriction
-  });
+  const alternates = metadata.alternates?.languages !== undefined
+    ? metadata.alternates
+    : getLocalizedAlternates(pathname, legacyLocale(locale), { restrictLocales: pilotRestriction });
   const canonical = String(alternates.canonical);
   return {
     ...localized,
@@ -239,13 +252,13 @@ export function localizeSurfaceMetadata(
   };
 }
 
-export function localizedCanonical(pathname: string, locale: SupportedLocale) {
+export function localizedCanonical(pathname: string, locale: ReadingLocale) {
   return getAbsoluteSiteUrl(localizeHref(pathname, locale));
 }
 
 function localizeSurfaceValue(
   value: unknown,
-  locale: SupportedLocale,
+  locale: ReadingLocale,
   key?: string
 ): unknown {
   if (typeof value === "string") {
@@ -269,7 +282,7 @@ function localizeSurfaceValue(
 
 function localizeStructuredData(
   value: unknown,
-  locale: SupportedLocale,
+  locale: ReadingLocale,
   key?: string
 ): unknown {
   if (typeof value === "string") {
@@ -299,7 +312,7 @@ function localizeStructuredData(
 
 function localizeAbsoluteSiteUrl(
   value: string,
-  locale: SupportedLocale
+  locale: ReadingLocale
 ): string | undefined {
   if (!/^https?:\/\//.test(value)) return undefined;
 

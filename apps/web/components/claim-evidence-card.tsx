@@ -28,6 +28,7 @@ interface ClaimEvidenceCardProps {
   showConfidence?: boolean;
   compact?: boolean;
   scopeNote?: string;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
 const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
@@ -47,7 +48,9 @@ export function ClaimEvidenceCard({
   showConfidence = true,
   compact = false,
   scopeNote,
+  sharedUiText = {},
 }: ClaimEvidenceCardProps) {
+  const ui = (source: string, fallback = source) => sharedUiText[source] ?? fallback;
   return (
     <article
       className={`claim-evidence-card${compact ? " claim-evidence-card--compact" : ""}`}
@@ -66,7 +69,7 @@ export function ClaimEvidenceCard({
         <div className="claim-evidence-card__status">
           {compact ? (
             <span className="policy-v6-review">
-              {policyV6AgentReviewLabel(locale)}
+              {ui("Reviewed", policyV6AgentReviewLabel(locale))}
             </span>
           ) : (
             <StateLabel locale={locale} reviewState={claim.reviewState} />
@@ -106,8 +109,8 @@ export function ClaimEvidenceCard({
         claim.lastCheckedAt || claim.lastChangedAt ? (
           <p className="policy-v6-claimDate">
             {claim.lastCheckedAt
-              ? policyV6DensityCopy(locale).checked
-              : translateSurfaceText("Last changed", locale)}{" "}
+              ? ui("Last checked", policyV6DensityCopy(locale).checked)
+              : ui("Last changed", translateSurfaceText("Last changed", locale))}{" "}
             <time dateTime={claim.lastCheckedAt ?? claim.lastChangedAt}>
               {formatDate(
                 (claim.lastCheckedAt ?? claim.lastChangedAt)!,
@@ -120,7 +123,7 @@ export function ClaimEvidenceCard({
         <dl className="claim-metadata-grid">
           {claim.lastCheckedAt ? (
             <div>
-              <dt>{translateSurfaceText("Last checked", locale)}</dt>
+              <dt>{ui("Last checked", translateSurfaceText("Last checked", locale))}</dt>
               <dd>{formatDate(claim.lastCheckedAt, locale)}</dd>
             </div>
           ) : null}
@@ -142,6 +145,7 @@ export function ClaimEvidenceCard({
             key={`${evidence.sourceUrl}:${evidence.sourceSnapshotHash}:${index}`}
             locale={locale}
             compact={compact}
+            sharedUiText={sharedUiText}
           />
         ))}
       </div>
@@ -155,26 +159,29 @@ function EvidenceBlock({
   index,
   locale,
   compact = false,
+  sharedUiText = {},
 }: {
   evidence: ClaimEvidence;
   entitySlug?: string;
   index: number;
   locale: SupportedLocale;
   compact?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
+  const ui = (source: string, fallback = source) => sharedUiText[source] ?? fallback;
   return (
     <section className="evidence-block">
       <div className="evidence-block__heading">
-        <p>{getUiString("originalEvidence", locale)}</p>
+        <p>{ui("Original evidence", getUiString("originalEvidence", locale))}</p>
         <span>
-          {translateSurfaceText("Evidence", locale)} {index + 1}
+          {ui("Evidence", translateSurfaceText("Evidence", locale))} {index + 1}
         </span>
       </div>
 
       <blockquote className="evidence-snippet" dir="auto" lang={evidence.sourceLanguage}>
         <PolicyBidiText text={evidence.evidenceSnippet} />
         <footer>
-          {translateSurfaceText("Source", locale)}:{" "}
+          {ui("Source", translateSurfaceText("Source", locale))}:{" "}
           <a
             data-analytics-entity-slug={entitySlug}
             data-analytics-event="official_source_click"
@@ -199,7 +206,7 @@ function EvidenceBlock({
       {compact ? (
         evidence.snippetLocation ? (
           <p className="policy-v6-evidenceLocator">
-            <strong>{translateSurfaceText("Evidence locator", locale)}:</strong>{" "}
+            <strong>{ui("Evidence locator", translateSurfaceText("Evidence locator", locale))}:</strong>{" "}
             <span data-i18n="preserve">{evidence.snippetLocation}</span>
           </p>
         ) : null
@@ -223,7 +230,7 @@ function EvidenceBlock({
           ) : null}
           {evidence.snippetLocation ? (
             <div>
-              <dt>{translateSurfaceText("Evidence locator", locale)}</dt>
+            <dt>{ui("Evidence locator", translateSurfaceText("Evidence locator", locale))}</dt>
               <dd>{evidence.snippetLocation}</dd>
             </div>
           ) : null}

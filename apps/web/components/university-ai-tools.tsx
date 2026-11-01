@@ -53,6 +53,7 @@ export function UniversityAiTools({
   sectionId = "university-ai-tools",
   standalone = false,
   displayCopy,
+  sharedUiText = {},
 }: {
   records: PageToolRecord[];
   locale: SupportedLocale;
@@ -64,8 +65,9 @@ export function UniversityAiTools({
   sectionId?: string;
   standalone?: boolean;
   displayCopy?: ToolDisplayCopy;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
-  const ui = universityToolsUi(locale);
+  const ui = universityToolsUi(locale).map((value) => sharedUiText[value] ?? value);
   const draft = draftPreview && process.env.NODE_ENV !== "production";
   const supported = records.filter((record) =>
     record.evidence.some(
@@ -75,7 +77,7 @@ export function UniversityAiTools({
         e.reviewState === "human_reviewed",
     ),
   );
-  const links = toolLinks[locale];
+  const links = toolLinks[locale].map((value) => sharedUiText[value] ?? value);
   // Presentation order only. Preserve every record, original condition and evidence.
   if (uiLab) supported.sort((a, b) => v6ToolRank(a) - v6ToolRank(b));
   const content = (
@@ -84,7 +86,7 @@ export function UniversityAiTools({
       className="university-ai-tools student-record-section"
       aria-labelledby={`${sectionId}-title`}
     >
-      <h2 id={`${sectionId}-title`}>{sectionId==="university-ai-tools-scoped"?policyV6EvidenceLabel("scoped_tools",locale):ui[0]}</h2>
+      <h2 id={`${sectionId}-title`}>{sectionId==="university-ai-tools-scoped"?(sharedUiText[policyV6EvidenceLabel("scoped_tools",locale)] ?? policyV6EvidenceLabel("scoped_tools",locale)):ui[0]}</h2>
       {scopeNote ? <p className="university-ai-tools__boundary">{scopeNote}</p> : null}
       {!uiLab ? <p className="university-ai-tools__boundary">{ui[1]}</p> : null}
       {!supported.length ? (

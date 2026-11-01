@@ -1745,7 +1745,7 @@
   gap: 4px;
   width: auto;
   max-width: 100%;
-  min-height: 40px;
+  min-height: 44px;
   white-space: normal;
   overflow-wrap: anywhere;
   font-size: clamp(12px, 3.2cqw, 13px);

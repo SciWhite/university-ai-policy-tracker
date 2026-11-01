@@ -36,12 +36,23 @@ export function groupPolicyV6ReadingEvidence(topic: LabTopic) {
   return [...groups.values()];
 }
 
+export function formatAcceptedReadingCount(template: string | undefined, count: number, fallback: string): string {
+  return template ? template.replace("{0}", String(count)) : fallback;
+}
+
 /** Display grouping changes no source data, claim identity, wording, date or locator. */
-export function PolicyV6TopicEvidence({ topic, locale }: { topic: LabTopic; locale: SupportedLocale }) {
-  const copy = policyV6RecordCopy(locale);
-  const reader = policyV6ReaderCopy(locale);
+export function PolicyV6TopicEvidence({ topic, locale, sharedUiText = {} }: { topic: LabTopic; locale: SupportedLocale; sharedUiText?: Readonly<Record<string, string>> }) {
+  const translateAccepted = (value: string) => sharedUiText[value] ?? value;
+  const baseCopy = policyV6RecordCopy(locale), copy = Object.fromEntries(Object.entries(baseCopy).map(([key, value]) => [key, translateAccepted(value)])) as typeof baseCopy;
+  const baseReader = policyV6ReaderCopy(locale), reader = { ...baseReader,
+    scope: translateAccepted(baseReader.scope), version: translateAccepted(baseReader.version),
+    unknownVersion: translateAccepted(baseReader.unknownVersion), claimLocation: translateAccepted(baseReader.claimLocation),
+    sourceNavigation: translateAccepted(baseReader.sourceNavigation),
+    sources: (n: number) => formatAcceptedReadingCount(sharedUiText["{0} sources · Jump to a source"], n, translateAccepted(baseReader.sources(n))),
+    bindings: (n: number) => formatAcceptedReadingCount(sharedUiText["Referenced by {0} claim records"], n, translateAccepted(baseReader.bindings(n)))
+  };
   const groups = groupPolicyV6ReadingEvidence(topic);
-  if (!topic.claims.length) return <p data-evidence-gap="true">{topic.evidenceGap ?? policyV6Copy(locale).gap}</p>;
+  if (!topic.claims.length) return <p data-evidence-gap="true">{topic.evidenceGap ?? translateAccepted(policyV6Copy(locale).gap)}</p>;
   return <div className="policy-v6-readerSources student-snapshot-card__evidence">
     <details className="policy-v6-readerDirectory">
       <summary>{reader.sources(groups.length)}</summary>
@@ -87,11 +98,11 @@ export function PolicyV6TopicEvidence({ topic, locale }: { topic: LabTopic; loca
           </BindingsContainer>
         </article>;
       })}
-      <a className="policy-v6-readerSourceLink" href={group.url} target="_blank" rel="noopener noreferrer">{policyV6Copy(locale).source} ↗</a>
+      <a className="policy-v6-readerSourceLink" href={group.url} target="_blank" rel="noopener noreferrer">{translateAccepted(policyV6Copy(locale).source)} ↗</a>
     </section>)}
     {topic.claims.filter(claim => !claim.evidence.length).map(claim => <article className="student-evidence" key={claim.id}>
       <p data-i18n="preserve" lang="en">{claim.text}</p>
-      <p data-evidence-gap="true">{topic.evidenceGap ?? policyV6Copy(locale).gap}</p>
+      <p data-evidence-gap="true">{topic.evidenceGap ?? translateAccepted(policyV6Copy(locale).gap)}</p>
       <small>{claim.id} · {copy.claimChecked}: {claim.checkedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)}</small>
     </article>)}
   </div>;

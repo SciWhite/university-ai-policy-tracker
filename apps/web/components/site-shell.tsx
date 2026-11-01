@@ -9,8 +9,10 @@ import { LanguageSuggestion } from "@/components/language-suggestion";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteNavigation } from "@/components/site-navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { getLocaleFromPathname } from "@/lib/i18n";
+import { useReadingUiText } from "@/components/reading-ui-text-provider";
+import { getReadingLocaleFromPathname, legacyLocale } from "@/lib/i18n";
 import { getShellMessages } from "@/lib/i18n-messages";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import enMessages from "@/messages/en.json";
 import esMessages from "@/messages/es.json";
 import frMessages from "@/messages/fr.json";
@@ -129,14 +131,25 @@ const messagesByLocale = {
   ms: msMessages
 } as const;
 
+function hasUntranslatedShellText(value: unknown, sharedUiText: Readonly<Record<string, string>>): boolean {
+  if (typeof value === "string") return Boolean(value.trim()) && !sharedUiText[value];
+  if (Array.isArray(value)) return value.some(item => hasUntranslatedShellText(item, sharedUiText));
+  if (value && typeof value === "object") return Object.values(value).some(item => hasUntranslatedShellText(item, sharedUiText));
+  return false;
+}
+
 interface SiteShellProps {
   children: ReactNode;
 }
 
 export function SiteShell({ children }: SiteShellProps) {
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
-  const shell = getShellMessages(locale);
+  const readingLocale = getReadingLocaleFromPathname(pathname);
+  const locale = legacyLocale(readingLocale);
+  const sharedUiText = useReadingUiText();
+  const sourceShell = getShellMessages(readingLocale);
+  const shell = applyAcceptedReadingUiText(sourceShell, sharedUiText);
+  const showEnglishFallback = readingLocale !== "en" && !Object.hasOwn(messagesByLocale, readingLocale) && hasUntranslatedShellText(sourceShell, sharedUiText);
   const footerLabels = shell.footer as Record<string, string>;
   const navigationLabels = shell.navigation as Record<string, string>;
 
@@ -146,6 +159,7 @@ export function SiteShell({ children }: SiteShellProps) {
         {shell.skipToContent}
       </a>
       <header className="site-header">
+        {showEnglishFallback ? <p className="notice-card" lang="en">Some site controls are shown in English when a reviewed translation is unavailable.</p> : null}
         <LanguageSuggestion />
         <div className="site-header__top">
           <div className="site-brand">
@@ -191,6 +205,7 @@ export function SiteShell({ children }: SiteShellProps) {
         </div>
         <SiteNavigation
           items={primaryNavigation}
+          sharedUiText={sharedUiText}
           mobileUtilities={
             <>
               <DocumentLink

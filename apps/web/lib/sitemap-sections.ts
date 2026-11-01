@@ -3,7 +3,8 @@ import { getEntityAliasResolver } from "./entity-aliases";
 import { loadSelectedChangeEventIndex } from "./change-events-api";
 import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import type { CatalogPolicySource } from "@uapt/shared";
-import { getCatalogUniversities } from "@/lib/catalog";
+import { getCatalogUniversities, getPublicUniversitySummaryBySlug } from "@/lib/catalog";
+import { getStagedPublicSummaries } from "@/lib/staged-public-data";
 import { getChangeIndexData, getReleaseChangeRecords } from "@/lib/change-records";
 import { readRecordCorrectionChanges } from "@/lib/record-correction-changes";
 import { getKnownReleaseSummaries } from "@/lib/release-diffs";
@@ -18,15 +19,20 @@ import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
 import {
   DEFAULT_LOCALE,
   VISIBLE_LOCALES,
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE as DEFAULT_READING_LOCALE,
   isMultilingualPhaseTwoEnabled,
-  withLocalePrefix,
-  type SupportedLocale
+  withLocalePrefix
 } from "@/lib/i18n";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import { uniqueSitemapEntries } from "@/lib/sitemap-entries";
 import {
   isIndexRecoveryPilotSlug
 } from "@/lib/index-recovery-pilot";
+import { publishedV6Enabled, publishedV6Slugs } from "@/lib/policy-v6-published-gate";
+import { universityReadingBasis } from "@/lib/university-reading-basis";
+import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
+import { READING_LOCALES, type ReadingLocale } from "@/lib/language-catalog";
 
 export interface SitemapEntry {
   url: string;
@@ -40,6 +46,8 @@ export interface SitemapEntry {
 const VISIBLE_NON_DEFAULT_LOCALES = VISIBLE_LOCALES.filter(
   (locale) => locale !== DEFAULT_LOCALE
 );
+const LEGACY_LOCALIZED_STATIC_LOCALES = SUPPORTED_LOCALES.filter(locale => locale !== DEFAULT_LOCALE);
+const READING_SITEMAP_LOCALES = READING_LOCALES.filter(locale => locale !== DEFAULT_READING_LOCALE);
 
 // Release-scoped diff pages are only listed for the most recent releases; older
 // diffs stay reachable through /changes and the feeds without competing for
@@ -50,7 +58,7 @@ export const SITEMAP_SECTION_IDS = [
   "core",
   "universities",
   "changes",
-  ...VISIBLE_NON_DEFAULT_LOCALES
+  ...READING_SITEMAP_LOCALES
 ] as const;
 
 export type SitemapSectionId = (typeof SITEMAP_SECTION_IDS)[number];
@@ -221,7 +229,7 @@ async function buildChangesSection(): Promise<SitemapEntry[]> {
 }
 
 async function buildLocaleSection(
-  locale: SupportedLocale
+  locale: ReadingLocale
 ): Promise<SitemapEntry[]> {
   const baseUrl = getSiteBaseUrl();
   const publishedAt = await getSitemapLastPublishedAt();
@@ -229,7 +237,7 @@ async function buildLocaleSection(
   const analysisThemeRoutes = await getAnalysisThemeRoutes();
   const aliases = await getEntityAliasResolver();
   const universities = (await getCatalogUniversities()).filter(row => !aliases.slugAliases.has(row.slug) && !isIndexPolicySitemapAlias(row.slug));
-  const staticEntries = [
+  const staticEntries = LEGACY_LOCALIZED_STATIC_LOCALES.includes(locale as (typeof LEGACY_LOCALIZED_STATIC_LOCALES)[number]) ? [
     ...phaseOneLocalizedStaticRoutes,
     ...(phaseTwoEnabled ? phaseTwoLocalizedStaticRoutes : []),
     ...(phaseTwoEnabled ? referenceRoutes : []),
@@ -238,8 +246,17 @@ async function buildLocaleSection(
   ].map((route) => ({
     url: new URL(withLocalePrefix(route || "/", locale), baseUrl).toString(),
     lastModified: publishedAt
-  }));
+  })) : [];
+  const summaries = new Map((await getStagedPublicSummaries()).map(summary => [summary.entity.slug, summary]));
   const universityEntries = await Promise.all(universities.map(async (university) => {
+    if (process.env.NODE_ENV === "development") return null;
+    const usePublishedV6 = publishedV6Enabled() && publishedV6Slugs.includes(university.slug);
+    const summary = usePublishedV6
+      ? await getPublicUniversitySummaryBySlug(university.slug)
+      : summaries.get(university.slug);
+    const basis = summary ? universityReadingBasis(university.slug, summary) : undefined;
+    const indexBasis = basis ?? { recordSha256: "", originalEvidenceSha256: "" };
+    if (!summary || !(await universityReadingIndexLocales(university.slug, indexBasis, summary)).includes(locale)) return null;
     const latestSourceDate = getLatestSourceDate(university.sources);
 
     return {
@@ -252,12 +269,9 @@ async function buildLocaleSection(
         : latestSourceDate ? new Date(latestSourceDate) : publishedAt
     };
   }));
-  universityEntries.push({
-    url: new URL(withLocalePrefix("/universities/eth-zurich", locale), baseUrl).toString(),
-    lastModified: new Date("2026-10-02T00:00:00.000Z")
-  });
+  const eligibleUniversityEntries = universityEntries.filter((entry): entry is SitemapEntry => entry !== null);
 
-  return [...staticEntries, ...universityEntries];
+  return [...staticEntries, ...eligibleUniversityEntries];
 }
 
 async function getAnalysisThemeRoutes(): Promise<string[]> {

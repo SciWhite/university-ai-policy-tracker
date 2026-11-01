@@ -4,14 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentProps } from "react";
 import {
-  getLocaleFromPathname,
   localizeHref,
-  type SupportedLocale
+  readingLocaleForLink
 } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 
 type LocalizedLinkProps = ComponentProps<typeof Link> & {
   href: string;
-  localeOverride?: SupportedLocale;
+  localeOverride?: ReadingLocale;
 };
 
 export function LocalizedLink({
@@ -22,7 +22,7 @@ export function LocalizedLink({
   ...props
 }: LocalizedLinkProps) {
   const pathname = usePathname();
-  const locale = localeOverride ?? getLocaleFromPathname(pathname);
+  const locale = readingLocaleForLink(pathname, localeOverride);
 
   return (
     <Link href={localizeHref(href, locale)} prefetch={prefetch} {...props} />

@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import {
   isMultilingualPhaseTwoEnabled,
   isPhaseTwoLocalizablePath,
-  stripLocalePrefix
+  stripReadingLocalePrefix
 } from "@/lib/i18n";
 
 const PRIVATE_ANALYTICS_USERNAME = "uapt";
@@ -18,7 +18,7 @@ interface AuthFailureState {
 const authFailures = new Map<string, AuthFailureState>();
 
 export function proxy(request: NextRequest) {
-  const localizedPath = stripLocalePrefix(request.nextUrl.pathname);
+  const localizedPath = stripReadingLocalePrefix(request.nextUrl.pathname);
 
   if (localizedPath.hadLocalePrefix) {
     if (
@@ -67,7 +67,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/:locale(zh|fr|pl|es|nl|ms)/:path*",
+    "/:locale(en|zh|zh-Hant|fr|pl|es|nl|ms|ja|ko|pt|ar|ru|de|it|cs|tr|fi|sv|da|nb|hu|lt|id|vi|th|fa|he|hi|ur|bn|uk|el)/:path*",
     "/internal/analytics/:path*",
     "/api/internal/analytics/dashboard/:path*"
   ]

@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   DEFAULT_LOCALE,
-  getLocaleFromPathname,
+  getReadingLocaleFromPathname,
+  legacyLocale,
   getLocaleLabel,
   getPathnameWithoutLocale,
   isLocalizablePath,
@@ -13,6 +14,8 @@ import {
   type SupportedLocale
 } from "@/lib/i18n";
 import { getShellMessages, interpolate } from "@/lib/i18n-messages";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
+import { useReadingUiText } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
 import { preferredReadingLocale } from "@/lib/language-catalog";
 
@@ -21,14 +24,15 @@ const CHOICE_STORAGE_KEY = "uapt-locale-choice";
 
 export function LanguageSuggestion() {
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
+  const readingLocale = getReadingLocaleFromPathname(pathname);
+  const locale = legacyLocale(readingLocale);
   const [suggestedLocale, setSuggestedLocale] = useState<SupportedLocale | null>(
     null
   );
-  const messages = getShellMessages(locale).locale;
+  const messages = applyAcceptedReadingUiText(getShellMessages(readingLocale).locale, useReadingUiText());
 
   useEffect(() => {
-    if (locale !== DEFAULT_LOCALE) return;
+    if (readingLocale !== DEFAULT_LOCALE) return;
 
     try {
       if (
@@ -46,7 +50,7 @@ export function LanguageSuggestion() {
     // them with no visible way back.
     const browserLocale = preferredReadingLocale(window.navigator.languages ?? []);
     setSuggestedLocale(browserLocale && browserLocale !== DEFAULT_LOCALE && isSupportedLocale(browserLocale) ? browserLocale : null);
-  }, [locale, pathname]);
+  }, [readingLocale, pathname]);
 
   if (!suggestedLocale) return null;
 

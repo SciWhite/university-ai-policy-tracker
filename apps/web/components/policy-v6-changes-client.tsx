@@ -10,11 +10,11 @@ import {changeWindow,utcDay,visibleChangeWindow} from "@/lib/v6-changes-window";
 import {changeCategoryKeys,v6ChangesCopy,v6ChangeTopicTitle,historicalChangeTopicOrder} from "@/lib/v6-changes-copy";
 
 const isPrimary=(key:string)=>primaryChangeCategory(key)||key==="record_maintenance"||key==="page_update";
-type Props={slug:string;recordSha256?:string;locale:SupportedLocale;today:string;initial:SelectedChangeOverview;hasHeldRecords?:boolean};
+type Props={slug:string;recordSha256?:string;locale:SupportedLocale;today:string;initial:SelectedChangeOverview;hasHeldRecords?:boolean;sharedUiText?:Readonly<Record<string,string>>};
 type EventState={status:"loading"}|{status:"failed"}|{status:"ready";event:ChangeEvent};
 
-export function PolicyV6ChangesClient({slug,recordSha256,locale,today,initial,hasHeldRecords=false}:Props){
-  const copy=v6ChangesCopy(locale),root=useRef<HTMLDetailsElement>(null);
+export function PolicyV6ChangesClient({slug,recordSha256,locale,today,initial,hasHeldRecords=false,sharedUiText={}}:Props){
+  const rawCopy=v6ChangesCopy(locale),copy=Object.fromEntries(Object.entries(rawCopy).map(([key,value])=>[key,Array.isArray(value)?value.map(item=>sharedUiText[item]??item):sharedUiText[value]??value])) as typeof rawCopy,root=useRef<HTMLDetailsElement>(null);
   const [overview,setOverview]=useState(initial),[retrying,setRetrying]=useState(false);
   const [range,setRange]=useState(changeWindow(today)),[preset,setPreset]=useState("90");
   const [events,setEvents]=useState<Record<string,EventState>>({});
@@ -22,7 +22,7 @@ export function PolicyV6ChangesClient({slug,recordSha256,locale,today,initial,ha
   const selection=overview.status==="ready"?visibleChangeWindow(overview.overview,range.start,range.end):undefined;
   const revision=overview.status==="ready"?overview.overview.revision:overview.revision;
   const category=(key:string)=>copy.categories[changeCategoryKeys.indexOf(key as typeof changeCategoryKeys[number])]??copy.other;
-  const theme=(key:string)=>v6ChangeTopicTitle(key,locale);
+  const theme=(key:string)=>sharedUiText[v6ChangeTopicTitle(key,"en")]??v6ChangeTopicTitle(key,locale);
   const themeOrder=[...(overview.status==="ready"?overview.overview.themeOrder:[]),...historicalChangeTopicOrder];
   const orderedThemes=(keys:string[])=>[...keys].sort((a,b)=>{const ia=themeOrder.indexOf(a),ib=themeOrder.indexOf(b);return (ia<0?999:ia)-(ib<0?999:ib)||a.localeCompare(b);});
   const previewThemes=(keys:string[])=>{const names=[...new Set(orderedThemes(keys.filter(key=>key!=="sources")).map(theme))];return names.slice(0,2).join(" · ")+(names.length>2?" · "+copy.moreThemes.replace("{n}",String(names.length-2)):"");};

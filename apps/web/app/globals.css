@@ -3875,7 +3875,24 @@ ol.timeline-list {
 
   .site-nav__mobile-utilities .language-switcher {
     flex-basis: 100%;
-    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .site-nav__mobile-utilities .language-switcher__links {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .site-nav__mobile-utilities .language-switcher__links a {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .site-nav__mobile-utilities .theme-toggle {

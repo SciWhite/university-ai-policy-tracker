@@ -57,6 +57,7 @@ type LabContext = {
   data: PolicyV6Data;
   readingLayout: boolean;
   ui: ReturnType<typeof policyV6Copy>;
+  sharedUiText: Readonly<Record<string, string>>;
   copy: (url: string) => Promise<boolean>;
   shareUrl: () => string;
   comparison: ReactNode;
@@ -78,15 +79,23 @@ const topicUrl = (key: string) => {
   return url.href;
 };
 const domain = (url: string) => new URL(url).hostname;
+function overlayCopy<T>(value: T, sharedUiText: Readonly<Record<string, string>>): T {
+  if (typeof value === "string") return (sharedUiText[value] ?? value) as T;
+  if (Array.isArray(value)) return value.map(item => overlayCopy(item, sharedUiText)) as T;
+  if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, overlayCopy(item, sharedUiText)])) as T;
+  return value;
+}
 
 export function PolicyV6Provider({
   data,
   children,
   readingLayout = true,
+  sharedUiText = {},
 }: {
   data?: PolicyV6Data;
   children: ReactNode;
   readingLayout?: boolean;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
   const [compareOpen, setCompareOpen] = useState(false);
   const [compareView, setCompareView] = useState(false);
@@ -101,7 +110,8 @@ export function PolicyV6Provider({
   const [feedback, setFeedback] = useState("");
   const [failedUrl, setFailedUrl] = useState("");
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const ui = policyV6Copy(data?.locale ?? "en");
+  const baseUi = policyV6Copy(data?.locale ?? "en");
+  const ui = Object.fromEntries(Object.entries(baseUi).map(([key, value]) => [key, sharedUiText[value] ?? value])) as typeof baseUi;
   useEffect(() => {
     if (!data) return;
     const restore = () => {
@@ -185,7 +195,8 @@ export function PolicyV6Provider({
   const schools = selected.flatMap((slug) =>
     knownSchools.filter((s) => s.slug === slug),
   );
-  const interactionUi = policyV6InteractionCopy(data.locale);
+  const interactionUi = overlayCopy(policyV6InteractionCopy(data.locale), sharedUiText);
+  const recordUi = overlayCopy(policyV6RecordCopy(data.locale), sharedUiText);
   const comparisonReady =
     schools.length >= 2 && schools.length === selected.length && !loading;
   const topics = [...(current?.topics ?? []), ...(current?.additionalTopics ?? [])];
@@ -343,6 +354,7 @@ export function PolicyV6Provider({
       {!compareView ? (
         <PolicyV6SearchPicker
           locale={data.locale}
+          sharedUiText={sharedUiText}
           selected={selected}
           names={{
             ...data.schoolNames,
@@ -407,7 +419,7 @@ export function PolicyV6Provider({
               <table className={v6Classes.table}>
                 <thead>
                   <tr>
-                    <th scope="col">{policyV6RecordCopy(data.locale).topic}</th>
+                    <th scope="col">{recordUi.topic}</th>
                     {schools.map((s) => (
                       <th scope="col" key={s.slug}>
                         <span className="policy-v6-universityName">
@@ -421,8 +433,8 @@ export function PolicyV6Provider({
                             : s.v6ReviewState === "agent_reviewed"
                             ? policyV6AgentReviewLabel(data.locale)
                             : s.snapshotStatus === "strong"
-                              ? policyV6RecordCopy(data.locale).strong
-                              : policyV6RecordCopy(data.locale).held}
+                              ? recordUi.strong
+                              : recordUi.held}
                         </small>
                         <small>
                           {ui.sourceDate}: {s.checkedAt.slice(0, 10)}
@@ -461,7 +473,7 @@ export function PolicyV6Provider({
                                 <small>
                                   {ui.scope}:{" "}
                                   {d.basisKind === "record_analysis"
-                                    ? policyV6RecordCopy(data.locale).scope
+                                    ? recordUi.scope
                                     : d.scope}
                                 </small>
                                 {d.sources.map((source) => (
@@ -501,6 +513,7 @@ export function PolicyV6Provider({
         data,
         readingLayout,
         ui,
+        sharedUiText,
         copy,
         shareUrl,
         comparison,
@@ -591,6 +604,8 @@ export function PolicyV6Intro() {
   const lab = useLab();
   if (!lab) return null;
   const { ui, data } = lab;
+  const displayLanguage = data.readingLocale ?? data.locale;
+  const displayText = (value: string) => lab.sharedUiText[value] ?? value;
   const current = data.schools.find((s) => s.slug === data.currentSlug);
   const questionKeys = lab.readingLayout
     ? ["coursework", "disclosure", "privacy_data", "approved_tools"] as const
@@ -600,7 +615,7 @@ export function PolicyV6Intro() {
     : { coursework: "Can I use AI in coursework?", approved_tools: "Which AI tools can I access?", research_publication: "How can I use AI in research?", teaching_guidance: "How can I use AI in teaching?" };
   return (<>
     <span id="quick-guide" />
-    <p className="v6-compact-independence">{data.locale === "zh" ? "独立整理 · 免费开放 · 非学校官方页面" : "Independent · Open access · Not an official university page"}</p>
+    <p className="v6-compact-independence" lang={displayLanguage}>{displayText("Independent · Open access · Not an official university page")}</p>
     <section
       className={v6Classes.intro}
       id="v6-questions"
@@ -610,7 +625,7 @@ export function PolicyV6Intro() {
         <div>
           <h2 id="lab-explore-title">{ui.explore}</h2>
         </div>
-        <a className="v6-compact-university-search" href={`${data.locale==='en'?'':'/'+data.locale}/universities`}>{data.locale==='zh'?'搜索大学':'Search universities'}</a>
+        <a className="v6-compact-university-search" lang={displayLanguage} href={`${data.readingLocale && data.readingLocale !== "en" ? `/${data.readingLocale}` : data.locale==='en'?'':'/'+data.locale}/universities`}>{displayText("Search universities")}</a>
       </div>
       <div className={v6Classes.questions}>
         {questionKeys.map((key) => {
@@ -633,12 +648,12 @@ export function PolicyV6Intro() {
         })}
       </div>
       <div className={v6Classes.introFoot}>
-        <a href={UNIVERSITY_POLICY_PLUGIN_URL} target="_blank" rel="noopener noreferrer">{pluginPromotionCopy(data.locale).cta} ↗</a>
-        <a className="v6-compact-check-entry" href="#v6-submission-guide"><strong>{data.locale === "zh" ? "提交前检查" : "Before you submit"}</strong><span>{data.locale === "zh" ? "建议与注意事项" : "Advice and precautions"}</span><span aria-hidden="true">↓</span></a>
+        <a lang={displayLanguage} href={UNIVERSITY_POLICY_PLUGIN_URL} target="_blank" rel="noopener noreferrer">{displayText(pluginPromotionCopy(data.locale).cta)} ↗</a>
+        <a className="v6-compact-check-entry" lang={displayLanguage} href="#v6-submission-guide"><strong>{ui.checklist}</strong><span>{displayText("Advice and precautions")}</span><span aria-hidden="true">↓</span></a>
         <a
           href="#record-changes"
         >
-          {v6ChangesCopy(data.locale).title} ↓
+          {displayText(v6ChangesCopy(data.locale).title)} ↓
         </a>
       </div>
     </section>
@@ -649,7 +664,7 @@ export function PolicyV6Intro() {
 export function PolicyV6BeforeTools() {
   const lab = useLab();
   if (!lab || !lab.data.studentActionsPilot) return null;
-  return <PolicyV6StudentGuide guide={lab.data.studentActions} locale={lab.data.locale} />;
+  return <PolicyV6StudentGuide guide={lab.data.studentActions} locale={lab.data.locale} readingLocale={lab.data.readingLocale ?? lab.data.locale} sharedUiText={lab.sharedUiText} studentGuideTranslated={lab.data.studentGuideTranslated} />;
 }
 
 export function PolicyV6TopicControls({
@@ -743,7 +758,7 @@ export function PolicyV6TopicControls({
 
         {lab.readingLayout && scopeDetail ? (
           <details className="policy-v6-readerScope" id={`snapshot-scope-${topic.key}`}>
-            <summary>{policyV6ReaderCopy(lab.data.locale).scope}</summary>
+            <summary>{overlayCopy(policyV6ReaderCopy(lab.data.locale), lab.sharedUiText).scope}</summary>
             {scopeDetail}
           </details>
         ) : null}
@@ -844,7 +859,7 @@ export function PolicyV6Tools({
     2,
   );
   if (!lab) return children;
-  const ui = policyV6DensityCopy(lab.data.locale);
+  const ui = overlayCopy(policyV6DensityCopy(lab.data.locale), lab.sharedUiText);
   return (
     <div className={v6Classes.tools} ref={container} data-expanded={expanded}>
       <div id={id}>{children}</div>
@@ -943,7 +958,7 @@ export function PolicyV6Faq() {
   const lab = useLab();
   if (!lab) return null;
   const { ui, data } = lab;
-  const copy = policyV6InteractionCopy(data.locale);
+  const copy = overlayCopy(policyV6InteractionCopy(data.locale), lab.sharedUiText);
   const school = data.schools.find((s) => s.slug === data.currentSlug);
   const topics = [
     ...(school?.topics ?? []),

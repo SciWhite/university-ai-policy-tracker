@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { getLocaleFromPathname } from "@/lib/i18n";
+import { getReadingLocaleFromPathname } from "@/lib/i18n";
 import { trackPageView, trackResearchEvent } from "@/lib/analytics-client";
 import {
   getEndpointKind,
@@ -17,7 +17,7 @@ import {
 
 export function AnalyticsEventBridge() {
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
+  const locale = getReadingLocaleFromPathname(pathname);
   const pageType = getPageType(pathname);
   const pageEntitySlug = getEntitySlugFromPathname(pathname);
 

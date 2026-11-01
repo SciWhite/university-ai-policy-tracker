@@ -11,18 +11,27 @@ export function PolicyV6Sources({
   sources,
   slug,
   locale,
+  sharedUiText = {},
 }: {
   sources: PublicEntitySummary["officialSources"];
   slug: string;
   locale: SupportedLocale;
+  sharedUiText?: Readonly<Record<string, string>>;
 }) {
-  const ui = policyV6Copy(locale),
-    density = policyV6DensityCopy(locale);
+  const translateAccepted = (value: string) => sharedUiText[value] ?? value;
+  const baseUi = policyV6Copy(locale), baseDensity = policyV6DensityCopy(locale);
+  const ui = { ...baseUi, source: translateAccepted(baseUi.source) };
+  const density = { ...baseDensity, allSources: translateAccepted(baseDensity.allSources), fewerSources: translateAccepted(baseDensity.fewerSources) };
   const groups = new Map<string, typeof sources>();
   for (const source of sources) groups.set(source.sourceUrl, [...(groups.get(source.sourceUrl) ?? []), source]);
+  const countTemplate = "{0} official URLs; {1} source attributions and their captured versions retained.";
+  const translatedCount = translateAccepted(countTemplate);
+  const countText = translatedCount === countTemplate
+    ? locale === "zh" ? `${groups.size} 个官方 URL；保留 ${sources.length} 条来源归属及各自捕获版本。` : `${groups.size} official URLs; ${sources.length} source attributions and their captured versions retained.`
+    : translatedCount.replace("{0}", String(groups.size)).replace("{1}", String(sources.length));
   return (
     <>
-    <p className="policy-v6-muted">{locale === "zh" ? `${groups.size} 个官方 URL；保留 ${sources.length} 条来源归属及各自捕获版本。` : `${groups.size} official URLs; ${sources.length} source attributions and their captured versions retained.`}</p>
+    <p className="policy-v6-muted">{countText}</p>
     <PolicyV6SourceGrid
       allLabel={density.allSources}
       fewerLabel={density.fewerSources}
@@ -41,7 +50,7 @@ export function PolicyV6Sources({
             <p className="policy-v6-sourceDomain" data-i18n="preserve">
               {domain}
             </p>
-            <p className="policy-v6-muted">{policyV6EvidenceLabel(policySourceRole(source),locale)}</p>
+            <p className="policy-v6-muted">{translateAccepted(policyV6EvidenceLabel(policySourceRole(source),locale))}</p>
             {source.publisher ? (
               <p className="policy-v6-muted" data-i18n="preserve">
                 {source.publisher}
@@ -58,7 +67,7 @@ export function PolicyV6Sources({
               </p>
             ) : null}
             <details className="policy-v6-muted">
-              <summary>{locale === "zh" ? "哈希与捕获版本" : "Hash and captured version"}</summary>
+              <summary>{translateAccepted("Hash and captured version") === "Hash and captured version" ? locale === "zh" ? "哈希与捕获版本" : "Hash and captured version" : translateAccepted("Hash and captured version")}</summary>
               {versions.map((version, i) => {const binding=sourceHashBinding(version);return <div key={`${version.snapshotHash}:${i}`}><p data-i18n="preserve">{version.citationTitle} · {version.retrievedAt}</p><p>{binding.hashKind === 'extracted_text_utf8'
                 ? locale === 'zh' ? 'SHA-256：所保留提取文本的 UTF-8 字节，不是 HTML/PDF 原始文件。' : 'SHA-256 of retained extracted UTF-8 text; not the original HTML/PDF file.'
                 : binding.hashKind === 'raw_captured_bytes'
