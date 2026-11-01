@@ -1,7 +1,12 @@
-import BasePage, { generateMetadata as baseGenerateMetadata, generateStaticParams } from "../../../../(default)/changes/[releaseId]/[slug]/page";
+import BasePage, { generateMetadata as baseGenerateMetadata, generateStaticParams as baseGenerateStaticParams } from "../../../../(default)/changes/[releaseId]/[slug]/page";
 import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization";
+import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n";
 
-export { generateStaticParams };
+export async function generateStaticParams({ params }: { params?: { locale?: string } } = {}) {
+  const locale = params?.locale;
+  if (!locale || locale === "en" || !SUPPORTED_LOCALES.includes(locale as SupportedLocale)) return [];
+  return baseGenerateStaticParams();
+}
 export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = false;

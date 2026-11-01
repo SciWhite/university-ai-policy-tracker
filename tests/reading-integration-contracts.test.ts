@@ -18,7 +18,8 @@ import {
 import { READING_LOCALES, isReadingLocale, matchReadingLocale, preferredReadingLocale, readingDirection } from "../apps/web/lib/language-catalog";
 import { getReadingLocaleFromPathname, legacyLocale, localizeHref, normalizeReadingLocale } from "../apps/web/lib/i18n";
 import { packAcceptedMatrixCandidate } from "../scripts/pack-reading-translations";
-import { localEvidenceDisplayRequirements, readingDisplayRequirementsComplete } from "../apps/web/lib/university-reading-metadata";
+import { localEvidenceDisplayRequirements, policySceneDisplaySources, readingDisplayRequirementsComplete } from "../apps/web/lib/university-reading-metadata";
+import { getPublicUniversitySummaryBySlug } from "../apps/web/lib/catalog";
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 
@@ -392,6 +393,41 @@ test("all reading locales route distinctly while legacy UI remains seven-locale 
   assert.equal(readingDirection("ar"), "rtl");
   assert.equal(readingDirection("fa"), "rtl");
   assert.equal(readingDirection("zh-Hant"), "ltr");
+});
+
+test("published V6 scene index requirements exclude hidden legacy copy but keep visible source updates strict", async () => {
+  const previous = process.env.UAPT_V6_PUBLISHED_PAGES;
+  process.env.UAPT_V6_PUBLISHED_PAGES = "1";
+  try {
+    const bristol = await getPublicUniversitySummaryBySlug("university-of-bristol");
+    assert(bristol);
+    const bristolRequirements = policySceneDisplaySources("university-of-bristol", bristol);
+    assert(bristolRequirements.length > 0);
+    assert(bristolRequirements.every(row => row.field === "scene/sourceUpdate/text"));
+    const source = bristolRequirements[0]!.source;
+    const school = makeBundle("university-of-bristol", source, "approved translation");
+    const shared = makeBundle("_shared", "Shared UI", "Translated shared UI");
+    assert.equal(readingDisplayRequirementsComplete(bristolRequirements, school, shared), false,
+      "a sourceUpdate translation without its exact field binding must block completeness");
+    school.sourceFieldUses = { [sha(source)]: ["scene/sourceUpdate/text"] };
+    assert.equal(readingDisplayRequirementsComplete(bristolRequirements, school, shared), true);
+
+    const aalto = await getPublicUniversitySummaryBySlug("aalto-university");
+    assert(aalto);
+    const aaltoRequirements = policySceneDisplaySources("aalto-university", aalto);
+    assert.equal(aaltoRequirements.some(row => row.field !== "scene/sourceUpdate/text"), false,
+      "published V6 must not require legacy hero/quick-guide/gallery copy hidden by the active renderer");
+
+    const nonPublished = await getPublicUniversitySummaryBySlug("university-of-aberdeen");
+    assert(nonPublished);
+    const nonPublishedRequirements = policySceneDisplaySources("university-of-aberdeen", nonPublished);
+    assert(nonPublishedRequirements.length > 0);
+    assert(nonPublishedRequirements.some(row => row.field !== "scene/sourceUpdate/text"),
+      "non-published V6 slugs retain the existing legacy scene requirements");
+  } finally {
+    if (previous === undefined) delete process.env.UAPT_V6_PUBLISHED_PAGES;
+    else process.env.UAPT_V6_PUBLISHED_PAGES = previous;
+  }
 });
 
 test("accepted matrix packaging binds output labels to frozen insertion-order source maps", async () => {

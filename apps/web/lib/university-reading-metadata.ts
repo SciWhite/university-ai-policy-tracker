@@ -12,6 +12,7 @@ import { readingTranslation } from "./reading-translations";
 import { getV6PageInput } from "./policy-v6-page-input";
 import { getPolicyV6Data } from "./policy-v6";
 import { publishedV6Slugs } from "./policy-v6-published";
+import { publishedV6Enabled } from "./policy-v6-published-gate";
 
 let cachedPolicy: { path: string; sha256: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
@@ -78,12 +79,20 @@ export async function v6DisplayRequirements(slug: string, summary?: PublicEntity
   if (input.evidence) output.push(...localEvidenceDisplayRequirements(input.evidence));
   return { requirements: output.filter(requirement => requirement.source.trim()), sourceScopeComplete: publishedScope };
 }
-function policySceneDisplaySources(slug: string, summary: PublicEntitySummary): ReadingDisplayRequirement[] {
+export function policySceneDisplaySources(slug: string, summary: PublicEntitySummary): ReadingDisplayRequirement[] {
   const scenes = [
     getPolicyScenePilot(slug, summary.claims, true, true, { isPreview: true }),
     getPolicyScenePilot(slug, summary.claims, false, true, { isPreview: true }),
     getPolicyScenePilot(slug, summary.claims, false, false, { isPreview: true })
   ].filter(Boolean);
+  if (publishedV6Enabled() && publishedV6Slugs.includes(slug)) {
+    const updates = new Map<string, ReadingDisplayRequirement>();
+    for (const scene of scenes) {
+      const source = scene?.sourceUpdate?.text;
+      if (source?.trim()) updates.set(source, { source, field: "scene/sourceUpdate/text" });
+    }
+    return [...updates.values()];
+  }
   const sources = new Map<string, ReadingDisplayRequirement>();
   const visit = (value: unknown, field = "") => {
     if (typeof value === "string") {
