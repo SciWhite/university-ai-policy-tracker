@@ -12,8 +12,10 @@ import {
 import { NextResponse } from "next/server";
 import { getLoadedPolicySnapshotIndex } from "@/lib/policy-snapshots";
 import { getAbsoluteSiteUrl, getSiteBaseUrl } from "@/lib/site-url";
+import { readV6RecordCorrections } from "@/lib/v6-effective-records";
+import { withIndexProvenance } from "@/lib/index-provenance";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const loadedIndex = await getLoadedPolicySnapshotIndex();
@@ -32,8 +34,7 @@ export async function GET() {
     "/api/public/v1/policy-snapshots/index.json"
   );
 
-  return NextResponse.json(
-    policySnapshotIndexResponseSchema.parse({
+  const response = policySnapshotIndexResponseSchema.parse({
       apiVersion: PUBLIC_API_VERSION,
       generatedAt: loadedIndex.generatedAt,
       canonicalUrl: new URL("/policy-snapshots", getSiteBaseUrl()).toString(),
@@ -51,6 +52,8 @@ export async function GET() {
           "University AI Policy Tracker. Version uapt-policy-snapshot-v1."
       }),
       data
-    })
-  );
+    });
+  return NextResponse.json(withIndexProvenance(response, readV6RecordCorrections()), {
+    headers: { "Cache-Control": "private, no-store, no-transform" }
+  });
 }

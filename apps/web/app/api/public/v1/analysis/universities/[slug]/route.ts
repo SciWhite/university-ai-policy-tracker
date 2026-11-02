@@ -7,8 +7,9 @@ import {
 } from "@/lib/policy-analysis";
 import { getSiteBaseUrl } from "@/lib/site-url";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamic = "force-dynamic";
+// Shared V6 records include published slugs outside the base dataset manifest.
+export const dynamicParams = true;
 
 interface PolicyAnalysisRouteProps {
   params: Promise<{

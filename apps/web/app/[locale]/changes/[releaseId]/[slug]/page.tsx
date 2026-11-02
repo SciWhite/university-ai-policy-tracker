@@ -7,7 +7,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   if (locale === "en" || !SUPPORTED_LOCALES.includes(locale as SupportedLocale)) return [];
   return baseGenerateStaticParams();
 }
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 export const revalidate = false;
 export const generateMetadata = createLocalizedSurfaceMetadata(

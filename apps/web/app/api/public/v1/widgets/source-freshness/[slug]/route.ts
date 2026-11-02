@@ -6,48 +6,41 @@ import {
 } from "@uapt/shared";
 import {
   buildSourceFreshnessWidget,
+  getSourceFreshnessWidget,
   widgetCorsHeaders
 } from "@/lib/developer-surfaces";
+import { v6RecordRevision } from "@/lib/v6-effective-records";
 
 export const dynamic = "force-dynamic";
 
 const internalNextBaseUrl = process.env.INTERNAL_NEXT_BASE_URL?.trim();
 
-interface WidgetSourceFreshnessRouteProps {
-  params: Promise<{
-    slug: string;
-  }>;
+interface WidgetRouteProps {
+  params: Promise<{ slug: string }>;
 }
 
-export async function GET(
-  _request: Request,
-  { params }: WidgetSourceFreshnessRouteProps
-) {
-  const { slug } = await params;
-  const universitySlug = slug.endsWith(".json")
-    ? slug.slice(0, -".json".length)
-    : slug;
-  const [summary, sourceRows] = await Promise.all([
-    fetchPublicSummary(_request.url, universitySlug),
-    fetchSourceHealthRows(_request.url, universitySlug)
-  ]);
-  const payload = summary
-    ? buildSourceFreshnessWidget(summary, sourceRows)
-    : undefined;
-
-  if (!payload) {
-    return NextResponse.json(
-      { error: `Source freshness widget not found: ${universitySlug}` },
-      {
-        headers: {
-          ...widgetCorsHeaders,
-          "Cache-Control": "no-store"
-        },
-        status: 404
-      }
-    );
+export async function GET(request: Request, { params }: WidgetRouteProps) {
+  const { slug: rawSlug } = await params;
+  const slug = rawSlug.endsWith(".json") ? rawSlug.slice(0, -".json".length) : rawSlug;
+  if (v6RecordRevision(slug)) {
+    const payload = await getSourceFreshnessWidget(slug);
+    return NextResponse.json(payload ?? { error: "Repair widget unavailable" }, {
+      status: payload ? 200 : 503,
+      headers: { ...widgetCorsHeaders, "Cache-Control": "private, no-store, no-transform" }
+    });
   }
 
+  const [summary, sourceRows] = await Promise.all([
+    fetchPublicSummary(request.url, slug),
+    fetchSourceHealthRows(request.url, slug)
+  ]);
+  const payload = summary ? buildSourceFreshnessWidget(summary, sourceRows) : undefined;
+  if (!payload) {
+    return NextResponse.json(
+      { error: `Source freshness widget not found: ${slug}` },
+      { headers: { ...widgetCorsHeaders, "Cache-Control": "no-store" }, status: 404 }
+    );
+  }
   return NextResponse.json(payload, { headers: widgetCorsHeaders });
 }
 
@@ -58,19 +51,13 @@ export function OPTIONS() {
 async function fetchPublicSummary(requestUrl: string, slug: string) {
   const baseUrl = internalNextBaseUrl || requestUrl;
   const response = await fetch(
-    new URL(
-      `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
-      baseUrl
-    ),
+    new URL(`/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`, baseUrl),
     { next: { revalidate: 3600 } }
   );
-
   if (!response.ok) return undefined;
-
   const payload = await response.json();
   const envelope = publicEntitySummaryResponseSchema.safeParse(payload);
   if (envelope.success) return envelope.data.data;
-
   const summary = publicEntitySummarySchema.safeParse(payload);
   return summary.success ? summary.data : undefined;
 }
@@ -81,21 +68,10 @@ async function fetchSourceHealthRows(requestUrl: string, slug: string) {
     new URL(`/api/public/${PUBLIC_API_VERSION}/source-health.json`, baseUrl),
     { next: { revalidate: 3600 } }
   );
-
   if (!response.ok) return [];
-
-  const payload = (await response.json()) as {
-    data?: {
-      rows?: Array<{
-        entitySlug?: string;
-        scope?: string;
-        status: string;
-      }>;
-    };
+  const payload = await response.json() as {
+    data?: { rows?: Array<{ entitySlug?: string; scope?: string; status: string }> };
   };
   const rows = Array.isArray(payload.data?.rows) ? payload.data.rows : [];
-
-  return rows.filter(
-    (row) => row.scope === "public_release" && row.entitySlug === slug
-  );
+  return rows.filter((row) => row.scope === "public_release" && row.entitySlug === slug);
 }

@@ -1,6 +1,6 @@
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const records = await getStaticUniversityIndexRecords();

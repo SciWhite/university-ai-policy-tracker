@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { releaseDiffEventState } from "@/lib/change-index-evidence";
 import { isConfirmedEmptyDiff, emptyDiffMetadata } from "@/lib/change-index-policy";
@@ -17,6 +18,8 @@ import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { readPublishedV6Revision } from "@/lib/policy-v6-published";
+import { V6ChangeDetail } from "../../../../../../tulsa-zone/components/v6-change-detail";
 
 interface ReleaseEntityChangePageProps {
   params: Promise<{
@@ -26,7 +29,7 @@ interface ReleaseEntityChangePageProps {
   }>;
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 export const revalidate = false;
 
@@ -48,6 +51,11 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
   const eventMetadata=await changeHistoryMetadata(slug,locale,releaseId);
   if(eventMetadata)return eventMetadata;
+  const v6Revision = readPublishedV6Revision(releaseId);
+  if (v6Revision) {
+    if (![...v6Revision.slugs, ...(v6Revision.v5Slugs ?? [])].includes(slug)) notFound();
+    return { title: `${slug} policy evidence history | University AI Policy Tracker` };
+  }
   const record = await getReleaseChangeRecord(releaseId, slug);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`);
   const displayName = record
@@ -85,6 +93,11 @@ export default async function ReleaseEntityChangePage({
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
   const eventPage=await ChangeRevisionPage({slug,revision:releaseId,locale});
   if(eventPage)return eventPage;
+  const v6Revision = readPublishedV6Revision(releaseId);
+  if (v6Revision) {
+    if (![...v6Revision.slugs, ...(v6Revision.v5Slugs ?? [])].includes(slug)) notFound();
+    return <V6ChangeDetail revision={releaseId} slug={slug} locale={locale} />;
+  }
   const record = await getReleaseChangeRecord(releaseId, slug);
 
   if (!record) {

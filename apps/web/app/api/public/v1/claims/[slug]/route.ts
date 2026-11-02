@@ -14,8 +14,9 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getAliasSlugs } from "@/lib/entity-aliases";
 import { aliasSlugJsonRedirect } from "@/lib/entity-alias-redirect";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamic = "force-dynamic";
+// V6-published records can extend beyond the base summary list at build time.
+export const dynamicParams = true;
 
 interface ClaimsRouteProps {
   params: Promise<{
@@ -34,12 +35,12 @@ export async function generateStaticParams() {
 
 export async function GET(_request: Request, { params }: ClaimsRouteProps) {
   const { slug } = await params;
-  const universitySlug = slug.endsWith(".json")
-    ? slug.slice(0, -".json".length)
-    : slug;
+  const hasJsonSuffix = slug.endsWith(".json");
+  const universitySlug = hasJsonSuffix ? slug.slice(0, -".json".length) : slug;
   const aliasRedirect = await aliasSlugJsonRedirect(
     universitySlug,
-    (canonicalSlug) => `/api/public/${PUBLIC_API_VERSION}/claims/${canonicalSlug}.json`
+    (canonicalSlug) =>
+      `/api/public/${PUBLIC_API_VERSION}/claims/${canonicalSlug}${hasJsonSuffix ? ".json" : ""}`
   );
   if (aliasRedirect) return aliasRedirect;
   const summary = await getStagedPublicSummaryBySlug(universitySlug);
