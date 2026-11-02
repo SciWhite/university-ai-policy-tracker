@@ -38,6 +38,147 @@ class LifecycleTests(unittest.TestCase):
    with patch.object(m,'STATE',root),patch.object(m,'POLICY',policy),patch.object(m,'run',return_value='')as run:m.recover(tx,False)
    self.assertEqual(target.read_text(),'old accepted routing');self.assertEqual(json.loads(policy.read_text())['activeUnits'],['old']);self.assertEqual(json.loads((root/'transaction.json').read_text())['stage'],'rolled_back');self.assertEqual(run.call_args_list[0].args,('systemctl','enable','--now','old'));self.assertIn(('systemctl','disable','--now','new'),[c.args for c in run.call_args_list])
 
+class StaticMigrationTests(unittest.TestCase):
+ def test_static_snippet_allows_only_manifest_alias_targets(self):
+  asset={'sourcePath':'/srv/uapt/releases/uapt-policy-0a468b3/a.js','plannedDestination':'/srv/uapt/static/controlled/uapt-held-static-20261102/uapt-policy-0a468b3/a.js','urlPath':'/policy/a.js','locationModifier':'='}
+  before='location = /policy/a.js {\n alias '+asset['sourcePath']+';\n add_header Cache-Control "public, max-age=3600" always;\n}\nlocation = /legacy.js { alias /srv/uapt/static/old/legacy.js; add_header X-Archive "kept" always; }\n'
+  after=before.replace(asset['sourcePath'],asset['plannedDestination'])
+  m._validate_static_snippet(before,after,[asset],'/etc/nginx/snippets/uapt-two-0a468b3-static.conf')
+  with self.assertRaisesRegex(ValueError,'Non-alias'):
+   m._validate_static_snippet(before,after.replace('max-age=3600','max-age=1'),[asset],'/etc/nginx/snippets/uapt-two-0a468b3-static.conf')
+  with self.assertRaisesRegex(ValueError,'mapping'):
+   m._validate_static_snippet(before,after.replace(asset['plannedDestination'],'/tmp/wrong'),[asset],'/etc/nginx/snippets/uapt-two-0a468b3-static.conf')
+
+ def test_expires_ttl_compares_date_relative_duration(self):
+  old={'date':'Sun, 02 Nov 2026 10:00:00 GMT','expires':'Sun, 02 Nov 2026 11:00:00 GMT'}
+  new={'date':'Sun, 02 Nov 2026 12:00:00 GMT','expires':'Sun, 02 Nov 2026 13:00:00 GMT'}
+  self.assertEqual(m._expires_ttl(old),3600)
+  self.assertEqual(m._expires_ttl(old),m._expires_ttl(new))
+
+ def test_static_readback_keeps_etag_and_relative_expires_checks(self):
+  asset={'urlPath':'/a.js','sourceBytes':3,'sourceSha256':m.hashlib.sha256(b'abc').hexdigest()}
+  row={'status':200,'bodyBytes':3,'bodySha256':asset['sourceSha256'],'noTransform':True,'expiresTtlSeconds':3600,
+       'headers':{'content-type':'text/javascript','cache-control':'public, max-age=3600','etag':'"abc"','last-modified':'Sun, 02 Nov 2026 10:00:00 GMT','content-encoding':None,'vary':None,'x-content-type-options':'nosniff'}}
+  baseline={'/a.js':row}
+  with patch.object(m,'_fetch_static',return_value={**row,'url':'http://127.0.0.1/a.js'}):
+   self.assertEqual(m._static_readback([asset],'preview',baseline,'http://127.0.0.1')['status'],'PASS')
+  changed={**row,'headers':{**row['headers'],'etag':'"changed"'},'expiresTtlSeconds':3598}
+  with patch.object(m,'_fetch_static',return_value={**changed,'url':'https://eduaipolicy.org/a.js'}):
+   receipt=m._static_readback([asset],'public-after',baseline)
+  self.assertEqual(receipt['status'],'BLOCKED')
+  fields=[failure.get('field') for failure in receipt['failures']]
+  self.assertIn('etag',fields); self.assertIn('expiresTtlSeconds',fields)
+
+ def test_static_recovery_restores_configs_without_touching_policy_or_units(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); policy=root/'policy.json'; policy.write_text('{"activeUnits":["main"]}\n')
+   files=[]
+   for i in range(7):
+    target=root/('snippet-'+str(i)+'.conf'); backup=root/('backup-'+str(i)+'.conf')
+    backup.write_text('original '+str(i)+'\n'); target.write_text('changed '+str(i)+'\n')
+    files.append({'target':str(target),'backup':str(backup),'beforeSha256':m.digest(backup)})
+   original_policy=policy.read_bytes()
+   tx={'kind':'static','stage':'config_written','files':files,'retireUnits':[],
+       'plan':{'candidateUnits':[]},'beforePolicy':{'activeUnits':['main']}}
+   with patch.object(m,'STATE',root),patch.object(m,'POLICY',policy),patch.object(m,'run',return_value='') as run:
+    m.recover(tx)
+   for i in range(7): self.assertEqual((root/('snippet-'+str(i)+'.conf')).read_text(),'original '+str(i)+'\n')
+   self.assertEqual(policy.read_bytes(),original_policy)
+   self.assertEqual([call.args for call in run.call_args_list],[('nginx','-t'),('systemctl','reload','nginx')])
+   self.assertEqual(json.loads((root/'transaction.json').read_text())['stage'],'rolled_back')
+
+ def test_static_copy_refuses_collision_and_verifies_bytes(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); source=root/'source'; source.write_bytes(b'asset')
+   dest=root/'dest'; dest.write_bytes(b'occupied')
+   asset={'sourcePath':str(source),'plannedDestination':str(dest),'sourceSha256':m.hashlib.sha256(b'asset').hexdigest(),'sourceBytes':5,'sourceMode':'0644','sourceMtimeNs':source.stat().st_mtime_ns}
+   with patch.object(m,'_reject_symlink_components'):
+    with self.assertRaisesRegex(ValueError,'appeared'):
+     m._copy_static_asset(asset)
+    dest.unlink()
+    self.assertEqual(m._copy_static_asset(asset)['sha256'],asset['sourceSha256'])
+
+ def test_static_public_after_failure_restores_exact_snippet_and_keeps_receipts(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); state=root/'state'; plans=state/'static-migration-plans'; plans.mkdir(parents=True)
+   txdir=state/'transactions'; txdir.mkdir()
+   policy=state/'policy.json'; policy.write_text('{"activeUnits":["main"],"candidateSlots":[]}\n')
+   source=root/'source.js'; source.write_bytes(b'public asset')
+   dest=root/'controlled'/'root'/'source.js'; dest.parent.mkdir(parents=True)
+   target=root/'snippet.conf'; target.write_text('location = /a.js { alias '+str(source)+'; }\n')
+   staged=root/'staged.conf'; staged.write_text('location = /a.js { alias '+str(dest)+'; }\n')
+   plan={'id':'static-r5-test','expiresAt':(m.datetime.datetime.now(m.datetime.timezone.utc)+m.datetime.timedelta(hours=1)).isoformat(),'stagedConfigs':[{'target':str(target),'beforeSha256':m.digest(target),'path':str(staged),'sha256':m.digest(staged)}]}
+   plan_path=plans/'plan.json'; plan_path.write_text(json.dumps(plan))
+   stat=source.stat(); asset={'sourcePath':str(source),'plannedDestination':str(dest),'sourceSha256':m.digest(source),'sourceBytes':source.stat().st_size,'sourceMode':format(stat.st_mode&0o777,'04o'),'sourceMtimeNs':stat.st_mtime_ns,'urlPath':'/a.js'}
+   manifest={'assets':[asset]}
+   def readback(assets,phase,baseline=None,origin='https://eduaipolicy.org'):
+    return {'phase':phase,'status':'BLOCKED' if phase=='public-after' else 'PASS','responses':[{'urlPath':'/a.js'}],'failures':([] if phase!='public-after' else [{'kind':'header mismatch'}])}
+   with patch.object(m,'STATE',state),patch.object(m,'POLICY',policy),patch.object(m,'audit',return_value={'disk':{}}),patch.object(m,'_validate_static_plan',return_value=manifest),patch.object(m,'_validate_static_capacity'),patch.object(m,'_reject_symlink_components'),patch.object(m,'_static_readback',side_effect=readback),patch.object(m,'_static_preview',return_value={'phase':'preview','status':'PASS','responses':[],'failures':[]}),patch.object(m,'run',return_value='') as run:
+    with self.assertRaisesRegex(ValueError,'public-after'):
+     m.static_migrate(plan_path,state/'transaction.json')
+   self.assertEqual(target.read_text(),'location = /a.js { alias '+str(source)+'; }\n')
+   self.assertEqual(policy.read_text(),'{"activeUnits":["main"],"candidateSlots":[]}\n')
+   tx=json.loads((state/'transaction.json').read_text())
+   self.assertEqual(tx['stage'],'rolled_back')
+   self.assertEqual(tx['staticReceipts']['publicAfter']['sha256'],m.digest(tx['staticReceipts']['publicAfter']['path']))
+   self.assertEqual(len([call for call in run.call_args_list if call.args==('systemctl','reload','nginx')]),2)
+   self.assertEqual(tx['retireUnits'],[])
+   self.assertEqual(tx['plan']['id'],'static-r5-test')
+
+ def test_static_expire_uses_shared_journal_and_returns_after_recovery(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); (root/'transaction.json').write_text(json.dumps({'kind':'static','stage':'reloaded','plan':{'expiresAt':(m.datetime.datetime.now(m.datetime.timezone.utc)-m.datetime.timedelta(seconds=1)).isoformat()}}))
+   with patch.object(m,'STATE',root),patch.object(m,'LOCK',root/'lock'/'release.lock'),patch.object(m,'recover') as recover,patch.object(m.sys,'argv',['uapt-release-lifecycle.py','expire']):
+    m.main()
+   recover.assert_called_once()
+
+ def test_static_boot_recovery_restores_snippet_without_reload(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); target=root/'snippet.conf'; backup=root/'backup.conf'
+   backup.write_text('before\n'); target.write_text('after\n')
+   tx={'kind':'static','stage':'reloaded','files':[{'target':str(target),'backup':str(backup),'beforeSha256':m.digest(backup)}],
+       'retireUnits':[],'plan':{'candidateUnits':[]},'beforePolicy':{'unchanged':True}}
+   with patch.object(m,'STATE',root),patch.object(m,'run',return_value='') as run:
+    m.recover(tx,reload_nginx=False)
+   self.assertEqual(target.read_text(),'before\n')
+   self.assertEqual([call.args for call in run.call_args_list],[('nginx','-t')])
+   self.assertEqual(json.loads((root/'transaction.json').read_text())['stage'],'rolled_back')
+
+ def test_static_recovery_fsyncs_target_dir_before_rolled_back_and_retries_after_fault(self):
+  import stat
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); target=root/'snippet.conf'; backup=root/'backup.conf'
+   backup.write_text('before\n'); target.write_text('after\n')
+   tx={'kind':'static','stage':'reloaded','files':[{'target':str(target),'backup':str(backup),'beforeSha256':m.digest(backup)}],
+       'retireUnits':[],'plan':{'candidateUnits':[]},'beforePolicy':{'unchanged':True}}
+   events=[]; replaced={'value':False}; faulted={'value':False}
+   real_replace=m.os.replace; real_fsync=m.os.fsync; real_write=m.write
+   def replace(src,dst):
+    result=real_replace(src,dst)
+    if Path(dst)==target: events.append('target_replace'); replaced['value']=True
+    return result
+   def fsync(fd):
+    if stat.S_ISDIR(m.os.fstat(fd).st_mode):
+     events.append('dir_fsync')
+     if replaced['value'] and not faulted['value']:
+      faulted['value']=True; raise OSError('simulated power-loss durability barrier failure')
+    return real_fsync(fd)
+   def write(path,value):
+    if value.get('stage')=='rolled_back': events.append('rolled_back_journal')
+    return real_write(path,value)
+   with patch.object(m,'STATE',root),patch.object(m,'run',return_value=''),patch.object(m,'write',side_effect=write),patch.object(m.os,'replace',side_effect=replace),patch.object(m.os,'fsync',side_effect=fsync):
+    with self.assertRaisesRegex(OSError,'durability barrier'):
+     m.recover(tx)
+   replace_index=events.index('target_replace')
+   target_dir_fsync_index=next(i for i,event in enumerate(events) if i>replace_index and event=='dir_fsync')
+   self.assertLess(replace_index,target_dir_fsync_index)
+   self.assertNotIn('rolled_back_journal',events)
+   self.assertEqual(json.loads((root/'transaction.json').read_text())['stage'],'reloaded')
+   with patch.object(m,'STATE',root),patch.object(m,'run',return_value=''):
+    m.recover(tx)
+   self.assertEqual(target.read_text(),'before\n')
+   self.assertEqual(json.loads((root/'transaction.json').read_text())['stage'],'rolled_back')
+
 class CapacityPhaseTests(unittest.TestCase):
  def test_provisional_budget_never_satisfies_cutover(self):
   plan={'candidatePeakBytes':100};provisional={'schemaVersion':'uapt-prebuild-budget-v1','measured':False,'buildScope':'uapt-build.scope','buildMemoryMaxBytes':100}

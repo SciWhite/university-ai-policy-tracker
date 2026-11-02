@@ -2,11 +2,31 @@
 """Host-side release admission and crash-recoverable routing selection.
 No build, install, deletion, or policy approval. See docs/release-lifecycle.md.
 """
-import argparse, datetime, fcntl, hashlib, json, os, re, shutil, subprocess, sys, time
+import argparse, concurrent.futures, datetime, email.utils, fcntl, hashlib, json, os, re, shutil, subprocess, sys, time, urllib.error, urllib.request
 from pathlib import Path
 STATE = Path('/srv/uapt/operations/release-lifecycle')
 POLICY = Path('/srv/uapt/operations/release-lifecycle/policy.json')
 LOCK = Path('/run/lock/uapt-release.lock')
+STATIC_CONFIGS = {
+    '/etc/nginx/snippets/uapt-two-0a468b3-static.conf',
+    '/etc/nginx/snippets/uapt-changes-77182af-static.conf',
+    '/etc/nginx/snippets/uapt-imperial-c7275d4-static.conf',
+    '/etc/nginx/snippets/uapt-imperial-b466afa-static.conf',
+    '/etc/nginx/snippets/uapt-mit-803e4e3-static-fallbacks.conf',
+    '/etc/nginx/snippets/uapt-v5-static-legacy-fallbacks-1af9e1f.conf',
+    '/etc/nginx/snippets/uapt-v6-cef6184-live.conf',
+}
+STATIC_ROOTS = {
+    'uapt-identity-d1add86', 'uapt-policy-0a468b3', 'uapt-policy-77182af',
+    'uapt-policy-b466afa', 'uapt-policy-c7275d4', 'uapt-v5-zone-b-1af9e1f',
+    'uapt-v5-zone-b-46ac2ce', 'uapt-v6-cef6184',
+}
+STATIC_DEST_ROOT = Path('/srv/uapt/static/controlled/uapt-held-static-20261102')
+STATIC_EXPECTED_ALIASES = 1175
+STATIC_RECEIPT_MAX_BYTES_PER_ASSET = 4096
+STATIC_HEADERS = ('content-type', 'cache-control', 'etag', 'last-modified', 'content-encoding', 'vary', 'x-content-type-options')
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl): return None
 def run(*args):
     return subprocess.check_output(args, text=True, stderr=subprocess.PIPE)
 def digest(path):
@@ -437,7 +457,449 @@ def check_urls(checks):
                 time.sleep(attempt + 1)
     return results
 
+def _under(path, root):
+    try: Path(path).resolve(strict=True).relative_to(Path(root).resolve(strict=True)); return True
+    except (ValueError, FileNotFoundError): return False
+
+def _reject_symlink_components(path, allow_missing=False):
+    path = Path(path)
+    current = Path(path.anchor)
+    for part in path.parts[1:]:
+        current = current / part
+        if current.is_symlink(): raise ValueError('Symlink path component is forbidden: ' + str(current))
+        if not current.exists() and not allow_missing: raise ValueError('Required path is missing: ' + str(current))
+
+def _alias_lines(text):
+    return re.findall(r'\balias\s+([^;]+);', text)
+
+def _location_aliases(text):
+    pattern=r'(?m)^\s*location\s+(?:(?P<modifier>=|~\*?|\^~)\s+)?(?P<url>[^\s{]+)\s*\{'
+    rows=[]
+    for match in re.finditer(pattern,text):
+        end=text.find('}',match.end())
+        if end<0: raise ValueError('Unclosed Nginx location block')
+        aliases=re.findall(r'\balias\s+([^;]+);',text[match.end():end])
+        if aliases: rows.append((match.group('modifier') or 'prefix-unspecified',match.group('url'),aliases[0]))
+    return rows
+
+def _without_alias_targets(text):
+    return re.sub(r'(?m)(\balias\s+)[^;]+;', r'\1<ALIAS>;', text)
+
+def _validate_static_snippet(original_text, staged_text, entries, target):
+    before_locations=_location_aliases(original_text); after_locations=_location_aliases(staged_text)
+    before_map={(modifier,url):alias for modifier,url,alias in before_locations}
+    after_map={(modifier,url):alias for modifier,url,alias in after_locations}
+    if len(before_map)!=len(before_locations) or len(after_map)!=len(after_locations) or set(before_map)!=set(after_map):
+        raise ValueError('Location mapping changed or duplicated: '+target)
+    if _alias_lines(original_text)!=[row[2] for row in before_locations] or _alias_lines(staged_text)!=[row[2] for row in after_locations]:
+        raise ValueError('Alias parser did not account for every directive: '+target)
+    expected={(a['locationModifier'],a['urlPath']):(a['sourcePath'],a['plannedDestination']) for a in entries}
+    if len(expected)!=len(entries): raise ValueError('Duplicate manifest location: '+target)
+    for key,(old,new) in expected.items():
+        if before_map.get(key)!=old or after_map.get(key)!=new:
+            raise ValueError('Exact URL/location alias mapping differs from manifest: '+str(key))
+    for key in before_map:
+        if key not in expected and before_map[key]!=after_map[key]:
+            raise ValueError('Unlisted alias target changed: '+str(key))
+    if _without_alias_targets(original_text) != _without_alias_targets(staged_text):
+        raise ValueError('Non-alias config text changed: '+target)
+    for asset in entries:
+        if original_text.count('alias '+asset['sourcePath']+';') != 1 or staged_text.count('alias '+asset['plannedDestination']+';') != 1:
+            raise ValueError('Alias replacement is not exact: '+asset['urlPath'])
+
+def _nginx_config_blocks(output):
+    blocks={}; current=None; lines=[]
+    for line in output.splitlines():
+        if line.startswith('# configuration file '):
+            if current is not None: blocks[current]='\n'.join(lines)
+            current=line[len('# configuration file '):].rstrip(':'); lines=[]
+        elif current is not None: lines.append(line)
+    if current is not None: blocks[current]='\n'.join(lines)
+    return blocks
+
+def _expires_ttl(headers):
+    date_value, expires_value = headers.get('date'), headers.get('expires')
+    if not date_value or not expires_value: return None
+    date = email.utils.parsedate_to_datetime(date_value)
+    expires = email.utils.parsedate_to_datetime(expires_value)
+    return (expires - date).total_seconds()
+
+def _require_static_unexpired(plan):
+    expiry=datetime.datetime.fromisoformat(plan['expiresAt'].replace('Z','+00:00'))
+    if expiry.tzinfo is None or expiry <= datetime.datetime.now(datetime.timezone.utc):
+        raise ValueError('Static plan expired during migration')
+
+def _fetch_static(url):
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}),_NoRedirect())
+    request = urllib.request.Request(url, headers={'Accept-Encoding': 'identity', 'User-Agent': 'uapt-static-migration/1'})
+    try:
+        with opener.open(request, timeout=30) as response:
+            body = response.read()
+            status, headers = response.status, response.headers
+    except urllib.error.HTTPError as error:
+        body = error.read(); status, headers = error.code, error.headers
+    values = {key: headers.get(key) for key in ('content-type','cache-control','expires','date','etag','last-modified','content-encoding','vary','x-content-type-options','content-length')}
+    cache_tokens = {token.strip().lower() for token in (values.get('cache-control') or '').split(',')}
+    return {'url':url,'status':status,'bodyBytes':len(body),'bodySha256':hashlib.sha256(body).hexdigest(),
+            'headers':values,'noTransform':'no-transform' in cache_tokens,'expiresTtlSeconds':_expires_ttl(values)}
+
+def _static_readback(assets, phase, baseline=None, origin='https://eduaipolicy.org'):
+    if phase not in ('public-before','preview','public-after'): raise ValueError('Invalid static readback phase')
+    concurrency = 2
+    def inspect(asset):
+        url = origin + asset['urlPath']
+        row = _fetch_static(url)
+        row['urlPath'] = asset['urlPath']
+        return row
+    rows=[]; failures=[]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as pool:
+        futures = {pool.submit(inspect, asset):asset for asset in assets}
+        for future in concurrent.futures.as_completed(futures):
+            asset = futures[future]
+            try: row=future.result()
+            except Exception as error:
+                rows.append({'urlPath':asset['urlPath'],'error':str(error)}); failures.append({'urlPath':asset['urlPath'],'kind':'request_error'}); continue
+            rows.append(row)
+            if row['status'] != 200: failures.append({'urlPath':asset['urlPath'],'kind':'status','actual':row['status']})
+            if row['bodyBytes'] != asset['sourceBytes'] or row['bodySha256'] != asset['sourceSha256']:
+                failures.append({'urlPath':asset['urlPath'],'kind':'source_body_mismatch'})
+            if baseline is not None:
+                old=baseline.get(asset['urlPath'])
+                if not old: failures.append({'urlPath':asset['urlPath'],'kind':'missing_before'})
+                else:
+                    for key in ('status','bodyBytes','bodySha256','noTransform'):
+                        if old.get(key) != row.get(key): failures.append({'urlPath':asset['urlPath'],'kind':'before_after_mismatch','field':key})
+                    for key in STATIC_HEADERS:
+                        if old.get('headers',{}).get(key) != row.get('headers',{}).get(key):
+                            failures.append({'urlPath':asset['urlPath'],'kind':'before_after_mismatch','field':key})
+                    old_ttl, new_ttl = old.get('expiresTtlSeconds'), row.get('expiresTtlSeconds')
+                    if (old_ttl is None) != (new_ttl is None) or (old_ttl is not None and abs(old_ttl-new_ttl)>1):
+                        failures.append({'urlPath':asset['urlPath'],'kind':'before_after_mismatch','field':'expiresTtlSeconds'})
+    rows.sort(key=lambda item:item['urlPath'])
+    return {'schemaVersion':'uapt-static-readback-v1','phase':phase,'checkedAt':now(),'concurrency':concurrency,
+            'origin':origin,'redirectsFollowed':False,'assetCount':len(rows),'status':'PASS' if not failures and len(rows)==len(assets) else 'BLOCKED',
+            'failures':failures,'responses':rows}
+
+def _save_static_receipt(txdir, label, receipt):
+    path=Path(txdir)/(label+'.json'); write(path,receipt)
+    return {'path':str(path),'sha256':digest(path)}
+
+def _validate_static_plan(plan, policy):
+    if plan.get('kind') != 'static' or plan.get('schemaVersion') != 'uapt-static-migration-plan-v1':
+        raise ValueError('Static action requires kind=static and uapt-static-migration-plan-v1')
+    if plan.get('policySha256') != policy['_sha256']: raise ValueError('Policy changed; reprepare static plan')
+    if not re.fullmatch(r'static-[a-z0-9][a-z0-9-]{0,72}',plan.get('id','')): raise ValueError('Invalid static transaction identity')
+    expiry=datetime.datetime.fromisoformat(plan['expiresAt'].replace('Z','+00:00'))
+    current=datetime.datetime.now(datetime.timezone.utc)
+    if expiry.tzinfo is None or expiry <= current or expiry > current+datetime.timedelta(hours=4): raise ValueError('Static plan must be unexpired and no longer than four hours')
+    proof=plan.get('manifest',{})
+    manifest_path=Path(proof.get('path',''))
+    plans_root=STATE/'static-migration-plans'
+    if not manifest_path.is_absolute() or '..' in manifest_path.parts: raise ValueError('Static manifest path must be absolute and traversal-free')
+    _reject_symlink_components(manifest_path)
+    if not _under(manifest_path,plans_root) or digest(manifest_path) != proof.get('sha256'): raise ValueError('Static manifest path/hash invalid')
+    manifest=json.loads(manifest_path.read_text())
+    if manifest.get('schemaVersion') != 'uapt-static-alias-inventory-v1' or manifest.get('status') != 'READY_FOR_REVIEW' or manifest.get('readOnly') is not True or manifest.get('productionWritesPerformed') is not False:
+        raise ValueError('Static inventory is not a frozen read-only complete manifest')
+    if manifest.get('controlledDestinationRoot') != str(STATIC_DEST_ROOT): raise ValueError('Unexpected static destination root')
+    assets=manifest.get('assets',[])
+    if len(assets) != STATIC_EXPECTED_ALIASES: raise ValueError('Expected exactly 1,175 manifest assets')
+    urls=[item.get('urlPath') for item in assets]; dests=[item.get('plannedDestination') for item in assets]
+    if None in urls or len(set(urls)) != len(urls): raise ValueError('Duplicate or missing static URL')
+    if None in dests or len(set(dests)) != len(dests): raise ValueError('Duplicate or missing static destination')
+    if len(manifest.get('configFiles',[])) != len(STATIC_CONFIGS): raise ValueError('Static config inventory incomplete')
+    config_meta={entry['path']:entry for entry in manifest['configFiles']}
+    if set(config_meta) != STATIC_CONFIGS or any(not entry.get('loadedByNginxT') for entry in config_meta.values()): raise ValueError('Static config whitelist or nginx -T evidence mismatch')
+    if manifest.get('parentInclude',{}).get('path') != '/etc/nginx/snippets/uapt-proxy-locations.conf' or not manifest['parentInclude'].get('loaded') or not manifest['parentInclude'].get('includesCefLiveSnippet'):
+        raise ValueError('Loaded proxy parent include evidence missing')
+    loaded=_nginx_config_blocks(run('nginx','-T'))
+    for config in manifest['configFiles']+[manifest['parentInclude']]:
+        path=config['path']; block=loaded.get(path)
+        if block is None or hashlib.sha256(block.encode()).hexdigest()!=config.get('nginxTBlockSha256'):
+            raise ValueError('Loaded Nginx config block changed or missing: '+path)
+        if digest(path)!=config.get('sha256'): raise ValueError('Nginx config file hash changed: '+path)
+    by_config={path:[] for path in STATIC_CONFIGS}
+    source_total=0
+    for asset in assets:
+        root=asset.get('root'); config=asset.get('configFile'); source=Path(asset.get('sourcePath','')); dest=Path(asset.get('plannedDestination',''))
+        if root not in STATIC_ROOTS or config not in STATIC_CONFIGS: raise ValueError('Static manifest path outside exact allowlist')
+        expected_source_root=Path('/srv/uapt/releases')/root
+        expected_dest=STATIC_DEST_ROOT/root/asset.get('sourceRelativePath','')
+        relative=Path(asset.get('sourceRelativePath',''))
+        source_base=Path(asset.get('sourceBase',''))
+        expected_base=(expected_source_root/'apps/tulsa-zone/.next/static' if asset.get('sourceKind')=='next_static'
+                       else expected_source_root/'apps/tulsa-zone/public/assets' if asset.get('sourceKind')=='public_asset' else None)
+        if expected_base is None or source_base!=expected_base or relative.is_absolute() or not relative.parts or '..' in relative.parts or source!=source_base/relative:
+            raise ValueError('Static source base/relative path mismatch')
+        if not re.fullmatch(r'0[0-7]{3}',asset.get('sourceMode','')) or type(asset.get('sourceMtimeNs')) is not int:
+            raise ValueError('Static source mode/mtime metadata missing')
+        if not source.is_absolute() or '..' in source.parts or not _under(source,expected_source_root): raise ValueError('Static source outside named release root')
+        if not dest.is_absolute() or '..' in dest.parts or dest != expected_dest: raise ValueError('Static destination path does not match controlled layout')
+        _reject_symlink_components(source)
+        if source.is_symlink() or not source.is_file() or asset.get('sourceIsSymlink') is not False: raise ValueError('Static source must be a regular non-symlink file')
+        if digest(source) != asset.get('sourceSha256') or source.stat().st_size != asset.get('sourceBytes'): raise ValueError('Static source hash/size drift')
+        if asset.get('destinationExistsAtFreeze') is not False: raise ValueError('Static destination was not absent at manifest freeze')
+        _reject_symlink_components(dest,allow_missing=True)
+        if os.path.lexists(dest): raise ValueError('Static destination collision: '+str(dest))
+        if (not asset.get('urlPath','').startswith('/') or '..' in Path(asset['urlPath']).parts or '?' in asset['urlPath'] or '#' in asset['urlPath']
+                or asset.get('absoluteUrl') != 'https://eduaipolicy.org'+asset['urlPath']):
+            raise ValueError('Static public URL outside exact host/path contract')
+        by_config[config].append(asset); source_total += asset['sourceBytes']
+    staged=plan.get('stagedConfigs',[])
+    if len(staged) != len(STATIC_CONFIGS) or {item.get('target') for item in staged} != STATIC_CONFIGS: raise ValueError('Must stage exactly seven allowlisted snippets')
+    for item in staged:
+        target=item['target']; original=Path(target); staged_path=Path(item.get('path','')); meta=config_meta[target]
+        _reject_symlink_components(original); _reject_symlink_components(staged_path)
+        if not staged_path.is_absolute() or '..' in staged_path.parts: raise ValueError('Staged config path must be absolute and traversal-free')
+        if digest(original) != meta['sha256'] or item.get('beforeSha256') != meta['sha256']: raise ValueError('Live static snippet drift: '+target)
+        if digest(staged_path) != item.get('sha256'): raise ValueError('Staged static snippet hash mismatch: '+target)
+        if not _under(staged_path,plans_root): raise ValueError('Staged config must be inside static-migration-plans')
+        original_text=original.read_text(); staged_text=staged_path.read_text()
+        _validate_static_snippet(original_text,staged_text,by_config[target],target)
+    expected_increment=source_total+sum(Path(p).stat().st_size for p in STATIC_CONFIGS)+len(assets)*STATIC_RECEIPT_MAX_BYTES_PER_ASSET*3+65536
+    if type(plan.get('incrementalBudgetBytes')) is not int or plan['incrementalBudgetBytes'] != expected_increment:
+        raise ValueError('Static incremental budget must equal manifest payload + config backups + bounded receipts')
+    return manifest
+
+def _validate_static_capacity(plan, policy, observed, manifest):
+    guard=policy.get('diskCapacity'); disk=observed.get('disk',{})
+    if not guard: raise ValueError('Static migration requires current diskCapacity policy')
+    root=str(Path(guard['root']).resolve())
+    if disk.get('root') != root: raise ValueError('Static migration filesystem/root mismatch')
+    incremental=plan['incrementalBudgetBytes']; new_dirs=set()
+    for asset in manifest['assets']:
+        parent=Path(asset['plannedDestination']).parent
+        while parent != STATIC_DEST_ROOT.parent and parent != parent.parent:
+            if parent.exists(): break
+            new_dirs.add(str(parent)); parent=parent.parent
+    file_count=len(manifest['assets'])+len(STATIC_CONFIGS)+3+10+len(new_dirs)
+    if disk.get('freeBytes',0)-incremental < guard['reserveBytes']: raise ValueError('Insufficient free disk reserve for static migration')
+    if disk.get('availableInodes',0)-file_count < guard['reserveInodes']: raise ValueError('Insufficient free inode reserve for static migration')
+    if disk.get('projectBytes',0)+incremental > guard['projectMaxBytes']: raise ValueError('Static migration exceeds UAPT project disk budget')
+
+def _copy_static_asset(asset):
+    source=Path(asset['sourcePath']); dest=Path(asset['plannedDestination'])
+    _reject_symlink_components(source); _reject_symlink_components(dest,allow_missing=True)
+    if os.path.lexists(dest): raise ValueError('Static destination appeared during migration: '+str(dest))
+    _ensure_static_directories(dest.parent)
+    _reject_symlink_components(dest.parent)
+    temp=dest.with_name(dest.name+'.static-copy-tmp')
+    if os.path.lexists(temp): raise ValueError('Static copy temporary path collision: '+str(temp))
+    flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0)
+    fd=os.open(temp,flags,int(asset['sourceMode'],8)); h=hashlib.sha256(); size=0
+    try:
+        with source.open('rb') as src, os.fdopen(fd,'wb') as out:
+            fd=None
+            for chunk in iter(lambda:src.read(1024*1024),b''):
+                out.write(chunk); h.update(chunk); size+=len(chunk)
+            if h.hexdigest()!=asset['sourceSha256'] or size!=asset['sourceBytes']:
+                raise ValueError('Static copy hash/size mismatch: '+str(dest))
+            out.flush(); os.fchmod(out.fileno(),int(asset['sourceMode'],8))
+            os.utime(temp,ns=(asset['sourceMtimeNs'],asset['sourceMtimeNs'])); os.fsync(out.fileno())
+    except BaseException:
+        if fd is not None:
+            try: os.close(fd)
+            except OSError: pass
+        temp.unlink(missing_ok=True)
+        raise
+    if os.path.lexists(dest):
+        temp.unlink(missing_ok=True); raise ValueError('Static destination appeared during copy: '+str(dest))
+    os.replace(temp,dest)
+    directory_fd=os.open(dest.parent,os.O_RDONLY); os.fsync(directory_fd); os.close(directory_fd)
+    return {'path':str(dest),'sha256':h.hexdigest(),'bytes':size}
+
+def _ensure_static_directories(path):
+    path=Path(path); missing=[]; current=path
+    while not current.exists():
+        if current.is_symlink(): raise ValueError('Static directory path is a symlink: '+str(current))
+        missing.append(current); current=current.parent
+    if current.is_symlink() or not current.is_dir(): raise ValueError('Static directory parent is not a real directory: '+str(current))
+    for directory in reversed(missing):
+        try: directory.mkdir(mode=0o755)
+        except FileExistsError:
+            if directory.is_symlink() or not directory.is_dir(): raise ValueError('Static directory collision: '+str(directory))
+        else:
+            os.chmod(directory,0o755)
+            fd=os.open(directory.parent,os.O_RDONLY); os.fsync(fd); os.close(fd)
+
+def _copy_file_durable(source, destination, expected_sha256, replace_stale=False):
+    source=Path(source); destination=Path(destination)
+    if os.path.lexists(destination):
+        if not replace_stale or destination.is_symlink() or not destination.is_file():
+            raise ValueError('Static transaction file collision: '+str(destination))
+        if digest(destination)==expected_sha256:
+            shutil.copystat(source,destination,follow_symlinks=False)
+            with destination.open('rb') as stream: os.fsync(stream.fileno())
+            directory_fd=os.open(destination.parent,os.O_RDONLY); os.fsync(directory_fd); os.close(directory_fd)
+            return expected_sha256
+        destination.unlink()
+    fd=os.open(destination,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),source.stat().st_mode&0o777)
+    h=hashlib.sha256()
+    try:
+        with source.open('rb') as src, os.fdopen(fd,'wb') as out:
+            fd=None
+            for chunk in iter(lambda:src.read(1024*1024),b''):
+                out.write(chunk); h.update(chunk)
+            if h.hexdigest()!=expected_sha256: raise ValueError('Static transaction copy hash mismatch: '+str(source))
+            out.flush(); os.fsync(out.fileno())
+        shutil.copystat(source,destination,follow_symlinks=False)
+        directory_fd=os.open(destination.parent,os.O_RDONLY); os.fsync(directory_fd); os.close(directory_fd)
+    except BaseException:
+        if fd is not None:
+            try: os.close(fd)
+            except OSError: pass
+        destination.unlink(missing_ok=True)
+        raise
+    return h.hexdigest()
+
+def _static_preview_impl(staged, assets, baseline, txdir):
+    import socket
+    preview=Path(txdir)/'preview'; preview.mkdir()
+    with socket.socket() as sock:
+        sock.bind(('127.0.0.1',0)); port=sock.getsockname()[1]
+    conf=preview/'nginx.conf'; pid=preview/'nginx.pid'
+    includes='\n'.join('    include '+json.dumps(item['path'])+';' for item in staged)
+    ttls={row.get('expiresTtlSeconds') for row in baseline.values()}
+    if len(ttls)>1: raise ValueError('Per-URL Expires TTL differs; cannot safely model the live server context in preview')
+    expires=next(iter(ttls)) if ttls else None
+    expires_directive=('    expires '+str(int(round(expires)))+'s;\n') if expires is not None else ''
+    # Match inherited site-wide MIME/security/Expires behavior; each staged location
+    # retains its own Cache-Control and legacy per-location security includes.
+    text='pid '+json.dumps(str(pid))+';\nerror_log /dev/null;\nevents { worker_connections 1024; }\nhttp {\n  access_log off;\n  include /etc/nginx/mime.types;\n  default_type application/octet-stream;\n  server {\n    listen 127.0.0.1:'+str(port)+';\n    server_name localhost;\n    include /etc/nginx/snippets/clb-pro-security-headers.conf;\n'+expires_directive+includes+'\n  }\n}\n'
+    conf.write_text(text)
+    prefix=str(preview)+'/'
+    proc=None
+    receipt={'schemaVersion':'uapt-static-readback-v1','phase':'preview','checkedAt':now(),'concurrency':2,
+             'origin':'http://127.0.0.1:'+str(port),'redirectsFollowed':False,'assetCount':0,'status':'BLOCKED','failures':[],'responses':[]}
+    try:
+        run('nginx','-t','-p',prefix,'-c',str(conf))
+        proc=subprocess.Popen(['nginx','-g','daemon off;','-p',prefix,'-c',str(conf)],stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,text=True)
+        deadline=time.time()+10
+        while time.time()<deadline:
+            if proc.poll() is not None: raise ValueError('Nginx static preview failed to start: '+(proc.stderr.read() if proc.stderr else ''))
+            try:
+                with urllib.request.urlopen('http://127.0.0.1:'+str(port)+assets[0]['urlPath'],timeout=1): break
+            except Exception: time.sleep(.1)
+        else: raise ValueError('Nginx static preview did not become ready')
+        receipt=_static_readback(assets,'preview',baseline,origin='http://127.0.0.1:'+str(port))
+    except Exception as error:
+        receipt.update(status='BLOCKED',failures=receipt.get('failures',[])+[{'kind':'preview_error','error':str(error)}])
+    finally:
+        if proc is not None:
+            try: subprocess.run(['nginx','-s','quit','-p',prefix,'-c',str(conf)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=10)
+            except (subprocess.TimeoutExpired,OSError):
+                if proc.poll() is None: proc.terminate()
+            try: proc.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                proc.kill(); proc.wait(timeout=5)
+    return receipt
+
+def _static_preview(staged, assets, baseline, txdir):
+    try: return _static_preview_impl(staged,assets,baseline,txdir)
+    except Exception as error:
+        return {'schemaVersion':'uapt-static-readback-v1','phase':'preview','checkedAt':now(),'concurrency':2,
+                'origin':'http://127.0.0.1','redirectsFollowed':False,'assetCount':0,'status':'BLOCKED',
+                'failures':[{'kind':'preview_error','error':str(error)}],'responses':[]}
+
+def static_migrate(plan_path, pending):
+    plan_path=Path(plan_path)
+    if not plan_path.is_absolute() or '..' in plan_path.parts: raise ValueError('Static plan path must be absolute and traversal-free')
+    _reject_symlink_components(plan_path)
+    plan_path=plan_path.resolve(strict=True)
+    if '..' in plan_path.parts: raise ValueError('Static plan path traversal is forbidden')
+    plans_root=STATE/'static-migration-plans'
+    if not _under(plan_path,plans_root): raise ValueError('Static plan must be under lifecycle static-migration-plans')
+    policy=json.loads(POLICY.read_text()); policy['_sha256']=digest(POLICY)
+    plan=json.loads(plan_path.read_text())
+    manifest=_validate_static_plan(plan,policy)
+    if pending.exists() and json.loads(pending.read_text()).get('stage') not in ('complete','rolled_back'):
+        raise ValueError('Unfinished lifecycle transaction: recover before static migration')
+    observed=audit()
+    # This bounded maintenance action repairs existing static references only. It has no app candidate,
+    # does not rewrite retention clocks, and cannot authorize or satisfy an application release gate.
+    _validate_static_capacity(plan,policy,observed,manifest)
+    _require_static_unexpired(plan)
+    txdir=STATE/'transactions'/plan['id']; txdir.mkdir(parents=True,exist_ok=False)
+    files=[]
+    for i,item in enumerate(plan['stagedConfigs']):
+        target=Path(item['target']); backup=txdir/('config-'+str(i)+'.conf')
+        if target.is_symlink() or digest(target)!=item['beforeSha256']: raise ValueError('Static config drift before backup: '+str(target))
+        _copy_file_durable(target,backup,item['beforeSha256'])
+        files.append({'target':str(target),'backup':str(backup),'beforeSha256':item['beforeSha256'],'stagedPath':item['path'],'stagedSha256':item['sha256']})
+    before_policy=json.loads(POLICY.read_text())
+    tx={'kind':'static','stage':'prepared','at':now(),'files':files,'retireUnits':[],'plan':plan,
+        'beforePolicy':before_policy,'beforePolicySha256':digest(POLICY),'candidateUnits':[],
+        'staticReceipts':{},'copiedAssets':[]}
+    write(pending,tx)
+    try:
+        baseline_receipt=_static_readback(manifest['assets'],'public-before')
+        tx['staticReceipts']['publicBefore']=_save_static_receipt(txdir,'public-before',baseline_receipt); write(pending,tx)
+        if baseline_receipt['status']!='PASS': raise ValueError('Static public-before failed')
+        baselines={row['urlPath']:row for row in baseline_receipt['responses']}
+        _require_static_unexpired(plan)
+        for asset in manifest['assets']:
+            copied=_copy_static_asset(asset); tx['copiedAssets'].append(copied)
+        write(pending,tx)
+        staged_receipt=_static_preview(plan['stagedConfigs'],manifest['assets'],baselines,txdir)
+        tx['staticReceipts']['preview']=_save_static_receipt(txdir,'preview',staged_receipt); tx['stage']='preview_passed'; write(pending,tx)
+        if staged_receipt['status']!='PASS': raise ValueError('Static local Nginx preview failed semantic checks')
+        _require_static_unexpired(plan)
+        if digest(POLICY)!=tx['beforePolicySha256']: raise ValueError('Lifecycle policy changed during static transaction')
+        for item in files:
+            target=Path(item['target']); staged=Path(item['stagedPath'])
+            if digest(target)!=item['beforeSha256'] or digest(staged)!=item['stagedSha256']: raise ValueError('Static config changed after preview')
+            temp=target.with_name(target.name+'.static-migrate-tmp')
+            _copy_file_durable(staged,temp,item['stagedSha256'])
+            os.replace(temp,target)
+            directory_fd=os.open(target.parent,os.O_RDONLY); os.fsync(directory_fd); os.close(directory_fd)
+        tx['stage']='config_written'; write(pending,tx)
+        run('nginx','-t'); run('systemctl','reload','nginx')
+        tx['stage']='reloaded'; write(pending,tx)
+        after=_static_readback(manifest['assets'],'public-after',baselines)
+        tx['staticReceipts']['publicAfter']=_save_static_receipt(txdir,'public-after',after); write(pending,tx)
+        if after['status']!='PASS': raise ValueError('Static public-after failed semantic checks')
+        if digest(POLICY)!=tx['beforePolicySha256']: raise ValueError('Lifecycle policy changed during static transaction')
+        _require_static_unexpired(plan)
+        tx.update(stage='complete',completedAt=now(),staticAssetCount=len(manifest['assets']),staticBytes=sum(a['sourceBytes'] for a in manifest['assets']))
+        write(pending,tx)
+        print(json.dumps({'status':'complete','kind':'static','id':plan['id'],'assets':len(manifest['assets']),'bytes':tx['staticBytes'],'transaction':str(pending)},indent=2))
+    except BaseException as error:
+        tx['staticFailure']={'at':now(),'error':str(error)}
+        try: write(pending,tx)
+        except OSError: pass
+        try: recover(tx)
+        except BaseException as recovery_error:
+            tx['staticRecoveryFailure']={'at':now(),'error':str(recovery_error)}; write(pending,tx)
+            raise RuntimeError('Static migration failed and recovery also failed: '+str(recovery_error)) from error
+        raise
+
 def recover(tx, reload_nginx=True):
+    if tx.get('kind') == 'static':
+        recovery={'startedAt':now(),'restoredConfigs':[]}
+        tx['staticRecovery']=recovery
+        try: write(STATE/'transaction.json',tx)
+        except OSError: pass  # Existing prepared journal remains sufficient to retry boot recovery.
+        try:
+            for item in tx['files']:
+                target=Path(item['target']); backup=Path(item['backup'])
+                if digest(backup)!=item['beforeSha256']: raise ValueError('Corrupt static config recovery backup: '+str(backup))
+                stale=target.with_name(target.name+'.static-migrate-tmp')
+                if os.path.lexists(stale):
+                    if stale.is_symlink() or not stale.is_file(): raise ValueError('Unsafe static migration temp during recovery: '+str(stale))
+                    stale.unlink()
+                temp=target.with_name(target.name+'.static-recover-tmp'); _copy_file_durable(backup,temp,item['beforeSha256'],replace_stale=True)
+                os.replace(temp,target)
+                directory_fd=os.open(target.parent,os.O_RDONLY); os.fsync(directory_fd); os.close(directory_fd)
+                recovery['restoredConfigs'].append({'target':str(target),'sha256':item['beforeSha256']})
+            run('nginx','-t')
+            if reload_nginx: run('systemctl','reload','nginx')
+            tx.update(stage='rolled_back',recoveredAt=now(),staticRecovery=recovery); write(STATE/'transaction.json',tx)
+        except BaseException as error:
+            recovery.update(failedAt=now(),error=str(error)); tx['staticRecovery']=recovery
+            try: write(STATE/'transaction.json',tx)
+            except OSError: pass
+            raise
+        return
     # Safe default for any unfinished transaction: start old units, restore exact old configs.
     for unit in tx['retireUnits']:
         run('systemctl', 'enable', '--now', unit)
@@ -457,7 +919,7 @@ def recover(tx, reload_nginx=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['audit', 'retention', 'record-retention', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire'])
+    parser.add_argument('action', choices=['audit', 'retention', 'record-retention', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire', 'static-migrate'])
     parser.add_argument('plan', nargs='?'); parser.add_argument('--boot', action='store_true'); parser.add_argument('--completion-ledger'); args = parser.parse_args()
     LOCK.parent.mkdir(parents=True, exist_ok=True)
     with LOCK.open('w') as lock:
@@ -478,8 +940,10 @@ def main():
         if args.action == 'expire':
             if pending.exists():
                 tx = json.loads(pending.read_text())
-                if tx['stage'] not in ['complete', 'rolled_back'] and tx['plan']['expiresAt'] <= now():
+                expired=(retention_timestamp(tx['plan']['expiresAt'],'static expiresAt') <= datetime.datetime.now(datetime.timezone.utc)) if tx.get('kind')=='static' else tx['plan']['expiresAt'] <= now()
+                if tx['stage'] not in ['complete', 'rolled_back'] and expired:
                     recover(tx)
+                    if tx.get('kind') == 'static': return
                     config = run('nginx', '-T')
                     for unit in tx['plan']['candidateUnits']:
                         # Only the exact candidate endpoints from its frozen plan may be retired.
@@ -490,6 +954,10 @@ def main():
             if pending.exists():
                 tx = json.loads(pending.read_text())
                 if tx['stage'] not in ['complete', 'rolled_back']: recover(tx, not args.boot)
+            return
+        if args.action == 'static-migrate':
+            if not args.plan: raise ValueError('Static migration plan path required')
+            static_migrate(args.plan,pending)
             return
         if args.action == 'complete':
             tx = json.loads(pending.read_text()); assert tx['stage'] == 'selected_pending_acceptance'

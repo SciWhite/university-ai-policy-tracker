@@ -26,6 +26,12 @@
 
 退役前检查完整 Nginx include 图（包括 named fallback/common snippets）、候选监听、systemd/定时任务/env 的内部调用及现有连接。迁移后的生产读回通过才 stop + disable；先一批、观察内存及页面/MCP，再下一批。退役清单保存旧 enable 状态、配置备份、原件/hash、恢复命令及验证路径。不得删除 release、raw evidence、历史批准、快照或私有清单。
 
+### 控制器静态依赖修复
+
+静态依赖迁移使用安装版生命周期控制器的 `static-migrate <plan.json>`；不得用应用 `cutover` 替代。代码变更本身不会更新服务器；当前托管控制器未安装此入口，必须先完成受审查的安装，未确认命令可用前不能执行。计划为 `kind: "static"`，绑定 manifest、7个受控 snippet、逐文件源/目标哈希、public-before 与预览输入、实时增量磁盘预算，且最长4小时。入口持有同一发布锁，拒绝未完成事务、任何路径/哈希漂移、符号链接、目标碰撞或容量不足；只复制 manifest 中已公开的不可变文件并精确替换 `alias` 目标。URL、location、header、include、proxy、服务、policy 和暂留时钟保持不变。
+
+入口先对全部精确公网 URL 做并发不超过2的 GET 基线，再用临时本机 Nginx 配置验证 staged snippets 与响应，之后才原子替换白名单配置、执行 `nginx -t` 并 reload 现有 Nginx，最后对同一 URL 集合做公网回读。状态、body hash/长度、MIME、Cache-Control、ETag、no-transform 必须一致；Expires 按响应 Date 的相对 TTL 比较。任一步失败时由同一 journal 恢复原7个配置并验证/reload，保存实际回执。静态成功直接将该事务标为 `complete`，不调用应用 `complete`、不生成同步合同或应用发布事件。它只修复 held release 的静态引用，不豁免任何应用发布门禁，也不移除原件；原件清理仍需站外完整归档、哈希、隔离恢复和删除前最新引用复查。
+
 ## 资源和历史计算
 
 MemoryHigh 用于提前回收，MemoryMax 是最后隔离边界，不能代替容量规划。按主站、共享 zone、MCP 及历史服务实测峰值设置；记录启动/冷历史/稳定请求三个阶段。不能统一设一个低上限造成重启循环。OOM/NRestarts 增长、MemAvailable 跌破保留值、未退役服务或未完成 journal 均阻止快速发布。重启不自动扩大上限。
