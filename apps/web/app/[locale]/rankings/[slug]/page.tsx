@@ -5,11 +5,11 @@ import BasePage, {
 import {
   createLocalizedSurfaceMetadata,
   createLocalizedSurfacePage,
-} from "@/lib/surface-localization";
+} from "@/lib/surface-localization-server";
 
 export { generateStaticParams };
 export const dynamic = "force-dynamic";
-export const dynamicParams = false;
+export const dynamicParams = true;
 export const revalidate = false;
 export const generateMetadata = createLocalizedSurfaceMetadata(
   baseGenerateMetadata as (
@@ -17,4 +17,4 @@ export const generateMetadata = createLocalizedSurfaceMetadata(
   ) => ReturnType<typeof baseGenerateMetadata>,
   (params) => `/rankings/${params.slug}`,
 );
-export default createLocalizedSurfacePage(BasePage);
+export default createLocalizedSurfacePage(BasePage, "/rankings/[slug]");

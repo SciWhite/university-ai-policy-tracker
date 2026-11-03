@@ -1,3 +1,4 @@
+import {applyAcceptedReadingUiText} from "./reading-ui-text";
 import {SUPPORTED_LOCALES,type SupportedLocale} from "./i18n";
 const text={
   history:["Record history","记录修订历史","Historique du registre","Historia rejestru","Historial del registro","Registergeschiedenis","Sejarah rekod"],
@@ -20,4 +21,4 @@ const text={
   prior:["Previous recorded revision","前一记录修订","Révision précédente enregistrée","Poprzednia zapisana wersja","Revisión anterior registrada","Vorige vastgelegde revisie","Semakan terdahulu direkodkan"],
   scope:["Tracker publication time is not a university policy effective date.","本站发布时间不等于学校政策生效时间。","La date de publication du registre n’est pas la date d’entrée en vigueur de la politique.","Data publikacji rejestru nie jest datą wejścia w życie zasad uczelni.","La fecha de publicación del registro no es la fecha de entrada en vigor de la política.","De publicatiedatum van het register is geen ingangsdatum van universitair beleid.","Tarikh penerbitan rekod bukan tarikh kuat kuasa dasar universiti."],
 } as const;
-export function changeHistoryCopy(locale:SupportedLocale){const index=SUPPORTED_LOCALES.indexOf(locale);return Object.fromEntries(Object.entries(text).map(([key,values])=>[key,values[index]])) as Record<keyof typeof text,string>;}
+export function changeHistoryCopy(locale:SupportedLocale,sharedUiText:Readonly<Record<string,string>>={}){const index=SUPPORTED_LOCALES.indexOf(locale);return applyAcceptedReadingUiText(Object.fromEntries(Object.entries(text).map(([key,values])=>[key,values[index]])) as Record<keyof typeof text,string>,sharedUiText);}

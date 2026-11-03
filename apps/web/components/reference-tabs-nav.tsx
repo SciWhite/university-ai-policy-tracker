@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useReadingUiText } from "./reading-ui-text-provider";
 
 interface ReferenceTabNavItem {
   href: `#${string}`;
@@ -19,6 +20,7 @@ interface ReferenceTabsNavProps {
 // pre-localized from the server wrapper so this island stays free of the
 // surface-translation dictionaries.
 export function ReferenceTabsNav({ ariaLabel, tabs }: ReferenceTabsNavProps) {
+  const sharedUiText = useReadingUiText();
   const [activeHref, setActiveHref] = useState<string | null>(null);
 
   useEffect(() => {
@@ -51,7 +53,7 @@ export function ReferenceTabsNav({ ariaLabel, tabs }: ReferenceTabsNavProps) {
   }, [tabs]);
 
   return (
-    <nav aria-label={ariaLabel} className="reference-tabs">
+    <nav aria-label={sharedUiText[ariaLabel] ?? ariaLabel} className="reference-tabs">
       {tabs.map((tab) => (
         <a
           aria-current={activeHref === tab.href ? "location" : undefined}

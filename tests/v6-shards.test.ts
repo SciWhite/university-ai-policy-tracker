@@ -8,7 +8,7 @@ import {ByteLru, BoundedAsyncCache} from "../apps/web/lib/bounded-cache";
 import {V6ArtifactStore,resetV6ArtifactCache,v6ArtifactStats,type ShardIndex} from "../apps/web/lib/v6-artifact-store";
 import {exportV6Revision} from "../scripts/export-v6-shards";
 import {publishedV6School,readPublishedV6Revision} from "../apps/web/lib/policy-v6-published";
-import {v6SummaryAtRevision,readV6RecordCorrectionRevision} from "../apps/web/lib/v6-effective-records";
+import {v6SummaryAtRevision,v6CorrectedSummary,readV6RecordCorrectionRevision} from "../apps/web/lib/v6-effective-records";
 import {v6FrozenHistory} from "../apps/web/lib/v6-history-cache";
 import {GET} from "../apps/tulsa-zone/app/api/public/v1/[...path]/route";
 import {validateV6Shards} from "../scripts/validate-v6-shards";
@@ -46,6 +46,24 @@ test("a cold single-school lookup does not read the legacy aggregate or other sc
  assert.equal(publishedV6School('ucl','en')!.topics.length,6);
  assert.equal(v6SummaryAtRevision('ucl')!.claims.length,14);
  assert(v6FrozenHistory('ucl')!.length>history.length);
+});
+
+test("the current canonical reader also uses a keyed school shard", () => {
+ resetV6ArtifactCache();
+ const summary = v6CorrectedSummary('ucl')!;
+ assert.equal(summary.entity.slug, 'ucl');
+ const stats = v6ArtifactStats();
+ assert(stats.files <= 3, JSON.stringify(stats));
+ assert(stats.bytes < 2 * 1024 * 1024, JSON.stringify(stats));
+ assert.equal(v6CorrectedSummary('not-a-university'), undefined);
+});
+
+test("keyed canonical reads preserve every field of all selected school records", () => {
+ const current = read('data/public-v6-records/current.json');
+ const records = readV6RecordCorrectionRevision(current.revision)!;
+ for (const summary of records.summaries) {
+  assert.deepEqual(v6CorrectedSummary(summary.entity.slug), structuredClone(summary));
+ }
 });
 
 test("current and historical single-school readers match the preserved legacy reader",()=>{

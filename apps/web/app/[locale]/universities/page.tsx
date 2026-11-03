@@ -4,7 +4,7 @@ import BasePage, {
 import {
   createLocalizedSurfaceMetadata,
   createLocalizedSurfacePage,
-} from "@/lib/surface-localization";
+} from "@/lib/surface-localization-server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = false;
@@ -14,4 +14,4 @@ export const generateMetadata = createLocalizedSurfaceMetadata(
   ) => ReturnType<typeof baseGenerateMetadata>,
   "/universities",
 );
-export default createLocalizedSurfacePage(BasePage);
+export default createLocalizedSurfacePage(BasePage, "/universities");

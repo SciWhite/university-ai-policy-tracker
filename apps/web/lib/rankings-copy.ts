@@ -1,3 +1,5 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
 import type { SupportedLocale } from "./i18n";
 const locales = ["en", "zh", "fr", "pl", "es", "nl", "ms"] as const;
 const strings = {
@@ -201,8 +203,8 @@ const strings = {
     "Pernyataan disemak tidak tersedia bagi setiap universiti yang diindeks.",
   ],
 } as const;
-export function rankingsCopy(locale: SupportedLocale) {
-  const index = Math.max(0, locales.indexOf(locale));
+export function rankingsCopy(locale: ReadingLocale) {
+  const index = Math.max(0, locales.indexOf(legacyLocale(locale)));
   return Object.fromEntries(
     Object.entries(strings).map(([key, value]) => [key, value[index]]),
   ) as { [K in keyof typeof strings]: string };

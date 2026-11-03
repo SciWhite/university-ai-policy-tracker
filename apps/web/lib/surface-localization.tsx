@@ -6,6 +6,8 @@ import {
   type ReactNode
 } from "react";
 import type { Metadata } from "next";
+import NextLink from "next/link";
+import { StateLabel, getReviewStateLabel } from "@/components/state-label";
 import enStrings from "@/messages/surfaces/en.json";
 import zhStrings from "@/messages/surfaces/zh.json";
 import frStrings from "@/messages/surfaces/fr.json";
@@ -144,11 +146,24 @@ export function createLocalizedSurfaceMetadata(
   };
 }
 
-export function translateSurfaceText(value: string, locale: ReadingLocale) {
+export function translateSurfaceText(
+  value: string,
+  locale: ReadingLocale,
+  sharedUiText: Readonly<Record<string, string>> = {}
+) {
   if (locale === DEFAULT_LOCALE) return value;
   const leading = value.match(/^\s*/)?.[0] ?? "";
   const trailing = value.match(/\s*$/)?.[0] ?? "";
   const normalized = value.replace(/\s+/g, " ").trim();
+  const brandSuffix = " | University AI Policy Tracker";
+  if (normalized.endsWith(brandSuffix) && (!sharedUiText[normalized] || sharedUiText[normalized] === normalized)) {
+    const label = normalized.slice(0, -brandSuffix.length);
+    if (sharedUiText[label] && sharedUiText[label] !== label) return `${leading}${sharedUiText[label]}${brandSuffix}${trailing}`;
+  }
+  const accepted = sharedUiText[value] ?? sharedUiText[normalized];
+  if (accepted !== undefined) return `${leading}${accepted}${trailing}`;
+  const acceptedTemplate = translateAcceptedTemplate(normalized, sharedUiText);
+  if (acceptedTemplate !== undefined) return `${leading}${acceptedTemplate}${trailing}`;
   const dictionaryLocale = legacyLocale(locale);
   if (dictionaryLocale === DEFAULT_LOCALE) return value;
   const localeMap = translationMaps[dictionaryLocale];
@@ -174,40 +189,83 @@ export function translateSurfaceText(value: string, locale: ReadingLocale) {
   return value;
 }
 
+
+/** Localize an explicitly selected presentation copy object, including its formatters. */
+export function localizeSurfaceCopy<T>(value: T, locale: ReadingLocale, sharedUiText: Readonly<Record<string, string>>): T {
+  const visit = (current: unknown): unknown => {
+    if (typeof current === "string") return translateSurfaceText(current, locale, sharedUiText);
+    if (typeof current === "function") return (...args: unknown[]) => visit(current(...args));
+    if (Array.isArray(current)) return current.map(visit);
+    if (current && typeof current === "object") return Object.fromEntries(Object.entries(current).map(([key, child]) => [key, visit(child)]));
+    return current;
+  };
+  return visit(value) as T;
+}
+
+const acceptedTemplates = new WeakMap<Readonly<Record<string, string>>, Array<{ regex: RegExp; tokens: string[]; target: string }>>();
+function translateAcceptedTemplate(value: string, sharedUiText: Readonly<Record<string, string>>): string | undefined {
+  let templates = acceptedTemplates.get(sharedUiText);
+  if (!templates) {
+    templates = Object.entries(sharedUiText).flatMap(([source, target]) => {
+      const tokens = [...source.matchAll(/\{([a-zA-Z0-9_]+)\}/g)].map(match => match[1]);
+      if (!tokens.length) return [];
+      const regex = new RegExp(`^${escapeRegExp(source).replace(/\\\{[a-zA-Z0-9_]+\\\}/g, "(.*?)")}$`);
+      return [{ regex, tokens, target }];
+    });
+    acceptedTemplates.set(sharedUiText, templates);
+  }
+  for (const template of templates) {
+    const match = value.match(template.regex);
+    if (!match) continue;
+    return template.target.replace(/\{([a-zA-Z0-9_]+)\}/g, (token, key: string) => {
+      const index = template.tokens.indexOf(key);
+      if (index < 0) return token;
+      const captured = match[index + 1] ?? "";
+      return sharedUiText[captured] ?? captured;
+    });
+  }
+  return undefined;
+}
+
 export function localizeSurfaceTree(
   node: ReactNode,
-  locale: ReadingLocale
+  locale: ReadingLocale,
+  sharedUiText: Readonly<Record<string, string>> = {}
 ): ReactNode {
   if (locale === DEFAULT_LOCALE || node == null || typeof node === "boolean") {
     return node;
   }
-  if (typeof node === "string") return translateSurfaceText(node, locale);
+  if (typeof node === "string") return translateSurfaceText(node, locale, sharedUiText);
   if (typeof node === "number") return node;
-  if (Array.isArray(node)) return Children.map(node, (child) => localizeSurfaceTree(child, locale));
+  if (Array.isArray(node)) return Children.map(node, (child) => localizeSurfaceTree(child, locale, sharedUiText));
   if (!isValidElement(node)) return node;
 
   const element = node as ReactElement<Record<string, unknown>>;
   const props = { ...element.props };
-  const preserveChildren = props["data-i18n"] === "preserve";
-  if (typeof element.type !== "string" && !("locale" in props)) {
+  if (element.type === StateLabel && typeof props.reviewState === "string") {
+    props.displayLabel = translateSurfaceText(getReviewStateLabel(props.reviewState, legacyLocale(locale)), locale, sharedUiText);
+    if (props.prefix !== "") props.prefix = translateSurfaceText(typeof props.prefix === "string" ? props.prefix : "Review", locale, sharedUiText);
+  }
+  const preserveChildren = props["data-i18n"] === "preserve" || element.type === "code" || element.type === "pre";
+  if (typeof element.type !== "string" && element.type !== NextLink && !("locale" in props)) {
     props.locale = legacyLocale(locale);
   }
   for (const [key, value] of Object.entries(props)) {
     if (key === "href" || key === "action") {
       if (typeof value === "string") props[key] = localizeHref(value, locale);
     } else if (key === "children") {
-      if (!preserveChildren) props.children = localizeSurfaceTree(value as ReactNode, locale);
+      if (!preserveChildren) props.children = localizeSurfaceTree(value as ReactNode, locale, sharedUiText);
     } else if (key.endsWith("Url") && typeof value === "string") {
       props[key] = localizeAbsoluteSiteUrl(value, locale) ?? value;
     } else if (key === "data") {
-      props[key] = localizeStructuredData(value, locale);
+      props[key] = localizeStructuredData(value, locale, undefined, sharedUiText);
     } else if (translatableProps.has(key)) {
-      props[key] = localizeSurfaceValue(value, locale);
+      props[key] = localizeSurfaceValue(value, locale, undefined, sharedUiText);
     }
   }
   if (!("children" in props)) {
     props.children = Children.map(element.props.children as ReactNode, (child) =>
-      localizeSurfaceTree(child, locale)
+      localizeSurfaceTree(child, locale, sharedUiText)
     );
   }
   return cloneElement(element, props);
@@ -216,9 +274,10 @@ export function localizeSurfaceTree(
 export function localizeSurfaceMetadata(
   metadata: Metadata,
   pathname: string,
-  locale: ReadingLocale
+  locale: ReadingLocale,
+  sharedUiText: Readonly<Record<string, string>> = {}
 ): Metadata {
-  const localized = localizeSurfaceValue(metadata, locale) as Metadata;
+  const localized = localizeSurfaceValue(metadata, locale, undefined, sharedUiText) as Metadata;
   if (locale !== DEFAULT_LOCALE && legacyLocale(locale) === DEFAULT_LOCALE) {
     const canonical = getAbsoluteSiteUrl(localizeHref(pathname, locale));
     const universityDetail = /^\/universities\/[a-z0-9-]+\/?$/.test(pathname);
@@ -259,21 +318,22 @@ export function localizedCanonical(pathname: string, locale: ReadingLocale) {
 function localizeSurfaceValue(
   value: unknown,
   locale: ReadingLocale,
-  key?: string
+  key?: string,
+  sharedUiText: Readonly<Record<string, string>> = {}
 ): unknown {
   if (typeof value === "string") {
     if (key === "href" || key === "action") return localizeHref(value, locale);
     const localizedUrl = localizeAbsoluteSiteUrl(value, locale);
-    return localizedUrl ?? translateSurfaceText(value, locale);
+    return localizedUrl ?? translateSurfaceText(value, locale, sharedUiText);
   }
-  if (Array.isArray(value)) return value.map((item) => localizeSurfaceValue(item, locale, key));
-  if (isValidElement(value)) return localizeSurfaceTree(value, locale);
+  if (Array.isArray(value)) return value.map((item) => localizeSurfaceValue(item, locale, key, sharedUiText));
+  if (isValidElement(value)) return localizeSurfaceTree(value, locale, sharedUiText);
   if (value instanceof URL || value instanceof Date) return value;
   if (value && typeof value === "object") {
     return Object.fromEntries(
       Object.entries(value).map(([childKey, child]) => [
         childKey,
-        localizeSurfaceValue(child, locale, childKey)
+        localizeSurfaceValue(child, locale, childKey, sharedUiText)
       ])
     );
   }
@@ -283,23 +343,24 @@ function localizeSurfaceValue(
 function localizeStructuredData(
   value: unknown,
   locale: ReadingLocale,
-  key?: string
+  key?: string,
+  sharedUiText: Readonly<Record<string, string>> = {}
 ): unknown {
   if (typeof value === "string") {
     const localizedUrl = localizeAbsoluteSiteUrl(value, locale);
     if (localizedUrl) return localizedUrl;
     return key && structuredDataTextKeys.has(key)
-      ? translateSurfaceText(value, locale)
+      ? translateSurfaceText(value, locale, sharedUiText)
       : value;
   }
   if (Array.isArray(value)) {
-    return value.map((item) => localizeStructuredData(item, locale, key));
+    return value.map((item) => localizeStructuredData(item, locale, key, sharedUiText));
   }
   if (value && typeof value === "object") {
     const localized = Object.fromEntries(
       Object.entries(value).map(([childKey, child]) => [
         childKey,
-        localizeStructuredData(child, locale, childKey)
+        localizeStructuredData(child, locale, childKey, sharedUiText)
       ])
     );
     if (!key && "@context" in localized && !("inLanguage" in localized)) {

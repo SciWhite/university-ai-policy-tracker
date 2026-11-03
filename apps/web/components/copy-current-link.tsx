@@ -1,10 +1,12 @@
 "use client";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import { useState } from "react";
 import { mockupCopy } from "@/lib/mockup-copy";
 import type { SupportedLocale } from "@/lib/i18n";
 export function CopyCurrentLink({ locale }: { locale: SupportedLocale }) {
   const [copied, setCopied] = useState(false);
-  const copy = mockupCopy(locale);
+  const copy = applyAcceptedReadingUiText(mockupCopy(locale), useReadingUiText());
   return (
     <button
       className="discovery-copy-link"

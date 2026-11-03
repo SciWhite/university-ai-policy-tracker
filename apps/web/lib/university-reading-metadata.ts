@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import type { Metadata } from "next";
-import { getReadingTranslations } from "./reading-translations";
+import { getReadingTranslations, isVerifiedReadingBundle } from "./reading-translations";
 import { READING_LOCALES, type ReadingLocale } from "./language-catalog";
 import { DEFAULT_LOCALE, withLocalePrefix } from "./i18n";
 import { getAbsoluteSiteUrl } from "./site-url";
@@ -13,19 +13,23 @@ import { getV6PageInput } from "./policy-v6-page-input";
 import { getPolicyV6Data } from "./policy-v6";
 import { publishedV6Slugs } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
+import { ByteLru } from "./bounded-cache";
 
-let cachedPolicy: { path: string; sha256: string; policy: UniversityLocaleIndexPolicy } | undefined;
+let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
 async function loadPolicy(): Promise<UniversityLocaleIndexPolicy | undefined> {
   const policyPath = process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY;
   const expectedPolicySha = process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY_SHA256;
   if (!policyPath || !/^[a-f0-9]{64}$/.test(expectedPolicySha ?? "")) return undefined;
-  if (cachedPolicy?.path === policyPath && cachedPolicy.sha256 === expectedPolicySha) return cachedPolicy.policy;
+  const info = await stat(policyPath, { bigint: true });
+  if (!info.isFile() || info.size > BigInt(4 * 1024 * 1024)) return undefined;
+  const fileVersion = `${info.dev}:${info.ino}:${info.size}:${info.mtimeNs}:${info.ctimeNs}`;
+  if (cachedPolicy?.path === policyPath && cachedPolicy.sha256 === expectedPolicySha && cachedPolicy.fileVersion === fileVersion) return cachedPolicy.policy;
   const raw = await readFile(policyPath);
   if (createHash("sha256").update(raw).digest("hex") !== expectedPolicySha) return undefined;
   const policy = JSON.parse(raw.toString("utf8")) as UniversityLocaleIndexPolicy;
   if (policy.schemaVersion !== "uapt-university-locale-index-policy-v1" || !/^[a-f0-9]{64}$/.test(policy.sourceSha256) || !policy.schools || !policy.globalCitationExceptions) return undefined;
-  cachedPolicy = { path: policyPath, sha256: expectedPolicySha, policy };
+  cachedPolicy = { path: policyPath, sha256: expectedPolicySha, fileVersion, policy };
   return policy;
 }
 
@@ -105,32 +109,56 @@ export function policySceneDisplaySources(slug: string, summary: PublicEntitySum
   return [...sources.values()];
 }
 
-export function readingDisplayRequirementsComplete(requirements: readonly ReadingDisplayRequirement[], school: import("./reading-translations").ReadingTranslationBundle, shared: import("./reading-translations").ReadingTranslationBundle, sourceScopeComplete = true): boolean {
-  return sourceScopeComplete && requirements.every(requirement => {
+type ReadingBundle = import("./reading-translations").ReadingTranslationBundle;
+// Weak keys tie a coverage result to the exact frozen, verified file objects.
+// The file reader replaces these objects when any file identity changes; each
+// pair retains at most two successful requirement inventories. Missing fields
+// are always checked again rather than retained as a negative result.
+const displayCoverageCache = new WeakMap<ReadingBundle, WeakMap<ReadingBundle, ByteLru<true>>>();
+
+export function readingDisplayRequirementsComplete(requirements: readonly ReadingDisplayRequirement[], school: ReadingBundle, shared: ReadingBundle, sourceScopeComplete = true): boolean {
+  if (!sourceScopeComplete) return false;
+  const cacheable = isVerifiedReadingBundle(school) && isVerifiedReadingBundle(shared);
+  const key = cacheable ? createHash("sha256").update(JSON.stringify(requirements)).digest("hex") : "";
+  const schoolCache = cacheable ? displayCoverageCache.get(school) : undefined;
+  const decisions = schoolCache?.get(shared);
+  const cached = decisions?.get(key);
+  if (cached !== undefined) return cached;
+  const complete = requirements.every(requirement => {
     const { source, field } = requirement;
     const result = readingTranslation(source, [school, shared]);
     if (!result.translated) return false;
     const key = createHash("sha256").update(source).digest("hex");
     return [field, ...(requirement.fieldAliases ?? [])].some(alias => school.sourceFieldUses?.[key]?.includes(alias) === true || shared.sourceFieldUses?.[key]?.includes(alias) === true);
   });
+  if (cacheable && complete) {
+    const sharedCaches = schoolCache ?? new WeakMap<ReadingBundle, ByteLru<true>>();
+    const retained = decisions ?? new ByteLru<true>(2, 256);
+    retained.set(key, true, 65);
+    if (!decisions) sharedCaches.set(shared, retained);
+    if (!schoolCache) displayCoverageCache.set(school, sharedCaches);
+  }
+  return complete;
 }
 
-export async function universityReadingIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary): Promise<ReadingLocale[]> {
-  const sceneSources = summary ? policySceneDisplaySources(slug, summary) : [];
-  let v6Sources: V6ReadingDisplayInventory;
-  try { v6Sources = await v6DisplayRequirements(slug, summary); }
-  catch { return [DEFAULT_LOCALE]; }
+export async function universityReadingIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
   if (!summary) return [DEFAULT_LOCALE];
+  const pointer = process.env.UAPT_READING_PACKAGE_POINTER;
+  if (!pointer) return [DEFAULT_LOCALE];
   const policy = await loadPolicy();
   const school = policy?.schools?.[slug];
   if (!policy || !school || school.recordSha256 !== basis.recordSha256) return [DEFAULT_LOCALE];
-  const pointer = process.env.UAPT_READING_PACKAGE_POINTER;
-  if (!pointer) return [DEFAULT_LOCALE];
+  const requested = school.locales.filter(locale => locale !== DEFAULT_LOCALE && (!onlyLocale || locale === onlyLocale));
+  if (requested.length === 0) return [DEFAULT_LOCALE];
+  const sceneSources = policySceneDisplaySources(slug, summary);
+  let v6Sources: V6ReadingDisplayInventory;
+  try { v6Sources = await v6DisplayRequirements(slug, summary); }
+  catch { return [DEFAULT_LOCALE]; }
+  const requirements = [...sceneSources, ...v6Sources.requirements];
   const complete: ReadingLocale[] = [];
-  for (const locale of school.locales) {
-    if (locale === DEFAULT_LOCALE) continue;
+  for (const locale of requested) {
     const result = await getReadingTranslations(slug, locale, basis, pointer);
-    if (result.state === "ready" && result.school.sourceSha256 === policy.sourceSha256 && result.shared.sourceSha256 === policy.sourceSha256 && readingDisplayRequirementsComplete([...sceneSources, ...v6Sources.requirements], result.school, result.shared, v6Sources.sourceScopeComplete)) complete.push(locale);
+    if (result.state === "ready" && result.school.sourceSha256 === policy.sourceSha256 && result.shared.sourceSha256 === policy.sourceSha256 && readingDisplayRequirementsComplete(requirements, result.school, result.shared, v6Sources.sourceScopeComplete)) complete.push(locale);
   }
   return universityIndexLocales(slug, policy, {
     sharedLocales: READING_LOCALES.filter(locale => locale !== DEFAULT_LOCALE),

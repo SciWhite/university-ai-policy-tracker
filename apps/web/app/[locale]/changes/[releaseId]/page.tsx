@@ -1,5 +1,5 @@
 import BasePage, { generateMetadata as baseGenerateMetadata, generateStaticParams as baseGenerateStaticParams } from "../../../(default)/changes/[releaseId]/page";
-import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization";
+import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization-server";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
@@ -14,4 +14,4 @@ export const generateMetadata = createLocalizedSurfaceMetadata(
   baseGenerateMetadata as (props: unknown) => ReturnType<typeof baseGenerateMetadata>,
   (params) => `/changes/${params.releaseId}`
 );
-export default createLocalizedSurfacePage(BasePage);
+export default createLocalizedSurfacePage(BasePage, "/changes/[releaseId]");

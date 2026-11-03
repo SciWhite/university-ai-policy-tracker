@@ -1,3 +1,6 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
+import { applyAcceptedReadingUiText } from "./reading-ui-text";
 import { mockupCopy } from "./mockup-copy";
 import type { SupportedLocale } from "./i18n";
 
@@ -972,8 +975,8 @@ const strings = {
   readonly [string, string, string, string, string, string, string]
 >;
 
-export function discoveryCopy(locale: SupportedLocale) {
-  const index = languages.indexOf(locale);
+export function discoveryCopy(locale: ReadingLocale) {
+  const index = languages.indexOf(legacyLocale(locale));
   return Object.fromEntries(
     Object.entries(strings).map(([key, values]) => [key, values[index]]),
   ) as Record<keyof typeof strings, string>;
@@ -990,9 +993,9 @@ export const discoveryTopics = [
   "teaching",
   "research",
 ] as const;
-export function discoveryTopicLabel(topic: string, locale: SupportedLocale) {
-  const copy = discoveryCopy(locale);
-  const primary = mockupCopy(locale);
+export function discoveryTopicLabel(topic: string, locale: ReadingLocale, sharedUiText: Readonly<Record<string, string>> = {}) {
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
+  const primary = applyAcceptedReadingUiText(mockupCopy(locale), sharedUiText);
   if (["coursework", "disclosure", "data_safety", "tools"].includes(topic))
     return primary[
       topic as "coursework" | "disclosure" | "data_safety" | "tools"

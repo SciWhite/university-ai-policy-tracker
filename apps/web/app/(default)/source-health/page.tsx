@@ -224,40 +224,28 @@ export default async function SourceHealthPage({
         description="Warnings and errors that remain after separating blocked access and non-policy discovery noise."
         title="Actionable source-access issues"
       >
-        <SourceHealthTable
-          emptyLabel="No open actionable rows in the first triage slice."
-          rows={actionableRows}
-        />
+        {SourceHealthTable({ emptyLabel: "No open actionable rows in the first triage slice.", rows: actionableRows })}
       </ReferenceBox>
 
       <ReferenceBox
         description="Confirmed accessible by the latest allowed agent, browser, or Firecrawl check."
         title="Agent verified"
       >
-        <SourceHealthTable
-          emptyLabel="No supplemental verification rows are currently published."
-          rows={verifiedRows}
-        />
+        {SourceHealthTable({ emptyLabel: "No supplemental verification rows are currently published.", rows: verifiedRows })}
       </ReferenceBox>
 
       <ReferenceBox
         description="Access controls or client boundaries. These rows should not be bypassed."
         title="Blocked by access boundary"
       >
-        <SourceHealthTable
-          emptyLabel="No access-boundary rows in the current source-health data."
-          rows={blockedRows}
-        />
+        {SourceHealthTable({ emptyLabel: "No access-boundary rows in the current source-health data.", rows: blockedRows })}
       </ReferenceBox>
 
       <ReferenceBox
         description="Rejected discovery candidates are retained for auditability but excluded from source repair counts."
         title="Rejected discovery"
       >
-        <SourceHealthTable
-          emptyLabel="No rejected discovery rows in the current source-health data."
-          rows={rejectedRows}
-        />
+        {SourceHealthTable({ emptyLabel: "No rejected discovery rows in the current source-health data.", rows: rejectedRows })}
       </ReferenceBox>
 
       <ReferenceBox

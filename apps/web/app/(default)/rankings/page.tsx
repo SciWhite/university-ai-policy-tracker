@@ -1,6 +1,6 @@
 import type { DiscoverySearchParams } from "@/lib/discovery-query";
 import { RankingsIndexView } from "@/components/rankings-index-view";
-import { normalizeLocale } from "@/lib/i18n";
+import { normalizeReadingLocale, legacyLocale } from "@/lib/i18n";
 import { rankingsCopy } from "@/lib/rankings-copy";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 export const dynamic = "force-dynamic";
@@ -10,9 +10,9 @@ interface Props {
   params?: Promise<{ locale?: string }>;
 }
 export async function generateMetadata({ params }: Props) {
-  const locale = normalizeLocale((await params)?.locale);
+  const locale = normalizeReadingLocale((await params)?.locale);
   const copy = rankingsCopy(locale);
-  const alternates = getLocalizedAlternates("/rankings", locale);
+  const alternates = getLocalizedAlternates("/rankings", legacyLocale(locale));
   return {
     title: `${copy.title} | University AI Policy Tracker`,
     description: copy.lead,
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function RankingsPage({ params, searchParams }: Props) {
   return (
     <RankingsIndexView
-      locale={normalizeLocale((await params)?.locale)}
+      locale={normalizeReadingLocale((await params)?.locale)}
       searchParams={(await searchParams) ?? {}}
     />
   );

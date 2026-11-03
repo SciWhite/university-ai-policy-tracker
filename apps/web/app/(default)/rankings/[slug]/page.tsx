@@ -6,7 +6,7 @@ import {
   rankingLandingSpecs,
 } from "@/lib/reference-pages";
 import { rankingsCopy } from "@/lib/rankings-copy";
-import { normalizeLocale } from "@/lib/i18n";
+import { normalizeLocale, normalizeReadingLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 interface RankingPageProps {
   searchParams?: Promise<DiscoverySearchParams>;
@@ -46,7 +46,7 @@ export default async function RankingPage({
   const { slug, locale: localeParam } = await params;
   return (
     <RankingEditionView
-      locale={normalizeLocale(localeParam)}
+      locale={normalizeReadingLocale(localeParam)}
       slug={slug}
       searchParams={(await searchParams) ?? {}}
     />

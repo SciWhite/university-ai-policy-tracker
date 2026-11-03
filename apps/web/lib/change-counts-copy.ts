@@ -11,17 +11,18 @@ const labels={
   unknown:["The historical item count could not be reconstructed.","历史条目数量无法还原。","Le nombre d’éléments historiques n’a pas pu être reconstitué.","Nie udało się odtworzyć liczby historycznych wpisów.","No se pudo reconstruir el número de registros históricos.","Het aantal historische gegevens kon niet worden gereconstrueerd.","Bilangan rekod sejarah tidak dapat dibina semula."],
   held:["{n} held","暂缓 {n}","{n} en attente","Wstrzymano: {n}","{n} pendientes","{n} aangehouden","{n} ditangguh"],
 } as const;
-export function changeCountsText(counts:ChangeEvent["counts"],locale:SupportedLocale){
-  const i=SUPPORTED_LOCALES.indexOf(locale),format=(key:keyof typeof labels,n:number)=>labels[key][i].replace("{n}",String(n));
+export function changeCountsText(counts:ChangeEvent["counts"],locale:SupportedLocale,sharedUiText:Readonly<Record<string,string>>={}){
+  const i=SUPPORTED_LOCALES.indexOf(locale),format=(key:keyof typeof labels,n:number)=>(sharedUiText[labels[key][i]]??labels[key][i]).replace("{n}",String(n));
   const parts=(["modified","added","held","toolRecords","unnumberedRecords"] as const).flatMap(key=>counts[key]?[format(key,counts[key]!)]:[]);
   return format("affected",counts.affected)+(parts.length?` (${parts.join(" · ")})`:"");
 }
+export const changeCountTextSources=Object.values(labels).map(values=>values[0]);
 export const changeItemCounts=countChangeItems;
 /** A missing identity is an explicit history gap, never a fabricated Claim count. */
-export function changeItemsText(items:ChangeItem[],locale:SupportedLocale){
+export function changeItemsText(items:ChangeItem[],locale:SupportedLocale,sharedUiText:Readonly<Record<string,string>>={}){
   const counts=changeItemCounts(items);
-  if(counts.affected)return changeCountsText(counts,locale);
-  const copy=v6ChangesCopy(locale);
+  if(counts.affected)return changeCountsText(counts,locale,sharedUiText);
+  const copy=v6ChangesCopy(locale,sharedUiText);
   const categories=[...new Set(items.map(item=>copy.categories[changeCategoryKeys.indexOf(item.category)]??copy.other))].join(" · ");
-  return categories+(items.some(item=>!["source_update","page_update","record_maintenance"].includes(item.category))?` · ${labels.unknown[SUPPORTED_LOCALES.indexOf(locale)]}`:"");
+  return categories+(items.some(item=>!["source_update","page_update","record_maintenance"].includes(item.category))?` · ${sharedUiText[labels.unknown[SUPPORTED_LOCALES.indexOf(locale)]]??labels.unknown[SUPPORTED_LOCALES.indexOf(locale)]}`:"");
 }

@@ -166,7 +166,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                     </Link>
                   </>
                 }
-                key={`${record.universitySlug}:${record.tool}`}
+                key={JSON.stringify([record.universitySlug, record.tool, record.rawToolName.trim().toLowerCase().replace(/\s+/g, " ")])}
               >
                 <h2>{record.rawToolName}</h2>
                 <p>

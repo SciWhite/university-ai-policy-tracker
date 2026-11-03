@@ -49,6 +49,10 @@ const publicRouteFiles = [
   "datasets/page.tsx",
   "methodology/page.tsx",
   "about/page.tsx",
+  "api-reference/page.tsx",
+  "widgets/page.tsx",
+  "review/page.tsx",
+  "review/queue/page.tsx",
   "citation/page.tsx",
   "contribute/page.tsx"
 ] as const;
@@ -75,6 +79,18 @@ async function main() {
     );
   }
 
+  const extraSources = await readJson("apps/web/messages/public-ui/en.json") as string[];
+  assert(Array.isArray(extraSources) && new Set(extraSources).size === extraSources.length, "Invalid public UI source inventory");
+  const numbers = (value: string) => JSON.stringify((value.match(/\d+(?:[.,]\d+)*/g) ?? []).sort());
+  for (const locale of READING_LOCALES.filter(value => value !== "en")) {
+    const extra = await readJson(`apps/web/messages/public-ui/${locale}.json`) as Record<string, string>;
+    assert(JSON.stringify(Object.keys(extra).sort()) === JSON.stringify([...extraSources].sort()), `${locale}: public UI source coverage mismatch`);
+    for (const source of extraSources) {
+      assertString(source, extra[source], locale, "public UI additions");
+      assert(numbers(source) === numbers(extra[source]), `${locale}: numeric value changed in ${source}`);
+    }
+  }
+
   await Promise.all(
     publicRouteFiles.map(async (file) => {
       const target = path.resolve("apps/web/app/[locale]", file);
@@ -89,7 +105,11 @@ async function main() {
     localizeHref("/search?q=harvard.edu", "zh") === "/zh/search?q=harvard.edu",
     "Localized public link with query failed"
   );
-  assert(localizeHref("/api-reference", "fr") === "/api-reference", "English-only professional route gained a locale prefix");
+  for (const locale of READING_LOCALES) {
+    for (const route of ["/api-reference", "/widgets", "/review", "/review/queue"]) {
+      assert(localizeHref(route, locale) === (locale === "en" ? route : `/${locale}${route}`), `${locale}: public interface link failed for ${route}`);
+    }
+  }
   assert(localizeHref("/api/public/v1/index.json", "zh") === "/api/public/v1/index.json", "Public API URL changed during localization");
   assert(
     getLocalizedInstitutionName("example", "Canonical University", "zh") ===
@@ -98,7 +118,7 @@ async function main() {
   );
 
   console.log(
-    `i18n validation passed: ${ROUTED_LOCALES.length} reading locales, 7 UI dictionary locales, ${publicRouteFiles.length} public route families, ${surfaceSource.length} extended-surface strings`
+    `i18n validation passed: ${ROUTED_LOCALES.length} reading locales, 7 legacy UI dictionaries, ${READING_LOCALES.length - 1} public UI additions, ${publicRouteFiles.length} public route families, ${surfaceSource.length} extended-surface strings`
   );
 }
 

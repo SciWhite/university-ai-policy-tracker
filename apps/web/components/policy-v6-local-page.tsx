@@ -193,7 +193,7 @@ export function PolicyV6LocalPage({
       data-v6-review-state="agent_reviewed"
     >
       <PolicyV6Provider data={data} readingLayout={readingLayout} sharedUiText={sharedUiText}>
-        <PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
+        <PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
           <EntityHeader
             actions={
               <div id="v6-header-actions">

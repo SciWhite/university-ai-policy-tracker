@@ -1,5 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
+import { BoundedAsyncCache } from "./bounded-cache";
 import {
   NO_ADVICE_BOUNDARY,
   PUBLIC_API_VERSION,
@@ -10,8 +12,9 @@ import {
   type PublicEntitySummary
 } from "@uapt/shared";
 import {
-  getDatasetRelease,
-  getDatasetReleaseForPublicManifest
+  buildDatasetCounts,
+  datasetArtifactRouteSegments,
+  getDatasetRelease
 } from "./dataset-release";
 import { findRepoRoot } from "./repo-root";
 import { getAbsoluteSiteUrl } from "./site-url";
@@ -317,23 +320,47 @@ export interface OutreachPackage {
   title: string;
 }
 
+const monthlyReports = new BoundedAsyncCache<MonthlyReport | undefined>(12, 12 * 1024 * 1024, 1, 64);
+
+export function monthlyReportCacheStats() {
+  return monthlyReports.stats();
+}
+
 export async function getMonthlyReport(
   slug = currentMonthlyReportSlug,
   locale = "en"
 ): Promise<MonthlyReport | undefined> {
   if (!isMonthlyReportSlug(slug)) return undefined;
-
   const reportSpec = monthlyReportRegistry[slug];
   const releaseManifest = await getReportReleaseManifest(reportSpec.releaseManifestPath);
-  const [datasetRelease, reportDataset] = await Promise.all([
-    releaseManifest
-      ? getDatasetReleaseForPublicManifest(releaseManifest)
-      : getDatasetRelease(),
-    releaseManifest
-      ? getStagedPublicDatasetForManifest(releaseManifest)
-      : getStagedPublicDataset()
-  ]);
-  const { manifest } = datasetRelease;
+  if (!releaseManifest) return buildMonthlyReport(slug, locale, undefined);
+  const key = createHash("sha256").update(JSON.stringify({
+    slug, locale, releaseManifest, reportSpec, origin: getAbsoluteSiteUrl("/")
+  })).digest("hex");
+  const report = await monthlyReports.get(key, () => buildMonthlyReport(slug, locale, releaseManifest));
+  // Callers may project/sort report arrays; do not expose the cached object to
+  // mutations from another locale, coverage appendix or concurrent request.
+  return report ? structuredClone(report) : undefined;
+}
+
+async function buildMonthlyReport(
+  slug: keyof typeof monthlyReportRegistry,
+  locale: string,
+  releaseManifest: PublicReleaseManifest | undefined
+): Promise<MonthlyReport> {
+  const reportSpec = monthlyReportRegistry[slug];
+  const reportDataset = releaseManifest
+    ? await getStagedPublicDatasetForManifest(releaseManifest)
+    : await getStagedPublicDataset();
+  // Reports need counts and identity, not six serialized download artifacts.
+  // Use the same count function against the report's exact historical input.
+  const manifest = releaseManifest ? {
+    releaseId: releaseManifest.releaseId,
+    publishedAt: releaseManifest.publishedAt,
+    counts: buildDatasetCounts(reportDataset.publicSummaries),
+    limitations: [NO_ADVICE_BOUNDARY],
+    artifacts: datasetArtifactRouteSegments
+  } : (await getDatasetRelease()).manifest;
   const reportRecords = reportDataset.publicSummaries.map(buildReportExample);
   const canonicalPath = `/reports/monthly/${slug}`;
   const chartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${slug}/chart-data.json`;

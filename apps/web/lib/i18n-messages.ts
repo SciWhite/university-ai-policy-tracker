@@ -39,12 +39,4 @@ export function getEnglishShellTextSources(): string[] {
   return [...output];
 }
 
-export function interpolate(
-  template: string,
-  values: Record<string, string>
-): string {
-  return Object.entries(values).reduce(
-    (output, [key, value]) => output.replaceAll(`{${key}}`, value),
-    template
-  );
-}
+export { interpolate } from "./reading-ui-text";

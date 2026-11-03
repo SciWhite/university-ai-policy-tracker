@@ -10,6 +10,8 @@ import {
   widgetScriptPath
 } from "@/lib/developer-surfaces";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { normalizeReadingLocale } from "@/lib/i18n";
+import { localizeDirectorySummaries } from "@/lib/reading-directory-summaries";
 
 const title = "Embeddable Widgets | University AI Policy Tracker";
 const description =
@@ -48,7 +50,7 @@ export function generateMetadata() {
   };
 }
 
-export default async function WidgetsPage() {
+export default async function WidgetsPage({ params }: { params?: Promise<{ locale?: string }> }) {
   const {
     policyCoverageWidget,
     recentChangesWidget,
@@ -61,6 +63,8 @@ export default async function WidgetsPage() {
   const freshnessData = sourceFreshnessWidget?.data;
   const reviewStateData = reviewStateWidget?.data;
   const changes = recentChangesWidget.data.changes;
+  const locale = normalizeReadingLocale((await params)?.locale);
+  const localizedStatus = statusData ? (await localizeDirectorySummaries([{ slug: statusData.entitySlug, summary: statusData.summaryPreview }], locale))[0] : undefined;
 
   return (
     <main className="page-shell page-shell--wide">
@@ -177,7 +181,7 @@ export default async function WidgetsPage() {
             <div>
               <p className="kicker">University status</p>
               <h2>{statusData.entityName}</h2>
-              <p>{statusData.summaryPreview}</p>
+              <p data-i18n="preserve">{localizedStatus?.summary ?? statusData.summaryPreview}</p>
               <div className="tag-row">
                 <StateLabel reviewState={statusData.reviewState} />
                 <MetaLabel label="Claims">{statusData.claimCount}</MetaLabel>

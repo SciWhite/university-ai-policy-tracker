@@ -18,7 +18,6 @@ import {
 } from "@/lib/change-records";
 import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
-import { getKnownReleaseIds } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
@@ -36,10 +35,10 @@ export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = false;
 
-export async function generateStaticParams() {
-  const releaseIds = await getKnownReleaseIds();
-
-  return releaseIds.map((releaseId) => ({ releaseId }));
+export function generateStaticParams() {
+  // Historical release URLs stay available through first-request caching;
+  // adding a release must not expand an unrelated UI build.
+  return [];
 }
 
 export async function generateMetadata({ params }: ChangeDetailPageProps) {

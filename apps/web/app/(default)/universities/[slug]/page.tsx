@@ -172,9 +172,8 @@ interface UniversityPageProps {
 export const dynamicParams = true;
 export const revalidate = 3600;
 
-export async function generateStaticParams() {
-  const universities = await getCatalogUniversities();
-  return universities.map((university) => ({ slug: university.slug }));
+export function generateStaticParams(): Array<{ slug: string }> {
+  return [];
 }
 
 export async function generateMetadata({ params, searchParams }: UniversityPageProps) {

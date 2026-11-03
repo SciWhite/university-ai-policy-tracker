@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from "react";
 import { DocumentLink as Link } from "./document-link";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import { rankingBrowserCopy } from "@/lib/ranking-browser-copy";
 import { UniversityMark } from "./university-mark";
 import { mockupCopy } from "@/lib/mockup-copy";
@@ -15,10 +17,11 @@ import { discoveryPrimaryTopics } from "@/lib/discovery-topic-groups";
 import { discoveryTopicLabel } from "@/lib/discovery-copy";
 import { discoveryCopy } from "@/lib/discovery-copy";
 import { formatDateMedium } from "@/lib/format-date";
-import type { SupportedLocale } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { publishedV6Slugs } from "@/lib/policy-v6-published-gate";
 import type { DiscoveryUniversity } from "@/lib/discovery-types";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
+import { formatDiscoveryLocation } from "@/lib/discovery-location";
 
 export function DiscoveryIcon({
   name,
@@ -136,7 +139,7 @@ export function DiscoveryUniversityCard({
   returnTo,
 }: {
   record: DiscoveryUniversity;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   selected?: boolean;
   compareDisabled?: boolean;
   onCompare?: () => void;
@@ -145,7 +148,8 @@ export function DiscoveryUniversityCard({
   showDate?: boolean;
   returnTo?: string;
 }) {
-  const copy = discoveryCopy(locale);
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
   const name = getLocalizedInstitutionName(record.slug, record.name, locale);
   return (
     <article
@@ -178,7 +182,7 @@ export function DiscoveryUniversityCard({
           </Link>
         </h3>
         <p className="discovery-location">
-          {[record.region, record.country].filter(Boolean).join(", ")}
+          {formatDiscoveryLocation(record.region ?? "", record.country ?? "", sharedUiText)}
         </p>
         {showDate && record.lastCheckedAt ? (
           <p className="discovery-date">
@@ -191,13 +195,13 @@ export function DiscoveryUniversityCard({
         {featured ? (
           <>
             <p className="discovery-card-summary">
-              {mockupCopy(locale).guideLead}
+              {applyAcceptedReadingUiText(mockupCopy(locale), sharedUiText).guideLead}
             </p>
             <div className="discovery-topic-chips">
               {discoveryPrimaryTopics
                 .filter((t) => record.topics?.includes(t))
                 .map((t) => (
-                  <span key={t}>{discoveryTopicLabel(t, locale)}</span>
+                  <span key={t}>{discoveryTopicLabel(t, locale, sharedUiText)}</span>
                 ))}
             </div>
           </>
@@ -243,10 +247,11 @@ export function DiscoveryPagination({
   page: number;
   pageCount: number;
   onPage: (page: number) => void;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
 }) {
-  const copy = discoveryCopy(locale),
-    extra = rankingBrowserCopy(locale);
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText),
+    extra = applyAcceptedReadingUiText(rankingBrowserCopy(locale), sharedUiText);
   const [jump, setJump] = useState(String(page));
   useEffect(() => setJump(String(page)), [page]);
   const numbers = [
@@ -328,7 +333,7 @@ export function DiscoveryPagination({
         <button type="submit">{extra.go}</button>
       </form>
       <span className="visually-hidden" aria-live="polite">
-        {copy.page} {page} {copy.of} {pageCount}
+        {sharedUiText["Page {n} of {m}"]?.replaceAll("{n}", String(page)).replaceAll("{m}", String(pageCount)) ?? `${copy.page} ${page} ${copy.of} ${pageCount}`}
       </span>
     </nav>
   );
@@ -338,10 +343,11 @@ export function DiscoveryEmpty({
   locale,
   onReset,
 }: {
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   onReset?: () => void;
 }) {
-  const copy = discoveryCopy(locale);
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
   return (
     <div className="discovery-empty" role="status">
       <DiscoveryIcon name="search" />
@@ -365,13 +371,14 @@ export function DiscoveryLoadState({
   partial,
   onLoad,
 }: {
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   loading: boolean;
   error: boolean;
   partial: boolean;
   onLoad: () => void;
 }) {
-  const copy = discoveryCopy(locale);
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
   if (!loading && !error && !partial) return null;
   return (
     <div
@@ -405,9 +412,10 @@ export function DiscoveryCompareTray({
   names: Record<string, string>;
   onRemove: (slug: string) => void;
   onClear: () => void;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
 }) {
-  const copy = discoveryCopy(locale);
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
   if (!selected.length) return null;
   const host =
     selected.find((slug) => publishedV6Slugs.includes(slug)) ??

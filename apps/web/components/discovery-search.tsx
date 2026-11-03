@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { DocumentLink as Link } from "./document-link";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import { SearchAutocomplete } from "./search-autocomplete";
 import {
   DiscoveryEmpty,
@@ -20,7 +22,8 @@ import type {
 } from "@/lib/discovery-types";
 import { mockupCopy } from "@/lib/mockup-copy";
 import { discoveryPrimaryTopics } from "@/lib/discovery-topic-groups";
-import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+import { localizeHref } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 
 type SearchState = {
@@ -49,14 +52,15 @@ export function DiscoverySearch({
   evidence,
   children,
 }: {
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   query: string;
   records: DiscoveryUniversity[];
   evidence: DiscoveryEvidence[];
   children: React.ReactNode;
 }) {
-  const copy = discoveryCopy(locale);
-  const design = mockupCopy(locale);
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
+  const design = applyAcceptedReadingUiText(mockupCopy(locale), sharedUiText);
   const [state, setState] = useState<SearchState>(initialState);
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -227,7 +231,7 @@ export function DiscoverySearch({
             >
               <option value="">{design.allCountriesShort}</option>
               {countries.map((c) => (
-                <option key={c}>{c}</option>
+                <option key={c} value={c}>{sharedUiText[c] ?? c}</option>
               ))}
             </select>
           </label>
@@ -240,7 +244,7 @@ export function DiscoverySearch({
                   checked={state.topic === t}
                   onChange={() => update({ topic: state.topic === t ? "" : t })}
                 />
-                {discoveryTopicLabel(t, locale)}
+                {discoveryTopicLabel(t, locale, sharedUiText)}
               </label>
             ))}
           </fieldset>

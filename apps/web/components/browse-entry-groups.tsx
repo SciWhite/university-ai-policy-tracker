@@ -6,6 +6,7 @@ import {
   themeLandingSpecs
 } from "@/lib/reference-pages";
 import { translateSurfaceText } from "@/lib/surface-localization";
+import type { ReadingLocale } from "@/lib/language-catalog";
 
 export interface BrowseEntryGroupsCopy {
   title: string;
@@ -19,6 +20,8 @@ export interface BrowseEntryGroupsCopy {
 interface BrowseEntryGroupsProps {
   copy: BrowseEntryGroupsCopy;
   locale?: SupportedLocale;
+  readingLocale?: ReadingLocale;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
 // Server-rendered entry points into the theme/region/ranking landing pages and
@@ -27,9 +30,11 @@ interface BrowseEntryGroupsProps {
 // below the surface-localization tree walk.
 export function BrowseEntryGroups({
   copy,
-  locale = DEFAULT_LOCALE
+  locale = DEFAULT_LOCALE,
+  readingLocale = locale,
+  sharedUiText = {}
 }: BrowseEntryGroupsProps) {
-  const t = (value: string) => translateSurfaceText(value, locale);
+  const t = (value: string) => translateSurfaceText(value, readingLocale, sharedUiText);
   const groups = [
     {
       title: copy.themesTitle,
@@ -78,6 +83,7 @@ export function BrowseEntryGroups({
                     data-analytics-event="nav_click"
                     data-analytics-nav-area="browse_entry"
                     href={link.href}
+                    localeOverride={readingLocale}
                   >
                     {link.label}
                   </Link>

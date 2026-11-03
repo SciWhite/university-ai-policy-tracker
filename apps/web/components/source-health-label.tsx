@@ -2,6 +2,7 @@ import type { SourceHealthStatus } from "@/lib/review-dashboards";
 import { badgeToneClass, type BadgeTone } from "@/lib/badge-tones";
 import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
 import { translateSurfaceText } from "@/lib/surface-localization";
+import type { ReadingLocale } from "@/lib/language-catalog";
 
 const labels: Record<SourceHealthStatus, string> = {
   agent_blocked_captcha_waf: "Agent WAF block",
@@ -64,15 +65,17 @@ const tones: Record<SourceHealthStatus, BadgeTone> = {
 interface SourceHealthLabelProps {
   status: SourceHealthStatus;
   locale?: SupportedLocale;
+  readingLocale?: ReadingLocale;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
-export function SourceHealthLabel({ locale = DEFAULT_LOCALE, status }: SourceHealthLabelProps) {
+export function SourceHealthLabel({ locale = DEFAULT_LOCALE, readingLocale = locale, sharedUiText = {}, status }: SourceHealthLabelProps) {
   return (
     <span
       className={badgeToneClass("source-health-label", tones[status])}
       data-source-health={status}
     >
-      {translateSurfaceText(labels[status], locale)}
+      {translateSurfaceText(labels[status], readingLocale, sharedUiText)}
     </span>
   );
 }

@@ -8,12 +8,16 @@ import { organizationIdentity } from "@/lib/organization-identity";
 import { getHomeV4Copy } from "@/lib/home-v4-copy";
 import { discoveryCopy } from "@/lib/discovery-copy";
 import { mockupCopy } from "@/lib/mockup-copy";
-import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+import { localizeHref } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
+import { getReadingSharedUiText } from "@/lib/reading-translations";
+import { presentationTextSources } from "@/lib/public-ui-sources";
+import { localizeSurfaceCopy } from "@/lib/surface-localization";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import type { StaticUniversityIndexRecord } from "@/lib/university-index-records";
 import type { ChangeIndexRecord } from "@/lib/change-records";
 interface HomeV6Props {
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   universities: StaticUniversityIndexRecord[];
   claimCount: number;
   sourceCount: number;
@@ -22,14 +26,16 @@ interface HomeV6Props {
   eligibleGuideSlugs?: string[];
   isPreview?: boolean;
 }
-export function HomeV6View({
+export async function HomeV6View({
   locale,
   universities,
   recentChanges = [],
 }: HomeV6Props) {
-  const copy = getHomeV4Copy(locale),
-    ui = discoveryCopy(locale),
-    design = mockupCopy(locale);
+  const sharedUiText = await getReadingSharedUiText(locale, presentationTextSources(getHomeV4Copy("en"), discoveryCopy("en"), mockupCopy("en"), universities.flatMap(record => [record.region, record.country])));
+  const locationText = (source: string | undefined) => source ? sharedUiText[source] ?? source : source;
+  const copy = localizeSurfaceCopy(getHomeV4Copy(locale), locale, sharedUiText),
+    ui = localizeSurfaceCopy(discoveryCopy(locale), locale, sharedUiText),
+    design = localizeSurfaceCopy(mockupCopy(locale), locale, sharedUiText);
   const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
   const examples = [
     ["harvard-university", "Harvard"],
@@ -232,7 +238,7 @@ export function HomeV6View({
                     </Link>
                   </h3>
                   <p className="discovery-location">
-                    {[record.region, record.country].filter(Boolean).join(", ")}
+                    {[record.region, record.country].filter(Boolean).map(locationText).join(", ")}
                   </p>
                 </div>
               </div>
@@ -275,7 +281,7 @@ export function HomeV6View({
                     universities.find((r) => r.slug === record.slug)?.region,
                     universities.find((r) => r.slug === record.slug)?.country,
                   ]
-                    .filter(Boolean)
+                    .filter(Boolean).map(locationText)
                     .join(", ")}
                 </p>
               </div>

@@ -17,7 +17,9 @@ import {
   type DiscoveryMode,
   type DiscoverySearchParams,
 } from "./discovery-query";
-import type { SupportedLocale } from "./i18n";
+import { legacyLocale } from "./i18n";
+import type { ReadingLocale } from "./language-catalog";
+import { localizeDirectorySummaries } from "./reading-directory-summaries";
 
 interface SourceRow {
   id: string;
@@ -235,7 +237,7 @@ const getEditionRows = cache(async (slug: string) => {
 export async function getDiscoveryPage(
   mode: DiscoveryMode,
   input: DiscoverySearchParams,
-  locale: SupportedLocale,
+  locale: ReadingLocale,
   fixedEdition?: string,
 ) {
   const query = parseDiscoveryQuery(input, mode, fixedEdition);
@@ -301,7 +303,7 @@ export async function getDiscoveryPage(
             r.region,
             r.slug,
             ...(r.slug
-              ? getInstitutionLocalizedAliasesByLocale(r.slug, locale)
+              ? getInstitutionLocalizedAliasesByLocale(r.slug, legacyLocale(locale))
               : []),
           ].join(" "),
           q,
@@ -343,10 +345,10 @@ export async function getDiscoveryPage(
   query.page = Math.min(query.page, pageCount);
   return {
     query,
-    rows: filtered.slice(
+    rows: await localizeDirectorySummaries(filtered.slice(
       (query.page - 1) * query.size,
       query.page * query.size,
-    ),
+    ), locale),
     total: filtered.length,
     pageCount,
     countries,

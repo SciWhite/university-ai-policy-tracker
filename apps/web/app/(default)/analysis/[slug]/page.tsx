@@ -93,7 +93,7 @@ export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) 
   const locale = normalizeLocale(localeParam);
 
   if (slug === "policy-coverage") {
-    return <PolicyCoveragePage locale={locale} />;
+    return PolicyCoveragePage({ locale });
   }
 
   const summary = await getAnalysisThemeSummary(slug);

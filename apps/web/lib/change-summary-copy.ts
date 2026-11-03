@@ -1,3 +1,4 @@
+import {applyAcceptedReadingUiText} from "./reading-ui-text";
 import {SUPPORTED_LOCALES,type SupportedLocale} from "./i18n";
 const text={
   title:["What this record update means","这次记录更新意味着什么","Comprendre cette mise à jour","Znaczenie tej aktualizacji","Qué significa esta actualización","Wat deze update betekent","Maksud kemas kini rekod ini"],
@@ -19,4 +20,4 @@ const text={
   fallback:["Summary content is shown in {language}; interface labels remain in your language.","摘要正文使用 {language}，界面标签保留当前语言。","Le résumé est affiché en {language} ; les libellés restent dans votre langue.","Treść podsumowania jest w języku {language}; etykiety pozostają w Twoim języku.","El resumen se muestra en {language}; las etiquetas mantienen tu idioma.","De samenvatting wordt in {language} getoond; labels blijven in uw taal.","Kandungan ringkasan dalam {language}; label antara muka kekal dalam bahasa anda."],
   historical:["This is a historical record summary, not confirmation of current permission or a new university rule.","这是历史记录摘要，不确认当前使用权限，也不证明学校发布了新规。","Ce résumé historique ne confirme ni une autorisation actuelle ni une nouvelle règle de l’université.","To podsumowanie historyczne nie potwierdza bieżących uprawnień ani nowych zasad uczelni.","Este resumen histórico no confirma permisos actuales ni nuevas normas de la universidad.","Deze historische samenvatting bevestigt geen huidige toestemming of nieuwe universiteitsregel.","Ringkasan sejarah ini tidak mengesahkan kebenaran semasa atau peraturan universiti baharu."],
 } as const;
-export function changeSummaryCopy(locale:SupportedLocale){const i=SUPPORTED_LOCALES.indexOf(locale);return Object.fromEntries(Object.entries(text).map(([key,values])=>[key,values[i]])) as Record<keyof typeof text,string>;}
+export function changeSummaryCopy(locale:SupportedLocale,sharedUiText:Readonly<Record<string,string>>={}){const i=SUPPORTED_LOCALES.indexOf(locale);return applyAcceptedReadingUiText(Object.fromEntries(Object.entries(text).map(([key,values])=>[key,values[i]])) as Record<keyof typeof text,string>,sharedUiText);}

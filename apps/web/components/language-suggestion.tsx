@@ -2,112 +2,80 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import {
-  DEFAULT_LOCALE,
-  getReadingLocaleFromPathname,
-  legacyLocale,
-  getLocaleLabel,
-  getPathnameWithoutLocale,
-  isLocalizablePath,
-  isSupportedLocale,
-  localizeHref,
-  type SupportedLocale
-} from "@/lib/i18n";
-import { getShellMessages, interpolate } from "@/lib/i18n-messages";
-import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
-import { useReadingUiText } from "@/components/reading-ui-text-provider";
+import { getReadingLocaleFromPathname } from "@/lib/i18n";
+import { LANGUAGE_NAMES, isReadingLocale, type ReadingLocale } from "@/lib/language-catalog";
+import { readingLanguageHref, suggestedReadingLocale } from "@/lib/language-choice";
+import { interpolate } from "@/lib/reading-ui-text";
+import { useShellMessages } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
-import { preferredReadingLocale } from "@/lib/language-catalog";
 
 const DISMISS_STORAGE_KEY = "uapt-locale-suggestion-dismissed";
 const CHOICE_STORAGE_KEY = "uapt-locale-choice";
 
 export function LanguageSuggestion() {
   const pathname = usePathname();
-  const readingLocale = getReadingLocaleFromPathname(pathname);
-  const locale = legacyLocale(readingLocale);
-  const [suggestedLocale, setSuggestedLocale] = useState<SupportedLocale | null>(
-    null
-  );
-  const messages = applyAcceptedReadingUiText(getShellMessages(readingLocale).locale, useReadingUiText());
+  const locale = getReadingLocaleFromPathname(pathname);
+  const messages = useShellMessages().locale;
+  const [suggestedLocale, setSuggestedLocale] = useState<ReadingLocale | undefined>();
+  const [suffix, setSuffix] = useState({ search: "", hash: "" });
 
   useEffect(() => {
-    if (readingLocale !== DEFAULT_LOCALE) return;
+    const updateSuffix = () => setSuffix({ search: window.location.search, hash: window.location.hash });
+    updateSuffix();
+    window.addEventListener("hashchange", updateSuffix);
+    return () => window.removeEventListener("hashchange", updateSuffix);
+  }, [pathname]);
 
+  useEffect(() => {
+    let choice = false;
+    let dismissed = false;
     try {
-      if (
-        window.localStorage.getItem(DISMISS_STORAGE_KEY) ||
-        window.localStorage.getItem(CHOICE_STORAGE_KEY)
-      ) {
-        return;
-      }
+      const stored = window.localStorage.getItem(CHOICE_STORAGE_KEY);
+      choice = stored !== null && isReadingLocale(stored);
+      dismissed = window.localStorage.getItem(DISMISS_STORAGE_KEY) === "1";
     } catch {
-      // Continue without persistence when storage is unavailable.
+      // Browsing without storage still supports an explicit choice.
     }
-
-    // Every supported browser locale gets the same consent banner; silently
-    // redirecting readers into a locale the switcher does not advertise left
-    // them with no visible way back.
-    const browserLocale = preferredReadingLocale(window.navigator.languages ?? []);
-    setSuggestedLocale(browserLocale && browserLocale !== DEFAULT_LOCALE && isSupportedLocale(browserLocale) ? browserLocale : null);
-  }, [readingLocale, pathname]);
+    setSuggestedLocale(suggestedReadingLocale(pathname, window.navigator.languages ?? [], choice, dismissed));
+  }, [pathname]);
 
   if (!suggestedLocale) return null;
-
-  const targetPath = isLocalizablePath(pathname)
-    ? getPathnameWithoutLocale(pathname)
-    : "/";
-  const targetHref = localizeHref(targetPath, suggestedLocale);
-  const language = getLocaleLabel(suggestedLocale);
+  const targetHref = readingLanguageHref(pathname, suggestedLocale, suffix.search, suffix.hash);
+  if (!targetHref) return null;
 
   function dismiss(source: "stay" | "close") {
-    trackResearchEvent("language_suggestion_dismiss", {
-      locale,
-      suggested_locale: suggestedLocale ?? "unknown",
-      source
-    });
-
+    trackResearchEvent("language_suggestion_dismiss", { locale, suggested_locale: suggestedLocale ?? "unknown", source });
     try {
       window.localStorage.setItem(DISMISS_STORAGE_KEY, "1");
+      if (source === "stay") window.localStorage.setItem(CHOICE_STORAGE_KEY, "en");
     } catch {
-      // localStorage can be unavailable in private or restricted contexts.
+      // No persistence is required to dismiss this prompt.
     }
-    setSuggestedLocale(null);
-  }
-
-  function rememberChoice() {
-    if (!suggestedLocale) return;
-
-    trackResearchEvent("language_suggestion_accept", {
-      locale,
-      suggested_locale: suggestedLocale
-    });
-
-    try {
-      window.localStorage.setItem(CHOICE_STORAGE_KEY, suggestedLocale);
-      window.localStorage.setItem(DISMISS_STORAGE_KEY, "1");
-    } catch {
-      // localStorage can be unavailable in private or restricted contexts.
-    }
+    setSuggestedLocale(undefined);
   }
 
   return (
     <div className="language-suggestion" role="status">
       <p>{messages.prompt}</p>
-      <a href={targetHref} hrefLang={suggestedLocale} onClick={rememberChoice}>
-        {interpolate(messages.switchTo, { language })}
-      </a>
-      <button onClick={() => dismiss("stay")} type="button">
-        {messages.stay}
-      </button>
-      <button
-        aria-label={messages.close}
-        className="language-suggestion__close"
-        onClick={() => dismiss("close")}
-        type="button"
+      <a
+        href={targetHref}
+        hrefLang={suggestedLocale}
+        onClick={(event) => {
+          const target = readingLanguageHref(pathname, suggestedLocale, window.location.search, window.location.hash);
+          if (target) event.currentTarget.href = target;
+          trackResearchEvent("language_suggestion_accept", { locale, suggested_locale: suggestedLocale });
+          try {
+            window.localStorage.setItem(CHOICE_STORAGE_KEY, suggestedLocale);
+            window.localStorage.setItem(DISMISS_STORAGE_KEY, "1");
+          } catch {
+            // The destination URL preserves the selected language.
+          }
+        }}
       >
-        x
-      </button>
+        {interpolate(messages.switchTo, { language: LANGUAGE_NAMES[suggestedLocale] })}
+      </a>
+      <button onClick={() => dismiss("stay")} type="button">{messages.stay}</button>
+      <button aria-label={messages.close} className="language-suggestion__close" onClick={() => dismiss("close")} type="button">×</button>
     </div>
   );
 }

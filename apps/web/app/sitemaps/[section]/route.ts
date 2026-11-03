@@ -1,15 +1,17 @@
 import { xmlEscape, xmlResponse } from "@/lib/feed";
 import { uniqueSitemapEntries } from "@/lib/sitemap-entries";
 import {
-  SITEMAP_SECTION_IDS,
   buildSitemapSection,
   isSitemapSectionId
 } from "@/lib/sitemap-sections";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return SITEMAP_SECTION_IDS.map((section) => ({ section: `${section}.xml` }));
+  // First-request caching keeps each verified language sitemap available
+  // without repeating the full university eligibility scan during builds.
+  return [];
 }
 
 export async function GET(

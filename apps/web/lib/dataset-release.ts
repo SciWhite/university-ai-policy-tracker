@@ -25,6 +25,7 @@ import {
 import { getLatestReleaseDiff, getReleaseSnapshotManifest } from "./release-diffs";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
+import { BoundedAsyncCache } from "./bounded-cache";
 
 export interface DatasetReleaseArtifactContent {
   content: string;
@@ -103,20 +104,42 @@ const datasetArtifactDefinitions = [
 export const datasetArtifactRouteSegments = datasetArtifactDefinitions.map(
   (definition) => definition.routeSegment
 );
+const artifactRouteSegments = new Set<string>(datasetArtifactRouteSegments);
+const datasetReleases = new BoundedAsyncCache<DatasetRelease>(2, 32 * 1024 * 1024, 1, 32);
+
+export function datasetReleaseCacheStats() {
+  return datasetReleases.stats();
+}
 
 export async function getDatasetRelease(): Promise<DatasetRelease> {
   const publicReleaseManifest = await getCurrentPublicReleaseManifest();
-  const dataset = await getStagedPublicDataset();
-
-  return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
+  // Seed/dev data without a publication identity retains its original fresh
+  // timestamp behavior. Published inputs are immutable for this version.
+  if (!publicReleaseManifest) {
+    const dataset = await getStagedPublicDataset();
+    return buildDatasetRelease(dataset.publicSummaries, undefined);
+  }
+  return datasetReleases.get(`current:${datasetReleaseKey(publicReleaseManifest)}`, async () => {
+    const dataset = await getStagedPublicDataset();
+    return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
+  });
 }
 
 export async function getDatasetReleaseForPublicManifest(
   publicReleaseManifest: PublicReleaseManifest
 ): Promise<DatasetRelease> {
-  const dataset = await getStagedPublicDatasetForManifest(publicReleaseManifest);
+  return datasetReleases.get(`snapshot:${datasetReleaseKey(publicReleaseManifest)}`, async () => {
+    const dataset = await getStagedPublicDatasetForManifest(publicReleaseManifest);
+    return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
+  });
+}
 
-  return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
+function datasetReleaseKey(manifest: PublicReleaseManifest): string {
+  return createHash("sha256")
+    .update(JSON.stringify(manifest))
+    .update("\0")
+    .update(getSiteBaseUrl())
+    .digest("hex");
 }
 
 async function buildDatasetRelease(
@@ -227,6 +250,7 @@ async function buildDatasetRelease(
 export async function getDatasetArtifactByRouteSegment(
   routeSegment: string
 ): Promise<DatasetReleaseArtifactContent | undefined> {
+  if (!artifactRouteSegments.has(routeSegment)) return undefined;
   const path = `/api/public/${PUBLIC_API_VERSION}/datasets/${routeSegment}`;
 
   return (await getDatasetRelease()).artifactsByPath.get(path);
@@ -386,7 +410,7 @@ function buildChangeRow(summary: PublicEntitySummary, siteBaseUrl: string) {
   };
 }
 
-function buildDatasetCounts(summaries: PublicEntitySummary[]) {
+export function buildDatasetCounts(summaries: PublicEntitySummary[]) {
   const sourceLanguageCounts = new Map<string, number>();
   const reviewStateCounts = new Map<string, number>();
   let evidenceRecords = 0;

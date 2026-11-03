@@ -14,7 +14,7 @@ import {
   getMonthlyReportCoveragePath
 } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
-import { normalizeLocale } from "@/lib/i18n";
+import { normalizeReadingLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 
 interface MonthlyReportPageProps {
@@ -59,7 +59,7 @@ export default async function MonthlyReportPage({
   params
 }: MonthlyReportPageProps) {
   const { locale: localeParam, month } = await params;
-  const locale = normalizeLocale(localeParam);
+  const locale = normalizeReadingLocale(localeParam);
   const report = await getMonthlyReport(month, locale);
 
   if (!report) {

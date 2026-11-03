@@ -3,8 +3,10 @@ import { useState } from "react";
 import type { SupportedLocale } from "@/lib/i18n";
 import { pluginExampleQuestions, pluginPromotionCopy } from "@/lib/plugin-promotion";
 import styles from "./trust-page.module.css";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 export function PluginGetStarted({ locale }: { locale: SupportedLocale }) {
- const text=pluginPromotionCopy(locale); const [feedback,setFeedback]=useState("");
+ const text=applyAcceptedReadingUiText(pluginPromotionCopy(locale),useReadingUiText()); const [feedback,setFeedback]=useState("");
  async function copy(question:string) {
   try { await navigator.clipboard.writeText(question);setFeedback(text.copied); }
   catch { setFeedback(text.fallback); }

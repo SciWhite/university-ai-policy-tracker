@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 
 type CopyTarget = "citation" | "canonicalUrl" | "publicJsonUrl";
 
@@ -35,7 +37,9 @@ export function CitationCopyActions({
   locale = DEFAULT_LOCALE,
   publicJsonUrl
 }: CitationCopyActionsProps) {
-  const copy = copyTextByLocale[locale];
+  const sharedUiText = useReadingUiText();
+  const copy = applyAcceptedReadingUiText(copyTextByLocale[locale], sharedUiText);
+  if (locale === "en" && sharedUiText.Citation) copy.labels.citation = sharedUiText.Citation;
   const [copiedTarget, setCopiedTarget] = useState<CopyTarget | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 

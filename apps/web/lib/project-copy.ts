@@ -1,3 +1,5 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
 import type { SupportedLocale } from "@/lib/i18n";
 
 const projectCopy = {
@@ -143,6 +145,6 @@ const projectCopy = {
   }
 } as const;
 
-export function getProjectCopy(locale: SupportedLocale) {
-  return projectCopy[locale];
+export function getProjectCopy(locale: ReadingLocale) {
+  return projectCopy[legacyLocale(locale)];
 }

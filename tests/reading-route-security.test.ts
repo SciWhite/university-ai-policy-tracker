@@ -30,7 +30,7 @@ test("all reading locale routes bypass private analytics auth without weakening 
 test("navigation carries the exact reading locale and Hant uses English legacy UI fallback", () => {
   for (const locale of READING_LOCALES) {
     const selected = getReadingLocaleFromPathname(`/${locale}/universities/ucl`);
-    assert.equal(localizeHref("/universities/oxford-university", selected), locale === "en" ? "/universities/oxford-university" : `/${locale}/universities/oxford-university`);
+    assert.equal(localizeHref("/universities/university-of-oxford", selected), locale === "en" ? "/universities/university-of-oxford" : `/${locale}/universities/university-of-oxford`);
   }
   assert.equal(normalizeLocale("zh-Hant"), "en");
   assert.equal(normalizeLocale("zh-Hant-TW"), "en");

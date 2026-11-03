@@ -1,5 +1,5 @@
 import BasePage, { generateMetadata as baseGenerateMetadata } from "../../(default)/changes/page";
-import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization";
+import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization-server";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -7,4 +7,4 @@ export const generateMetadata = createLocalizedSurfaceMetadata(
   baseGenerateMetadata as (props: unknown) => ReturnType<typeof baseGenerateMetadata>,
   "/changes"
 );
-export default createLocalizedSurfacePage(BasePage);
+export default createLocalizedSurfacePage(BasePage, "/changes");

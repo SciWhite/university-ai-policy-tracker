@@ -1,8 +1,8 @@
 import BasePage, { generateMetadata as baseGenerateMetadata } from "../../(default)/source-health/page";
-import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization";
+import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization-server";
 
 export const generateMetadata = createLocalizedSurfaceMetadata(
   baseGenerateMetadata as (props: unknown) => ReturnType<typeof baseGenerateMetadata>,
   "/source-health"
 );
-export default createLocalizedSurfacePage(BasePage);
+export default createLocalizedSurfacePage(BasePage, "/source-health");

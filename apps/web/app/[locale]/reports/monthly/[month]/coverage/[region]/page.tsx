@@ -1,5 +1,5 @@
 import BasePage, { generateMetadata as baseGenerateMetadata, generateStaticParams } from "../../../../../../(default)/reports/monthly/[month]/coverage/[region]/page";
-import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization";
+import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization-server";
 
 export { generateStaticParams };
 export const dynamic = "force-static";
@@ -9,4 +9,4 @@ export const generateMetadata = createLocalizedSurfaceMetadata(
   baseGenerateMetadata as (props: unknown) => ReturnType<typeof baseGenerateMetadata>,
   (params) => `/reports/monthly/${params.month}/coverage/${params.region}`
 );
-export default createLocalizedSurfacePage(BasePage);
+export default createLocalizedSurfacePage(BasePage, "/reports/monthly/[month]/coverage/[region]");

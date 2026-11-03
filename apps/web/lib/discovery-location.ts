@@ -43,8 +43,9 @@ export function countryKey(country: string) {
 export function countryLabel(country: string) {
   return aliases[key(country)]?.[1] ?? country.trim();
 }
-export function formatDiscoveryLocation(region: string, country: string) {
+export function formatDiscoveryLocation(region: string, country: string, sharedUiText: Readonly<Record<string, string>> = {}) {
   return [region.trim().replace(/[,，]+$/u, ""), countryLabel(country)]
     .filter(Boolean)
+    .map(value => sharedUiText[value] ?? value)
     .join(", ");
 }

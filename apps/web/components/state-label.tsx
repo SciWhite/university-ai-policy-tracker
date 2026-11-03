@@ -39,13 +39,14 @@ interface StateLabelProps {
   reviewState: string;
   prefix?: string;
   locale?: SupportedLocale;
+  displayLabel?: string;
 }
 
-export function StateLabel({ locale = DEFAULT_LOCALE, reviewState, prefix = "Review" }: StateLabelProps) {
+export function StateLabel({ locale = DEFAULT_LOCALE, reviewState, prefix = "Review", displayLabel }: StateLabelProps) {
   const knownState = isKnownReviewState(reviewState);
-  const label = knownState
+  const label = displayLabel ?? (knownState
     ? stateLabels[locale][reviewState]
-    : formatUnknownState(reviewState);
+    : formatUnknownState(reviewState));
   const localizedPrefix = prefix === "Review" ? reviewPrefixes[locale] : prefix;
 
   return (

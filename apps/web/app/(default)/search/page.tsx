@@ -2,11 +2,13 @@ import {getDiscoveryTopicKeys} from "@/lib/discovery-topic-groups";
 import { JsonLd } from "@/components/json-ld";
 import { DocumentLink as Link } from "@/components/document-link";
 import { DiscoverySearch } from "@/components/discovery-search";
+import { ReadingUiTextProvider } from "@/components/reading-ui-text-provider";
+import { getReadingSharedUiText } from "@/lib/reading-translations";
 import { getSearchIndexRecords, searchIndexRecords } from "@/lib/entity-search";
 import { getStagedPublicDataset } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
-import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
+import { normalizeReadingLocale, legacyLocale, type SupportedLocale } from "@/lib/i18n";
 import { discoveryCopy } from "@/lib/discovery-copy";
 import type { DiscoveryEvidence } from "@/lib/discovery-types";
 
@@ -31,9 +33,9 @@ interface SearchPageProps {
 export async function generateMetadata({
   params,
 }: Pick<SearchPageProps, "params">) {
-  const locale = normalizeLocale((await params)?.locale);
-  const copy = searchCopy[locale];
-  const alternates = getLocalizedAlternates("/search", locale);
+  const locale = normalizeReadingLocale((await params)?.locale);
+  const copy = searchCopy[legacyLocale(locale)];
+  const alternates = getLocalizedAlternates("/search", legacyLocale(locale));
   const canonical = String(alternates.canonical);
 
   return {
@@ -53,7 +55,7 @@ export default async function SearchPage({
   params,
   searchParams,
 }: SearchPageProps) {
-  const locale = normalizeLocale((await params)?.locale);
+  const locale = normalizeReadingLocale((await params)?.locale);
   const copy = discoveryCopy(locale);
   const resolved = await searchParams;
   const query =
@@ -125,8 +127,9 @@ export default async function SearchPage({
         });
       }
     }
+  const locationText = await getReadingSharedUiText(locale, records.flatMap(record => [record.country, record.region]).filter((value): value is string => Boolean(value)));
   return (
-    <>
+    <ReadingUiTextProvider value={locationText}>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -162,6 +165,6 @@ export default async function SearchPage({
           </li>
         </ul>
       </DiscoverySearch>
-    </>
+    </ReadingUiTextProvider>
   );
 }

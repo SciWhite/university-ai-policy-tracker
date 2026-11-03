@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { getReadingLocaleFromPathname, legacyLocale } from "@/lib/i18n";
-import { getShellMessages, interpolate } from "@/lib/i18n-messages";
-import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
-import { useReadingUiText } from "@/components/reading-ui-text-provider";
+import { getReadingLocaleFromPathname } from "@/lib/i18n";
+import { interpolate } from "@/lib/reading-ui-text";
+import { useShellMessages } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
 
 const THEME_STORAGE_KEY = "uapt-theme";
@@ -17,8 +16,7 @@ export function ThemeToggle() {
   const [preference, setPreference] = useState<ThemePreference>("system");
   const pathname = usePathname();
   const readingLocale = getReadingLocaleFromPathname(pathname);
-  const locale = legacyLocale(readingLocale);
-  const messages = applyAcceptedReadingUiText(getShellMessages(readingLocale).theme, useReadingUiText());
+  const messages = useShellMessages().theme;
 
   useEffect(() => {
     const stored = readStoredPreference();

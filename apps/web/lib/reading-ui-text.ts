@@ -8,3 +8,10 @@ export function applyAcceptedReadingUiText<T>(value: T, translations: Readonly<R
   };
   return visit(value) as T;
 }
+
+export function interpolate(template: string, values: Record<string, string>): string {
+  return Object.entries(values).reduce(
+    (output, [key, value]) => output.replaceAll(`{${key}}`, value),
+    template
+  );
+}

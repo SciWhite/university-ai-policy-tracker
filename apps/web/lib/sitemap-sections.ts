@@ -248,18 +248,21 @@ async function buildLocaleSection(
     lastModified: publishedAt
   })) : [];
   const summaries = new Map((await getStagedPublicSummaries()).map(summary => [summary.entity.slug, summary]));
-  const universityEntries = await Promise.all(universities.map(async (university) => {
-    if (process.env.NODE_ENV === "development") return null;
+  // Eligibility can read and verify per-school translations. Do not enqueue
+  // the entire catalog at once or turn capacity rejection into missing URLs.
+  const eligibleUniversityEntries: SitemapEntry[] = [];
+  for (const university of universities) {
+    if (process.env.NODE_ENV === "development") continue;
     const usePublishedV6 = publishedV6Enabled() && publishedV6Slugs.includes(university.slug);
     const summary = usePublishedV6
       ? await getPublicUniversitySummaryBySlug(university.slug)
       : summaries.get(university.slug);
     const basis = summary ? universityReadingBasis(university.slug, summary) : undefined;
     const indexBasis = basis ?? { recordSha256: "", originalEvidenceSha256: "" };
-    if (!summary || !(await universityReadingIndexLocales(university.slug, indexBasis, summary)).includes(locale)) return null;
+    if (!summary || !(await universityReadingIndexLocales(university.slug, indexBasis, summary, locale)).includes(locale)) continue;
     const latestSourceDate = getLatestSourceDate(university.sources);
 
-    return {
+    eligibleUniversityEntries.push({
       url: new URL(
         withLocalePrefix(`/universities/${university.slug}`, locale),
         baseUrl
@@ -267,9 +270,8 @@ async function buildLocaleSection(
       lastModified: isIndexRecoveryPilotSlug(university.slug)
         ? await getIndexRecoveryLastModified(university.slug)
         : latestSourceDate ? new Date(latestSourceDate) : publishedAt
-    };
-  }));
-  const eligibleUniversityEntries = universityEntries.filter((entry): entry is SitemapEntry => entry !== null);
+    });
+  }
 
   return [...staticEntries, ...eligibleUniversityEntries];
 }

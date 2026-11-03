@@ -1,5 +1,7 @@
 "use client";
 import { DocumentLink as Link } from "./document-link";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import { UniversityMark } from "./university-mark";
 import { DiscoveryUniversityCard } from "./discovery-ui";
 import { discoveryCopy } from "@/lib/discovery-copy";
@@ -12,19 +14,20 @@ import {
   countryLabel,
   formatDiscoveryLocation,
 } from "@/lib/discovery-location";
-import type { SupportedLocale } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import type { RankingViewRow } from "@/lib/rankings-view-data";
 export interface DiscoveryResultsProps {
   rows: RankingViewRow[];
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   edition: string;
   returnTo: string;
   compare: string[];
   onCompare: (slug: string) => void;
 }
 export function UniversityDirectoryResults(p: DiscoveryResultsProps) {
-  const ui = discoveryCopy(p.locale),
-    copy = rankingBrowserCopy(p.locale),
+  const sharedUiText = useReadingUiText();
+  const ui = applyAcceptedReadingUiText(discoveryCopy(p.locale), sharedUiText),
+    copy = applyAcceptedReadingUiText(rankingBrowserCopy(p.locale), sharedUiText),
     edition = getRankingEdition(p.edition)!;
   return (
     <div className="directory-browser-grid">
@@ -77,7 +80,7 @@ export function UniversityDirectoryResults(p: DiscoveryResultsProps) {
             </span>
             <h3>{row.name}</h3>
             <p>
-              {formatDiscoveryLocation(row.region, row.country) ||
+              {formatDiscoveryLocation(row.region, row.country, sharedUiText) ||
                 copy.unknownCountry}
             </p>
             <p>
@@ -93,11 +96,12 @@ export function UniversityDirectoryResults(p: DiscoveryResultsProps) {
   );
 }
 export function RankingTable(p: DiscoveryResultsProps) {
-  const ui = discoveryCopy(p.locale),
-    copy = rankingBrowserCopy(p.locale),
+  const sharedUiText = useReadingUiText();
+  const ui = applyAcceptedReadingUiText(discoveryCopy(p.locale), sharedUiText),
+    copy = applyAcceptedReadingUiText(rankingBrowserCopy(p.locale), sharedUiText),
     rankLabel =
       getRankingEdition(p.edition)!.systemId === "cwts"
-        ? rankingsCopy(p.locale).derived
+        ? applyAcceptedReadingUiText(rankingsCopy(p.locale), sharedUiText).derived
         : ui.rankOrder;
   return (
     <div className="ranking-v6-table-wrap">
@@ -142,7 +146,7 @@ export function RankingTable(p: DiscoveryResultsProps) {
                 )}
               </td>
               <td className="ranking-v6-location" data-label={ui.country}>
-                {formatDiscoveryLocation(row.region, row.country) ||
+                {formatDiscoveryLocation(row.region, row.country, sharedUiText) ||
                   copy.unknownCountry}
               </td>
               <td className="ranking-browser-review" data-label={copy.review}>

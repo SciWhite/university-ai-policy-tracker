@@ -98,6 +98,15 @@ export async function getPublicUniversitySummaryBySlug(
 
   if (fromApi) return fromApi;
 
+  return getLocalPublicUniversitySummaryBySlug(slug);
+}
+
+/** Canonical API handlers read their published data directly, never their own URL. */
+export async function getLocalPublicUniversitySummaryBySlug(
+  slug: string
+): Promise<PublicEntitySummary | undefined> {
+  const corrected = v6CorrectedSummary(slug);
+  if (corrected) return corrected;
   const fromStaging = await getStagedPublicSummaryBySlug(slug);
   if (fromStaging) return fromStaging;
 

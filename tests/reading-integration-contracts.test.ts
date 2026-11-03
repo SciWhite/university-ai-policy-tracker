@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createHash } from "node:crypto";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, stat, utimes, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import {
@@ -10,6 +10,7 @@ import {
   getReadingSharedUiText,
   readingDisplayView,
   readingSummaryBasis,
+  readingTranslationCacheStats,
   verifiedV6ReadingBasis,
   validateReadingTranslationBundle,
   type ReadingTranslationBundle,
@@ -18,7 +19,7 @@ import {
 import { READING_LOCALES, isReadingLocale, matchReadingLocale, preferredReadingLocale, readingDirection } from "../apps/web/lib/language-catalog";
 import { getReadingLocaleFromPathname, legacyLocale, localizeHref, normalizeReadingLocale } from "../apps/web/lib/i18n";
 import { packAcceptedMatrixCandidate } from "../scripts/pack-reading-translations";
-import { localEvidenceDisplayRequirements, policySceneDisplaySources, readingDisplayRequirementsComplete } from "../apps/web/lib/university-reading-metadata";
+import { localEvidenceDisplayRequirements, policySceneDisplaySources, readingDisplayRequirementsComplete, universityReadingIndexLocales } from "../apps/web/lib/university-reading-metadata";
 import { getPublicUniversitySummaryBySlug } from "../apps/web/lib/catalog";
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
@@ -40,10 +41,12 @@ function makeBundle(slug: string, source: string, translation: string): ReadingT
   };
 }
 
-async function packageFixture(root: string, options: { sampled?: boolean; recordSha256?: string; originalEvidenceSha256?: string } = {}) {
+async function packageFixture(root: string, options: { sampled?: boolean; slug?: string; recordSha256?: string; originalEvidenceSha256?: string } = {}) {
   const source = "Policy overview";
+  const slug = options.slug ?? "ucl";
   const shared = makeBundle("_shared", source, "ملخص السياسة");
-  const school = makeBundle("ucl", source, "ملخص السياسة");
+  const school = makeBundle(slug, source, "ملخص السياسة");
+  school.sourceFieldUses = { [sha(source)]: ["/public/summary"] };
   if (options.recordSha256) school.recordSha256 = options.recordSha256;
   if (options.originalEvidenceSha256) school.originalEvidenceSha256 = options.originalEvidenceSha256;
   const put = async (name: string, value: unknown) => {
@@ -71,7 +74,7 @@ async function packageFixture(root: string, options: { sampled?: boolean; record
     publicationApproved: options.sampled ? false : true,
     ...(options.sampled ? { candidateOnly: true as const, samplingAcceptance } : {}),
     shared: { ar: await put("shared.json", shared) },
-    schools: { ucl: { ar: await put("school.json", school) } },
+    schools: { [slug]: { ar: await put("school.json", school) } },
   };
   if (selection.samplingAcceptance) {
     selection.samplingAcceptance.packageAdjustmentSha256 = sha(JSON.stringify({ statusEnumExceptions: [], urlBoundaryRepairs: [] }));
@@ -80,6 +83,121 @@ async function packageFixture(root: string, options: { sampled?: boolean; record
   await writeFile(path.join(root, "candidate.json"), `${JSON.stringify(selectionRef)}\n`);
   return { selection, selectionRef, pointer: path.join(root, "candidate.json"), basis: { recordSha256: school.recordSha256, originalEvidenceSha256: school.originalEvidenceSha256 } };
 }
+
+test("concurrent reading and shell requests share bounded verified package work", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "uapt-reading-cache-"));
+  try {
+    const fixture = await packageFixture(root);
+    const before = readingTranslationCacheStats();
+    const results = await Promise.all(Array.from({ length: 16 }, () =>
+      getReadingTranslations("ucl", "ar", fixture.basis, fixture.pointer)));
+    const first = results[0];
+    assert.equal(first.state, "ready");
+    if (first.state !== "ready") return;
+    for (const result of results) {
+      assert.equal(result.state, "ready");
+      if (result.state !== "ready") continue;
+      assert.equal(result.shared, first.shared);
+      assert.equal(result.school, first.school);
+    }
+    assert.equal(Object.isFrozen(first.school.strings), true);
+    assert.equal(readingDisplayRequirementsComplete([{ source: "Policy overview", field: "/public/summary" }], first.school, first.shared), true);
+    assert.equal(readingDisplayRequirementsComplete([{ source: "Policy overview", field: "/public/summary" }], first.school, first.shared), true);
+    assert.equal(readingDisplayRequirementsComplete([{ source: "Policy overview", field: "/public/claims/claim-unknown/claimText" }], first.school, first.shared), false);
+    const after = readingTranslationCacheStats();
+    assert.equal(after.artifactReads - before.artifactReads, 3, "one selection and two bundle reads, even for concurrent callers");
+    assert.equal(after.bundleValidations - before.bundleValidations, 2);
+    assert.deepEqual(await getReadingSharedUiText("ar", ["Policy overview"], fixture.pointer), { "Policy overview": "ملخص السياسة" });
+    const warm = readingTranslationCacheStats();
+    assert.equal(warm.artifactReads, after.artifactReads);
+    assert.equal(warm.bundleValidations, after.bundleValidations);
+    assert(warm.artifacts.bytes <= warm.artifacts.maxBytes);
+    assert(warm.artifacts.entries <= warm.artifacts.maxEntries);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("a warm package rejects same-size tampering with restored mtime and accepts repaired bytes", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "uapt-reading-cache-tamper-"));
+  try {
+    const fixture = await packageFixture(root);
+    assert.equal((await getReadingTranslations("ucl", "ar", fixture.basis, fixture.pointer)).state, "ready");
+    const schoolPath = path.join(root, "school.json");
+    const original = await readFile(schoolPath, "utf8");
+    const info = await stat(schoolPath);
+    const changed = original.replace("ملخص", "ملخض");
+    assert.notEqual(changed, original);
+    assert.equal(Buffer.byteLength(changed), Buffer.byteLength(original));
+    await writeFile(schoolPath, changed);
+    await utimes(schoolPath, info.atime, info.mtime);
+    assert.equal((await getReadingTranslations("ucl", "ar", fixture.basis, fixture.pointer)).state, "invalid_package");
+    await writeFile(schoolPath, original);
+    await utimes(schoolPath, info.atime, info.mtime);
+    assert.equal((await getReadingTranslations("ucl", "ar", fixture.basis, fixture.pointer)).state, "ready");
+    assert.equal((await getReadingTranslations("ucl", "ar", { ...fixture.basis, recordSha256: "e".repeat(64) }, fixture.pointer)).state, "stale_record");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("shallow-frozen caller objects cannot seed a cached field-coverage decision", () => {
+  const source = "Policy overview";
+  const shared = makeBundle("_shared", source, "ملخص السياسة");
+  const school = makeBundle("ucl", source, "ملخص السياسة");
+  const key = sha(source);
+  school.sourceFieldUses = { [key]: ["/public/summary"] };
+  for (const bundle of [shared, school]) {
+    Object.freeze(bundle.strings);
+    Object.freeze(bundle.sourceFieldUses);
+    Object.freeze(bundle);
+  }
+  const allowed = [{ source, field: "/public/summary" }];
+  assert.equal(readingDisplayRequirementsComplete(allowed, school, shared), true);
+  assert.equal(readingDisplayRequirementsComplete(allowed, school, shared), true);
+  assert.equal(readingDisplayRequirementsComplete(allowed, school, shared, false), false);
+  assert.equal(readingDisplayRequirementsComplete([{ source, field: "/v6/studentActions/claims/claim-a/text" }], school, shared), false);
+  assert.equal(readingDisplayRequirementsComplete(allowed, school, shared), true);
+  school.sourceFieldUses![key].splice(0, 1);
+  assert.equal(readingDisplayRequirementsComplete(allowed, school, shared), false);
+});
+
+test("index eligibility rechecks replaced policy bytes and approval hash after a warm decision", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "uapt-reading-index-cache-"));
+  const env = ["UAPT_READING_PACKAGE_POINTER", "UAPT_UNIVERSITY_LOCALE_INDEX_POLICY", "UAPT_UNIVERSITY_LOCALE_INDEX_POLICY_SHA256"] as const;
+  const saved = Object.fromEntries(env.map(key => [key, process.env[key]]));
+  try {
+    const slug = "synthetic-university";
+    const fixture = await packageFixture(root, { slug });
+    const policyPath = path.join(root, "index-policy.json");
+    const policy = {
+      schemaVersion: "uapt-university-locale-index-policy-v1", sourceSha256: fixture.selection.sourceSha256,
+      schools: { [slug]: { recordSha256: fixture.basis.recordSha256, locales: ["en", "ar"], evidence: [] } }, globalCitationExceptions: {},
+    };
+    const raw = JSON.stringify(policy);
+    await writeFile(policyPath, raw);
+    process.env.UAPT_READING_PACKAGE_POINTER = fixture.pointer;
+    process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY = policyPath;
+    process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY_SHA256 = sha(raw);
+    const summary = { entity: { slug }, claims: [] } as unknown as NonNullable<Parameters<typeof universityReadingIndexLocales>[2]>;
+    const before = readingTranslationCacheStats();
+    assert.deepEqual(await universityReadingIndexLocales(slug, fixture.basis, summary, "fr"), ["en"]);
+    assert.equal(readingTranslationCacheStats().artifactReads, before.artifactReads, "a disallowed locale does not load other language bundles");
+    assert.deepEqual(await universityReadingIndexLocales(slug, fixture.basis, summary), ["en", "ar"]);
+    assert.deepEqual(await universityReadingIndexLocales(slug, fixture.basis, summary, "ar"), ["en", "ar"]);
+    const info = await stat(policyPath);
+    await writeFile(policyPath, raw.replace('"ar"', '"fr"'));
+    await utimes(policyPath, info.atime, info.mtime);
+    assert.deepEqual(await universityReadingIndexLocales(slug, fixture.basis, summary), ["en"]);
+    await writeFile(policyPath, raw);
+    assert.deepEqual(await universityReadingIndexLocales(slug, fixture.basis, summary), ["en", "ar"]);
+    process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY_SHA256 = "0".repeat(64);
+    assert.deepEqual(await universityReadingIndexLocales(slug, fixture.basis, summary), ["en"]);
+  } finally {
+    for (const key of env) saved[key] === undefined ? delete process.env[key] : process.env[key] = saved[key]!;
+    await rm(root, { recursive: true, force: true });
+  }
+});
 
 test("sampled candidate requires development mode plus both exact acceptance and selection pins", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "uapt-reading-contract-"));

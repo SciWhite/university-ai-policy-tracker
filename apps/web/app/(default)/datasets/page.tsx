@@ -12,7 +12,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import {
   getCatalogUniversities,
-  getPublicUniversitySummaryBySlug
+  getLocalPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
 import { getDatasetRelease } from "@/lib/dataset-release";
 import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
@@ -166,7 +166,7 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
   const summaries = (
     await Promise.all(
       universities.map((university) =>
-        getPublicUniversitySummaryBySlug(university.slug)
+        getLocalPublicUniversitySummaryBySlug(university.slug)
       )
     )
   ).filter((summary): summary is PublicEntitySummary => Boolean(summary));

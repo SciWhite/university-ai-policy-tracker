@@ -3,8 +3,10 @@ import type { SupportedLocale } from "@/lib/i18n";
 import { organizationIdentity } from "@/lib/organization-identity";
 import { JsonLd } from "./json-ld";
 import { ReferenceBox } from "./reference-box";
-export function OrganizationIdentity({locale}: {locale: SupportedLocale}) {
-  const copy = getProjectCopy(locale);
+import type { ReadingLocale } from "@/lib/language-catalog";
+import { localizeSurfaceCopy } from "@/lib/surface-localization";
+export function OrganizationIdentity({locale, readingLocale = locale, sharedUiText = {}}: {locale: SupportedLocale; readingLocale?: ReadingLocale; sharedUiText?: Readonly<Record<string, string>>}) {
+  const copy = localizeSurfaceCopy(getProjectCopy(locale), readingLocale, sharedUiText);
   return <ReferenceBox id="organization" title={copy.organizationTitle}>
     <JsonLd data={{"@context":"https://schema.org", ...organizationIdentity}} />
     <p>{copy.operator}</p><p>{copy.organizationDetails}</p>

@@ -10,12 +10,14 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import { MetaLabel } from "@/components/meta-label";
-import { StateLabel } from "@/components/state-label";
+import { StateLabel, getReviewStateLabel } from "@/components/state-label";
 import { trackResearchEvent } from "@/lib/analytics-client";
 import { getQueryAnalytics } from "@/lib/analytics-events";
 import { getReadingLocaleFromPathname, legacyLocale, localizeHref } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { localizeMatchReason } from "@/lib/match-reason-labels";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 
 const autocompleteCopy = {
   en: {
@@ -142,7 +144,11 @@ export function SearchAutocomplete({
   const pathname = usePathname();
   const readingLocale = getReadingLocaleFromPathname(pathname);
   const locale = legacyLocale(readingLocale);
-  const copy = autocompleteCopy[locale];
+  const sharedUiText = useReadingUiText();
+  const copy = {
+    ...applyAcceptedReadingUiText(autocompleteCopy[locale], sharedUiText),
+    resultsReady: (count: number) => sharedUiText["{0} suggestions available. Use the up and down arrow keys to browse."]?.replaceAll("{0}", String(count)) ?? autocompleteCopy[locale].resultsReady(count)
+  };
   const trimmedQuery = query.trim();
   const queryAnalytics = getQueryAnalytics(trimmedQuery);
   const queryKind = String(queryAnalytics.query_kind ?? "");
@@ -337,9 +343,11 @@ export function SearchAutocomplete({
                     <StateLabel
                       locale={locale}
                       reviewState={result.reviewState}
+                      prefix={sharedUiText.Review ?? "Review"}
+                      displayLabel={sharedUiText[getReviewStateLabel(result.reviewState, locale)] ?? getReviewStateLabel(result.reviewState, locale)}
                     />
                     <MetaLabel label={copy.match}>
-                      {localizeMatchReason(result.matchReason, locale)}
+                      {sharedUiText[localizeMatchReason(result.matchReason, locale)] ?? localizeMatchReason(result.matchReason, locale)}
                     </MetaLabel>
                     <MetaLabel label={copy.score}>{result.score}</MetaLabel>
                   </div>

@@ -1,11 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import type { SupportedLocale } from "@/lib/i18n";
+import { useReadingUiText } from "./reading-ui-text-provider";
 const labels = {
   en:["Support email provider","Retention"], zh:["支持邮箱服务商","保留设置"], fr:["Fournisseur de messagerie","Conservation"],
   pl:["Dostawca poczty","Przechowywanie"], es:["Proveedor de correo","Conservación"], nl:["Mailprovider","Bewaring"], ms:["Penyedia e-mel","Penyimpanan"]
 } as const;
 export function SupportMailboxDetails({locale}:{locale:SupportedLocale}) {
+  const uiText=useReadingUiText();
+  const text=labels[locale].map(label=>uiText[label]??label);
   const [details,setDetails]=useState<{provider:string;retention:string}|null>(null);
   useEffect(()=>{
     const controller=new AbortController();
@@ -14,5 +17,5 @@ export function SupportMailboxDetails({locale}:{locale:SupportedLocale}) {
     }).catch(()=>{});
     return ()=>controller.abort();
   },[]);
-  return details ? <><dl><dt>{labels[locale][0]}</dt><dd>{details.provider}</dd><dt>{labels[locale][1]}</dt><dd lang="en">{details.retention}</dd></dl><p><a href="https://www.zoho.com/mail/help/data-deletion-policy.html" target="_blank" rel="noreferrer" lang="en">Zoho Mail deletion policy</a></p></> : null;
+  return details ? <><dl><dt>{text[0]}</dt><dd>{details.provider}</dd><dt>{text[1]}</dt><dd lang="en">{details.retention}</dd></dl><p><a href="https://www.zoho.com/mail/help/data-deletion-policy.html" target="_blank" rel="noreferrer" lang="en">Zoho Mail deletion policy</a></p></> : null;
 }

@@ -2,12 +2,12 @@ import { RankingEditionView } from "./ranking-edition-view";
 import { getRankingEdition } from "@/lib/ranking-editions";
 import { parseDiscoveryQuery } from "@/lib/discovery-query";
 import type { DiscoverySearchParams } from "@/lib/discovery-query";
-import type { SupportedLocale } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 export function RankingsIndexView({
   locale,
   searchParams = {},
 }: {
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   searchParams?: DiscoverySearchParams;
 }) {
   const candidate = parseDiscoveryQuery(searchParams, "rankings").edition;

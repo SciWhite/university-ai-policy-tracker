@@ -13,7 +13,7 @@ import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
-import { normalizeLocale } from "@/lib/i18n";
+import { normalizeLocale, normalizeReadingLocale } from "@/lib/i18n";
 import { getBrowseEntryGroupsCopy, getPageCopy } from "@/lib/page-copy";
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 import { IntentFlow } from "@/components/intent-flow";
@@ -125,49 +125,30 @@ export default async function HomePage({
     .slice(0, 5);
 
   if (layout !== "legacy") {
-    const [verifiedGuides, changeIndex] = await Promise.all([
-      getVerifiedHomeV4Guides(),
-      isHomeV4Preview(layout) ? Promise.resolve(null) : getChangeIndexData(),
-    ]);
-    const eligibleGuideSlugs = verifiedGuides
-      .filter((g) => g.isEligible)
-      .map((g) => g.slug);
     const isPreview = isHomeV4Preview(layout);
-    const View = isPreview ? HomeV4View : HomeV6View;
+    const sharedProps = { universities, claimCount, sourceCount, recentRecords };
+    // Only the V4 preview uses snapshot/claim eligibility. The V6 homepage
+    // must not wait for those unrelated records before it can render.
+    const view = isPreview ? (
+      <HomeV4View
+        {...sharedProps}
+        locale={locale}
+        eligibleGuideSlugs={(await getVerifiedHomeV4Guides()).filter(guide => guide.isEligible).map(guide => guide.slug)}
+        isPreview
+      />
+    ) : (
+      <HomeV6View
+        {...sharedProps}
+        locale={normalizeReadingLocale((await params)?.locale)}
+        recentChanges={(await getChangeIndexData()).data.records
+          .slice()
+          .sort((a, b) => (b.lastChangedAt ?? b.lastCheckedAt ?? b.firstSeenAt ?? "").localeCompare(a.lastChangedAt ?? a.lastCheckedAt ?? a.firstSeenAt ?? ""))
+          .slice(0, 3)}
+      />
+    );
     return (
-      <main
-        className={
-          isPreview
-            ? "page-shell home-v4-shell page-shell--wide"
-            : "discovery-page home-v6-page"
-        }
-      >
-        <View
-          locale={locale}
-          universities={universities}
-          claimCount={claimCount}
-          sourceCount={sourceCount}
-          recentRecords={recentRecords}
-          {...(!isPreview
-            ? {
-                recentChanges: changeIndex?.data.records
-                  .slice()
-                  .sort((a, b) =>
-                    (
-                      b.lastChangedAt ??
-                      b.lastCheckedAt ??
-                      b.firstSeenAt ??
-                      ""
-                    ).localeCompare(
-                      a.lastChangedAt ?? a.lastCheckedAt ?? a.firstSeenAt ?? "",
-                    ),
-                  )
-                  .slice(0, 3),
-              }
-            : {})}
-          eligibleGuideSlugs={eligibleGuideSlugs}
-          isPreview={isPreview}
-        />
+      <main className={isPreview ? "page-shell home-v4-shell page-shell--wide" : "discovery-page home-v6-page"}>
+        {view}
       </main>
     );
   }

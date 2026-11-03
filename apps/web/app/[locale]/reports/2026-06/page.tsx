@@ -1,7 +1,7 @@
 import { permanentRedirect } from "next/navigation";
-import { withLocalePrefix, normalizeLocale } from "@/lib/i18n";
+import { withLocalePrefix, normalizeReadingLocale } from "@/lib/i18n";
 
 export default async function LocalizedLegacyJuneReport({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  permanentRedirect(withLocalePrefix("/reports/monthly/2026-06", normalizeLocale(locale)));
+  permanentRedirect(withLocalePrefix("/reports/monthly/2026-06", normalizeReadingLocale(locale)));
 }

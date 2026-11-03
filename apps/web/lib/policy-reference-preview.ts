@@ -77,9 +77,10 @@ export function preparePolicyReferenceScene(scene: PolicyScenePilot): PolicyScen
 }
 
 import { isHomeV4Preview } from "@/lib/home-v4-preview";
+import { getPathnameWithoutLocale } from "@/lib/i18n";
 
 function isHomeTarget(pathname: string): boolean {
-  const clean = pathname.replace(/^\/(?:en|zh|fr|pl|es|nl|ms)(?=\/|$)/, "");
+  const clean = getPathnameWithoutLocale(pathname);
   return clean === "" || clean === "/";
 }
 

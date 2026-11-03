@@ -198,15 +198,17 @@ test("HomeV4View renders all 7 UI sections with SSR content across all 7 locales
   }
 });
 
-test("guide eligibility validates snapshot/claims basis for Stanford, Bristol, and NUS", async () => {
-  // Stanford
+test("guide eligibility preserves Stanford's current review hold and verifies Bristol and NUS bases", async () => {
+  // The current Stanford snapshot is held; its earlier illustration approval
+  // does not make the current snapshot strong.
   const stanfordSummary = await getStagedPublicSummaryBySlug("stanford-university");
   assert(stanfordSummary, "stanfordSummary must exist");
   const stanfordSnapshot = await getLoadedPolicySnapshotBySlug("stanford-university");
   assert(stanfordSnapshot, "stanfordSnapshot must exist");
+  assert.equal(isStrongStudentSnapshot(stanfordSnapshot), false);
   assert.equal(
     isHomeV4GuideEligible("stanford-university", stanfordSummary.claims, isStrongStudentSnapshot(stanfordSnapshot)),
-    true
+    false
   );
 
   // Bristol

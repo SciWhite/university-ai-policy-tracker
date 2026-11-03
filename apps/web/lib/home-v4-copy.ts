@@ -1,3 +1,5 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
 import type { SupportedLocale } from "@/lib/i18n";
 
 export interface HomeV4Topic {
@@ -1075,6 +1077,6 @@ const copyByLocale: Record<SupportedLocale, HomeV4Copy> = {
   }
 };
 
-export function getHomeV4Copy(locale: SupportedLocale): HomeV4Copy {
-  return copyByLocale[locale] ?? copyByLocale.en;
+export function getHomeV4Copy(locale: ReadingLocale): HomeV4Copy {
+  return copyByLocale[legacyLocale(locale)] ?? copyByLocale.en;
 }

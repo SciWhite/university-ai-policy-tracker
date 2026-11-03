@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import {
-  getKnownReleaseIds,
   getReleaseClaimSnapshotRows,
   getReleaseSnapshotManifest,
   getReleaseSourceSnapshotRows,
@@ -14,17 +13,13 @@ interface ReleaseSnapshotArtifactRouteProps {
   }>;
 }
 
-const artifactNames = ["claims.jsonl", "sources.jsonl", "manifest.json"] as const;
-
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-export async function generateStaticParams() {
-  const releaseIds = await getKnownReleaseIds();
-
-  return releaseIds.flatMap((releaseId) =>
-    artifactNames.map((artifact) => ({ releaseId, artifact }))
-  );
+export function generateStaticParams() {
+  // Preserve every historical URL without rebuilding all historical exports.
+  // The immutable GET output is cached on its first request.
+  return [];
 }
 
 export async function GET(

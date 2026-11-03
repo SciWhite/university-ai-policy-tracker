@@ -1,3 +1,5 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
 import type { SupportedLocale } from "./i18n";
 const en = {
   system: "Ranking system",
@@ -269,7 +271,8 @@ const translations: Record<
     range: "Julat dan seri mengekalkan kedudukan rasmi.",
   },
 };
-export function rankingBrowserCopy(locale: SupportedLocale): Copy {
+export function rankingBrowserCopy(readingLocale: ReadingLocale): Copy {
+  const locale = legacyLocale(readingLocale);
   return locale === "en"
     ? en
     : locale === "zh"

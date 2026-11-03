@@ -10,9 +10,8 @@ import {
   localizeHref
 } from "@/lib/i18n";
 import type { ReadingLocale } from "@/lib/language-catalog";
-import { getShellMessages } from "@/lib/i18n-messages";
 import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
-import { useReadingUiText } from "@/components/reading-ui-text-provider";
+import { useReadingUiText, useShellMessages } from "@/components/reading-ui-text-provider";
 
 interface SiteNavigationLink {
   href: string;
@@ -40,7 +39,7 @@ export function SiteNavigation({
   const pathname = usePathname();
   const readingLocale = getReadingLocaleFromPathname(pathname);
   const contextText = useReadingUiText();
-  const shell = applyAcceptedReadingUiText(getShellMessages(readingLocale), sharedUiText ?? contextText);
+  const shell = applyAcceptedReadingUiText(useShellMessages(), sharedUiText ?? contextText);
   const labels = {
     ...shell.navigation,
     ...shell.footer,

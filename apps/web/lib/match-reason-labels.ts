@@ -173,6 +173,8 @@ const matchReasonLabels: Record<
   }
 };
 
+export const matchReasonTextSources = Object.keys(matchReasonLabels.en);
+
 export function localizeMatchReason(
   reason: string,
   locale: SupportedLocale = DEFAULT_LOCALE

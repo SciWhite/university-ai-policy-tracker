@@ -1,5 +1,6 @@
 import { JsonLd } from "./json-ld";
-import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+import { localizeHref } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import type { DiscoveryPageData } from "@/lib/rankings-view-data";
 export function DiscoveryJsonLd({
@@ -9,7 +10,7 @@ export function DiscoveryJsonLd({
   title,
 }: {
   data: DiscoveryPageData;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   pathname: string;
   title: string;
 }) {

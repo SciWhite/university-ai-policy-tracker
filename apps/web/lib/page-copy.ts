@@ -1,3 +1,5 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
 import { formatCopyTemplate } from "@/lib/copy-templates";
 import type { SupportedLocale } from "@/lib/i18n";
 import zhTranslations from "@/messages/pages/zh.json";
@@ -805,13 +807,15 @@ const localizedPageCopies: Record<SupportedLocale, PageCopies> = {
   ms: compilePageCopy(en, translationTrees.ms, "ms")
 };
 
-export function getPageCopy(locale: SupportedLocale): PageCopies {
+export function getPageCopy(readingLocale: ReadingLocale): PageCopies {
+  const locale = legacyLocale(readingLocale);
   return localizedPageCopies[locale];
 }
 
 // Localized labels for the shared BrowseEntryGroups component; the same block
 // appears on the homepage and the universities index.
-export function getBrowseEntryGroupsCopy(locale: SupportedLocale) {
+export function getBrowseEntryGroupsCopy(readingLocale: ReadingLocale) {
+  const locale = legacyLocale(readingLocale);
   const home = getPageCopy(locale).home;
 
   return {
@@ -838,7 +842,8 @@ const enUniversitiesCopyTemplates = {
 // Serializable copy for the /universities client island: formatter functions
 // are replaced by template strings so the server page can pass a single
 // locale's copy as props instead of bundling every locale JSON client-side.
-export function getUniversitiesIndexClientCopy(locale: SupportedLocale) {
+export function getUniversitiesIndexClientCopy(readingLocale: ReadingLocale) {
+  const locale = legacyLocale(readingLocale);
   const {
     answerCards: _answerCards,
     candidateNotice: _candidateNotice,
@@ -869,7 +874,8 @@ export type UniversitiesIndexClientCopy = ReturnType<
 
 // Serializable copy for the /changes client island: the changes copy is plain
 // strings apart from the formatter functions and answer cards dropped here.
-export function getChangesIndexClientCopy(locale: SupportedLocale) {
+export function getChangesIndexClientCopy(readingLocale: ReadingLocale) {
+  const locale = legacyLocale(readingLocale);
   const {
     answers: _answers,
     summary: _summary,

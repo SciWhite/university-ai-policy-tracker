@@ -1,7 +1,5 @@
 "use client";
 
-import { NextIntlClientProvider } from "next-intl";
-import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { AnalyticsEventBridge } from "@/components/analytics-event-bridge";
 import { DocumentLink } from "@/components/document-link";
@@ -9,17 +7,7 @@ import { LanguageSuggestion } from "@/components/language-suggestion";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteNavigation } from "@/components/site-navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { useReadingUiText } from "@/components/reading-ui-text-provider";
-import { getReadingLocaleFromPathname, legacyLocale } from "@/lib/i18n";
-import { getShellMessages } from "@/lib/i18n-messages";
-import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
-import enMessages from "@/messages/en.json";
-import esMessages from "@/messages/es.json";
-import frMessages from "@/messages/fr.json";
-import msMessages from "@/messages/ms.json";
-import nlMessages from "@/messages/nl.json";
-import plMessages from "@/messages/pl.json";
-import zhMessages from "@/messages/zh.json";
+import { useShellMessages } from "@/components/reading-ui-text-provider";
 
 const primaryNavigation = [
   { labelKey: "search", href: "/search" },
@@ -121,40 +109,18 @@ const secondaryLinkGroups = [
 const githubRepositoryUrl =
   "https://github.com/SciWhite/university-ai-policy-tracker";
 
-const messagesByLocale = {
-  en: enMessages,
-  zh: zhMessages,
-  fr: frMessages,
-  pl: plMessages,
-  es: esMessages,
-  nl: nlMessages,
-  ms: msMessages
-} as const;
-
-function hasUntranslatedShellText(value: unknown, sharedUiText: Readonly<Record<string, string>>): boolean {
-  if (typeof value === "string") return Boolean(value.trim()) && !sharedUiText[value];
-  if (Array.isArray(value)) return value.some(item => hasUntranslatedShellText(item, sharedUiText));
-  if (value && typeof value === "object") return Object.values(value).some(item => hasUntranslatedShellText(item, sharedUiText));
-  return false;
-}
-
 interface SiteShellProps {
   children: ReactNode;
+  showEnglishFallback?: boolean;
 }
 
-export function SiteShell({ children }: SiteShellProps) {
-  const pathname = usePathname();
-  const readingLocale = getReadingLocaleFromPathname(pathname);
-  const locale = legacyLocale(readingLocale);
-  const sharedUiText = useReadingUiText();
-  const sourceShell = getShellMessages(readingLocale);
-  const shell = applyAcceptedReadingUiText(sourceShell, sharedUiText);
-  const showEnglishFallback = readingLocale !== "en" && !Object.hasOwn(messagesByLocale, readingLocale) && hasUntranslatedShellText(sourceShell, sharedUiText);
+export function SiteShell({ children, showEnglishFallback = false }: SiteShellProps) {
+  const shell = useShellMessages();
   const footerLabels = shell.footer as Record<string, string>;
   const navigationLabels = shell.navigation as Record<string, string>;
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messagesByLocale[locale]}>
+    <>
       <a className="skip-link" href="#main-content">
         {shell.skipToContent}
       </a>
@@ -205,7 +171,6 @@ export function SiteShell({ children }: SiteShellProps) {
         </div>
         <SiteNavigation
           items={primaryNavigation}
-          sharedUiText={sharedUiText}
           mobileUtilities={
             <>
               <DocumentLink
@@ -225,7 +190,6 @@ export function SiteShell({ children }: SiteShellProps) {
               >
                 {shell.actions.github}
               </a>
-              <LanguageSwitcher />
               <ThemeToggle />
             </>
           }
@@ -261,6 +225,6 @@ export function SiteShell({ children }: SiteShellProps) {
         </div>
       </footer>
       <AnalyticsEventBridge />
-    </NextIntlClientProvider>
+    </>
   );
 }

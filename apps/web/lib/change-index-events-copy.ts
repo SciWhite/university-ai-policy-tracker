@@ -1,3 +1,4 @@
+import {applyAcceptedReadingUiText} from "./reading-ui-text";
 import {SUPPORTED_LOCALES,type SupportedLocale} from "./i18n";
 const text={
   title:["Record updates","记录更新","Mises à jour du registre","Aktualizacje rejestru","Actualizaciones del registro","Registerupdates","Kemas kini rekod"],
@@ -16,4 +17,4 @@ const text={
   applications:["Applications","申请材料","Candidatures","Materiały aplikacyjne","Solicitudes","Aanvragen","Permohonan"],
   scope:["Revisions to this site's records do not establish that a university changed its policy.","这里记录本站资料的修订，不代表学校发布了新政策。","Les révisions des données du site ne confirment pas un changement de politique de l’université.","Zmiany wpisów serwisu nie potwierdzają zmiany zasad uczelni.","Las revisiones de los registros del sitio no confirman cambios en la política de la universidad.","Revisies van onze gegevens bevestigen geen beleidswijziging van de universiteit.","Semakan rekod laman ini tidak mengesahkan perubahan dasar universiti."],
 } as const;
-export function changeIndexEventsCopy(locale:SupportedLocale){const index=SUPPORTED_LOCALES.indexOf(locale);return Object.fromEntries(Object.entries(text).map(([key,values])=>[key,values[index]])) as Record<keyof typeof text,string>;}
+export function changeIndexEventsCopy(locale:SupportedLocale,sharedUiText:Readonly<Record<string,string>>={}){const index=SUPPORTED_LOCALES.indexOf(locale);return applyAcceptedReadingUiText(Object.fromEntries(Object.entries(text).map(([key,values])=>[key,values[index]])) as Record<keyof typeof text,string>,sharedUiText);}

@@ -2,7 +2,7 @@ import "../globals.css";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { RootDocument } from "../root-document";
-import { NON_DEFAULT_LOCALES, legacyLocale, normalizeReadingLocale } from "@/lib/i18n";
+import { legacyLocale, normalizeReadingLocale } from "@/lib/i18n";
 import { isReadingLocale } from "@/lib/language-catalog";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import { getSiteOgImageUrl } from "@/components/site-opengraph";
@@ -25,8 +25,12 @@ export async function generateMetadata({
   };
 }
 
-export function generateStaticParams() {
-  return NON_DEFAULT_LOCALES.map((locale) => ({ locale }));
+// Localized paths are generated on demand and cached by Next. Enumerating every
+// locale here multiplies all report, history and utility pages during builds.
+export const dynamicParams = true;
+
+export function generateStaticParams(): Array<{ locale: string }> {
+  return [];
 }
 
 export default async function LocaleLayout({

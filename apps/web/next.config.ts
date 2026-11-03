@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
     memoryBasedWorkersCount: false,
     webpackMemoryOptimizations: true,
     webpackBuildWorker: true,
+    staticGenerationRetryCount: 0,
     staticGenerationMaxConcurrency: 1,
     staticGenerationMinPagesPerWorker: 50,
   },

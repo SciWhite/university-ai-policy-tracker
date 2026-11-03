@@ -1,9 +1,10 @@
 import { createHash } from "node:crypto";
 import { readFile, realpath, stat } from "node:fs/promises";
-import { readFileSync, realpathSync } from "node:fs";
+import { readFileSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
 import { isReadingLocale, type ReadingLocale } from "./language-catalog";
 import type { PublicEntitySummary } from "@uapt/shared";
+import { BoundedAsyncCache, ByteLru } from "./bounded-cache";
 
 export interface ReadingTranslation {
   source: string;
@@ -103,6 +104,36 @@ export type ReadingTranslationResult =
 const digest = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
 const sha = (value: unknown): value is string => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
 const safeSlug = (value: string) => /^(?:_shared|[a-z0-9]+(?:-[a-z0-9]+)*)$/.test(value);
+// Packages are immutable and hash-bound. Recheck their filesystem identity on
+// every read, but retain parsed bytes and expensive content validation within a
+// fixed serialized-byte budget. Changed files, pointers or approval pins cannot
+// reuse an earlier decision.
+const verifiedJsonCache = new BoundedAsyncCache<unknown>(32, 24 * 1024 * 1024, 2, 64);
+const selectedManifestCache = new ByteLru<ReadingTranslationSelection>(2, 4 * 1024 * 1024);
+const bundleValidationCache = new WeakMap<ReadingTranslationBundle, ByteLru<true>>();
+let artifactReads = 0;
+let bundleValidations = 0;
+
+export function readingTranslationCacheStats() {
+  return { artifacts: verifiedJsonCache.stats(), selectedManifests: selectedManifestCache.stats(), artifactReads, bundleValidations };
+}
+
+/** Only the immutable file objects that passed this reader's complete checks. */
+export function isVerifiedReadingBundle(bundle: ReadingTranslationBundle): boolean {
+  return bundleValidationCache.has(bundle) && Object.isFrozen(bundle);
+}
+
+function fileVersionKey(target: string, expectedSha: string, info: { dev: bigint; ino: bigint; size: bigint; mtimeNs: bigint; ctimeNs: bigint }, limit: number): string {
+  return JSON.stringify([target, expectedSha, info.dev.toString(), info.ino.toString(), info.size.toString(), info.mtimeNs.toString(), info.ctimeNs.toString(), limit]);
+}
+
+function freezeJson<T>(value: T): T {
+  if (value && typeof value === "object" && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) freezeJson(child);
+    Object.freeze(value);
+  }
+  return value;
+}
 const faCorrectionFields = ["/v6/schools/0/topics/0/summary", "/v6/studentActions/topics/coursework/en"] as const;
 interface FaCorrectionReceipt {
   schemaVersion: "uapt-reviewed-fa-display-correction-v1";
@@ -159,9 +190,17 @@ function selectedSchoolRecordSha(slug: string): string | undefined {
     if (typeof pointerRef.path !== "string" || path.isAbsolute(pointerRef.path) || pointerRef.path.split(/[\\/]/).includes("..") || !sha(pointerRef.sha256)) return undefined;
     const selectionPath = realpathSync(path.join(root, pointerRef.path));
     if (!selectionPath.startsWith(root + path.sep)) return undefined;
-    const selectionBytes = readFileSync(selectionPath), selectionSha256 = digest(selectionBytes);
-    if (selectionSha256 !== pointerRef.sha256) return undefined;
-    const selection = JSON.parse(selectionBytes.toString("utf8")) as ReadingTranslationSelection;
+    const selectionInfo = statSync(selectionPath, { bigint: true });
+    if (!selectionInfo.isFile() || selectionInfo.size > BigInt(8 * 1024 * 1024)) return undefined;
+    const key = fileVersionKey(selectionPath, pointerRef.sha256, selectionInfo, 8 * 1024 * 1024);
+    let selection = selectedManifestCache.get(key);
+    if (!selection) {
+      const selectionBytes = readFileSync(selectionPath);
+      if (selectionBytes.byteLength > 8 * 1024 * 1024 || digest(selectionBytes) !== pointerRef.sha256) return undefined;
+      selection = freezeJson(JSON.parse(selectionBytes.toString("utf8")) as ReadingTranslationSelection);
+      selectedManifestCache.set(key, selection, selectionBytes.byteLength);
+    }
+    const selectionSha256 = pointerRef.sha256;
     const trusted = isLocallyPinnedCandidate(selection, selectionSha256) || hasApprovedSampledPublication(selection, selectionSha256);
     if (!trusted || !selection.schools?.[slug]) return undefined;
     const localeRef = Object.entries(selection.schools[slug]!).find(([locale, ref]) => locale !== "en" && !!ref)?.[1];
@@ -239,11 +278,31 @@ async function verifiedJson<T>(root: string, ref: { path: string; sha256: string
   if (!ref || !sha(ref.sha256) || typeof ref.path !== "string" || path.isAbsolute(ref.path) || ref.path.split(/[\\/]/).includes("..")) throw Error("Invalid translation reference");
   const target = await realpath(path.join(root, ref.path));
   if (!target.startsWith(root + path.sep)) throw Error("Translation reference escapes package");
-  const info = await stat(target);
-  if (!info.isFile() || info.size > limit) throw Error("Translation artifact exceeds limit");
-  const raw = await readFile(target);
-  if (raw.byteLength > limit || digest(raw) !== ref.sha256) throw Error("Translation bytes changed");
-  return JSON.parse(raw.toString("utf8")) as T;
+  const info = await stat(target, { bigint: true });
+  if (!info.isFile() || info.size > BigInt(limit)) throw Error("Translation artifact exceeds limit");
+  const key = fileVersionKey(target, ref.sha256, info, limit);
+  return verifiedJsonCache.get(key, async () => {
+    const raw = await readFile(target);
+    artifactReads++;
+    if (raw.byteLength > limit || digest(raw) !== ref.sha256) throw Error("Translation bytes changed");
+    return freezeJson(JSON.parse(raw.toString("utf8"))) as T;
+  }) as Promise<T>;
+}
+
+function validateCachedBundle(
+  bundle: ReadingTranslationBundle,
+  expected: Parameters<typeof validateReadingTranslationBundle>[1],
+  options: Parameters<typeof validateReadingTranslationBundle>[2],
+  selectionSha256: string
+): void {
+  const key = JSON.stringify([selectionSha256, expected.sourceSha256, expected.locale, expected.slug, options?.matchAcceptedBrandVocabulary === true]);
+  const cached = bundleValidationCache.get(bundle);
+  if (cached?.get(key)) return;
+  validateReadingTranslationBundle(bundle, expected, options);
+  bundleValidations++;
+  const validations = cached ?? new ByteLru<true>(4, 1024);
+  validations.set(key, true, Buffer.byteLength(key) + 1);
+  if (!cached) bundleValidationCache.set(bundle, validations);
 }
 
 async function verifiedFaCorrection(root: string, selection: ReadingTranslationSelection, sampledPreview: boolean, approvedSampledPublication: boolean): Promise<FaCorrectionReceipt | undefined> {
@@ -305,8 +364,8 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
       if (!sampledContract || !sceneDelta || displayAddendum.parentSceneSourceSha256 !== sceneDelta.sourceSha256 || !addendumPinned || displayAddendum.schemaVersion !== "uapt-reading-display-addendum-package-v1" || displayAddendum.parentSourceSha256 !== selection.sourceSha256 || displayAddendum.sourceStrings !== 9 || displayAddendum.targetLocales !== 32 || displayAddendum.targetPairs !== 288 || !sha(displayAddendum.sourceSha256) || !sha(displayAddendum.parentSceneSourceSha256) || !sha(displayAddendum.acceptanceSha256) || !Array.isArray(displayAddendum.sourceHashes) || displayAddendum.sourceHashes.length !== 9 || new Set(displayAddendum.sourceHashes).size !== 9 || displayAddendum.sourceHashes.some(hash => !sha(hash)) || !displayAddendum.usesBySlug || Object.keys(displayAddendum.usesBySlug).length !== 1 || !displayAddendum.usesBySlug["massachusetts-institute-of-technology"] || Object.keys(displayAddendum.usesBySlug["massachusetts-institute-of-technology"]).length !== 9 || Object.entries(displayAddendum.usesBySlug["massachusetts-institute-of-technology"]).some(([hash, fields]) => !displayAddendum.sourceHashes.includes(hash) || !Array.isArray(fields) || fields.length !== 1 || !fields[0].startsWith("/v6/studentActions/claims/mit-fact-")) || !localeArtifact || !sha(localeArtifact.sourceArtifactSha256) || localeArtifact.sourceStrings !== 9 || localeArtifact.targetPairs !== 9) return { state: "unapproved" };
     }
     const validationOptions = { statusEnumExceptions: exceptions, matchAcceptedBrandVocabulary: sampledContract };
-    validateReadingTranslationBundle(shared, { sourceSha256: selection.sourceSha256, locale, slug: "_shared" }, validationOptions);
-    validateReadingTranslationBundle(school, { sourceSha256: selection.sourceSha256, locale, slug }, validationOptions);
+    validateCachedBundle(shared, { sourceSha256: selection.sourceSha256, locale, slug: "_shared" }, validationOptions, ref.sha256);
+    validateCachedBundle(school, { sourceSha256: selection.sourceSha256, locale, slug }, validationOptions, ref.sha256);
     if (faCorrection && slug === faCorrection.slug && locale === faCorrection.locale) {
       const unit = school.strings[faCorrection.sourceSha256];
       const actualFields = school.sourceFieldUses?.[faCorrection.sourceSha256] ?? [];
@@ -360,7 +419,7 @@ export async function getReadingSharedUiText(locale: ReadingLocale, sources: rea
     if (!sharedRef) return {};
     const shared = await verifiedJson<ReadingTranslationBundle>(root, sharedRef, 4 * 1024 * 1024);
     const exceptions = sampledContract ? selection.samplingAcceptance?.statusEnumExceptions ?? [] : [];
-    validateReadingTranslationBundle(shared, { sourceSha256: selection.sourceSha256, locale, slug: "_shared" }, { statusEnumExceptions: exceptions, matchAcceptedBrandVocabulary: sampledContract });
+    validateCachedBundle(shared, { sourceSha256: selection.sourceSha256, locale, slug: "_shared" }, { statusEnumExceptions: exceptions, matchAcceptedBrandVocabulary: sampledContract }, ref.sha256);
     return acceptedReadingUiText(sources, [shared]);
   } catch { return {}; }
 }

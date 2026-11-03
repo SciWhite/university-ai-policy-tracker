@@ -468,7 +468,7 @@ const records: Record<string, InstitutionLocalizationRecord> = {
 export function getLocalizedInstitutionName(
   _slug: string,
   fallbackName: string,
-  _locale: SupportedLocale
+  _locale: import("./language-catalog").ReadingLocale
 ): string {
   // Public display names stay canonical across locales. Localized names remain
   // available below as search aliases, but never replace the source entity name.

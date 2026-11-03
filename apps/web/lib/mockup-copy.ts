@@ -1,3 +1,5 @@
+import type { ReadingLocale } from "./language-catalog";
+import { legacyLocale } from "./i18n";
 import type { SupportedLocale } from "./i18n";
 const languages = ["en", "zh", "fr", "pl", "es", "nl", "ms"] as const;
 const strings = {
@@ -346,8 +348,8 @@ const strings = {
     "Pautan disalin",
   ],
 } as const;
-export function mockupCopy(locale: SupportedLocale) {
-  const i = languages.indexOf(locale);
+export function mockupCopy(locale: ReadingLocale) {
+  const i = languages.indexOf(legacyLocale(locale));
   return Object.fromEntries(
     Object.entries(strings).map(([k, v]) => [k, v[i]]),
   ) as { [K in keyof typeof strings]: string };

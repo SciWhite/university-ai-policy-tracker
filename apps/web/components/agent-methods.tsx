@@ -1,9 +1,11 @@
 import { ReferenceBox } from "@/components/reference-box";
 import { getProjectCopy } from "@/lib/project-copy";
 import type { SupportedLocale } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
+import { localizeSurfaceCopy } from "@/lib/surface-localization";
 
-export function AgentMethods({ locale }: { locale: SupportedLocale }) {
-  const copy = getProjectCopy(locale);
+export function AgentMethods({ locale, readingLocale = locale, sharedUiText = {} }: { locale: SupportedLocale; readingLocale?: ReadingLocale; sharedUiText?: Readonly<Record<string, string>> }) {
+  const copy = localizeSurfaceCopy(getProjectCopy(locale), readingLocale, sharedUiText);
   return (
     <ReferenceBox id="agents" title={copy.agentsTitle}>
       <p>{copy.agents}</p>

@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-  datasetArtifactRouteSegments,
-  getDatasetArtifactByRouteSegment
-} from "@/lib/dataset-release";
+import { getDatasetArtifactByRouteSegment } from "@/lib/dataset-release";
 
 interface DatasetArtifactRouteProps {
   params: Promise<{
@@ -11,10 +8,12 @@ interface DatasetArtifactRouteProps {
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return datasetArtifactRouteSegments.map((artifact) => ({ artifact }));
+  // Published downloads are generated and cached when requested, not copied
+  // into every application build. GET still enforces the artifact allowlist.
+  return [];
 }
 
 export async function GET(

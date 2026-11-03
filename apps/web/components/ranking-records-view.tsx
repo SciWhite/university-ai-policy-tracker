@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { DocumentLink as Link } from "./document-link";
+import { useReadingUiText } from "./reading-ui-text-provider";
+import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import {
   DiscoveryCompareTray,
   DiscoveryEmpty,
@@ -34,7 +36,8 @@ import {
   saveDiscoveryPosition,
   useDiscoveryPosition,
 } from "@/lib/discovery-return-state";
-import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+import { localizeHref } from "@/lib/i18n";
+import type { ReadingLocale } from "@/lib/language-catalog";
 import type { DiscoveryPageData } from "@/lib/rankings-view-data";
 
 export function RankingRecordsView({
@@ -44,15 +47,16 @@ export function RankingRecordsView({
   pathname,
 }: {
   data: DiscoveryPageData;
-  locale: SupportedLocale;
+  locale: ReadingLocale;
   mode?: DiscoveryMode;
   pathname: string;
 }) {
+  const sharedUiText = useReadingUiText();
   const router = useRouter(),
     [busy, startTransition] = useTransition();
   const query = data.query,
-    ui = discoveryCopy(locale),
-    copy = rankingBrowserCopy(locale),
+    ui = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText),
+    copy = applyAcceptedReadingUiText(rankingBrowserCopy(locale), sharedUiText),
     edition = getRankingEdition(query.edition)!;
   const fixedEdition =
     mode === "rankings" && pathname !== "/rankings" ? query.edition : undefined;
@@ -153,7 +157,9 @@ export function RankingRecordsView({
     const defaults = defaultDiscoveryQuery(mode);
     update({ ...defaults, edition: query.edition, size: query.size, compare });
   }
-  const resultRange = (
+  const resultRange = sharedUiText["Showing {visible} of {total} records."]
+    ?.replaceAll("{visible}", `${data.total ? (query.page - 1) * query.size + 1 : 0}–${Math.min(query.page * query.size, data.total)}`)
+    .replaceAll("{total}", data.total.toLocaleString(locale)) ?? (
     <>
       {ui.showing} {data.total ? (query.page - 1) * query.size + 1 : 0}–
       {Math.min(query.page * query.size, data.total)} {ui.of}{" "}
@@ -184,7 +190,7 @@ export function RankingRecordsView({
         >
           <option value="">{ui.allCountries}</option>
           {data.countries.map((c) => (
-            <option key={c}>{c}</option>
+            <option key={c} value={c}>{sharedUiText[c] ?? c}</option>
           ))}
         </select>
       </label>
@@ -391,7 +397,7 @@ export function RankingRecordsView({
         <h1>{mode === "rankings" ? edition.label : ui.findUniversity}</h1>
         <p>
           {mode === "rankings"
-            ? mockupCopy(locale).rankingBoundary
+            ? applyAcceptedReadingUiText(mockupCopy(locale), sharedUiText).rankingBoundary
             : ui.directoryLead}
         </p>
       </div>
@@ -428,7 +434,7 @@ export function RankingRecordsView({
             >
               <option value="rank">
                 {edition.systemId === "cwts"
-                  ? rankingsCopy(locale).derived
+                  ? applyAcceptedReadingUiText(rankingsCopy(locale), sharedUiText).derived
                   : ui.rankOrder}
               </option>
               <option value="name">{ui.name}</option>
@@ -490,7 +496,7 @@ export function RankingRecordsView({
         <div className="discovery-topic-chips">
           {query.topics.map((t) => (
             <button key={t} type="button" onClick={() => toggleTopic(t)}>
-              {discoveryTopicLabel(t, locale)} ×
+              {discoveryTopicLabel(t, locale, sharedUiText)} ×
             </button>
           ))}
         </div>

@@ -70,11 +70,6 @@ export function v6SummaryAtRevision(slug:string,revision?:string):PublicEntitySu
   return useShards(targetRevision)?store().field<PublicEntitySummary>(targetRevision,['summaries',slug]):structuredClone(revPkg.summaries.find(s=>s.entity.slug===slug));
 }
 export function v6CorrectedSummary(slug:string){
-  const selected = readV6RecordCorrections();
-  if (selected) {
-    const s = selected.summaries.find(s=>s.entity.slug===slug);
-    if (s) return structuredClone(s);
-  }
   return v6SummaryAtRevision(slug);
 }
 export function v6RecordRevision(slug:string){return readV6RecordCorrections()?.recordRevisions[slug];}

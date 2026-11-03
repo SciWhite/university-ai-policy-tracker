@@ -1,11 +1,8 @@
 import {withSourceHashContract} from "@/lib/source-hash-contract";
 import { buildPublicEntitySummaryResponse } from "@uapt/shared";
 import { NextResponse } from "next/server";
-import {
-  getCatalogUniversities,
-  getPublicUniversitySummaryBySlug
-} from "@/lib/catalog";
-import { getAliasSlugs, getCanonicalSlugForAlias } from "@/lib/entity-aliases";
+import { getLocalPublicUniversitySummaryBySlug } from "@/lib/catalog";
+import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
 import { getPublicUniversityPolicySnapshotLink } from "@/lib/policy-snapshots";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import {
@@ -24,15 +21,6 @@ interface PublicUniversityRouteProps {
   params: Promise<{
     slug: string[];
   }>;
-}
-
-export async function generateStaticParams() {
-  const universities = await getCatalogUniversities();
-  const aliasSlugs = await getAliasSlugs();
-
-  return [...universities.map((university) => university.slug), ...aliasSlugs].flatMap(
-    (slug) => [{ slug: [slug] }, { slug: [`${slug}.json`] }]
-  );
 }
 
 export async function GET(_request: Request, { params }: PublicUniversityRouteProps) {
@@ -95,7 +83,7 @@ export async function GET(_request: Request, { params }: PublicUniversityRoutePr
       308
     );
   }
-  const summary = await getPublicUniversitySummaryBySlug(universitySlug);
+  const summary = await getLocalPublicUniversitySummaryBySlug(universitySlug);
 
   if (!summary) {
     return NextResponse.json(
