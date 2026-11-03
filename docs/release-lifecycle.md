@@ -90,7 +90,9 @@ prebuild 继续检查固定槽位、全局容量、同步凭据和未完成事�
 | `uapt-build.scope` | `MemoryHigh=7.5GiB`、`MemoryMax=8GiB`、Node heap6144MiB |
 | 运行候选 | `MemoryHigh=3.5GiB`、`MemoryMax=4GiB`、Node heap3072MiB |
 | UAPT实际内存加本阶段剩余峰值 | 最多16GiB |
-| 主机实时 `MemAvailable` 保留量 | 至少3GiB |
+| 主机实时 `MemAvailable` 保留量 | 至少2GiB |
+
+用户后续明确授权将主机预留量从3GiB适当放宽至2GiB，构建、候选和UAPT总预算保持上表配置。构建期间仍检查实时`MemAvailable`；低于2GiB时中止本次构建，保留现网服务及失败记录。
 
 新policy提供`buildPeakMaxBytes`，新计划分别提供`buildPeakBytes`和`candidatePeakBytes`。`prebuild`命令按完整构建峰值预留容量，构建前固定候选槽位必须冷置；`gate`和`cutover`按运行候选剩余峰值核对共存容量。phase由控制器命令传入，计划JSON中的`phase`或`prebuild`标记不能改变门禁。没有`buildPeakMaxBytes`的旧policy只保留历史计划的共用预算语义，不接受新计划借此绕过独立构建上限。
 
