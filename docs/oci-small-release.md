@@ -61,7 +61,9 @@
 1. 本地数据/白名单检查、相关回归、`pnpm check`、zone显式类型检查及
    `git diff --check`。使用干净隔离checkout，保护其他聊天的脏改动。
 2. Commit/push完整SHA，冻结到origin/main，新建OCI独立release。
-   固定生产公开env、Node/pnpm；仅安装、生成该服务需要的依赖/Prisma。
+   固定生产公开env、Node/pnpm；先在依赖专用准入下安装固定依赖，
+   让同步门禁使用候选自身tsx，再执行正式prebuild。依赖bootstrap不运行
+   Next、Prisma或切流；固定构建入口随后验证安装并仅生成一次Prisma。
 3. 为候选准备独立内容目录/指针。在已准入的固定构建scope内执行
    `node scripts/uapt-release.mjs build zone <完整SHA> --webpack`。该入口
    安装实际共享源码依赖、生成Prisma、提前检查类型并准备/验证运行数据，

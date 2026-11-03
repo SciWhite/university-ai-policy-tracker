@@ -85,6 +85,22 @@ private values stay in the env file. Public settings are frozen by the build.
 The reviewed configuration must be unchanged between build, acceptance and
 cutover; a changed build input requires a new candidate.
 
+The synchronization gate uses the candidate's own `tsx` and workspace dependencies.
+For a new checkout, first run dependencies-only admission using the same frozen
+source, retention/disk checks and an isolated `uapt-build.scope`, then install:
+
+```bash
+pnpm --filter university-ai-policy-tracker --filter '@uapt/web...' \
+  --filter '@uapt/tulsa-zone...' install --prod=false --frozen-lockfile --prefer-offline
+```
+
+This bootstrap does not run Prisma, TypeScript or Next, start a candidate or
+select routes. Record its exit/cgroup evidence and close the scope before
+`prebuild`. The fixed build entry checks the frozen dependency installation
+again idempotently; Prisma generation, source validation and Next compilation
+still run only once. Never borrow `tsx` or `node_modules` from a live release to
+make the synchronization gate pass.
+
 After installed lifecycle `prebuild` admission, perform exactly one production build
 inside the fixed `uapt-build.scope` using the current policy's build profile. The
 following is the scope's execution body, not an alternative to admission or the
