@@ -1,13 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, symlinkSync} from "node:fs";
+import {mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, symlinkSync, existsSync} from "node:fs";
 import {tmpdir} from "node:os";
 import {resolve} from "node:path";
 import {createHash} from "node:crypto";
 import {ByteLru, BoundedAsyncCache} from "../apps/web/lib/bounded-cache";
 import {V6ArtifactStore,resetV6ArtifactCache,v6ArtifactStats,type ShardIndex} from "../apps/web/lib/v6-artifact-store";
 import {exportV6Revision} from "../scripts/export-v6-shards";
-import {publishedV6School,readPublishedV6Revision} from "../apps/web/lib/policy-v6-published";
+import {publishedV6School,readPublishedV6,readPublishedV6Revision} from "../apps/web/lib/policy-v6-published";
 import {v6SummaryAtRevision,v6CorrectedSummary,readV6RecordCorrectionRevision} from "../apps/web/lib/v6-effective-records";
 import {v6FrozenHistory} from "../apps/web/lib/v6-history-cache";
 import {GET} from "../apps/tulsa-zone/app/api/public/v1/[...path]/route";
@@ -17,15 +17,33 @@ process.env.UAPT_V6_PUBLISHED_PAGES="1";
 process.env.UAPT_DISABLE_INTERNAL_FETCH="1";
 const sha=(b:Buffer)=>createHash('sha256').update(b).digest('hex');
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+// Later revisions are intentionally shard-only. A reconstruction is accepted
+// only when its exact bytes reproduce the original frozen source digest.
+function frozenRevision(root:string,index:ShardIndex,store:V6ArtifactStore,revision:string){
+ const entry=index.revisions[revision];assert(entry,revision+' has no frozen shard identity');
+ const file=root+'/revisions/'+revision+'.json';
+ let raw:Buffer|undefined;
+ if(existsSync(file))raw=readFileSync(file);
+ else{
+  const original=store.view(revision);
+  for(const spacing of [2,undefined])for(const suffix of ['\n','']){
+   const candidate=Buffer.from(JSON.stringify(original,null,spacing)+suffix);
+   if(sha(candidate)===entry.sourceSha256)raw=candidate;
+  }
+ }
+ assert(raw,root+' '+revision+' cannot reproduce its original frozen bytes');
+ assert.equal(sha(raw),entry.sourceSha256,root+' '+revision+' original source hash');
+ return JSON.parse(raw.toString());
+}
 
 test("every frozen page, record and history revision reconstructs without losing fields or order",()=>{
  for(const family of ['public-v6-pages','public-v6-records','public-v6-history']){
   const root=resolve('data',family),index=read(root+'/sharded/index.json') as ShardIndex,store=new V6ArtifactStore(root,index);
-  for(const [revision,entry]of Object.entries(index.revisions)){
-   const raw=readFileSync(root+'/revisions/'+revision+'.json');assert.equal(sha(raw),entry.sourceSha256);
-   assert.equal(JSON.stringify(store.view(revision)),JSON.stringify(JSON.parse(raw.toString())),family+' '+revision);
-   if(family==='public-v6-pages')assert.equal(JSON.stringify(readPublishedV6Revision(revision)),JSON.stringify(JSON.parse(raw.toString())));
-   if(family==='public-v6-records')assert.equal(JSON.stringify(readV6RecordCorrectionRevision(revision)),JSON.stringify(JSON.parse(raw.toString())));
+  for(const revision of Object.keys(index.revisions)){
+   const original=frozenRevision(root,index,store,revision);
+   assert.equal(JSON.stringify(store.view(revision)),JSON.stringify(original),family+' '+revision);
+   if(family==='public-v6-pages')assert.equal(JSON.stringify(readPublishedV6Revision(revision)),JSON.stringify(original));
+   if(family==='public-v6-records')assert.equal(JSON.stringify(readV6RecordCorrectionRevision(revision)),JSON.stringify(original));
   }
  }
 });
@@ -67,28 +85,38 @@ test("keyed canonical reads preserve every field of all selected school records"
 });
 
 test("current and historical single-school readers match the preserved legacy reader",()=>{
- const index=read('data/public-v6-records/sharded/index.json')as ShardIndex;
+ const root=resolve('data/public-v6-records'),index=read(root+'/sharded/index.json')as ShardIndex,store=new V6ArtifactStore(root,index);
  for(const revision of Object.keys(index.revisions)){
-  const original=read('data/public-v6-records/revisions/'+revision+'.json');
+  const original=frozenRevision(root,index,store,revision);
   for(const summary of original.summaries)assert.deepEqual(v6SummaryAtRevision(summary.entity.slug,revision),summary);
  }
- const pointer=read('data/public-v6-history/current.json'),old=read('data/public-v6-history/'+pointer.path);
+ const historyRoot=resolve('data/public-v6-history'),historyIndex=read(historyRoot+'/sharded/index.json')as ShardIndex;
+ const pointer=read(historyRoot+'/current.json');
+ assert.equal(historyIndex.revisions[pointer.basisRevision].sourceSha256,pointer.sha256);
+ const old=frozenRevision(historyRoot,historyIndex,new V6ArtifactStore(historyRoot,historyIndex),pointer.basisRevision);
  for(const slug of Object.keys(old.records))assert.deepEqual(v6FrozenHistory(slug),old.records[slug]);
  assert.equal(v6SummaryAtRevision('missing'),undefined);
  assert.equal(readPublishedV6Revision('missing'),undefined);
 });
 
-test("single-school changes link uses its own revision while release deltas remain unchanged",async()=>{
+test("single-school changes link follows its frozen publication kind and exact release deltas",async()=>{
  const response=await GET(new Request('http://localhost/api/public/v1/policy-pages/v6/changes/latest.json'),{params:Promise.resolve({path:['policy-pages','v6','changes','latest.json']})});
  const payload=await response.json();
- const ucl=payload.changes.find((s:{slug:string})=>s.slug==='ucl');
- assert.equal(ucl.href,'/changes/v6-audit-fix-20261014/ucl');
- assert.deepEqual(ucl.addedClaimIds,[]);
+ const published=readPublishedV6()!,presentation=published.publicationKind==='v6_presentation_integration';
+ assert.equal(payload.releaseId,published.releaseId);
+ assert.equal(payload.publicationKind,presentation?'v6_presentation_integration':'scoped_record_correction');
+ assert.equal(payload.canonicalDatasetChanged,!presentation);
+ assert.deepEqual(payload.changes.map((s:{slug:string})=>s.slug),published.slugs);
  const current=readV6RecordCorrectionRevision(payload.releaseId)!;
  for(const school of payload.changes){
-  const revision=current.recordRevisions[school.slug].universityRevisionId;
+  const revision=presentation?published.releaseId:current.recordRevisions[school.slug].universityRevisionId;
   assert.equal(school.href,`/changes/${revision}/${school.slug}`);
   assert(v6SummaryAtRevision(school.slug,revision));
+  const expected=presentation?{addedClaimIds:[],updatedClaimIds:[],heldClaimIds:[]}:current.changesBySlug[school.slug];
+  assert.deepEqual(school.addedClaimIds,expected.addedClaimIds);
+  assert.deepEqual(school.updatedClaimIds,expected.updatedClaimIds);
+  assert.deepEqual(school.heldClaimIds,expected.heldClaimIds);
+  if(presentation)assert.equal(school.presentationChanged,true);
  }
 });
 
