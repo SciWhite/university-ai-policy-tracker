@@ -7,8 +7,6 @@ import ts from "typescript";
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const MAX_STATIC_ENTRIES = 256;
 const onDemand = [
-  "[locale]/layout.tsx",
-  "(default)/universities/[slug]/page.tsx",
   "(default)/changes/[releaseId]/page.tsx",
   "api/public/v1/datasets/[artifact]/route.ts",
   "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts",
@@ -102,7 +100,7 @@ export function validateWebBuildScope(root = defaultRoot) {
     if (!emptyParams(file) || literal(file, "dynamicParams") !== true) {
       throw new Error(`Build scope rejected: ${relative} must use empty build params and allow validated on-demand paths`);
     }
-    if (!["[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx"].includes(relative) && literal(file, "dynamic") !== "force-static") {
+    if (literal(file, "dynamic") !== "force-static") {
       throw new Error(`Build scope rejected: ${relative} must retain first-request static caching`);
     }
   }
@@ -162,8 +160,11 @@ export function validateWebBuildScope(root = defaultRoot) {
     }
     if (!/^(?:page\.tsx|route\.ts|layout\.tsx)$/.test(name)) continue;
     const file = source(root, `apps/web/app/${relative}`);
+    if (["[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx"].includes(relative) && hasExport(file, "generateStaticParams")) {
+      throw new Error(`Build scope rejected: ${relative} must allow request rendering for pages that read searchParams`);
+    }
     if (relative.startsWith("[locale]/") && literal(file, "dynamicParams") === false) {
-      throw new Error(`Build scope rejected: ${relative} blocks on-demand localized paths beneath the empty locale build params`);
+      throw new Error(`Build scope rejected: ${relative} blocks on-demand localized paths`);
     }
     const enumerates = hasExport(file, "generateStaticParams");
     // Next invokes child generators even when a parent returned []; force-dynamic

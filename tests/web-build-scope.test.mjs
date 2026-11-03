@@ -13,11 +13,12 @@ function fixture() {
     writeFileSync(target, content);
   };
   const deferred = [
-    "[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx",
     "(default)/changes/[releaseId]/page.tsx", "api/public/v1/datasets/[artifact]/route.ts",
     "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts", "sitemaps/[section]/route.ts"
   ];
   put("apps/web/next.config.ts", 'const nextConfig = { experimental: { staticGenerationRetryCount: 1 } }; export default nextConfig;');
+  put("apps/web/app/[locale]/layout.tsx", 'export default function LocaleLayout({ children }) { return children; }');
+  put("apps/web/app/(default)/universities/[slug]/page.tsx", 'export const revalidate = 3600; export default function UniversityPage() { return null; }');
   for (const file of deferred) put(`apps/web/app/${file}`, `
     export const dynamicParams = true;
     export const dynamic = "force-static";
@@ -70,7 +71,7 @@ test("force-dynamic does not exempt an expensive parameter generator", () => {
   } finally { f.cleanup(); }
 });
 
-test("empty locale parent cannot hide child generators or named reexports", () => {
+test("request-rendered locale parent cannot hide child generators or named reexports", () => {
   const f = fixture();
   try {
     for (const generator of [
@@ -114,14 +115,19 @@ test("metadata and framework entries are reserved without executing metadata mod
   } finally { f.cleanup(); }
 });
 
-test("restoring the locale Cartesian product is rejected before expensive data preparation", () => {
+test("request-dependent localized and university pages cannot use on-demand static generation", () => {
   const f = fixture();
   try {
-    f.put("apps/web/app/[locale]/layout.tsx", `
-      export const dynamicParams = true;
-      export function generateStaticParams() { return allLocales.map(locale => ({ locale })); }
-    `);
-    assert.throws(() => validateWebBuildScope(f.root), /\[locale\]\/layout.tsx must use empty build params/);
+    for (const route of ["[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx"]) {
+      for (const params of ["[]", "allPaths.map(path => path)"]) {
+        f.put(`apps/web/app/${route}`, `
+          export const dynamicParams = true;
+          export function generateStaticParams() { return ${params}; }
+        `);
+        assert.throws(() => validateWebBuildScope(f.root), /must allow request rendering/);
+      }
+      f.put(`apps/web/app/${route}`, 'export default function Component() { return null; }');
+    }
   } finally { f.cleanup(); }
 });
 

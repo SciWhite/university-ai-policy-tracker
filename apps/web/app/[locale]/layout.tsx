@@ -25,14 +25,6 @@ export async function generateMetadata({
   };
 }
 
-// Localized paths are generated on demand and cached by Next. Enumerating every
-// locale here multiplies all report, history and utility pages during builds.
-export const dynamicParams = true;
-
-export function generateStaticParams(): Array<{ locale: string }> {
-  return [];
-}
-
 export default async function LocaleLayout({
   children,
   params

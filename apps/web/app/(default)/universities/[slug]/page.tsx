@@ -169,12 +169,7 @@ interface UniversityPageProps {
   }>;
 }
 
-export const dynamicParams = true;
 export const revalidate = 3600;
-
-export function generateStaticParams(): Array<{ slug: string }> {
-  return [];
-}
 
 export async function generateMetadata({ params, searchParams }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
