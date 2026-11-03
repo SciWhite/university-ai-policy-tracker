@@ -4,14 +4,32 @@ import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync, spawnSync } from "node:child_process";
+import { parseBuildArguments, runBuildPipeline, verifyCompiledSource } from "./release-build-pipeline.mjs";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const [action, expectedSha, ...extra] = process.argv.slice(2);
-const help = `UAPT release helpers (no build or deployment commands)
+const help = `UAPT release helpers (builds do not start candidates or select routes)
   node scripts/uapt-release.mjs local-check
     Run git diff --check and pnpm check; add change-specific tests separately.
+  node scripts/uapt-release.mjs build <full|zone> <frozen-40-character-sha> [--webpack]
+    Linux OCI only, from a unique release with unchanged tracked source and no
+    target .next. Only exact published-registry marks derived byte-for-byte from
+    tracked Tulsa sources may be untracked; no directory is ignored. The server
+    operator must already hold lifecycle admission/lock and the reviewed env.
+    Install root + web... + tulsa-zone... with dev/frozen deps, validate scope,
+    generate Prisma once, check source types without incremental output, prepare/
+    validate runtime data, then run Next once for only the selected app.
+    full = shared/global changes; zone = bounded changes (see routing policy).
+    Stops on any type/build error; no service, cutover or policy approval follows.
+  node scripts/uapt-release.mjs build <full|zone> --debug [--webpack]
+    Explicit local diagnosis, permits dirty/existing local output; cannot be used
+    in /srv/uapt. This does not produce release acceptance.
+    Aliases: pnpm build <sha>, pnpm build:zone <sha>, pnpm build:debug;
+    pnpm --filter @uapt/web build <sha> uses the same full pipeline.
   node scripts/uapt-release.mjs inspect <full-40-character-sha>
-    Read-only OCI build identity check. Run from the frozen release checkout.
+    Read-only OCI build identity check. Only the exact Next dev-to-build
+    type-path rewrite in apps/web/next-env.d.ts and the same individually verified
+    published generated marks are permitted after compilation.
   node scripts/uapt-release.mjs verify-sync <event.json> <basis-file> <candidate|complete>
     Check contract 2.0.0/2.1.0 receipts before cutover or after actual public readback.
   node scripts/uapt-release.mjs lifecycle <audit|prebuild|gate|cutover|complete|recover> [plan.json] [--completion-ledger event.json]
@@ -32,6 +50,9 @@ function readJson(relativePath) {
 try {
   if (!action || action === "--help" || action === "help") {
     console.log(help);
+  } else if (action === "build") {
+    const options = parseBuildArguments([expectedSha, ...extra]);
+    console.log(JSON.stringify(await runBuildPipeline({ root, options }), null, 2));
   } else if (action === "lifecycle") {
     const installed = "/usr/local/libexec/uapt-release-lifecycle.py";
     if (existsSync("/srv/uapt/operations/release-lifecycle/policy.json") && !existsSync(installed)) throw new Error("Missing installed lifecycle controller; do not fall back to a historical publisher");
@@ -54,9 +75,7 @@ try {
   } else if (action === "inspect" && /^[0-9a-f]{40}$/.test(expectedSha ?? "") && !extra.length) {
     const sha = git("rev-parse", "HEAD");
     if (sha !== expectedSha) throw new Error("Checkout SHA differs from frozen release SHA");
-    if (git("status", "--porcelain", "--untracked-files=normal")) {
-      throw new Error("Release checkout has modified or untracked non-ignored source files");
-    }
+    const compiledSource = verifyCompiledSource(root, expectedSha, "full");
     const buildId = readFileSync(resolve(root, "apps/web/.next/BUILD_ID"), "utf8").trim();
     if (!buildId) throw new Error("Missing Next BUILD_ID");
     const manifestPath = "data/public-releases/current.json";
@@ -69,6 +88,7 @@ try {
       releaseRoot: root,
       sha,
       buildId,
+      compiledSource,
       dataReleaseId: readJson(runtimeManifestPath).releaseId,
       manifestSha256: manifestHash,
       lockfileSha256: hash("pnpm-lock.yaml"),

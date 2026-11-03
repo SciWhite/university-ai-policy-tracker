@@ -34,15 +34,7 @@ export const dynamicParams = true;
 export const revalidate = false;
 
 export async function generateStaticParams() {
-  const releaseDiff = await getLatestReleaseDiff().catch(() => undefined);
-  if (!releaseDiff) return [];
-
-  return releaseDiff.entities
-    .filter((entity) => entity.rows.length)
-    .map((entity) => ({
-      releaseId: entity.currentReleaseId,
-      slug: entity.entitySlug
-    }));
+  return [];
 }
 
 export async function generateMetadata({ params }: ReleaseEntityChangePageProps): Promise<Metadata> {

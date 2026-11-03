@@ -2,7 +2,7 @@
 """Host-side release admission and crash-recoverable routing selection.
 No build, install, deletion, or policy approval. See docs/release-lifecycle.md.
 """
-import argparse, concurrent.futures, datetime, email.utils, fcntl, hashlib, json, os, re, shutil, subprocess, sys, time, urllib.error, urllib.request
+import argparse, concurrent.futures, datetime, email.utils, fcntl, hashlib, http.client, json, os, re, shutil, socket, ssl, subprocess, sys, time, urllib.error, urllib.request
 from pathlib import Path
 STATE = Path('/srv/uapt/operations/release-lifecycle')
 POLICY = Path('/srv/uapt/operations/release-lifecycle/policy.json')
@@ -24,7 +24,23 @@ STATIC_ROOTS = {
 STATIC_DEST_ROOT = Path('/srv/uapt/static/controlled/uapt-held-static-20261102')
 STATIC_EXPECTED_ALIASES = 1175
 STATIC_RECEIPT_MAX_BYTES_PER_ASSET = 4096
-STATIC_HEADERS = ('content-type', 'cache-control', 'etag', 'last-modified', 'content-encoding', 'vary', 'x-content-type-options')
+STATIC_RECEIPT_PHASES = 4
+STATIC_ORIGIN_CONTEXT_MAX_BYTES = 16384
+STATIC_ORIGIN_VHOST = '/etc/nginx/sites-enabled/uapt-eduaipolicy.org.conf'
+STATIC_ORIGIN_PARENT = '/etc/nginx/snippets/uapt-proxy-locations.conf'
+STATIC_ORIGIN_CERT = '/etc/ssl/certs/eduaipolicy.org-selfsigned.pem'
+STATIC_PREVIEW_DIRECTIVES = (
+    'charset utf-8;', 'gzip on;', 'gzip_vary on;', 'gzip_proxied any;', 'gzip_comp_level 5;', 'gzip_min_length 256;',
+    'gzip_types text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml font/woff2;',
+)
+STATIC_SECURITY_HEADERS = ('content-security-policy', 'x-frame-options', 'strict-transport-security', 'referrer-policy')
+STATIC_HEADERS = ('content-type', 'cache-control', 'etag', 'last-modified', 'content-encoding', 'vary', 'x-content-type-options') + STATIC_SECURITY_HEADERS
+DISCOVERY_SCOPE = 'discovery-prefix-v1'
+DISCOVERY_ROOT = 'uapt-discovery-ba543052'
+DISCOVERY_CONFIG = '/etc/nginx/snippets/uapt-shared-v6-0b969275-live.conf'
+DISCOVERY_URL_PREFIX = '/assets/university-marks/20261020-compact/'
+DISCOVERY_SOURCE_BASE = Path('/srv/uapt/releases')/DISCOVERY_ROOT/'apps/tulsa-zone/public/assets/university-marks/20261020-compact'
+DISCOVERY_DEST_BASE = STATIC_DEST_ROOT/DISCOVERY_ROOT/'university-marks/20261020-compact'
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl): return None
 def run(*args):
@@ -212,7 +228,45 @@ def validate_retention_receipt(plan, observed, policy=None):
         register = Path(policy['retentionRegister'])
         if not register.is_file(): raise ValueError('Authoritative retention register missing')
         validate_retention_deadlines(receipt, observed, policy, retention_with_clocks(json.loads(register.read_text()), policy))
-def validate_plan(plan, policy, observed):
+def validate_r4_reuse_authorization(plan, policy):
+    """One operator-authorized exception retaining the existing 3163 dependency."""
+    ref = plan.get('operatorAuthorization') or {}
+    try:
+        if not re.fullmatch(r'[0-9a-f]{64}', ref.get('sha256', '')) or digest(ref['path']) != ref['sha256']:
+            raise ValueError('authorization hash mismatch')
+        auth = json.loads(Path(ref['path']).read_text())
+        basis_ref = plan['basis']
+        if digest(basis_ref['path']) != basis_ref['sha256']: raise ValueError('basis hash mismatch')
+        basis = json.loads(Path(basis_ref['path']).read_text())
+        current = datetime.datetime.now(datetime.timezone.utc)
+        issued = datetime.datetime.fromisoformat(auth['issuedAt'].replace('Z', '+00:00'))
+        expires = datetime.datetime.fromisoformat(auth['expiresAt'].replace('Z', '+00:00'))
+        plan_expiry = datetime.datetime.fromisoformat(plan['expiresAt'].replace('Z', '+00:00'))
+        if any(t.tzinfo is None for t in (issued, expires, plan_expiry)) or not issued <= current < expires or expires - issued > datetime.timedelta(hours=24) or plan_expiry > expires:
+            raise ValueError('authorization expired or exceeds its bounded window')
+        code = 'f4e7c1277ba460aaf9919a6a088d9612870ce926'
+        build = '4bCh6d8DfW5AO0c96DBsW'
+        active = {'uapt-web.service', 'uapt-shared-v6-candidate.service', 'uapt-shared-v6-r2.service'}
+        if (auth.get('schemaVersion') != 'uapt-r4-reuse-authorization-v1' or
+            plan.get('id') not in ['reuse-r4-20261102','reuse-r4-20261102-r2'] or auth.get('planId') != plan['id'] or
+            auth.get('basisSha256') != basis_ref['sha256'] or
+            auth.get('codeSha') != code or basis.get('codeSha') != code or
+            auth.get('BUILD_ID') != build or basis.get('BUILD_ID') != build or
+            auth.get('retainedCompatibilityUnit') != {'unit': 'uapt-shared-v6-candidate.service', 'endpoint': '127.0.0.1:3163'} or
+            not isinstance(auth.get('boundedAcceptance'), str) or not auth['boundedAcceptance'].strip() or
+            not isinstance(auth.get('acceptedKnownIssues'), list) or not auth['acceptedKnownIssues'] or
+            any(not isinstance(x, str) or not x.strip() for x in auth['acceptedKnownIssues']) or
+            len(policy['activeUnits']) != 3 or set(policy['activeUnits']) != active or
+            len(plan.get('keepActiveUnits', [])) != 3 or set(plan['keepActiveUnits']) != active or
+            plan.get('candidateUnits') != ['uapt-mcp-v6-candidate.service'] or
+            plan.get('candidateEndpoints') != {'uapt-mcp-v6-candidate.service': ['127.0.0.1:3101']} or
+            plan.get('retireUnits') != [] or plan.get('retiredEndpoints') != []):
+            raise ValueError('authorization scope mismatch')
+    except (OSError, KeyError, TypeError, ValueError) as error:
+        raise ValueError('Invalid R4 reuse operator authorization: ' + str(error)) from error
+    return True
+
+def validate_plan(plan, policy, observed, prebuild=False):
     """Pure admission check; called again under the same lock immediately before routing."""
     if plan.get('schemaVersion') != 'uapt-release-lifecycle-plan-v1': raise ValueError('Wrong lifecycle plan schema')
     if plan.get('policySha256') != policy['_sha256']: raise ValueError('Policy changed; reprepare plan')
@@ -226,19 +280,32 @@ def validate_plan(plan, policy, observed):
     if set(observed['units']) - allowed: raise ValueError('Unregistered running service; retire or explicitly review it first')
     if set(observed['units']) - set(candidates) != set(policy['activeUnits']) | set(policy['legacyUnits']): raise ValueError('Expected active/legacy service set changed')
     budget = plan.get('candidatePeakBytes')
-    if not isinstance(budget, int) or budget <= 0 or budget > policy['candidatePeakMaxBytes']: raise ValueError('Invalid measured candidate peak budget')
-    # Before candidates start charge the full requested peak; when running charge remaining headroom.
-    used = sum(int(observed['units'].get(u, {}).get('MemoryCurrent', 0)) for u in candidates)
+    if type(budget) is not int or budget <= 0 or budget > policy['candidatePeakMaxBytes']: raise ValueError('Invalid measured candidate peak budget')
+    # The command supplies prebuild; plan JSON cannot select its own admission phase.
+    if 'buildPeakMaxBytes' in policy:
+        build_budget = plan.get('buildPeakBytes')
+        if type(build_budget) is not int or build_budget <= 0 or build_budget > policy['buildPeakMaxBytes']:
+            raise ValueError('Invalid separate build peak budget')
+        if prebuild:
+            if any(unit in observed['units'] for unit in candidates): raise ValueError('Build admission requires cold candidate slots')
+            budget = build_budget
+    elif 'buildPeakBytes' in plan:
+        raise ValueError('Separate build budget requires policy buildPeakMaxBytes')
+    # Build reserves its full independent peak. Runtime reserves only unoccupied
+    # candidate headroom; neither phase credits memory from future retirement.
+    used = 0 if prebuild and 'buildPeakMaxBytes' in policy else sum(int(observed['units'].get(u, {}).get('MemoryCurrent', 0)) for u in candidates)
     additional = max(0, budget - used)
-    if observed['memory']['MemAvailable'] - additional < policy['hostReserveBytes']: raise ValueError('Insufficient host reserve for coexistence/build peak')
+    if observed['memory']['MemAvailable'] - additional < policy['hostReserveBytes']: raise ValueError('Insufficient host reserve for ' + ('build peak' if prebuild else 'runtime coexistence'))
     if observed['uaptMemoryBytes'] + additional > policy['uaptPeakMaxBytes']: raise ValueError('UAPT aggregate peak budget exceeded')
     for unit, s in observed['units'].items():
         if s['MemoryHigh'] == 'infinity' or s['MemoryMax'] == 'infinity': raise ValueError('Missing resource limits: ' + unit)
-    if not plan.get('retireUnits') or not set(plan['retireUnits']) <= set(policy['activeUnits']): raise ValueError('Explicit previous active units must retire at completion')
+    reuse = plan.get('retireUnits') == [] and plan.get('retiredEndpoints') == []
+    if reuse: validate_r4_reuse_authorization(plan, policy)
+    elif not plan.get('retireUnits') or not set(plan['retireUnits']) <= set(policy['activeUnits']): raise ValueError('Explicit previous active units must retire at completion')
     if set(plan['retireUnits']) & set(candidates): raise ValueError('Candidate cannot retire itself')
     if set(plan['retireUnits']) != set(policy['activeUnits']) - set(plan.get('keepActiveUnits', [])): raise ValueError('Specify the exact replacement set')
     if set(plan.get('candidateEndpoints', {})) != set(candidates) or any(not v for v in plan['candidateEndpoints'].values()): raise ValueError('Exact candidate endpoints required for cleanup')
-    if not plan.get('routingFiles') or not plan.get('candidateChecks') or not plan.get('retiredEndpoints'): raise ValueError('Missing routing/candidate/retirement endpoint scope')
+    if not plan.get('routingFiles') or not plan.get('candidateChecks') or (not reuse and not plan.get('retiredEndpoints')): raise ValueError('Missing routing/candidate/retirement endpoint scope')
     if not plan.get('staticArchiveReceipt') or not plan.get('publicChecks'): raise ValueError('Static archive and exact public readback checks required')
     validate_disk_budget(plan, policy, observed)
     if policy.get('diskCapacity'): validate_retention_receipt(plan, observed, policy)
@@ -385,13 +452,14 @@ def validate_capacity(plan, capacity, prebuild=False, basis=None):
         if capacity.get('schemaVersion') != 'uapt-prebuild-budget-v1' or capacity.get('measured') is not False:
             raise ValueError('Explicit provisional prebuild budget required; do not label estimates as measurements')
         budget = capacity.get('buildMemoryMaxBytes')
-        if not isinstance(budget, int) or budget <= 0 or budget > plan['candidatePeakBytes'] or capacity.get('buildScope') != 'uapt-build.scope':
-            raise ValueError('Build must use the fixed scope within the admitted candidate budget')
+        if not isinstance(budget, int) or budget <= 0 or budget > plan.get('buildPeakBytes', plan['candidatePeakBytes']) or capacity.get('buildScope') != 'uapt-build.scope':
+            raise ValueError('Build must use the fixed scope within the admitted build budget')
         return
     peaks = capacity.get('peakBytesByStage', {})
     if not {'build', 'startup', 'cold_history', 'steady'} <= set(peaks) or any(not isinstance(v, int) or v <= 0 for v in peaks.values()):
         raise ValueError('Measured build/startup/cold-history/steady peak receipt required')
-    if max(peaks.values()) > plan['candidatePeakBytes']: raise ValueError('Candidate budget understates measured peak')
+    if peaks['build'] > plan.get('buildPeakBytes', plan['candidatePeakBytes']): raise ValueError('Build budget understates measured build peak')
+    if max(value for stage, value in peaks.items() if stage != 'build') > plan['candidatePeakBytes']: raise ValueError('Candidate budget understates measured runtime peak')
     if basis and capacity.get('BUILD_ID') and capacity['BUILD_ID'] != basis.get('BUILD_ID'):
         raise ValueError(f'Capacity receipt BUILD_ID ({capacity["BUILD_ID"]}) does not match basis ({basis.get("BUILD_ID")})')
     if capacity.get('invocationIds'):
@@ -409,7 +477,7 @@ def validate_capacity(plan, capacity, prebuild=False, basis=None):
 
 def load_plan(path, prebuild=False):
     path = Path(path).resolve(); plan = json.loads(path.read_text()); policy = json.loads(POLICY.read_text()); policy['_sha256'] = digest(POLICY)
-    validate_plan(plan, policy, audit())
+    validate_plan(plan, policy, audit(), prebuild=prebuild)
     if policy.get('retentionEnforcement'):
         checkpoint_hold_clocks(json.loads(Path(plan['retentionReceipt']['path']).read_text()), policy)
     for unit in plan['candidateUnits']:
@@ -517,6 +585,103 @@ def _nginx_config_blocks(output):
     if current is not None: blocks[current]='\n'.join(lines)
     return blocks
 
+def _nginx_context_items(text):
+    """Read direct statements/blocks only, without treating quoted braces as syntax."""
+    statements=[]; blocks=[]; buffer=[]; depth=0; quote=None; escaped=False; comment=False; start=None; header=None
+    for index,char in enumerate(text):
+        if comment:
+            if char=='\n': comment=False
+            else: continue
+        if escaped:
+            escaped=False
+            if depth==0: buffer.append(char)
+            continue
+        if char=='\\':
+            escaped=True
+            if depth==0: buffer.append(char)
+            continue
+        if quote:
+            if char==quote: quote=None
+            if depth==0: buffer.append(char)
+            continue
+        if char in ('"',"'"):
+            quote=char
+            if depth==0: buffer.append(char)
+            continue
+        if char=='#': comment=True; continue
+        if char=='{':
+            if depth==0: header=' '.join(''.join(buffer).split()); buffer=[]; start=index+1
+            depth+=1
+        elif char=='}':
+            depth-=1
+            if depth<0: raise ValueError('Unbalanced Nginx context')
+            if depth==0: blocks.append((header,text[start:index])); buffer=[]
+        elif depth==0:
+            if char==';': statements.append(' '.join(''.join(buffer).split())+';'); buffer=[]
+            else: buffer.append(char)
+    if depth or quote or ''.join(buffer).strip(): raise ValueError('Incomplete Nginx context')
+    return statements,blocks
+
+def _static_origin_context(manifest):
+    loaded=_nginx_config_blocks(run('nginx','-T'))
+    required=[STATIC_ORIGIN_VHOST,STATIC_ORIGIN_PARENT,'/etc/nginx/nginx.conf','/etc/nginx/mime.types','/etc/nginx/snippets/clb-pro-security-headers.conf']
+    if any(p not in loaded for p in required): raise ValueError('UAPT origin context is not fully loaded')
+    _,vhost_blocks=_nginx_context_items(loaded[STATIC_ORIGIN_VHOST])
+    servers=[body for head,body in vhost_blocks if head=='server']; tls=[]
+    for body in servers:
+        directives,_=_nginx_context_items(body)
+        if [x for x in directives if x.startswith('server_name ')]!=['server_name eduaipolicy.org www.eduaipolicy.org;']:
+            raise ValueError('Third-party or changed origin server_name')
+        listens=[x for x in directives if x.startswith('listen ')]
+        if any(' ssl' in x for x in listens): tls.append(directives)
+    if len(servers)!=2 or len(tls)!=1: raise ValueError('Require one exact UAPT HTTPS server')
+    if set(x for x in tls[0] if x.startswith('listen '))!={'listen 443 ssl http2;','listen [::]:443 ssl http2;'}:
+        raise ValueError('Unexpected UAPT origin TLS listener')
+    if [x for x in tls[0] if x.startswith('ssl_certificate ')]!=['ssl_certificate '+STATIC_ORIGIN_CERT+';'] or 'include '+STATIC_ORIGIN_PARENT+';' not in tls[0]:
+        raise ValueError('UAPT origin certificate/parent include changed')
+    def transport(statement):
+        word=statement.split(' ',1)[0]
+        return word.startswith(('gzip','charset','brotli')) or word in ['default_type','etag','expires']
+    parent_statements,parent_blocks=_nginx_context_items(loaded[STATIC_ORIGIN_PARENT])
+    if [x for x in parent_statements if transport(x)]!=list(STATIC_PREVIEW_DIRECTIVES): raise ValueError('Unknown or changed UAPT charset/gzip context')
+    if any(transport(x) for x in tls[0]) or any(head.split(' ',1)[0] in ['types','charset_map'] for head,_ in parent_blocks):
+        raise ValueError('Unmodeled UAPT transport context')
+    _,global_blocks=_nginx_context_items(loaded['/etc/nginx/nginx.conf'])
+    http=[body for head,body in global_blocks if head=='http']
+    if len(http)!=1: raise ValueError('Expected one global HTTP context')
+    global_statements,global_children=_nginx_context_items(http[0])
+    if set(x for x in global_statements if transport(x))!={'default_type application/octet-stream;','gzip on;'} or 'include /etc/nginx/mime.types;' not in global_statements:
+        raise ValueError('Unknown global MIME/gzip/charset context')
+    if any(head.split(' ',1)[0] in ['types','charset_map'] for head,_ in global_children): raise ValueError('Unmodeled global MIME override')
+    targets={x['path'] for x in manifest.get('configFiles',[])}
+    expected={DISCOVERY_CONFIG} if manifest.get('scope')==DISCOVERY_SCOPE else STATIC_CONFIGS
+    if targets!=expected: raise ValueError('Unexpected source snippet set for origin binding')
+    visited=set(); pending=[STATIC_ORIGIN_PARENT]
+    while pending:
+        path=pending.pop()
+        if path in visited: continue
+        if path not in loaded: raise ValueError('Missing loaded UAPT include: '+path)
+        visited.add(path); directives,_=_nginx_context_items(loaded[path])
+        for item in directives:
+            if not item.startswith('include '): continue
+            child=item[len('include '):-1]
+            if not child.startswith('/etc/nginx/snippets/uapt-') and child!='/etc/nginx/snippets/clb-pro-security-headers.conf':
+                raise ValueError('Unknown or third-party UAPT context include')
+            pending.append(child)
+    if not targets<=visited: raise ValueError('Origin TLS server does not select every source snippet')
+    files=[]
+    for path in sorted(set(required)|visited):
+        files.append({'path':path,'sha256':digest(path),'nginxTBlockSha256':hashlib.sha256(loaded[path].encode()).hexdigest()})
+    pem=Path(STATIC_ORIGIN_CERT).read_text(); certificate=re.search(r'-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----',pem,re.S)
+    if not certificate: raise ValueError('Origin leaf certificate missing')
+    context={'schemaVersion':'uapt-static-origin-context-v1','connectHost':'127.0.0.1','port':443,'hostAndSni':'eduaipolicy.org',
+            'certificateFile':STATIC_ORIGIN_CERT,'certificateFileSha256':digest(STATIC_ORIGIN_CERT),
+            'certificateDerSha256':hashlib.sha256(ssl.PEM_cert_to_DER_cert(certificate.group(0))).hexdigest(),
+            'contextFiles':files,'previewServerDirectives':list(STATIC_PREVIEW_DIRECTIVES),
+            'previewContextSha256':hashlib.sha256('\n'.join(STATIC_PREVIEW_DIRECTIVES).encode()).hexdigest()}
+    if len(json.dumps(context,indent=2).encode())>STATIC_ORIGIN_CONTEXT_MAX_BYTES: raise ValueError('Origin context exceeds bounded receipt/journal reserve')
+    return context
+
 def _expires_ttl(headers):
     date_value, expires_value = headers.get('date'), headers.get('expires')
     if not date_value or not expires_value: return None
@@ -529,26 +694,48 @@ def _require_static_unexpired(plan):
     if expiry.tzinfo is None or expiry <= datetime.datetime.now(datetime.timezone.utc):
         raise ValueError('Static plan expired during migration')
 
+def _static_response_fact(url,status,headers,body):
+    values = {key: headers.get(key) for key in ('content-type','cache-control','expires','date','etag','last-modified','content-encoding','vary','x-content-type-options','content-length')}
+    for key in STATIC_SECURITY_HEADERS:
+        all_values=headers.get_all(key,[])
+        values[key]=', '.join(all_values) if all_values else None
+    cache_tokens = {token.strip().lower() for token in (values.get('cache-control') or '').split(',')}
+    return {'url':url,'status':status,'bodyBytes':len(body),'bodySha256':hashlib.sha256(body).hexdigest(),
+            'headers':values,'noTransform':'no-transform' in cache_tokens,'expiresTtlSeconds':_expires_ttl(values)}
+
 def _fetch_static(url):
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}),_NoRedirect())
     request = urllib.request.Request(url, headers={'Accept-Encoding': 'identity', 'User-Agent': 'uapt-static-migration/1'})
     try:
         with opener.open(request, timeout=30) as response:
-            body = response.read()
-            status, headers = response.status, response.headers
+            return _static_response_fact(url,response.status,response.headers,response.read())
     except urllib.error.HTTPError as error:
-        body = error.read(); status, headers = error.code, error.headers
-    values = {key: headers.get(key) for key in ('content-type','cache-control','expires','date','etag','last-modified','content-encoding','vary','x-content-type-options','content-length')}
-    cache_tokens = {token.strip().lower() for token in (values.get('cache-control') or '').split(',')}
-    return {'url':url,'status':status,'bodyBytes':len(body),'bodySha256':hashlib.sha256(body).hexdigest(),
-            'headers':values,'noTransform':'no-transform' in cache_tokens,'expiresTtlSeconds':_expires_ttl(values)}
+        return _static_response_fact(url,error.code,error.headers,error.read())
+
+def _fetch_origin_static(path,context):
+    if (context.get('schemaVersion')!='uapt-static-origin-context-v1' or context.get('connectHost')!='127.0.0.1' or context.get('port')!=443
+            or context.get('hostAndSni')!='eduaipolicy.org' or context.get('certificateFile')!=STATIC_ORIGIN_CERT
+            or not re.fullmatch('[0-9a-f]{64}',context.get('certificateDerSha256','')) or not path.startswith('/') or '?' in path or '#' in path):
+        raise ValueError('Outside fixed authenticated loopback origin contract')
+    tls=ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT); tls.check_hostname=False; tls.verify_mode=ssl.CERT_NONE
+    class PinnedOrigin(http.client.HTTPConnection):
+        def connect(self):
+            raw=socket.create_connection(('127.0.0.1',443),timeout=30)
+            self.sock=tls.wrap_socket(raw,server_hostname='eduaipolicy.org')
+            if hashlib.sha256(self.sock.getpeercert(binary_form=True)).hexdigest()!=context['certificateDerSha256']:
+                self.sock.close(); raise ValueError('Pinned UAPT origin leaf certificate mismatch')
+    connection=PinnedOrigin('eduaipolicy.org',443,timeout=30)
+    try:
+        connection.request('GET',path,headers={'Host':'eduaipolicy.org','Accept-Encoding':'identity','User-Agent':'uapt-static-migration/1'})
+        response=connection.getresponse()
+        return _static_response_fact('https://eduaipolicy.org'+path,response.status,response.headers,response.read())
+    finally: connection.close()
 
 def _static_readback(assets, phase, baseline=None, origin='https://eduaipolicy.org'):
-    if phase not in ('public-before','preview','public-after'): raise ValueError('Invalid static readback phase')
+    if phase not in ('public-before','origin-before','preview','public-after'): raise ValueError('Invalid static readback phase')
     concurrency = 2
     def inspect(asset):
-        url = origin + asset['urlPath']
-        row = _fetch_static(url)
+        row = _fetch_origin_static(asset['urlPath'],origin) if phase=='origin-before' else _fetch_static(origin+asset['urlPath'])
         row['urlPath'] = asset['urlPath']
         return row
     rows=[]; failures=[]
@@ -563,6 +750,8 @@ def _static_readback(assets, phase, baseline=None, origin='https://eduaipolicy.o
             if row['status'] != 200: failures.append({'urlPath':asset['urlPath'],'kind':'status','actual':row['status']})
             if row['bodyBytes'] != asset['sourceBytes'] or row['bodySha256'] != asset['sourceSha256']:
                 failures.append({'urlPath':asset['urlPath'],'kind':'source_body_mismatch'})
+            if row.get('headers',{}).get('content-security-policy') not in (None,''):
+                failures.append({'urlPath':asset['urlPath'],'kind':'unexpected_uapt_content_security_policy'})
             if baseline is not None:
                 old=baseline.get(asset['urlPath'])
                 if not old: failures.append({'urlPath':asset['urlPath'],'kind':'missing_before'})
@@ -581,8 +770,103 @@ def _static_readback(assets, phase, baseline=None, origin='https://eduaipolicy.o
             'failures':failures,'responses':rows}
 
 def _save_static_receipt(txdir, label, receipt):
+    count=receipt.get('assetCount',0)
+    if type(count) is not int or count<0 or len(json.dumps(receipt,indent=2).encode())>count*STATIC_RECEIPT_MAX_BYTES_PER_ASSET+STATIC_ORIGIN_CONTEXT_MAX_BYTES:
+        raise ValueError('Static receipt exceeds declared per-asset/header/context budget')
     path=Path(txdir)/(label+'.json'); write(path,receipt)
     return {'path':str(path),'sha256':digest(path)}
+
+def _discovery_location_block(text, expected_alias):
+    pattern=r'(?m)^[ \t]*location\s+\^~\s+'+re.escape(DISCOVERY_URL_PREFIX)+r'\s*\{([^{}]*)\}'
+    matches=list(re.finditer(pattern,text))
+    if len(matches)!=1: raise ValueError('Require one exact discovery prefix location')
+    body_pattern=(r'\s*alias\s+'+re.escape(expected_alias)+r'\s*;\s*'
+                  r'add_header\s+Cache-Control\s+"public, max-age=31536000, immutable"\s+always\s*;\s*')
+    if not re.fullmatch(body_pattern,matches[0].group(1)):
+        raise ValueError('Discovery prefix alias or header body changed')
+    return matches[0].group(0)
+
+def _discovery_source_assets():
+    _reject_symlink_components(DISCOVERY_SOURCE_BASE)
+    if not DISCOVERY_SOURCE_BASE.is_dir(): raise ValueError('Discovery source must be the exact directory')
+    assets=[]
+    for directory, dirs, files in os.walk(DISCOVERY_SOURCE_BASE,followlinks=False):
+        for name in sorted(dirs):
+            child=Path(directory)/name
+            if child.is_symlink() or not child.is_dir(): raise ValueError('Discovery source directory symlink or special file')
+        for name in sorted(files):
+            source=Path(directory)/name
+            _reject_symlink_components(source)
+            before=source.stat()
+            import stat
+            if not stat.S_ISREG(before.st_mode): raise ValueError('Discovery source must contain only regular files')
+            if before.st_mode&0o7000: raise ValueError('Discovery source has special permission bits')
+            relative=source.relative_to(DISCOVERY_SOURCE_BASE).as_posix()
+            if not re.fullmatch(r'[A-Za-z0-9._/-]+',relative) or '..' in Path(relative).parts:
+                raise ValueError('Unsupported discovery asset relative path')
+            sha=digest(source); after=source.stat()
+            if (before.st_dev,before.st_ino,before.st_size,before.st_mtime_ns,before.st_mode)!=(after.st_dev,after.st_ino,after.st_size,after.st_mtime_ns,after.st_mode):
+                raise ValueError('Discovery source changed while hashing')
+            url=DISCOVERY_URL_PREFIX+relative
+            assets.append({'root':DISCOVERY_ROOT,'configFile':DISCOVERY_CONFIG,
+                           'sourceKind':'discovery_mark','sourceBase':str(DISCOVERY_SOURCE_BASE),
+                           'sourceRelativePath':relative,'sourcePath':str(source),
+                           'sourceBytes':before.st_size,'sourceSha256':sha,
+                           'sourceMode':format(before.st_mode&0o7777,'04o'),'sourceMtimeNs':before.st_mtime_ns,
+                           'sourceIsSymlink':False,'destinationExistsAtFreeze':False,
+                           'plannedDestination':str(DISCOVERY_DEST_BASE/relative),
+                           'urlPath':url,'absoluteUrl':'https://eduaipolicy.org'+url})
+    if not assets: raise ValueError('Discovery prefix may not be an empty directory')
+    return sorted(assets,key=lambda a:a['urlPath'])
+
+def _build_discovery_inventory():
+    _reject_symlink_components(Path(DISCOVERY_CONFIG))
+    original=Path(DISCOVERY_CONFIG).read_text()
+    _discovery_location_block(original,str(DISCOVERY_SOURCE_BASE)+'/')
+    original_sha=hashlib.sha256(original.encode()).hexdigest()
+    loaded=_nginx_config_blocks(run('nginx','-T'))
+    if DISCOVERY_CONFIG not in loaded: raise ValueError('Discovery snippet is not loaded by Nginx')
+    # Exact or longer prefix locations would defeat a directory-prefix preview.
+    for text in loaded.values():
+        for match in re.finditer(r'(?m)^\s*location\s+(?:(=|~\*?|\^~)\s+)?([^\s{]+)\s*\{',text):
+            if match.group(2).startswith(DISCOVERY_URL_PREFIX) and match.group(2)!=DISCOVERY_URL_PREFIX:
+                raise ValueError('Discovery prefix has an overriding child location')
+    _reject_symlink_components(DISCOVERY_DEST_BASE,allow_missing=True)
+    if os.path.lexists(DISCOVERY_DEST_BASE): raise ValueError('Discovery destination already exists')
+    assets=_discovery_source_assets()
+    for asset in assets:
+        _reject_symlink_components(Path(asset['plannedDestination']),allow_missing=True)
+    if digest(DISCOVERY_CONFIG)!=original_sha: raise ValueError('Discovery config changed while freezing')
+    return {'schemaVersion':'uapt-static-alias-inventory-v1','scope':DISCOVERY_SCOPE,
+            'status':'READY_FOR_REVIEW','readOnly':True,'productionWritesPerformed':False,
+            'controlledDestinationRoot':str(STATIC_DEST_ROOT),
+            'configFiles':[{'path':DISCOVERY_CONFIG,'sha256':digest(DISCOVERY_CONFIG),
+                            'nginxTBlockSha256':hashlib.sha256(loaded[DISCOVERY_CONFIG].encode()).hexdigest(),'loadedByNginxT':True}],
+            'directoryAlias':{'sourcePath':str(DISCOVERY_SOURCE_BASE)+'/',
+                              'plannedDestination':str(DISCOVERY_DEST_BASE)+'/',
+                              'urlPath':DISCOVERY_URL_PREFIX,'locationModifier':'^~'},
+            'assets':assets}
+
+def _validate_discovery_static_plan(plan,manifest):
+    # Re-enumeration rejects omissions, added files, source/config drift and links.
+    if manifest!=_build_discovery_inventory(): raise ValueError('Discovery frozen inventory changed or incomplete')
+    staged=plan.get('stagedConfigs',[])
+    if len(staged)!=1 or staged[0].get('target')!=DISCOVERY_CONFIG:
+        raise ValueError('Discovery may stage only its exact one snippet')
+    item=staged[0]; target=Path(DISCOVERY_CONFIG); path=Path(item.get('path',''))
+    if not path.is_absolute() or '..' in path.parts: raise ValueError('Invalid discovery staged snippet path')
+    _reject_symlink_components(path)
+    if not _under(path,STATE/'static-migration-plans'): raise ValueError('Discovery staged snippet outside lifecycle plans')
+    meta=manifest['configFiles'][0]
+    if item.get('beforeSha256')!=meta['sha256'] or digest(target)!=meta['sha256'] or digest(path)!=item.get('sha256'):
+        raise ValueError('Discovery staged or live config hash changed')
+    original=target.read_text(); rendered=path.read_text()
+    _validate_static_snippet(original,rendered,[manifest['directoryAlias']],DISCOVERY_CONFIG)
+    _discovery_location_block(rendered,str(DISCOVERY_DEST_BASE)+'/')
+    expected=sum(a['sourceBytes'] for a in manifest['assets'])+target.stat().st_size+len(manifest['assets'])*STATIC_RECEIPT_MAX_BYTES_PER_ASSET*STATIC_RECEIPT_PHASES+65536
+    if type(plan.get('incrementalBudgetBytes')) is not int or plan['incrementalBudgetBytes']!=expected:
+        raise ValueError('Discovery incremental budget mismatch')
+    return manifest
 
 def _validate_static_plan(plan, policy):
     if plan.get('kind') != 'static' or plan.get('schemaVersion') != 'uapt-static-migration-plan-v1':
@@ -601,6 +885,10 @@ def _validate_static_plan(plan, policy):
     manifest=json.loads(manifest_path.read_text())
     if manifest.get('schemaVersion') != 'uapt-static-alias-inventory-v1' or manifest.get('status') != 'READY_FOR_REVIEW' or manifest.get('readOnly') is not True or manifest.get('productionWritesPerformed') is not False:
         raise ValueError('Static inventory is not a frozen read-only complete manifest')
+    if plan.get('originContext')!=_static_origin_context(manifest): raise ValueError('Frozen UAPT origin/preview context changed or missing')
+    if manifest.get('scope')==DISCOVERY_SCOPE:
+        return _validate_discovery_static_plan(plan,manifest)
+    if manifest.get('scope') is not None: raise ValueError('Unknown static migration scope')
     if manifest.get('controlledDestinationRoot') != str(STATIC_DEST_ROOT): raise ValueError('Unexpected static destination root')
     assets=manifest.get('assets',[])
     if len(assets) != STATIC_EXPECTED_ALIASES: raise ValueError('Expected exactly 1,175 manifest assets')
@@ -656,7 +944,7 @@ def _validate_static_plan(plan, policy):
         if not _under(staged_path,plans_root): raise ValueError('Staged config must be inside static-migration-plans')
         original_text=original.read_text(); staged_text=staged_path.read_text()
         _validate_static_snippet(original_text,staged_text,by_config[target],target)
-    expected_increment=source_total+sum(Path(p).stat().st_size for p in STATIC_CONFIGS)+len(assets)*STATIC_RECEIPT_MAX_BYTES_PER_ASSET*3+65536
+    expected_increment=source_total+sum(Path(p).stat().st_size for p in STATIC_CONFIGS)+len(assets)*STATIC_RECEIPT_MAX_BYTES_PER_ASSET*STATIC_RECEIPT_PHASES+65536
     if type(plan.get('incrementalBudgetBytes')) is not int or plan['incrementalBudgetBytes'] != expected_increment:
         raise ValueError('Static incremental budget must equal manifest payload + config backups + bounded receipts')
     return manifest
@@ -672,7 +960,7 @@ def _validate_static_capacity(plan, policy, observed, manifest):
         while parent != STATIC_DEST_ROOT.parent and parent != parent.parent:
             if parent.exists(): break
             new_dirs.add(str(parent)); parent=parent.parent
-    file_count=len(manifest['assets'])+len(STATIC_CONFIGS)+3+10+len(new_dirs)
+    file_count=len(manifest['assets'])+len(manifest['configFiles'])+3+10+len(new_dirs)
     if disk.get('freeBytes',0)-incremental < guard['reserveBytes']: raise ValueError('Insufficient free disk reserve for static migration')
     if disk.get('availableInodes',0)-file_count < guard['reserveInodes']: raise ValueError('Insufficient free inode reserve for static migration')
     if disk.get('projectBytes',0)+incremental > guard['projectMaxBytes']: raise ValueError('Static migration exceeds UAPT project disk budget')
@@ -752,20 +1040,34 @@ def _copy_file_durable(source, destination, expected_sha256, replace_stale=False
         raise
     return h.hexdigest()
 
-def _static_preview_impl(staged, assets, baseline, txdir):
+def _static_preview_impl(staged, assets, baseline, txdir, directory_alias=None, origin_context=None):
     import socket
     preview=Path(txdir)/'preview'; preview.mkdir()
     with socket.socket() as sock:
         sock.bind(('127.0.0.1',0)); port=sock.getsockname()[1]
     conf=preview/'nginx.conf'; pid=preview/'nginx.pid'
-    includes='\n'.join('    include '+json.dumps(item['path'])+';' for item in staged)
+    if directory_alias is None:
+        includes='\n'.join('    include '+json.dumps(item['path'])+';' for item in staged)
+    else:
+        # The discovery snippet also contains dynamic/API routes. Preview only
+        # its exact unchanged static location; no dynamic route is instantiated.
+        if len(staged)!=1 or staged[0]['target']!=DISCOVERY_CONFIG:
+            raise ValueError('Unexpected discovery preview snippet')
+        includes=_discovery_location_block(Path(staged[0]['path']).read_text(),str(DISCOVERY_DEST_BASE)+'/')
     ttls={row.get('expiresTtlSeconds') for row in baseline.values()}
     if len(ttls)>1: raise ValueError('Per-URL Expires TTL differs; cannot safely model the live server context in preview')
     expires=next(iter(ttls)) if ttls else None
     expires_directive=('    expires '+str(int(round(expires)))+'s;\n') if expires is not None else ''
+    if (not isinstance(origin_context,dict) or origin_context.get('previewServerDirectives')!=list(STATIC_PREVIEW_DIRECTIVES)
+            or origin_context.get('previewContextSha256')!=hashlib.sha256('\n'.join(STATIC_PREVIEW_DIRECTIVES).encode()).hexdigest()):
+        raise ValueError('Exact frozen UAPT preview transport context required')
+    transport='\n'.join('    '+line for line in origin_context['previewServerDirectives'])+'\n'
     # Match inherited site-wide MIME/security/Expires behavior; each staged location
     # retains its own Cache-Control and legacy per-location security includes.
-    text='pid '+json.dumps(str(pid))+';\nerror_log /dev/null;\nevents { worker_connections 1024; }\nhttp {\n  access_log off;\n  include /etc/nginx/mime.types;\n  default_type application/octet-stream;\n  server {\n    listen 127.0.0.1:'+str(port)+';\n    server_name localhost;\n    include /etc/nginx/snippets/clb-pro-security-headers.conf;\n'+expires_directive+includes+'\n  }\n}\n'
+    # Production registers this shared-header variable in a different host's
+    # server block. UAPT's value is empty; register that same empty value only
+    # in this isolated preview, without importing the other host's CSP policy.
+    text='pid '+json.dumps(str(pid))+';\nerror_log /dev/null;\nevents { worker_connections 1024; }\nhttp {\n  access_log off;\n  include /etc/nginx/mime.types;\n  default_type application/octet-stream;\n  server {\n    listen 127.0.0.1:'+str(port)+';\n    server_name localhost;\n    set $clb_pro_csp "";\n    include /etc/nginx/snippets/clb-pro-security-headers.conf;\n'+transport+expires_directive+includes+'\n  }\n}\n'
     conf.write_text(text)
     prefix=str(preview)+'/'
     proc=None
@@ -794,8 +1096,8 @@ def _static_preview_impl(staged, assets, baseline, txdir):
                 proc.kill(); proc.wait(timeout=5)
     return receipt
 
-def _static_preview(staged, assets, baseline, txdir):
-    try: return _static_preview_impl(staged,assets,baseline,txdir)
+def _static_preview(staged, assets, baseline, txdir, directory_alias=None, origin_context=None):
+    try: return _static_preview_impl(staged,assets,baseline,txdir,directory_alias,origin_context)
     except Exception as error:
         return {'schemaVersion':'uapt-static-readback-v1','phase':'preview','checkedAt':now(),'concurrency':2,
                 'origin':'http://127.0.0.1','redirectsFollowed':False,'assetCount':0,'status':'BLOCKED',
@@ -836,15 +1138,27 @@ def static_migrate(plan_path, pending):
         tx['staticReceipts']['publicBefore']=_save_static_receipt(txdir,'public-before',baseline_receipt); write(pending,tx)
         if baseline_receipt['status']!='PASS': raise ValueError('Static public-before failed')
         baselines={row['urlPath']:row for row in baseline_receipt['responses']}
+        origin_context=plan.get('originContext')
+        origin_receipt=_static_readback(manifest['assets'],'origin-before',origin=origin_context)
+        tx['staticReceipts']['originBefore']=_save_static_receipt(txdir,'origin-before',origin_receipt); write(pending,tx)
+        if origin_receipt['status']!='PASS': raise ValueError('Static pinned origin-before failed')
+        origin_baselines={row['urlPath']:row for row in origin_receipt['responses']}
         _require_static_unexpired(plan)
         for asset in manifest['assets']:
             copied=_copy_static_asset(asset); tx['copiedAssets'].append(copied)
         write(pending,tx)
-        staged_receipt=_static_preview(plan['stagedConfigs'],manifest['assets'],baselines,txdir)
+        if manifest.get('scope')==DISCOVERY_SCOPE:
+            staged_receipt=_static_preview(plan['stagedConfigs'],manifest['assets'],origin_baselines,txdir,manifest['directoryAlias'],origin_context)
+        else:
+            staged_receipt=_static_preview(plan['stagedConfigs'],manifest['assets'],origin_baselines,txdir,None,origin_context)
         tx['staticReceipts']['preview']=_save_static_receipt(txdir,'preview',staged_receipt); tx['stage']='preview_passed'; write(pending,tx)
         if staged_receipt['status']!='PASS': raise ValueError('Static local Nginx preview failed semantic checks')
         _require_static_unexpired(plan)
         if digest(POLICY)!=tx['beforePolicySha256']: raise ValueError('Lifecycle policy changed during static transaction')
+        if origin_context!=_static_origin_context(manifest):
+            raise ValueError('Origin/preview context changed after preview')
+        if manifest.get('scope')==DISCOVERY_SCOPE and manifest['assets']!=_discovery_source_assets():
+            raise ValueError('Discovery source tree changed after preview')
         for item in files:
             target=Path(item['target']); staged=Path(item['stagedPath'])
             if digest(target)!=item['beforeSha256'] or digest(staged)!=item['stagedSha256']: raise ValueError('Static config changed after preview')
@@ -962,6 +1276,8 @@ def main():
         if args.action == 'complete':
             tx = json.loads(pending.read_text()); assert tx['stage'] == 'selected_pending_acceptance'
             plan = tx['plan']
+            if plan.get('retireUnits') == [] and plan.get('retiredEndpoints') == []:
+                validate_r4_reuse_authorization(plan, json.loads(POLICY.read_text()))
             if not args.completion_ledger: raise ValueError('Fresh public synchronization completion required')
             proof = {'path': str(Path(args.completion_ledger).resolve()), 'sha256': digest(args.completion_ledger)}
             if digest(plan['basis']['path']) != plan['basis']['sha256'] or digest(plan['releaseHelper']) != plan['releaseHelperSha256']: raise ValueError('Frozen completion basis/helper changed')
@@ -981,7 +1297,7 @@ def main():
                 s = state(unit)
                 if s['ActiveState'] != 'inactive' or s['UnitFileState'] != 'disabled': raise ValueError('Retirement failed')
             policy = json.loads(POLICY.read_text()); policy['activeUnits'] = plan['keepActiveUnits'] + plan['candidateUnits']; policy['candidateSlots'] = list(set(policy['candidateSlots']) - set(plan['candidateUnits']) | set(tx['retireUnits']))
-            write(POLICY, policy); tx.update(stage='complete', completedAt=now(), finalAudit=audit()); write(pending, tx); print('Complete; previous units cold'); return
+            write(POLICY, policy); tx.update(stage='complete', completedAt=now(), finalAudit=audit()); write(pending, tx); print('Complete; compatibility units retained' if not tx['retireUnits'] else 'Complete; previous units cold'); return
         plan, policy = load_plan(args.plan, args.action == 'prebuild')
         if pending.exists() and json.loads(pending.read_text())['stage'] not in ['complete', 'rolled_back']: raise ValueError('Unfinished deployment: recover before another release')
         run('node', plan['releaseHelper'], 'verify-sync', plan['syncLedger']['path'], plan['basis']['path'], 'candidate')

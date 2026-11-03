@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node ../../scripts/validate-web-build-scope.mjs && pnpm --filter @uapt/db generate && node ../../scripts/prepare-web-runtime-data.mjs && tsx --tsconfig tsconfig.json ../../scripts/validate-web-runtime-data.ts && next build",
+    "build": "node ../../scripts/uapt-release.mjs build full",
     "lint": "tsc --noEmit -p tsconfig.json",
     "start": "next start",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build:debug": "node ../../scripts/uapt-release.mjs build full --debug"
   },
   "dependencies": {
     "@uapt/db": "workspace:*",

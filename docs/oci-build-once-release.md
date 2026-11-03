@@ -85,42 +85,59 @@ private values stay in the env file. Public settings are frozen by the build.
 The reviewed configuration must be unchanged between build, acceptance and
 cutover; a changed build input requires a new candidate.
 
-After the checks pass, perform exactly one production build for this candidate:
+After installed lifecycle `prebuild` admission, perform exactly one production build
+inside the fixed `uapt-build.scope` using the current policy's build profile. The
+following is the scope's execution body, not an alternative to admission or the
+resource guard. `release_runtime_path` and `release_env_file` must come from the
+reviewed production toolchain and isolated candidate environment;
+`release_build_heap_mib` is read from the installed fixed build profile. Do not reuse
+an old example Node path or print environment values.
 
 ```bash
-sudo -H -u uapt env PATH=/opt/node-v22/bin:/usr/local/bin:/usr/bin:/bin \
-  bash -s -- "$release_root" <<'BUILD'
+sudo -H -u uapt env PATH="$release_runtime_path" \
+  bash -s -- "$release_root" "$release_sha" "$release_env_file" "$release_build_heap_mib" <<'BUILD'
 set -euo pipefail
 cd "$1"
 set -a
-source /srv/uapt/env/production.env
+source "$3"
 set +a
 test "$NODE_ENV" = production
 test "$NEXT_PUBLIC_SITE_URL" = https://eduaipolicy.org
-test "$WEB_PUBLIC_BASE_URL" = https://eduaipolicy.org
-test "$API_PUBLIC_BASE_URL" = https://eduaipolicy.org
-pnpm install --frozen-lockfile
-UAPT_DISABLE_INTERNAL_FETCH=1 pnpm --filter @uapt/web build
+[[ "$4" =~ ^[0-9]+$ ]]
+export NODE_OPTIONS="--max-old-space-size=$4"
+UAPT_DISABLE_INTERNAL_FETCH=1 node scripts/uapt-release.mjs build full "$2" --webpack
 BUILD
 ```
 
-`@uapt/web build` already generates Prisma, prepares `.runtime-data`, and runs
-`next build`. Do not separately regenerate those after acceptance. A failed
-build is not a tested artifact. Fix source/configuration, review a new candidate,
-and build it; do not mutate an accepted directory to fix forward.
+This single entry installs root/web/Tulsa dependency closures with frozen dev
+and runtime dependencies, checks dependency identity and build scope, generates
+Prisma once, checks source types before compilation, prepares and validates
+runtime data, and invokes Next once. It refuses an existing production `.next`,
+a different code/origin SHA or an unexpected source modification. Only the exact
+Next-generated development-to-production type declaration change is permitted
+after compilation; published generated assets must retain their frozen identities.
+`pnpm build <SHA> --webpack` and the web package's build alias use the same entry.
+No recursive workspace production build is used.
+
+A nonzero build exit is not a deployable artifact even if `BUILD_ID` exists.
+Keep failure logs/output, fix the demonstrated source/configuration error, freeze
+a new SHA in a new release directory and retry once after focused checks. Do not
+blindly retry an unchanged build, upgrade dependencies as a workaround, ignore
+TypeScript errors or mutate accepted `.next` output. A successful artifact is
+reused for candidate and public acceptance without another build.
 
 ## Candidate runtime and acceptance
 
-Reserve loopback 3101 without killing another process. Start the candidate in
-the exact `apps/web` working directory with the production service's toolchain,
-user and runtime environment. Prefer a temporary systemd unit mirroring the
-inspected production service (including limits/restart behavior), with only
-these necessary runtime overrides:
+Use the free fixed candidate slot from the installed policy; do not reserve an
+occupied port or create a temporary application service. Start the candidate in
+the exact `apps/web` working directory with the reviewed production toolchain,
+user, protections and isolated runtime environment. The following port is an
+example and must match the actually assigned fixed slot:
 
 ```text
-PORT=3101
+PORT=3102
 HOSTNAME=127.0.0.1
-INTERNAL_NEXT_BASE_URL=http://127.0.0.1:3101
+INTERNAL_NEXT_BASE_URL=http://127.0.0.1:3102
 UAPT_DISABLE_INTERNAL_FETCH is unset
 ```
 

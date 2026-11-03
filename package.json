@@ -25,7 +25,7 @@
     "dev:web": "pnpm --filter @uapt/web dev",
     "dev:api": "pnpm --filter @uapt/api dev",
     "dev:worker": "pnpm --filter @uapt/worker dev",
-    "build": "pnpm db:generate && pnpm -r build",
+    "build": "node scripts/uapt-release.mjs build full",
     "lint": "pnpm -r lint",
     "check": "pnpm db:generate && pnpm validate:i18n && pnpm validate:entity-aliases && pnpm validate:public-contract && pnpm validate:tool-records && pnpm validate:analysis-contract && pnpm validate:policy-snapshot && pnpm audit:policy-analysis && pnpm smoke:analysis-pages && pnpm smoke:entity-search && pnpm smoke:source-diffs && pnpm validate:openclaw-artifacts && pnpm validate:dataset-release && pnpm validate:v6-shards && pnpm validate:v6-release && pnpm audit:public-data && pnpm typecheck && pnpm lint",
     "smoke:universities-index": "tsx scripts/smoke-universities-index.ts",
@@ -89,7 +89,10 @@
     "test:mcp-acceptance": "pnpm mcp:export && pnpm validate:mcp-export && pnpm test:mcp",
     "test:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && node --test tests/web-runtime-data.test.mjs",
     "validate:web-runtime-data": "tsc --noEmit -p scripts/tsconfig.runtime-data.json && tsx --tsconfig apps/web/tsconfig.json scripts/validate-web-runtime-data.ts",
-    "test:v6-reading-preview": "tsx --tsconfig apps/web/tsconfig.json --test tests/policy-v6-reading-preview.test.tsx"
+    "test:v6-reading-preview": "tsx --tsconfig apps/web/tsconfig.json --test tests/policy-v6-reading-preview.test.tsx",
+    "build:zone": "node scripts/uapt-release.mjs build zone",
+    "build:debug": "node scripts/uapt-release.mjs build full --debug",
+    "test:release-build": "node --test tests/release-build-pipeline.test.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

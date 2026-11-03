@@ -113,7 +113,7 @@ class StaticMigrationTests(unittest.TestCase):
    manifest={'assets':[asset]}
    def readback(assets,phase,baseline=None,origin='https://eduaipolicy.org'):
     return {'phase':phase,'status':'BLOCKED' if phase=='public-after' else 'PASS','responses':[{'urlPath':'/a.js'}],'failures':([] if phase!='public-after' else [{'kind':'header mismatch'}])}
-   with patch.object(m,'STATE',state),patch.object(m,'POLICY',policy),patch.object(m,'audit',return_value={'disk':{}}),patch.object(m,'_validate_static_plan',return_value=manifest),patch.object(m,'_validate_static_capacity'),patch.object(m,'_reject_symlink_components'),patch.object(m,'_static_readback',side_effect=readback),patch.object(m,'_static_preview',return_value={'phase':'preview','status':'PASS','responses':[],'failures':[]}),patch.object(m,'run',return_value='') as run:
+   with patch.object(m,'STATE',state),patch.object(m,'POLICY',policy),patch.object(m,'audit',return_value={'disk':{}}),patch.object(m,'_validate_static_plan',return_value=manifest),patch.object(m,'_static_origin_context',return_value=None),patch.object(m,'_validate_static_capacity'),patch.object(m,'_reject_symlink_components'),patch.object(m,'_static_readback',side_effect=readback),patch.object(m,'_static_preview',return_value={'phase':'preview','status':'PASS','responses':[],'failures':[]}),patch.object(m,'run',return_value='') as run:
     with self.assertRaisesRegex(ValueError,'public-after'):
      m.static_migrate(plan_path,state/'transaction.json')
    self.assertEqual(target.read_text(),'location = /a.js { alias '+str(source)+'; }\n')
@@ -189,6 +189,81 @@ class CapacityPhaseTests(unittest.TestCase):
   plan={'candidatePeakBytes':100};measured={'peakBytesByStage':{'build':90,'startup':10,'cold_history':80,'steady':20}}
   m.validate_capacity(plan,measured)
   with self.assertRaisesRegex(ValueError,'understates'):m.validate_capacity({'candidatePeakBytes':50},measured)
+
+
+class SeparateBuildRuntimeBudgetTests(unittest.TestCase):
+ def setUp(self):
+  LifecycleTests.setUp(self)
+  self.policy.update(buildPeakMaxBytes=800,uaptPeakMaxBytes=1400)
+  self.plan['buildPeakBytes']=800
+  self.observed['memory']['MemAvailable']=1400
+  self.measured={'peakBytesByStage':{'build':700,'startup':150,'cold_history':190,'steady':100}}
+ def test_real_profile_admits_build8_and_keeps_runtime4(self):
+  g=1024**3
+  self.policy.update(buildPeakMaxBytes=8*g,candidatePeakMaxBytes=4*g,hostReserveBytes=3*g,uaptPeakMaxBytes=16*g)
+  self.plan.update(buildPeakBytes=8*g,candidatePeakBytes=4*g)
+  self.observed.update(memory={'MemAvailable':12536430592},uaptMemoryBytes=7*g)
+  self.assertTrue(m.validate_plan(self.plan,self.policy,self.observed,prebuild=True))
+  self.assertTrue(m.validate_plan(self.plan,self.policy,self.observed))
+  m.validate_capacity(self.plan,{'peakBytesByStage':{'build':int(7.5*g),'startup':2*g,'cold_history':int(3.5*g),'steady':3*g}})
+ def test_build_and_runtime_measured_peaks_have_independent_limits(self):
+  before=json.loads(json.dumps(self.measured))
+  m.validate_capacity(self.plan,self.measured)
+  self.assertEqual(self.measured,before,'Never drop or lower the actual build peak')
+  with self.assertRaisesRegex(ValueError,'Build budget understates'):
+   m.validate_capacity(self.plan,{'peakBytesByStage':{**before['peakBytesByStage'],'build':801}})
+  for stage in ['startup','cold_history','steady']:
+   with self.subTest(stage=stage),self.assertRaisesRegex(ValueError,'runtime peak'):
+    m.validate_capacity(self.plan,{'peakBytesByStage':{**before['peakBytesByStage'],stage:201}})
+ def test_json_phase_flags_cannot_make_runtime_admission_charge_build(self):
+  self.plan.update(prebuild=True,phase='prebuild',capacityPhase='build')
+  self.observed['memory']['MemAvailable']=700
+  self.assertTrue(m.validate_plan(self.plan,self.policy,self.observed))
+  with self.assertRaisesRegex(ValueError,'build peak'):
+   m.validate_plan(self.plan,self.policy,self.observed,prebuild=True)
+ def test_provisional_receipt_and_build_id_do_not_satisfy_runtime_gate(self):
+  self.plan.update(prebuild=True,phase='prebuild')
+  provisional={'schemaVersion':'uapt-prebuild-budget-v1','measured':False,'buildScope':'uapt-build.scope','buildMemoryMaxBytes':800,'BUILD_ID':'written-before-build-failed'}
+  m.validate_capacity(self.plan,provisional,prebuild=True)
+  with self.assertRaisesRegex(ValueError,'Measured'):
+   m.validate_capacity(self.plan,provisional)
+ def test_build_admission_reserves_full_peak_and_requires_cold_slots(self):
+  self.observed['units']['candidate']={'MemoryCurrent':'50','MemoryHigh':'100','MemoryMax':'200'}
+  self.observed['uaptMemoryBytes']=250
+  self.assertTrue(m.validate_plan(self.plan,self.policy,self.observed))
+  with self.assertRaisesRegex(ValueError,'cold candidate'):
+   m.validate_plan(self.plan,self.policy,self.observed,prebuild=True)
+ def test_separate_build_budget_is_required_and_policy_bounded(self):
+  for value in [None,0,-1,True,801]:
+   with self.subTest(value=value):
+    self.plan['buildPeakBytes']=value
+    with self.assertRaisesRegex(ValueError,'build peak budget'):
+     m.validate_plan(self.plan,self.policy,self.observed,prebuild=True)
+  self.plan['buildPeakBytes']=800
+  with self.assertRaisesRegex(ValueError,'build budget'):
+   m.validate_capacity(self.plan,{'schemaVersion':'uapt-prebuild-budget-v1','measured':False,'buildScope':'uapt-build.scope','buildMemoryMaxBytes':801},prebuild=True)
+ def test_build_and_runtime_both_keep_host_and_aggregate_guards(self):
+  for prebuild,available,used,pattern in [(True,1000,200,'reserve'),(True,1400,700,'aggregate'),(False,650,200,'reserve'),(False,1400,1300,'aggregate')]:
+   with self.subTest(prebuild=prebuild,pattern=pattern):
+    self.observed.update(memory={'MemAvailable':available},uaptMemoryBytes=used)
+    with self.assertRaisesRegex(ValueError,pattern):m.validate_plan(self.plan,self.policy,self.observed,prebuild=prebuild)
+ def test_legacy_policy_cannot_silently_enable_separate_build_budget(self):
+  del self.policy['buildPeakMaxBytes']
+  with self.assertRaisesRegex(ValueError,'policy buildPeakMaxBytes'):
+   m.validate_plan(self.plan,self.policy,self.observed)
+  del self.plan['buildPeakBytes']
+  self.assertTrue(m.validate_plan(self.plan,self.policy,self.observed,prebuild=True))
+  with self.assertRaisesRegex(ValueError,'Build budget understates'):
+   m.validate_capacity(self.plan,self.measured)
+ def test_load_plan_gets_phase_from_command_not_plan_json(self):
+  class Captured(Exception): pass
+  with tempfile.TemporaryDirectory()as d:
+   root=Path(d);policy=root/'policy.json';policy.write_text(json.dumps(self.policy));plan=root/'plan.json';plan.write_text(json.dumps({**self.plan,'prebuild':True,'phase':'prebuild'}))
+   with patch.object(m,'POLICY',policy),patch.object(m,'audit',return_value=self.observed),patch.object(m,'validate_plan',side_effect=Captured)as validate:
+    with self.assertRaises(Captured):m.load_plan(plan,prebuild=True)
+    self.assertTrue(validate.call_args.kwargs['prebuild'])
+    with self.assertRaises(Captured):m.load_plan(plan)
+    self.assertIs(validate.call_args.kwargs['prebuild'],False)
 
 
 class ReadbackPropagationTests(unittest.TestCase):

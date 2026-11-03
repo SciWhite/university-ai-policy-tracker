@@ -28,7 +28,7 @@
 
 ### 控制器静态依赖修复
 
-静态依赖迁移使用安装版生命周期控制器的 `static-migrate <plan.json>`；不得用应用 `cutover` 替代。代码变更本身不会更新服务器；当前托管控制器未安装此入口，必须先完成受审查的安装，未确认命令可用前不能执行。计划为 `kind: "static"`，绑定 manifest、7个受控 snippet、逐文件源/目标哈希、public-before 与预览输入、实时增量磁盘预算，且最长4小时。入口持有同一发布锁，拒绝未完成事务、任何路径/哈希漂移、符号链接、目标碰撞或容量不足；只复制 manifest 中已公开的不可变文件并精确替换 `alias` 目标。URL、location、header、include、proxy、服务、policy 和暂留时钟保持不变。
+静态依赖迁移使用安装版生命周期控制器的 `static-migrate <plan.json>`；不得用应用 `cutover` 替代。代码变更本身不会更新服务器；该入口已在2026-11-02的受控静态迁移中安装并执行。每次仍须核对当前安装副本、计划及实际生效配置，未确认命令可用前不能执行。计划为 `kind: "static"`，绑定 manifest、7个受控 snippet、逐文件源/目标哈希、public-before 与预览输入、实时增量磁盘预算，且最长4小时。入口持有同一发布锁，拒绝未完成事务、任何路径/哈希漂移、符号链接、目标碰撞或容量不足；只复制 manifest 中已公开的不可变文件并精确替换 `alias` 目标。URL、location、header、include、proxy、服务、policy 和暂留时钟保持不变。
 
 入口先对全部精确公网 URL 做并发不超过2的 GET 基线，再用临时本机 Nginx 配置验证 staged snippets 与响应，之后才原子替换白名单配置、执行 `nginx -t` 并 reload 现有 Nginx，最后对同一 URL 集合做公网回读。状态、body hash/长度、MIME、Cache-Control、ETag、no-transform 必须一致；Expires 按响应 Date 的相对 TTL 比较。任一步失败时由同一 journal 恢复原7个配置并验证/reload，保存实际回执。静态成功直接将该事务标为 `complete`，不调用应用 `complete`、不生成同步合同或应用发布事件。它只修复 held release 的静态引用，不豁免任何应用发布门禁，也不移除原件；原件清理仍需站外完整归档、哈希、隔离恢复和删除前最新引用复查。
 
@@ -80,3 +80,20 @@ prebuild 继续检查固定槽位、全局容量、同步凭据和未完成事�
 2026-10-25 补充：`retention` 为只读检查入口。启用 retentionEnforcement 后，发布收据同时覆盖受控临时材料和首次暂留时钟；超过实际阻断期限、缺行动/时区/期限、擅自重置时钟或未分类临时材料均拒绝新发布。规则详见 [磁盘规范](release-storage-policy.md)。没有自动删除或新增应用服务。
 
 用户明确授权的当前处理窗口：暂留复查到期先提醒，首次登记满 7 天才因超期阻断；原始时钟不重写。引用清单仍需 24 小时内更新，实时磁盘/内存与验收检查继续执行。详见磁盘规范的“复查提醒与七天处理窗口”。
+
+## 2026-11-03 固定构建与运行资源预算
+
+用户已授权把本轮资源调整纳入常规发布流程。以下配置取代此前构建与候选共用3GiB、UAPT9GiB和host6GiB的限制；生产生效以安装后的控制器、policy及其核验收据为准，不续期旧R2/R3/R4临时容量租约。
+
+| 对象 | 固定配置 |
+| --- | --- |
+| `uapt-build.scope` | `MemoryHigh=7.5GiB`、`MemoryMax=8GiB`、Node heap6144MiB |
+| 运行候选 | `MemoryHigh=3.5GiB`、`MemoryMax=4GiB`、Node heap3072MiB |
+| UAPT实际内存加本阶段剩余峰值 | 最多16GiB |
+| 主机实时 `MemAvailable` 保留量 | 至少3GiB |
+
+新policy提供`buildPeakMaxBytes`，新计划分别提供`buildPeakBytes`和`candidatePeakBytes`。`prebuild`命令按完整构建峰值预留容量，构建前固定候选槽位必须冷置；`gate`和`cutover`按运行候选剩余峰值核对共存容量。phase由控制器命令传入，计划JSON中的`phase`或`prebuild`标记不能改变门禁。没有`buildPeakMaxBytes`的旧policy只保留历史计划的共用预算语义，不接受新计划借此绕过独立构建上限。
+
+capacity收据仍保留实际`build/startup/cold_history/steady`全部原始峰值。构建峰值不得超过`buildPeakBytes`，运行阶段峰值不得超过`candidatePeakBytes`；构建8GiB不意味着候选运行预算也要8GiB。两种门禁均检查实时主机余量和UAPT总量，不预支旧服务未来退役释放的内存。候选TTL、固定槽位、串行构建、同步合同和实际退役要求继续生效。
+
+`BUILD_ID`可能在后续类型检查或页面生成失败之前写入。固定构建入口必须确认整个生产构建退出码0、无资源/编译守护失败、无OOM、源码与运行产物身份一致，再生成可部署的artifact依据；退出码非零时即使已有`BUILD_ID`也不得启动候选或切换。普通内容细节可按用户授权在上线后复测，构建兼容失败、候选健康/接口与资源故障、权限和私有内容边界、实际公网回读、事务恢复及旧active退役不能以此豁免。此资源调整本身不授权任何held政策或私有23校材料公开。

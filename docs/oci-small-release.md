@@ -62,8 +62,11 @@
    `git diff --check`。使用干净隔离checkout，保护其他聊天的脏改动。
 2. Commit/push完整SHA，冻结到origin/main，新建OCI独立release。
    固定生产公开env、Node/pnpm；仅安装、生成该服务需要的依赖/Prisma。
-3. 为候选准备独立内容目录/指针。只构建`@uapt/tulsa-zone`，不执行
-   `@uapt/web build`或根目录递归build。应用包名目前保留历史Tulsa名称，
+3. 为候选准备独立内容目录/指针。在已准入的固定构建scope内执行
+   `node scripts/uapt-release.mjs build zone <完整SHA> --webpack`。该入口
+   安装实际共享源码依赖、生成Prisma、提前检查类型并准备/验证运行数据，
+   最后仅构建`@uapt/tulsa-zone`一次，不执行主站Next或根目录递归build。
+   应用包名目前保留历史Tulsa名称，
    实际已是十校共享服务；不要给每所大学再复制一个长期进程。
 4. 使用空闲loopback候选端口启动，镜像运行用户/env/权限/工作目录。
    旧主站和旧zone继续服务。验证实际候选artifact、完整V5而非简化试验页。

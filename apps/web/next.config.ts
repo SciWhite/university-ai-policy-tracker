@@ -29,7 +29,8 @@ const nextConfig: NextConfig = {
     memoryBasedWorkersCount: false,
     webpackMemoryOptimizations: true,
     webpackBuildWorker: true,
-    staticGenerationRetryCount: 0,
+    // One ordinary render attempt; Next's internal timeout recovery is separate.
+    staticGenerationRetryCount: 1,
     staticGenerationMaxConcurrency: 1,
     staticGenerationMinPagesPerWorker: 50,
   },

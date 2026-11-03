@@ -12,11 +12,7 @@ interface PolicySnapshotRouteProps {
 }
 
 export async function generateStaticParams() {
-  const index = await getLoadedPolicySnapshotIndex();
-
-  return index.entries.map((entry) => ({
-    slug: `${entry.universitySlug}.json`
-  }));
+  return [];
 }
 
 export async function GET(

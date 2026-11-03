@@ -39,6 +39,27 @@ function literal(file, name) {
   if (node?.kind === ts.SyntaxKind.FalseKeyword) return false;
   return node && ts.isStringLiteral(node) ? node.text : undefined;
 }
+function hasExport(file, name) {
+  return Boolean(declaration(file, name, true)) || file.statements.some(statement =>
+    ts.isExportDeclaration(statement) && (!statement.exportClause ||
+      ts.isNamedExports(statement.exportClause) && statement.exportClause.elements.some(element => element.name.text === name)));
+}
+function property(object, name) {
+  return object && ts.isObjectLiteralExpression(object)
+    ? unwrap(object.properties.find(item => ts.isPropertyAssignment(item) && item.name.getText().replace(/["']/g, "") === name)?.initializer)
+    : undefined;
+}
+function validateRenderAttempts(root) {
+  const file = source(root, "apps/web/next.config.ts");
+  const experimental = property(declaration(file, "nextConfig"), "experimental");
+  const attempts = property(experimental, "staticGenerationRetryCount");
+  // Next 16.4.2 passes this value as maxAttempts, not additional retries.
+  // Zero skips rendering entirely, including the framework error pages.
+  if (!attempts || !ts.isNumericLiteral(attempts) || attempts.text !== "1" ||
+      experimental.properties.some(item => ts.isSpreadAssignment(item))) {
+    throw new Error("Build scope rejected: staticGenerationRetryCount must be exactly 1 (one render attempt)");
+  }
+}
 function emptyParams(file) {
   const fn = declaration(file, "generateStaticParams", true);
   const statements = fn && ts.isFunctionDeclaration(fn) ? fn.body?.statements : undefined;
@@ -62,18 +83,19 @@ function collectionCount(root, relative, name) {
   if (value && ts.isObjectLiteralExpression(value)) return value.properties.length;
   throw new Error(`Cannot bound static parameter source ${relative}:${name}`);
 }
-function routeFiles(directory, includeLayouts = false) {
+function appFiles(directory) {
   const files = [];
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
     if (["node_modules", ".next", ".runtime-data"].includes(entry.name)) continue;
     const file = path.join(directory, entry.name);
-    if (entry.isDirectory()) files.push(...routeFiles(file, includeLayouts));
-    else if (/^(?:page\.tsx|route\.ts)$/.test(entry.name) || includeLayouts && entry.name === "layout.tsx") files.push(file);
+    if (entry.isDirectory()) files.push(...appFiles(file));
+    else files.push(file);
   }
   return files.sort();
 }
 
 export function validateWebBuildScope(root = defaultRoot) {
+  validateRenderAttempts(root);
   const app = path.join(root, "apps/web/app");
   for (const relative of onDemand) {
     const file = source(root, `apps/web/app/${relative}`);
@@ -99,6 +121,10 @@ export function validateWebBuildScope(root = defaultRoot) {
       count: collectionCount(root, "apps/web/lib/reference-pages.ts", "themeLandingSpecs"),
       body: "{ return themeLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
     },
+    "(default)/rankings/[slug]/page.tsx": {
+      count: collectionCount(root, "apps/web/lib/reference-pages.ts", "rankingLandingSpecs"),
+      body: "{ return rankingLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
+    },
     "(default)/reports/monthly/[month]/page.tsx": {
       count: months,
       body: "{ return monthlyReportSlugs.map((month) => ({ month })); }"
@@ -118,15 +144,40 @@ export function validateWebBuildScope(root = defaultRoot) {
       body: "{ return monthlyReportSlugs.map((month) => ({ month })); }"
     }
   };
-  const runtimeRoutes = [], staticRoutes = [];
-  for (const fileName of routeFiles(app, true)) {
+  const runtimeRoutes = [], staticRoutes = [], metadataRoutes = [];
+  for (const fileName of appFiles(app)) {
     const relative = path.relative(app, fileName).split(path.sep).join("/");
+    const name = path.basename(fileName);
+    if (/^(?:favicon|icon|apple-icon|opengraph-image|twitter-image|robots|sitemap|manifest)\.(?:ico|png|jpg|jpeg|svg|webp|gif|xml|txt|webmanifest|tsx?|jsx?)$/.test(name)) {
+      if (/\.[jt]sx?$/.test(name)) {
+        const file = source(root, `apps/web/app/${relative}`);
+        if (["generateStaticParams", "generateImageMetadata", "generateSitemaps"].some(exported => hasExport(file, exported))) {
+          throw new Error(`Unreviewed metadata enumeration: ${relative}`);
+        }
+        if (literal(file, "runtime") === "edge" || literal(file, "dynamic") === "force-dynamic") continue;
+      }
+      if (relative.includes("[")) throw new Error(`Unreviewed metadata enumeration: ${relative}`);
+      metadataRoutes.push({ route: relative, maxEntries: 1 });
+      continue;
+    }
+    if (!/^(?:page\.tsx|route\.ts|layout\.tsx)$/.test(name)) continue;
     const file = source(root, `apps/web/app/${relative}`);
     if (relative.startsWith("[locale]/") && literal(file, "dynamicParams") === false) {
       throw new Error(`Build scope rejected: ${relative} blocks on-demand localized paths beneath the empty locale build params`);
     }
-    if (relative.endsWith("/layout.tsx")) continue;
-    if (relative.startsWith("[locale]/") || literal(file, "dynamic") === "force-dynamic" || onDemand.includes(relative)) {
+    const enumerates = hasExport(file, "generateStaticParams");
+    // Next invokes child generators even when a parent returned []; force-dynamic
+    // also does not prevent parameter collection. Review generators first.
+    if (enumerates && !emptyParams(file)) {
+      if (!Object.hasOwn(bounded, relative)) throw new Error(`Unreviewed static parameter enumeration: ${relative}`);
+      if (functionBody(file, "generateStaticParams") !== reviewedGeneratorBody(bounded[relative].body)) {
+        throw new Error(`Unreviewed static parameter enumeration: ${relative} generator changed`);
+      }
+      staticRoutes.push({ route: relative, maxEntries: bounded[relative].count });
+      continue;
+    }
+    if (relative.endsWith("layout.tsx")) continue;
+    if (enumerates || relative.startsWith("[locale]/") || literal(file, "dynamic") === "force-dynamic" || onDemand.includes(relative)) {
       runtimeRoutes.push(relative);
       continue;
     }
@@ -134,31 +185,27 @@ export function validateWebBuildScope(root = defaultRoot) {
       staticRoutes.push({ route: relative, maxEntries: 1 });
       continue;
     }
-    if (!declaration(file, "generateStaticParams", true)) {
-      runtimeRoutes.push(relative);
-      continue;
-    }
-    if (!Object.hasOwn(bounded, relative)) throw new Error(`Unreviewed static parameter enumeration: ${relative}`);
-    // A known file is not a blanket exemption: changing its enumeration needs
-    // a new review even if the underlying registry still has the same size.
-    if (functionBody(file, "generateStaticParams") !== reviewedGeneratorBody(bounded[relative].body)) {
-      throw new Error(`Unreviewed static parameter enumeration: ${relative} generator changed`);
-    }
-    staticRoutes.push({ route: relative, maxEntries: bounded[relative].count });
+    runtimeRoutes.push(relative);
   }
   const maxStaticPageAndRouteEntries = staticRoutes.reduce((total, entry) => total + entry.maxEntries, 0);
-  if (maxStaticPageAndRouteEntries > MAX_STATIC_ENTRIES) {
-    throw new Error(`Build scope rejected: ${maxStaticPageAndRouteEntries} possible page/route entries exceed ${MAX_STATIC_ENTRIES}`);
+  const frameworkEntryReserve = 2; // /_not-found and /_global-error
+  const maxBuildPathEntries = maxStaticPageAndRouteEntries + frameworkEntryReserve + metadataRoutes.length;
+  if (maxBuildPathEntries > MAX_STATIC_ENTRIES) {
+    throw new Error(`Build scope rejected: ${maxBuildPathEntries} possible page/route entries exceed ${MAX_STATIC_ENTRIES} including metadata and framework reserve`);
   }
   return {
     schemaVersion: "uapt-web-build-scope-v1",
     status: "PASS",
     maxStaticPageAndRouteEntries,
+    frameworkEntryReserve,
+    metadataRoutes,
+    maxBuildPathEntries,
     maximumAllowed: MAX_STATIC_ENTRIES,
     sourceRouteFiles: staticRoutes.length + runtimeRoutes.length,
     staticRoutes,
     runtimeRoutes,
-    limits: "Source estimate for reviewed page.tsx/route.ts generators only; Next metadata assets, actual output, compile memory, runtime acceptance and host capacity require separate checks."
+    renderAttempts: 1,
+    limits: "Conservative source bound for reviewed parameter enumerations, fixed page/route entries, static metadata and two framework entries; actual Next output, compile memory, runtime acceptance and host capacity require separate checks."
   };
 }
 

@@ -25,12 +25,7 @@ interface ClaimsRouteProps {
 }
 
 export async function generateStaticParams() {
-  const summaries = await getStagedPublicSummaries();
-  const aliasSlugs = await getAliasSlugs();
-
-  return [...summaries.map((summary) => summary.entity.slug), ...aliasSlugs].map(
-    (slug) => ({ slug: `${slug}.json` })
-  );
+  return [];
 }
 
 export async function GET(_request: Request, { params }: ClaimsRouteProps) {

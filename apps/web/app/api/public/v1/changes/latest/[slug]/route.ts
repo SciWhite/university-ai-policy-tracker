@@ -17,11 +17,7 @@ export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const diff = await getLatestReleaseDiff();
-
-  return diff.entities
-    .filter((entity) => entity.rows.length)
-    .map((entity) => ({ slug: `${entity.entitySlug}.json` }));
+  return [];
 }
 
 export async function GET(

@@ -1,7 +1,9 @@
-import BasePage, { generateMetadata as baseGenerateMetadata, generateStaticParams } from "../../../../(default)/reports/monthly/[month]/page";
+import BasePage, { generateMetadata as baseGenerateMetadata } from "../../../../(default)/reports/monthly/[month]/page";
 import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization-server";
 
-export { generateStaticParams };
+export function generateStaticParams() {
+  return [];
+}
 export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = false;

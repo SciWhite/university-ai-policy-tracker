@@ -1,13 +1,12 @@
-import BasePage, {
-  generateMetadata as baseGenerateMetadata,
-  generateStaticParams,
-} from "../../../(default)/rankings/[slug]/page";
+import BasePage, { generateMetadata as baseGenerateMetadata } from "../../../(default)/rankings/[slug]/page";
 import {
   createLocalizedSurfaceMetadata,
   createLocalizedSurfacePage,
 } from "@/lib/surface-localization-server";
 
-export { generateStaticParams };
+export function generateStaticParams() {
+  return [];
+}
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 export const revalidate = false;
