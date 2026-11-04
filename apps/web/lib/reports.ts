@@ -320,7 +320,9 @@ export interface OutreachPackage {
   title: string;
 }
 
-const monthlyReports = new BoundedAsyncCache<MonthlyReport | undefined>(12, 12 * 1024 * 1024, 1, 64);
+type MonthlyReportFacts = Omit<MonthlyReport, "metricCards" | "geoAnswerBlocks" | "summaryBullets">;
+
+const monthlyReports = new BoundedAsyncCache<MonthlyReportFacts>(12, 12 * 1024 * 1024, 1, 64);
 
 export function monthlyReportCacheStats() {
   return monthlyReports.stats();
@@ -333,21 +335,20 @@ export async function getMonthlyReport(
   if (!isMonthlyReportSlug(slug)) return undefined;
   const reportSpec = monthlyReportRegistry[slug];
   const releaseManifest = await getReportReleaseManifest(reportSpec.releaseManifestPath);
-  if (!releaseManifest) return buildMonthlyReport(slug, locale, undefined);
+  if (!releaseManifest) {
+    return localizeMonthlyReport(await buildMonthlyReportFacts(slug, undefined), locale, reportSpec.reportFindings);
+  }
   const key = createHash("sha256").update(JSON.stringify({
-    slug, locale, releaseManifest, reportSpec, origin: getAbsoluteSiteUrl("/")
+    slug, releaseManifest, reportSpec, origin: getAbsoluteSiteUrl("/")
   })).digest("hex");
-  const report = await monthlyReports.get(key, () => buildMonthlyReport(slug, locale, releaseManifest));
-  // Callers may project/sort report arrays; do not expose the cached object to
-  // mutations from another locale, coverage appendix or concurrent request.
-  return report ? structuredClone(report) : undefined;
+  const facts = await monthlyReports.get(key, () => buildMonthlyReportFacts(slug, releaseManifest));
+  return localizeMonthlyReport(facts, locale, reportSpec.reportFindings);
 }
 
-async function buildMonthlyReport(
+async function buildMonthlyReportFacts(
   slug: keyof typeof monthlyReportRegistry,
-  locale: string,
   releaseManifest: PublicReleaseManifest | undefined
-): Promise<MonthlyReport> {
+): Promise<MonthlyReportFacts> {
   const reportSpec = monthlyReportRegistry[slug];
   const reportDataset = releaseManifest
     ? await getStagedPublicDatasetForManifest(releaseManifest)
@@ -425,28 +426,6 @@ async function buildMonthlyReport(
       evidenceRecordCount: manifest.counts.evidenceRecords,
       datasetArtifactCount: manifest.artifacts.length
     },
-    metricCards: [
-      {
-        label: "public university records",
-        value: manifest.counts.universities.toLocaleString(locale)
-      },
-      {
-        label: "records checked in release",
-        value: checkedInstitutionCount.toLocaleString(locale)
-      },
-      {
-        label: "records with changed dates",
-        value: changedInstitutionCount.toLocaleString(locale)
-      },
-      {
-        label: "source-backed claims",
-        value: manifest.counts.claims.toLocaleString(locale)
-      },
-      {
-        label: "evidence records",
-        value: manifest.counts.evidenceRecords.toLocaleString(locale)
-      }
-    ],
     sourceLanguageChart: toChartData(manifest.counts.sourceLanguages),
     reviewStateChart: toChartData(manifest.counts.reviewStates),
     coverageRows,
@@ -454,25 +433,61 @@ async function buildMonthlyReport(
     coverageSummary,
     rankingCoverage,
     examples,
+    dataLinks: buildReportDataLinks(chartDataPath),
+    methodologyLinks: buildReportMethodologyLinks()
+  };
+}
+
+function localizeMonthlyReport(
+  facts: MonthlyReportFacts,
+  locale: string,
+  reportFindings: readonly string[]
+): MonthlyReport {
+  // Share historical computation across locales, but never expose cached
+  // arrays/objects to mutations from an individual report consumer.
+  const report = structuredClone(facts);
+  const { metrics, coverageSummary } = report;
+  return {
+    ...report,
+    metricCards: [
+      {
+        label: "public university records",
+        value: metrics.publicUniversityCount.toLocaleString(locale)
+      },
+      {
+        label: "records checked in release",
+        value: metrics.checkedInstitutionCount.toLocaleString(locale)
+      },
+      {
+        label: "records with changed dates",
+        value: metrics.changedInstitutionCount.toLocaleString(locale)
+      },
+      {
+        label: "source-backed claims",
+        value: metrics.claimCount.toLocaleString(locale)
+      },
+      {
+        label: "evidence records",
+        value: metrics.evidenceRecordCount.toLocaleString(locale)
+      }
+    ],
     geoAnswerBlocks: buildGeoAnswerBlocks({
-      claimCount: manifest.counts.claims,
-      evidenceRecordCount: manifest.counts.evidenceRecords,
-      releaseLabel: reportSpec.releaseLabel,
-      sourceCount: manifest.counts.sources,
-      universityCount: manifest.counts.universities,
+      claimCount: metrics.claimCount,
+      evidenceRecordCount: metrics.evidenceRecordCount,
+      releaseLabel: report.releaseLabel,
+      sourceCount: metrics.sourceCount,
+      universityCount: metrics.publicUniversityCount,
       locale
     }),
     summaryBullets: [
-      ...reportSpec.reportFindings,
-      `This report uses ${manifest.releaseId}, the public release snapshot selected for ${reportSpec.reportPeriod}.`,
-      `${checkedInstitutionCount.toLocaleString(locale)} public university records include checked dates and ${changedInstitutionCount.toLocaleString(locale)} expose changed dates in this snapshot.`,
-      `${reviewedClaimCount.toLocaleString(locale)} claims are marked as reviewed by an agent or human review state; ${candidateClaimCount.toLocaleString(locale)} claims remain candidate or otherwise not reviewed.`,
+      ...reportFindings,
+      `This report uses ${report.releaseId}, the public release snapshot selected for ${report.releasePeriod}.`,
+      `${metrics.checkedInstitutionCount.toLocaleString(locale)} public university records include checked dates and ${metrics.changedInstitutionCount.toLocaleString(locale)} expose changed dates in this snapshot.`,
+      `${metrics.reviewedClaimCount.toLocaleString(locale)} claims are marked as reviewed by an agent or human review state; ${metrics.candidateClaimCount.toLocaleString(locale)} claims remain candidate or otherwise not reviewed.`,
       `${coverageSummary.universityCount.toLocaleString(locale)} university records are grouped into ${coverageSummary.macroRegionCount.toLocaleString(locale)} macro regions and ${coverageSummary.cityCampusRegionCount.toLocaleString(locale)} city or campus-region groups for GEO retrieval.`,
       "Original-language evidence snippets remain canonical. Localized display text is only a helper layer.",
       "The tracker publishes metadata and evidence bindings; it does not provide legal advice or academic integrity advice."
-    ],
-    dataLinks: buildReportDataLinks(chartDataPath),
-    methodologyLinks: buildReportMethodologyLinks()
+    ]
   };
 }
 

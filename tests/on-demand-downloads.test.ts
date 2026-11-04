@@ -1,7 +1,8 @@
-import test from "node:test";
+import test, { mock } from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import fs, { readFile } from "node:fs/promises";
+import { syncBuiltinESMExports } from "node:module";
 import path from "node:path";
 import * as datasetRoute from "../apps/web/app/api/public/v1/datasets/[artifact]/route";
 import * as snapshotRoute from "../apps/web/app/api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route";
@@ -66,22 +67,49 @@ test("published artifact GET keeps exact body, checksum and filename while warm 
   assert.ok(stats.entries <= stats.maxEntries && stats.bytes <= stats.maxBytes);
 });
 
-test("report cache isolates consumers and preserves locale-specific numbers", { timeout: 150000 }, async () => {
-  const first = await getMonthlyReport("2026-05", "en");
-  assert.ok(first);
+test("reports share one historical computation across locales while isolating localized consumers", { timeout: 150000 }, async (context) => {
+  const root = await findRepoRoot();
+  const manifest = JSON.parse(await readFile(path.join(root, monthlyReportRegistry["2026-05"].releaseManifestPath), "utf8")) as PublicReleaseManifest;
+  const artifactRoot = path.resolve(root, manifest.includeStagedArtifactDirectories[0]);
+  const reads = mock.method(fs, "readdir");
+  syncBuiltinESMExports();
+  context.after(() => { reads.mock.restore(); syncBuiltinESMExports(); });
+  const before = monthlyReportCacheStats();
+  const reports = await Promise.all(["en", "ar", "ja"].map(locale => getMonthlyReport("2026-05", locale)));
+  const [first, arabic, japanese] = reports;
+  assert.ok(first && arabic && japanese);
+  const historicalWalks = () => reads.mock.calls.filter(call => path.resolve(String(call.arguments[0])) === artifactRoot).length;
+  assert.equal(historicalWalks(), 1, "concurrent languages share the actual frozen input traversal");
+  assert.equal(monthlyReportCacheStats().entries, before.entries + 1, "one retained fact entry serves all three locales");
+  assert.deepEqual(arabic.metrics, first.metrics);
+  assert.deepEqual(japanese.coverageSummary, first.coverageSummary);
+  assert.equal(arabic.metricCards[0].value, first.metrics.publicUniversityCount.toLocaleString("ar"));
+  assert.equal(japanese.metricCards[0].value, first.metrics.publicUniversityCount.toLocaleString("ja"));
+  assert.ok(arabic.geoAnswerBlocks.find(block => block.id === "release-size")!.answer.includes(first.metrics.claimCount.toLocaleString("ar")));
+  assert.ok(arabic.summaryBullets.some(bullet => bullet.startsWith(`${first.metrics.checkedInstitutionCount.toLocaleString("ar")} public university records`)));
   const original = first.coverageRows[0]?.name;
+  const originalClaims = first.metrics.claimCount;
   if (first.coverageRows[0]) first.coverageRows[0].name = "consumer-only mutation";
+  first.metrics.claimCount = -1;
+  first.summaryBullets.push("consumer-only bullet");
   const second = await getMonthlyReport("2026-05", "en");
   assert.ok(second);
   assert.notEqual(first, second);
   assert.equal(second.coverageRows[0]?.name, original);
+  assert.equal(arabic.coverageRows[0]?.name, original);
+  assert.equal(second.metrics.claimCount, originalClaims);
+  assert.equal(arabic.metrics.claimCount, originalClaims);
+  assert.ok(!second.summaryBullets.includes("consumer-only bullet"));
   const french = await getMonthlyReport("2026-05", "fr");
   assert.ok(french);
   assert.equal(french.metricCards[0].value, french.metrics.publicUniversityCount.toLocaleString("fr"));
   assert.equal(french.releaseId, second.releaseId);
   assert.equal(french.metrics.claimCount, second.metrics.claimCount);
+  assert.equal(historicalWalks(), 1, "later locale and warm reads do not reload the historical facts");
   const stats = monthlyReportCacheStats();
   assert.ok(stats.entries <= stats.maxEntries && stats.bytes <= stats.maxBytes);
+  assert.equal(stats.maxEntries, 12);
+  assert.equal(stats.maxBytes, 12 * 1024 * 1024);
   assert.equal(await getMonthlyReport("not-a-published-month", "en"), undefined);
 });
 
