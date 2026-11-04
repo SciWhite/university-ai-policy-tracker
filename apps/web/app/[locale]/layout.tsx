@@ -7,7 +7,7 @@ import { isReadingLocale } from "@/lib/language-catalog";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import { getSiteOgImageUrl } from "@/components/site-opengraph";
 import { getEnglishShellTextSources } from "@/lib/i18n-messages";
-import { getReadingSharedUiText } from "@/lib/reading-translations";
+import { getPublicReadingUiText } from "@/lib/public-ui-translations";
 
 export async function generateMetadata({
   params
@@ -38,6 +38,6 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const sharedUiText = await getReadingSharedUiText(locale, getEnglishShellTextSources());
+  const sharedUiText = await getPublicReadingUiText(locale, getEnglishShellTextSources());
   return <RootDocument locale={locale} sharedUiText={sharedUiText}>{children}</RootDocument>;
 }

@@ -10,7 +10,7 @@ import { discoveryCopy } from "@/lib/discovery-copy";
 import { mockupCopy } from "@/lib/mockup-copy";
 import { localizeHref } from "@/lib/i18n";
 import type { ReadingLocale } from "@/lib/language-catalog";
-import { getReadingSharedUiText } from "@/lib/reading-translations";
+import { getPublicReadingUiText } from "@/lib/public-ui-translations";
 import { presentationTextSources } from "@/lib/public-ui-sources";
 import { localizeSurfaceCopy } from "@/lib/surface-localization";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -31,7 +31,7 @@ export async function HomeV6View({
   universities,
   recentChanges = [],
 }: HomeV6Props) {
-  const sharedUiText = await getReadingSharedUiText(locale, presentationTextSources(getHomeV4Copy("en"), discoveryCopy("en"), mockupCopy("en"), universities.flatMap(record => [record.region, record.country])));
+  const sharedUiText = await getPublicReadingUiText(locale, presentationTextSources(getHomeV4Copy("en"), discoveryCopy("en"), mockupCopy("en"), universities.flatMap(record => [record.region, record.country])));
   const locationText = (source: string | undefined) => source ? sharedUiText[source] ?? source : source;
   const copy = localizeSurfaceCopy(getHomeV4Copy(locale), locale, sharedUiText),
     ui = localizeSurfaceCopy(discoveryCopy(locale), locale, sharedUiText),

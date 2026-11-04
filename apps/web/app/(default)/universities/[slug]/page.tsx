@@ -51,6 +51,7 @@ import { PolicyQuickGuide, PolicySceneGallery } from "@/components/policy-quick-
 import { PolicyRecordHashReveal } from "@/components/policy-record-hash-reveal";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
+import { getReviewStateLabel } from "@/components/state-label";
 import { StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
 import { DocumentLink as Link } from "@/components/document-link";
 import { RelatedUniversities } from "@/components/related-universities";
@@ -412,7 +413,9 @@ export default async function UniversityPage({
         return <PolicyV6Provider data={labData} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
       }
     : Fragment;
-  const referenceUi = (value: string) => readingUiText[value] ?? (referencePreview ? translatePolicyReferenceUi(value, locale) : value);
+  // Record framework labels follow the page language even when the record itself is English.
+  const localizeFramework = referencePreview || locale !== "en";
+  const referenceUi = (value: string) => readingUiText[value] ?? (localizeFramework ? translatePolicyReferenceUi(value, locale) : value);
   const referenceScene = referencePreview && policyScene ? preparePolicyReferenceScene(policyScene) : policyScene;
   const pilotSeoDescription = pilotSlug
     ? buildIndexRecoveryDescription({
@@ -574,7 +577,7 @@ export default async function UniversityPage({
               scene={compactPolicyPilot ? undefined : policyScene}
               role={role}
               collapsible={compactPolicyPilot}
-              localizeUi={referencePreview}
+              localizeUi={localizeFramework}
             />
           ) : (
             <div className="claim-list">
@@ -590,7 +593,7 @@ export default async function UniversityPage({
             </div>
           )
         ) : (
-          <p className="notice-card">No reviewed claims are published for this record yet.</p>
+          <p className="notice-card">{referenceUi("No reviewed claims are published for this record yet.")}</p>
         )}
       </section>
 
@@ -606,15 +609,15 @@ export default async function UniversityPage({
         {uiLab ? <PolicyV6Sources sources={publicSummary.officialSources} slug={slug} locale={locale} sharedUiText={readingUiText} /> : compactPolicyPilot ? (
           <details className="policy-record-sources">
             <summary>{referenceUi("Open official source list")} <span aria-hidden="true">⌄</span></summary>
-            <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
+            <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={localizeFramework} />
           </details>
         ) : (
-          <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
+          <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={localizeFramework} />
         )}
       </section>
 
       {relatedUniversities?.length ? (
-        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={referencePreview} uiLab={uiLab} sharedUiText={readingUiText} />
+        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={localizeFramework} uiLab={uiLab} sharedUiText={readingUiText} />
       ) : null}
 
       <section className="student-record-info" id="record-info">
@@ -623,11 +626,11 @@ export default async function UniversityPage({
           <div className="student-record-info__body">
             <div className="tag-row" id="snapshot-scope">
               <MetaLabel label={referenceUi("Review")}>
-                {uiLab && v6School?.v6ReviewState === "agent_reviewed" ? <span className="policy-v6-review" data-v6-review-state="agent_reviewed">{policyV6AgentReviewLabel(locale)}</span> : referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} sharedUiText={readingUiText} /> : formatReviewState(publicSummary.reviewState)}
+                {uiLab && v6School?.v6ReviewState === "agent_reviewed" ? <span className="policy-v6-review" data-v6-review-state="agent_reviewed">{policyV6AgentReviewLabel(locale)}</span> : referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} sharedUiText={readingUiText} /> : locale === "en" ? formatReviewState(publicSummary.reviewState) : getReviewStateLabel(publicSummary.reviewState, locale)}
               </MetaLabel>
               <MetaLabel label={referenceUi("Confidence")}>
                 {publicSummary.confidence === undefined
-                  ? "Not listed"
+                  ? referenceUi("Not listed")
                   : `${Math.round(publicSummary.confidence * 100)}%`}
               </MetaLabel>
               <MetaLabel label={referenceUi("Snapshot status")}>
@@ -656,13 +659,13 @@ export default async function UniversityPage({
             {uiLab ? <PolicyV6RecordLinks slug={slug} locale={locale}/> : null}
             {uiLab?<p><a href="https://github.com/SciWhite/university-ai-policy-tracker/issues/new" target="_blank" rel="noopener noreferrer">{locale==='zh'?'发现过期或错误政策？报告问题':'Outdated or incorrect policy? Report an issue'} ↗</a></p>:null}
             <p className="student-record-info__citation">
-              <strong>Citation:</strong> {publicSummary.suggestedCitation}
+              <strong>{referenceUi("Citation")}:</strong> {publicSummary.suggestedCitation}
             </p>
             <p className="muted">
-              Original university source language remains canonical. This tracker is not an official university statement.
+              {referenceUi("Original university source language remains canonical. This tracker is not an official university statement.")}
             </p>
             <Link className="site-action" href={`/changes/${slug}`}>
-              Open change log
+              {referenceUi("Open change log")}
             </Link>
           </div>
         </details>

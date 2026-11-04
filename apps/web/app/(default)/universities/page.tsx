@@ -6,7 +6,7 @@ import { normalizeReadingLocale, legacyLocale } from "@/lib/i18n";
 import { getPageCopy } from "@/lib/page-copy";
 import { UniversitiesIndexClient } from "./universities-index-client";
 import { ReadingUiTextProvider } from "@/components/reading-ui-text-provider";
-import { getReadingSharedUiText } from "@/lib/reading-translations";
+import { getPublicReadingUiText } from "@/lib/public-ui-translations";
 
 export const dynamic = "force-dynamic";
 export const revalidate = false;
@@ -47,7 +47,7 @@ export default async function UniversitiesPage({
     (await searchParams) ?? {},
     locale,
   );
-  const locationText = await getReadingSharedUiText(locale, [...data.countries, ...data.rows.flatMap(row => [row.country, row.region])]);
+  const locationText = await getPublicReadingUiText(locale, [...data.countries, ...data.rows.flatMap(row => [row.country, row.region])]);
   return (
     <ReadingUiTextProvider value={locationText}>
       <DiscoveryJsonLd

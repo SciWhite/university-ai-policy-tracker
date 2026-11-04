@@ -175,7 +175,7 @@ export function RankingRecordsView({
             checked={topics.includes(topic)}
             onChange={() => toggleTopic(topic)}
           />
-          {discoveryTopicLabel(topic, locale)}
+          {discoveryTopicLabel(topic, locale, sharedUiText)}
         </label>
       ))}
     </>

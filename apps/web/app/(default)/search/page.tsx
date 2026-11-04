@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/json-ld";
 import { DocumentLink as Link } from "@/components/document-link";
 import { DiscoverySearch } from "@/components/discovery-search";
 import { ReadingUiTextProvider } from "@/components/reading-ui-text-provider";
-import { getReadingSharedUiText } from "@/lib/reading-translations";
+import { getPublicReadingUiText } from "@/lib/public-ui-translations";
 import { getSearchIndexRecords, searchIndexRecords } from "@/lib/entity-search";
 import { getStagedPublicDataset } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -127,7 +127,7 @@ export default async function SearchPage({
         });
       }
     }
-  const locationText = await getReadingSharedUiText(locale, records.flatMap(record => [record.country, record.region]).filter((value): value is string => Boolean(value)));
+  const locationText = await getPublicReadingUiText(locale, records.flatMap(record => [record.country, record.region]).filter((value): value is string => Boolean(value)));
   return (
     <ReadingUiTextProvider value={locationText}>
       <JsonLd
