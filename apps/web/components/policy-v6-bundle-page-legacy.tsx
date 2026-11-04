@@ -1,4 +1,5 @@
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
+import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "./policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
@@ -39,7 +40,7 @@ export function PolicyV6BundlePageLegacy({ university, data, view, locale, relat
   const localizedScopeNote = t(scopeNote);
   const localizedScopedToolNote = t("These tools have audience, mode or purpose limits; access is not established for all students.");
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
-    <PolicyV6Provider data={data} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
+    <PolicyV6Provider data={policyV6ClientData(data)} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
       <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} sharedUiText={sharedUiText} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />

@@ -24,6 +24,8 @@ export interface V6StudentActions {
  scope:{en:string;zh:string};claims:Record<string,StudentGuideClaim>;
  images:{src:string;sha256:string;alt:{en:string;zh:string}}[];
 }
+/** Fields the client guide renders; topic bindings, images and revision identity stay on the server. */
+export type V6StudentGuideView = Pick<V6StudentActions, 'privatePreview'|'slug'|'name'|'recordSha256'|'do'|'dont'|'procedures'|'scope'|'claims'>;
 /** A newly reviewed projection, never an automatic re-pin of old illustration approvals. */
 export function getV6StudentActions(school:LabSchool, customPackage?: V6RecordPackage):V6StudentActions|undefined {
  const accepted=(registry.schools as Record<string,V6StudentActions>)[school.slug];

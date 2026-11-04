@@ -25,6 +25,9 @@ import { getVerifiedHomeV4Guides } from "@/lib/home-v4-guides";
 import { HomeV4View } from "@/components/home-v4-view";
 import { getChangeIndexData } from "@/lib/change-records";
 import { HomeV6View } from "@/components/home-v6-view";
+import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
+
+export const revalidate = 3600;
 
 const quickQueries = [
   "disclosure",
@@ -52,7 +55,7 @@ export async function generateMetadata({
   searchParams,
 }: HomePageProps): Promise<Metadata> {
   const locale = normalizeLocale((await params)?.locale);
-  const layout = (await searchParams)?.layout;
+  const layout = (await readDevelopmentPreviewQuery(searchParams))?.layout;
 
   if (layout === "legacy") {
     const copy = getPageCopy(locale).home;
@@ -103,7 +106,7 @@ export default async function HomePage({
   searchParams,
 }: HomePageProps) {
   const locale = normalizeLocale((await params)?.locale);
-  const layout = (await searchParams)?.layout;
+  const layout = (await readDevelopmentPreviewQuery(searchParams))?.layout;
 
   const universities = await getStaticUniversityIndexRecords();
   const claimCount = universities.reduce(

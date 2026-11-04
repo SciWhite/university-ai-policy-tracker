@@ -23,7 +23,13 @@ const workspaceRoot = path.resolve(appRoot, "../..");
 
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 180,
+  // University and localized home pages render on first request (ISR). Keep
+  // that runtime cache in a bounded in-memory LRU: flushing every school x
+  // locale page (~1-2MB each) to .next would grow without limit on the shared
+  // host's disk. Cloudflare holds the long-lived copies; build output is unchanged.
+  cacheMaxMemorySize: 256 * 1024 * 1024,
   experimental: {
+    isrFlushToDisk: false,
     cpus: 1,
     globalNotFound: true,
     memoryBasedWorkersCount: false,

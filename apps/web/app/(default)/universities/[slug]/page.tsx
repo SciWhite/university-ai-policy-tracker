@@ -1,4 +1,5 @@
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
+import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "@/components/policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "@/components/policy-v6-held-records";
@@ -89,6 +90,7 @@ import { v6ChangesCopy } from "@/lib/v6-changes-copy";
 import { universityToolsUi } from "@/lib/university-tools-ui";
 import { v5Ui } from "@/lib/enforcement-v5-ui";
 import { policyV6StaticUiText } from "@/lib/policy-v6-static-ui";
+import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
 
 type PublicUniversitySummary = NonNullable<Awaited<ReturnType<typeof getPublicUniversitySummaryBySlug>>>;
 
@@ -169,14 +171,22 @@ interface UniversityPageProps {
   }>;
 }
 
+// Production never reads searchParams here, so any slug is rendered on its
+// first request and then served from the ISR cache.
+export const dynamicParams = true;
 export const revalidate = 3600;
+
+export function generateStaticParams(): Array<{ slug: string }> {
+  return [];
+}
 
 export async function generateMetadata({ params, searchParams }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   const readingLocale = normalizeReadingLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  if (isEthEnforcementPreview(slug, (await searchParams)?.layout) && !isPolicyV6Preview(slug, (await searchParams)?.layout)) {
+  const layout = (await readDevelopmentPreviewQuery(searchParams))?.layout;
+  if (isEthEnforcementPreview(slug, layout) && !isPolicyV6Preview(slug, layout)) {
     const title = "ETH Zurich AI policy evidence | University AI Policy Tracker";
     const description = "An independent sample of five source-backed ETH Zurich policy facts. Specific penalties and appeal deadlines were not established in the reviewed material; this is an evidence gap, not a finding that no rules exist.";
     return {
@@ -189,7 +199,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
   }
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
-  if (university && publicSummary && isPolicyV6Preview(slug, (await searchParams)?.layout)) {
+  if (university && publicSummary && isPolicyV6Preview(slug, layout)) {
     const seo = universityPolicySeo(publicSummary, locale);
     const metadataBasis = universityReadingBasis(slug, publicSummary) ?? { recordSha256: "", originalEvidenceSha256: "" };
     const localizedMetadata = await universityReadingMetadata(slug, `/universities/${slug}`, readingLocale, metadataBasis, publicSummary);
@@ -242,7 +252,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
     description,
     alternates,
     ...(localizedMetadata?.robots ? { robots: localizedMetadata.robots } : {}),
-    ...((process.env.NODE_ENV === "development" && (isPolicyReferencePreview(slug, (await searchParams)?.layout) || isPolicyV6Preview(slug, (await searchParams)?.layout))) ? { robots: { index: false, follow: false } } : {}),
+    ...((process.env.NODE_ENV === "development" && (isPolicyReferencePreview(slug, layout) || isPolicyV6Preview(slug, layout))) ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       title,
       description,
@@ -284,9 +294,9 @@ export default async function UniversityPage({
   const locale = normalizeLocale(localeParam);
   const readingLocale = normalizeReadingLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  if (isEthEnforcementPreview(slug, (await searchParams)?.layout) && !isPolicyV6Preview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
+  const pageQuery = await readDevelopmentPreviewQuery(searchParams);
+  if (isEthEnforcementPreview(slug, pageQuery?.layout) && !isPolicyV6Preview(slug, pageQuery?.layout)) return <EthEnforcementPreview locale={locale} />;
 
-  const pageQuery = await searchParams;
   const uiLab = isPolicyV6Preview(slug, pageQuery?.layout);
   // Preserve the pre-existing seven-locale V6 cache only when no complete
   // accepted reading package is selected. New reading locales stay English based.
@@ -409,7 +419,7 @@ export default async function UniversityPage({
   const readingUiText = readyTranslations ? acceptedV6UiText(readyTranslations, readingLocale, reviewedClaims.length) : {};
   const LabProvider = labData
     ? function PolicyV6PageProvider({ children }: { children: ReactNode }) {
-        return <PolicyV6Provider data={labData} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
+        return <PolicyV6Provider data={policyV6ClientData(labData)} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
       }
     : Fragment;
   const referenceUi = (value: string) => readingUiText[value] ?? (referencePreview ? translatePolicyReferenceUi(value, locale) : value);
@@ -529,6 +539,7 @@ export default async function UniversityPage({
           snapshot={displaySnapshot!.snapshot}
           guidanceInHero={referencePreview}
           uiLab={uiLab}
+          roleSwitch={pageQuery !== undefined}
         />
       ) : null}
       {labData ? <PolicyV6RecordTopics data={labData} additionalOnly={strongSnapshot} sharedUiText={readingUiText} /> : null}

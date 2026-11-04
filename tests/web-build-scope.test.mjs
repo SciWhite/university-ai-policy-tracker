@@ -18,7 +18,12 @@ function fixture() {
   ];
   put("apps/web/next.config.ts", 'const nextConfig = { experimental: { staticGenerationRetryCount: 1 } }; export default nextConfig;');
   put("apps/web/app/[locale]/layout.tsx", 'export default function LocaleLayout({ children }) { return children; }');
-  put("apps/web/app/(default)/universities/[slug]/page.tsx", 'export const revalidate = 3600; export default function UniversityPage() { return null; }');
+  for (const file of ["[locale]/page.tsx", "(default)/universities/[slug]/page.tsx", "[locale]/universities/[slug]/page.tsx"]) put(`apps/web/app/${file}`, `
+    export const dynamicParams = true;
+    export const revalidate = 3600;
+    export function generateStaticParams() { return []; }
+    export default function Page() { return null; }
+  `);
   for (const file of deferred) put(`apps/web/app/${file}`, `
     export const dynamicParams = true;
     export const dynamic = "force-static";
@@ -115,19 +120,34 @@ test("metadata and framework entries are reserved without executing metadata mod
   } finally { f.cleanup(); }
 });
 
-test("request-dependent localized and university pages cannot use on-demand static generation", () => {
+test("the localized layout stays request rendered for query-dependent children", () => {
   const f = fixture();
   try {
-    for (const route of ["[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx"]) {
-      for (const params of ["[]", "allPaths.map(path => path)"]) {
-        f.put(`apps/web/app/${route}`, `
-          export const dynamicParams = true;
-          export function generateStaticParams() { return ${params}; }
-        `);
-        assert.throws(() => validateWebBuildScope(f.root), /must allow request rendering/);
-      }
-      f.put(`apps/web/app/${route}`, 'export default function Component() { return null; }');
+    for (const params of ["[]", "allPaths.map(path => path)"]) {
+      f.put("apps/web/app/[locale]/layout.tsx", `
+        export const dynamicParams = true;
+        export function generateStaticParams() { return ${params}; }
+      `);
+      assert.throws(() => validateWebBuildScope(f.root), /must allow request rendering/);
     }
+  } finally { f.cleanup(); }
+});
+
+test("query-free public pages are cached on first request without build enumeration", () => {
+  const f = fixture();
+  try {
+    for (const route of ["[locale]/page.tsx", "(default)/universities/[slug]/page.tsx", "[locale]/universities/[slug]/page.tsx"]) {
+      for (const source of [
+        "export const revalidate = 3600; export default function Page() { return null; }",
+        "export const dynamicParams = false; export function generateStaticParams() { return []; }",
+        "export const dynamicParams = true; export function generateStaticParams() { return allSchools; }"
+      ]) {
+        f.put(`apps/web/app/${route}`, source);
+        assert.throws(() => validateWebBuildScope(f.root), /must use empty build params and cache on-demand paths/, `${route}: ${source}`);
+      }
+      f.put(`apps/web/app/${route}`, "export const dynamicParams = true; export function generateStaticParams() { return []; }");
+    }
+    assert.equal(validateWebBuildScope(f.root).status, "PASS");
   } finally { f.cleanup(); }
 });
 

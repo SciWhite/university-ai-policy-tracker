@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import type {V6StudentActions} from '@/lib/policy-v6-student-actions';
+import type {V6StudentGuideView} from '@/lib/policy-v6-student-actions';
 import type {SupportedLocale} from '@/lib/i18n';
 import type {ReadingLocale} from '@/lib/language-catalog';
 import {PolicyV6CompactGuide} from './policy-v6-compact-guide';
 
 /** A stale or absent school projection never falls back to another university's rules. */
-export function PolicyV6StudentGuide({guide,locale,readingLocale,sharedUiText={},studentGuideTranslated=false}:{guide:V6StudentActions|undefined;locale:SupportedLocale;readingLocale?:ReadingLocale;sharedUiText?:Readonly<Record<string,string>>;studentGuideTranslated?:boolean}) {
+export function PolicyV6StudentGuide({guide,locale,readingLocale,sharedUiText={},studentGuideTranslated=false}:{guide:V6StudentGuideView|undefined;locale:SupportedLocale;readingLocale?:ReadingLocale;sharedUiText?:Readonly<Record<string,string>>;studentGuideTranslated?:boolean}) {
  if(guide)return <PolicyV6CompactGuide guide={guide} locale={locale} readingLocale={readingLocale??locale} sharedUiText={sharedUiText} studentGuideTranslated={studentGuideTranslated}/>;
  return <section className="v6-student-guide" id="v6-submission-guide">
   <span id="submission-checklist"/>

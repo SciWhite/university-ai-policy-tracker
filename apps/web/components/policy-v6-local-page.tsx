@@ -1,4 +1,5 @@
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
+import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "./policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
@@ -192,7 +193,7 @@ export function PolicyV6LocalPage({
       data-v6-basis={evidence.fingerprint}
       data-v6-review-state="agent_reviewed"
     >
-      <PolicyV6Provider data={data} readingLayout={readingLayout} sharedUiText={sharedUiText}>
+      <PolicyV6Provider data={policyV6ClientData(data)} readingLayout={readingLayout} sharedUiText={sharedUiText}>
         <PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
           <EntityHeader
             actions={

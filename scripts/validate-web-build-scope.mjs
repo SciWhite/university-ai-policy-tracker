@@ -12,6 +12,14 @@ const onDemand = [
   "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts",
   "sitemaps/[section]/route.ts"
 ];
+// Public pages that read no request data in production: empty build params,
+// rendered on first request and cached. They cannot force-static because the
+// development-only `?layout=` preview still reads the query under next dev.
+const onDemandIsr = [
+  "[locale]/page.tsx",
+  "(default)/universities/[slug]/page.tsx",
+  "[locale]/universities/[slug]/page.tsx"
+];
 
 function source(root, relative) {
   const file = path.join(root, relative);
@@ -104,6 +112,12 @@ export function validateWebBuildScope(root = defaultRoot) {
       throw new Error(`Build scope rejected: ${relative} must retain first-request static caching`);
     }
   }
+  for (const relative of onDemandIsr) {
+    const file = source(root, `apps/web/app/${relative}`);
+    if (!emptyParams(file) || literal(file, "dynamicParams") !== true) {
+      throw new Error(`Build scope rejected: ${relative} must use empty build params and cache on-demand paths`);
+    }
+  }
   const months = collectionCount(root, "apps/web/lib/monthly-report-registry.ts", "monthlyReportRegistry");
   const macroRegions = collectionCount(root, "apps/web/lib/reports.ts", "macroRegionOrder");
   const bounded = {
@@ -160,7 +174,7 @@ export function validateWebBuildScope(root = defaultRoot) {
     }
     if (!/^(?:page\.tsx|route\.ts|layout\.tsx)$/.test(name)) continue;
     const file = source(root, `apps/web/app/${relative}`);
-    if (["[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx"].includes(relative) && hasExport(file, "generateStaticParams")) {
+    if (relative === "[locale]/layout.tsx" && hasExport(file, "generateStaticParams")) {
       throw new Error(`Build scope rejected: ${relative} must allow request rendering for pages that read searchParams`);
     }
     if (relative.startsWith("[locale]/") && literal(file, "dynamicParams") === false) {

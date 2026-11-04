@@ -8,6 +8,9 @@ import {
 const PRIVATE_ANALYTICS_USERNAME = "uapt";
 const MAX_FAILED_ATTEMPTS = 5;
 const LOCKOUT_MS = 15 * 60 * 1000;
+// Unauthenticated callers choose the key (forwarded IP + username), so the
+// in-process table is capped: expired entries go first, then the oldest.
+const MAX_TRACKED_FAILURE_KEYS = 1024;
 
 interface AuthFailureState {
   attempts: number;
@@ -15,6 +18,7 @@ interface AuthFailureState {
   lockedUntil?: number;
 }
 
+// Insertion order is last-attempt order (entries are re-inserted on update).
 const authFailures = new Map<string, AuthFailureState>();
 
 export function proxy(request: NextRequest) {
@@ -154,9 +158,19 @@ function recordFailedAttempt(key: string) {
       ? current.attempts + 1
       : 1;
 
+  authFailures.delete(key);
   authFailures.set(key, {
     attempts,
     lastAttemptAt: now,
     lockedUntil: attempts >= MAX_FAILED_ATTEMPTS ? now + LOCKOUT_MS : undefined
   });
+  pruneAuthFailures(now);
+}
+
+function pruneAuthFailures(now: number) {
+  for (const [key, state] of authFailures) {
+    const expired = now - state.lastAttemptAt > LOCKOUT_MS;
+    if (!expired && authFailures.size <= MAX_TRACKED_FAILURE_KEYS) break;
+    authFailures.delete(key);
+  }
 }
