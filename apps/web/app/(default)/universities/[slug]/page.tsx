@@ -471,7 +471,8 @@ export default async function UniversityPage({
       );
   const structuredDescription = pilotSeoDescription ?? citationReadySummary;
   const switcherLocales = baseTier
-    ? schoolSwitcherLocales(university, summaryBasis ? await universityReadingIndexLocales(slug, summaryBasis, rawPublicSummary).catch(() => []) : [])
+    // Same decision as robots, hreflang and the sitemap.
+    ? schoolSwitcherLocales(university, await universityReadingIndexLocales(slug, summaryBasis ?? { recordSha256: "", originalEvidenceSha256: "" }, rawPublicSummary).catch(() => []))
     : undefined;
   const tierNotice = baseTier ? (await getPublicReadingUiText(readingLocale, [POLICY_V6_BASE_TIER_NOTICE]))[POLICY_V6_BASE_TIER_NOTICE] : undefined;
   const structuredDateModified = pilotSlug

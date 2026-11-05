@@ -43,6 +43,14 @@ export function readPublishedV6Revision(revision:string): PublishedV6Package | u
   if (value && (value.schemaVersion !== 'uapt-v6-published-pages-v1' || value.publicationApproved !== true || value.candidateOnly===true || value.releaseId !== revision)) throw new Error('Published V6 identity mismatch');
   return value;
 }
+/** Published V6/V5 revisions in the active content release; each has a /changes note. */
+export function publishedV6RevisionIds(): string[] {
+  if (!publishedV6Enabled()) return [];
+  return Object.keys(revisions()).filter(revision => {
+    try { return Boolean(readPublishedV6Revision(revision)); }
+    catch { return false; }
+  });
+}
 export function publishedV6Locale(locale:SupportedLocale){return readPublishedV6()?.locales[locale];}
 export function publishedV6SchoolNames(locale: SupportedLocale): Record<string, string> {
   if (!publishedV6Enabled()) return {};
