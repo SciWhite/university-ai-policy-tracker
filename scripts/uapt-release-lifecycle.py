@@ -321,13 +321,52 @@ def validate_plan(plan, policy, observed, prebuild=False):
     if policy.get('diskCapacity'): validate_retention_receipt(plan, observed, policy)
     return True
 
+PROGRAM_BASIS_SCHEMA = 'uapt-program-release-basis-v1'
+PROGRAM_ARTIFACT_SCHEMA = 'uapt-program-artifact-v1'
+CONTENT_POINTER_SCHEMA = 'uapt-content-pointer-v1'
+
+def validate_program_content_basis(release_path, basis):
+    """A program artifact carries no content; its content basis is the runtime
+    content pointer that the candidate will read (docs/content-release.md)."""
+    for key in ['sourceManifestSha256', 'buildArtifactSha256']:
+        if not basis.get(key): raise ValueError('Program artifact basis requires ' + key)
+    for rel in ['data', 'staging']:
+        if (release_path / rel).exists(): raise ValueError('Program artifact must not contain ' + rel + '/')
+    manifest_path = release_path / 'build-artifact-manifest.json'
+    if not manifest_path.is_file() or digest(manifest_path) != basis['buildArtifactSha256']:
+        raise ValueError('Program build manifest missing or hash does not match basis.buildArtifactSha256')
+    built = json.loads(manifest_path.read_text())
+    if built.get('schemaVersion') != PROGRAM_ARTIFACT_SCHEMA or built.get('codeSha') != basis.get('codeSha'):
+        raise ValueError('Program build manifest schema or codeSha does not match basis')
+    if (built.get('contentFree') or {}).get('checkoutContentHeldOut') is not True:
+        raise ValueError('Program artifact was not built from a content-free checkout')
+    content = basis.get('contentRelease') or {}
+    root, content_id, manifest_sha = Path(content.get('root', '')), content.get('contentId', ''), content.get('manifestSha256', '')
+    if not root.is_absolute() or not root.is_dir(): raise ValueError('Content root missing: ' + str(root))
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]{0,127}', content_id): raise ValueError('Invalid contentId in basis')
+    if not re.fullmatch(r'[0-9a-f]{64}', manifest_sha): raise ValueError('Invalid content manifestSha256 in basis')
+    content_manifest = root / 'releases' / content_id / 'manifest.json'
+    if not content_manifest.is_file() or digest(content_manifest) != manifest_sha:
+        raise ValueError('Content release manifest missing or hash does not match basis')
+    if json.loads(content_manifest.read_text()).get('contentId') != content_id:
+        raise ValueError('Content release manifest names a different contentId')
+    pointer = json.loads((root / 'current.json').read_text())
+    if pointer.get('schemaVersion') != CONTENT_POINTER_SCHEMA or pointer.get('contentId') != content_id or pointer.get('manifestSha256') != manifest_sha:
+        raise ValueError('Content pointer does not select the basis content release')
+    # Local previews are never production content; a switch needs a sync receipt.
+    if pointer.get('unsynchronizedLocalPreview') or not (pointer.get('sync') or {}).get('eventSha256'):
+        raise ValueError('Content pointer has no synchronization receipt')
+
 def validate_candidate_identity(plan, basis, prebuild=False):
     release_path = Path(basis.get('release', ''))
     if not release_path.is_dir():
         raise ValueError('Candidate release directory does not exist: ' + str(release_path))
 
-    # 1. Verify data pointers (pages, records, history)
-    pointers = [
+    # 1. Verify the content basis: the runtime content pointer for a program
+    # artifact, otherwise the data pointers (pages, records, history) in the tree.
+    if basis.get('schemaVersion') == PROGRAM_BASIS_SCHEMA:
+        validate_program_content_basis(release_path, basis)
+    pointers = [] if basis.get('schemaVersion') == PROGRAM_BASIS_SCHEMA else [
         ('pagePointer', 'data/public-v6-pages'),
         ('recordPointer', 'data/public-v6-records'),
         ('historyPointer', 'data/public-v6-history'),

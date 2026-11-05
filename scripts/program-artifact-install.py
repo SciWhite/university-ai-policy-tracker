@@ -321,7 +321,10 @@ def install(args):
             'files': inner['files'],
             'diskAdmission': admission,
             # Fields the lifecycle plan's basis binds (validate_candidate_identity).
-            'basis': {'release': str(target), 'codeSha': inner['codeSha'], 'BUILD_ID': inner['BUILD_ID'],
+            # The plan adds `contentRelease` (root, contentId, manifestSha256) for the
+            # synchronized content pointer the candidate will read.
+            'basis': {'schemaVersion': 'uapt-program-release-basis-v1',
+                      'release': str(target), 'codeSha': inner['codeSha'], 'BUILD_ID': inner['BUILD_ID'],
                       'sourceManifestSha256': inner['files']['sourceManifestSha256'],
                       'buildArtifactSha256': summary['artifact']['buildArtifactManifestSha256']},
             # A new release root: add it to the retention receipt (uapt-release-retention-v1

@@ -565,4 +565,43 @@ class RetentionDeadlineTests(unittest.TestCase):
    self.assertEqual(m.temporary_paths(root,{'temporaryGlobs':['builds/*']}),[str((root/'builds/failed').resolve())])
    with self.assertRaisesRegex(ValueError,'Unsafe'):m.temporary_paths(root,{'temporaryGlobs':['../*']})
 
+class ProgramArtifactIdentityTests(unittest.TestCase):
+ """A content-free program artifact binds the runtime content pointer, not in-tree data."""
+ def setUp(self):
+  self.td=tempfile.TemporaryDirectory();root=Path(self.td.name);self.release=root/'releases/uapt-program-abc';code='a'*40
+  (self.release/'apps/web/.next').mkdir(parents=True);(self.release/'apps/web/.next/BUILD_ID').write_text('build-p1')
+  sm=self.release/'source-manifest.json';sm.write_text(json.dumps({'schemaVersion':'uapt-program-file-list-v1','codeSha':code,'files':[{'path':'apps/web/.next/BUILD_ID','sha256':m.digest(self.release/'apps/web/.next/BUILD_ID')}]}))
+  self.built={'schemaVersion':'uapt-program-artifact-v1','codeSha':code,'BUILD_ID':'build-p1','contentFree':{'checkoutContentHeldOut':True}}
+  bm=self.release/'build-artifact-manifest.json';bm.write_text(json.dumps(self.built))
+  self.content=root/'content';(self.content/'releases/c-1').mkdir(parents=True);cm=self.content/'releases/c-1/manifest.json';cm.write_text(json.dumps({'contentId':'c-1'}))
+  self.pointer={'schemaVersion':'uapt-content-pointer-v1','contentId':'c-1','manifestSha256':m.digest(cm),'sync':{'contractVersion':'2.1.0','eventId':'e','eventSha256':'f'*64}}
+  (self.content/'current.json').write_text(json.dumps(self.pointer))
+  self.basis={'schemaVersion':'uapt-program-release-basis-v1','release':str(self.release),'codeSha':code,'BUILD_ID':'build-p1','sourceManifestSha256':m.digest(sm),'buildArtifactSha256':m.digest(bm),'contentRelease':{'root':str(self.content),'contentId':'c-1','manifestSha256':m.digest(cm)}}
+  bp=root/'basis.json';bp.write_text(json.dumps(self.basis));self.plan={'candidateUnits':['candidate'],'basis':{'path':str(bp),'sha256':m.digest(bp)}}
+  self.running=patch.object(m,'state',side_effect=lambda u:{'ActiveState':'active','MainPID':'42','InvocationID':'inv','WorkingDirectory':str(self.release/'apps/web')});self.running.start()
+ def tearDown(self):self.running.stop();self.td.cleanup()
+ def check(self,basis=None):return m.validate_candidate_identity(self.plan,basis or self.basis)
+ def test_program_artifact_with_synchronized_pointer_passes(self):
+  self.assertTrue(self.check());self.assertTrue(m.validate_candidate_identity(self.plan,self.basis,prebuild=True))
+ def test_in_tree_content_is_refused(self):
+  (self.release/'data').mkdir()
+  with self.assertRaisesRegex(ValueError,'must not contain data/'):self.check()
+ def test_pointer_must_select_the_basis_release_with_a_sync_receipt(self):
+  for change,error in [({'contentId':'c-2'},'does not select'),({'manifestSha256':'0'*64},'does not select'),({'sync':None},'synchronization receipt'),({'unsynchronizedLocalPreview':True},'synchronization receipt')]:
+   (self.content/'current.json').write_text(json.dumps({k:v for k,v in {**self.pointer,**change}.items() if v is not None}))
+   with self.assertRaisesRegex(ValueError,error):self.check()
+ def test_content_manifest_hash_and_id_are_bound(self):
+  with self.assertRaisesRegex(ValueError,'Content release manifest missing'):self.check({**self.basis,'contentRelease':{**self.basis['contentRelease'],'manifestSha256':'1'*64}})
+  with self.assertRaisesRegex(ValueError,'Invalid contentId'):self.check({**self.basis,'contentRelease':{**self.basis['contentRelease'],'contentId':'../c-1'}})
+  with self.assertRaisesRegex(ValueError,'Content root missing'):self.check({**self.basis,'contentRelease':{**self.basis['contentRelease'],'root':'relative/content'}})
+ def test_build_manifest_must_be_a_content_free_program_build_of_the_code(self):
+  for change,error in [({'schemaVersion':'other'},'schema or codeSha'),({'codeSha':'b'*40},'schema or codeSha'),({'contentFree':{'checkoutContentHeldOut':False}},'content-free')]:
+   bm=self.release/'build-artifact-manifest.json';bm.write_text(json.dumps({**self.built,**change}))
+   with self.assertRaisesRegex(ValueError,error):self.check({**self.basis,'buildArtifactSha256':m.digest(bm)})
+ def test_program_basis_requires_artifact_hashes(self):
+  for key in ['sourceManifestSha256','buildArtifactSha256']:
+   with self.assertRaisesRegex(ValueError,'requires '+key):self.check({k:v for k,v in self.basis.items() if k!=key})
+ def test_legacy_basis_still_requires_in_tree_pointers(self):
+  with self.assertRaisesRegex(ValueError,'pagePointer'):self.check({**self.basis,'schemaVersion':'uapt-policy-zone-release-basis-v1'})
+
 if __name__=='__main__':unittest.main()

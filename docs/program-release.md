@@ -132,12 +132,17 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
 
 1. **Architecture.** Confirm `uname -m` on the host and run the workflow on the
    matching runner (`ubuntu-24.04-arm` for aarch64).
-2. **Lifecycle controller.** `validate_candidate_identity` still requires
-   `data/public-v6-*/current.json` inside the release directory. A program
-   artifact has none: its content basis is the content pointer. The installed
-   controller needs a program-artifact basis (pointer + manifest SHA256 instead
-   of in-tree data pointers) before R1 cutover; change, test and install it in
-   its own reviewed step, not inside the release window.
+2. **Lifecycle controller (done 2026-11-05).** A basis with `schemaVersion:
+   "uapt-program-release-basis-v1"` (written by the installer) binds the
+   runtime content pointer instead of in-tree data pointers. The plan adds
+   `contentRelease: {root, contentId, manifestSha256}`. `validate_candidate_identity`
+   then requires:
+   - no `data/` or `staging/` in the release;
+   - a content-free `uapt-program-artifact-v1` build manifest for the same `codeSha`;
+   - a content manifest whose hash matches;
+   - a `current.json` that selects that release with a sync receipt (local previews are refused).
+
+   Legacy bases are unchanged.
 3. **nginx deny for the refresh endpoint.** Add to the site config before the
    R1 upstream switch, and read it back (`curl -i https://eduaipolicy.org/api/internal/content/refresh` → 404):
 
