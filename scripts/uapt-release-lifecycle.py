@@ -272,7 +272,17 @@ def validate_plan(plan, policy, observed, prebuild=False):
     if plan.get('policySha256') != policy['_sha256']: raise ValueError('Policy changed; reprepare plan')
     if plan.get('expiresAt', '') <= now(): raise ValueError('Plan expired')
     expiry = datetime.datetime.fromisoformat(plan['expiresAt'])
-    if expiry.tzinfo is None or expiry > datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=4): raise ValueError('Plan lifetime exceeds four hours')
+    # Build deadlines remain four hours. Only future runtime candidate plans use
+    # the explicitly installed bounded window; static plans have their own guard.
+    candidate_hours = policy.get('candidateTtlHours', 4)
+    if type(candidate_hours) is not int or candidate_hours not in (4, 8):
+        raise ValueError('Candidate lifetime must be the configured four or eight hours')
+    configured_seconds = policy.get('fixedReleaseProfile', {}).get('candidate', {}).get('maximumLifetimeSeconds')
+    if configured_seconds is not None and (type(configured_seconds) is not int or configured_seconds != candidate_hours * 3600):
+        raise ValueError('Candidate lifetime policy/profile mismatch')
+    plan_hours = 4 if prebuild else candidate_hours
+    if expiry.tzinfo is None or expiry > datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=plan_hours):
+        raise ValueError('Plan lifetime exceeds configured ' + str(plan_hours) + ' hours')
     candidates = plan.get('candidateUnits', [])
     if not candidates or len(candidates) > 2 or len(set(candidates)) != len(candidates): raise ValueError('Require one bounded candidate pair at most')
     if not set(candidates) <= set(policy['candidateSlots']): raise ValueError('Use fixed candidate slots; per-release/per-school units forbidden')
