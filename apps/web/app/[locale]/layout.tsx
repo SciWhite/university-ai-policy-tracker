@@ -39,5 +39,5 @@ export default async function LocaleLayout({
   }
 
   const sharedUiText = await getPublicReadingUiText(locale, getEnglishShellTextSources());
-  return <RootDocument locale={locale} sharedUiText={sharedUiText}>{children}</RootDocument>;
+  return <RootDocument locale={locale} sharedUiText={sharedUiText} enableClarity>{children}</RootDocument>;
 }

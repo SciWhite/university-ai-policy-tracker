@@ -49,7 +49,7 @@ jobs:
 
       # Content stays out of the build: data/ and staging/ are never checked out.
       - name: Check out frozen SHA without content
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ inputs.sha }}
           fetch-depth: 1
@@ -77,10 +77,10 @@ jobs:
           done
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ inputs.node-version }}
           cache: pnpm
@@ -104,7 +104,7 @@ jobs:
         run: node scripts/program-build.mjs package --sha "$SHA" --out "$RUNNER_TEMP/program-artifact" --markers-from "$RUNNER_TEMP/content-markers"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: uapt-program-${{ inputs.sha }}
           path: ${{ runner.temp }}/program-artifact/

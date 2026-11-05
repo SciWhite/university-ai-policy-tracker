@@ -18,5 +18,6 @@ export const metadata = {
 };
 
 export default function DefaultRootLayout({ children }: { children: ReactNode }) {
-  return <RootDocument locale={DEFAULT_LOCALE}>{children}</RootDocument>;
+  // Clarity loads only on eligible V6 university pages and only after consent.
+  return <RootDocument locale={DEFAULT_LOCALE} enableClarity>{children}</RootDocument>;
 }
