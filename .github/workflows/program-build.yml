@@ -1,0 +1,122 @@
+# Content-free program build (R1-d). Builds one frozen SHA into a standalone
+# artifact with its SHA256 and build manifest; see docs/program-release.md.
+# It needs no secrets and deploys nothing: the server installer downloads,
+# verifies and unpacks the artifact, and the lifecycle controller decides the rest.
+name: Program build
+
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: Frozen 40-character commit SHA to build
+        required: true
+        type: string
+      runner:
+        description: Runner image; its architecture must match the production host
+        required: true
+        default: ubuntu-24.04-arm
+        type: choice
+        options:
+          - ubuntu-24.04-arm
+          - ubuntu-24.04
+      node-version:
+        description: Node.js version (production runs Node 22)
+        required: true
+        default: "22"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: program-build-${{ inputs.sha }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ${{ inputs.runner }}
+    timeout-minutes: 45
+    env:
+      SHA: ${{ inputs.sha }}
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Validate SHA
+        run: |
+          if [[ ! "$SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::sha must be a full 40-character lowercase commit SHA"
+            exit 1
+          fi
+
+      # Content stays out of the build: data/ and staging/ are never checked out.
+      - name: Check out frozen SHA without content
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/data/
+            !/staging/
+
+      - name: Confirm frozen checkout
+        run: |
+          test "$(git rev-parse HEAD)" = "$SHA"
+          test ! -e data && test ! -e staging
+
+      # Only the pointer files, for the packager's "no content identity" scan.
+      - name: Hold out content pointers for the marker scan
+        run: |
+          markers="$RUNNER_TEMP/content-markers"
+          for file in data/public-releases/current.json data/public-v6-pages/current.json \
+            data/public-v6-records/current.json data/public-v6-history/current.json \
+            data/public-change-history/current.json; do
+            mkdir -p "$markers/$(dirname "$file")"
+            git show "$SHA:$file" > "$markers/$file"
+          done
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm --filter @uapt/db generate
+
+      - name: Typecheck
+        run: pnpm --filter @uapt/web exec tsc --noEmit --incremental false -p tsconfig.json
+
+      - name: Validate build scope
+        run: node scripts/validate-web-build-scope.mjs
+
+      - name: Build (content-free, standalone)
+        run: node scripts/program-build.mjs build --sha "$SHA"
+
+      - name: Package artifact
+        run: node scripts/program-build.mjs package --sha "$SHA" --out "$RUNNER_TEMP/program-artifact" --markers-from "$RUNNER_TEMP/content-markers"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: uapt-program-${{ inputs.sha }}
+          path: ${{ runner.temp }}/program-artifact/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+
+      - name: Summary
+        run: |
+          {
+            echo "### Program artifact (not accepted, not deployed)"
+            echo '```json'
+            node -e 'const a=require(process.argv[1]); console.log(JSON.stringify({codeSha:a.codeSha,BUILD_ID:a.BUILD_ID,builder:a.builder,files:a.files,artifact:a.artifact,contentFree:a.contentFree},null,2))' "$RUNNER_TEMP/program-artifact/artifact.json"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

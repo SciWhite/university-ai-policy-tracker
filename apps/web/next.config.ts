@@ -3,6 +3,11 @@ import createNextIntlPlugin from "next-intl/plugin";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Content-free program build (R1-d, docs/program-release.md): standalone output
+// for the GitHub Actions artifact. It traces no content; pages render on demand
+// from the runtime content release.
+const programBuild = process.env.UAPT_PROGRAM_BUILD === "1";
+
 // Workspace-mode builds only. With UAPT_CONTENT_ROOT the program reads the
 // active content release at runtime and ships none of these (R1-b).
 const publicDataTraceFiles = [
@@ -22,6 +27,18 @@ const publicDataTraceFiles = [
   "../../data/public-change-history/**/*.json",
   "../../data/public-change-summaries/**/*.json",
   "../../data/public-v6-change-overviews/**/*.json",
+];
+// Never part of a program artifact, even if a dynamic filesystem access traces them.
+const programTraceExcludes = [
+  "../../data/**/*",
+  "../../staging/**/*",
+  "../../knowledge/**/*",
+  "../../content/**/*",
+  "../../.local/**/*",
+  "../../tests/**/*",
+  "../../docs/**/*",
+  ".runtime-data/**/*",
+  "../../apps/*/.runtime-data/**/*",
 ];
 const appRoot = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(appRoot, "../..");
@@ -50,7 +67,10 @@ const nextConfig: NextConfig = {
   },
   transpilePackages: ["@uapt/db", "@uapt/shared"],
   outputFileTracingRoot: workspaceRoot,
-  outputFileTracingIncludes: {
+  ...(programBuild
+    ? { output: "standalone" as const, outputFileTracingExcludes: { "/*": programTraceExcludes, "/**/*": programTraceExcludes } }
+    : {}),
+  outputFileTracingIncludes: programBuild ? {} : {
     "/[locale]": publicDataTraceFiles,
     "/[locale]/**/*": publicDataTraceFiles,
     "/[locale]/analysis": publicDataTraceFiles,

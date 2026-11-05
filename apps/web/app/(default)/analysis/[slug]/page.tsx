@@ -26,8 +26,7 @@ import {
   formatCoverageScore,
   getAnalysisPageQualityApiPath,
   getAnalysisThemeSummary,
-  getCoverageRows,
-  getPublishableAnalysisThemeSpecs
+  getCoverageRows
 } from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
@@ -40,15 +39,12 @@ interface AnalysisRouteProps {
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-export async function generateStaticParams() {
-  const themes = await getPublishableAnalysisThemeSpecs();
-
-  return [
-    { slug: "policy-coverage" },
-    ...themes.map((theme) => ({ slug: theme.slug }))
-  ];
+// Rendered on first request from the active content release (content-free
+// program build); unpublishable or unknown themes 404 below.
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({ params }: AnalysisRouteProps) {

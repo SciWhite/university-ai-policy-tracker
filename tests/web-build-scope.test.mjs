@@ -16,7 +16,8 @@ function fixture() {
     "(default)/changes/[releaseId]/page.tsx", "api/public/v1/datasets/[artifact]/route.ts",
     "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts", "sitemaps/[section]/route.ts",
     "(default)/reports/monthly/[month]/page.tsx", "(default)/reports/monthly/[month]/coverage/[region]/page.tsx",
-    "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts"
+    "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts",
+    "(default)/analysis/[slug]/page.tsx", "(default)/regions/[slug]/page.tsx", "(default)/themes/[slug]/page.tsx"
   ];
   put("apps/web/next.config.ts", 'const nextConfig = { experimental: { staticGenerationRetryCount: 1 } }; export default nextConfig;');
   put("apps/web/app/[locale]/layout.tsx", 'export default function LocaleLayout({ children }) { return children; }');
@@ -190,20 +191,20 @@ test("unreviewed parameter expansion and excess fixed entries require explicit s
 test("a reviewed route cannot multiply its registry without another scope review", () => {
   const f = fixture();
   try {
-    f.put("apps/web/app/(default)/regions/[slug]/page.tsx", `
+    f.put("apps/web/app/(default)/rankings/[slug]/page.tsx", `
       export function generateStaticParams() {
         // Formatting and explanatory comments do not change the enumeration.
-        return regionLandingSpecs.map((spec) => ({ slug: spec.slug }));
+        return rankingLandingSpecs.map((spec) => ({ slug: spec.slug }));
       }
     `);
     const before = validateWebBuildScope(f.root);
     assert.equal(before.maxStaticPageAndRouteEntries, 3);
-    f.put("apps/web/app/(default)/regions/[slug]/page.tsx", `
+    f.put("apps/web/app/(default)/rankings/[slug]/page.tsx", `
       export function generateStaticParams() {
-        return allLocales.flatMap(locale => regionLandingSpecs.map(spec => ({ locale, slug: spec.slug })));
+        return allLocales.flatMap(locale => rankingLandingSpecs.map(spec => ({ locale, slug: spec.slug })));
       }
     `);
-    assert.throws(() => validateWebBuildScope(f.root), /regions.*generator changed/);
+    assert.throws(() => validateWebBuildScope(f.root), /rankings.*generator changed/);
   } finally { f.cleanup(); }
 });
 

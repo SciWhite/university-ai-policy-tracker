@@ -196,7 +196,11 @@ plan allows) after the refresh, with the purge-only token in
 sampled, per `docs/release-acceptance-tiers.md`) happens after the refresh and
 the purge. Then `python3 scripts/policy-inventory.py sync-gate <event.json>
 --phase complete`. IndexNow stays a separate step (`pnpm indexnow:latest
---sync-ledger <event.json>`), only after public readback.
+--content-root "$UAPT_CONTENT_ROOT" --sync-ledger <event.json>`), only after
+public readback. Its basis is the selected release's `manifest.json` (the same
+file the switch event binds) and its URLs are this switch plan's `paths`
+intersected with the published sitemap; a first selection has no changed-URL
+list.
 
 ## 6. Rollback
 
@@ -266,10 +270,8 @@ regenerated history package under contract 2.1.0.
   in the repository, and none was invented, so a brand-new catalog school was
   not demonstrated; it uses the same path (published release manifest +
   staged directory + regenerated change history in one release).
-- The program build still prerenders some content routes from the content it
-  sees at build time (home, `/changes`, `/reports`, feeds); tags refresh them
-  after a switch. A content-free GitHub Actions build (R1 plan §5.3) must
-  build those on demand or against an empty release.
+- Resolved in R1-d (`docs/program-release.md`): the program build is
+  content-free and every route renders on demand from the active release.
 - Aliases and marks for brand-new schools remain program files (§1).
 - The translation package path is supported in the manifest but was not part
   of the local demo (no reading package is configured on this machine).

@@ -1,8 +1,11 @@
+import { createHash } from "node:crypto";
+import { existsSync, lstatSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { CONTENT_POINTER_SCHEMA, type ContentPointer } from "./content-runtime";
 import {
   SITEMAP_SECTION_IDS,
   buildSitemapSection
 } from "./sitemap-sections";
-import { getLatestReleaseDiff } from "./release-diffs";
 
 export const DEFAULT_INDEXNOW_KEY = "8373fa05a76a4d59abadbe13a617acb0";
 export const DEFAULT_INDEXNOW_HOST = "eduaipolicy.org";
@@ -250,35 +253,52 @@ export async function submitToIndexNow(
   return results;
 }
 
+export interface ContentReleaseIndexNowBasis {
+  contentId: string;
+  /** manifest.json of the active release: the same synchronization basis content:switch binds. */
+  manifestFile: string;
+  manifestSha256: string;
+  /** False for a local preview pointer, which can never be announced. */
+  synchronized: boolean;
+  /** The content:switch plan of this selection; absent for a first selection. */
+  switchPlanFile?: string;
+  /** Changed paths content:switch recorded for refresh and purge. */
+  paths: string[];
+}
+
 /**
- * Collects all URLs modified in the latest published release.
+ * The active runtime content release (R1-b/R1-d) and the changed-URL list its
+ * switch recorded. The pointer, manifest hash and plan identity must agree, so
+ * a notification can only describe the release that is actually selected.
  */
-export async function getLatestReleaseIndexNowUrls(
-  baseUrl: string = DEFAULT_INDEXNOW_BASE_URL
-): Promise<string[]> {
-  const diff = await getLatestReleaseDiff();
-  const urls = new Set<string>();
-
-  // Aggregated landing pages that reflect newly published policy changes
-  urls.add(normalizeIndexNowUrl("/", baseUrl));
-  urls.add(normalizeIndexNowUrl("/changes", baseUrl));
-  urls.add(normalizeIndexNowUrl("/universities", baseUrl));
-
-  // Release summary page
-  urls.add(normalizeIndexNowUrl(`/changes/${diff.releaseId}`, baseUrl));
-
-  // Entity-specific policy and diff pages
-  for (const entity of diff.entities) {
-    urls.add(normalizeIndexNowUrl(`/universities/${entity.entitySlug}`, baseUrl));
-    urls.add(
-      normalizeIndexNowUrl(
-        `/changes/${diff.releaseId}/${entity.entitySlug}`,
-        baseUrl
-      )
-    );
+export function activeContentReleaseIndexNowBasis(contentRoot: string): ContentReleaseIndexNowBasis {
+  const pointerFile = path.join(/* turbopackIgnore: true */ contentRoot, "current.json");
+  if (!existsSync(pointerFile) || lstatSync(pointerFile).isSymbolicLink()) throw new Error(`No regular content pointer at ${pointerFile}`);
+  const pointer = JSON.parse(readFileSync(pointerFile, "utf8")) as ContentPointer;
+  if (pointer.schemaVersion !== CONTENT_POINTER_SCHEMA || !/^[a-z0-9][a-z0-9.-]{2,95}$/.test(pointer.contentId ?? "")) throw new Error("Invalid content pointer");
+  const releaseDir = path.join(/* turbopackIgnore: true */ contentRoot, "releases", pointer.contentId);
+  const manifestFile = path.join(/* turbopackIgnore: true */ releaseDir, "manifest.json");
+  const manifestSha256 = createHash("sha256").update(readFileSync(manifestFile)).digest("hex");
+  if (manifestSha256 !== pointer.manifestSha256) throw new Error("Content manifest hash differs from the pointer");
+  const basis = { contentId: pointer.contentId, manifestFile, manifestSha256, synchronized: Boolean(pointer.sync), paths: [] as string[] };
+  if (!pointer.previousContentId || !pointer.switchedAt) return basis;
+  const switchPlanFile = path.join(/* turbopackIgnore: true */ releaseDir, `switch-${pointer.switchedAt.replace(/[:.]/g, "-")}.json`);
+  const plan = JSON.parse(readFileSync(switchPlanFile, "utf8")) as { schemaVersion?: string; contentId?: string; previousContentId?: string | null; switchedAt?: string; paths?: unknown };
+  if (plan.schemaVersion !== "uapt-content-switch-v1" || plan.contentId !== pointer.contentId || plan.switchedAt !== pointer.switchedAt || plan.previousContentId !== pointer.previousContentId || !Array.isArray(plan.paths) || plan.paths.some((p) => typeof p !== "string" || !p.startsWith("/"))) {
+    throw new Error(`Switch plan ${path.basename(switchPlanFile)} does not describe the selected release`);
   }
+  return { ...basis, switchPlanFile, paths: plan.paths as string[] };
+}
 
-  return Array.from(urls);
+/**
+ * URLs changed by the selected content release: its switch plan's paths. Live
+ * submission still intersects them with the published sitemap.
+ */
+export function getLatestReleaseIndexNowUrls(
+  basis: Pick<ContentReleaseIndexNowBasis, "paths">,
+  baseUrl: string = DEFAULT_INDEXNOW_BASE_URL
+): string[] {
+  return Array.from(new Set(basis.paths.map((p) => normalizeIndexNowUrl(p, baseUrl))));
 }
 
 /**

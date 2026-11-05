@@ -15,7 +15,12 @@ const onDemand = [
   "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts",
   "api/public/v1/datasets/[artifact]/route.ts",
   "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts",
-  "sitemaps/[section]/route.ts"
+  "sitemaps/[section]/route.ts",
+  // Catalog-derived landing pages: the content-free program build (R1-d)
+  // renders them on first request from the active content release.
+  "(default)/analysis/[slug]/page.tsx",
+  "(default)/regions/[slug]/page.tsx",
+  "(default)/themes/[slug]/page.tsx"
 ];
 // Public pages that read no request data in production: empty build params,
 // rendered on first request and cached. They cannot force-static because the
@@ -124,18 +129,6 @@ export function validateWebBuildScope(root = defaultRoot) {
     }
   }
   const bounded = {
-    "(default)/analysis/[slug]/page.tsx": {
-      count: 1 + collectionCount(root, "apps/web/lib/policy-analysis-pages.ts", "analysisThemeSpecs"),
-      body: '{ const themes = await getPublishableAnalysisThemeSpecs(); return [{ slug: "policy-coverage" }, ...themes.map((theme) => ({ slug: theme.slug }))]; }'
-    },
-    "(default)/regions/[slug]/page.tsx": {
-      count: collectionCount(root, "apps/web/lib/reference-pages.ts", "regionLandingSpecs"),
-      body: "{ return regionLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
-    },
-    "(default)/themes/[slug]/page.tsx": {
-      count: collectionCount(root, "apps/web/lib/reference-pages.ts", "themeLandingSpecs"),
-      body: "{ return themeLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
-    },
     "(default)/rankings/[slug]/page.tsx": {
       count: collectionCount(root, "apps/web/lib/reference-pages.ts", "rankingLandingSpecs"),
       body: "{ return rankingLandingSpecs.map((spec) => ({ slug: spec.slug })); }"

@@ -7,6 +7,7 @@ import {
   DEFAULT_INDEXNOW_HOST,
   DEFAULT_INDEXNOW_BASE_URL,
   DEFAULT_INDEXNOW_ENDPOINT,
+  activeContentReleaseIndexNowBasis,
   getLatestReleaseIndexNowUrls,
   intersectIndexNowUrlsWithPublishedSitemap,
   getAllIndexNowUrls,
@@ -22,11 +23,13 @@ Usage:
   tsx --tsconfig apps/web/tsconfig.json scripts/submit-indexnow.ts [options]
 
 Modes (choose at least one):
-  --latest                Submit URLs changed in the latest published release (recommended for releases)
+  --latest                Submit URLs the selected content release changed (its content:switch plan)
   --all                   Submit all sitemap URLs (full site indexing)
   --urls <url1,url2,...>  Submit specific comma-separated URLs or paths
 
 Options:
+  --content-root <dir>    Runtime content root (default: UAPT_CONTENT_ROOT); required for --latest
+                          and for any live submission. The basis is the selected release manifest.
   --dry-run               Simulate submission without making real network requests
   --sync-ledger <file>     Required for live submission; fresh public readback and exact URL scope
   --key <key>             Override IndexNow API key (default: ${DEFAULT_INDEXNOW_KEY})
@@ -36,14 +39,14 @@ Options:
   --help                  Show this help message
 
 Examples:
-  # Dry-run test of latest release changes:
-  pnpm indexnow:dry-run
+  # Dry-run test of the selected content release's changes:
+  pnpm indexnow:dry-run --content-root /srv/uapt/content
 
-  # Submit latest release changes to Bing / IndexNow:
-  pnpm indexnow:latest --sync-ledger <event.json>
+  # Submit them to Bing / IndexNow after public readback:
+  pnpm indexnow:latest --content-root /srv/uapt/content --sync-ledger <event.json>
 
   # Submit full site URLs:
-  pnpm indexnow:all --sync-ledger <event.json>
+  pnpm indexnow:all --content-root /srv/uapt/content --sync-ledger <event.json>
 
   # Submit specific pages:
   tsx --tsconfig apps/web/tsconfig.json scripts/submit-indexnow.ts --urls /universities/oxford,/changes
@@ -69,7 +72,17 @@ async function main(): Promise<void> {
   const isAll = args.includes("--all");
   const rawUrlsArg = getArgValue("--urls");
   const ledgerPath = getArgValue("--sync-ledger");
-  const syncEvent = dryRun ? undefined : await requirePolicySync({ ledgerPath, basisFile: process.env.UAPT_PUBLIC_RELEASE_MANIFEST ?? "data/public-releases/current.json", allowedTypes: ["policy_release", "index_notification"], requirePublicReadback: true });
+  // The basis is the selected runtime content release (docs/content-release.md):
+  // the same manifest.json its content:switch synchronization event is bound to.
+  const contentRootArg = getArgValue("--content-root") ?? process.env.UAPT_CONTENT_ROOT;
+  const contentRoot = contentRootArg ? path.resolve(contentRootArg) : undefined;
+  const basis = contentRoot ? activeContentReleaseIndexNowBasis(contentRoot) : undefined;
+  if (!dryRun && !basis) throw Error("Live submission needs --content-root (or UAPT_CONTENT_ROOT): the selected content release is the notification basis.");
+  if (!dryRun && !basis!.synchronized) throw Error("The selected content release is an unsynchronized local preview; it cannot be announced.");
+  if (isLatest && !basis) throw Error("--latest reads the selected content release's changed-URL list; pass --content-root.");
+  // Sitemap sections (--all) render from the same release.
+  if (contentRoot) process.env.UAPT_CONTENT_ROOT = contentRoot;
+  const syncEvent = dryRun ? undefined : await requirePolicySync({ ledgerPath, basisFile: basis!.manifestFile, allowedTypes: ["policy_release", "index_notification"], requirePublicReadback: true });
 
   if (!isLatest && !isAll && !rawUrlsArg) {
     console.error("Error: Please specify submission mode: --latest, --all, or --urls <url1,url2,...>\n");
@@ -87,6 +100,7 @@ async function main(): Promise<void> {
   console.log(`Base URL: ${baseUrl}`);
   console.log(`Key:      ${key}`);
   console.log(`Mode:     ${dryRun ? "[DRY RUN - No network requests]" : "[LIVE SUBMISSION]"}`);
+  if (basis) console.log(`Content:  ${basis.contentId} (manifest ${basis.manifestSha256.slice(0, 12)}…)`);
 
   // Verify key file existence locally
   const keyFilePath = path.resolve(process.cwd(), "apps/web/public", `${key}.txt`);
@@ -99,10 +113,10 @@ async function main(): Promise<void> {
 
   let urls: string[] = [];
 
-  if (isLatest) {
-    console.log("\nExtracting changed URLs from latest release...");
-    const latestUrls = await getLatestReleaseIndexNowUrls(baseUrl);
-    console.log(`Found ${latestUrls.length} URLs in latest release diff.`);
+  if (isLatest && basis) {
+    console.log("\nReading changed URLs from the content switch plan...");
+    const latestUrls = getLatestReleaseIndexNowUrls(basis, baseUrl);
+    console.log(`Found ${latestUrls.length} URLs in ${basis.switchPlanFile ? path.basename(basis.switchPlanFile) : "a first selection (no changed-URL list)"}.`);
     urls.push(...latestUrls);
   }
 
@@ -162,6 +176,10 @@ async function main(): Promise<void> {
     console.log(`  ... and ${finalUrls.length - 10} more`);
   }
 
+  // The pointer must still select the release the ledger and URL list describe.
+  if (basis && contentRoot && activeContentReleaseIndexNowBasis(contentRoot).manifestSha256 !== basis.manifestSha256) {
+    throw Error("The content pointer changed during validation; no notification sent.");
+  }
   console.log(dryRun ? "\nSimulating submission locally..." : "\nSubmitting to IndexNow...");
   let results: Awaited<ReturnType<typeof submitToIndexNow>>;
   try { results = await submitToIndexNow({
