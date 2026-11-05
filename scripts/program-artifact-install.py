@@ -176,6 +176,18 @@ def verify_summary(summary, tarball, sha, node_bin, production_env):
     return name
 
 
+def links_stay_inside(tree):
+    """After extraction, every symlink must resolve inside the unpacked tree."""
+    root = os.path.realpath(tree)
+    for dirpath, dirnames, filenames in os.walk(tree):
+        for entry in dirnames + filenames:
+            path = os.path.join(dirpath, entry)
+            if os.path.islink(path):
+                resolved = os.path.realpath(path)
+                if resolved != root and not resolved.startswith(root + os.sep):
+                    raise Refused('Symlink leaves the release: ' + os.path.relpath(path, tree))
+
+
 def safe_members(archive, max_bytes):
     members, total = [], 0
     for member in archive.getmembers():
@@ -295,10 +307,14 @@ def install(args):
             tree.mkdir()
             with tarfile.open(tarball, 'r:gz') as archive:
                 members = safe_members(archive, unpacked + 64 * 1024 * 1024)
-                if hasattr(tarfile, 'data_filter'):
-                    archive.extractall(tree, members=members, filter='data')
+                # Python 3.10.12's 'data' filter resolves a symlink target from the
+                # archive root, not the link's directory, and refuses valid relative
+                # pnpm links. safe_members already bounds names and link targets.
+                if hasattr(tarfile, 'tar_filter'):
+                    archive.extractall(tree, members=members, filter='tar')
                 else:
                     archive.extractall(tree, members=members)
+            links_stay_inside(tree)
             inner = verify_tree(tree, summary)
             releases_root.mkdir(parents=True, exist_ok=True)
             if os.stat(tree).st_dev != os.stat(releases_root).st_dev:

@@ -127,5 +127,21 @@ class InstallerTests(unittest.TestCase):
             self.assertEqual(self.run_install(self.make_artifact()), 1)
 
 
+class LinkContainmentTests(unittest.TestCase):
+    def test_deep_relative_pnpm_link_passes_and_escape_is_refused(self):
+        with tempfile.TemporaryDirectory() as d:
+            tree = Path(d) / 'tree'
+            target = tree / 'node_modules/.pnpm/@prisma+client@7/node_modules/@prisma/client'
+            target.mkdir(parents=True)
+            link_dir = tree / 'apps/web/.next/node_modules/@prisma'
+            link_dir.mkdir(parents=True)
+            # The Next standalone layout: five levels up from the link's own directory.
+            (link_dir / 'client-abc').symlink_to('../../../../../node_modules/.pnpm/@prisma+client@7/node_modules/@prisma/client')
+            m.links_stay_inside(tree)
+            (link_dir / 'escape').symlink_to('../../../../../../outside')
+            with self.assertRaisesRegex(m.Refused, 'Symlink leaves the release'):
+                m.links_stay_inside(tree)
+
+
 if __name__ == '__main__':
     unittest.main()
