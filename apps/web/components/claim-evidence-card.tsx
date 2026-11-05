@@ -15,6 +15,7 @@ import { StateLabel } from "@/components/state-label";
 import { getSourceDomain } from "@/lib/analytics-events";
 import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import { translateSurfaceText } from "@/lib/surface-localization";
+import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
 import { policyV6DensityCopy } from "@/lib/policy-v6-density-copy";
 import { policyV6AgentReviewLabel } from "@/lib/policy-v6-review";
 
@@ -61,7 +62,7 @@ export function ClaimEvidenceCard({
         <div>
           {!compact ? (
             <p className="claim-evidence-card__type">
-              {translateSurfaceText(formatClaimType(claim.claimType), locale)}
+              {translatePolicyReferenceUi(formatClaimType(claim.claimType), locale)}
             </p>
           ) : null}
           <h3>{claim.claimText}</h3>

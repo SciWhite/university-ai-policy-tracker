@@ -103,13 +103,8 @@ export default async function ChangeDetailPage({
   if(eventPage)return eventPage;
   const recordsForRelease = await getReleaseChangeRecords(releaseId);
   if (recordsForRelease) {
-    return (
-      <ReleaseOverviewPage
-        locale={locale}
-        records={recordsForRelease}
-        releaseId={releaseId}
-      />
-    );
+    // Render inline so the localized route wrapper can translate this release's interface copy.
+    return ReleaseOverviewPage({ locale, records: recordsForRelease, releaseId });
   }
 
   const history = await getEntityChangeHistory(releaseId, locale);
@@ -454,7 +449,7 @@ function ReleaseOverviewPage({
 
   return localizeSurfaceTree(
     <main className="page-shell page-shell--wide">
-      {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card" data-i18n="preserve">Tracker audit correction: {typeof records[0].changeSummary === "object" && records[0].changeSummary !== null ? ((records[0].changeSummary as any)[locale] || (records[0].changeSummary as any).en) : records[0].changeSummary} This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged.</p> : null}
+      {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card">{"Tracker audit correction:"} <span data-i18n="preserve">{typeof records[0].changeSummary === "object" && records[0].changeSummary !== null ? ((records[0].changeSummary as any)[locale] || (records[0].changeSummary as any).en) : records[0].changeSummary}</span> {"This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged."}</p> : null}
       <section className="hero">
         <p className="kicker">Release diff</p>
         <h1>University AI Policy Tracker Release Diff: {releaseId}</h1>

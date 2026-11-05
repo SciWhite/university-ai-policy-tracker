@@ -32,7 +32,7 @@ export function RelatedUniversities({
     <section className="student-record-section" id="related-universities">
       <div className="section-heading">
         <div>
-          <p className="student-policy__eyebrow">Explore</p>
+          <p className="student-policy__eyebrow">{t("Explore")}</p>
           <h2>{t("Related university AI policy records")}</h2>
         </div>
         <p>
@@ -67,8 +67,7 @@ export function RelatedUniversities({
       </ul>
       {!uiLab ? (
         <p className="muted">
-          Selected by country and shared reviewed policy topics. Each university
-          sets its own AI policy; these links do not imply the same rules.
+          {t("Selected by country and shared reviewed policy topics. Each university sets its own AI policy; these links do not imply the same rules.")}
         </p>
       ) : null}
     </section>

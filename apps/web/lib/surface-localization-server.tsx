@@ -16,12 +16,13 @@ import { ChangeIndexEventsBrowser } from "@/components/change-index-events-brows
 import { ChangeEventContent } from "@/components/change-event-content";
 import { BrowseEntryGroups } from "@/components/browse-entry-groups";
 import { ReportCoverageTable } from "@/app/(default)/reports/monthly/[month]/report-coverage-table";
+import { ApiEndpointRow } from "@/components/api-endpoint-row";
 
 // These server components produce their own presentation copy after the page
 // returns. Pass the accepted copy explicitly; arbitrary components and evidence
 // objects must not be evaluated or translated by the surface walker.
 const publicCopyComponents = new Set<unknown>([
-  OrganizationIdentity, AgentMethods, SourceHealthLabel, AnalysisStatusLabel, ToolRecordFields, ChangeEventContent, BrowseEntryGroups, ReportCoverageTable
+  OrganizationIdentity, AgentMethods, SourceHealthLabel, AnalysisStatusLabel, ToolRecordFields, ChangeEventContent, BrowseEntryGroups, ReportCoverageTable, ApiEndpointRow
 ]);
 const readingLocaleComponents = new Set<unknown>([ChangeHistoryBrowser, ChangeIndexEventsBrowser]);
 function withPublicComponentCopy(node: ReactNode, locale: ReadingLocale, sharedUiText: Readonly<Record<string, string>>): ReactNode {
@@ -32,6 +33,12 @@ function withPublicComponentCopy(node: ReactNode, locale: ReadingLocale, sharedU
   if (publicCopyComponents.has(element.type)) Object.assign(props, { readingLocale: locale, sharedUiText });
   if (readingLocaleComponents.has(element.type)) props.readingLocale = locale;
   if (props["data-i18n"] !== "preserve" && "children" in props) props.children = withPublicComponentCopy(props.children as ReactNode, locale, sharedUiText);
+  if (element.type === ChangeIndexEventsBrowser) {
+    // Country facets are presentation labels; send only the labels this browser shows.
+    const countries = (props.initial as { facets?: { countries?: string[] } } | undefined)?.facets?.countries ?? [];
+    const labels = Object.fromEntries(countries.flatMap(country => sharedUiText[country] ? [[country, sharedUiText[country]]] : []));
+    return <ReadingUiTextProvider value={labels}>{cloneElement(element, props)}</ReadingUiTextProvider>;
+  }
   return cloneElement(element, props);
 }
 export function localizePublicSurfaceTree(node: ReactNode, locale: ReadingLocale, uiText: Readonly<Record<string, string>>): ReactNode {

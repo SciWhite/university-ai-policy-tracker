@@ -1,6 +1,5 @@
 import {
   DEFAULT_LOCALE,
-  SUPPORTED_LOCALES,
   getPathnameWithoutLocale,
   getReadingLocaleFromPathname,
   isLocalizablePath,
@@ -10,13 +9,16 @@ import { READING_LOCALES, preferredReadingLocale, type ReadingLocale } from "./l
 import { isPublishedV6Slug } from "./policy-v6-published-gate";
 
 const englishOnly: readonly ReadingLocale[] = [DEFAULT_LOCALE];
+// Schools outside the reviewed reading cohort keep English records; only the
+// Chinese reading version is offered beside them. Other routes remain reachable.
+const untranslatedSchoolLocales: readonly ReadingLocale[] = [DEFAULT_LOCALE, "zh"];
 
 /** Reading availability is separate from the narrower search-index policy. */
 export function pageReadingLocales(pathname: string): readonly ReadingLocale[] {
   const path = getPathnameWithoutLocale(pathname).split(/[?#]/, 1)[0];
   if (!isLocalizablePath(path)) return englishOnly;
   const university = /^\/universities\/([^/]+)\/?$/.exec(path);
-  if (university && !isPublishedV6Slug(university[1])) return SUPPORTED_LOCALES;
+  if (university && !isPublishedV6Slug(university[1])) return untranslatedSchoolLocales;
   return READING_LOCALES;
 }
 

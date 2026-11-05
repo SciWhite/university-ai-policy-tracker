@@ -36,6 +36,7 @@ export function getEnglishShellTextSources(): string[] {
   visit(en.Shell);
   visit(clarityCopy.en);
   output.add(rankingBrowserCopy("en").directory);
+  output.add("Loading...");
   return [...output];
 }
 
