@@ -17,6 +17,7 @@ export function PolicyV6ClaimGroups({
   claimScopes,
   groupIdPrefix = "claim-group",
   readingLayout = true,
+  detailed = false,
   sharedUiText = {},
 }: {
   groups: ClaimGroup[];
@@ -25,6 +26,8 @@ export function PolicyV6ClaimGroups({
   claimScopes?: Record<string, string>;
   groupIdPrefix?: string;
   readingLayout?: boolean;
+  /** Full claim cards (type, value, confidence, both dates), as on the record page the base tier replaces. */
+  detailed?: boolean;
   sharedUiText?: Readonly<Record<string, string>>;
 }) {
   const translateAccepted = (value: string) => sharedUiText[value] ?? value;
@@ -83,8 +86,8 @@ export function PolicyV6ClaimGroups({
                 entitySlug={entitySlug}
                 locale={locale}
                 id={claim.id ? `claim-${claim.id}` : undefined}
-                showConfidence={false}
-                compact
+                showConfidence={detailed}
+                compact={!detailed}
                 scopeNote={claim.id && claimScopes?.[claim.id] ? policyV6ScopeLabel(claimScopes[claim.id],locale) : undefined}
                 sharedUiText={sharedUiText}
               />

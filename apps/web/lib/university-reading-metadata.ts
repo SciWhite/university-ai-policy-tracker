@@ -15,6 +15,9 @@ import { isPublishedV6Slug } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
 import { ByteLru } from "./bounded-cache";
 import { readingPackageSelection } from "./content-runtime";
+import { isPolicyV6BaseTier, policyV6Tier } from "./policy-v6-tier";
+import { schoolTargetLocales } from "./school-languages";
+import { getCatalogUniversityBySlug } from "./catalog";
 
 let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
@@ -59,6 +62,13 @@ export function localEvidenceDisplayRequirements(evidence: import("./policy-v6-l
 
 export async function v6DisplayRequirements(slug: string, summary?: PublicEntitySummary): Promise<V6ReadingDisplayInventory> {
   const publishedScope = isPublishedV6Slug(slug);
+  if (!publishedScope && isPolicyV6BaseTier(slug)) {
+    // Base tier shows record-derived topic prose; a reading locale is complete
+    // only when that prose is accepted too. No private local input is read.
+    const output: ReadingDisplayRequirement[] = [];
+    collectV6Display((await getPolicyV6Data("en", slug)).schools, "/v6/schools", output);
+    return { requirements: output.filter(requirement => requirement.source.trim()), sourceScopeComplete: true };
+  }
   const input = getV6PageInput(slug, "en");
   if (!publishedScope && !input.bundle && !input.evidence) return { requirements: [], sourceScopeComplete: true };
   const data = await getPolicyV6Data("en", slug);
@@ -147,8 +157,13 @@ export async function universityReadingIndexLocales(slug: string, basis: { recor
   const pointer = readingPackageSelection().pointer;
   if (!pointer) return [DEFAULT_LOCALE];
   const policy = await loadPolicy();
-  const school = policy?.schools?.[slug];
-  if (!policy || !school || school.recordSha256 !== basis.recordSha256) return [DEFAULT_LOCALE];
+  const registered = policy?.schools?.[slug];
+  if (!policy || !registered || registered.recordSha256 !== basis.recordSha256) return [DEFAULT_LOCALE];
+  // Multilingual (full V6) schools keep their reviewed locale registry. Every
+  // other school is indexed only in English, Simplified Chinese and its country
+  // or region language, each once accepted content is complete.
+  const identity = policyV6Tier(slug) === "full" ? undefined : await getCatalogUniversityBySlug(slug);
+  const school = identity ? { ...registered, locales: schoolTargetLocales(identity) } : registered;
   const requested = school.locales.filter(locale => locale !== DEFAULT_LOCALE && (!onlyLocale || locale === onlyLocale));
   if (requested.length === 0) return [DEFAULT_LOCALE];
   const sceneSources = policySceneDisplaySources(slug, summary);
@@ -161,7 +176,7 @@ export async function universityReadingIndexLocales(slug: string, basis: { recor
     const result = await getReadingTranslations(slug, locale, basis, pointer);
     if (result.state === "ready" && result.school.sourceSha256 === policy.sourceSha256 && result.shared.sourceSha256 === policy.sourceSha256 && readingDisplayRequirementsComplete(requirements, result.school, result.shared, v6Sources.sourceScopeComplete)) complete.push(locale);
   }
-  return universityIndexLocales(slug, policy, {
+  return universityIndexLocales(slug, { ...policy, schools: { ...policy.schools, [slug]: school } }, {
     sharedLocales: READING_LOCALES.filter(locale => locale !== DEFAULT_LOCALE),
     schools: { [slug]: { recordSha256: basis.recordSha256, completeLocales: complete } }
   });

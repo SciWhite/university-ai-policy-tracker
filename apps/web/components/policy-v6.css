@@ -2445,6 +2445,7 @@
 
 /* Imperial local review: accessible action shortcut and neutral action prose. */
 [data-ui-experience="compact-evidence"] .v6-compact-independence { margin:6px 0 16px; color:var(--color-text-muted); font-size:12px; line-height:1.5; }
+[data-policy-tier="base"] .policy-v6-tier-notice { margin:0 0 16px; padding:10px 12px; border:1px solid var(--color-warning-border); border-radius:6px; background:var(--color-warning-surface); color:var(--color-text); font-size:var(--text-sm); line-height:1.5; }
 [data-ui-experience="compact-evidence"] .policy-v6-introFoot { justify-content:space-between; gap:8px 20px; }
 [data-ui-experience="compact-evidence"] .v6-compact-check-entry { display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--color-accent); text-underline-offset:3px; }
 [data-ui-experience="compact-evidence"] .v6-compact-check-entry strong { font-size:14px; }
