@@ -24,6 +24,11 @@ import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { formatDateMedium } from "@/lib/format-date";
 import { currentMonthlyReportPath } from "@/lib/reports";
 import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
+import { readPublishedV6Revision } from "@/lib/policy-v6-published";
+import { V6ChangeNote } from "@/components/v6-change-note";
+import { V6CompactChangeNote } from "@/components/v6-compact-change-note";
+import { ImperialUxChangeNote } from "@/components/imperial-ux-change-note";
+import { MitStudentGuideChangeNote } from "@/components/mit-student-guide-change-note";
 
 interface ChangeDetailPageProps {
   params: Promise<{
@@ -48,6 +53,12 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
   await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
   const eventMetadata=await changeHistoryMetadata(releaseId,locale);
   if(eventMetadata)return eventMetadata;
+  const v6Revision = readPublishedV6Revision(releaseId);
+  if (v6Revision) {
+    return {
+      title: `${v6Revision.v5Slugs?.length ? "V5 policy evidence release" : "V6 reviewed page supplement release"} | University AI Policy Tracker`
+    };
+  }
   const releaseRecords = await getReleaseChangeRecords(releaseId);
   if (releaseRecords) {
     const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
@@ -101,6 +112,31 @@ export default async function ChangeDetailPage({
   await tagContent("changes", contentTagFor.changesRelease(releaseId), contentTagFor.school(releaseId));
   const eventPage=await SchoolChangeHistoryPage({slug:releaseId,locale});
   if(eventPage)return eventPage;
+  // Published V6/V5 page-supplement and record-correction releases have their own note.
+  if (readPublishedV6Revision(releaseId)) {
+    return <main><V6ChangeNote locale={locale} revision={releaseId} /></main>;
+  }
+  const page = await ReleaseOrEntityHistoryPage({ locale, releaseId });
+  // Presentation and record-correction notes render only for published V6/V5
+  // schools (each returns null otherwise), ahead of the unchanged history.
+  return (
+    <>
+      <V6CompactChangeNote slug={releaseId} locale={locale} />
+      {releaseId === "massachusetts-institute-of-technology" ? <MitStudentGuideChangeNote locale={locale} /> : null}
+      {releaseId === "imperial-college-london" ? <ImperialUxChangeNote locale={locale} /> : null}
+      <V6ChangeNote locale={locale} slug={releaseId} />
+      {page}
+    </>
+  );
+}
+
+async function ReleaseOrEntityHistoryPage({
+  locale,
+  releaseId
+}: {
+  locale: SupportedLocale;
+  releaseId: string;
+}) {
   const recordsForRelease = await getReleaseChangeRecords(releaseId);
   if (recordsForRelease) {
     // Render inline so the localized route wrapper can translate this release's interface copy.

@@ -10,7 +10,7 @@ import {exportV6Revision} from "../scripts/export-v6-shards";
 import {publishedV6School,readPublishedV6,readPublishedV6Revision} from "../apps/web/lib/policy-v6-published";
 import {v6SummaryAtRevision,v6CorrectedSummary,readV6RecordCorrectionRevision} from "../apps/web/lib/v6-effective-records";
 import {v6FrozenHistory} from "../apps/web/lib/v6-history-cache";
-import {GET} from "../apps/tulsa-zone/app/api/public/v1/[...path]/route";
+import {GET as v6ChangesLatest} from "../apps/web/app/api/public/v1/policy-pages/v6/changes/latest.json/route";
 import {validateV6Shards} from "../scripts/validate-v6-shards";
 
 process.env.UAPT_V6_PUBLISHED_PAGES="1";
@@ -100,7 +100,7 @@ test("current and historical single-school readers match the preserved legacy re
 });
 
 test("single-school changes link follows its frozen publication kind and exact release deltas",async()=>{
- const response=await GET(new Request('http://localhost/api/public/v1/policy-pages/v6/changes/latest.json'),{params:Promise.resolve({path:['policy-pages','v6','changes','latest.json']})});
+ const response=v6ChangesLatest();
  const payload=await response.json();
  const published=readPublishedV6()!,presentation=published.publicationKind==='v6_presentation_integration';
  assert.equal(payload.releaseId,published.releaseId);

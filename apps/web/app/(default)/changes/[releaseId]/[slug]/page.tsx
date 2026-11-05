@@ -19,7 +19,7 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { readPublishedV6Revision } from "@/lib/policy-v6-published";
-import { V6ChangeDetail } from "../../../../../../tulsa-zone/components/v6-change-detail";
+import { V6ChangeDetail } from "@/components/v6-change-detail";
 import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 
 interface ReleaseEntityChangePageProps {

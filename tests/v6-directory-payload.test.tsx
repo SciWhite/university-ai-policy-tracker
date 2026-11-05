@@ -8,7 +8,7 @@ import { readV6RecordCorrections } from "../apps/web/lib/v6-effective-records";
 import { getPublicUniversitySummaryBySlug } from "../apps/web/lib/catalog";
 import { getStaticUniversityIndexRecords } from "../apps/web/lib/university-index-records";
 import { getPublicReferenceRecords, countReviewedClaims } from "../apps/web/lib/reference-pages";
-import { GET as compare } from "../apps/tulsa-zone/app/api/policy-v6/compare/route";
+import { GET as compare } from "../apps/web/app/api/policy-v6/compare/route";
 import { GET as index } from "../apps/web/app/api/public/v1/university-index.json/route";
 import QsRankingPage from "../apps/web/components/qs-ranking-page";
 import type { SupportedLocale } from "../apps/web/lib/i18n";
