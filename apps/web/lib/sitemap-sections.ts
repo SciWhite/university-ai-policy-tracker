@@ -7,7 +7,7 @@ import { getCatalogUniversities, getPublicUniversitySummaryBySlug } from "@/lib/
 import { getStagedPublicSummaries } from "@/lib/staged-public-data";
 import { getChangeIndexData, getReleaseChangeRecords } from "@/lib/change-records";
 import { readRecordCorrectionChanges } from "@/lib/record-correction-changes";
-import { getKnownReleaseSummaries } from "@/lib/release-diffs";
+import { getKnownReleaseIds, getKnownReleaseSummaries } from "@/lib/release-diffs";
 import {
   rankingLandingSpecs,
   regionLandingSpecs,
@@ -30,6 +30,7 @@ import {
   isIndexRecoveryPilotSlug
 } from "@/lib/index-recovery-pilot";
 import { publishedV6Enabled, isPublishedV6Slug } from "@/lib/policy-v6-published-gate";
+import { publishedV6RevisionIds } from "@/lib/policy-v6-published";
 import { universityReadingBasis } from "@/lib/university-reading-basis";
 import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
 import { READING_LOCALES, type ReadingLocale } from "@/lib/language-catalog";
@@ -53,6 +54,10 @@ const READING_SITEMAP_LOCALES = READING_LOCALES.filter(locale => locale !== DEFA
 // diffs stay reachable through /changes and the feeds without competing for
 // crawl budget in the sitemap.
 const RECENT_RELEASE_SITEMAP_COUNT = 2;
+
+// The accepted sitemap also lists this release's event pages in the legacy UI
+// locales; every other localized change page stays out of the sitemap.
+const LOCALIZED_EVENT_SITEMAP_REVISIONS = new Set(["paris-northwestern-v6-r1-20261022"]);
 
 export const SITEMAP_SECTION_IDS = [
   "core",
@@ -92,6 +97,7 @@ const staticRoutes = () => [
   "/analysis/policy-coverage",
   "/coverage",
   "/coverage/qs-2026",
+  "/rankings",
   "/source-health",
   "/review/queue",
   "/methodology",
@@ -111,6 +117,7 @@ const phaseOneLocalizedStaticRoutes = [
   "",
   "/search",
   "/universities",
+  "/rankings",
   "/analysis",
   "/changes",
   "/methodology",
@@ -219,7 +226,45 @@ async function buildChangesSection(): Promise<SitemapEntry[]> {
     })
   );
 
+  // Every published release, every published history event and each school's
+  // history page, from the active content release. Alias slugs redirect, so
+  // only canonical school slugs are listed.
+  const canonicalSlug = (slug: string) => !aliases.slugAliases.has(slug) && !isIndexPolicySitemapAlias(slug);
+  const releaseDates = new Map(releases.map(({ releaseId, publishedAt: releasePublishedAt }) => [releaseId, toValidDate(releasePublishedAt)]));
+  const eventRows = (eventIndex?.rows ?? []).filter(row => canonicalSlug(row.slug));
+  const knownReleaseIds = [...(await getKnownReleaseIds()), ...publishedV6RevisionIds()];
+  // An event revision has its own release page only when it has release records.
+  const eventReleaseIds: string[] = [];
+  for (const revision of new Set(eventRows.map(row => row.revision))) {
+    if (!knownReleaseIds.includes(revision) && await getReleaseChangeRecords(revision)) eventReleaseIds.push(revision);
+  }
+  const releaseIds = [...new Set([...knownReleaseIds, ...eventReleaseIds])];
+  const releaseIndexEntries = releaseIds.map(releaseId => ({
+    url: new URL(`/changes/${releaseId}`, baseUrl).toString(),
+    lastModified: releaseDates.get(releaseId) ?? publishedAt
+  }));
+  const schoolHistoryDates = new Map<string, Date>();
+  for (const row of eventRows) {
+    const date = toValidDate(row.publishedAt ?? undefined) ?? publishedAt;
+    const latest = schoolHistoryDates.get(row.slug);
+    if (!latest || date > latest) schoolHistoryDates.set(row.slug, date);
+  }
+  const eventEntries = eventRows.flatMap(row => [
+    row.url,
+    ...(LOCALIZED_EVENT_SITEMAP_REVISIONS.has(row.revision) ? LEGACY_LOCALIZED_STATIC_LOCALES.map(locale => withLocalePrefix(row.url, locale)) : [])
+  ].map(route => ({
+    url: new URL(route, baseUrl).toString(),
+    lastModified: toValidDate(row.publishedAt ?? undefined) ?? publishedAt
+  })));
+  const schoolHistoryEntries = [...schoolHistoryDates].map(([slug, lastModified]) => ({
+    url: new URL(`/changes/${slug}`, baseUrl).toString(),
+    lastModified
+  }));
+
   return [
+    ...releaseIndexEntries,
+    ...schoolHistoryEntries,
+    ...eventEntries,
     ...changeRecords.filter(record => !/^\/(?:zh\/|fr\/|pl\/)?universities\//.test(record.changeUrl)).map((record) => ({
       url: new URL(record.changeUrl, baseUrl).toString(),
       lastModified:

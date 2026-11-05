@@ -7,6 +7,8 @@ import { readPublicChangeHistory, readPublicReleaseDiff } from "../apps/web/lib/
 import { buildSitemapSection, type SitemapSectionId } from "../apps/web/lib/sitemap-sections";
 import { getStagedCatalogUniversities } from "../apps/web/lib/staged-public-data";
 import { getEntityAliasResolver } from "../apps/web/lib/entity-aliases";
+import { policyV6Tier } from "../apps/web/lib/policy-v6-tier";
+import { schoolTargetLocales } from "../apps/web/lib/school-languages";
 
 // Compare against the distributable export, which always uses public citations.
 process.env.NEXT_PUBLIC_SITE_URL = "https://eduaipolicy.org";
@@ -48,14 +50,18 @@ test("every exported historical row equals the original full public diff reconst
 test("university and localized sitemap sections contain each canonical university exactly once", async () => {
   const universities = await getStagedCatalogUniversities();
   const { slugAliases } = await getEntityAliasResolver();
+  // Base-tier schools are listed in zh and in their own legacy country locale;
+  // full-tier schools need the server registry and package, absent locally.
+  const expected = (section: string) => universities.filter(row => section === "universities" ||
+    (policyV6Tier(row.slug) === "base" && schoolTargetLocales(row).includes(section as never)));
   for (const section of ["universities", "zh", "fr", "pl"] as SitemapSectionId[]) {
     const entries = await buildSitemapSection(section);
     assert.equal(new Set(entries.map(e => e.url)).size, entries.length, section);
     const schools = entries.filter(e => /\/universities\/[^/]+$/.test(e.url));
-    assert.equal(schools.length, universities.length, section);
+    assert.equal(schools.length, expected(section).length, section);
     assert.ok(schools.every(e => !slugAliases.has(e.url.split("/").pop()!)));
     const eth = schools.filter(e => e.url.endsWith("/universities/eth-zurich"));
-    assert.equal(eth.length, 1);
-    assert.ok(eth[0].lastModified >= new Date("2026-10-02T00:00:00Z"));
+    assert.equal(eth.length, expected(section).some(row => row.slug === "eth-zurich") ? 1 : 0, section);
+    if (eth.length) assert.ok(eth[0].lastModified >= new Date("2026-10-02T00:00:00Z"));
   }
 });
