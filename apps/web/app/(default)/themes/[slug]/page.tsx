@@ -12,8 +12,7 @@ import {
   getThemeLandingSpec,
   getThemeRecords,
   publicJsonPaths,
-  referencePageCaveats,
-  themeLandingSpecs
+  referencePageCaveats
 } from "@/lib/reference-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { normalizeLocale } from "@/lib/i18n";
@@ -27,11 +26,13 @@ interface ThemePageProps {
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 export const revalidate = false;
 
+// Rendered on first request from the active content release (content-free
+// program build); unknown slugs still 404 through the spec lookup.
 export function generateStaticParams() {
-  return themeLandingSpecs.map((spec) => ({ slug: spec.slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: ThemePageProps) {

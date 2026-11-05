@@ -81,7 +81,7 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
     const directory = await resolveSnapshotDirectory();
     const tables: NonNullable<BingAiPerformanceSnapshot["tables"]> = {};
     const paths = Object.fromEntries(
-      Object.entries(SNAPSHOT_FILES).map(([key, file]) => [key, path.join(directory, file)])
+      Object.entries(SNAPSHOT_FILES).map(([key, file]) => [key, path.join(/* turbopackIgnore: true */ directory, file)])
     ) as Record<keyof typeof SNAPSHOT_FILES, string>;
 
     const [topicPortfolioMatch, opportunityQueriesMatch] = await Promise.all([
@@ -100,7 +100,7 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
     let topicPortfolioRows: BingAiTopicPortfolioRow[] = [];
     if (topicPortfolioMatch) {
       try {
-        const topicCsv = await readFile(topicPortfolioMatch.path, "utf8");
+        const topicCsv = await readFile(/* turbopackIgnore: true */ topicPortfolioMatch.path, "utf8");
         topicPortfolioRows = parseBingAiTopicPortfolioCsv(topicCsv);
         tables.topics = tableProvenance(topicCsv, topicPortfolioMatch.mtimeMs, topicPortfolioRows.length);
       } catch {
@@ -111,7 +111,7 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
     let opportunityQueryRows: BingAiOpportunityQueryRow[] = [];
     if (opportunityQueriesMatch) {
       try {
-        const oppCsv = await readFile(opportunityQueriesMatch.path, "utf8");
+        const oppCsv = await readFile(/* turbopackIgnore: true */ opportunityQueriesMatch.path, "utf8");
         opportunityQueryRows = parseBingAiOpportunityQueriesCsv(oppCsv);
         tables.opportunities = tableProvenance(oppCsv, opportunityQueriesMatch.mtimeMs, opportunityQueryRows.length);
       } catch {
@@ -127,12 +127,12 @@ export async function getBingAiPerformanceSnapshot(): Promise<BingAiPerformanceS
 
     try {
       const [overviewCsv, pagesCsv, queriesCsv, ...fileStats] = await Promise.all([
-        readFile(paths.overview, "utf8"),
-        readFile(paths.pages, "utf8"),
-        readFile(paths.queries, "utf8"),
-        stat(paths.overview),
-        stat(paths.pages),
-        stat(paths.queries)
+        readFile(/* turbopackIgnore: true */ paths.overview, "utf8"),
+        readFile(/* turbopackIgnore: true */ paths.pages, "utf8"),
+        readFile(/* turbopackIgnore: true */ paths.queries, "utf8"),
+        stat(/* turbopackIgnore: true */ paths.overview),
+        stat(/* turbopackIgnore: true */ paths.pages),
+        stat(/* turbopackIgnore: true */ paths.queries)
       ]);
       dateRows = parseBingAiOverviewCsv(overviewCsv);
       pageRows = parseBingAiPagesCsv(pagesCsv);
@@ -257,12 +257,12 @@ async function resolveSnapshotDirectory() {
     return process.env.BING_AI_PERFORMANCE_SNAPSHOT_DIR;
   }
   const candidates = [
-    path.resolve(process.cwd(), ".local/data/bing-ai-performance"),
-    path.resolve(process.cwd(), "../../.local/data/bing-ai-performance")
+    path.resolve(/* turbopackIgnore: true */ process.cwd(), ".local/data/bing-ai-performance"),
+    path.resolve(/* turbopackIgnore: true */ process.cwd(), "../../.local/data/bing-ai-performance")
   ];
   for (const candidate of candidates) {
     try {
-      if ((await stat(candidate)).isDirectory()) return candidate;
+      if ((await stat(/* turbopackIgnore: true */ candidate)).isDirectory()) return candidate;
     } catch {
       // Try the next supported working-directory layout.
     }
@@ -276,7 +276,7 @@ export async function resolveOptionalSnapshotFile(
   fallbackPattern: RegExp
 ): Promise<{ mtimeMs: number; path: string } | undefined> {
   try {
-    const entries = await readdir(directory);
+    const entries = await readdir(/* turbopackIgnore: true */ directory);
     const preferredOrder = new Map(
       preferredNames.map((name, index) => [name.toLowerCase(), index])
     );
@@ -285,9 +285,9 @@ export async function resolveOptionalSnapshotFile(
     );
     const candidates: Array<{ mtimeMs: number; name: string; path: string; preferredRank: number }> = [];
     for (const name of matchingNames) {
-      const candidatePath = path.join(directory, name);
+      const candidatePath = path.join(/* turbopackIgnore: true */ directory, name);
       try {
-        const info = await stat(candidatePath);
+        const info = await stat(/* turbopackIgnore: true */ candidatePath);
         if (info.isFile()) {
           candidates.push({
             mtimeMs: info.mtimeMs,

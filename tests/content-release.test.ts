@@ -106,6 +106,24 @@ test("unsynchronized pointers are local previews only", () => {
   } finally { f.cleanup(); }
 });
 
+test("a content-free program build reads no content while Next prerenders", () => {
+  const previous = { phase: process.env.NEXT_PHASE, build: process.env.UAPT_PROGRAM_BUILD };
+  process.env.UAPT_PROGRAM_BUILD = "1";
+  process.env.NEXT_PHASE = "phase-production-build";
+  try {
+    resetContentRuntimeForTests();
+    // notFound() aborts the render; the packager then drops the build-time body.
+    assert.throws(() => refreshContentPointer(), /NEXT_HTTP_ERROR_FALLBACK;404/);
+    process.env.NEXT_PHASE = "phase-production-server";
+    assert.equal(refreshContentPointer().mode, "workspace");
+  } finally {
+    for (const [key, value] of [["NEXT_PHASE", previous.phase], ["UAPT_PROGRAM_BUILD", previous.build]] as const) {
+      if (value === undefined) delete process.env[key]; else process.env[key] = value;
+    }
+    resetContentRuntimeForTests();
+  }
+});
+
 test("the monthly report registry is data with a required current report", () => {
   const registry = JSON.parse(readFileSync(path.join(repoRoot, "data/monthly-reports/registry.json"), "utf8"));
   assert.equal(validateMonthlyReportRegistry(registry).current, "2026-09");

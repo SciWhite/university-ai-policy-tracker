@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, lstatSync, readFileSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
+import { notFound } from "next/navigation";
 import { cache } from "react";
 import { ByteLru } from "./bounded-cache";
 import { registerServerReadingCohort } from "./reading-cohort";
@@ -210,7 +211,17 @@ export function selectContentForTools(content: ActiveContent): void {
   }
 }
 
+/**
+ * Program builds (R1-d, `UAPT_PROGRAM_BUILD=1`) are content-free: every content
+ * route renders on demand, so a content read while `next build` runs is a bug
+ * that would bake build-time content into the artifact.
+ */
+export function isContentFreeProgramBuild(): boolean {
+  return process.env.UAPT_PROGRAM_BUILD === "1" && process.env.NEXT_PHASE === "phase-production-build";
+}
+
 function load(force: boolean): ActiveContent {
+  if (isContentFreeProgramBuild()) notFound();
   const now = Date.now();
   if (pinnedForTools && active) return active;
   // Workspace mode resolves from the working directory; tools that chdir must not see a stale root.

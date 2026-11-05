@@ -426,28 +426,28 @@ export function emptyClaritySnapshot(error: string): ClarityLiveInsightsSnapshot
 
 async function resolveClarityCacheFile(): Promise<string> {
   if (process.env.CLARITY_CACHE_DIR) {
-    return path.join(process.env.CLARITY_CACHE_DIR, "live-insights-cache.json");
+    return path.join(/* turbopackIgnore: true */ process.env.CLARITY_CACHE_DIR, "live-insights-cache.json");
   }
   const candidates = [
-    path.resolve(process.cwd(), ".local/data/clarity"),
-    path.resolve(process.cwd(), "../../.local/data/clarity"),
+    path.resolve(/* turbopackIgnore: true */ process.cwd(), ".local/data/clarity"),
+    path.resolve(/* turbopackIgnore: true */ process.cwd(), "../../.local/data/clarity"),
     "/srv/uapt/content/clarity-cache"
   ];
   for (const candidate of candidates) {
     try {
-      if ((await stat(candidate)).isDirectory()) {
-        return path.join(candidate, "live-insights-cache.json");
+      if ((await stat(/* turbopackIgnore: true */ candidate)).isDirectory()) {
+        return path.join(/* turbopackIgnore: true */ candidate, "live-insights-cache.json");
       }
     } catch {
       // Try next candidate
     }
   }
-  return path.join(candidates[0], "live-insights-cache.json");
+  return path.join(/* turbopackIgnore: true */ candidates[0], "live-insights-cache.json");
 }
 
 async function readDiskCache(filePath: string): Promise<ClarityDiskCachePayload | null> {
   try {
-    const rawText = await readFile(filePath, "utf8");
+    const rawText = await readFile(/* turbopackIgnore: true */ filePath, "utf8");
     const parsed = JSON.parse(rawText) as Partial<ClarityDiskCachePayload>;
     if (
       parsed &&

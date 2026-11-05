@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import {
   DEFAULT_INDEXNOW_KEY,
@@ -9,6 +12,7 @@ import {
   normalizeIndexNowUrl,
   chunkUrls,
   submitToIndexNow,
+  activeContentReleaseIndexNowBasis,
   getLatestReleaseIndexNowUrls,
   getPublishedSitemapIndexNowUrls,
   intersectIndexNowUrlsWithPublishedSitemap
@@ -80,21 +84,80 @@ test("submitToIndexNow dryRun behaves predictably", async () => {
   assert.equal(results[0].submittedCount, 1);
 });
 
-test("getLatestReleaseIndexNowUrls extracts changed URLs from current release", async () => {
-  const urls = await getLatestReleaseIndexNowUrls(DEFAULT_INDEXNOW_BASE_URL);
+function contentRootFixture(options: { sync?: boolean; firstSelection?: boolean } = {}) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "uapt-indexnow-content-"));
+  const contentId = "c-20261110-002";
+  const switchedAt = "2026-11-10T12:00:00.000Z";
+  const release = path.join(root, "releases", contentId);
+  fs.mkdirSync(release, { recursive: true });
+  const manifest = `${JSON.stringify({ schemaVersion: "uapt-content-release-v1", contentId })}\n`;
+  fs.writeFileSync(path.join(release, "manifest.json"), manifest);
+  const pointer = {
+    schemaVersion: "uapt-content-pointer-v1", contentId,
+    manifestSha256: createHash("sha256").update(manifest).digest("hex"),
+    switchedAt, previousContentId: options.firstSelection ? null : "c-20261103-001",
+    ...(options.sync === false ? { unsynchronizedLocalPreview: true } : { sync: { contractVersion: "2.1.0", eventId: "evt-1", eventSha256: "e".repeat(64) } })
+  };
+  fs.writeFileSync(path.join(root, "current.json"), JSON.stringify(pointer));
+  const plan = { schemaVersion: "uapt-content-switch-v1", contentId, previousContentId: pointer.previousContentId, switchedAt, tags: ["school:university-of-bristol"], paths: ["/", "/universities/university-of-bristol", "/zh/universities/university-of-bristol", "/changes/university-of-bristol", "/universities/"] };
+  fs.writeFileSync(path.join(release, `switch-${switchedAt.replace(/[:.]/g, "-")}.json`), JSON.stringify(plan));
+  return { root, release, pointer, cleanup: () => fs.rmSync(root, { recursive: true, force: true }) };
+}
 
-  assert.ok(urls.length > 0, "Should contain at least 1 URL");
-  assert.ok(urls.includes("https://eduaipolicy.org/"), "Should include root");
-  assert.ok(urls.includes("https://eduaipolicy.org/changes"), "Should include /changes");
-  assert.ok(urls.includes("https://eduaipolicy.org/universities"), "Should include /universities");
+test("latest URLs come from the selected content release's switch plan", () => {
+  const f = contentRootFixture();
+  try {
+    const basis = activeContentReleaseIndexNowBasis(f.root);
+    assert.equal(basis.contentId, "c-20261110-002");
+    assert.equal(basis.manifestFile, path.join(f.release, "manifest.json"));
+    assert.equal(basis.synchronized, true);
+    assert.deepEqual(getLatestReleaseIndexNowUrls(basis, DEFAULT_INDEXNOW_BASE_URL), [
+      "https://eduaipolicy.org/",
+      "https://eduaipolicy.org/universities/university-of-bristol",
+      "https://eduaipolicy.org/zh/universities/university-of-bristol",
+      "https://eduaipolicy.org/changes/university-of-bristol",
+      "https://eduaipolicy.org/universities"
+    ]);
+  } finally { f.cleanup(); }
+});
 
-  // Every URL should start with canonical base URL
-  for (const url of urls) {
-    assert.ok(
-      url.startsWith("https://eduaipolicy.org"),
-      `URL ${url} should start with https://eduaipolicy.org`
-    );
-  }
+test("content basis fails closed when pointer, manifest and plan disagree", () => {
+  const f = contentRootFixture();
+  try {
+    fs.writeFileSync(path.join(f.release, "manifest.json"), "{}\n");
+    assert.throws(() => activeContentReleaseIndexNowBasis(f.root), /manifest hash differs/);
+  } finally { f.cleanup(); }
+  const g = contentRootFixture();
+  try {
+    const planFile = fs.readdirSync(g.release).find((name) => name.startsWith("switch-"))!;
+    const plan = JSON.parse(fs.readFileSync(path.join(g.release, planFile), "utf8"));
+    fs.writeFileSync(path.join(g.release, planFile), JSON.stringify({ ...plan, contentId: "c-20261103-001" }));
+    assert.throws(() => activeContentReleaseIndexNowBasis(g.root), /does not describe the selected release/);
+  } finally { g.cleanup(); }
+  const first = contentRootFixture({ firstSelection: true });
+  try {
+    // A first selection has no changed-URL list; nothing is announced from it.
+    assert.deepEqual(activeContentReleaseIndexNowBasis(first.root).paths, []);
+  } finally { first.cleanup(); }
+});
+
+test("live submission keeps --sync-ledger enforcement against the content basis", () => {
+  const run = (...args: string[]) => spawnSync(process.execPath, ["--import", "tsx", "scripts/submit-indexnow.ts", ...args], { encoding: "utf8", env: { ...process.env, UAPT_CONTENT_ROOT: "" } });
+  assert.match(run("--latest").stderr, /needs --content-root/);
+  const preview = contentRootFixture({ sync: false });
+  try {
+    assert.match(run("--latest", "--content-root", preview.root).stderr, /unsynchronized local preview/);
+  } finally { preview.cleanup(); }
+  const f = contentRootFixture();
+  try {
+    assert.match(run("--latest", "--content-root", f.root).stderr, /without --sync-ledger/);
+    const ledger = path.join(f.root, "event.json");
+    fs.writeFileSync(ledger, JSON.stringify({ syncContractVersion: "2.1.0", eventType: "policy_release", basisSha256: "0".repeat(64) }));
+    assert.match(run("--latest", "--content-root", f.root, "--sync-ledger", ledger).stderr, /bound to this exact basis/);
+    const dry = run("--latest", "--dry-run", "--content-root", f.root);
+    assert.equal(dry.status, 0, dry.stderr);
+    assert.match(dry.stdout, /Total unique URLs in preview: 5/);
+  } finally { f.cleanup(); }
 });
 
 test("published sitemap URLs are read from the index and same-origin child files", async () => {
