@@ -8,6 +8,8 @@ import { ReadingUiTextProvider } from "@/components/reading-ui-text-provider";
 import { getShellMessages } from "@/lib/i18n-messages";
 import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import { isSupportedLocale } from "@/lib/i18n";
+import { ReadingCohortBootstrap } from "@/components/reading-cohort-bootstrap";
+import { publishedV6Slugs } from "@/lib/policy-v6-published";
 
 interface RootDocumentProps {
   children: ReactNode;
@@ -29,6 +31,7 @@ export function RootDocument({ children, locale, enableClarity = false, sharedUi
         <link href="/feeds/atom.xml" rel="alternate" title="University AI Policy Tracker Atom feed" type="application/atom+xml" />
       </head>
       <body data-clarity-mask={enableClarity ? "true" : undefined} data-uapt-clarity={enableClarity ? "consent-v1" : undefined}>
+        <ReadingCohortBootstrap slugs={publishedV6Slugs()} />
         <ReadingUiTextProvider value={sharedUiText} shell={shell}>
           <SiteShell showEnglishFallback={showEnglishFallback}>{children}</SiteShell>
           {enableClarity ? <ClarityIntegration /> : null}

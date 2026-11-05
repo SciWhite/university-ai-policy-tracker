@@ -3,8 +3,17 @@ import createNextIntlPlugin from "next-intl/plugin";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Workspace-mode builds only. With UAPT_CONTENT_ROOT the program reads the
+// active content release at runtime and ships none of these (R1-b).
 const publicDataTraceFiles = [
   ".runtime-data/**/*",
+  "../../data/*.json",
+  "../../data/monthly-reports/*.json",
+  "../../data/public-analysis-repairs/*.json",
+  "../../data/public-record-repairs/**/*.json",
+  "../../data/public-v6-pages/*.json",
+  "../../data/public-v6-records/*.json",
+  "../../data/public-v6-history/*.json",
   "../../data/ranking-browser/*.json",
   "../../data/public-v6-pages/sharded/**/*.json",
   "../../data/public-v6-records/sharded/**/*.json",
@@ -13,10 +22,6 @@ const publicDataTraceFiles = [
   "../../data/public-change-history/**/*.json",
   "../../data/public-change-summaries/**/*.json",
   "../../data/public-v6-change-overviews/**/*.json",
-  "lib/change-events.ts",
-  "../tulsa-zone/components/v6-compact-change-note.tsx",
-  "../tulsa-zone/components/mit-student-guide-change-note.tsx",
-  "../tulsa-zone/components/imperial-ux-change-note.tsx",
 ];
 const appRoot = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(appRoot, "../..");

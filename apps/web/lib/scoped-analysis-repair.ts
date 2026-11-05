@@ -1,8 +1,9 @@
 import {createHash} from 'node:crypto';
 import {policyAnalysisDimensionSchema, type PublicEntitySummary} from '@uapt/shared';
-import repair from '../../../data/public-analysis-repairs/paris-northwestern-20261023.json';
+import {readContentJson} from './content-runtime';
 
-export const scopedAnalysisRepairRevision=repair.revision;
+const repair=()=>readContentJson<{revision:string;universities:Record<string,AnalysisPin>}>('data/public-analysis-repairs/paris-northwestern-20261023.json');
+export const scopedAnalysisRepairRevision=()=>repair().revision;
 
 const dimensions = ['policy_presence','coursework','exams','ai_disclosure','privacy_data_entry','academic_integrity','approved_tools','named_ai_services','teaching_guidance','research_guidance','security_procurement'];
 type AnalysisPin = {recordSha256:string; dimensions:Record<string,{claimIds:string[];status:string;summary:string}>};
@@ -27,7 +28,7 @@ export function validateScopedAnalysisRepair(summary:PublicEntitySummary, pin:An
 }
 
 export function scopedAnalysisRepair(summary:PublicEntitySummary) {
- const pin=(repair.universities as Record<string,AnalysisPin>)[summary.entity.slug];
+ const pin=repair().universities[summary.entity.slug];
  // A later reviewed record must receive its own semantic mapping rather than inherit this one.
  if (!pin || createHash('sha256').update(JSON.stringify(summary)).digest('hex') !== pin.recordSha256) return undefined;
  return validateScopedAnalysisRepair(summary,pin);

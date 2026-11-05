@@ -1,10 +1,12 @@
 import { toRfc822Date, xmlEscape, xmlResponse } from "@/lib/feed";
 import { getReportsIndex } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-static";
 
 export async function GET() {
+  await tagContent("reports");
   const reports = await getReportsIndex();
   const siteUrl = getAbsoluteSiteUrl("/");
   const feedUrl = getAbsoluteSiteUrl("/feeds/reports.xml");

@@ -14,7 +14,9 @@ function fixture() {
   };
   const deferred = [
     "(default)/changes/[releaseId]/page.tsx", "api/public/v1/datasets/[artifact]/route.ts",
-    "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts", "sitemaps/[section]/route.ts"
+    "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts", "sitemaps/[section]/route.ts",
+    "(default)/reports/monthly/[month]/page.tsx", "(default)/reports/monthly/[month]/coverage/[region]/page.tsx",
+    "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts"
   ];
   put("apps/web/next.config.ts", 'const nextConfig = { experimental: { staticGenerationRetryCount: 1 } }; export default nextConfig;');
   put("apps/web/app/[locale]/layout.tsx", 'export default function LocaleLayout({ children }) { return children; }');

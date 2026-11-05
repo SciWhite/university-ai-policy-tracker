@@ -4,10 +4,12 @@ import {
   SITEMAP_SECTION_IDS,
   getSitemapLastPublishedAt
 } from "@/lib/sitemap-sections";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-static";
 
 export async function GET() {
+  await tagContent("sitemap");
   const lastPublishedAt = await getSitemapLastPublishedAt();
   const entries = SITEMAP_SECTION_IDS.map((section) => {
     const url = getAbsoluteSiteUrl(`/sitemaps/${section}.xml`);

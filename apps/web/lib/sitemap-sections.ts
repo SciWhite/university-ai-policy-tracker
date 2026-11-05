@@ -29,7 +29,7 @@ import { uniqueSitemapEntries } from "@/lib/sitemap-entries";
 import {
   isIndexRecoveryPilotSlug
 } from "@/lib/index-recovery-pilot";
-import { publishedV6Enabled, publishedV6Slugs } from "@/lib/policy-v6-published-gate";
+import { publishedV6Enabled, isPublishedV6Slug } from "@/lib/policy-v6-published-gate";
 import { universityReadingBasis } from "@/lib/university-reading-basis";
 import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
 import { READING_LOCALES, type ReadingLocale } from "@/lib/language-catalog";
@@ -67,11 +67,12 @@ export function isSitemapSectionId(value: string): value is SitemapSectionId {
   return (SITEMAP_SECTION_IDS as readonly string[]).includes(value);
 }
 
-const monthlyReportRoutes = monthlyReportSlugs.map(
+// Report months come from the active content release.
+const monthlyReportRoutes = () => monthlyReportSlugs().map(
   (slug) => `/reports/monthly/${slug}`
 );
 
-const staticRoutes = [
+const staticRoutes = () => [
   "/contact", "/support", "/privacy", "/terms", "/about",
   "",
   "/university-ai-policy-database",
@@ -79,7 +80,7 @@ const staticRoutes = [
   "/tools",
   "/sources",
   "/reports",
-  ...monthlyReportRoutes,
+  ...monthlyReportRoutes(),
   "/reports/outreach",
   "/widgets",
   "/search",
@@ -97,7 +98,7 @@ const staticRoutes = [
   "/citation",
   "/datasets",
   "/changes"
-] as const;
+];
 
 const referenceRoutes = [
   ...rankingLandingSpecs.map((spec) => `/rankings/${spec.slug}`),
@@ -119,7 +120,7 @@ const phaseOneLocalizedStaticRoutes = [
   "/contribute"
 ] as const;
 
-const phaseTwoLocalizedStaticRoutes = [
+const phaseTwoLocalizedStaticRoutes = () => [
   "/university-ai-policy-database",
   "/tools",
   "/sources",
@@ -127,9 +128,9 @@ const phaseTwoLocalizedStaticRoutes = [
   "/coverage/qs-2026",
   "/source-health",
   "/reports",
-  ...monthlyReportRoutes,
+  ...monthlyReportRoutes(),
   "/reports/outreach"
-] as const;
+];
 
 export async function getSitemapLastPublishedAt(): Promise<Date> {
   const releases = await getKnownReleaseSummaries();
@@ -161,7 +162,7 @@ async function buildCoreSection(): Promise<SitemapEntry[]> {
   const reportCoverageRoutes = await getReportCoverageRoutes();
 
   return [
-    ...staticRoutes,
+    ...staticRoutes(),
     ...["es", "nl", "ms"].flatMap(locale => ["contact", "support", "privacy", "terms", "mcp"].map(kind => `/${locale}/${kind}`)),
     ...referenceRoutes,
     ...analysisThemeRoutes,
@@ -239,7 +240,7 @@ async function buildLocaleSection(
   const universities = (await getCatalogUniversities()).filter(row => !aliases.slugAliases.has(row.slug) && !isIndexPolicySitemapAlias(row.slug));
   const staticEntries = LEGACY_LOCALIZED_STATIC_LOCALES.includes(locale as (typeof LEGACY_LOCALIZED_STATIC_LOCALES)[number]) ? [
     ...phaseOneLocalizedStaticRoutes,
-    ...(phaseTwoEnabled ? phaseTwoLocalizedStaticRoutes : []),
+    ...(phaseTwoEnabled ? phaseTwoLocalizedStaticRoutes() : []),
     ...(phaseTwoEnabled ? referenceRoutes : []),
     ...(phaseTwoEnabled ? await getReportCoverageRoutes() : []),
     ...analysisThemeRoutes
@@ -253,7 +254,7 @@ async function buildLocaleSection(
   const eligibleUniversityEntries: SitemapEntry[] = [];
   for (const university of universities) {
     if (process.env.NODE_ENV === "development") continue;
-    const usePublishedV6 = publishedV6Enabled() && publishedV6Slugs.includes(university.slug);
+    const usePublishedV6 = publishedV6Enabled() && isPublishedV6Slug(university.slug);
     const summary = usePublishedV6
       ? await getPublicUniversitySummaryBySlug(university.slug)
       : summaries.get(university.slug);
@@ -284,7 +285,7 @@ async function getAnalysisThemeRoutes(): Promise<string[]> {
 
 async function getReportCoverageRoutes(): Promise<string[]> {
   const monthlyReports = await Promise.all(
-    monthlyReportSlugs.map((slug) => getMonthlyReport(slug))
+    monthlyReportSlugs().map((slug) => getMonthlyReport(slug))
   );
 
   return monthlyReports.flatMap((report) =>

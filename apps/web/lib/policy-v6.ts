@@ -11,7 +11,7 @@ import { policyV6RecordCopy } from "./policy-v6-record-copy";
 import { translatePolicyReferenceUi } from "./policy-reference-ui";
 import { buildPolicyAnalysisProfile } from "./policy-analysis";
 import { getRepairAnalysisContext } from "./public-record-repairs";
-import mitPin from "../../../data/public-record-repairs/current.json";
+import { readContentJson } from "./content-runtime";
 import { policyV6Slugs, policyV6BundlePreviewSlugs } from "./policy-v6-gate";
 import type { SupportedLocale } from "./i18n";
 import type { ReadingLocale } from "./language-catalog";
@@ -269,7 +269,7 @@ export async function getPolicyV6School(
   const context = getRepairAnalysisContext(summary);
   const revision =
     context?.revision ??
-    (slug === mitPin.slug ? mitPin.revision : "published baseline");
+    ((mitPin => slug === mitPin.slug ? mitPin.revision : "published baseline")(readContentJson<{ slug: string; revision: string }>("data/public-record-repairs/current.json")));
   const profile = buildPolicyAnalysisProfile(summary);
   const recordTopic = (
     key: string,

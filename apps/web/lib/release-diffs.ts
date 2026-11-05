@@ -24,6 +24,7 @@ import { reviewedClaimsFingerprint } from "./index-recovery-basis";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 import { readV6RecordCorrections, readV6RecordCorrectionRevision, v6SummaryAtRevision, type V6RecordPackage } from "./v6-effective-records";
+import { contentCacheKey, contentScoped } from "./content-runtime";
 
 export type ReleaseDiffChangeType =
   | "claim_added"
@@ -258,7 +259,7 @@ export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
 export async function getReleaseDiff(
   releaseId: string
 ): Promise<ReleaseDiff | undefined> {
-  return releaseDiffPromises.get(releaseId, async () =>
+  return releaseDiffPromises.get(contentCacheKey(releaseId), async () =>
     await readPublicReleaseDiff(releaseId) ?? await buildCachedReleaseDiff(releaseId)
   );
 }
@@ -994,7 +995,7 @@ function getEntityDiff(
 
 async function getDatasetForManifest(manifest: PublicReleaseManifest) {
   // Historical manifests must never inherit later per-university repair overlays.
-  return manifestDatasetPromises.get(manifest.releaseId, () => getStagedPublicDatasetForManifest(manifest));
+  return manifestDatasetPromises.get(contentCacheKey(manifest.releaseId), () => getStagedPublicDatasetForManifest(manifest));
 }
 
 async function getRequiredCurrentManifest(): Promise<PublicReleaseManifest> {
@@ -1027,7 +1028,7 @@ async function getPreviousReleaseManifest(
 }
 
 async function getKnownReleaseManifests(): Promise<PublicReleaseManifest[]> {
-  knownReleaseManifestsPromise ??= buildKnownReleaseManifests();
+  knownReleaseManifestsPromise = contentScoped("known-release-manifests", () => buildKnownReleaseManifests());
 
   return knownReleaseManifestsPromise;
 }
@@ -1067,7 +1068,7 @@ async function getPrivateSourceTextDiffIndex(
   currentReleaseId: string
 ): Promise<PrivateSourceTextDiffIndex> {
   const cacheKey = `${previousReleaseId}__${currentReleaseId}`;
-  return privateSourceTextDiffPromises.get(cacheKey, () => buildPrivateSourceTextDiffIndex(previousReleaseId, currentReleaseId));
+  return privateSourceTextDiffPromises.get(contentCacheKey(cacheKey), () => buildPrivateSourceTextDiffIndex(previousReleaseId, currentReleaseId));
 }
 
 async function buildPrivateSourceTextDiffIndex(

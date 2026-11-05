@@ -10,12 +10,14 @@ import {
 } from "@/lib/developer-surfaces";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { currentMonthlyReportChartDataPath } from "@/lib/reports";
+import { tagContent } from "@/lib/content-cache-tags";
 
 const title = "API Reference | University AI Policy Tracker";
 const description =
   "Read-only public API reference for versioned university AI policy JSON, dataset releases, widgets, feeds, rate limits, and citation requirements.";
 
-const apiFamilies = [
+// Built per render: the latest report path comes from the content release.
+const apiFamilies = () => [
   {
     label: "Discovery",
     path: `/api/public/${PUBLIC_API_VERSION}/index.json`,
@@ -126,7 +128,7 @@ const apiFamilies = [
   },
   {
     label: "Report chart data",
-    path: currentMonthlyReportChartDataPath,
+    path: currentMonthlyReportChartDataPath(),
     description:
       "Chart-ready source-language, review-state, region coverage, city/campus coverage, and ranking coverage distributions for the latest monthly report."
   },
@@ -226,7 +228,8 @@ export function generateMetadata() {
   };
 }
 
-export default function ApiReferencePage() {
+export default async function ApiReferencePage() {
+  await tagContent("reports");
   return (
     <main className="page-shell page-shell--wide">
       <JsonLd
@@ -364,7 +367,7 @@ export default function ApiReferencePage() {
         description="Records, releases, widgets, feeds, and agent integrations."
         title="Endpoint families"
       >
-        {apiFamilies.map((endpoint) => (
+        {apiFamilies().map((endpoint) => (
           <ApiEndpointRow
             description={endpoint.description}
             key={endpoint.path}

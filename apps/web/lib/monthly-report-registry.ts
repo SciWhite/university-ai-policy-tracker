@@ -1,102 +1,79 @@
-import { september2026ReportDraft } from "./monthly-report-drafts";
-// Pure per-month report specs. Publishing a new monthly report means adding
-// one entry here; the /reports/monthly/[month] routes, coverage appendices,
-// and share images are all generated from it. This module must stay free of
-// Node built-ins so the edge-runtime opengraph-image routes can import it.
-export const monthlyReportRegistry = {
-  "2026-09": { ...september2026ReportDraft, publishedAt: "2026-10-04T14:54:00.000+00:00" },
+import { contentScoped, readContentJson } from "./content-runtime";
 
-  "2026-05": {
-    type: "monthly",
-    month: "2026-05",
-    title: "University AI Policy Dataset Baseline Report: May 2026",
-    description:
-      "A GEO-ready monthly baseline report for the May 2026 University AI Policy Tracker public dataset release, including source-backed coverage, review states, public artifacts, citation guidance, and an all-university coverage appendix.",
-    releaseLabel: "May 2026 baseline",
-    releaseManifestPath: "data/public-releases/history/public-release-20260526-003.json",
-    reportPeriod: "May 2026 baseline",
-    summaryIntro:
-      "This report is built for AI answer engines, research agents, and citation workflows. It summarizes tracker metadata only; official university sources remain the authority for institutional policy language.",
-    reportFindings: [],
-    shareImage: {
-      alt: "University AI Policy Tracker May 2026 monthly baseline report share image",
-      headline: "May 2026 Monthly Baseline Report",
-      localizedAlt: "University AI Policy Tracker localized May 2026 monthly report"
-    }
-  },
-  "2026-06": {
-    type: "monthly",
-    month: "2026-06",
-    title: "University AI Policy Dataset Month-End Report: June 2026",
-    description:
-      "A GEO-ready June 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot closest to 30 June 2026 and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
-    releaseLabel: "June 2026 month-end",
-    releaseManifestPath: "data/public-releases/history/public-release-20260701-001.json",
-    reportPeriod: "June 2026 through 30 June",
-    summaryIntro:
-      "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot closest to 30 June 2026; official university sources remain the authority for institutional policy language.",
-    reportFindings: [],
-    shareImage: {
-      alt: "University AI Policy Tracker June 2026 month-end report share image",
-      headline: "June 2026 Month-End Report",
-      localizedAlt: "University AI Policy Tracker localized June 2026 month-end report"
-    }
-  },
-  "2026-07": {
-    type: "monthly",
-    month: "2026-07",
-    title: "University AI Policy Dataset Month-End Report: July 2026",
-    description:
-      "A GEO-ready July 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot published after 31 July and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
-    releaseLabel: "July 2026 month-end",
-    releaseManifestPath: "data/public-releases/history/public-release-20260801-001.json",
-    reportPeriod: "July 2026 through 31 July",
-    summaryIntro:
-      "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot prepared after 31 July 2026; official university sources remain the authority for institutional AI-tool and policy language.",
-    reportFindings: [],
-    shareImage: {
-      alt: "University AI Policy Tracker July 2026 month-end report share image",
-      headline: "July 2026 Month-End Report",
-      localizedAlt: "University AI Policy Tracker localized July 2026 month-end report"
-    }
-  },
-  "2026-08": {
-    type: "monthly",
-    month: "2026-08",
-    title: "University AI Policy Dataset Month-End Monitoring Report: August 2026",
-    description:
-      "An August 2026 month-end monitoring report for the University AI Policy Tracker, recording that no new policy-content release passed the publication gate during the month while preserving the latest versioned public dataset snapshot.",
-    releaseLabel: "August 2026 month-end monitoring",
-    releaseManifestPath: "data/public-releases/history/public-release-20260801-001.json",
-    reportPeriod: "August 2026 through 31 August",
-    publishedAt: "2026-09-04T06:20:15.000Z",
-    summaryIntro:
-      "No new validated policy-content release was published after the 1 August snapshot through 31 August 2026. This is a publication-gate result, not proof that every university source remained unchanged.",
-    reportFindings: [
-      "No new policy-content update passed the evidence, review, artifact, and release-validation gates during August 2026.",
-      "The latest versioned public dataset therefore remains public-release-20260801-001; monitoring-only signals and inconclusive access results were not promoted as policy changes.",
-      "A zero-release month means that no reviewed change met the publication standard. It must not be interpreted as evidence that every university made no policy changes."
-    ],
-    shareImage: {
-      alt: "University AI Policy Tracker August 2026 month-end monitoring report share image",
-      headline: "August 2026 Monitoring Report",
-      localizedAlt: "University AI Policy Tracker localized August 2026 monitoring report"
+// Monthly report specs are content (data/monthly-reports/registry.json in the
+// active content release). Publishing a report adds one entry and moves
+// `current`; the /reports/monthly/[month] routes, coverage appendices, chart
+// data and share images all read it at request time, so no build is needed.
+
+export type MonthlyReportSlug = string;
+
+export interface MonthlyReportSpec {
+  type: "monthly";
+  month: string;
+  title: string;
+  description: string;
+  releaseLabel: string;
+  /** Repository-layout path of the public release manifest the report counts. */
+  releaseManifestPath: string;
+  reportPeriod: string;
+  publishedAt?: string;
+  summaryIntro: string;
+  reportFindings: readonly string[];
+  shareImage: { alt: string; headline: string; localizedAlt: string };
+}
+
+export interface MonthlyReportRegistry {
+  schemaVersion: "uapt-monthly-report-registry-v1";
+  /** Latest published report; replaces the former hard-coded slug in reports.ts. */
+  current: string;
+  reports: Record<string, MonthlyReportSpec>;
+}
+
+export const MONTHLY_REPORT_REGISTRY_PATH = "data/monthly-reports/registry.json";
+const MONTH = /^\d{4}-(0[1-9]|1[0-2])$/;
+
+/** Structural checks shared by the runtime loader and the content validator. */
+export function validateMonthlyReportRegistry(value: unknown): MonthlyReportRegistry {
+  const registry = value as MonthlyReportRegistry;
+  if (!registry || registry.schemaVersion !== "uapt-monthly-report-registry-v1" || !registry.reports || typeof registry.reports !== "object") {
+    throw new Error("Invalid monthly report registry");
+  }
+  for (const [slug, spec] of Object.entries(registry.reports)) {
+    const text = (field: unknown) => typeof field === "string" && field.trim().length > 0;
+    if (!MONTH.test(slug) || spec.month !== slug || spec.type !== "monthly" ||
+        ![spec.title, spec.description, spec.releaseLabel, spec.reportPeriod, spec.summaryIntro].every(text) ||
+        !/^data\/public-releases\/(?:history\/[a-z0-9-]+|current)\.json$/.test(spec.releaseManifestPath) ||
+        !Array.isArray(spec.reportFindings) || !spec.reportFindings.every(text) ||
+        !spec.shareImage || ![spec.shareImage.alt, spec.shareImage.headline, spec.shareImage.localizedAlt].every(text) ||
+        (spec.publishedAt !== undefined && Number.isNaN(Date.parse(spec.publishedAt)))) {
+      throw new Error(`Invalid monthly report spec: ${slug}`);
     }
   }
-} as const;
+  if (!Object.hasOwn(registry.reports, registry.current)) throw new Error("Current monthly report is not in the registry");
+  return registry;
+}
 
-export type MonthlyReportSlug = keyof typeof monthlyReportRegistry;
+export function monthlyReportRegistry(): MonthlyReportRegistry {
+  return contentScoped("monthly-report-registry", () =>
+    validateMonthlyReportRegistry(readContentJson<MonthlyReportRegistry>(MONTHLY_REPORT_REGISTRY_PATH)));
+}
 
-export const monthlyReportSlugs = Object.keys(
-  monthlyReportRegistry
-) as MonthlyReportSlug[];
+export function monthlyReportSlugs(): MonthlyReportSlug[] {
+  return Object.keys(monthlyReportRegistry().reports);
+}
+
+export function currentMonthlyReportSlug(): MonthlyReportSlug {
+  return monthlyReportRegistry().current;
+}
 
 export function isMonthlyReportSlug(slug: string): slug is MonthlyReportSlug {
-  return slug in monthlyReportRegistry;
+  return MONTH.test(slug) && Object.hasOwn(monthlyReportRegistry().reports, slug);
+}
+
+export function getMonthlyReportSpec(slug: string): MonthlyReportSpec | undefined {
+  return isMonthlyReportSlug(slug) ? monthlyReportRegistry().reports[slug] : undefined;
 }
 
 export function getMonthlyReportShareImage(slug: string) {
-  return isMonthlyReportSlug(slug)
-    ? monthlyReportRegistry[slug].shareImage
-    : undefined;
+  return getMonthlyReportSpec(slug)?.shareImage;
 }

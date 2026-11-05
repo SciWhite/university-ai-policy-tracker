@@ -7,6 +7,7 @@ import { getPageCopy } from "@/lib/page-copy";
 import { UniversitiesIndexClient } from "./universities-index-client";
 import { ReadingUiTextProvider } from "@/components/reading-ui-text-provider";
 import { getReadingSharedUiText } from "@/lib/reading-translations";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-dynamic";
 export const revalidate = false;
@@ -20,6 +21,7 @@ interface UniversitiesPageProps {
 
 export async function generateMetadata({ params }: UniversitiesPageProps) {
   const locale = normalizeReadingLocale((await params)?.locale);
+  await tagContent("catalog", "universities");
   const copy = getPageCopy(locale).universities;
   const alternates = getLocalizedAlternates("/universities", legacyLocale(locale));
   const canonical = String(alternates.canonical);

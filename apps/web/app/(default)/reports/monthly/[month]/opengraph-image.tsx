@@ -3,7 +3,9 @@ import { getMonthlyReportShareImage } from "@/lib/monthly-report-registry";
 
 export const alt = "University AI Policy Tracker monthly report share image";
 export const contentType = "image/png";
-export const runtime = "edge";
+// Node runtime: the report registry is read from the active content release.
+// Rendered per request, as the former edge route was; months are content.
+export const dynamic = "force-dynamic";
 export const size = {
   height: 630,
   width: 1200

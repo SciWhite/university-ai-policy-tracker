@@ -7,9 +7,8 @@ import {
   localizeHref
 } from "./i18n";
 import { READING_LOCALES, preferredReadingLocale, type ReadingLocale } from "./language-catalog";
-import { publishedV6Slugs } from "./policy-v6-published-gate";
+import { isPublishedV6Slug } from "./policy-v6-published-gate";
 
-const translatedSchools = new Set(publishedV6Slugs);
 const englishOnly: readonly ReadingLocale[] = [DEFAULT_LOCALE];
 
 /** Reading availability is separate from the narrower search-index policy. */
@@ -17,7 +16,7 @@ export function pageReadingLocales(pathname: string): readonly ReadingLocale[] {
   const path = getPathnameWithoutLocale(pathname).split(/[?#]/, 1)[0];
   if (!isLocalizablePath(path)) return englishOnly;
   const university = /^\/universities\/([^/]+)\/?$/.exec(path);
-  if (university && !translatedSchools.has(university[1])) return SUPPORTED_LOCALES;
+  if (university && !isPublishedV6Slug(university[1])) return SUPPORTED_LOCALES;
   return READING_LOCALES;
 }
 

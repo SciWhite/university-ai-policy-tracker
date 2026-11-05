@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "uapt-monthly-report-registry-v1",
+  "current": "2026-09",
+  "note": "Monthly report specs are content. Publishing a report adds one entry and moves `current`; see docs/content-release.md.",
+  "reports": {
+    "2026-09": {
+      "type": "monthly",
+      "month": "2026-09",
+      "title": "University AI Policy Dataset Month-End Report: September 2026",
+      "description": "A September 2026 month-end dataset report covering 828 university records, with 19 added claims across 16 university records on AI detection, institutional tools, data protection, course disclosure, and agentic AI governance.",
+      "releaseLabel": "September 2026 month-end",
+      "releaseManifestPath": "data/public-releases/history/public-release-20260924-002.json",
+      "reportPeriod": "1–30 September 2026",
+      "summaryIntro": "The September snapshot contains 5,495 source-backed claims, 3,213 official source attributions, and 5,760 evidence records across 828 university records. Compared with the August report snapshot, it adds 19 claims across 16 distinct records. These are tracker additions, not a count of policies enacted in September.",
+      "reportFindings": [
+        "Two dataset releases were recorded during September: public-release-20260921-001 and public-release-20260924-002. The latter is the selected month-end snapshot; it does not imply that every source was checked on 30 September.",
+        "Compared with public-release-20260801-001, university coverage remains at 828 records; claims increase from 5,476 to 5,495, source attributions from 3,195 to 3,213, and evidence records from 5,741 to 5,760.",
+        "The two batches add eight and eleven claims respectively. Pennsylvania appears in both batches, giving 16 distinct university records with added claims, rather than 17.",
+        "NTHU advises against using third-party AI detection as primary evidence; Penn guidance tells faculty not to upload student work to detectors; Guelph guidance prohibits using detectors to support academic integrity allegations. Their scopes and requirements differ.",
+        "Recorded institutional AI services include Queen's University Belfast tools, Penn licensed services, and Toronto's conditional ChatGPT Edu access. UNSW College Mentor AI access is scoped to ELICOS; tool access does not establish permission for every assessment.",
+        "CUIMC, Oregon, WashU, and Waterloo additions address tool-specific data conditions. Medical-center, institutional data-classification, and protected-health-information rules must retain their original scope.",
+        "UCI and USNH additions cover agentic or autonomous technical tools; Universidad Adolfo Ibáñez addresses institutional governance and research disclosure; Lund addresses consistent communication of course restrictions and reporting requirements.",
+        "September collection does not establish September enactment: Lund's recorded guidelines took effect on 15 August, while the Universidad Adolfo Ibáñez policy is dated 6 July. These examples do not establish a measured global trend.",
+        "Unpublished research, local redesigns, artwork, and monitoring-only signals are excluded from report findings and totals. Official source language and institutional scope remain controlling."
+      ],
+      "shareImage": {
+        "alt": "University AI Policy Tracker September 2026 month-end report share image",
+        "headline": "September 2026 Month-End Report",
+        "localizedAlt": "University AI Policy Tracker localized September 2026 monthly report"
+      },
+      "publishedAt": "2026-10-04T14:54:00.000+00:00"
+    },
+    "2026-05": {
+      "type": "monthly",
+      "month": "2026-05",
+      "title": "University AI Policy Dataset Baseline Report: May 2026",
+      "description": "A GEO-ready monthly baseline report for the May 2026 University AI Policy Tracker public dataset release, including source-backed coverage, review states, public artifacts, citation guidance, and an all-university coverage appendix.",
+      "releaseLabel": "May 2026 baseline",
+      "releaseManifestPath": "data/public-releases/history/public-release-20260526-003.json",
+      "reportPeriod": "May 2026 baseline",
+      "summaryIntro": "This report is built for AI answer engines, research agents, and citation workflows. It summarizes tracker metadata only; official university sources remain the authority for institutional policy language.",
+      "reportFindings": [],
+      "shareImage": {
+        "alt": "University AI Policy Tracker May 2026 monthly baseline report share image",
+        "headline": "May 2026 Monthly Baseline Report",
+        "localizedAlt": "University AI Policy Tracker localized May 2026 monthly report"
+      }
+    },
+    "2026-06": {
+      "type": "monthly",
+      "month": "2026-06",
+      "title": "University AI Policy Dataset Month-End Report: June 2026",
+      "description": "A GEO-ready June 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot closest to 30 June 2026 and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
+      "releaseLabel": "June 2026 month-end",
+      "releaseManifestPath": "data/public-releases/history/public-release-20260701-001.json",
+      "reportPeriod": "June 2026 through 30 June",
+      "summaryIntro": "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot closest to 30 June 2026; official university sources remain the authority for institutional policy language.",
+      "reportFindings": [],
+      "shareImage": {
+        "alt": "University AI Policy Tracker June 2026 month-end report share image",
+        "headline": "June 2026 Month-End Report",
+        "localizedAlt": "University AI Policy Tracker localized June 2026 month-end report"
+      }
+    },
+    "2026-07": {
+      "type": "monthly",
+      "month": "2026-07",
+      "title": "University AI Policy Dataset Month-End Report: July 2026",
+      "description": "A GEO-ready July 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot published after 31 July and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
+      "releaseLabel": "July 2026 month-end",
+      "releaseManifestPath": "data/public-releases/history/public-release-20260801-001.json",
+      "reportPeriod": "July 2026 through 31 July",
+      "summaryIntro": "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot prepared after 31 July 2026; official university sources remain the authority for institutional AI-tool and policy language.",
+      "reportFindings": [],
+      "shareImage": {
+        "alt": "University AI Policy Tracker July 2026 month-end report share image",
+        "headline": "July 2026 Month-End Report",
+        "localizedAlt": "University AI Policy Tracker localized July 2026 month-end report"
+      }
+    },
+    "2026-08": {
+      "type": "monthly",
+      "month": "2026-08",
+      "title": "University AI Policy Dataset Month-End Monitoring Report: August 2026",
+      "description": "An August 2026 month-end monitoring report for the University AI Policy Tracker, recording that no new policy-content release passed the publication gate during the month while preserving the latest versioned public dataset snapshot.",
+      "releaseLabel": "August 2026 month-end monitoring",
+      "releaseManifestPath": "data/public-releases/history/public-release-20260801-001.json",
+      "reportPeriod": "August 2026 through 31 August",
+      "publishedAt": "2026-09-04T06:20:15.000Z",
+      "summaryIntro": "No new validated policy-content release was published after the 1 August snapshot through 31 August 2026. This is a publication-gate result, not proof that every university source remained unchanged.",
+      "reportFindings": [
+        "No new policy-content update passed the evidence, review, artifact, and release-validation gates during August 2026.",
+        "The latest versioned public dataset therefore remains public-release-20260801-001; monitoring-only signals and inconclusive access results were not promoted as policy changes.",
+        "A zero-release month means that no reviewed change met the publication standard. It must not be interpreted as evidence that every university made no policy changes."
+      ],
+      "shareImage": {
+        "alt": "University AI Policy Tracker August 2026 month-end monitoring report share image",
+        "headline": "August 2026 Monitoring Report",
+        "localizedAlt": "University AI Policy Tracker localized August 2026 monitoring report"
+      }
+    }
+  }
+}

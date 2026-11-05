@@ -92,7 +92,11 @@
     "test:v6-reading-preview": "tsx --tsconfig apps/web/tsconfig.json --test tests/policy-v6-reading-preview.test.tsx",
     "build:zone": "node scripts/uapt-release.mjs build zone",
     "build:debug": "node scripts/uapt-release.mjs build full --debug",
-    "test:release-build": "node --test tests/release-build-pipeline.test.mjs"
+    "test:release-build": "node --test tests/release-build-pipeline.test.mjs",
+    "content:build": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/build.ts",
+    "content:validate": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/validate.ts",
+    "content:switch": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/switch.ts",
+    "test:content-release": "tsx --tsconfig apps/web/tsconfig.json --test tests/content-release.test.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

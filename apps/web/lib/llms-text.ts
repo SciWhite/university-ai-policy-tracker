@@ -1,4 +1,7 @@
-# University AI Policy Tracker
+// Formerly apps/web/public/llms.txt. The latest monthly report comes from the
+// active content release, so /llms.txt is rendered (and refreshed by the
+// "reports" tag) instead of shipping a copy that needs a build per report.
+export const LLMS_TEXT_TEMPLATE = `# University AI Policy Tracker
 
 University AI Policy Tracker is an open, evidence-backed database of university AI policy pages, source snapshots, policy claims, and citation-ready public JSON.
 
@@ -18,7 +21,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Canonical entity pages start at /universities.
 - The AI/search database entry page is available at /university-ai-policy-database.
 - Trust pages are available at /methodology, /citation, /datasets, and /changes.
-- Reports and outreach assets are available at /reports, /reports/monthly/2026-09, and /reports/outreach.
+- Reports and outreach assets are available at /reports, /reports/monthly/{{currentMonthlyReport}}, and /reports/outreach.
 - Public feeds are available at /feeds/reports.xml, /feeds/recent-changes.xml, and /feeds/atom.xml.
 - Embeddable widgets are documented at /widgets.
 - API reference and rate-limit guidance are available at /api-reference.
@@ -50,7 +53,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Dataset checksums and the data dictionary are available at /api/public/v1/datasets/checksums.txt and /api/public/v1/datasets/data-dictionary.md.
 - Report index metadata is available at /api/public/v1/reports/index.json.
 - Report outreach copy is available at /api/public/v1/reports/outreach.json.
-- Monthly report chart data is available at /api/public/v1/reports/monthly/2026-09/chart-data.json.
+- Monthly report chart data is available at /api/public/v1/reports/monthly/{{currentMonthlyReport}}/chart-data.json.
 - Widget discovery is available at /api/public/v1/widgets/index.json.
 - Widget JSON endpoints are available at /api/public/v1/widgets/university-status/{slug}.json and /api/public/v1/widgets/recent-changes.json.
 - Additional widget JSON endpoints are available at /api/public/v1/widgets/policy-coverage/{slug}.json, /api/public/v1/widgets/source-freshness/{slug}.json, and /api/public/v1/widgets/review-state/{slug}.json.
@@ -103,3 +106,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - The MCP alpha design is read-only and must not mutate public records, operate OpenClaw, or publish canonical claims.
 - MCP tool catalog entries are retrieval shapes over public JSON endpoints, not write tools.
 - Public contribution paths create review tasks through GitHub issue templates; they do not create canonical facts directly.
+`;
+
+export function renderLlmsText(currentMonthlyReport: string): string {
+  return LLMS_TEXT_TEMPLATE.replaceAll("{{currentMonthlyReport}}", currentMonthlyReport);
+}

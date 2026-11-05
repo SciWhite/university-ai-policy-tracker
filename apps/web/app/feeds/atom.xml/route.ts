@@ -2,10 +2,12 @@ import { getChangeIndexData } from "@/lib/change-records";
 import { toAtomDate, xmlEscape, xmlResponse } from "@/lib/feed";
 import { getReportsIndex } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-static";
 
 export async function GET() {
+  await tagContent("reports", "changes");
   const [reports, changeIndex] = await Promise.all([
     getReportsIndex(),
     getChangeIndexData()

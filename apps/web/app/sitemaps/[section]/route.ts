@@ -4,6 +4,7 @@ import {
   buildSitemapSection,
   isSitemapSectionId
 } from "@/lib/sitemap-sections";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -25,6 +26,7 @@ export async function GET(
     return new Response("Not Found", { status: 404 });
   }
 
+  await tagContent("sitemap", "catalog");
   const entries = await buildSitemapSection(sectionId);
   const urls = uniqueSitemapEntries(entries)
     .map(

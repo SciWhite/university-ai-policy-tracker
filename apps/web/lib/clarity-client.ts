@@ -1,6 +1,6 @@
 import { analyticsOptedOut } from "./analytics-preference";
 import { clarityAllowed, clearClarityCookies, CLARITY_PREFERENCE_EVENT } from "./clarity-preference";
-import { publishedV6Slugs } from "./policy-v6-published-gate";
+import { isPublishedV6Slug } from "./policy-v6-published-gate";
 
 type Clarity = ((...args: unknown[]) => void) & { q?: unknown[][] };
 declare global { interface Window { clarity?: Clarity } }
@@ -16,7 +16,7 @@ export function isClarityPageEligible(href: string, referrer = ""): boolean {
     // Referrer URLs can contain the preceding search or authentication query.
     if (referrer && new URL(referrer).search) return false;
     const match = /^\/universities\/([^/]+)\/?$/.exec(path);
-    return Boolean(match && publishedV6Slugs.includes(match[1]));
+    return Boolean(match && isPublishedV6Slug(match[1]));
   } catch { return false; }
 }
 

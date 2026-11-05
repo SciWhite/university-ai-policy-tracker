@@ -1,5 +1,5 @@
 import {createHash} from 'node:crypto';
-import legacy from '../../../data/policy-v6-legacy-completeness.json';
+import {readContentJson} from './content-runtime';
 import type {V6SchoolInput} from './policy-v6-input';
 import type {SupportedLocale} from './i18n';
 
@@ -20,7 +20,7 @@ export function v6CompletenessContentHash(input: V6SchoolInput) {
   return hash({school:input.school,topicLabels:view?.topicLabels,topicSummaries:view?.topicSummaries,topicScopes:view?.topicScopes,studentActions:view?.studentActions});
 }
 export function isFrozenLegacyV6Input(input: V6SchoolInput, locale: SupportedLocale) {
-  return (legacy.inputs as Record<string,Record<string,string>>)[input.school.slug]?.[locale] === v6InputHash(input);
+  return readContentJson<{inputs:Record<string,Record<string,string>>}>('data/policy-v6-legacy-completeness.json').inputs[input.school.slug]?.[locale] === v6InputHash(input);
 }
 
 /** Structural/presentation completeness, not an independent policy-semantic approval. */

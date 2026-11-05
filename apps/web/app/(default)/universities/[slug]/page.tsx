@@ -10,7 +10,7 @@ import { PolicyV6HeaderLocation } from "@/components/policy-v6-header-location";
 import { getPolicyV6UniversityTitle } from "@/lib/policy-v6-university-title";
 import {getV6PageInput} from "@/lib/policy-v6-page-input";
 import {universityPolicySeo, universityPolicyStructuredData} from "@/lib/university-policy-seo";
-import {publishedV6Enabled, publishedV6Slugs} from "@/lib/policy-v6-published-gate";
+import {publishedV6Enabled, isPublishedV6Slug} from "@/lib/policy-v6-published-gate";
 import { PolicyV6BundlePage } from "@/components/policy-v6-bundle-page";
 import { PolicyV6Sources } from "@/components/policy-v6-sources";
 import { PolicyV6ClaimGroups } from "@/components/policy-v6-claim-groups";
@@ -91,6 +91,7 @@ import { universityToolsUi } from "@/lib/university-tools-ui";
 import { v5Ui } from "@/lib/enforcement-v5-ui";
 import { policyV6StaticUiText } from "@/lib/policy-v6-static-ui";
 import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 
 type PublicUniversitySummary = NonNullable<Awaited<ReturnType<typeof getPublicUniversitySummaryBySlug>>>;
 
@@ -294,6 +295,7 @@ export default async function UniversityPage({
   const locale = normalizeLocale(localeParam);
   const readingLocale = normalizeReadingLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
+  await tagContent("catalog", contentTagFor.school(slug));
   const pageQuery = await readDevelopmentPreviewQuery(searchParams);
   if (isEthEnforcementPreview(slug, pageQuery?.layout) && !isPolicyV6Preview(slug, pageQuery?.layout)) return <EthEnforcementPreview locale={locale} />;
 
@@ -306,7 +308,7 @@ export default async function UniversityPage({
   const v6Input = uiLab ? getV6PageInput(slug, "en") : undefined;
   const fallbackV6Input = uiLab && fallbackV6Locale !== "en" ? getV6PageInput(slug, fallbackV6Locale) : undefined;
   const localBundle = v6Input?.bundle;
-  const v6PublicSummary = uiLab && publishedV6Enabled() && (publishedV6Slugs.includes(slug) || Boolean(v6Input?.bundle || v6Input?.evidence)) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
+  const v6PublicSummary = uiLab && publishedV6Enabled() && (isPublishedV6Slug(slug) || Boolean(v6Input?.bundle || v6Input?.evidence)) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
   const v6Basis = v6PublicSummary
     ? universityReadingBasis(slug, v6PublicSummary)
     : undefined;
@@ -403,7 +405,7 @@ export default async function UniversityPage({
   const v6School = labData?.schools.find(s => s.slug === slug);
   const sceneLocale = readyTranslations ? "en" : locale;
   const basePolicyScene = uiLab && v6School ? getPolicyV6IllustratedScene(v6School, sceneLocale) ?? originalPolicyScene : originalPolicyScene;
-  const showSupplements = approvedPolicySupplementSlugs.includes(slug) && (!uiLab || slug === "harvard-university");
+  const showSupplements = approvedPolicySupplementSlugs().includes(slug) && (!uiLab || slug === "harvard-university");
   const enforcementPage = isPublished && enforcementV4RefreshSlugs.includes(slug) && (!uiLab || slug === "harvard-university");
   const policyScene = readyTranslations
     ? acceptedSceneView(basePolicyScene, readyTranslations)

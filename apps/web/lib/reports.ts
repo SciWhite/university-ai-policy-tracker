@@ -24,14 +24,18 @@ import {
   type PublicReleaseManifest
 } from "./staged-public-data";
 import {
+  currentMonthlyReportSlug,
+  getMonthlyReportSpec,
   isMonthlyReportSlug,
-  monthlyReportRegistry,
-  monthlyReportSlugs
+  monthlyReportSlugs,
+  type MonthlyReportSlug
 } from "./monthly-report-registry";
+import { contentCacheKey } from "./content-runtime";
 
-export const currentMonthlyReportSlug = "2026-09";
-export const currentMonthlyReportPath = `/reports/monthly/${currentMonthlyReportSlug}`;
-export const currentMonthlyReportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${currentMonthlyReportSlug}/chart-data.json`;
+// The latest report comes from the content release's registry, not the build.
+export { currentMonthlyReportSlug };
+export const currentMonthlyReportPath = () => `/reports/monthly/${currentMonthlyReportSlug()}`;
+export const currentMonthlyReportChartDataPath = () => `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${currentMonthlyReportSlug()}/chart-data.json`;
 
 const legacyMonthlyReportPaths: Record<string, string> = {
   "2026-05": "/reports/2026-05"
@@ -329,11 +333,11 @@ export function monthlyReportCacheStats() {
 }
 
 export async function getMonthlyReport(
-  slug = currentMonthlyReportSlug,
+  slug = currentMonthlyReportSlug(),
   locale = "en"
 ): Promise<MonthlyReport | undefined> {
-  if (!isMonthlyReportSlug(slug)) return undefined;
-  const reportSpec = monthlyReportRegistry[slug];
+  const reportSpec = getMonthlyReportSpec(slug);
+  if (!reportSpec) return undefined;
   const releaseManifest = await getReportReleaseManifest(reportSpec.releaseManifestPath);
   if (!releaseManifest) {
     return localizeMonthlyReport(await buildMonthlyReportFacts(slug, undefined), locale, reportSpec.reportFindings);
@@ -341,15 +345,16 @@ export async function getMonthlyReport(
   const key = createHash("sha256").update(JSON.stringify({
     slug, releaseManifest, reportSpec, origin: getAbsoluteSiteUrl("/")
   })).digest("hex");
-  const facts = await monthlyReports.get(key, () => buildMonthlyReportFacts(slug, releaseManifest));
+  const facts = await monthlyReports.get(contentCacheKey(key), () => buildMonthlyReportFacts(slug, releaseManifest));
   return localizeMonthlyReport(facts, locale, reportSpec.reportFindings);
 }
 
 async function buildMonthlyReportFacts(
-  slug: keyof typeof monthlyReportRegistry,
+  slug: MonthlyReportSlug,
   releaseManifest: PublicReleaseManifest | undefined
 ): Promise<MonthlyReportFacts> {
-  const reportSpec = monthlyReportRegistry[slug];
+  const reportSpec = getMonthlyReportSpec(slug);
+  if (!reportSpec) throw new Error(`Unknown monthly report: ${slug}`);
   const reportDataset = releaseManifest
     ? await getStagedPublicDatasetForManifest(releaseManifest)
     : await getStagedPublicDataset();
@@ -410,7 +415,7 @@ async function buildMonthlyReportFacts(
     releaseId: manifest.releaseId,
     releasePeriod: reportSpec.reportPeriod,
     publishedAt:
-      "publishedAt" in reportSpec ? reportSpec.publishedAt : manifest.publishedAt,
+      reportSpec.publishedAt ?? manifest.publishedAt,
     license: TRACKER_METADATA_LICENSE,
     limitations: manifest.limitations.length
       ? manifest.limitations
@@ -493,7 +498,7 @@ function localizeMonthlyReport(
 
 export async function getReportsIndex(locale = "en"): Promise<MonthlyReport[]> {
   const reports = await Promise.all(
-    monthlyReportSlugs.map((slug) => getMonthlyReport(slug, locale))
+    monthlyReportSlugs().map((slug) => getMonthlyReport(slug, locale))
   );
 
   return reports

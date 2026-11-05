@@ -10,6 +10,7 @@ import {
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { normalizeReadingLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { tagContent } from "@/lib/content-cache-tags";
 
 const title = "Reports | University AI Policy Tracker";
 const description =
@@ -43,6 +44,7 @@ export default async function ReportsPage({
   params?: Promise<{ locale?: string }>;
 }) {
   const locale = normalizeReadingLocale((await params)?.locale);
+  await tagContent("reports");
   const reports = await getReportsIndex(locale);
   const latestReport = reports[0];
 

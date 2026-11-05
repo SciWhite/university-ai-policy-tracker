@@ -3,10 +3,12 @@ import { toRfc822Date, xmlEscape, xmlResponse } from "@/lib/feed";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import {selectedEventIndex,eventApiHeaders} from "@/lib/change-index-events-api";
 import {buildChangeEventFeed} from "@/lib/change-event-feed";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  await tagContent("changes");
   try{
     const selected=await selectedEventIndex("en");
     if(selected)return new Response(buildChangeEventFeed(selected.rows,selected.identity,getAbsoluteSiteUrl("/"),getAbsoluteSiteUrl("/feeds/recent-changes.xml")),{headers:{...eventApiHeaders,"Content-Type":"application/rss+xml; charset=utf-8"}});

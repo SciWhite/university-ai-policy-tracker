@@ -18,7 +18,7 @@ import { discoveryTopicLabel } from "@/lib/discovery-copy";
 import { discoveryCopy } from "@/lib/discovery-copy";
 import { formatDateMedium } from "@/lib/format-date";
 import type { ReadingLocale } from "@/lib/language-catalog";
-import { publishedV6Slugs } from "@/lib/policy-v6-published-gate";
+import { isPublishedV6Slug } from "@/lib/policy-v6-published-gate";
 import type { DiscoveryUniversity } from "@/lib/discovery-types";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { formatDiscoveryLocation } from "@/lib/discovery-location";
@@ -418,7 +418,7 @@ export function DiscoveryCompareTray({
   const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
   if (!selected.length) return null;
   const host =
-    selected.find((slug) => publishedV6Slugs.includes(slug)) ??
+    selected.find((slug) => isPublishedV6Slug(slug)) ??
     "harvard-university";
   const href = `/universities/${host}?${new URLSearchParams({ compare: selected.join(","), view: "compare" })}`;
   return (

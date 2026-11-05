@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "uapt-content-private-field-baseline-v1",
+  "note": "Already-published files whose fields match the private-field rule of scripts/pack-v6-release.ts. Each value is a relative pointer into the private source-text store, not a local path or secret. The exemption is bound to these exact bytes: any edit, and any new occurrence anywhere, fails validation. Remove entries when the data is repaired; never add one without review.",
+  "entries": [
+    {
+      "path": "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed/source_snapshot-sc-caltech-repair-1.json",
+      "sha256": "b9377bb5ddd178ca6c4fbf0f6250cdfcd37204636fa600a66244aae473eee800",
+      "fields": [
+        "$.normalizedTextPath"
+      ]
+    },
+    {
+      "path": "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed/source_snapshot-sc-caltech-repair-2.json",
+      "sha256": "1dee760ba594c9ba9e771d8b3d7c7f4d1016b667ea12b0f9910de19ac580feca",
+      "fields": [
+        "$.normalizedTextPath"
+      ]
+    },
+    {
+      "path": "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed/source_snapshot-sc-uchicago-repair-1.json",
+      "sha256": "d1699910732d0121085f34a367c517df5263fafb9114413c3e27ea6d51cd7b14",
+      "fields": [
+        "$.normalizedTextPath"
+      ]
+    },
+    {
+      "path": "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed/source_snapshot-sc-uchicago-repair-2.json",
+      "sha256": "bfb06b73b78d5e6a9184c263634fb30b876a5b6f59eb440a3f49ac12c278caac",
+      "fields": [
+        "$.normalizedTextPath"
+      ]
+    },
+    {
+      "path": "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed/source_snapshot-sc-uchicago-repair-3.json",
+      "sha256": "415ed9aaddf9f6548a196a499993d0def6b0476d00f7e33b187feb4568456862",
+      "fields": [
+        "$.normalizedTextPath"
+      ]
+    },
+    {
+      "path": "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed/source_snapshot-sc-uchicago-repair-4.json",
+      "sha256": "cb0d6b3bf732892b923db159f007458b51fc6f357952c2baab476bdf32f6349a",
+      "fields": [
+        "$.normalizedTextPath"
+      ]
+    },
+    {
+      "path": "data/public-v6-pages/sharded/objects/1737df66140b449ad6868c547919c934e425da2c68922722ca8234f8a12cbcc3.json",
+      "sha256": "1737df66140b449ad6868c547919c934e425da2c68922722ca8234f8a12cbcc3",
+      "fields": [
+        "$.hmsTools[0].sourceTextArtifact",
+        "$.hmsTools[1].sourceTextArtifact",
+        "$.hmsTools[2].sourceTextArtifact",
+        "$.hmsTools[3].sourceTextArtifact",
+        "$.hmsTools[4].sourceTextArtifact",
+        "$.hmsTools[5].sourceTextArtifact",
+        "$.hmsTools[6].sourceTextArtifact",
+        "$.hmsTools[7].sourceTextArtifact"
+      ]
+    }
+  ]
+}

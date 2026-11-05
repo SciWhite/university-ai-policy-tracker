@@ -8,6 +8,7 @@ import {
   type EntityAliasResolver
 } from "@uapt/shared";
 import { findRepoRoot } from "./repo-root";
+import { contentScoped } from "./content-runtime";
 
 // Loads data/entity-aliases.json (docs/data-contract.md EntityAlias records).
 // Slug aliases drive identity resolution: staged artifacts filed under an
@@ -41,7 +42,7 @@ async function readEntityAliasRegistry(): Promise<
 export async function getEntityAliasRegistry(): Promise<
   EntityAliasRegistry | undefined
 > {
-  registryPromise ??= readEntityAliasRegistry();
+  registryPromise = contentScoped("entity-alias-registry", () => readEntityAliasRegistry());
 
   return registryPromise;
 }

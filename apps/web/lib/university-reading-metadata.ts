@@ -11,9 +11,10 @@ import type { PublicEntitySummary } from "@uapt/shared";
 import { readingTranslation } from "./reading-translations";
 import { getV6PageInput } from "./policy-v6-page-input";
 import { getPolicyV6Data } from "./policy-v6";
-import { publishedV6Slugs } from "./policy-v6-published";
+import { isPublishedV6Slug } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
 import { ByteLru } from "./bounded-cache";
+import { readingPackageSelection } from "./content-runtime";
 
 let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
@@ -57,7 +58,7 @@ export function localEvidenceDisplayRequirements(evidence: import("./policy-v6-l
 }
 
 export async function v6DisplayRequirements(slug: string, summary?: PublicEntitySummary): Promise<V6ReadingDisplayInventory> {
-  const publishedScope = publishedV6Slugs.includes(slug);
+  const publishedScope = isPublishedV6Slug(slug);
   const input = getV6PageInput(slug, "en");
   if (!publishedScope && !input.bundle && !input.evidence) return { requirements: [], sourceScopeComplete: true };
   const data = await getPolicyV6Data("en", slug);
@@ -89,7 +90,7 @@ export function policySceneDisplaySources(slug: string, summary: PublicEntitySum
     getPolicyScenePilot(slug, summary.claims, false, true, { isPreview: true }),
     getPolicyScenePilot(slug, summary.claims, false, false, { isPreview: true })
   ].filter(Boolean);
-  if (publishedV6Enabled() && publishedV6Slugs.includes(slug)) {
+  if (publishedV6Enabled() && isPublishedV6Slug(slug)) {
     const updates = new Map<string, ReadingDisplayRequirement>();
     for (const scene of scenes) {
       const source = scene?.sourceUpdate?.text;
@@ -143,7 +144,7 @@ export function readingDisplayRequirementsComplete(requirements: readonly Readin
 
 export async function universityReadingIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
   if (!summary) return [DEFAULT_LOCALE];
-  const pointer = process.env.UAPT_READING_PACKAGE_POINTER;
+  const pointer = readingPackageSelection().pointer;
   if (!pointer) return [DEFAULT_LOCALE];
   const policy = await loadPolicy();
   const school = policy?.schools?.[slug];

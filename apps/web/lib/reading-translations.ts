@@ -5,6 +5,7 @@ import path from "node:path";
 import { isReadingLocale, type ReadingLocale } from "./language-catalog";
 import type { PublicEntitySummary } from "@uapt/shared";
 import { BoundedAsyncCache, ByteLru } from "./bounded-cache";
+import { readingPackageSelection } from "./content-runtime";
 
 export interface ReadingTranslation {
   source: string;
@@ -173,15 +174,15 @@ function hasApprovedSampledPublication(selection: ReadingTranslationSelection, s
     !!sampling && sampling.schemaVersion === "uapt-translation-sampling-acceptance-v1" && sampling.fullCorpusSemanticReview === false && sampling.nativeSpeakerApproval === false &&
     approval.sourceSha256 === selection.sourceSha256 && sampling.sourceSha256 === selection.sourceSha256 &&
     sha(approval.matrixSha256) && approval.matrixSha256 === sampling.matrixSha256 &&
-    sha(approval.acceptanceSha256) && approval.acceptanceSha256 === sampling.acceptanceSha256 && approval.acceptanceSha256 === process.env.UAPT_READING_SAMPLED_PUBLICATION_ACCEPTANCE_SHA256 &&
-    sha(selectionSha256) && selectionSha256 === process.env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256 &&
+    sha(approval.acceptanceSha256) && approval.acceptanceSha256 === sampling.acceptanceSha256 && approval.acceptanceSha256 === readingPackageSelection().acceptanceSha256 &&
+    sha(selectionSha256) && selectionSha256 === readingPackageSelection().selectionSha256 &&
     sha(approval.packageAdjustmentSha256) && approval.packageAdjustmentSha256 === sampling.packageAdjustmentSha256 && approval.packageAdjustmentSha256 === actualAdjustmentSha256 &&
     approval.targetPairs === sampling.targetPairs && approval.targetPairs > 0 &&
     (!displayAddendum || approval.displayAddendumAcceptanceSha256 === displayAddendum.acceptanceSha256) &&
     (!faCorrection || (sha(approval.faCorrectionAcceptanceSha256) && approval.faCorrectionAcceptanceSha256 === faCorrection.acceptanceSha256));
 }
 function selectedSchoolRecordSha(slug: string): string | undefined {
-  const pointer = process.env.UAPT_READING_PACKAGE_POINTER;
+  const pointer = readingPackageSelection().pointer;
   if (!pointer) return undefined;
   try {
     const pointerPath = realpathSync(pointer), root = realpathSync(path.dirname(pointerPath));
@@ -324,7 +325,7 @@ async function verifiedFaCorrection(root: string, selection: ReadingTranslationS
 }
 
 /** Reads a selected immutable public display package; never reads generator queues or candidate outputs. */
-export async function getReadingTranslations(slug: string, locale: ReadingLocale, basis: { recordSha256: string; originalEvidenceSha256: string }, pointer = process.env.UAPT_READING_PACKAGE_POINTER): Promise<ReadingTranslationResult> {
+export async function getReadingTranslations(slug: string, locale: ReadingLocale, basis: { recordSha256: string; originalEvidenceSha256: string }, pointer = readingPackageSelection().pointer): Promise<ReadingTranslationResult> {
   if (!pointer) return { state: "not_configured" };
   if (!safeSlug(slug) || !isReadingLocale(locale)) return { state: "invalid_package" };
   try {
@@ -390,7 +391,7 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
 }
 
 /** Load only exact allowlisted shared UI strings for the server-rendered shell. */
-export async function getReadingSharedUiText(locale: ReadingLocale, sources: readonly string[], pointer = process.env.UAPT_READING_PACKAGE_POINTER): Promise<Record<string, string>> {
+export async function getReadingSharedUiText(locale: ReadingLocale, sources: readonly string[], pointer = readingPackageSelection().pointer): Promise<Record<string, string>> {
   if (!pointer || !isReadingLocale(locale)) return {};
   try {
     const root = await realpath(path.dirname(pointer));

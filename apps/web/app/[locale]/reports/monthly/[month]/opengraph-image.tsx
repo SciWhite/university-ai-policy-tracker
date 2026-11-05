@@ -5,7 +5,9 @@ import { isSupportedLocale } from "@/lib/i18n";
 
 export const alt = "University AI Policy Tracker localized monthly report";
 export const contentType = "image/png";
-export const runtime = "edge";
+// Node runtime: the report registry is read from the active content release.
+// Rendered per request, as the former edge route was; months are content.
+export const dynamic = "force-dynamic";
 export const size = localizedReportImageSize;
 
 export default async function Image({

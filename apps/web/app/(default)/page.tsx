@@ -26,6 +26,7 @@ import { HomeV4View } from "@/components/home-v4-view";
 import { getChangeIndexData } from "@/lib/change-records";
 import { HomeV6View } from "@/components/home-v6-view";
 import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
+import { tagContent } from "@/lib/content-cache-tags";
 
 export const revalidate = 3600;
 
@@ -55,6 +56,7 @@ export async function generateMetadata({
   searchParams,
 }: HomePageProps): Promise<Metadata> {
   const locale = normalizeLocale((await params)?.locale);
+  await tagContent("home", "catalog");
   const layout = (await readDevelopmentPreviewQuery(searchParams))?.layout;
 
   if (layout === "legacy") {

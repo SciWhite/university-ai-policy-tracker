@@ -1,5 +1,5 @@
 import { READING_LOCALES, LANGUAGE_NAMES, readingDirection, isReadingLocale, type ReadingLocale } from "./language-catalog";
-import { publishedV6Slugs } from "./policy-v6-published-gate";
+import { isPublishedV6Slug } from "./policy-v6-published-gate";
 
 export const SUPPORTED_LOCALES = ["en", "zh", "fr", "pl", "es", "nl", "ms"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
@@ -239,7 +239,7 @@ export function localizeHref(
   const university = /^\/universities\/([^/?#]+)\/?(?:[?#]|$)/.exec(unprefixed);
   // Only the selected university cohort has the additional reading versions.
   // A localized directory must keep other schools' existing records reachable.
-  if (university && !isSupportedLocale(locale) && !publishedV6Slugs.includes(university[1])) return unprefixed;
+  if (university && !isSupportedLocale(locale) && !isPublishedV6Slug(university[1])) return unprefixed;
   return withLocalePrefix(unprefixed, locale);
 }
 

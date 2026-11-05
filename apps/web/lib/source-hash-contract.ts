@@ -1,9 +1,19 @@
 import type {PublicEntitySummary, SourceAttribution} from '@uapt/shared';
-import registry from '../../../data/source-hash-provenance.json';
 import type {SourceHashKind, SourceHashBinding} from './source-hash-registry';
+import {contentScoped, readContentJson} from './content-runtime';
+type RegistryEntry = Omit<SourceHashBinding, 'hashKind'> & {hashKind: string};
+const registryIndex = () => contentScoped('source-hash-provenance', () => {
+  const index = new Map<string, RegistryEntry>();
+  // First entry wins, matching the former Array.find over the registry.
+  for (const entry of readContentJson<{entries: RegistryEntry[]}>('data/source-hash-provenance.json').entries) {
+    const key = entry.sourceUrl + '\0' + entry.snapshotHash;
+    if (!index.has(key)) index.set(key, entry);
+  }
+  return index;
+});
 export type {SourceHashKind, SourceHashBinding} from './source-hash-registry';
 export function sourceHashBinding(source: Pick<SourceAttribution, 'sourceUrl' | 'snapshotHash'>): SourceHashBinding {
-  const entry = registry.entries.find(e => e.sourceUrl === source.sourceUrl && e.snapshotHash === source.snapshotHash);
+  const entry = registryIndex().get(source.sourceUrl + '\0' + source.snapshotHash);
   return entry ? {...entry, hashKind: entry.hashKind as SourceHashKind} : {...source, hashKind: 'unknown_legacy'};
 }
 export function sourceHashContract(summary: PublicEntitySummary) {

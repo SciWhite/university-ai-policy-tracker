@@ -42,6 +42,7 @@ import {
   getRetrievalNameAliasesBySlug
 } from "./entity-aliases";
 import { findRepoRoot } from "./repo-root";
+import { clearContentScoped, contentScoped } from "./content-runtime";
 import { getSiteBaseUrl } from "./site-url";
 import {
   applyPublishedRecordRepairs,
@@ -150,16 +151,13 @@ const LOCATION_OVERRIDES: Record<string, { country: string; region: string }> = 
   }
 };
 
-let datasetPromise: Promise<PublicDataset> | undefined;
-
 export function resetStagedPublicDatasetCache(): void {
-  datasetPromise = undefined;
+  clearContentScoped("staged-public-dataset");
 }
 
+/** One dataset per content release; a pointer switch selects a new one. */
 export async function getStagedPublicDataset(): Promise<PublicDataset> {
-  datasetPromise ??= buildStagedPublicDataset();
-
-  return datasetPromise;
+  return contentScoped("staged-public-dataset", () => buildStagedPublicDataset());
 }
 
 export async function getStagedPublicDatasetForManifest(
@@ -241,7 +239,8 @@ async function buildStagedPublicDataset(): Promise<PublicDataset> {
   return buildPublicDatasetFromArtifacts(repoRoot, artifacts);
 }
 
-async function buildStagedPublicDatasetFromManifest(
+/** Content validators build the catalog from a release tree, not the active root. */
+export async function buildStagedPublicDatasetFromManifest(
   repoRoot: string,
   manifest: PublicReleaseManifest,
   applyRepairs = false

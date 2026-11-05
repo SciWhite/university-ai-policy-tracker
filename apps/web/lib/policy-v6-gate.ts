@@ -1,4 +1,4 @@
-import {publishedV6Slugs,publishedV6Enabled} from "./policy-v6-published-gate";
+import {isPublishedV6Slug,publishedV6Enabled} from "./policy-v6-published-gate";
 /** Six reference schools; historical cohort stays stable for acceptance and art pins. */
 export const policyV6Slugs = [
   "harvard-university",
@@ -60,7 +60,7 @@ export const isPolicyV6Preview = (
   layout: unknown,
   environment = process.env.NODE_ENV,
 ) =>
-  (publishedV6Enabled() && publishedV6Slugs.includes(slug)) ||
+  (publishedV6Enabled() && isPublishedV6Slug(slug)) ||
   environment === "development" &&
   [...policyV6Slugs, ...policyV6BundlePreviewSlugs].some((value) => value === slug) &&
   (layout === "v6" ||

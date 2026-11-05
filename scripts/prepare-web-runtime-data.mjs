@@ -13,12 +13,8 @@ const identityFiles = [
   ...["pages", "records", "history"].flatMap(family => [
     `data/public-v6-${family}/current.json`, `data/public-v6-${family}/revisions.json`,
     `data/public-v6-${family}/sharded/index.json`
-  ]),
-  // publicHistoryBasisV2 hashes these original bytes, even in a compiled runtime.
-  "apps/web/lib/change-events.ts", "apps/web/lib/change-event-rules.ts",
-  "apps/tulsa-zone/components/v6-compact-change-note.tsx",
-  "apps/tulsa-zone/components/mit-student-guide-change-note.tsx",
-  "apps/tulsa-zone/components/imperial-ux-change-note.tsx"
+  ])
+  // publicHistoryBasisV2 binds a frozen renderer identity (R1-b), not source bytes.
 ];
 
 export async function prepareWebRuntimeData({repoRoot = defaultRepoRoot, targetRoot = path.join(repoRoot, "apps/web/.runtime-data")} = {}) {

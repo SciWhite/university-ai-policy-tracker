@@ -69,7 +69,7 @@ export function createLocalizedSurfacePage(renderer: unknown, pathname: string) 
   return async function LocalizedSurfacePage(props: SurfaceProps) {
     const locale = getSurfaceLocale(await props.params);
     const node = await (renderer as (props: SurfaceProps) => ReactNode | Promise<ReactNode>)(props);
-    const uiText = locale === DEFAULT_LOCALE ? {} : await getPublicReadingUiText(locale, [...publicSurfaceTextSources, ...publicSurfaceNodeTextSources(node)]);
+    const uiText = locale === DEFAULT_LOCALE ? {} : await getPublicReadingUiText(locale, [...publicSurfaceTextSources(), ...publicSurfaceNodeTextSources(node)]);
     const localized = localizePublicSurfaceTree(node, locale, uiText);
     const clientSources = publicClientTextSources(pathname);
     const clientText = Object.fromEntries(clientSources.flatMap(source => uiText[source] === undefined ? [] : [[source, uiText[source]]]));
@@ -87,7 +87,7 @@ export function createLocalizedSurfaceMetadata(
     const params = (await props.params) ?? {};
     const locale = getSurfaceLocale(params);
     const metadata = typeof source === "function" ? await source(props) : source;
-    const uiText = locale === DEFAULT_LOCALE ? {} : await getPublicReadingUiText(locale, [...publicSurfaceTextSources, ...presentationTextSources(metadata)]);
+    const uiText = locale === DEFAULT_LOCALE ? {} : await getPublicReadingUiText(locale, [...publicSurfaceTextSources(), ...presentationTextSources(metadata)]);
     const resolvedPath = typeof pathname === "function" ? pathname(params) : pathname;
     return localizeSurfaceMetadata(metadata, resolvedPath, locale, uiText);
   };

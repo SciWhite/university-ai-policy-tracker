@@ -1,8 +1,7 @@
 import {createHash} from "node:crypto";
-import evidenceSupplement from "../../../data/public-analysis-repairs/qs51-70-evidence-supplement.json";
 import {v6ReviewedAnalysisOverride} from "./v6-effective-records";
 import {scopedAnalysisRepair,scopedAnalysisRepairRevision} from "./scoped-analysis-repair";
-import mitAnalysisDimensions from "../../../data/public-record-repairs/mit-20261010/analysis-dimensions.json";
+import { contentScoped, readContentJson } from "./content-runtime";
 import { getRepairAnalysisContext } from "./public-record-repairs";
 import {
   NO_ADVICE_BOUNDARY,
@@ -280,7 +279,7 @@ let profilePromise: Promise<PolicyAnalysisProfile[]> | undefined;
 export async function getPolicyAnalysisProfiles(): Promise<
   PolicyAnalysisProfile[]
 > {
-  profilePromise ??= buildPolicyAnalysisProfiles();
+  profilePromise = contentScoped("policy-analysis-profiles", () => buildPolicyAnalysisProfiles());
 
   return profilePromise;
 }
@@ -510,7 +509,7 @@ export function buildPolicyAnalysisProfile(
     confidence: scopedRepair ? 0 : deriveProfileConfidence(dimensions),
     coverageScore,
     dimensions,
-    limitations: scopedRepair ? [...ANALYSIS_LIMITATIONS, `Scoped interpretation revision ${scopedAnalysisRepairRevision}, bound to the exact current university record. Confidence 0 is uncalibrated; institution coverage remains PARTIAL and student snapshot review remains pending.`] : ANALYSIS_LIMITATIONS,
+    limitations: scopedRepair ? [...ANALYSIS_LIMITATIONS, `Scoped interpretation revision ${scopedAnalysisRepairRevision()}, bound to the exact current university record. Confidence 0 is uncalibrated; institution coverage remains PARTIAL and student snapshot review remains pending.`] : ANALYSIS_LIMITATIONS,
     suggestedCitation:
       `University AI Policy Tracker. "${summary.entity.name} policy analysis profile." ` +
       `Version ${PUBLIC_API_VERSION}. ${summary.canonicalUrl}`
@@ -525,7 +524,7 @@ function buildDimension(
   const scopedRepair=scopedAnalysisRepair(summary);
   const imperialContext = getRepairAnalysisContext(summary);
   const isImperialCandidate = Boolean(imperialContext);
-  const repair = v6ReviewedAnalysisOverride(summary)?.[definition.key] ?? (isMit ? mitAnalysisDimensions[definition.key] : imperialContext?.dimensions[definition.key]);
+  const repair = v6ReviewedAnalysisOverride(summary)?.[definition.key] ?? (isMit ? readContentJson<Record<string, {status: string; claimIds: string[]; summary: string}>>("data/public-record-repairs/mit-20261010/analysis-dimensions.json")[definition.key] : imperialContext?.dimensions[definition.key]);
   const claims = repair
     ? repair.claimIds.map((id) => {
         const claim = summary.claims.find((c) => c.id === id);
@@ -566,7 +565,7 @@ function buildDimension(
     (repair?.status as AnalysisDimensionStatus | undefined) ??
     deriveStatus(definition, claims);
   // Additional evidence navigation does not recompute the established status or score.
-  const pin=(evidenceSupplement.universities as Record<string,{recordSha256:string;dimensions:Record<string,string[]>}>)[summary.entity.slug];
+  const pin=readContentJson<{universities:Record<string,{recordSha256:string;dimensions:Record<string,string[]>}>}>("data/public-analysis-repairs/qs51-70-evidence-supplement.json").universities[summary.entity.slug];
   const extra=pin?.recordSha256===createHash('sha256').update(JSON.stringify(summary)).digest('hex')?pin.dimensions[definition.key]??[]:[];
   const basisClaims=[...claims,...extra.filter(id=>!claims.some(c=>c.id===id)).map(id=>{const c=summary.claims.find(c=>c.id===id);if(!c?.evidence.length)throw Error('Analysis supplement missing published evidence: '+id);return c;})];
   const basis = basisClaims.map((claim) => {
@@ -598,7 +597,7 @@ function buildDimension(
     : buildDimensionExplanation(definition, status, basisClaims);
 
   const normalizedValue = scopedRepair
-    ? `${scopedAnalysisRepairRevision}:${definition.key}:${status}`
+    ? `${scopedAnalysisRepairRevision()}:${definition.key}:${status}`
     : isMit
     ? `mit_scoped_review:${definition.key}:${status}`
     : isImperialCandidate

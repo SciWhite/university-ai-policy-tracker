@@ -2,6 +2,7 @@ import surfaceSources from "@/messages/surfaces/en.json";
 import pageSources from "@/messages/pages/en.json";
 import extraSources from "@/messages/public-ui/en.json";
 import { monthlyReportRegistry } from "./monthly-report-registry";
+import { contentScoped } from "./content-runtime";
 import { analysisThemeSpecs } from "./policy-analysis-pages";
 import { discoveryCopy } from "./discovery-copy";
 import { mockupCopy } from "./mockup-copy";
@@ -47,10 +48,17 @@ const historySources = presentationTextSources(
   v6ChangesCopy("en"), [...historicalChangeTopicOrder, "coursework", "exams", "disclosure", "privacy_data", "approved_tools", "research_publication", "admissions", "applications", "teaching_guidance", "security_procurement"].map(key => v6ChangeTopicTitle(key, "en"))
 );
 
-export const publicSurfaceTextSources = presentationTextSources(
+const programSurfaceTextSources = presentationTextSources(
   surfaceSources, pageSources, discoverySources, getHomeV4Copy("en"), getProjectCopy("en"), commonClientSources, historySources,
-  extraSources, Object.values(monthlyReportRegistry).map(report => [report.title, report.description, report.summaryIntro]), analysisThemeSpecs
+  extraSources, analysisThemeSpecs
 );
+
+/** Program copy plus the active content release's monthly report titles. */
+export function publicSurfaceTextSources(): string[] {
+  return contentScoped("public-surface-text-sources", () => presentationTextSources(
+    programSurfaceTextSources, Object.values(monthlyReportRegistry().reports).map(report => [report.title, report.description, report.summaryIntro])
+  ));
+}
 
 /** The browser gets only the copy used by its page's interactive components. */
 export function publicClientTextSources(pathname: string): string[] {

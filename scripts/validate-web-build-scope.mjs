@@ -8,6 +8,11 @@ const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 export const MAX_STATIC_ENTRIES = 256;
 const onDemand = [
   "(default)/changes/[releaseId]/page.tsx",
+  // Report months are content (data/monthly-reports/registry.json, R1-b):
+  // rendered on first request and refreshed by tag after a content switch.
+  "(default)/reports/monthly/[month]/page.tsx",
+  "(default)/reports/monthly/[month]/coverage/[region]/page.tsx",
+  "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts",
   "api/public/v1/datasets/[artifact]/route.ts",
   "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts",
   "sitemaps/[section]/route.ts"
@@ -118,8 +123,6 @@ export function validateWebBuildScope(root = defaultRoot) {
       throw new Error(`Build scope rejected: ${relative} must use empty build params and cache on-demand paths`);
     }
   }
-  const months = collectionCount(root, "apps/web/lib/monthly-report-registry.ts", "monthlyReportRegistry");
-  const macroRegions = collectionCount(root, "apps/web/lib/reports.ts", "macroRegionOrder");
   const bounded = {
     "(default)/analysis/[slug]/page.tsx": {
       count: 1 + collectionCount(root, "apps/web/lib/policy-analysis-pages.ts", "analysisThemeSpecs"),
@@ -137,24 +140,6 @@ export function validateWebBuildScope(root = defaultRoot) {
       count: collectionCount(root, "apps/web/lib/reference-pages.ts", "rankingLandingSpecs"),
       body: "{ return rankingLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
     },
-    "(default)/reports/monthly/[month]/page.tsx": {
-      count: months,
-      body: "{ return monthlyReportSlugs.map((month) => ({ month })); }"
-    },
-    "(default)/reports/monthly/[month]/coverage/[region]/page.tsx": {
-      count: months * macroRegions,
-      body: `{
-        const params = await Promise.all(monthlyReportSlugs.map(async (month) => {
-          const report = await getMonthlyReport(month);
-          return (report?.coverageGroups.map((group) => ({ month, region: getMonthlyReportCoverageSlug(group) })) ?? []);
-        }));
-        return params.flat();
-      }`
-    },
-    "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts": {
-      count: months,
-      body: "{ return monthlyReportSlugs.map((month) => ({ month })); }"
-    }
   };
   const runtimeRoutes = [], staticRoutes = [], metadataRoutes = [];
   for (const fileName of appFiles(app)) {

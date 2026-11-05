@@ -35,6 +35,7 @@ import {
 } from "./release-diffs";
 import { getPolicyThemeLabel } from "./policy-theme-labels";
 import { getSiteBaseUrl } from "./site-url";
+import { contentCacheKey } from "./content-runtime";
 
 export interface DiffPreviewLine {
   newLineNumber?: number;
@@ -225,7 +226,7 @@ const changeIndexCache = new BoundedAsyncCache<ChangeIndexData>(1, 4*1024*1024, 
 export function changeHistoryCacheStats(){return {aggregate:aggregateChangeRecordsCache.stats(),releases:allReleaseChangedRecordsCache.stats(),index:changeIndexCache.stats()};}
 
 export async function getChangeRecords(): Promise<ChangeRecord[]> {
-  const rows = await aggregateChangeRecordsCache.get("current", buildAggregatedChangeRecords);
+  const rows = await aggregateChangeRecordsCache.get(contentCacheKey("current"), buildAggregatedChangeRecords);
   const correction = readV6RecordCorrections();
   if (!correction) return rows;
   const correctedSlugs = new Set(correction.summaries.map((s) => s.entity.slug));
@@ -234,7 +235,7 @@ export async function getChangeRecords(): Promise<ChangeRecord[]> {
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
   const cached = withoutAliasSlugRows(
-    await changeIndexCache.get("current", () => readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData())),
+    await changeIndexCache.get(contentCacheKey("current"), () => readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData())),
     (await getEntityAliasResolver()).slugAliases
   );
   const correction = readV6RecordCorrections();
@@ -355,7 +356,7 @@ export async function getEntityChangeHistory(
 }
 
 async function getAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
-  return allReleaseChangedRecordsCache.get("history", buildAllReleaseChangedRecords);
+  return allReleaseChangedRecordsCache.get(contentCacheKey("history"), buildAllReleaseChangedRecords);
 }
 
 /** Offline export only: keep global historical reconstruction off page requests. */

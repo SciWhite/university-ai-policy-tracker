@@ -23,6 +23,7 @@ import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { formatDateMedium } from "@/lib/format-date";
 import { currentMonthlyReportPath } from "@/lib/reports";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 
 interface ChangeDetailPageProps {
   params: Promise<{
@@ -96,6 +97,8 @@ export default async function ChangeDetailPage({
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
+  // The segment is a release ID or, for per-school history, a school slug.
+  await tagContent("changes", contentTagFor.changesRelease(releaseId), contentTagFor.school(releaseId));
   const eventPage=await SchoolChangeHistoryPage({slug:releaseId,locale});
   if(eventPage)return eventPage;
   const recordsForRelease = await getReleaseChangeRecords(releaseId);
@@ -189,7 +192,7 @@ export default async function ChangeDetailPage({
           <a className="site-action" href={record.publicJsonUrl}>
             Public JSON
           </a>
-          <Link locale={false} className="site-action" href={currentMonthlyReportPath}>
+          <Link locale={false} className="site-action" href={currentMonthlyReportPath()}>
             Monthly report
           </Link>
           <Link locale={false} className="site-action" href="/universities">
@@ -422,7 +425,7 @@ export default async function ChangeDetailPage({
                 <Link locale={false} href={record.universityUrl}>University record</Link>
               </li>
               <li>
-                <Link locale={false} href={currentMonthlyReportPath}>Monthly report</Link>
+                <Link locale={false} href={currentMonthlyReportPath()}>Monthly report</Link>
               </li>
               <li>
                 <Link locale={false} href="/universities">University index</Link>
