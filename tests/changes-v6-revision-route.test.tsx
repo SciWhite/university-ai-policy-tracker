@@ -48,3 +48,16 @@ test("a V6-only revision renders the release note with full metadata", async () 
 test("an unknown ID still 404s", async () => {
   await assert.rejects(() => HistoryPage(props("not-a-release-or-school-20990101")), /NEXT_HTTP_ERROR_FALLBACK;404|NEXT_NOT_FOUND/);
 });
+
+test("a per-school page of a V6 revision has canonical, hreflang and a description", async () => {
+  const { generateMetadata: schoolMetadata } = await import("../apps/web/app/(default)/changes/[releaseId]/[slug]/page");
+  const releaseId = "v6-qs101-120-presentation-20261028";
+  const revision = readPublishedV6Revision(releaseId);
+  assert.ok(revision && revision.slugs.length > 0);
+  for (const slug of revision.slugs) {
+    const metadata = await schoolMetadata({ params: Promise.resolve({ releaseId, slug }) });
+    assert.ok(String(metadata.alternates?.canonical).endsWith(`/changes/${releaseId}/${slug}`), slug);
+    assert.ok(metadata.description && String(metadata.description).length > 0, slug);
+    assert.ok(Object.keys(metadata.alternates?.languages ?? {}).length >= 2, slug);
+  }
+});

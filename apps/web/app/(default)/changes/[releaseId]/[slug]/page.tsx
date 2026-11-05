@@ -48,7 +48,14 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   const v6Revision = readPublishedV6Revision(releaseId);
   if (v6Revision) {
     if (![...v6Revision.slugs, ...(v6Revision.v5Slugs ?? [])].includes(slug)) notFound();
-    return { title: `${slug} policy evidence history | University AI Policy Tracker` };
+    const title = `${slug} policy evidence history | University AI Policy Tracker`;
+    const description = `Reviewed policy evidence history for ${slug} in release ${releaseId}.`;
+    return {
+      title,
+      description,
+      alternates: getLocalizedAlternates(`/changes/${releaseId}/${slug}`, "en"),
+      openGraph: { title, description, url: getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`), type: "article" }
+    };
   }
   const record = await getReleaseChangeRecord(releaseId, slug);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`);
