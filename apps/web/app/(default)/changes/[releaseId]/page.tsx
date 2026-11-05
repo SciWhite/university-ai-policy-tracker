@@ -53,12 +53,6 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
   await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
   const eventMetadata=await changeHistoryMetadata(releaseId,locale);
   if(eventMetadata)return eventMetadata;
-  const v6Revision = readPublishedV6Revision(releaseId);
-  if (v6Revision) {
-    return {
-      title: `${v6Revision.v5Slugs?.length ? "V5 policy evidence release" : "V6 reviewed page supplement release"} | University AI Policy Tracker`
-    };
-  }
   const releaseRecords = await getReleaseChangeRecords(releaseId);
   if (releaseRecords) {
     const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
@@ -79,6 +73,24 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
 
   const history = await getEntityChangeHistory(releaseId, locale);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
+  // A published V6/V5 revision with no release records or school history
+  // would otherwise 404; it gets its own release note.
+  const v6Revision = history ? undefined : readPublishedV6Revision(releaseId);
+  if (v6Revision) {
+    const v6Title = `${v6Revision.v5Slugs?.length ? "V5 policy evidence release" : "V6 reviewed page supplement release"}: ${releaseId}`;
+    const v6Description = `${v6Revision.slugs.length} university page${v6Revision.slugs.length === 1 ? "" : "s"} in published release ${releaseId}.`;
+    return {
+      title: `${v6Title} | University AI Policy Tracker`,
+      description: v6Description,
+      alternates: getLocalizedAlternates(`/changes/${releaseId}`, "en"),
+      openGraph: {
+        title: v6Title,
+        description: v6Description,
+        url: canonical,
+        type: "article"
+      }
+    };
+  }
   const displayName = history
     ? getLocalizedInstitutionName(history.record.slug, history.record.name, locale)
     : undefined;
@@ -112,10 +124,6 @@ export default async function ChangeDetailPage({
   await tagContent("changes", contentTagFor.changesRelease(releaseId), contentTagFor.school(releaseId));
   const eventPage=await SchoolChangeHistoryPage({slug:releaseId,locale});
   if(eventPage)return eventPage;
-  // Published V6/V5 page-supplement and record-correction releases have their own note.
-  if (readPublishedV6Revision(releaseId)) {
-    return <main><V6ChangeNote locale={locale} revision={releaseId} /></main>;
-  }
   const page = await ReleaseOrEntityHistoryPage({ locale, releaseId });
   // Presentation and record-correction notes render only for published V6/V5
   // schools (each returns null otherwise), ahead of the unchanged history.
@@ -145,7 +153,12 @@ async function ReleaseOrEntityHistoryPage({
 
   const history = await getEntityChangeHistory(releaseId, locale);
 
-  if (!history) notFound();
+  if (!history) {
+    // Release records and school history keep their pages; only a published
+    // V6/V5 revision that would otherwise 404 renders the release note.
+    if (readPublishedV6Revision(releaseId)) return <main><V6ChangeNote locale={locale} revision={releaseId} /></main>;
+    notFound();
+  }
   const { record, releaseRecords } = history;
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const summaryText = getSummaryText(record, locale);
