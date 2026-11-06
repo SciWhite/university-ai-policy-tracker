@@ -170,7 +170,10 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
    - **Wait before routing.** Wait for the journal line `Runtime warm-up finished` before routing; sample cold pages if it is still running.
    - **Timing.** About 3,900 requests took 6 minutes locally and about 40 minutes on the host.
 8. **Long-lived pages.** Pages with `revalidate = false` (`/about`, `/changes`,
-   `/reports`) are cached for a year at Cloudflare. A switch that changes the
+   `/reports`) are cached for a year in the origin's ISR cache; Cloudflare
+   keeps every public page for 2 hours (Cache Rule, see
+   `docs/content-release.md` §5), so purge the whole zone after each cutover.
+   A switch that changes the
    V6 reading cohort also changes the cohort every page embeds; untagged static
    pages are not in the switch plan. Expire `content` (or purge those paths)
    when the cohort changes.
