@@ -1,5 +1,5 @@
 import { withBingAiWindow } from "./analytics-window";
-import { inheritSessionTrafficKinds, splitMeasuredTraffic, ANALYTICS_MEASUREMENT_VERSION } from "./analytics-traffic";
+import { automationSignalsOf, inheritSessionTrafficKinds, isSuspectedAutomationRow, markSuspectedAutomation, splitMeasuredTraffic, ANALYTICS_MEASUREMENT_VERSION } from "./analytics-traffic";
 import type { AnalyticsEventRow } from "@uapt/db";
 import {
   getMirroredAnalyticsRollup,
@@ -224,16 +224,18 @@ async function loadAnalyticsDashboard(
     clarityPromise,
     seoGeoPromise
   ]);
-  const allRows = inheritSessionTrafficKinds(rollupReady
+  // Suspected automation is judged on the whole loaded window, before date and dashboard filters can hide
+  // part of a session or the newest-Chrome reference.
+  const allRows = markSuspectedAutomation(inheritSessionTrafficKinds(rollupReady
     ? primaryRows.rows.concat(botDiagnosticRows.rows.filter(isBotAnalyticsRow))
-    : primaryRows.rows);
+    : primaryRows.rows));
 
   const currentRangeRows = filterRowsByDate(allRows, query.from, query.to);
   const previousRangeRows = query.compare
     ? filterRowsByDate(allRows, query.previousFrom, query.previousTo)
     : [];
   const filterOptions = buildFilterOptions(
-    splitMeasuredTraffic(currentRangeRows).included.filter((row) => !isBotAnalyticsRow(row))
+    splitMeasuredTraffic(currentRangeRows).included.filter((row) => !isBotAnalyticsRow(row) && !isSuspectedAutomationRow(row))
   );
   const currentRows = applyFilters(currentRangeRows, query.filters);
   const previousRows = applyFilters(previousRangeRows, query.filters);
@@ -326,7 +328,7 @@ async function loadAnalyticsDashboard(
         rowLimit: primaryRows.limit,
         fetchedRows: primaryRows.rows.length,
         error: primaryRows.error,
-        definition: "Client events excluding known bots and explicitly marked QA/internal/monitor sessions. Unmarked legacy events are not verified human traffic."
+        definition: "Client events excluding known bots, suspected automation (known crawler IP ranges, webdriver/headless, outdated Chrome with a zero-engagement single-page session) and explicitly marked QA/internal/monitor sessions. Unmarked legacy events are not verified human traffic."
       },
       generatedAt: new Date().toISOString(),
       gscCompleteThrough: currentGsc.dateRows.at(-1)?.key,
@@ -473,7 +475,11 @@ function buildDashboardPeriod(
 ): AnalyticsDashboardPeriod {
   const measured = splitMeasuredTraffic(rows);
   const humanRows = measured.included.filter(
-    (row) => !isBotAnalyticsRow(row) && row.source !== "server"
+    (row) => !isBotAnalyticsRow(row) && !isSuspectedAutomationRow(row) && row.source !== "server"
+  );
+  // Explicit QA/internal/monitor markers win; known bots stay in `bot`; the rest is reported separately.
+  const suspectedRows = measured.included.filter(
+    (row) => !isBotAnalyticsRow(row) && isSuspectedAutomationRow(row) && row.source !== "server"
   );
   const apiRows = rows.filter(
     (row) => row.source === "server" || row.eventName === "api_search_request"
@@ -486,7 +492,7 @@ function buildDashboardPeriod(
   const unknown = summary.sourceCategories.find((row) => row.label === "unknown");
   return {
     api: buildApiMetrics(apiRows),
-    bot: buildBotDiagnostics(botRows),
+    bot: buildBotDiagnostics(botRows, suspectedRows),
     botPageViews: rollup?.botPageViews ?? botSummary.pageViews,
     botTrend: rollup
       ? rollup.botTrend.map((row) => ({
@@ -520,7 +526,7 @@ function buildApiMetrics(rows: AnalyticsEventRow[]) {
   };
 }
 
-function buildBotDiagnostics(rows: AnalyticsEventRow[]) {
+function buildBotDiagnostics(rows: AnalyticsEventRow[], suspectedRows: AnalyticsEventRow[] = []) {
   const pageViews = rows.filter((row) => row.eventName === "page_view");
   const families = countAnalyticsRows(
     pageViews,
@@ -532,8 +538,23 @@ function buildBotDiagnostics(rows: AnalyticsEventRow[]) {
   return {
     families,
     knownFamilyPageViews,
+    suspectedAutomation: buildSuspectedAutomationDiagnostics(suspectedRows),
     uniquePaths: new Set(pageViews.map((row) => row.pathname)).size,
     unknownFamilyPageViews: pageViews.length - knownFamilyPageViews
+  };
+}
+
+function buildSuspectedAutomationDiagnostics(rows: AnalyticsEventRow[]) {
+  const sessionSignals = new Map<string, string[]>();
+  rows.forEach((row, i) => sessionSignals.set(row.sessionId ?? row.visitorId ?? `row:${row.id ?? i}`, automationSignalsOf(row)));
+  const signalCounts = new Map<string, number>();
+  for (const signals of sessionSignals.values()) for (const signal of signals) signalCounts.set(signal, (signalCounts.get(signal) ?? 0) + 1);
+  return {
+    countries: countAnalyticsRows(rows.filter((row) => row.eventName === "page_view"), (row) => normalizeCountry(row.countryCode)),
+    events: rows.length,
+    pageViews: rows.filter((row) => row.eventName === "page_view").length,
+    sessions: sessionSignals.size,
+    signals: [...signalCounts].map(([label, count]) => ({count, label})).sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
   };
 }
 
@@ -651,7 +672,7 @@ function applyFilters(
   filters: AnalyticsDashboardFilters
 ): AnalyticsEventRow[] {
   return rows.filter((row) => {
-    if (isBotAnalyticsRow(row) || row.source === "server") return true;
+    if (isBotAnalyticsRow(row) || isSuspectedAutomationRow(row) || row.source === "server") return true;
     if (
       filters.sources.length &&
       !filters.sources.includes(getAnalyticsRowSourceCategory(row))

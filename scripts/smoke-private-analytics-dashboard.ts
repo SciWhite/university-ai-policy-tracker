@@ -225,7 +225,7 @@ assert.equal(opportunities[0]?.key, "university ai policy");
 
 const period = {
   api: { clientKinds: [], latencyBuckets: [], queryKinds: [], requests: 0, zeroResultRequests: 0 },
-  bot: { families: [], knownFamilyPageViews: 0, uniquePaths: 0, unknownFamilyPageViews: 0 },
+  bot: { families: [], knownFamilyPageViews: 0, suspectedAutomation: { countries: [], events: 0, pageViews: 0, sessions: 0, signals: [] }, uniquePaths: 0, unknownFamilyPageViews: 0 },
   botPageViews: 0,
   botTrend: [],
   latestEventAt: new Date().toISOString(),
