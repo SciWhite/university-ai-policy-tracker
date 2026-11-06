@@ -1,3 +1,5 @@
+> **Superseded (2026-11-06).** Historical method for per-zone releases before R1. New releases use `docs/program-release.md` (code) and `docs/content-release.md` (content); see `AGENTS.md`, "Website Release Method".
+
 # 小规模发布：运行时内容包与有界页面服务
 
 小规模更新默认使用此流程。大规模/全站版本更新才使用

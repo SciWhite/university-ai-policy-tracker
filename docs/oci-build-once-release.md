@@ -1,3 +1,5 @@
+> **Superseded (2026-11-06).** Historical method for per-zone releases before R1. New releases use `docs/program-release.md` (code) and `docs/content-release.md` (content); see `AGENTS.md`, "Website Release Method".
+
 # OCI build-once release
 
 This full-site procedure is reserved for large/global version updates.

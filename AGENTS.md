@@ -37,49 +37,61 @@
   Integration, local validation or documentation work does not authorize
   push, deployment, restart, cutover or search notifications.
 
-## Website Release Policy
+## Website Release Method (since R1, 2026-11-06)
 
-Choose the release method using `docs/release-routing-policy.md`.
-Small updates default to `docs/oci-small-release.md`; full OCI build-once in
-`docs/oci-build-once-release.md` is reserved for large/global version updates.
-Do not default to a full Mac or full-site production build for a few pages.
+Production is one Next.js web service plus one MCP service on host
+`hermes-agent-prod`. Two fixed web slots alternate per release
+(`uapt-mcp-v6-candidate` on 127.0.0.1:3101 and `uapt-mcp-v6-r2` on 3102, names
+historical); MCP is `uapt-shared-v6-r2` on 3161. Check `systemctl is-active`
+for the active slot; never assume it. Program (code) and content ship
+separately. Read the doc for the kind of change before starting:
 
-- Compatible content in an existing runtime zone: validate an immutable public
-  package, accept it on a candidate, atomically select its content pointer, and
-  read back affected routes. No build/restart. Honor the current schema, record
-  counts, claim fingerprints and controlled image-serving capability.
-- Small UI/code, new bounded routes or incompatible content schema: build only
-  the isolated zone on OCI from a frozen pushed SHA. Do not run the main web or
-  recursive whole-workspace build. Reuse the existing shared zone rather than
-  creating one service per university. Monthly reports still require an
-  adapter/pilot; do not claim they are already production runtime content.
-- Full/shared layout, framework/dependency, global locale/routing, widespread
-  API/data-contract updates: use one authoritative OCI full build and candidate
-  acceptance. Coordinate existing zone overrides and their data dependencies.
-- Local gates remain data/allowlist validation, `pnpm check`, explicit zone
-  typecheck/related regressions, `git diff --check`, and useful dev/browser QA.
-  These are not a requirement to build all pages locally.
+| Change | Path | Doc |
+|---|---|---|
+| Policy claims, school pages, reports, translations, history (data only) | Runtime **content release**: `pnpm content:correct` (claim corrections) or `content:build`, then `content:validate`, sync contract 2.1.0 event, `content:switch --sync-ledger` on the host. No build, no restart: web and MCP follow the pointer. | `docs/content-release.md` |
+| Code, UI, routes, dependencies, schemas, aliases, marks, UI copy | **Program release**: build once in GitHub Actions (`program-build.yml`, frozen 40-hex SHA, `ubuntu-24.04-arm`), then on the host run `/usr/local/libexec/uapt-program-release.py` steps in order: `install` → `candidate` (warm-up) → `static` → `capacity` → `routing` → `ledger` → `plan` → `cutover` → `complete` → `mcp`. | `docs/program-release.md` §2–§7 |
+
+Rules:
+
+- Never build on the server and never run `next build` as a release. The
+  artifact is content-free; content comes only from the runtime content root
+  `/srv/uapt/content/runtime` (`current.json` with a 2.1.0 sync receipt).
+- The release command only prepares inputs; the installed lifecycle controller
+  `/usr/local/libexec/uapt-release-lifecycle.py` keeps every gate (capacity,
+  disk, retention register, sync contract, journal, recovery) and updates the
+  retention register at `complete`. Do not hand-run cutovers, hand-edit routing
+  outside `routing`, or call historical controllers or per-zone scripts.
+- Every program release ends with the `mcp` step (trial on 3162, then one MCP
+  restart with automatic restore). `plan` refuses if MCP was left on a
+  program root that `complete` would hold.
+- nginx is the minimal routing (`docs/program-release.md` §6): static aliases,
+  redirects, MCP, cached prefixes and one `location /` → `upstream
+  uapt_next_backend`. A cutover only retargets `uapt-main-upstream.conf`. Do not
+  add per-page `location =` entries or per-school zones again.
+- Wait for the candidate's warm-up (`Runtime warm-up finished`, 25–45 min on
+  this host) before cutover when possible; cold renders take 10–110 s.
+- Cloudflare caches public HTML for 2 h (Cache Rule; `/internal`, `/api/`,
+  `/mcp`, `/search`, `/_next/static/` excluded). After every content switch or
+  program cutover, purge the whole zone (`{"purge_everything": true}`, token
+  in `.env.agents.local`, never printed). A URL purge misses `?_rsc=` variants.
+- Local gates: `pnpm check`, the affected test suites, `git diff --check`, and
+  useful dev/browser QA. Do not build all pages locally.
 - Keep source, public content and private candidate inventories separate.
-  Preserve original quotations, source scope, language fallbacks and gaps;
-  review promotion explicitly and exclude private fields from public packages.
-- Freeze code SHA/artifact for code releases, and revision/hash/app-data
-  compatibility for content releases. Keep candidates isolated from live
-  content pointers and active build trees. Never patch mixed `.next` output.
-- Validate all affected locales and unchanged controls, record actual coverage,
-  SHA/BUILD_ID/content/data hashes and evidence. Do not hard-code 70/420/938.
-- Only tested exact URL paths switch in nginx; keep distinct assets and hard
-  cross-zone navigation, old-resource fallback and `no-transform` for original
-  evidence. Preserve production loopback users/permissions/env.
-- Current runtime zone reads unchanged canonical APIs from the main service on
-  3100; full-site candidates self-fetch their own candidate port. Read the
-  small-release runbook before choosing INTERNAL_NEXT_BASE_URL.
-- After acceptance use the same artifact/package, bounded public smoke, then
-  authorized changed-URL notifications. Retain old code/content/nginx/service
-  configuration; rollback restores them without rebuilding.
+  Preserve original quotations, scope, language fallbacks, gaps and held
+  decisions; exclude private fields from public packages. English is required,
+  Simplified Chinese second, plus the school's country language.
+- After acceptance: public readback, then purge, then (separately authorized)
+  IndexNow for the changed URLs. Old releases stay as `rollback`/`held` in the
+  register until the storage rules archive them.
 
-These rules supersede previous mandatory full-build instructions for small
-releases. A documentation-only request never authorizes deployment, build,
-restart, cutover, push or notifications. Preserve historical acceptance results.
+Authorization: a documentation, review or local-validation request never
+authorizes a push, merge, build, deployment, restart, cutover, Cloudflare purge
+or search notification. Ask, then quote the user's approval in the receipts.
+
+Historical (before 2026-11-05, kept for old receipts only): per-zone OCI
+builds, `docs/release-routing-policy.md`, `docs/oci-small-release.md`,
+`docs/oci-build-once-release.md`, the 3100 main service and exact-URL nginx
+switching. Do not use them for new releases.
 
 ## Google Search Console Access
 
@@ -221,9 +233,9 @@ pnpm test:indexnow
 
 ## 快速上线生命周期硬约束（2026-10-16）
 
-- 先读 `docs/release-lifecycle.md`。快速发布必须通过服务器固定服务登记、容量门禁和同步合同；统一入口 `scripts/uapt-release-lifecycle.py`。禁止新建按学校/版本常驻的 service，禁止绕过入口重跑私有 cutover/旧脚本。
+- 先读 `docs/release-lifecycle.md` 与 `docs/program-release.md` §7。快速发布必须通过服务器固定服务登记、容量门禁和同步合同；程序发布入口为 `/usr/local/libexec/uapt-program-release.py`（它调用已安装的 `uapt-release-lifecycle.py` 控制器），内容发布入口为 `pnpm content:*`。禁止新建按学校/版本常驻的 service，禁止绕过入口重跑私有 cutover/旧脚本。
 - 版本目录/旧 unit/env/内容/Nginx 配置保留用于冷回滚；旧 JS/CSS 迁移到受控 Nginx 静态目录，逐字节验证后原服务 stop + disable。旧进程仍有动态/内部依赖则登记有界迁移缺口，不可只按旧名称停止，也不可随下一次发布扩大 legacy 集合。
-- 固定 active/candidate 槽位最多并存一组候选，候选最长 4 小时；发布前和切换前均检查 MemAvailable、UAPT 总预算、build/候选峰值及 MemoryHigh/Max。禁止并发历史预热，未完成事务或未退役旧 active 阻止下一次上线。
+- 固定 active/candidate 槽位最多并存一组候选，候选最长 8 小时（2026-11-03 授权）；发布前和切换前均检查 MemAvailable、UAPT 总预算、build/候选峰值及 MemoryHigh/Max。禁止并发历史预热，未完成事务或未退役旧 active 阻止下一次上线。
 - 候选必须先 enable/start 并通过语义健康检查，再写持久化 journal 和切换路由。中断/开机先恢复一致状态；公网回读与 complete 同步门禁后必须完成旧 active 退役，才可报告发布完成。静态、动态、API、MCP、历史版本和 held 审批边界继续保留。
 
 ## 发布磁盘与版本保留硬约束（2026-10-24）
