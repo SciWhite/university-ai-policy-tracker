@@ -1835,9 +1835,12 @@ def cmd_mcp(args):
     trial_port = args.trial_port
     if port_in_use(trial_port):
         raise Refused(f'Trial port 127.0.0.1:{trial_port} is in use; pass --trial-port')
-    trial_telemetry = mcp_dir / 'trial-telemetry.jsonl'
-    trial_telemetry.touch()
-    os.chown(trial_telemetry, pwd_uid(SERVICE_USER), gid)
+    # MCP telemetry writes `<file>.tmp` and renames it, so the service user must own the directory.
+    trial_dir = mcp_dir / 'trial'
+    trial_dir.mkdir(exist_ok=True)
+    os.chown(trial_dir, pwd_uid(SERVICE_USER), gid)
+    os.chmod(trial_dir, 0o700)
+    trial_telemetry = trial_dir / 'telemetry.jsonl'
     trial_env = env_file('trial.env', mcp_runtime_env(current_env, content_root=content_root, port=trial_port, node_bin=node_bin, telemetry_file=str(trial_telemetry)))
     trial_unit = f'uapt-mcp-trial-{state["planId"][-40:]}'.rstrip('-')
     log(f'mcp: trial of {release.name}/{MCP_ENTRY} on 127.0.0.1:{trial_port}')
