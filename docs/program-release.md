@@ -163,12 +163,17 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
 6. **Writable cache path.** The release tree is otherwise read-only at runtime
    (ISR stays in memory), but `/_next/image` writes `apps/web/.next/cache/`;
    give the service user that directory only.
-7. **Cold start.** No page is prerendered. Measured locally the first render
-   took 1–8 s (`/reports`, `/feeds/atom.xml` slowest); T1 loopback checks warm the
-   L1/L2 core pages one at a time (no concurrent warm-up, per the lifecycle
-   rules) before routing.
+7. **Cold start.** No page is prerendered, and the ISR cache is in memory, so
+   every restart starts cold.
+   - **How slow cold renders are.** On the loaded production host, first renders took up to 60–110 s (`/sitemaps/zh.xml`, `/reports`), which is longer than the 60 s proxy timeout.
+   - **Enable warm-up.** Set `UAPT_WARMUP_ON_START=1` in the runtime env. After each start the server then requests the heavy pages, followed by every sitemap URL (up to 5,000), over loopback, one request at a time.
+   - **Wait before routing.** Wait for the journal line `Runtime warm-up finished` before routing; sample cold pages if it is still running.
+   - **Timing.** About 3,900 requests took 6 minutes locally and about 40 minutes on the host.
 8. **Long-lived pages.** Pages with `revalidate = false` (`/about`, `/changes`,
-   `/reports`) are cached for a year at Cloudflare. A switch that changes the
+   `/reports`) are cached for a year in the origin's ISR cache; Cloudflare
+   keeps every public page for 2 hours (Cache Rule, see
+   `docs/content-release.md` §5), so purge the whole zone after each cutover.
+   A switch that changes the
    V6 reading cohort also changes the cohort every page embeds; untagged static
    pages are not in the switch plan. Expire `content` (or purge those paths)
    when the cohort changes.
@@ -179,3 +184,40 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
 10. **Retention.** Record the new release root, the previous accepted program
     release (rollback) and nothing else per role; old full-workspace release
     directories follow the archive rules.
+
+## 6. Minimal nginx routing (prepared 2026-11-06, not installed)
+
+**Old routing.** The live site config holds about 135k lines. It has:
+- about 19,800 exact `location =` entries;
+- 30 zone snippets left over from per-school releases.
+
+Since R1, every one of those entries proxies to the same app.
+
+**The generator.** `scripts/nginx-minimal-routing.py <nginx -T dump> <out> uapt_next_backend` rebuilds the site's locations. It keeps these verbatim:
+- static aliases (1,221);
+- pure `return` entries (107 redirects and retired-prefix 404s);
+- proxies to non-app ports (MCP `/api/mcp` on 3161);
+- the cached prefix blocks (`/api/public/v1/`, `/feeds/`, `/datasets`, `/sources`, `/search`, `/robots.txt`).
+
+Everything else becomes one `location /` → `uapt_next_backend`. That location has a 180 s read timeout and no `private, no-store` header.
+
+**What changes after the switch.** A program cutover then only rewrites `uapt-main-upstream.conf`.
+
+**Cleanups it makes.**
+- It drops the per-page RSC "Document navigation required" stubs of the old V5 zones.
+- It drops another site's (`clb-pro`) CSP include that old static snippets had picked up.
+
+**Equivalence test.**
+- **Setup:** `scripts/nginx-minimal-routing-compare.py`, run on the host against a separate nginx instance on 127.0.0.1:18080, with production untouched.
+- **Run of 2026-11-06:** 1,936 URLs, made up of every static or return path, 600 random app paths and 10 specials. 1,799 responses were identical. The rest differ for benign reasons:
+  - JSON `generatedAt` timestamps;
+  - first-request (cold) metadata streaming;
+  - production's duplicated `Location` header on 5 redirects.
+- **Evidence:** `/srv/uapt/operations/nginx-min-20261106/`.
+
+**Install.** Install it as `routingFiles` of the next controller program release, in place of `uapt-proxy-locations.conf` and `uapt-eea1eb21-detail-routes.conf`. Then:
+- run `nginx -t`;
+- read back the public URL matrix;
+- purge Cloudflare.
+
+Keep the old files for rollback.

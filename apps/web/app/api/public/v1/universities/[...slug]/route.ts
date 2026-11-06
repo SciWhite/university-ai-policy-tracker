@@ -2,7 +2,7 @@ import {withSourceHashContract} from "@/lib/source-hash-contract";
 import { buildPublicEntitySummaryResponse } from "@uapt/shared";
 import { NextResponse } from "next/server";
 import { getLocalPublicUniversitySummaryBySlug } from "@/lib/catalog";
-import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
+import { aliasSlugJsonRedirect } from "@/lib/entity-alias-redirect";
 import { getPublicUniversityPolicySnapshotLink } from "@/lib/policy-snapshots";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import {
@@ -72,17 +72,11 @@ export async function GET(_request: Request, { params }: PublicUniversityRoutePr
   const universitySlug = hasJsonSuffix
     ? slugPath.slice(0, -".json".length)
     : slugPath;
-  const canonicalSlug = await getCanonicalSlugForAlias(universitySlug);
-
-  if (canonicalSlug) {
-    return NextResponse.redirect(
-      new URL(
-        `/api/public/v1/universities/${canonicalSlug}${hasJsonSuffix ? ".json" : ""}`,
-        getSiteBaseUrl()
-      ),
-      308
-    );
-  }
+  const aliasRedirect = await aliasSlugJsonRedirect(
+    universitySlug,
+    (canonicalSlug) => `/api/public/v1/universities/${canonicalSlug}${hasJsonSuffix ? ".json" : ""}`
+  );
+  if (aliasRedirect) return aliasRedirect;
   const summary = await getLocalPublicUniversitySummaryBySlug(universitySlug);
 
   if (!summary) {

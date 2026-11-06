@@ -58,7 +58,7 @@ import { DocumentLink as Link } from "@/components/document-link";
 import { RelatedUniversities } from "@/components/related-universities";
 import { UniversityClaimGroups } from "@/components/university-claim-groups";
 import { normalizeLocale, normalizeReadingLocale, withLocalePrefix } from "@/lib/i18n";
-import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
+import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import {
@@ -717,15 +717,7 @@ async function redirectAliasSlug(
   slug: string,
   localeParam: string | undefined
 ): Promise<void> {
-  const canonicalSlug = await getCanonicalSlugForAlias(slug);
-  if (canonicalSlug) {
-    permanentRedirect(
-      withLocalePrefix(
-        `/universities/${canonicalSlug}`,
-        normalizeLocale(localeParam)
-      )
-    );
-  }
+  await redirectAliasSlugPage(slug, normalizeLocale(localeParam), (canonicalSlug) => `/universities/${canonicalSlug}`);
 }
 
 function isReviewedClaim(reviewState: string): boolean {

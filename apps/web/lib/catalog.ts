@@ -52,10 +52,10 @@ export async function getCatalogUniversityBySlug(
 
   if (fromApi) return fromApi;
 
+  const staged = await getStagedCatalogUniversities();
   return (
-    (await getStagedCatalogUniversities()).find(
-      (university) => university.slug === slug
-    ) ?? getSeedCatalogUniversities().find((university) => university.slug === slug)
+    staged.find((university) => university.slug === slug) ??
+    (staged.length ? undefined : getSeedCatalogUniversities().find((university) => university.slug === slug))
   );
 }
 
@@ -109,6 +109,9 @@ export async function getLocalPublicUniversitySummaryBySlug(
   if (corrected) return corrected;
   const fromStaging = await getStagedPublicSummaryBySlug(slug);
   if (fromStaging) return fromStaging;
+  // Seed placeholders are a local fallback only; with a published catalog an
+  // unknown slug is not a university (aliases redirect before this point).
+  if ((await getStagedCatalogUniversities()).length) return undefined;
 
   const seedUniversity = seedUniversities.find(
     (university) => university.slug === slug
