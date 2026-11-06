@@ -377,7 +377,9 @@ def isolated_nginx_test(nginx_root, routing_files, workdir, nginx_bin='nginx', r
                     continue
                 if prefix in text:
                     path.write_text(text.replace(prefix, str(copy) + '/'))
-        result = subprocess.run([nginx_bin, '-T', '-c', str(copy / 'nginx.conf'), '-p', str(copy) + '/'], capture_output=True, text=True)
+        # Keep nginx's compiled-in prefix: relative paths such as `load_module
+        # modules/...` resolve against it (/usr/share/nginx on Ubuntu), not the copy.
+        result = subprocess.run([nginx_bin, '-T', '-c', str(copy / 'nginx.conf')], capture_output=True, text=True)
         left = retired_port is not None and bool(port_pattern(retired_port).search(result.stdout))
         return {'ok': result.returncode == 0 and not left, 'retiredEndpointInConfig': left, 'output': (result.stdout[-1000:] + result.stderr)[-4000:]}
     finally:
