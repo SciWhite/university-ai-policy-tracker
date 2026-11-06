@@ -70,6 +70,9 @@ Rules:
   add per-page `location =` entries or per-school zones again.
 - Wait for the candidate's warm-up (`Runtime warm-up finished`, 25–45 min on
   this host) before cutover when possible; cold renders take 10–110 s.
+- nginx keeps a disk HTML cache in front of the app (`docs/program-release.md` §6.1).
+  `cutover` purges it; after a content switch run
+  `uapt-program-release.py purge-html-cache --reason "content switch <id>"` first.
 - Cloudflare caches public HTML for 2 h (Cache Rule; `/internal`, `/api/`,
   `/mcp`, `/search`, `/_next/static/` excluded). After every content switch or
   program cutover, purge the whole zone (`{"purge_everything": true}`, token

@@ -224,6 +224,31 @@ Everything else becomes one `location /` → `uapt_next_backend`. That location 
 
 Keep the old files for rollback.
 
+### 6.1 Origin HTML cache (nginx, from 2026-11-06)
+
+The app's ISR cache lives in process memory (now 768 MB, about 500 pages), so every
+restart or cutover starts cold. `--html-cache` makes the generated `location /` cache
+public HTML/RSC on disk (`infra/nginx/uapt-html-cache.conf`, installed once as
+`/etc/nginx/conf.d/uapt-html-cache.conf` with `uapt-html-cache-epoch.inc`):
+
+- zone `uapt_html`, `/var/cache/nginx/uapt-html`, 3 GB, entries unused for 7 days age out;
+- key `epoch|scheme|host|request_uri|rsc` (Vary/Accept-Encoding variants kept apart);
+  200/301/308 for 6 h, then served stale while one background request refreshes it;
+  `proxy_cache_lock` makes concurrent misses wait for one render;
+- never cached: `/internal*`, `/api/*`, `/mcp*`, `/search`, requests with Authorization;
+- `proxy_buffering on` in that location (nginx cannot cache unbuffered responses), and the
+  server-level security headers are repeated there;
+- `X-UAPT-Origin-Cache: HIT|MISS|EXPIRED|UPDATING|BYPASS` on responses.
+
+**Purge** = `uapt-program-release.py purge-html-cache --reason "<why>"`: a new epoch in the
+key, `nginx -t`, reload, a line in `release-lifecycle/html-cache-purges.jsonl`. Nothing is
+deleted. `cutover` purges automatically. A **content switch must purge too**, together
+with Cloudflare (`docs/content-release.md` §5).
+
+Isolated test on the host (2026-11-06, separate nginx on 127.0.0.1:18080 against the live
+app): MISS then HIT; gzip and identity variants cached separately; `/internal`, `/search`
+and Authorization bypass; security headers present; a new epoch gives MISS then HIT.
+
 ## 7. One-command program release (`scripts/release/program-release.py`)
 
 Added 2026-11-06 after three releases (R1 launch 11-05, R1 fixes and the

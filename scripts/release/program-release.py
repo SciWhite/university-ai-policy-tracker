@@ -48,6 +48,8 @@ CANDIDATE_MEMORY_HIGH = 3758096384
 CANDIDATE_MEMORY_MAX = 4294967296
 STATE_SCHEMA = 'uapt-program-release-operation-v1'
 WARMUP_LINE = 'Runtime warm-up finished'
+HTML_CACHE_EPOCH = Path('/etc/nginx/conf.d/uapt-html-cache-epoch.inc')
+HTML_CACHE_PURGES = LIFECYCLE / 'html-cache-purges.jsonl'
 MCP_ENTRY = 'apps/mcp/server.mjs'
 MCP_TRIAL_PORT = 3162
 MCP_TOOLS = ['get_policy_evidence', 'get_student_policy', 'resolve_university']
@@ -1720,6 +1722,43 @@ def transaction():
     return read_json(TRANSACTION) if TRANSACTION.is_file() else {}
 
 
+# ---------------------------------------------------------------- origin HTML cache (nginx)
+
+def render_html_cache_epoch(epoch):
+    if not re.fullmatch(r'[A-Za-z0-9._:-]{1,80}', epoch):
+        raise Refused('Invalid HTML cache epoch ' + repr(epoch))
+    return ('# Written by uapt-program-release.py purge-html-cache; part of every HTML cache key.\n'
+            f'map "" $uapt_html_cache_epoch {{ default "{epoch}"; }}\n')
+
+
+def purge_html_cache(reason, *, epoch_file=HTML_CACHE_EPOCH, purge_log=HTML_CACHE_PURGES, runner=None):
+    """Purge the nginx HTML cache (infra/nginx/uapt-html-cache.conf) by moving every key to a
+    new epoch: nothing on disk is deleted, old entries stop matching and age out. Returns the
+    record, or None when the cache is not installed on this host."""
+    runner = runner or run
+    epoch_file = Path(epoch_file)
+    if not epoch_file.is_file():
+        log('HTML cache not installed (no ' + str(epoch_file) + '); nothing to purge')
+        return None
+    before = epoch_file.read_text()
+    epoch = now().strftime('%Y%m%dT%H%M%S%fZ')
+    epoch_file.write_text(render_html_cache_epoch(epoch))
+    test = runner(['nginx', '-t'], check=False)
+    if test.returncode != 0:
+        epoch_file.write_text(before)
+        raise Refused('nginx -t failed after the HTML cache epoch change; restored: ' + (test.stderr or '')[-800:])
+    runner(['systemctl', 'reload', 'nginx'])
+    record = {'at': iso(), 'epoch': epoch, 'previous': (re.search(r'default "([^"]*)"', before) or [None, None])[1], 'reason': reason}
+    with open(purge_log, 'a') as handle:
+        handle.write(json.dumps(record) + '\n')
+    log(f'HTML cache purged (epoch {epoch}); nginx reloaded')
+    return record
+
+
+def cmd_purge_html_cache(args):
+    purge_html_cache(args.reason)
+
+
 def cmd_cutover(args):
     op = open_op(args, 'plan')
     state = op.state
@@ -1739,7 +1778,13 @@ def cmd_cutover(args):
     result = controller_call(op, 'cutover', state['steps']['plan']['plan'], log_name='cutover.log')
     if result.returncode != 0:
         raise Refused('Controller cutover failed (it recovers on failure): ' + (result.stderr or result.stdout)[-2000:])
-    op.done('cutover', stage=transaction().get('stage'), seconds=round(time.monotonic() - started))
+    try:
+        # Cached HTML from the retired program would hide this release's UI until it expires.
+        purge = purge_html_cache(f'program cutover {state["planId"]}')
+    except Refused as error:
+        purge = {'error': str(error)}
+        log(f'WARNING: HTML cache purge failed after cutover ({error}); run purge-html-cache before complete')
+    op.done('cutover', stage=transaction().get('stage'), seconds=round(time.monotonic() - started), htmlCachePurge=purge)
     log('selected; next: complete (public readback, completion ledger, retirement)')
 
 
@@ -1997,7 +2042,7 @@ def main(argv=None):
     p = add('candidate', cmd_candidate)
     p.add_argument('--env', help='runtime env to copy instead of the one recorded at install')
     p.add_argument('--warmup-timeout', type=int, default=120, help='minutes (default 120)')
-    p.add_argument('--warmup-min-wait', type=int, default=10, help='minutes before the sampled-latency fallback (default 10)')
+    p.add_argument('--warmup-min-wait', type=int, default=60, help='minutes before the sampled-latency fallback (default 60: the full warm-up takes 25-45 min on the host and fills the page cache)')
     p.add_argument('--latency-ok', type=float, default=5.0, help='max seconds per sampled page for the fallback (default 5)')
     p.add_argument('--no-wait', action='store_true', help='do not wait for warm-up (recorded as not_waited)')
 
@@ -2037,6 +2082,9 @@ def main(argv=None):
     p.add_argument('--timeout', type=int, default=90, help='seconds to wait for /healthz to show the selected catalog')
     p.add_argument('--trial-only', action='store_true', help='run the trial and stop; leave the MCP unit unchanged')
     p.add_argument('--rollback', action='store_true', help='restore the MCP drop-in this operation replaced and restart the unit')
+
+    p = add('purge-html-cache', cmd_purge_html_cache, op_required=False)
+    p.add_argument('--reason', required=True, help='recorded in html-cache-purges.jsonl, e.g. "content switch c-20261110-001"')
 
     add('status', cmd_status)
 
