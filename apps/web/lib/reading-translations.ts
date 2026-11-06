@@ -95,9 +95,64 @@ export interface ReadingTranslationSelection {
     locale: "fa";
     fieldUses: string[];
     receipt: { path: string; sha256: string };
-  } };
+  }; recordDeltas?: ReadingRecordDelta[] };
   shared: Partial<Record<ReadingLocale, { path: string; sha256: string }>>;
   schools: Record<string, Partial<Record<ReadingLocale, { path: string; sha256: string }>>>;
+}
+/**
+ * Record delta (content corrections): translations bind per source string, not
+ * per whole record. A school whose record changed keeps its accepted bundle
+ * byte for byte; the delta adds only the new or changed strings (and new field
+ * uses of unchanged strings) and moves the bundle's record basis from `parent`
+ * to `record`. Deltas chain in selection order. Every delta string and field
+ * use must be in an independent review receipt whose hash the release pins
+ * (`translations.recordDeltaAcceptanceSha256s`); the corpus sampled approval
+ * keeps covering only the unchanged strings.
+ */
+export interface ReadingRecordBasis { recordSha256: string; originalEvidenceSha256: string }
+export interface ReadingRecordDelta {
+  schemaVersion: "uapt-reading-record-delta-v1";
+  revision: string;
+  parentSelectionSha256: string;
+  receipt: { path: string; sha256: string };
+  schools: Record<string, { parent: ReadingRecordBasis; record: ReadingRecordBasis; locales: Partial<Record<ReadingLocale, { path: string; sha256: string }>> }>;
+}
+export interface ReadingTranslationDelta {
+  schemaVersion: "uapt-reading-translation-delta-v1";
+  revision: string;
+  corpusSourceSha256: string;
+  locale: ReadingLocale;
+  slug: string;
+  parent: ReadingRecordBasis;
+  record: ReadingRecordBasis;
+  protectedClaimIds: string[];
+  strings: Record<string, ReadingTranslation>;
+  /** Fields each string is shown in: every delta string, plus new uses of strings already in the bundle. */
+  sourceFieldUses: Record<string, string[]>;
+}
+export interface ReadingDeltaReviewPair {
+  slug: string;
+  locale: ReadingLocale;
+  sourceSha256: string;
+  targetSha256: string;
+  fieldUses: string[];
+  origin: "new_translation" | "reused_accepted_translation" | "field_use_addition";
+  verdict: "accepted";
+}
+export interface ReadingDeltaReviewReceipt {
+  schemaVersion: "uapt-reading-delta-review-v1";
+  status: "accepted";
+  revision: string;
+  parentSelectionSha256: string;
+  corpusSourceSha256: string;
+  translator: { id: string; method: string };
+  reviewer: { id: string; method: string };
+  reviewedAt: string;
+  /** Every delta pair was reviewed; this is not a sample. */
+  coverage: "every_delta_pair";
+  nativeSpeakerApproval: false;
+  publicationApproved: false;
+  pairs: ReadingDeltaReviewPair[];
 }
 export type ReadingTranslationResult =
   | { state: "ready"; revision: string; shared: ReadingTranslationBundle; school: ReadingTranslationBundle }
@@ -211,7 +266,9 @@ function selectedSchoolRecordSha(slug: string): string | undefined {
     const bundleBytes = readFileSync(bundlePath);
     if (digest(bundleBytes) !== localeRef.sha256) return undefined;
     const bundle = JSON.parse(bundleBytes.toString("utf8")) as ReadingTranslationBundle;
-    return bundle.schemaVersion === "uapt-reading-translations-v1" && bundle.sourceSha256 === selection.sourceSha256 && bundle.slug === slug && sha(bundle.recordSha256) ? bundle.recordSha256 : undefined;
+    if (bundle.schemaVersion !== "uapt-reading-translations-v1" || bundle.sourceSha256 !== selection.sourceSha256 || bundle.slug !== slug || !sha(bundle.recordSha256)) return undefined;
+    // Record deltas move the school's basis forward without rewriting its bundle.
+    return recordDeltaChain(selection, slug, { recordSha256: bundle.recordSha256, originalEvidenceSha256: bundle.originalEvidenceSha256 }).basis.recordSha256;
   } catch { return undefined; }
 }
 const protectedTokens = (text: string) => [...new Set([...text.matchAll(/https?:\/\/[^\s<>"']+|\{[^{}]+\}|\b[a-f0-9]{64}\b|\b[a-z]+(?:_[a-z]+)+\b|\b(?:PARTIAL|UNVERIFIED)\b|\b\d{4}-\d{2}-\d{2}(?:T[0-9:.]+Z)?\b/g)].map(match => match[0]))].sort();
@@ -238,7 +295,13 @@ export function validateReadingTranslationBundle(value: ReadingTranslationBundle
   if (value.supplementalDisplayAddendum && (!sha(value.supplementalDisplayAddendum.sourceSha256) || !sha(value.supplementalDisplayAddendum.acceptanceSha256) || !Array.isArray(value.supplementalDisplayAddendum.sourceHashes) || new Set(value.supplementalDisplayAddendum.sourceHashes).size !== value.supplementalDisplayAddendum.sourceHashes.length || value.supplementalDisplayAddendum.sourceHashes.some(key => !sha(key) || !Object.hasOwn(value.strings, key)) || !value.supplementalDisplayAddendum.fieldUses || Object.keys(value.supplementalDisplayAddendum.fieldUses).some(key => !value.supplementalDisplayAddendum!.sourceHashes.includes(key) || !Array.isArray(value.supplementalDisplayAddendum!.fieldUses![key]) || !value.supplementalDisplayAddendum!.fieldUses![key].length || new Set(value.supplementalDisplayAddendum!.fieldUses![key]).size !== value.supplementalDisplayAddendum!.fieldUses![key].length || value.supplementalDisplayAddendum!.fieldUses![key].some(field => typeof field !== "string" || !field.startsWith("/v6/studentActions/claims/"))))) throw Error("Invalid supplemental display addendum identity");
   const keys = Object.keys(value.strings);
   if (keys.length !== value.requiredSourceHashes.length || value.requiredSourceHashes.some(key => !sha(key) || !Object.hasOwn(value.strings, key))) throw Error("Incomplete display translations");
-  for (const [key, unit] of Object.entries(value.strings)) {
+  validateTranslationUnits(value.strings, value.protectedClaimIds, expected.locale, options);
+  return value;
+}
+
+/** Per-string checks shared by full bundles and record deltas: exact source hash, protected tokens, Claim IDs and numbers. */
+function validateTranslationUnits(strings: Record<string, ReadingTranslation>, protectedClaimIds: readonly string[], locale: ReadingLocale, options: Parameters<typeof validateReadingTranslationBundle>[2] = {}): void {
+  for (const [key, unit] of Object.entries(strings)) {
     if (!unit || key !== unit.sourceSha256 || typeof unit.source !== "string" || digest(unit.source) !== key || typeof unit.translation !== "string" || !unit.translation.trim() || /[\u202a-\u202e\u2066-\u2069]/u.test(unit.translation)) throw Error("Invalid translation source or text");
     const sourceTokens = protectedTokens(unit.source), targetTokens = protectedTokens(unit.translation);
     const sourceCounts = new Map(sourceTokens.map(token => [token, occurrences(unit.source, token)]));
@@ -249,19 +312,18 @@ export function validateReadingTranslationBundle(value: ReadingTranslationBundle
       const extra = (targetCounts.get(token) ?? 0) - (sourceCounts.get(token) ?? 0);
       for (let occurrence = 0; occurrence < extra; occurrence++) {
         if (!isStatusEnum(token) || !unit.source.toLowerCase().includes(statusSourcePhrase(token)) ||
-            !options.statusEnumExceptions?.some(item => item.locale === expected.locale && item.sourceSha256 === key && item.targetSha256 === translationHash && item.marker === token)) {
+            !options.statusEnumExceptions?.some(item => item.locale === locale && item.sourceSha256 === key && item.targetSha256 === translationHash && item.marker === token)) {
           throw Error(`Translation added protected marker: ${key}:${token}`);
         }
       }
     }
-    for (const id of value.protectedClaimIds) if (occurrences(unit.source, id) !== occurrences(unit.translation, id)) throw Error("Translation changed protected Claim ID");
-    const sourceNumbers = literalNumbers(unit.source, value.protectedClaimIds, options.matchAcceptedBrandVocabulary), targetNumbers = literalNumbers(unit.translation, value.protectedClaimIds, options.matchAcceptedBrandVocabulary);
+    for (const id of protectedClaimIds) if (occurrences(unit.source, id) !== occurrences(unit.translation, id)) throw Error("Translation changed protected Claim ID");
+    const sourceNumbers = literalNumbers(unit.source, protectedClaimIds, options.matchAcceptedBrandVocabulary), targetNumbers = literalNumbers(unit.translation, protectedClaimIds, options.matchAcceptedBrandVocabulary);
     // Preserve each existing literal and its count, as the generator does. A
     // reviewed word-to-digit rendering (three -> 3) may add a target numeral;
     // its meaning is covered by the accepted, hash-bound semantic receipt.
     for (const [number, count] of sourceNumbers) if (targetNumbers.get(number) !== count) throw Error(`Translation changed numeric facts: ${key}:${number}`);
   }
-  return value;
 }
 
 const statusEnumPhrases: Record<string, string> = {
@@ -322,6 +384,129 @@ async function verifiedFaCorrection(root: string, selection: ReadingTranslationS
       receipt.sourceSha256 !== correction.sourceSha256 || receipt.originalTargetSha256 !== correction.originalTargetSha256 || receipt.targetSha256 !== correction.targetSha256 ||
       receipt.fieldUses.join("\0") !== correction.fieldUses.join("\0") || !sha(receipt.authorizationSha256) || !sha(receipt.independentReviewSha256)) throw Error("Fa correction review receipt mismatch");
   return receipt;
+}
+
+/** Deltas that apply, in selection order, starting from a bundle's own record basis. */
+export function recordDeltaChain(selection: Pick<ReadingTranslationSelection, "supplemental">, slug: string, start: ReadingRecordBasis): { chain: Array<{ delta: ReadingRecordDelta; entry: ReadingRecordDelta["schools"][string] }>; basis: ReadingRecordBasis } {
+  const chain: Array<{ delta: ReadingRecordDelta; entry: ReadingRecordDelta["schools"][string] }> = [];
+  let basis = start;
+  for (const delta of selection.supplemental?.recordDeltas ?? []) {
+    const entry = delta?.schools?.[slug];
+    if (!entry?.parent || !entry.record || entry.parent.recordSha256 !== basis.recordSha256 || entry.parent.originalEvidenceSha256 !== basis.originalEvidenceSha256) continue;
+    chain.push({ delta, entry });
+    basis = entry.record;
+  }
+  return { chain, basis };
+}
+
+export type ReadingDeltaProblem = { state: "unapproved" | "invalid_package"; reason: string };
+const fieldList = (fields: unknown): fields is string[] => Array.isArray(fields) && fields.length > 0 && new Set(fields).size === fields.length && fields.every(field => typeof field === "string" && !!field.trim() && field.length <= 1000 && !field.includes("\0"));
+
+/**
+ * Machine check of one school/locale delta against the strings accepted so far:
+ * identity, independent full review of every delta pair, and the per-string
+ * token/number rules. Returns the first problem, or undefined when accepted.
+ */
+export function checkReadingTranslationDelta(input: {
+  accepted: { strings: Readonly<Record<string, ReadingTranslation>>; sourceFieldUses?: Readonly<Record<string, readonly string[]>> };
+  delta: ReadingTranslationDelta;
+  recordDelta: ReadingRecordDelta;
+  receipt: ReadingDeltaReviewReceipt;
+  corpusSourceSha256: string;
+  slug: string;
+  locale: ReadingLocale;
+}, options: Parameters<typeof validateReadingTranslationBundle>[2] = {}): ReadingDeltaProblem | undefined {
+  const { accepted, delta, recordDelta, receipt, slug, locale } = input;
+  const invalid = (reason: string): ReadingDeltaProblem => ({ state: "invalid_package", reason });
+  const unapproved = (reason: string): ReadingDeltaProblem => ({ state: "unapproved", reason });
+  const entry = recordDelta?.schools?.[slug];
+  if (recordDelta?.schemaVersion !== "uapt-reading-record-delta-v1" || typeof recordDelta.revision !== "string" || !recordDelta.revision || !sha(recordDelta.parentSelectionSha256) || !sha(recordDelta.receipt?.sha256) || !entry) return invalid("record delta identity");
+  if (receipt?.schemaVersion !== "uapt-reading-delta-review-v1" || receipt.status !== "accepted" || receipt.revision !== recordDelta.revision || receipt.parentSelectionSha256 !== recordDelta.parentSelectionSha256 || receipt.corpusSourceSha256 !== input.corpusSourceSha256) return unapproved("review receipt does not bind this delta");
+  if (receipt.coverage !== "every_delta_pair" || receipt.nativeSpeakerApproval !== false || receipt.publicationApproved !== false || !Number.isFinite(Date.parse(receipt.reviewedAt))) return unapproved("review receipt scope");
+  if (!receipt.translator?.id?.trim() || !receipt.reviewer?.id?.trim() || !receipt.reviewer.method?.trim() || receipt.translator.id.trim() === receipt.reviewer.id.trim()) return unapproved("review is not independent of translation");
+  if (delta?.schemaVersion !== "uapt-reading-translation-delta-v1" || delta.revision !== recordDelta.revision || delta.corpusSourceSha256 !== input.corpusSourceSha256 || delta.slug !== slug || delta.locale !== locale) return invalid("delta bundle identity");
+  for (const side of ["parent", "record"] as const) if (!sha(delta[side]?.recordSha256) || !sha(delta[side]?.originalEvidenceSha256) || delta[side].recordSha256 !== entry[side]?.recordSha256 || delta[side].originalEvidenceSha256 !== entry[side]?.originalEvidenceSha256) return invalid("delta record basis");
+  if (!Array.isArray(delta.protectedClaimIds) || new Set(delta.protectedClaimIds).size !== delta.protectedClaimIds.length || delta.protectedClaimIds.some(id => typeof id !== "string" || !id || id.length > 300)) return invalid("protected Claim inventory");
+  if (!delta.strings || typeof delta.strings !== "object" || Array.isArray(delta.strings) || !delta.sourceFieldUses || typeof delta.sourceFieldUses !== "object") return invalid("delta strings");
+  for (const key of Object.keys(delta.strings)) if (!Object.hasOwn(delta.sourceFieldUses, key)) return invalid(`delta string without display fields: ${key}`);
+  for (const [key, fields] of Object.entries(delta.sourceFieldUses)) {
+    if (!sha(key) || !fieldList(fields)) return invalid(`display fields: ${key}`);
+    if (!Object.hasOwn(delta.strings, key) && !Object.hasOwn(accepted.strings, key)) return invalid(`field use for an unknown string: ${key}`);
+  }
+  try { validateTranslationUnits(delta.strings, delta.protectedClaimIds, locale, options); }
+  catch (error) { return invalid(error instanceof Error ? error.message : "translation unit"); }
+  if (!Array.isArray(receipt.pairs)) return unapproved("review pairs");
+  const pairs = new Map<string, ReadingDeltaReviewPair>();
+  for (const pair of receipt.pairs) {
+    if (pair?.slug !== slug || pair.locale !== locale) continue;
+    if (pairs.has(pair.sourceSha256)) return unapproved(`duplicate review pair: ${pair.sourceSha256}`);
+    pairs.set(pair.sourceSha256, pair);
+  }
+  const items = Object.keys(delta.sourceFieldUses);
+  for (const key of items) {
+    const pair = pairs.get(key);
+    const unit = delta.strings[key] ?? accepted.strings[key];
+    const origin = Object.hasOwn(delta.strings, key) ? ["new_translation", "reused_accepted_translation"] : ["field_use_addition"];
+    if (!pair || pair.verdict !== "accepted" || !origin.includes(pair.origin)) return unapproved(`delta pair not independently accepted: ${key}`);
+    if (pair.targetSha256 !== digest(unit.translation)) return unapproved(`reviewed target differs: ${key}`);
+    const fields = delta.sourceFieldUses[key];
+    if (!fieldList(pair.fieldUses) || pair.fieldUses.length !== fields.length || fields.some(field => !pair.fieldUses.includes(field))) return unapproved(`reviewed display fields differ: ${key}`);
+  }
+  if (pairs.size !== items.length) return unapproved("review receipt lists pairs outside this delta");
+  return undefined;
+}
+
+// Composed views (accepted bundle + its delta chain) keep a stable identity per
+// base bundle, so coverage caches keyed by bundle objects stay valid.
+const composedBundleCache = new WeakMap<ReadingTranslationBundle, ByteLru<ReadingTranslationBundle>>();
+let recordDeltaCompositions = 0;
+export function readingRecordDeltaStats() { return { compositions: recordDeltaCompositions }; }
+
+async function composeRecordDeltas(root: string, selection: ReadingTranslationSelection, selectionSha256: string, slug: string, locale: ReadingLocale, base: ReadingTranslationBundle, basis: ReadingRecordBasis, options: Parameters<typeof validateReadingTranslationBundle>[2]): Promise<ReadingTranslationBundle | "stale_record" | "unapproved" | "invalid_package"> {
+  // Stop at the first delta that reaches the requested record (a later one may already be in the package).
+  const full = recordDeltaChain(selection, slug, { recordSha256: base.recordSha256, originalEvidenceSha256: base.originalEvidenceSha256 }).chain;
+  const end = full.findIndex(({ entry }) => entry.record.recordSha256 === basis.recordSha256 && entry.record.originalEvidenceSha256 === basis.originalEvidenceSha256);
+  if (end < 0) return "stale_record";
+  const chain = full.slice(0, end + 1);
+  // The release (or the environment fallback) pins every delta review it accepts.
+  const pins = readingPackageSelection().recordDeltaAcceptanceSha256s;
+  if (chain.some(({ delta }) => !sha(delta.receipt?.sha256) || !pins.includes(delta.receipt.sha256))) return "unapproved";
+  const refs = chain.map(({ entry }) => entry.locales?.[locale]);
+  if (refs.some(ref => !ref)) return "stale_record";
+  const key = JSON.stringify([selectionSha256, slug, locale, options?.matchAcceptedBrandVocabulary === true, ...chain.map(({ delta }, i) => [delta.receipt.sha256, refs[i]!.sha256])]);
+  const cached = composedBundleCache.get(base)?.get(key);
+  if (cached) return cached;
+  const strings: Record<string, ReadingTranslation> = { ...base.strings };
+  const uses: Record<string, string[]> = Object.fromEntries(Object.entries(base.sourceFieldUses ?? {}).map(([hash, fields]) => [hash, [...fields]]));
+  const protectedClaimIds = new Set(base.protectedClaimIds);
+  for (let i = 0; i < chain.length; i++) {
+    const { delta } = chain[i];
+    const [receipt, bundle] = await Promise.all([
+      verifiedJson<ReadingDeltaReviewReceipt>(root, delta.receipt, 8 * 1024 * 1024),
+      verifiedJson<ReadingTranslationDelta>(root, refs[i]!, 4 * 1024 * 1024)
+    ]);
+    const problem = checkReadingTranslationDelta({ accepted: { strings, sourceFieldUses: uses }, delta: bundle, recordDelta: delta, receipt, corpusSourceSha256: selection.sourceSha256, slug, locale }, options);
+    if (problem) return problem.state;
+    Object.assign(strings, bundle.strings);
+    for (const [hash, fields] of Object.entries(bundle.sourceFieldUses)) uses[hash] = [...new Set([...(uses[hash] ?? []), ...fields])];
+    for (const id of bundle.protectedClaimIds) protectedClaimIds.add(id);
+  }
+  const composed = freezeJson<ReadingTranslationBundle>({
+    ...base,
+    recordSha256: basis.recordSha256,
+    originalEvidenceSha256: basis.originalEvidenceSha256,
+    review: { status: "accepted", receiptSha256: chain.at(-1)!.delta.receipt.sha256 },
+    protectedClaimIds: [...protectedClaimIds],
+    requiredSourceHashes: Object.keys(strings),
+    strings,
+    sourceFieldUses: uses
+  });
+  recordDeltaCompositions++;
+  bundleValidationCache.set(composed, new ByteLru<true>(4, 1024));
+  const retained = composedBundleCache.get(base) ?? new ByteLru<ReadingTranslationBundle>(4, 64 * 1024);
+  retained.set(key, composed, Buffer.byteLength(key) + 1024);
+  composedBundleCache.set(base, retained);
+  return composed;
 }
 
 /** Reads a selected immutable public display package; never reads generator queues or candidate outputs. */
@@ -385,8 +570,10 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
       if (expectedHashes.length && (!supplement || supplement.sourceSha256 !== displayAddendum.sourceSha256 || supplement.acceptanceSha256 !== displayAddendum.acceptanceSha256 || [...supplement.sourceHashes].sort().join(",") !== expectedHashes.join(",") || JSON.stringify(Object.fromEntries(Object.entries(supplement.fieldUses ?? {}).sort(([a], [b]) => a.localeCompare(b)))) !== JSON.stringify(Object.fromEntries(Object.entries(expectedUses).sort(([a], [b]) => a.localeCompare(b)))))) return { state: "invalid_package" };
       if (!expectedHashes.length && supplement) return { state: "invalid_package" };
     }
-    if (school.recordSha256 !== basis.recordSha256 || school.originalEvidenceSha256 !== basis.originalEvidenceSha256) return { state: "stale_record" };
-    return { state: "ready", revision: selection.revision, shared, school };
+    if (school.recordSha256 === basis.recordSha256 && school.originalEvidenceSha256 === basis.originalEvidenceSha256) return { state: "ready", revision: selection.revision, shared, school };
+    // A changed record is readable only through reviewed, pinned record deltas.
+    const composed = await composeRecordDeltas(root, selection, ref.sha256, slug, locale, school, basis, validationOptions);
+    return typeof composed === "string" ? { state: composed } : { state: "ready", revision: selection.revision, shared, school: composed };
   } catch { return { state: "invalid_package" }; }
 }
 

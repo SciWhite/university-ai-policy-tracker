@@ -14,7 +14,8 @@ import { CHANGE_RENDERER_IDENTITIES, publicHistoryBasisV2 } from "../apps/web/li
 import { isContentTag } from "../apps/web/lib/content-cache-tags";
 import { privateFieldViolations, privatePathViolation } from "../scripts/content-release/file-set";
 import { compareClaimSets, type ClaimSets } from "../scripts/content-release/lib";
-import { changedSurface } from "../scripts/content-release/switch";
+import { awaitMcpRelease, changedSurface, readingDigests } from "../scripts/content-release/switch";
+import { createServer } from "node:http";
 import { POST as refreshPost } from "../apps/web/app/api/internal/content/refresh/route";
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
@@ -187,6 +188,30 @@ test("a switch lists exact changed tags and URLs for refresh and the Cloudflare 
   assert.deepEqual(quiet.tags, []);
 });
 
+test("a locale-index or translation change refreshes the school and sitemap without a record change", () => {
+  const manifest = { families: {}, files: [] } as unknown as ContentReleaseManifest;
+  const surface = changedSurface({ manifest, digests: { yale: "1", mit: "1" }, reading: { yale: "a", mit: "m" } }, { manifest, digests: { yale: "1", mit: "1" }, cohort: ["yale"], reading: { yale: "b", mit: "m" } });
+  assert.deepEqual(surface.changedSchools, []);
+  assert.deepEqual(surface.readingChangedSchools, ["yale"]);
+  for (const tag of ["school:yale", "sitemap"]) assert.ok(surface.tags.includes(tag), tag);
+  for (const p of ["/universities/yale", "/ja/universities/yale", "/sitemaps/universities.xml"]) assert.ok(surface.paths.includes(p), p);
+  assert.ok(!surface.tags.includes("school:mit"));
+});
+
+test("the switch reads back that MCP serves the new release, without a restart", async () => {
+  let served = { contentId: "c-old", catalogSha256: "1".repeat(64) };
+  const server = createServer((_req, res) => { res.setHeader("content-type", "application/json"); res.end(JSON.stringify({ ok: true, ...served })); });
+  await new Promise<void>(resolve => server.listen(0, "127.0.0.1", resolve));
+  try {
+    const url = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
+    assert.equal((await awaitMcpRelease(url, { contentId: "c-new", catalogSha256: "2".repeat(64) }, 50, 10)).status, "not_updated");
+    setTimeout(() => { served = { contentId: "c-new", catalogSha256: "2".repeat(64) }; }, 30);
+    const updated = await awaitMcpRelease(url, { contentId: "c-new", catalogSha256: "2".repeat(64) }, 2000, 10);
+    assert.equal(updated.status, "updated");
+    await assert.rejects(awaitMcpRelease("http://example.org", { contentId: "c-new" }, 10, 10), /loopback-only/);
+  } finally { await new Promise(resolve => server.close(resolve)); }
+});
+
 test("the refresh endpoint is loopback-only, authenticated and fails closed on the wrong release", async () => {
   const call = (headers: Record<string, string>, body: unknown = { expectedContentId: "demo-b", tags: ["content"] }) =>
     refreshPost(new Request("http://127.0.0.1:3100/api/internal/content/refresh", { method: "POST", headers: { host: "127.0.0.1:3100", "content-type": "application/json", ...headers }, body: JSON.stringify(body) }));
@@ -213,4 +238,24 @@ test("the refresh endpoint is loopback-only, authenticated and fails closed on t
       assert.equal((await response.json()).contentId, "demo-a");
     } finally { delete process.env.UAPT_CONTENT_ROOT; resetContentRuntimeForTests(); f.cleanup(); }
   } finally { delete process.env.UAPT_CONTENT_REFRESH_TOKEN; }
+});
+
+test("reading digests change only for schools whose policy entry, refs or deltas change", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "uapt-reading-digest-"));
+  try {
+    const write = (rel: string, value: unknown) => { mkdirSync(path.dirname(path.join(root, rel)), { recursive: true }); const bytes = JSON.stringify(value); writeFileSync(path.join(root, rel), bytes); return sha(bytes); };
+    const release = (name: string, selection: unknown, policy: unknown) => {
+      const selectionSha = write(`${name}/translations/selection.json`, selection);
+      write(`${name}/translations/current.json`, { path: "selection.json", sha256: selectionSha });
+      write(`${name}/locale-index/p.json`, policy);
+      return { manifest: { translations: { pointer: "translations/current.json", sampledPublication: { acceptanceSha256: "f".repeat(64), selectionSha256: selectionSha } }, localeIndexPolicy: { path: "locale-index/p.json", sha256: "0" } } as unknown as ContentReleaseManifest, tree: path.join(root, name) };
+    };
+    const refs = { yale: { ja: { path: "y.json", sha256: "1" } }, mit: { ja: { path: "m.json", sha256: "2" } } };
+    const policy = { schools: { yale: { recordSha256: "old" }, mit: { recordSha256: "m" } } };
+    const a = release("a", { schools: refs }, policy);
+    const b = release("b", { schools: refs, supplemental: { recordDeltas: [{ receipt: { sha256: "9" }, schools: { yale: {} } }] } }, { schools: { ...policy.schools, yale: { recordSha256: "new" } } });
+    const before = readingDigests(a.manifest, a.tree), after = readingDigests(b.manifest, b.tree);
+    assert.notEqual(before.yale, after.yale);
+    assert.equal(before.mit, after.mit, "another school's delta and the new selection pin leave mit alone");
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });

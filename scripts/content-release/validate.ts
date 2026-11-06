@@ -3,7 +3,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { assertContentCompatible, CONTENT_RELEASE_SCHEMA, type ContentReleaseManifest } from "../../apps/web/lib/content-runtime";
 import { readPublishedV6 } from "../../apps/web/lib/policy-v6-published";
-import { readV6RecordCorrections, v6RecordSlugs } from "../../apps/web/lib/v6-effective-records";
+import { readV6RecordCorrections, v6RecordSlugs, v6SummaryAtRevision } from "../../apps/web/lib/v6-effective-records";
+import { getScopedRecordReleaseDiff } from "../../apps/web/lib/release-diffs";
 import { v6FrozenHistory } from "../../apps/web/lib/v6-history-cache";
 import { historyManifest } from "../../apps/web/lib/public-change-history";
 import { monthlyReportRegistry } from "../../apps/web/lib/monthly-report-registry";
@@ -44,6 +45,81 @@ export async function schoolDigests(): Promise<Record<string, string>> {
   for (const summary of records?.summaries ?? []) if (v6.has(summary.entity.slug)) out[summary.entity.slug] = sha256(JSON.stringify([summary, records?.heldBySlug[summary.entity.slug] ?? [], records?.toolsBySlug[summary.entity.slug] ?? []]));
   for (const summary of (await getStagedPublicDataset()).publicSummaries) if (!v6.has(summary.entity.slug)) out[summary.entity.slug] = sha256(JSON.stringify(summary));
   return out;
+}
+
+/** A record correction must ship a regenerated catalog; an inherited one would serve the old text. */
+export function staleCatalogRecords(records: { summary: { entity: { slug: string } }; recordSha256?: string }[], pins: Record<string, string>): string[] {
+  const bySlug = new Map(records.map(record => [record.summary.entity.slug, record]));
+  return Object.entries(pins).flatMap(([slug, recordSha256]) => {
+    const record = bySlug.get(slug);
+    return record && record.recordSha256 !== recordSha256 ? [`MCP catalog is stale for ${slug}: it serves record ${record.recordSha256 ?? "(none)"}, the release publishes ${recordSha256}`] : [];
+  });
+}
+
+/** Schools whose record changed in this release must move their locale-index entry with them. */
+export function staleLocaleIndexEntries(policy: { schools: Record<string, { recordSha256: string }> }, pins: Record<string, string>, parentPins: Record<string, string>): string[] {
+  return Object.keys(pins).filter(slug => parentPins[slug] && parentPins[slug] !== pins[slug]).flatMap(slug => {
+    const entry = policy.schools[slug];
+    return entry && entry.recordSha256 !== pins[slug] ? [`Locale-index policy still binds ${slug} to its previous record ${entry.recordSha256}; update it with the correction`] : [];
+  });
+}
+
+/** recordSha256 of every V6 school in the selected tree. */
+function recordPins(): Record<string, string> {
+  const records = readV6RecordCorrections();
+  return Object.fromEntries(v6RecordSlugs().flatMap(slug => records?.recordRevisions[slug] ? [[slug, records.recordRevisions[slug].recordSha256]] : []));
+}
+
+/**
+ * Schools changed in the selected records revision: publication date not in
+ * the future of the release, and a previous revision the production diff can read.
+ */
+export function checkRecordRevisions(manifest: Pick<ContentReleaseManifest, "createdAt">): string[] {
+  const errors: string[] = [];
+  const records = readV6RecordCorrections();
+  if (!records) return errors;
+  const createdAt = Date.parse(manifest.createdAt);
+  for (const [slug, pin] of Object.entries(records.recordRevisions)) {
+    if (pin.universityRevisionId !== records.revision) continue;
+    if (!Number.isFinite(Date.parse(pin.publishedAt))) errors.push(`${slug}: invalid publishedAt ${pin.publishedAt}`);
+    else if (Date.parse(pin.publishedAt) > createdAt) errors.push(`${slug}: publishedAt ${pin.publishedAt} is after the release was built (${manifest.createdAt})`);
+    if (pin.previousRevisionId && !v6SummaryAtRevision(slug, pin.previousRevisionId)) errors.push(`${slug}: previousRevisionId ${pin.previousRevisionId} is not a readable V6 revision`);
+  }
+  if (Number.isFinite(Date.parse(records.publishedAt)) && Date.parse(records.publishedAt) > createdAt) errors.push(`Records revision ${records.revision} is published after the release was built`);
+  return errors;
+}
+
+type LocaleIndexPolicyFile = { schemaVersion: string; sourceSha256: string; schools: Record<string, { recordSha256: string; locales: string[] }> };
+function checkLocaleIndexPolicy(manifest: ContentReleaseManifest, tree: string, listed: Map<string, { sha: string }>, errors: string[]): LocaleIndexPolicyFile | undefined {
+  const declared = manifest.localeIndexPolicy;
+  if (!declared) return undefined;
+  if (listed.get(declared.path)?.sha !== declared.sha256) { errors.push("Locale-index policy is not a listed file with the declared hash"); return undefined; }
+  const policy = JSON.parse(readFileSync(path.join(tree, declared.path), "utf8")) as LocaleIndexPolicyFile;
+  if (policy.schemaVersion !== "uapt-university-locale-index-policy-v1" || !/^[a-f0-9]{64}$/.test(policy.sourceSha256) || !policy.schools) { errors.push("Locale-index policy schema is invalid"); return undefined; }
+  const selection = readSelection(manifest, tree);
+  // The loader indexes a locale only when the bundles carry this corpus identity.
+  if (selection && selection.sourceSha256 !== policy.sourceSha256) errors.push("Locale-index policy and translation package name different corpora");
+  return policy;
+}
+
+type SelectionFile = { sourceSha256: string; schools?: Record<string, Record<string, { path: string; sha256: string }>>; supplemental?: { recordDeltas?: { receipt?: { sha256?: string }; schools?: Record<string, unknown> }[] } };
+export function readSelection(manifest: Pick<ContentReleaseManifest, "translations">, tree: string): SelectionFile | undefined {
+  if (!manifest.translations) return undefined;
+  const pointer = path.join(tree, manifest.translations.pointer);
+  if (!existsSync(pointer)) return undefined;
+  const ref = JSON.parse(readFileSync(pointer, "utf8")) as { path: string };
+  return JSON.parse(readFileSync(path.join(path.dirname(pointer), ref.path), "utf8")) as SelectionFile;
+}
+
+/** Every record delta in the translation package is accepted by this release's pins. */
+function checkTranslationDeltas(manifest: ContentReleaseManifest, tree: string): string[] {
+  const selection = readSelection(manifest, tree);
+  const pins = new Set(manifest.translations?.recordDeltaAcceptanceSha256s ?? []);
+  const receipts = (selection?.supplemental?.recordDeltas ?? []).map(delta => delta.receipt?.sha256 ?? "");
+  return [
+    ...receipts.filter(receipt => !pins.has(receipt)).map(receipt => `Record delta review ${receipt || "(missing)"} is not pinned by the release manifest`),
+    ...[...pins].filter(pin => !receipts.includes(pin)).map(pin => `Manifest pins record delta review ${pin} that the translation package does not carry`)
+  ];
 }
 
 export async function validateContentRelease(contentRoot: string, contentId: string, options: { compareParent?: boolean } = {}): Promise<ValidationReport> {
@@ -155,8 +231,22 @@ export async function validateContentRelease(contentRoot: string, contentId: str
     }
   }
   if (manifest.translations && !listed.has(manifest.translations.pointer)) errors.push("Translation pointer is not in the package");
+  const pins = recordPins();
+  if (manifest.mcp && listed.get(manifest.mcp.catalog)?.sha === manifest.mcp.sha256) {
+    // A record correction must ship a regenerated catalog; an inherited one would serve the old text.
+    errors.push(...staleCatalogRecords((await loadCatalog(path.join(tree, manifest.mcp.catalog))).records, pins));
+  }
+  errors.push(...checkRecordRevisions(manifest));
+  if (pins && Object.keys(pins).length) {
+    try { await getScopedRecordReleaseDiff(readV6RecordCorrections()!.revision); }
+    catch (error) { errors.push(`Scoped release diff for /changes/${readV6RecordCorrections()!.revision} fails: ${(error as Error).message}`); }
+  }
+  const policy = checkLocaleIndexPolicy(manifest, tree, listed, errors);
+  const deltas = checkTranslationDeltas(manifest, tree);
+  errors.push(...deltas);
 
   // 7. Parent comparison: nothing removed, released or re-quoted without a decision.
+  let parentPins: Record<string, string> = {};
   if (options.compareParent !== false && manifest.parentContentId) {
     const parentDir = releaseDir(contentRoot, manifest.parentContentId);
     if (!existsSync(path.join(parentDir, "manifest.json"))) {
@@ -166,10 +256,18 @@ export async function validateContentRelease(contentRoot: string, contentId: str
       selectTree(manifest.parentContentId, path.join(parentDir, "tree"), parentManifest);
       const parent: ClaimSets = (await computeClaimSets()).sets;
       report.parentSchoolDigests = await schoolDigests();
+      parentPins = recordPins();
       selectTree(contentId, tree, manifest);
       const compared = compareClaimSets(parent, current.sets, manifest);
       errors.push(...compared.errors);
       notes.push(...compared.notes);
+      // Schools whose record changed in this release need their locale-index entry moved with them.
+      const changed = Object.keys(pins).filter(slug => parentPins[slug] && parentPins[slug] !== pins[slug]);
+      if (changed.length && policy) errors.push(...staleLocaleIndexEntries(policy, pins, parentPins));
+      else if (changed.length && !manifest.localeIndexPolicy) {
+        notes.push(`Locale-index policy is environment-pinned: ${changed.length} changed school(s) keep only their default index locales until the pinned file is replaced (${changed.slice(0, 5).join(", ")})`);
+      }
+      stats.changedRecords = changed.length;
     }
   }
   report.ok = errors.length === 0;

@@ -4,8 +4,8 @@ import { pathToFileURL } from "node:url";
 import { CONTENT_POINTER_SCHEMA, type ContentPointer, type ContentReleaseManifest, type ContentSyncReceipt } from "../../apps/web/lib/content-runtime";
 import { READING_LOCALES } from "../../apps/web/lib/language-catalog";
 import { requirePolicySync } from "../lib/require-policy-sync";
-import { readManifest, releaseDir, selectTree, sha256File } from "./lib";
-import { schoolDigests, validateContentRelease, type ValidationReport } from "./validate";
+import { readManifest, releaseDir, selectTree, sha256, sha256File } from "./lib";
+import { readSelection, schoolDigests, validateContentRelease, type ValidationReport } from "./validate";
 
 const REFRESH_BATCH = 1000;
 
@@ -24,6 +24,43 @@ export interface SwitchOptions {
   rollback?: boolean;
   refreshUrl?: string;
   siteUrl?: string;
+  /** Loopback MCP base URL; after the switch, wait until its /healthz serves this release's catalog. */
+  mcpUrl?: string;
+  mcpWaitMs?: number;
+}
+
+/**
+ * Per-school digest of what decides a school's reading locales: its
+ * locale-index policy entry and its translation refs and record deltas. A
+ * change re-renders the school's pages and the sitemap, even when the record
+ * itself is unchanged.
+ */
+export function readingDigests(manifest: ContentReleaseManifest | undefined, tree: string): Record<string, string> {
+  if (!manifest) return {};
+  const out: Record<string, string> = {};
+  const policy = manifest.localeIndexPolicy ? JSON.parse(readFileSync(path.join(tree, manifest.localeIndexPolicy.path), "utf8")) as { schools?: Record<string, unknown> } : undefined;
+  const selection = readSelection(manifest, tree);
+  const slugs = new Set([...Object.keys(policy?.schools ?? {}), ...Object.keys(selection?.schools ?? {})]);
+  for (const slug of slugs) {
+    const deltas = (selection?.supplemental?.recordDeltas ?? []).map(delta => delta.schools?.[slug] ? [delta.receipt?.sha256, delta.schools[slug]] : null).filter(Boolean);
+    // The selection hash pin changes with any delta; only the corpus acceptance applies to every school.
+    out[slug] = sha256(JSON.stringify([policy?.schools?.[slug] ?? null, selection?.schools?.[slug] ?? null, deltas, manifest.translations?.sampledPublication?.acceptanceSha256 ?? null]));
+  }
+  return out;
+}
+
+/** Wait until the MCP service reports the switched release (it polls the pointer; no restart). */
+export async function awaitMcpRelease(baseUrl: string, expected: { contentId: string; catalogSha256?: string }, waitMs = 60_000, intervalMs = 1000) {
+  const url = new URL("/healthz", baseUrl);
+  if (!["127.0.0.1", "localhost", "[::1]"].includes(url.hostname)) throw new Error("MCP readback is loopback-only");
+  const deadline = Date.now() + waitMs;
+  let last: Record<string, unknown> | null = null;
+  for (;;) {
+    try { last = await (await fetch(url)).json() as Record<string, unknown>; } catch { last = null; }
+    if (last?.contentId === expected.contentId && (!expected.catalogSha256 || last.catalogSha256 === expected.catalogSha256)) return { status: "updated" as const, observed: last };
+    if (Date.now() >= deadline) return { status: "not_updated" as const, observed: last };
+    await new Promise(resolve => setTimeout(resolve, intervalMs));
+  }
 }
 
 interface HistoryRow { at: string; contentId: string; manifestSha256: string; previousContentId: string | null; sync?: ContentSyncReceipt; unsynchronizedLocalPreview?: true; rollback?: boolean }
@@ -36,7 +73,7 @@ function readHistory(contentRoot: string): HistoryRow[] {
 }
 
 /** Tags and exact paths whose pages differ between two releases. */
-export function changedSurface(previous: { manifest?: ContentReleaseManifest; digests?: Record<string, string> }, next: { manifest: ContentReleaseManifest; digests: Record<string, string>; cohort: string[] }) {
+export function changedSurface(previous: { manifest?: ContentReleaseManifest; digests?: Record<string, string>; reading?: Record<string, string> }, next: { manifest: ContentReleaseManifest; digests: Record<string, string>; cohort: string[]; reading?: Record<string, string> }) {
   const tags = new Set<string>(), paths = new Set<string>();
   const localized = (route: string, all: boolean) => {
     paths.add(route || "/");
@@ -48,7 +85,11 @@ export function changedSurface(previous: { manifest?: ContentReleaseManifest; di
   for (const slug of schools) { tags.add(`school:${slug}`); localized(`/universities/${slug}`, cohort.has(slug)); }
   const added = schools.filter(slug => !before[slug] || !next.digests[slug]);
   if (schools.length) { tags.add("catalog"); tags.add("home"); localized("", true); localized("/universities", true); }
-  if (added.length) { tags.add("sitemap"); for (const p of ["/sitemap.xml", "/sitemaps/core.xml", "/sitemaps/universities.xml"]) paths.add(p); }
+  // Reading locales (hreflang, robots, sitemap) follow the locale-index policy and translation package.
+  const readingBefore = previous.reading ?? {}, readingAfter = next.reading ?? {};
+  const reading = [...new Set([...Object.keys(readingBefore), ...Object.keys(readingAfter)])].filter(slug => readingBefore[slug] !== readingAfter[slug]).sort();
+  for (const slug of reading) { tags.add(`school:${slug}`); localized(`/universities/${slug}`, true); }
+  if (added.length || reading.length) { tags.add("sitemap"); for (const p of ["/sitemap.xml", "/sitemaps/core.xml", "/sitemaps/universities.xml"]) paths.add(p); }
   const family = (name: string, m?: ContentReleaseManifest) => JSON.stringify(m?.families?.[name] ?? null);
   if (family("public-change-history", previous.manifest) !== family("public-change-history", next.manifest) || family("public-v6-change-overviews", previous.manifest) !== family("public-v6-change-overviews", next.manifest)) {
     tags.add("changes"); localized("/changes", true); paths.add("/sitemaps/changes.xml");
@@ -67,7 +108,7 @@ export function changedSurface(previous: { manifest?: ContentReleaseManifest; di
     for (const p of ["/api-reference", "/datasets", "/feeds/reports.xml", "/feeds/atom.xml", "/llms.txt"]) paths.add(p);
     if (!tags.has("sitemap")) { tags.add("sitemap"); paths.add("/sitemaps/core.xml"); }
   }
-  return { tags: [...tags].sort(), paths: [...paths].sort(), changedSchools: schools };
+  return { tags: [...tags].sort(), paths: [...paths].sort(), changedSchools: schools, readingChangedSchools: reading };
 }
 
 function writeAtomically(file: string, body: string) {
@@ -118,9 +159,10 @@ export async function switchContentRelease(options: SwitchOptions) {
     selectTree(previousManifest.contentId, path.join(releaseDir(contentRoot, previousManifest.contentId), "tree"), previousManifest);
     previousDigests = await schoolDigests();
   }
+  const tree = path.join(releaseDir(contentRoot, contentId), "tree");
   const surface = changedSurface(
-    { manifest: previousManifest, digests: previousDigests },
-    { manifest, digests: validation.schoolDigests ?? {}, cohort: JSON.parse(readFileSync(path.join(releaseDir(contentRoot, contentId), "tree/data/public-v6-pages/current.json"), "utf8")).slugs ?? [] }
+    { manifest: previousManifest, digests: previousDigests, reading: previousManifest ? readingDigests(previousManifest, path.join(releaseDir(contentRoot, previousManifest.contentId), "tree")) : undefined },
+    { manifest, digests: validation.schoolDigests ?? {}, cohort: JSON.parse(readFileSync(path.join(tree, "data/public-v6-pages/current.json"), "utf8")).slugs ?? [], reading: readingDigests(manifest, tree) }
   );
   // First selection: nothing was served from this content root yet, so there is no
   // changed-URL list; expiring the "content" tag covers every tagged route.
@@ -134,7 +176,8 @@ export async function switchContentRelease(options: SwitchOptions) {
   const siteUrl = options.siteUrl ?? "https://eduaipolicy.org";
   const plan = {
     schemaVersion: "uapt-content-switch-v1", contentId, previousContentId: pointer.previousContentId, switchedAt: pointer.switchedAt,
-    tags, paths: surface.paths, changedSchools: surface.changedSchools,
+    tags, paths: surface.paths, changedSchools: surface.changedSchools, readingChangedSchools: surface.readingChangedSchools,
+    mcp: manifest.mcp ? { catalogSha256: manifest.mcp.sha256, reload: "MCP follows the pointer (poll or SIGHUP); no restart" } : null,
     // Separate, authorized step: POST this body to the zone's purge_cache API. Not sent by this tool.
     cloudflarePurge: { status: "not_sent", body: { files: surface.paths.map(p => new URL(p, siteUrl).toString()) } },
     completion: "Public readback of the paths above, then python3 scripts/policy-inventory.py sync-gate <ledger> --phase complete"
@@ -162,7 +205,11 @@ export async function switchContentRelease(options: SwitchOptions) {
     }
     refresh = { contentId, batches: results };
   }
-  return { pointer, planFile, tags, paths: surface.paths, changedSchools: surface.changedSchools, refresh, notes: validation.notes };
+  let mcp: unknown = "not_requested";
+  if (options.mcpUrl) {
+    mcp = await awaitMcpRelease(options.mcpUrl, { contentId, catalogSha256: manifest.mcp?.sha256 }, options.mcpWaitMs);
+  }
+  return { pointer, planFile, tags, paths: surface.paths, changedSchools: surface.changedSchools, readingChangedSchools: surface.readingChangedSchools, refresh, mcp, notes: validation.notes };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -170,13 +217,18 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const contentRoot = arg("--content-root") ?? process.env.UAPT_CONTENT_ROOT;
   const contentId = arg("--content-id");
   if (!contentRoot || !contentId) {
-    console.error("usage: content:switch --content-root <dir> --content-id <id> (--sync-ledger <event.json> | --rollback | --unsynchronized-local-preview) [--refresh-url http://127.0.0.1:3100]");
+    console.error("usage: content:switch --content-root <dir> --content-id <id> (--sync-ledger <event.json> | --rollback | --unsynchronized-local-preview) [--refresh-url http://127.0.0.1:3100] [--mcp-url http://127.0.0.1:3161 [--mcp-wait-ms 60000]]");
     process.exit(2);
   }
   switchContentRelease({
     contentRoot: path.resolve(contentRoot), contentId, syncLedger: arg("--sync-ledger"),
     unsynchronizedLocalPreview: process.argv.includes("--unsynchronized-local-preview"), rollback: process.argv.includes("--rollback"),
-    refreshUrl: arg("--refresh-url"), siteUrl: arg("--site-url")
-  }).then(result => console.log(JSON.stringify(result, null, 2))).catch(error => { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; });
+    refreshUrl: arg("--refresh-url"), siteUrl: arg("--site-url"),
+    mcpUrl: arg("--mcp-url"), mcpWaitMs: arg("--mcp-wait-ms") ? Number(arg("--mcp-wait-ms")) : undefined
+  }).then(result => {
+    console.log(JSON.stringify(result, null, 2));
+    // The pointer has switched; an MCP that did not follow is reported, not rolled back.
+    if ((result.mcp as { status?: string })?.status === "not_updated") process.exitCode = 3;
+  }).catch(error => { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; });
 }
 

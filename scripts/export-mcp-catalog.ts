@@ -10,7 +10,11 @@ import { catalogPayloadSchema, digest, eligibleClaims, loadCatalog, type Record 
 import { publishedV6Bundle } from "../apps/web/lib/policy-v6-published";
 import { validatePublicClaimDispositions } from "../apps/web/lib/policy-v6-claim-disposition";
 
-export async function exportMcpCatalog() {
+/**
+ * `root`: a content tree already selected for the loaders (content:correct
+ * exports the candidate release this way); default is the checkout.
+ */
+export async function exportMcpCatalog(options: { root?: string; output?: string } = {}) {
   // CLI exports the committed public selection, never a local preview or a live self-fetch.
   if (Object.entries(process.env).some(([key, value]) => value &&
     (key.startsWith("UAPT_LOCAL_QA_") || key.startsWith("UAPT_CANDIDATE_REPAIR_") ||
@@ -20,7 +24,7 @@ export async function exportMcpCatalog() {
   process.env.NEXT_PUBLIC_SITE_URL = "https://eduaipolicy.org";
   process.env.UAPT_V6_PUBLISHED_PAGES = "1";
   const manifest = await getCurrentPublicReleaseManifest();
-  const approved = JSON.parse(await readFile("data/public-releases/current.json", "utf8"));
+  const approved = JSON.parse(await readFile(path.join(options.root ?? ".", "data/public-releases/current.json"), "utf8"));
   if (!manifest || approved.candidateOnly !== false || digest(manifest) !== digest(approved)) {
     throw new Error("Only the committed current published manifest can be exported");
   }
@@ -84,7 +88,7 @@ export async function exportMcpCatalog() {
   });
   const payload = catalogPayloadSchema.parse({ schemaVersion: "uapt-mcp-catalog-v1", publicationState: "published", releaseId: manifest.releaseId,
     releasePublishedAt: manifest.publishedAt, exportedAt: new Date().toISOString(), records });
-  const out = path.resolve(process.env.UAPT_MCP_CATALOG_OUTPUT ?? "apps/mcp/.runtime-data/catalog.json");
+  const out = path.resolve(options.output ?? process.env.UAPT_MCP_CATALOG_OUTPUT ?? "apps/mcp/.runtime-data/catalog.json");
   await mkdir(path.dirname(out), { recursive: true });
   const temporary = `${out}.${process.pid}.candidate`;
   try {

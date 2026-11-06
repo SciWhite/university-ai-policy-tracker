@@ -12,7 +12,7 @@ import { loadCatalog, type Catalog } from "./catalog.js";
 export const MCP_CONTENT_API_VERSION = 1;
 const sha256 = (value: Buffer | string) => createHash("sha256").update(value).digest("hex");
 
-export interface CatalogSelection { catalog: Catalog; contentId?: string; source: string }
+export interface CatalogSelection { catalog: Catalog; contentId?: string; source: string; catalogSha256: string; manifestSha256?: string }
 
 interface Pointer { schemaVersion: string; contentId: string; manifestSha256: string; sync?: { contractVersion: string; eventId: string; eventSha256: string }; unsynchronizedLocalPreview?: true }
 interface Manifest { schemaVersion: string; contentId: string; appCompatibility?: { contentApi?: number[] }; mcp?: { catalog: string; releaseId: string; sha256: string } }
@@ -43,16 +43,17 @@ export async function loadContentCatalog(contentRoot: string, env = process.env)
   const tree = realpathSync(path.join(releaseDir, "tree"));
   const file = realpathSync(path.join(tree, manifest.mcp.catalog));
   if (!file.startsWith(tree + path.sep)) throw new Error("MCP catalog escapes its release");
-  if (sha256(readFileSync(file)) !== manifest.mcp.sha256) throw new Error("MCP catalog bytes changed");
+  const catalogSha256 = sha256(readFileSync(file));
+  if (catalogSha256 !== manifest.mcp.sha256) throw new Error("MCP catalog bytes changed");
   const catalog = await loadCatalog(file);
   // The release, not an environment pin, states which dataset release MCP serves.
   if (catalog.releaseId !== manifest.mcp.releaseId) throw new Error("MCP catalog release mismatch");
-  return { catalog, contentId: pointer.contentId, source: file };
+  return { catalog, contentId: pointer.contentId, source: file, catalogSha256, manifestSha256: pointer.manifestSha256 };
 }
 
 /** Pre-R1-b deployments: one catalog file pinned by UAPT_MCP_EXPECTED_RELEASE_ID. */
 export async function loadPinnedCatalog(file: string, expectedReleaseId?: string): Promise<CatalogSelection> {
   const catalog = await loadCatalog(file);
   if (expectedReleaseId && catalog.releaseId !== expectedReleaseId) throw new Error("Pinned release mismatch");
-  return { catalog, source: file };
+  return { catalog, source: file, catalogSha256: sha256(readFileSync(file)) };
 }
