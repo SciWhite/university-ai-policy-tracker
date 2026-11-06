@@ -115,7 +115,45 @@ export function parseAnalyticsDashboardQuery(
   };
 }
 
+// Every build of the dashboard reads raw events, rollups and the GSC, Bing,
+// Bing AI and Clarity APIs (15-70 s on the production host). Serve a bounded
+// in-process copy: fresh for 10 minutes, then stale while one refresh runs.
+const DASHBOARD_FRESH_MS = 10 * 60 * 1000;
+const DASHBOARD_STALE_MS = 24 * 60 * 60 * 1000;
+const DASHBOARD_CACHE_ENTRIES = 32;
+const dashboardCache = new Map<string, { at: number; value: AnalyticsDashboardResponse; refreshing?: Promise<void> }>();
+const dashboardLoads = new Map<string, Promise<AnalyticsDashboardResponse>>();
+
 export async function getAnalyticsDashboard(
+  query: AnalyticsDashboardQuery
+): Promise<AnalyticsDashboardResponse> {
+  const key = JSON.stringify(query);
+  const cached = dashboardCache.get(key);
+  const age = cached ? Date.now() - cached.at : Infinity;
+  if (cached && age < DASHBOARD_FRESH_MS) return cached.value;
+  if (cached && age < DASHBOARD_STALE_MS) {
+    cached.refreshing ??= loadDashboardOnce(key, query).then(() => undefined, () => { cached.refreshing = undefined; });
+    return cached.value;
+  }
+  return loadDashboardOnce(key, query);
+}
+
+function loadDashboardOnce(key: string, query: AnalyticsDashboardQuery): Promise<AnalyticsDashboardResponse> {
+  const pending = dashboardLoads.get(key);
+  if (pending) return pending;
+  const load = loadAnalyticsDashboard(query)
+    .then(value => {
+      dashboardCache.delete(key);
+      dashboardCache.set(key, { at: Date.now(), value });
+      while (dashboardCache.size > DASHBOARD_CACHE_ENTRIES) dashboardCache.delete(dashboardCache.keys().next().value!);
+      return value;
+    })
+    .finally(() => dashboardLoads.delete(key));
+  dashboardLoads.set(key, load);
+  return load;
+}
+
+async function loadAnalyticsDashboard(
   query: AnalyticsDashboardQuery
 ): Promise<AnalyticsDashboardResponse> {
   const analyticsStoreAvailable = hasAnalyticsStore();
