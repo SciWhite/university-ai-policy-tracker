@@ -1491,8 +1491,11 @@ def cmd_ledger(args):
 
 
 def release_helper(state):
-    previous = previous_plan()
-    path = state.get('releaseHelper') or (previous or {}).get('releaseHelper')
+    # The last plan in the transaction file names the helper: the previous
+    # completed plan before `plan`, and this operation's own plan from `plan`
+    # until `complete` (when `previous_plan()` is None because it is pending).
+    last = read_json(TRANSACTION).get('plan', {}) if TRANSACTION.is_file() else {}
+    path = state.get('releaseHelper') or last.get('releaseHelper')
     if not path or not Path(path).is_file():
         raise Refused('Release helper (uapt-release.mjs with verify-sync) unknown; pass --helper')
     return {'path': path, 'sha256': sha256_file(path)}
