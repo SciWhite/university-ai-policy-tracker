@@ -70,7 +70,14 @@ export interface ContentReleaseManifest {
   requiredSyncContract: "2.0.0" | "2.1.0";
   families: Record<string, { schemaVersion?: string; revision?: string; sha256?: string }>;
   reports?: { registry: string; current: string };
-  translations?: { pointer: string; sampledPublication?: { acceptanceSha256: string; selectionSha256: string } };
+  translations?: {
+    pointer: string;
+    sampledPublication?: { acceptanceSha256: string; selectionSha256: string };
+    /** Receipt hashes of machine-checked record deltas (selection `supplemental.recordDeltas`) this release accepts. */
+    recordDeltaAcceptanceSha256s?: string[];
+  };
+  /** Reviewed locale-index registry (`uapt-university-locale-index-policy-v1`); a record correction updates it here. */
+  localeIndexPolicy?: { path: string; sha256: string };
   mcp?: { catalog: string; releaseId: string; sha256: string };
   decisions?: {
     removedClaimIds?: Record<string, string[]>;
@@ -329,21 +336,36 @@ export function contentScoped<T>(key: string, build: (content: ActiveContent) =>
  * translations pins its own pointer and sampled-publication acceptance; older
  * deployments keep the UAPT_READING_* environment configuration.
  */
-export function readingPackageSelection(): { pointer?: string; acceptanceSha256?: string; selectionSha256?: string } {
+export function readingPackageSelection(): { pointer?: string; acceptanceSha256?: string; selectionSha256?: string; recordDeltaAcceptanceSha256s: string[] } {
   const content = activeContent();
   const declared = content.manifest?.translations;
   if (declared) {
     return {
       pointer: contentPath(declared.pointer, content),
       acceptanceSha256: declared.sampledPublication?.acceptanceSha256,
-      selectionSha256: declared.sampledPublication?.selectionSha256
+      selectionSha256: declared.sampledPublication?.selectionSha256,
+      recordDeltaAcceptanceSha256s: [...(declared.recordDeltaAcceptanceSha256s ?? [])]
     };
   }
   return {
     pointer: process.env.UAPT_READING_PACKAGE_POINTER,
     acceptanceSha256: process.env.UAPT_READING_SAMPLED_PUBLICATION_ACCEPTANCE_SHA256,
-    selectionSha256: process.env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256
+    selectionSha256: process.env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256,
+    recordDeltaAcceptanceSha256s: (process.env.UAPT_READING_RECORD_DELTA_ACCEPTANCE_SHA256S ?? "").split(",").map(value => value.trim()).filter(Boolean)
   };
+}
+
+/**
+ * Locale-index policy for the active release. A release that carries the
+ * policy pins its own file and hash, so a record correction that updates a
+ * school's recordSha256 needs no environment change or restart. Older
+ * deployments keep the UAPT_UNIVERSITY_LOCALE_INDEX_POLICY(_SHA256) pin.
+ */
+export function localeIndexPolicySelection(): { file?: string; sha256?: string; source: "release" | "environment" } {
+  const content = activeContent();
+  const declared = content.manifest?.localeIndexPolicy;
+  if (declared) return { file: contentPath(declared.path, content), sha256: declared.sha256, source: "release" };
+  return { file: process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY, sha256: process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY_SHA256, source: "environment" };
 }
 
 export function clearContentScoped(key: string) {

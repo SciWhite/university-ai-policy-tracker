@@ -37,8 +37,9 @@ test("MCP follows the content pointer without a restart or release pin", async (
     assert.equal(hot.contentId, "demo-a");
     assert.equal(hot.current().catalog.releaseId, f.releaseId);
     f.point("demo-b", f.release("demo-b"));
-    assert.deepEqual(await hot.reload(), { ok: true, contentId: "demo-b", releaseId: f.releaseId });
+    assert.deepEqual(await hot.reload(), { ok: true, contentId: "demo-b", releaseId: f.releaseId, catalogSha256: sha(readFileSync(catalogFile)) });
     assert.equal(hot.contentId, "demo-b");
+    assert.equal(hot.identity().manifestSha256, sha(readFileSync(path.join(f.root, "releases/demo-b/manifest.json"))));
   } finally { f.cleanup(); }
 });
 
@@ -65,4 +66,49 @@ test("legacy single-file deployments keep the release pin", async () => {
   const catalog = await loadPinnedCatalog(catalogFile);
   await assert.rejects(() => loadPinnedCatalog(catalogFile, "public-release-19990101-001"), /Pinned release mismatch/);
   assert.equal((await loadPinnedCatalog(catalogFile, catalog.catalog.releaseId)).catalog.releaseId, catalog.catalog.releaseId);
+});
+
+test("overlapping reloads apply in order, so a slow older read never replaces a newer selection", async () => {
+  const f = contentRoot();
+  try {
+    f.point("demo-a", f.release("demo-a"));
+    let calls = 0;
+    const slowFirst = async () => {
+      const call = ++calls;
+      const selection = await loadContentCatalog(f.root);
+      // The first reload reads demo-a, then stalls past the second reload's read of demo-b.
+      if (call === 2) await new Promise(resolve => setTimeout(resolve, 50));
+      return selection;
+    };
+    const hot = new HotCatalog(await slowFirst(), slowFirst);
+    const first = hot.reload();
+    await new Promise(resolve => setImmediate(resolve)); // the first reload has read pointer demo-a
+    f.point("demo-b", f.release("demo-b"));
+    const second = hot.reload();
+    assert.equal((await first).contentId, "demo-a");
+    assert.equal((await second).contentId, "demo-b");
+    assert.equal(hot.contentId, "demo-b");
+  } finally { f.cleanup(); }
+});
+
+test("/healthz reports the served content release and catalog hash for readback", async () => {
+  const f = contentRoot();
+  try {
+    f.point("demo-a", f.release("demo-a"));
+    const hot = new HotCatalog(await loadContentCatalog(f.root), () => loadContentCatalog(f.root));
+    const { createMcpHttpServer } = await import("../src/server.js");
+    const { DailyTelemetry } = await import("../src/telemetry.js");
+    const server = createMcpHttpServer(hot, new DailyTelemetry(undefined));
+    await new Promise<void>(resolve => server.listen(0, "127.0.0.1", resolve));
+    try {
+      const port = (server.address() as { port: number }).port;
+      const read = async () => (await fetch(`http://127.0.0.1:${port}/healthz`)).json() as Promise<Record<string, unknown>>;
+      assert.deepEqual({ contentId: (await read()).contentId, catalogSha256: (await read()).catalogSha256 }, { contentId: "demo-a", catalogSha256: sha(readFileSync(catalogFile)) });
+      f.point("demo-b", f.release("demo-b"));
+      await hot.reload();
+      const after = await read();
+      assert.equal(after.contentId, "demo-b");
+      assert.equal(after.manifestSha256, sha(readFileSync(path.join(f.root, "releases/demo-b/manifest.json"))));
+    } finally { await new Promise(resolve => server.close(resolve)); }
+  } finally { f.cleanup(); }
 });

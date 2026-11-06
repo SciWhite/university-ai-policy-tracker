@@ -1,0 +1,13 @@
+{
+  "extends": "../apps/web/tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "paths": {
+      "@/*": ["../apps/web/*"],
+      "@uapt/db": ["../packages/db/src/index.ts"],
+      "@uapt/shared": ["../packages/shared/src/index.ts"]
+    }
+  },
+  "include": ["content-release/*.ts", "export-mcp-catalog.ts", "../tests/content-release.test.ts", "../tests/content-correct.test.ts", "../tests/reading-record-delta.test.ts", "../apps/web/next-env.d.ts"],
+  "exclude": ["../node_modules"]
+}

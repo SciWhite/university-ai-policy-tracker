@@ -14,16 +14,18 @@ import { getPolicyV6Data } from "./policy-v6";
 import { isPublishedV6Slug } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
 import { ByteLru } from "./bounded-cache";
-import { readingPackageSelection } from "./content-runtime";
+import { localeIndexPolicySelection, readingPackageSelection } from "./content-runtime";
 import { isPolicyV6BaseTier, policyV6Tier } from "./policy-v6-tier";
 import { schoolTargetLocales, type SchoolLanguageIdentity } from "./school-languages";
 import { getCatalogUniversityBySlug } from "./catalog";
 
 let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
+/** The release's locale-index policy (manifest `localeIndexPolicy`), else the environment pin. */
 async function loadPolicy(): Promise<UniversityLocaleIndexPolicy | undefined> {
-  const policyPath = process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY;
-  const expectedPolicySha = process.env.UAPT_UNIVERSITY_LOCALE_INDEX_POLICY_SHA256;
+  const selected = localeIndexPolicySelection();
+  const policyPath = selected.file;
+  const expectedPolicySha = selected.sha256;
   if (!policyPath || !/^[a-f0-9]{64}$/.test(expectedPolicySha ?? "")) return undefined;
   const info = await stat(policyPath, { bigint: true });
   if (!info.isFile() || info.size > BigInt(4 * 1024 * 1024)) return undefined;

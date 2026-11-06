@@ -46,19 +46,35 @@ export function makeMcpServer(policy: PolicyService, telemetry: DailyTelemetry) 
 export class HotCatalog {
   private service: PolicyService;
   private selection: CatalogSelection;
+  private pending: Promise<unknown> = Promise.resolve();
   constructor(initial: CatalogSelection, private readonly load: () => Promise<CatalogSelection>) {
     this.selection = initial;
     this.service = new PolicyService(initial.catalog);
   }
   current() { return this.service; }
   get contentId() { return this.selection.contentId; }
-  /** Verify the newly selected catalog; on any failure keep serving the last verified one. */
-  async reload(): Promise<{ ok: boolean; contentId?: string; releaseId: string; error?: string }> {
+  /** Identity of the served catalog, for /healthz and synchronization readback. */
+  identity() {
+    return { releaseId: this.service.catalog.releaseId, catalogSha256: this.selection.catalogSha256,
+      ...(this.selection.contentId ? { contentId: this.selection.contentId } : {}),
+      ...(this.selection.manifestSha256 ? { manifestSha256: this.selection.manifestSha256 } : {}) };
+  }
+  /**
+   * Verify the newly selected catalog; on any failure keep serving the last
+   * verified one. Reloads run one at a time (SIGHUP and the pointer poll may
+   * overlap), so an older read never replaces a newer selection.
+   */
+  reload(): Promise<{ ok: boolean; contentId?: string; releaseId: string; catalogSha256?: string; error?: string }> {
+    const run = this.pending.then(() => this.reloadNow());
+    this.pending = run.catch(() => undefined);
+    return run;
+  }
+  private async reloadNow(): Promise<{ ok: boolean; contentId?: string; releaseId: string; catalogSha256?: string; error?: string }> {
     try {
       const next = await this.load();
       this.selection = next;
       this.service = new PolicyService(next.catalog);
-      return { ok: true, contentId: next.contentId, releaseId: next.catalog.releaseId };
+      return { ok: true, contentId: next.contentId, releaseId: next.catalog.releaseId, catalogSha256: next.catalogSha256 };
     } catch (error) {
       return { ok: false, contentId: this.selection.contentId, releaseId: this.service.catalog.releaseId, error: error instanceof Error ? error.message : String(error) };
     }
@@ -81,7 +97,7 @@ export function createMcpHttpServer(policySource: PolicyService | HotCatalog, te
     if (req.headers.origin && req.headers.origin !== publicOrigin && req.headers.origin !== "https://www.eduaipolicy.org") { fail(403); return; }
     const pathname = (req.url ?? "/").split("?")[0];
     const policy = current();
-    if (pathname === "/healthz" && req.method === "GET") { res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ ok: true, releaseId: policy.catalog.releaseId, universities: policy.catalog.records.length, ...(policySource instanceof HotCatalog && policySource.contentId ? { contentId: policySource.contentId } : {}) })); return; }
+    if (pathname === "/healthz" && req.method === "GET") { res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ ok: true, releaseId: policy.catalog.releaseId, universities: policy.catalog.records.length, ...(policySource instanceof HotCatalog ? policySource.identity() : {}) })); return; }
     if (pathname !== "/api/mcp") { res.writeHead(404).end(); return; }
     // Stateless Streamable HTTP may reject the client's optional SSE GET.
     if (req.method !== "POST") { res.setHeader("Allow", "POST"); res.writeHead(405).end(); return; }

@@ -9,6 +9,8 @@ import { getStagedPublicDataset } from "../../apps/web/lib/staged-public-data";
 import { readV6RecordCorrections, v6RecordSlugs } from "../../apps/web/lib/v6-effective-records";
 
 export const CONTENT_ID_PATTERN = /^[a-z0-9][a-z0-9.-]{2,95}$/;
+/** Release-tree path of the reviewed locale-index policy (manifest `localeIndexPolicy`). */
+export const LOCALE_INDEX_POLICY_PATH = "locale-index/university-locale-index-policy.json";
 export const sha256 = sha256Hex;
 export const sha256File = (file: string) => sha256Hex(readFileSync(file));
 export const objectRelPath = (sha: string) => `objects/${sha.slice(0, 2)}/${sha}`;

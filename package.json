@@ -99,7 +99,8 @@
     "content:build": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/build.ts",
     "content:validate": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/validate.ts",
     "content:switch": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/switch.ts",
-    "test:content-release": "tsx --tsconfig apps/web/tsconfig.json --test tests/content-release.test.ts"
+    "content:correct": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/correct.ts",
+    "test:content-release": "tsc --noEmit -p scripts/tsconfig.content-release.json && tsx --tsconfig apps/web/tsconfig.json --test tests/content-release.test.ts tests/content-correct.test.ts tests/reading-record-delta.test.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

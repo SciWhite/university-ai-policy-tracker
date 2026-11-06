@@ -4,7 +4,7 @@ import { pathToFileURL } from "node:url";
 import type { ContentReleaseManifest, ContentFileEntry } from "../../apps/web/lib/content-runtime";
 import { loadCatalog } from "../../apps/mcp/src/catalog";
 import { collectContentFiles, privatePathViolation } from "./file-set";
-import { CONTENT_ID_PATTERN, CONTENT_RELEASE_SCHEMA, computeClaimSets, defaultCompatibility, detectSchemas, objectRelPath, releaseDir, selectTree, sha256, sha256File } from "./lib";
+import { CONTENT_ID_PATTERN, CONTENT_RELEASE_SCHEMA, LOCALE_INDEX_POLICY_PATH, computeClaimSets, defaultCompatibility, detectSchemas, objectRelPath, readManifest, releaseDir, selectTree, sha256, sha256File } from "./lib";
 import { validateContentRelease } from "./validate";
 
 /**
@@ -25,7 +25,38 @@ export interface BuildOptions {
   parentContentId?: string | null;
   mcpCatalog?: string;
   translationsPointer?: string;
+  /** Reviewed locale-index registry for this release (replaces the parent's). */
+  localeIndexPolicy?: string;
+  /**
+   * Carry the parent's MCP catalog, translation package and locale-index policy
+   * when no replacement is given (default). Content validation then checks they
+   * still match the release's records.
+   */
+  inheritFromParent?: boolean;
   decisions?: ContentReleaseManifest["decisions"];
+}
+
+/** Sampled-publication pins and record-delta acceptances for a translation package. */
+export function translationPins(pointerFile: string, parent: ContentReleaseManifest | undefined, env = process.env): NonNullable<ContentReleaseManifest["translations"]> {
+  const root = path.dirname(path.resolve(pointerFile));
+  const ref = JSON.parse(readFileSync(pointerFile, "utf8")) as { path: string; sha256: string };
+  const selectionBytes = readFileSync(path.join(root, ref.path));
+  if (sha256(selectionBytes) !== ref.sha256) throw new Error("Translation selection does not match its pointer");
+  const selection = JSON.parse(selectionBytes.toString("utf8")) as { sampledPublicationAcceptance?: { acceptanceSha256?: string }; supplemental?: { recordDeltas?: { receipt?: { sha256?: string } }[] } };
+  let sampledPublication: { acceptanceSha256: string; selectionSha256: string } | undefined;
+  if (env.UAPT_READING_SAMPLED_PUBLICATION_ACCEPTANCE_SHA256 && env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256) {
+    sampledPublication = { acceptanceSha256: env.UAPT_READING_SAMPLED_PUBLICATION_ACCEPTANCE_SHA256, selectionSha256: env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256 };
+  } else if (selection.sampledPublicationAcceptance?.acceptanceSha256 && parent?.translations?.sampledPublication?.acceptanceSha256 === selection.sampledPublicationAcceptance.acceptanceSha256) {
+    // Same accepted corpus as the parent release; only the selection (record deltas) changed.
+    sampledPublication = { acceptanceSha256: parent.translations.sampledPublication.acceptanceSha256, selectionSha256: ref.sha256 };
+  }
+  const receipts = (selection.supplemental?.recordDeltas ?? []).map(delta => delta.receipt?.sha256);
+  if (receipts.some(receipt => !receipt || !/^[a-f0-9]{64}$/.test(receipt))) throw new Error("Record delta without a review receipt hash");
+  return {
+    pointer: "translations/current.json",
+    ...(sampledPublication ? { sampledPublication } : {}),
+    ...(receipts.length ? { recordDeltaAcceptanceSha256s: receipts as string[] } : {})
+  };
 }
 
 function walkFiles(root: string, rel = ""): string[] {
@@ -90,22 +121,40 @@ export async function buildContentRelease(options: BuildOptions) {
     }
   }
   const entries: { rel: string; abs: string }[] = [...byPath].map(([rel, abs]) => ({ rel, abs }));
+  const parent = parentContentId && existsSync(path.join(releaseDir(contentRoot, parentContentId), "manifest.json")) ? readManifest(contentRoot, parentContentId).manifest : undefined;
+  const parentTree = parentContentId ? path.join(releaseDir(contentRoot, parentContentId), "tree") : "";
+  const inherit = options.inheritFromParent !== false && parent;
+  const inherited: string[] = [];
+  const inheritFiles = (prefix: string) => { for (const [rel] of parent!.files) if (rel.startsWith(prefix)) entries.push({ rel, abs: path.join(parentTree, rel) }); };
   let mcp: ContentReleaseManifest["mcp"];
   if (options.mcpCatalog) {
     const catalog = await loadCatalog(path.resolve(options.mcpCatalog));
     entries.push({ rel: "mcp/catalog.json", abs: path.resolve(options.mcpCatalog) });
     mcp = { catalog: "mcp/catalog.json", releaseId: catalog.releaseId, sha256: sha256File(path.resolve(options.mcpCatalog)) };
+  } else if (inherit && parent.mcp) {
+    entries.push({ rel: parent.mcp.catalog, abs: path.join(parentTree, parent.mcp.catalog) });
+    mcp = parent.mcp; inherited.push("mcp");
   }
   let translations: ContentReleaseManifest["translations"];
   if (options.translationsPointer) {
     entries.push(...translationFiles(options.translationsPointer));
-    translations = {
-      pointer: "translations/current.json",
-      ...(process.env.UAPT_READING_SAMPLED_PUBLICATION_ACCEPTANCE_SHA256 && process.env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256
-        ? { sampledPublication: { acceptanceSha256: process.env.UAPT_READING_SAMPLED_PUBLICATION_ACCEPTANCE_SHA256, selectionSha256: process.env.UAPT_READING_SAMPLED_PUBLICATION_SELECTION_SHA256 } }
-        : {})
-    };
+    translations = translationPins(options.translationsPointer, parent);
+  } else if (inherit && parent.translations) {
+    inheritFiles("translations/");
+    translations = parent.translations; inherited.push("translations");
   }
+  let localeIndexPolicy: ContentReleaseManifest["localeIndexPolicy"];
+  if (options.localeIndexPolicy) {
+    const file = path.resolve(options.localeIndexPolicy);
+    const policy = JSON.parse(readFileSync(file, "utf8")) as { schemaVersion?: string };
+    if (policy.schemaVersion !== "uapt-university-locale-index-policy-v1") throw new Error("Not a university locale-index policy");
+    entries.push({ rel: LOCALE_INDEX_POLICY_PATH, abs: file });
+    localeIndexPolicy = { path: LOCALE_INDEX_POLICY_PATH, sha256: sha256File(file) };
+  } else if (inherit && parent.localeIndexPolicy) {
+    entries.push({ rel: parent.localeIndexPolicy.path, abs: path.join(parentTree, parent.localeIndexPolicy.path) });
+    localeIndexPolicy = parent.localeIndexPolicy; inherited.push("localeIndexPolicy");
+  }
+  if (new Set(entries.map(entry => entry.rel)).size !== entries.length) throw new Error("Duplicate release paths (overlay, catalog, translations or locale-index policy)");
   entries.sort((a, b) => (a.rel < b.rel ? -1 : a.rel > b.rel ? 1 : 0));
 
   const staging = `${dir}.building-${process.pid}`;
@@ -137,6 +186,7 @@ export async function buildContentRelease(options: BuildOptions) {
       families: detected.families,
       ...(registry ? { reports: { registry: "data/monthly-reports/registry.json", current: registry.current } } : {}),
       ...(translations ? { translations } : {}),
+      ...(localeIndexPolicy ? { localeIndexPolicy } : {}),
       ...(mcp ? { mcp } : {}),
       ...(options.decisions ? { decisions: options.decisions } : {}),
       claimSets: claims.summary,
@@ -150,7 +200,7 @@ export async function buildContentRelease(options: BuildOptions) {
   }
   const manifestSha256 = sha256(readFileSync(path.join(dir, "manifest.json")));
   const validation = await validateContentRelease(contentRoot, contentId);
-  return { contentId, parentContentId, manifestSha256, files: list.length, newObjects, newBytes, validation };
+  return { contentId, parentContentId, manifestSha256, files: list.length, newObjects, newBytes, inherited, validation };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -158,15 +208,18 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const contentRoot = arg("--content-root") ?? process.env.UAPT_CONTENT_ROOT;
   const contentId = arg("--content-id");
   if (!contentRoot || !contentId) {
-    console.error("usage: content:build --content-root <dir> --content-id <id> [--source <checkout>] [--overlay <dir>] [--parent <id>|--no-parent] [--mcp-catalog <file>] [--translations-pointer <file>] [--decisions <json>]");
+    console.error("usage: content:build --content-root <dir> --content-id <id> [--source <checkout> | --source-release <id>] [--overlay <dir>] [--parent <id>|--no-parent] [--mcp-catalog <file>] [--translations-pointer <file>] [--locale-index-policy <file>] [--no-inherit] [--decisions <json>]");
     process.exit(2);
   }
+  const sourceRelease = arg("--source-release");
   buildContentRelease({
     contentRoot: path.resolve(contentRoot), contentId,
-    source: path.resolve(arg("--source") ?? process.cwd()),
+    // A release tree has the repository layout; building from the selected release keeps its content as the base.
+    source: sourceRelease ? path.join(releaseDir(path.resolve(contentRoot), sourceRelease), "tree") : path.resolve(arg("--source") ?? process.cwd()),
     overlay: arg("--overlay") ? path.resolve(arg("--overlay")!) : undefined,
-    parentContentId: process.argv.includes("--no-parent") ? null : arg("--parent"),
+    parentContentId: process.argv.includes("--no-parent") ? null : arg("--parent") ?? sourceRelease,
     mcpCatalog: arg("--mcp-catalog"), translationsPointer: arg("--translations-pointer"),
+    localeIndexPolicy: arg("--locale-index-policy"), inheritFromParent: !process.argv.includes("--no-inherit"),
     decisions: arg("--decisions") ? JSON.parse(readFileSync(arg("--decisions")!, "utf8")) : undefined
   }).then(result => {
     const { schoolDigests: _a, parentSchoolDigests: _b, ...validation } = result.validation;
