@@ -30,7 +30,9 @@ interface ReleaseEntityChangePageProps {
   }>;
 }
 
-export const dynamic = "force-dynamic";
+// Rendered on first request from the active content release and cached until a content
+// switch invalidates its tags, like /changes/[releaseId]. Nothing here reads request data.
+export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = false;
 

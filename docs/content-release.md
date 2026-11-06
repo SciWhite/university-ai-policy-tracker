@@ -237,6 +237,9 @@ Without a purge, a switch reaches visitors only when the edge entry expires
 program cutover, purge the whole zone instead:
 `{"purge_everything": true}` with the same token. A cold edge then refills
 from the warm origin.
+On the host, also purge the origin HTML cache:
+`sudo /usr/local/libexec/uapt-program-release.py purge-html-cache --reason "content switch <contentId>"`
+(`docs/program-release.md` §6.1). Purge the origin first, then Cloudflare.
 
 **Completion.** Public readback of the changed URLs (L1/L2 in full, L3
 sampled, per `docs/release-acceptance-tiers.md`) happens after the refresh and

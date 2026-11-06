@@ -232,7 +232,10 @@ type PrivateSourceTextDiffIndex = Map<string, PrivateSourceTextDiffRow>;
 const FUZZY_MATCH_THRESHOLD = 0.82;
 
 let knownReleaseManifestsPromise: Promise<PublicReleaseManifest[]> | undefined;
-const releaseDiffPromises = new BoundedAsyncCache<ReleaseDiff | undefined>(8, 24*1024*1024, 2, 32);
+// Every published release diff fits (40 releases, ~52 MB serialized on 2026-11-06; the
+// largest is ~16 MB). With 8 entries / 24 MB, crawlers walking /changes/<release>/<slug>
+// across releases evicted diffs constantly and filled the build queue (HistoryCapacityError).
+const releaseDiffPromises = new BoundedAsyncCache<ReleaseDiff | undefined>(64, 128*1024*1024, 2, 64);
 const manifestDatasetPromises = new BoundedAsyncCache<Awaited<ReturnType<typeof getStagedPublicDataset>>>(2, 24*1024*1024, 1, 32);
 const privateSourceTextDiffPromises = new BoundedAsyncCache<PrivateSourceTextDiffIndex>(8, 4*1024*1024, 2, 32);
 

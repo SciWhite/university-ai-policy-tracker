@@ -2,7 +2,8 @@
 Keeps verbatim: static aliases, pure returns (redirects/404s), proxies to non-app ports (MCP),
 the cached prefix blocks and robots. Every app proxy location collapses into one `location /`."""
 import re,sys,json,collections
-dump=open(sys.argv[1]).read(); out=sys.argv[2]; port=sys.argv[3]
+args=[a for a in sys.argv[1:] if not a.startswith("--")]; html_cache="--html-cache" in sys.argv
+dump=open(args[0]).read(); out=args[1]; port=args[2]
 parts=re.split(r'^# configuration file (\S+):\n',dump,flags=re.M)
 files={parts[i]:parts[i+1] for i in range(1,len(parts),2)}
 order=[]
@@ -34,11 +35,28 @@ for f in order:
         else: dropped['app-proxy' if proxied else 'other']+=1; continue
         seen.add(key); stats[reason]+=1
         keep.append(m.group(0).strip())
-head=f"""# Generated {__import__('datetime').datetime.utcnow().isoformat()}Z by nginx-min/gen.py from the live nginx -T.
+head=f"""# Generated {__import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%M:%S')}Z by nginx-min/gen.py from the live nginx -T.
 # One app upstream; exact per-page proxy locations removed. Kept verbatim: static aliases,
 # pure returns (redirects and retired-prefix 404s), proxies to non-app ports, cached prefix blocks.
 """
 server_level=re.search(r'(set_real_ip_from[\s\S]*?add_header X-Frame-Options "SAMEORIGIN" always;)',files['/etc/nginx/snippets/uapt-proxy-locations.conf']).group(1)
+cache=("""    # Disk HTML cache (infra/nginx/uapt-html-cache.conf): survives app restarts.
+    proxy_cache uapt_html;
+    proxy_cache_key "$uapt_html_cache_epoch|$scheme|$host|$request_uri|rsc=$http_rsc";
+    proxy_cache_valid 200 301 308 6h;
+    proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
+    proxy_cache_background_update on;
+    proxy_cache_lock on;
+    proxy_cache_lock_timeout 30s;
+    proxy_ignore_headers Cache-Control Expires;
+    proxy_cache_bypass $uapt_html_cache_skip $http_authorization;
+    proxy_no_cache $uapt_html_cache_skip $http_authorization;
+    add_header X-UAPT-Origin-Cache $upstream_cache_status always;
+    # A location-level add_header stops inheritance of the server-level ones: repeat them.
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+""" if html_cache else "")
 app=f"""
 location / {{
     proxy_http_version 1.1;
@@ -48,11 +66,11 @@ location / {{
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header CF-IPCountry $http_cf_ipcountry;
-    proxy_buffering off;
+    proxy_buffering {'on' if html_cache else 'off'};
     proxy_connect_timeout 10s;
     proxy_send_timeout 60s;
     proxy_read_timeout 180s;
-    proxy_pass http://{port};
+{cache}    proxy_pass http://{port};
 }}
 """
 body=head+server_level+"\n\n"+"\n".join(k.replace('http://127.0.0.1:3101','http://'+port).replace('http://uapt_next_backend','http://'+port) for k in keep)+"\n"+app

@@ -609,3 +609,41 @@ class McpStepTests(unittest.TestCase):
         # Legacy full-workspace roots (before the first `mcp` step) do not block a release.
         self.assertIsNone(pr.mcp_root_problem('uapt-qs101-120-066043dd', 'uapt-program-a', 'uapt-program-b'))
         self.assertRegex(pr.mcp_root_problem('uapt-program-old', 'uapt-program-a', 'uapt-program-b'), 'run `mcp`')
+
+
+class HtmlCachePurgeTests(unittest.TestCase):
+    """nginx HTML cache purge: a new epoch in the key, nginx -t, reload, a log line."""
+
+    class Result:
+        def __init__(self, code=0, err=''):
+            self.returncode, self.stderr, self.stdout = code, err, ''
+
+    def test_purge_moves_to_a_new_epoch_reloads_and_logs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            epoch = Path(tmp) / 'uapt-html-cache-epoch.inc'
+            epoch.write_text(pr.render_html_cache_epoch('initial'))
+            calls = []
+            record = pr.purge_html_cache('content switch c1', epoch_file=epoch, purge_log=Path(tmp) / 'log.jsonl',
+                                         runner=lambda args, check=True: calls.append(args) or self.Result())
+            self.assertEqual(calls, [['nginx', '-t'], ['systemctl', 'reload', 'nginx']])
+            self.assertEqual(record['previous'], 'initial')
+            self.assertIn(f'default "{record["epoch"]}"', epoch.read_text())
+            self.assertEqual(json.loads((Path(tmp) / 'log.jsonl').read_text())['reason'], 'content switch c1')
+
+    def test_failed_config_test_restores_the_previous_epoch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            epoch = Path(tmp) / 'e.inc'
+            before = pr.render_html_cache_epoch('e1')
+            epoch.write_text(before)
+            with self.assertRaisesRegex(pr.Refused, 'nginx -t failed'):
+                pr.purge_html_cache('x', epoch_file=epoch, purge_log=Path(tmp) / 'l', runner=lambda args, check=True: self.Result(1, 'bad'))
+            self.assertEqual(epoch.read_text(), before)
+
+    def test_missing_cache_is_a_no_op_and_epochs_are_validated(self):
+        self.assertIsNone(pr.purge_html_cache('x', epoch_file='/nonexistent/e.inc', runner=lambda *a, **k: self.fail('no commands')))
+        with self.assertRaises(pr.Refused):
+            pr.render_html_cache_epoch('bad"; }')
+
+    def test_epoch_template_matches_the_repository_bootstrap_file(self):
+        shipped = (ROOT / 'infra/nginx/uapt-html-cache-epoch.inc').read_text()
+        self.assertEqual(shipped, pr.render_html_cache_epoch('initial'))
