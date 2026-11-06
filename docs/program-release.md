@@ -163,10 +163,12 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
 6. **Writable cache path.** The release tree is otherwise read-only at runtime
    (ISR stays in memory), but `/_next/image` writes `apps/web/.next/cache/`;
    give the service user that directory only.
-7. **Cold start.** No page is prerendered. Measured locally the first render
-   took 1–8 s (`/reports`, `/feeds/atom.xml` slowest); T1 loopback checks warm the
-   L1/L2 core pages one at a time (no concurrent warm-up, per the lifecycle
-   rules) before routing.
+7. **Cold start.** No page is prerendered, and the ISR cache is in memory, so
+   every restart starts cold.
+   - **How slow cold renders are.** On the loaded production host, first renders took up to 60–110 s (`/sitemaps/zh.xml`, `/reports`), which is longer than the 60 s proxy timeout.
+   - **Enable warm-up.** Set `UAPT_WARMUP_ON_START=1` in the runtime env. After each start the server then requests the heavy pages, followed by every sitemap URL (up to 5,000), over loopback, one request at a time.
+   - **Wait before routing.** Wait for the journal line `Runtime warm-up finished` before routing; sample cold pages if it is still running.
+   - **Timing.** About 3,900 requests took 6 minutes locally and about 40 minutes on the host.
 8. **Long-lived pages.** Pages with `revalidate = false` (`/about`, `/changes`,
    `/reports`) are cached for a year at Cloudflare. A switch that changes the
    V6 reading cohort also changes the cohort every page embeds; untagged static
