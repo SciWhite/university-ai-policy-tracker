@@ -1,6 +1,6 @@
 "use client";
 
-import { browserTrafficKind, ANALYTICS_MEASUREMENT_VERSION } from "./analytics-traffic";
+import { browserTrafficKind, browserWebdriver, ANALYTICS_MEASUREMENT_VERSION } from "./analytics-traffic";
 
 import { analyticsOptedOut } from "@/lib/analytics-preference";
 
@@ -24,6 +24,7 @@ export function trackResearchEvent(
     ...getLandingAnalyticsProperties(pathname, getAnalyticsSessionId()),
     ...properties,
     trafficKind: browserTrafficKind(),
+    webdriver: browserWebdriver() || undefined,
     pathname
   });
 
@@ -48,6 +49,7 @@ export function trackPageView(properties: AnalyticsProperties = {}) {
       ...getLandingAnalyticsProperties(pathname, sessionId),
       ...properties,
       trafficKind: browserTrafficKind(),
+      webdriver: browserWebdriver() || undefined,
       pathname
     });
 

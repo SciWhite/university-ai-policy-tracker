@@ -1,4 +1,4 @@
-import { requestTrafficKind, normalizeTrafficKind, ANALYTICS_MEASUREMENT_VERSION } from "@/lib/analytics-traffic";
+import { requestTrafficKind, normalizeTrafficKind, requestAutomationHints, AUTOMATION_SERVER_KEYS, ANALYTICS_MEASUREMENT_VERSION } from "@/lib/analytics-traffic";
 import { requestAnalyticsOptedOut } from "@/lib/analytics-preference";
 import { NextResponse } from "next/server";
 import {
@@ -83,6 +83,9 @@ export async function POST(request: Request) {
   const requestKind = requestTrafficKind(request.headers);
   properties.traffic_kind = requestKind !== "unclassified" ? requestKind : normalizeTrafficKind(properties.traffic_kind);
   properties.measurement_version = ANALYTICS_MEASUREMENT_VERSION;
+  // Server-observed facts for read-time automation classification; client copies are never trusted.
+  for (const key of AUTOMATION_SERVER_KEYS) delete properties[key];
+  Object.assign(properties, requestAutomationHints(request.headers));
   const requestAnalyticsContext = getRequestAnalyticsContext(request);
   if (requestAnalyticsContext.botFamily) {
     properties.bot_family = requestAnalyticsContext.botFamily;

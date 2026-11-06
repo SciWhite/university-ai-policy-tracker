@@ -69,9 +69,19 @@ export interface AnalyticsDashboardApiMetrics {
   zeroResultRequests: number;
 }
 
+export interface AnalyticsDashboardSuspectedAutomation {
+  countries: Array<{ count: number; label: string }>;
+  events: number;
+  pageViews: number;
+  sessions: number;
+  signals: Array<{ count: number; label: string }>;
+}
+
 export interface AnalyticsDashboardBotDiagnostics {
   families: Array<{ count: number; label: string }>;
   knownFamilyPageViews: number;
+  /** Sessions classified at read time as suspected automation; excluded from every human total. */
+  suspectedAutomation: AnalyticsDashboardSuspectedAutomation;
   uniquePaths: number;
   unknownFamilyPageViews: number;
 }
