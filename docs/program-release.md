@@ -184,3 +184,40 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
 10. **Retention.** Record the new release root, the previous accepted program
     release (rollback) and nothing else per role; old full-workspace release
     directories follow the archive rules.
+
+## 6. Minimal nginx routing (prepared 2026-11-06, not installed)
+
+**Old routing.** The live site config holds about 135k lines. It has:
+- about 19,800 exact `location =` entries;
+- 30 zone snippets left over from per-school releases.
+
+Since R1, every one of those entries proxies to the same app.
+
+**The generator.** `scripts/nginx-minimal-routing.py <nginx -T dump> <out> uapt_next_backend` rebuilds the site's locations. It keeps these verbatim:
+- static aliases (1,221);
+- pure `return` entries (107 redirects and retired-prefix 404s);
+- proxies to non-app ports (MCP `/api/mcp` on 3161);
+- the cached prefix blocks (`/api/public/v1/`, `/feeds/`, `/datasets`, `/sources`, `/search`, `/robots.txt`).
+
+Everything else becomes one `location /` → `uapt_next_backend`. That location has a 180 s read timeout and no `private, no-store` header.
+
+**What changes after the switch.** A program cutover then only rewrites `uapt-main-upstream.conf`.
+
+**Cleanups it makes.**
+- It drops the per-page RSC "Document navigation required" stubs of the old V5 zones.
+- It drops another site's (`clb-pro`) CSP include that old static snippets had picked up.
+
+**Equivalence test.**
+- **Setup:** `scripts/nginx-minimal-routing-compare.py`, run on the host against a separate nginx instance on 127.0.0.1:18080, with production untouched.
+- **Run of 2026-11-06:** 1,936 URLs, made up of every static or return path, 600 random app paths and 10 specials. 1,799 responses were identical. The rest differ for benign reasons:
+  - JSON `generatedAt` timestamps;
+  - first-request (cold) metadata streaming;
+  - production's duplicated `Location` header on 5 redirects.
+- **Evidence:** `/srv/uapt/operations/nginx-min-20261106/`.
+
+**Install.** Install it as `routingFiles` of the next controller program release, in place of `uapt-proxy-locations.conf` and `uapt-eea1eb21-detail-routes.conf`. Then:
+- run `nginx -t`;
+- read back the public URL matrix;
+- purge Cloudflare.
+
+Keep the old files for rollback.
