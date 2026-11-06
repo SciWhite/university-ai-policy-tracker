@@ -328,20 +328,30 @@ def unmanaged_references(nginx_root, port):
     return found
 
 
-def generate_routing(nginx_root, out_dir, old_port, new_port, code_sha):
+def generate_routing(nginx_root, out_dir, old_port, new_port, code_sha, replacements=None):
+    """Stage every managed snippet that routes to the old port, retargeted to the new
+    one. `replacements` (snippet name -> file) stage reviewed new content for a snippet,
+    e.g. a consolidated routing set; it is retargeted the same way and always staged."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    replacements = {Path(k).name: Path(v) for k, v in (replacements or {}).items()}
+    managed = {p.name: p for p in managed_snippets(nginx_root)}
+    unknown = sorted(set(replacements) - set(managed))
+    if unknown:
+        raise Refused('Replacements must name existing /etc/nginx/snippets/uapt-*.conf files: ' + ', '.join(unknown))
     files, total = [], 0
-    for target in managed_snippets(nginx_root):
-        source_text = target.read_text()
+    for name, target in sorted(managed.items()):
+        live_text = target.read_text()
+        source_text = replacements[name].read_text() if name in replacements else live_text
         text, count = retarget(source_text, old_port, new_port, code_sha)
-        if not count:
+        if not count and name not in replacements:
             continue
         total += count
         staged = out_dir / target.name
         staged.write_text(text)
         files.append({'target': str(Path('/etc/nginx/snippets') / target.name) if Path(nginx_root) == NGINX_ROOT else str(target),
-                      'beforeSha256': sha256_bytes(source_text.encode()), 'source': str(staged), 'sha256': sha256_file(staged)})
+                      'beforeSha256': sha256_bytes(live_text.encode()), 'source': str(staged), 'sha256': sha256_file(staged),
+                      **({'replacement': str(replacements[name]), 'replacementSha256': sha256_file(replacements[name])} if name in replacements else {})})
     left = [f['source'] for f in files if port_pattern(old_port).search(Path(f['source']).read_text())]
     return {'routingFiles': files, 'replacements': total, 'oldPort': int(old_port), 'newPort': int(new_port), 'oldPortLeftInStaged': left}
 
@@ -1348,7 +1358,8 @@ def cmd_routing(args):
     if state['steps'].pop('plan', None):
         op.save()
         log('routing regenerated: the previous plan is void; rerun plan')
-    result = generate_routing(NGINX_ROOT, out, state['activePort'], state['candidatePort'], state['codeSha'])
+    replacements = dict(item.split('=', 1) for item in args.replace or [])
+    result = generate_routing(NGINX_ROOT, out, state['activePort'], state['candidatePort'], state['codeSha'], replacements)
     if not result['routingFiles']:
         raise Refused(f'No /etc/nginx/snippets/uapt-*.conf routes to 127.0.0.1:{state["activePort"]}')
     if result['oldPortLeftInStaged']:
@@ -1705,7 +1716,9 @@ def main(argv=None):
     p = add('capacity', cmd_capacity)
     p.add_argument('--force', action='store_true')
 
-    add('routing', cmd_routing)
+    p = add('routing', cmd_routing)
+    p.add_argument('--replace', action='append', metavar='SNIPPET=FILE',
+                   help='stage reviewed new content for a managed snippet (e.g. uapt-proxy-locations.conf=<generated minimal routing>); repeatable')
 
     p = add('ledger', cmd_ledger)
     p.add_argument('--readback', choices=['auto', 'sample', 'full'], default='auto', help='override the scope chosen at install')

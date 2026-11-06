@@ -197,6 +197,28 @@ class RoutingTests(unittest.TestCase):
             self.assertEqual(item['sha256'], sha(item['source']))
         self.assertEqual(result['oldPortLeftInStaged'], [])
 
+    def test_replacement_snippets_are_staged_and_upstream_only_switch_works(self):
+        minimal = self.tmp / 'minimal-locations.conf'
+        minimal.write_text('location ^~ /_next/static/ { alias /srv/uapt/static/x/; }\nlocation / { proxy_pass http://uapt_next_backend; }\n')
+        empty = self.tmp / 'empty.conf'
+        empty.write_text('# consolidated into uapt-proxy-locations.conf\n')
+        (self.nginx / 'snippets/uapt-eea1eb21-detail-routes.conf').write_text('location /changes/x { proxy_pass http://127.0.0.1:3102; }\n')
+        result = pr.generate_routing(self.nginx, self.tmp / 'r1', 3101, 3102, self.code,
+                                     {'uapt-proxy-locations.conf': minimal, 'uapt-eea1eb21-detail-routes.conf': empty})
+        staged = {Path(f['target']).name: f for f in result['routingFiles']}
+        self.assertEqual(sorted(staged), ['uapt-eea1eb21-detail-routes.conf', 'uapt-main-upstream.conf', 'uapt-proxy-locations.conf'])
+        self.assertEqual(Path(staged['uapt-proxy-locations.conf']['source']).read_text(), minimal.read_text())
+        self.assertEqual(staged['uapt-proxy-locations.conf']['beforeSha256'], sha(self.nginx / 'snippets/uapt-proxy-locations.conf'))
+        self.assertEqual(staged['uapt-eea1eb21-detail-routes.conf']['replacementSha256'], sha(empty))
+        # Once installed, the next release only switches the upstream.
+        (self.nginx / 'snippets/uapt-proxy-locations.conf').write_text(minimal.read_text())
+        (self.nginx / 'snippets/uapt-eea1eb21-detail-routes.conf').write_text(empty.read_text())
+        (self.nginx / 'snippets/uapt-main-upstream.conf').write_text('upstream uapt_next_backend {\n    server 127.0.0.1:3102 max_fails=3;\n}\n')
+        result = pr.generate_routing(self.nginx, self.tmp / 'r2', 3102, 3101, self.code)
+        self.assertEqual([Path(f['target']).name for f in result['routingFiles']], ['uapt-main-upstream.conf'])
+        with self.assertRaisesRegex(pr.Refused, 'existing'):
+            pr.generate_routing(self.nginx, self.tmp / 'r3', 3101, 3102, self.code, {'uapt-new.conf': empty})
+
     def test_unmanaged_reference_to_the_retiring_port_is_reported(self):
         self.assertEqual(pr.unmanaged_references(self.nginx, 3101), [])
         (self.nginx / 'sites-enabled/other').write_text('location /y { proxy_pass http://127.0.0.1:3101; }\n')
