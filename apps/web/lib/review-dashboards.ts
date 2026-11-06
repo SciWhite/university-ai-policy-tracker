@@ -21,6 +21,7 @@ import { getEntityAliasResolver } from "./entity-aliases";
 import { getStagedPublicDataset } from "./staged-public-data";
 import { getAbsoluteSiteUrl } from "./site-url";
 import { contentScoped } from "./content-runtime";
+import { findRepoRoot } from "./repo-root";
 
 const QS_2026_TOP_100 =
   "data/rankings/qs-world-university-rankings-2026-top-100.json";
@@ -1361,26 +1362,6 @@ function recommendStagingAction(input: {
     return "Resolve JHU canonical slug/review-state mapping before promotion.";
   }
   return "Review for possible next manifest promotion.";
-}
-
-async function findRepoRoot(): Promise<string> {
-  let current = process.cwd();
-
-  for (;;) {
-    try {
-      await readFile(path.join(current, "package.json"), "utf8");
-      const stagingExists = await directoryExists(path.join(current, "staging"));
-      const appsExists = await directoryExists(path.join(current, "apps"));
-
-      if (stagingExists && appsExists) return current;
-    } catch {
-      // Continue walking upward.
-    }
-
-    const parent = path.dirname(current);
-    if (parent === current) return process.cwd();
-    current = parent;
-  }
 }
 
 async function directoryExists(directory: string): Promise<boolean> {
