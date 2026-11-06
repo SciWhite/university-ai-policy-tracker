@@ -288,7 +288,7 @@ and the next one.
 | `plan` | Retention receipt (register + new root as `candidate`); refuses unclassified roots or temporary artifacts. Lifecycle plan with a fresh transaction id per attempt (`<op>`, then `<op>-p2`, …: the controller keeps `transactions/<id>` even after a failed cutover). Expiry is bounded by the plan window and by the candidate's start time plus `candidateTtlHours`. Peak budgets are at least the measured peaks and the previous plan's, never above policy. `publicChecks` is the BUILD_ID `_buildManifest.js` hash only: it shows the new assets are served from the shared static alias, not that routing switched (the completion readback's BUILD_ID-in-HTML and the controller's `nginx -T` check prove that); cold renders stay out of the cutover window. Then the controller `gate`. | `retention.json`, `plan.json`, `gate.log` |
 | `cutover` | Checks routing drift first, then controller `cutover` (journal, candidate checks, routing switch, nginx reload, static public check). | `cutover.log` |
 | `complete` | Public readback of the same scope on `https://eduaipolicy.org` (pages carry `?uapt_readback=<plan id>` against stale CDN HTML; `--no-cache-bust` turns this off). Completion event and `verify-sync … complete`. Controller `complete`: a retired slot that ended `failed` is `reset-failed` and completion retried once. Confirms that the controller updated the retention register (7.4), then runs the read-only `retention` check. | `sync/program-complete/`, `complete-*.log`, `retention.log`, `RESULT.json` |
-| `mcp` (after `complete`) | Moves the MCP unit onto this release's `apps/mcp/server.mjs`, reading the runtime content root (7.7). A trial process on 127.0.0.1:3162 must report the selected `contentId`, manifest and catalog hashes on `/healthz` and list the three tools. The unit then gets a managed drop-in and one restart, with the same checks; on failure the previous drop-in is restored and the unit restarted. `--trial-only`, `--rollback`. | `mcp/trial.json`, `mcp/mcp.env`, `mcp/dropin.conf`, `mcp/dropin-before-*` |
+| `mcp` (after `cutover`, before `complete`) | Moves the MCP unit onto this release's `apps/mcp/server.mjs`, reading the runtime content root (7.7). A trial process on 127.0.0.1:3162 must report the selected `contentId`, manifest and catalog hashes on `/healthz` and list the three tools. The unit then gets a managed drop-in and one restart, with the same checks; on failure the previous drop-in is restored and the unit restarted. `--trial-only`, `--rollback`. | `mcp/trial.json`, `mcp/mcp.env`, `mcp/dropin.conf`, `mcp/dropin-before-*` |
 
 Restarting the candidate (a crash, or `candidate` after a timeout) voids
 `capacity`, `ledger` and `plan`, which describe the old process. `candidate` and
@@ -462,7 +462,8 @@ therefore needed an MCP restart with a new drop-in.
   the selected content release declares and reloads it when the pointer
   changes (poll every 15 s, or SIGHUP). `/healthz` reports `contentId`,
   `manifestSha256`, `releaseId` and `catalogSha256`.
-- **Release.** Run `mcp --op <dir>` after `complete` on every program release,
+- **Release.** Run `mcp --op <dir>` after `cutover` and before `complete` on every program release
+  (complete classifies the retired root as rollback only when MCP no longer uses it),
   so MCP always runs from the active root. `plan` refuses when MCP still runs
   from a program root that is neither the active one nor the new one, because
   `complete` would turn it into a hold. The first move from the legacy
