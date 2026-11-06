@@ -346,9 +346,11 @@ def generate_routing(nginx_root, out_dir, old_port, new_port, code_sha):
     return {'routingFiles': files, 'replacements': total, 'oldPort': int(old_port), 'newPort': int(new_port), 'oldPortLeftInStaged': left}
 
 
-def isolated_nginx_test(nginx_root, routing_files, workdir, nginx_bin='nginx'):
+def isolated_nginx_test(nginx_root, routing_files, workdir, nginx_bin='nginx', retired_port=None):
     """Copy the nginx tree, place the staged snippets, rewrite absolute includes
-    into the copy and run `nginx -t` on it. The live configuration is not touched."""
+    into the copy and run `nginx -T` (test + dump) on it. The controller's
+    `complete` refuses while the retired endpoint appears in `nginx -T`, so the
+    same check runs here, before cutover. The live configuration is not touched."""
     nginx_root = Path(nginx_root)
     scratch = Path(tempfile.mkdtemp(prefix='nginx-test-', dir=workdir))
     try:
@@ -365,8 +367,9 @@ def isolated_nginx_test(nginx_root, routing_files, workdir, nginx_bin='nginx'):
                     continue
                 if prefix in text:
                     path.write_text(text.replace(prefix, str(copy) + '/'))
-        result = subprocess.run([nginx_bin, '-t', '-c', str(copy / 'nginx.conf'), '-p', str(copy) + '/'], capture_output=True, text=True)
-        return {'ok': result.returncode == 0, 'output': (result.stdout + result.stderr)[-4000:]}
+        result = subprocess.run([nginx_bin, '-T', '-c', str(copy / 'nginx.conf'), '-p', str(copy) + '/'], capture_output=True, text=True)
+        left = retired_port is not None and bool(port_pattern(retired_port).search(result.stdout))
+        return {'ok': result.returncode == 0 and not left, 'retiredEndpointInConfig': left, 'output': (result.stdout[-1000:] + result.stderr)[-4000:]}
     finally:
         shutil.rmtree(scratch, ignore_errors=True)
 
@@ -837,12 +840,47 @@ def build_retention_receipt(register, observed_roots, observed_temps, new_entry,
     return receipt
 
 
+def next_plan_id(base, transactions_dir):
+    """The controller creates transactions/<id> once (exist_ok=False), even for a
+    cutover that then fails and recovers. Each plan attempt gets an unused id."""
+    base = base[:76].rstrip('-')
+    for attempt in range(1, 100):
+        candidate = base if attempt == 1 else f'{base}-p{attempt}'
+        if not (Path(transactions_dir) / candidate).exists():
+            return candidate
+    raise Refused('No free transaction id for ' + base)
+
+
+def plan_expiry(at, plan_hours, ttl_hours, candidate_started):
+    """Bounded by the plan window and by the candidate's own lifetime since it started."""
+    expires = min(at + datetime.timedelta(hours=min(plan_hours, ttl_hours)), candidate_started + datetime.timedelta(hours=ttl_hours)) - datetime.timedelta(minutes=5)
+    if expires <= at + datetime.timedelta(minutes=15):
+        raise Refused(f'The candidate started {candidate_started.isoformat()} and reaches its {ttl_hours} h lifetime; restart it with candidate')
+    return expires
+
+
+def peak_budgets(measured, previous, policy, candidate_override=None, build_override=None):
+    """At least the measured peaks (the gate refuses understated budgets), at least the
+    previous plan's, never above the policy limits."""
+    runtime = max(v for k, v in measured.items() if k != 'build')
+    candidate_cap = policy['candidatePeakMaxBytes']
+    build_cap = policy.get('buildPeakMaxBytes', candidate_cap)
+    candidate = candidate_override or min(candidate_cap, max(runtime, previous.get('candidatePeakBytes') or 0))
+    build = build_override or min(build_cap, max(measured['build'], previous.get('buildPeakBytes') or 0))
+    if candidate < runtime or build < measured['build'] or candidate > candidate_cap or build > build_cap:
+        raise Refused(f'Peak budgets {candidate}/{build} do not cover measured {measured} within policy limits')
+    return candidate, build
+
+
 def build_plan(*, plan_id, expires_at, policy_sha, basis, sync_ledger, retention, static_receipt, capacity, runtime_env, helper,
                routing_files, build_id, build_manifest_sha256, candidate_unit, candidate_port, active_unit, active_port,
                keep_active, disk_budget, candidate_peak, build_peak, purpose, origin=ORIGIN):
     """Lifecycle plan (uapt-release-lifecycle-plan-v1). publicChecks are static
-    only: the BUILD_ID manifest proves the switch; page semantics are checked by
-    the completion ledger's public readback, not by a cold render at cutover."""
+    only: they prove the new BUILD_ID assets are publicly served from the shared
+    static alias (not that routing switched, since that alias is shared). The
+    switch is proven by the completion ledger's public readback (BUILD_ID in every
+    page's HTML) and the controller's `nginx -T` check at complete; cold renders
+    are kept out of the cutover window."""
     return {
         'schemaVersion': 'uapt-release-lifecycle-plan-v1', 'id': plan_id, 'expiresAt': expires_at, 'policySha256': policy_sha,
         'basis': basis, 'syncLedger': sync_ledger, 'retentionReceipt': retention, 'staticArchiveReceipt': static_receipt,
@@ -903,6 +941,8 @@ def discover(args):
         raise Refused(f'{active} must use exactly one EnvironmentFile; pass --env')
     env_source = Path(getattr(args, 'env', None) or env_files[0])
     env = parse_env(env_source.read_text())
+    if not env.get('UAPT_CONTENT_ROOT'):
+        raise Refused(f'{env_source} does not set UAPT_CONTENT_ROOT; the runtime env file must select the content root')
     mcp_units = [u for u in policy['activeUnits'] if u not in slots]
     mcp_env = unit_env(mcp_units[0]) if len(mcp_units) == 1 else {}
     mcp_port = mcp_env.get('UAPT_MCP_PORT') or mcp_env.get('PORT')
@@ -1093,9 +1133,16 @@ def probe_latency(port, slugs, build_id):
     return rows
 
 
+def refuse_after_cutover(state, step):
+    tx = transaction()
+    if 'cutover' in state['steps'] or (tx.get('plan', {}).get('id') in state.get('planIds', []) and tx.get('stage') in ('prepared', 'selected_pending_acceptance', 'complete')):
+        raise Refused(f'{step} refused: this operation is cut over; the candidate slot now serves public traffic')
+
+
 def cmd_candidate(args):
     op = open_op(args, 'install')
     state = op.state
+    refuse_after_cutover(state, 'candidate')
     require_unchanged_content(state)
     unit, port, release = state['candidateUnit'], state['candidatePort'], Path(state['release'])
     policy = read_json(POLICY)
@@ -1143,7 +1190,9 @@ def cmd_candidate(args):
         log(f'starting {unit} on 127.0.0.1:{port} from {release.name}')
         run(['systemctl', 'restart', unit])
         started_at = iso()
-        state['steps'].pop('candidate', None)
+        # A new process invalidates everything measured or observed on the old one.
+        for step in ('candidate', 'capacity', 'ledger', 'plan'):
+            state['steps'].pop(step, None)
     current = candidate_identity(unit)
     state['candidateStart'] = {'invocationId': current['InvocationID'], 'mainPid': current['MainPID'], 'startedAt': started_at,
                                'dropin': str(target), 'dropinSha256': sha256_file(target)}
@@ -1248,6 +1297,7 @@ def discover_static_dest(nginx_root=NGINX_ROOT):
 def cmd_capacity(args):
     op = open_op(args, 'install', 'candidate')
     state = op.state
+    refuse_after_cutover(state, 'capacity')
     info = require_candidate_running(state)
     receipt_path = op.path('capacity.json')
     if receipt_path.is_file() and read_json(receipt_path)['invocationIds'].get(state['candidateUnit']) == info['InvocationID'] and not args.force:
@@ -1295,6 +1345,9 @@ def cmd_routing(args):
     out = op.path('routing')
     if out.exists():
         shutil.move(str(out), str(op.path(f'routing.superseded-{now().strftime("%Y%m%dT%H%M%S")}')))
+    if state['steps'].pop('plan', None):
+        op.save()
+        log('routing regenerated: the previous plan is void; rerun plan')
     result = generate_routing(NGINX_ROOT, out, state['activePort'], state['candidatePort'], state['codeSha'])
     if not result['routingFiles']:
         raise Refused(f'No /etc/nginx/snippets/uapt-*.conf routes to 127.0.0.1:{state["activePort"]}')
@@ -1303,11 +1356,13 @@ def cmd_routing(args):
     unmanaged = unmanaged_references(NGINX_ROOT, state['activePort'])
     if unmanaged:
         raise Refused(f'127.0.0.1:{state["activePort"]} is referenced outside the managed snippets (the controller cannot switch it): ' + ', '.join(unmanaged))
-    test = isolated_nginx_test(NGINX_ROOT, result['routingFiles'], op.dir)
+    test = isolated_nginx_test(NGINX_ROOT, result['routingFiles'], op.dir, retired_port=state['activePort'])
     result['nginxTest'] = test
     write_json(out / 'routing-files.json', result)
+    if test.get('retiredEndpointInConfig'):
+        raise Refused(f'127.0.0.1:{state["activePort"]} is still in the effective nginx config after switching (nginx -T of the copy)')
     if not test['ok']:
-        raise Refused('Isolated nginx -t failed: ' + test['output'])
+        raise Refused('Isolated nginx -T failed: ' + test['output'])
     op.done('routing', receipt=ref(out / 'routing-files.json'), files=len(result['routingFiles']), replacements=result['replacements'])
     log(f'routing: {len(result["routingFiles"])} snippets, {result["replacements"]} references {state["activePort"]} -> {state["candidatePort"]}; nginx -t ok; next: ledger')
 
@@ -1380,7 +1435,7 @@ def cmd_ledger(args):
     require_candidate_running(state)
     out = op.path('sync/program')
     if out.exists():
-        if not args.force:
+        if not args.force and 'ledger' in state['steps']:
             log(f'ledger exists: {out / "event.json"} (use --force for fresh evidence)')
             return
         shutil.move(str(out), str(op.path(f'sync/program.superseded-{now().strftime("%Y%m%dT%H%M%S")}')))
@@ -1453,7 +1508,10 @@ def cmd_plan(args):
     if args.helper:
         state['releaseHelper'] = args.helper
     require_unchanged_content(state)
-    require_candidate_running(state)
+    info = require_candidate_running(state)
+    capacity = read_json(state['steps']['capacity']['receipt']['path'])
+    if capacity['invocationIds'].get(state['candidateUnit']) != info['InvocationID'] or str(capacity['mainPids'].get(state['candidateUnit'])) != info['MainPID']:
+        raise Refused('capacity.json was measured on another candidate process; rerun capacity')
     routing = read_json(op.path('routing/routing-files.json'))
     drift = [f['target'] for f in routing['routingFiles'] if sha256_file(f['target']) != f['beforeSha256']]
     if drift:
@@ -1475,18 +1533,21 @@ def cmd_plan(args):
     disk_budget = dict(previous.get('diskBudget') or {'schemaVersion': 'uapt-release-disk-budget-v1', 'role': args.role, 'artifactMaxBytes': policy['diskCapacity']['artifactMaxBytesByRole'][args.role],
                                                       'peakAdditionalBytesByStage': {'download': 0, 'unpack': 0, 'dependencies': 0, 'build': 0, 'candidate': 1 << 30, 'archive': 0, 'finalization': 16 << 20}})
     disk_budget['role'] = args.role
-    hours = min(args.plan_hours, policy.get('candidateTtlHours', 4))
+    expires = plan_expiry(now(), args.plan_hours, policy.get('candidateTtlHours', 4), datetime.datetime.fromisoformat(state['steps']['candidate']['startedAt']))
+    candidate_peak, build_peak = peak_budgets(capacity['peakBytesByStage'], previous, policy, args.candidate_peak_bytes, args.build_peak_bytes)
+    plan_id = next_plan_id(state['planId'], LIFECYCLE / 'transactions')
+    state.setdefault('planIds', []).append(plan_id)
+    op.save()
     build_id = state['BUILD_ID']
     plan = build_plan(
-        plan_id=state['planId'], expires_at=iso(now() + datetime.timedelta(hours=hours) - datetime.timedelta(minutes=5)), policy_sha=policy_sha,
+        plan_id=plan_id, expires_at=iso(expires), policy_sha=policy_sha,
         basis=state['basis'], sync_ledger=state['steps']['ledger']['event'], retention=ref(retention_path),
         static_receipt=state['steps']['static']['receipt'], capacity=state['steps']['capacity']['receipt'],
         runtime_env=ref(op.path('runtime.env')), helper=release_helper(state), routing_files=routing['routingFiles'], build_id=build_id,
         build_manifest_sha256=sha256_file(Path(state['release']) / f'apps/web/.next/static/{build_id}/_buildManifest.js'),
         candidate_unit=state['candidateUnit'], candidate_port=state['candidatePort'], active_unit=state['activeUnit'],
         active_port=state['activePort'], keep_active=[u for u in policy['activeUnits'] if u != state['activeUnit']], disk_budget=disk_budget,
-        candidate_peak=args.candidate_peak_bytes or previous.get('candidatePeakBytes') or policy['candidatePeakMaxBytes'],
-        build_peak=args.build_peak_bytes or previous.get('buildPeakBytes') or policy['candidatePeakMaxBytes'],
+        candidate_peak=candidate_peak, build_peak=build_peak,
         purpose=args.purpose or f'Program {state["codeSha"][:12]} {build_id} (operation {op.dir.name}) on {state["candidateUnit"]} '
                                 f'127.0.0.1:{state["candidatePort"]} with runtime content {state["content"]["contentId"]}; '
                                 f'{state["activeUnit"]} (127.0.0.1:{state["activePort"]}) retires at completion.')
@@ -1496,7 +1557,7 @@ def cmd_plan(args):
     result = controller_call(op, 'gate', plan_path, log_name='gate.log')
     if result.returncode != 0:
         raise Refused('Controller gate refused: ' + (result.stderr or result.stdout)[-2000:])
-    op.done('plan', plan=str(plan_path), planSha256=sha256_file(plan_path), expiresAt=plan['expiresAt'])
+    op.done('plan', plan=str(plan_path), planSha256=sha256_file(plan_path), expiresAt=plan['expiresAt'], planId=plan_id)
     log(f'gate passed; plan {plan_path} expires {plan["expiresAt"]}; next: cutover (needs authorization)')
 
 
@@ -1507,13 +1568,18 @@ def transaction():
 def cmd_cutover(args):
     op = open_op(args, 'plan')
     state = op.state
+    plan_id = state['steps']['plan']['planId']
     tx = transaction()
-    if tx.get('plan', {}).get('id') == state['planId'] and tx.get('stage') in ('selected_pending_acceptance', 'complete'):
+    if tx.get('plan', {}).get('id') == plan_id and tx.get('stage') in ('selected_pending_acceptance', 'complete'):
         log(f'transaction {state["planId"]} already {tx["stage"]}')
         op.done('cutover', stage=tx['stage'])
         return
     if sha256_file(state['steps']['plan']['plan']) != state['steps']['plan']['planSha256']:
         raise Refused('plan.json changed after the gate; rerun plan')
+    # The controller fails on routing drift only after creating its transaction directory.
+    for item in read_json(state['steps']['plan']['plan'])['routingFiles']:
+        if sha256_file(item['target']) != item['beforeSha256'] or sha256_file(item['source']) != item['sha256']:
+            raise Refused('Routing drift since plan (' + item['target'] + '); rerun routing and plan')
     started = time.monotonic()
     result = controller_call(op, 'cutover', state['steps']['plan']['plan'], log_name='cutover.log')
     if result.returncode != 0:
@@ -1525,8 +1591,9 @@ def cmd_cutover(args):
 def cmd_complete(args):
     op = open_op(args, 'cutover', 'ledger')
     state = op.state
+    plan_id = state['steps']['plan']['planId']
     tx = transaction()
-    if tx.get('plan', {}).get('id') != state['planId']:
+    if tx.get('plan', {}).get('id') != plan_id:
         raise Refused('The pending transaction is not this operation\'s plan')
     out = op.path('sync/program-complete')
     if tx.get('stage') == 'selected_pending_acceptance':
@@ -1566,7 +1633,7 @@ def cmd_complete(args):
                       'repository (docs/program-release.md section 6) and record the register by hand once.')
     check = controller_call(op, 'retention', log_name='retention.log')
     result = {'schemaVersion': 'uapt-program-release-result-v1', 'status': 'COMPLETE' if check.returncode == 0 else 'COMPLETE_RETENTION_CHECK_FAILED',
-              'completedAt': tx.get('completedAt'), 'planId': state['planId'], 'codeSha': state['codeSha'], 'BUILD_ID': state['BUILD_ID'],
+              'completedAt': tx.get('completedAt'), 'planId': plan_id, 'codeSha': state['codeSha'], 'BUILD_ID': state['BUILD_ID'],
               'release': state['release'], 'unit': state['candidateUnit'], 'endpoint': f'127.0.0.1:{state["candidatePort"]}',
               'retired': tx.get('retireUnits'), 'content': {k: state['content'][k] for k in ('root', 'contentId', 'manifestSha256')},
               'ledger': {'mode': state['steps']['ledger']['mode'], 'schools': len(state['steps']['ledger']['sample']),

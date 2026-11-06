@@ -212,10 +212,16 @@ class RoutingTests(unittest.TestCase):
                         'conf = pathlib.Path(sys.argv[sys.argv.index("-c") + 1]); root = conf.parent\n'
                         'texts = "".join(p.read_text() for p in root.rglob("*") if p.is_file())\n'
                         f'ok = "{self.nginx}/" not in texts and "127.0.0.1:3102;" in (root / "snippets/uapt-proxy-locations.conf").read_text()\n'
-                        'print("test ok" if ok else "bad copy"); sys.exit(0 if ok else 1)\n')
+                        'print(texts if ok else "bad copy"); sys.exit(0 if ok else 1)\n')
         fake.chmod(fake.stat().st_mode | stat.S_IEXEC)
-        test = pr.isolated_nginx_test(self.nginx, result['routingFiles'], self.tmp, nginx_bin=str(fake))
+        test = pr.isolated_nginx_test(self.nginx, result['routingFiles'], self.tmp, nginx_bin=str(fake), retired_port=3101)
         self.assertTrue(test['ok'], test['output'])
+        self.assertFalse(test['retiredEndpointInConfig'])
+        # A file the copy still loads with the old port fails like the controller's nginx -T check at complete.
+        (self.nginx / 'conf.d').mkdir(exist_ok=True)
+        (self.nginx / 'conf.d/extra.conf').write_text('# 127.0.0.1:3101 leftover\n')
+        test = pr.isolated_nginx_test(self.nginx, result['routingFiles'], self.tmp, nginx_bin=str(fake), retired_port=3101)
+        self.assertEqual((test['ok'], test['retiredEndpointInConfig']), (False, True))
         self.assertIn('127.0.0.1:3101;', (self.nginx / 'snippets/uapt-proxy-locations.conf').read_text())
         self.assertEqual([p.name for p in self.tmp.iterdir() if p.name.startswith('nginx-test-')], [])
 
@@ -444,6 +450,39 @@ class CapacityRetentionPlanTests(unittest.TestCase):
             pr.build_retention_receipt(register, ['old', 'new', 'stray'], [], {'name': 'new', 'disposition': 'candidate', 'reason': 'c'}, 'b')
         with self.assertRaisesRegex(pr.Refused, 'Temporary'):
             pr.build_retention_receipt(register, ['old'], ['/srv/uapt/builds/y'], {'name': 'new', 'disposition': 'candidate', 'reason': 'c'}, 'b')
+
+    def test_each_plan_attempt_gets_an_unused_transaction_id(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(pr.next_plan_id('program-x', d), 'program-x')
+            (Path(d) / 'program-x').mkdir()
+            (Path(d) / 'program-x-p2').mkdir()
+            self.assertEqual(pr.next_plan_id('program-x', d), 'program-x-p3')
+            self.assertTrue(pr.PLAN_ID.match(pr.next_plan_id('a' * 80, d)))
+
+    def test_plan_expiry_is_bounded_by_the_candidate_lifetime(self):
+        at = datetime.datetime(2026, 11, 7, 10, 0, tzinfo=datetime.timezone.utc)
+        self.assertEqual(pr.plan_expiry(at, 7, 8, at), at + datetime.timedelta(hours=7, minutes=-5))
+        self.assertEqual(pr.plan_expiry(at, 7, 8, at - datetime.timedelta(hours=6)), at + datetime.timedelta(hours=2, minutes=-5))
+        with self.assertRaisesRegex(pr.Refused, 'lifetime'):
+            pr.plan_expiry(at, 7, 4, at - datetime.timedelta(hours=4))
+
+    def test_peak_budgets_cover_measurements_within_policy(self):
+        policy = {'candidatePeakMaxBytes': 4000, 'buildPeakMaxBytes': 8000}
+        measured = {'build': 1800, 'startup': 1800, 'cold_history': 2200, 'steady': 2100}
+        self.assertEqual(pr.peak_budgets(measured, {'candidatePeakBytes': 2000, 'buildPeakBytes': 1000}, policy), (2200, 1800))
+        self.assertEqual(pr.peak_budgets(measured, {'candidatePeakBytes': 4000, 'buildPeakBytes': 4000}, policy), (4000, 4000))
+        self.assertEqual(pr.peak_budgets(measured, {}, {'candidatePeakMaxBytes': 4000}), (2200, 1800))
+        with self.assertRaisesRegex(pr.Refused, 'do not cover'):
+            pr.peak_budgets(measured, {}, policy, candidate_override=1000)
+
+    def test_candidate_and_capacity_refuse_after_cutover(self):
+        with patch.object(pr, 'transaction', return_value={'plan': {'id': 'program-x-p2'}, 'stage': 'selected_pending_acceptance'}):
+            with self.assertRaisesRegex(pr.Refused, 'cut over'):
+                pr.refuse_after_cutover({'steps': {}, 'planIds': ['program-x', 'program-x-p2']}, 'candidate')
+            pr.refuse_after_cutover({'steps': {}, 'planIds': ['program-y']}, 'candidate')
+        with patch.object(pr, 'transaction', return_value={}):
+            with self.assertRaisesRegex(pr.Refused, 'cut over'):
+                pr.refuse_after_cutover({'steps': {'cutover': {}}}, 'capacity')
 
     def test_plan_is_admitted_by_the_controller_validator(self):
         policy = {'_sha256': 'p', 'activeUnits': ['uapt-shared-v6-r2.service', 'uapt-mcp-v6-candidate.service'], 'legacyUnits': [],
