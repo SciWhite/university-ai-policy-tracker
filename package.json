@@ -68,7 +68,7 @@
     "indexnow:all": "tsx --tsconfig apps/web/tsconfig.json scripts/submit-indexnow.ts --all",
     "program:build": "node scripts/program-build.mjs build",
     "program:package": "node scripts/program-build.mjs package",
-    "test:program-build": "node --test tests/program-build.test.mjs && python3 -m unittest tests/test_program_artifact_install.py",
+    "test:program-build": "node --test tests/program-build.test.mjs tests/mcp-bundle.test.mjs && python3 -m unittest tests/test_program_artifact_install.py",
     "test:program-release": "python3 -m unittest tests/test_program_release.py tests/test_release_lifecycle.py",
     "smoke:policy-snapshot": "tsx scripts/smoke-policy-snapshot.ts",
     "validate:i18n": "NEXT_PUBLIC_MULTILINGUAL_PHASE_TWO=1 tsx scripts/validate-i18n.ts",
@@ -105,6 +105,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "esbuild": "0.27.7",
     "tsx": "^4.19.0",
     "typescript": "^5.9.0"
   }

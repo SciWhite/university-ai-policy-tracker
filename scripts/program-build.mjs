@@ -13,6 +13,11 @@
  * a tarball with its SHA256 and a build manifest. Neither step needs secrets,
  * starts a service or touches a server. See docs/program-release.md.
  *
+ * `build` also bundles the MCP server (apps/mcp/src/server.ts) into one ESM file,
+ * apps/mcp/dist/server.mjs, which `package` ships as apps/mcp/server.mjs. It reads
+ * the same runtime content release as the web app (UAPT_CONTENT_ROOT) and
+ * hot-reloads its catalog on a content switch.
+ *
  * --local is a diagnostic mode for a dirty checkout; its artifact is marked
  * `diagnostic: true` and the server installer refuses it.
  */
@@ -34,6 +39,10 @@ const GLOBAL_NOT_FOUND_TITLE = "Page not found | University AI Policy Tracker";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const appDir = "apps/web";
+export const MCP_SOURCE = "apps/mcp/src/server.ts";
+/** Bundled MCP server, relative to the checkout (build) and to the artifact root (package). */
+export const MCP_BUNDLE = "apps/mcp/dist/server.mjs";
+export const MCP_ENTRY = "apps/mcp/server.mjs";
 
 // Path rules for anything inside the artifact. Top-level checkout directories
 // that hold content, evidence or tooling must never be traced in.
@@ -220,7 +229,28 @@ export function programBuildEnv(base = process.env) {
   return { env: { ...env, ...publicEnv, NODE_ENV: "production", UAPT_PROGRAM_BUILD: "1", NEXT_TELEMETRY_DISABLED: "1" }, publicEnv };
 }
 
-function build({ sha, local }) {
+/**
+ * One self-contained ESM file for the MCP server: its SDK, zod and @uapt/shared
+ * are inlined, so the artifact needs no extra node_modules or tsx at runtime.
+ * CommonJS dependencies inside the bundle get a real `require` for Node builtins.
+ */
+export async function bundleMcp({ root = repoRoot, outfile = path.join(root, MCP_BUNDLE) } = {}) {
+  const { build: esbuild } = await import("esbuild");
+  rmSync(outfile, { force: true });
+  const result = await esbuild({
+    entryPoints: [path.join(root, MCP_SOURCE)], outfile, bundle: true, platform: "node", format: "esm", target: "node22",
+    minify: false, sourcemap: false, legalComments: "none", logLevel: "silent", metafile: true,
+    banner: { js: 'import { createRequire as __uaptCreateRequire } from "node:module"; const require = __uaptCreateRequire(import.meta.url);' }
+  });
+  if (result.errors.length) throw new Error(`MCP bundle failed: ${result.errors.map(e => e.text).join("; ")}`);
+  const inputs = Object.keys(result.metafile.inputs);
+  // Content must come from the runtime release, never from the checkout.
+  const content = inputs.filter(file => HELD_OUT_CONTENT.some(dir => file.startsWith(`${dir}/`)) || /(^|\/)\.runtime-data\//.test(file) || file.endsWith(".json") && !file.includes("node_modules/"));
+  if (content.length) throw new Error(`MCP bundle would include checkout content: ${content.slice(0, 5).join(", ")}`);
+  return { outfile, inputs: inputs.length, bytes: lstatSync(outfile).size };
+}
+
+async function build({ sha, local }) {
   checkout(sha, local);
   // The workflow's sparse checkout omits content, so a build that still needed
   // it fails here rather than baking it in (--local may keep data/ in place).
@@ -233,7 +263,8 @@ function build({ sha, local }) {
   if (result.error) throw result.error;
   if (result.status !== 0) throw new Error(`next build failed (${result.status ?? result.signal}); no artifact`);
   if (!existsSync(path.join(dist, "standalone", appDir, "server.js"))) throw new Error("Standalone server missing; check output: standalone");
-  console.log(JSON.stringify({ status: "BUILT", codeSha: sha, BUILD_ID: readFileSync(path.join(dist, "BUILD_ID"), "utf8").trim() }));
+  const mcp = await bundleMcp();
+  console.log(JSON.stringify({ status: "BUILT", codeSha: sha, BUILD_ID: readFileSync(path.join(dist, "BUILD_ID"), "utf8").trim(), mcpBundleBytes: mcp.bytes }));
 }
 
 async function packageArtifact({ sha, out, local, markersFrom }) {
@@ -255,6 +286,10 @@ async function packageArtifact({ sha, out, local, markersFrom }) {
   cpSync(path.join(dist, "static"), path.join(appDist, "static"), { recursive: true });
   cpSync(path.join(repoRoot, appDir, "public"), path.join(standalone, appDir, "public"), { recursive: true });
   rmSync(path.join(appDist, "cache"), { recursive: true, force: true });
+  const mcpBundle = path.join(repoRoot, MCP_BUNDLE);
+  if (!existsSync(mcpBundle)) throw new Error(`${MCP_BUNDLE} missing; run the build step first`);
+  mkdirSync(path.join(standalone, path.dirname(MCP_ENTRY)), { recursive: true });
+  cpSync(mcpBundle, path.join(standalone, MCP_ENTRY));
   // Written below; a repeated package run must not list the previous copies.
   for (const name of ["source-manifest.json", "build-artifact-manifest.json"]) rmSync(path.join(standalone, name), { force: true });
 
@@ -282,6 +317,10 @@ async function packageArtifact({ sha, out, local, markersFrom }) {
     publicBuildEnv: publicEnv,
     contentFree: { checkoutContentHeldOut: contentHeldOut, prunedPrerenders: prerender.pruned.length, keptFrameworkPrerenders: prerender.kept, contentMarkersChecked: markers.length },
     entry: { workingDirectory: appDir, command: "node server.js" },
+    entries: {
+      web: { workingDirectory: appDir, command: "node server.js" },
+      mcp: { workingDirectory: path.dirname(MCP_ENTRY), command: `node ${path.basename(MCP_ENTRY)}`, path: MCP_ENTRY, sha256: createHash("sha256").update(readFileSync(path.join(standalone, MCP_ENTRY))).digest("hex") }
+    },
     files: { count: scan.files.length, symlinks: scan.symlinks.length, bytes: scan.bytes, listSha256: fileListDigest(scan), sourceManifestSha256: createHash("sha256").update(JSON.stringify(fileList) + "\n").digest("hex") }
   };
   const manifestText = JSON.stringify(manifest, null, 2) + "\n";
@@ -315,7 +354,7 @@ function parse(argv) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const options = parse(process.argv.slice(2));
-    if (options.command === "build") build(options);
+    if (options.command === "build") await build(options);
     else if (options.command === "package") await packageArtifact(options);
     else throw new Error("Usage: program-build.mjs <build|package> --sha <40-hex> [--out <dir> --markers-from <dir>] [--local]");
   } catch (error) {

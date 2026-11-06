@@ -27,10 +27,12 @@ class InstallerTests(unittest.TestCase):
         self.policy.write_text(json.dumps({'diskCapacity': {'root': str(self.tmp / 'srv'), 'reserveBytes': reserve, 'reserveInodes': 10,
                                                             'projectMaxBytes': 50 * 1024 ** 3, 'artifactMaxBytesByRole': {'main': 12 * 1024 ** 3}}}))
 
-    def make_artifact(self, *, diagnostic=False, tamper=False, bad_sha=False, traversal=False, public_env=None):
+    def make_artifact(self, *, diagnostic=False, tamper=False, bad_sha=False, traversal=False, public_env=None, mcp=None):
         tree = self.tmp / 'build-tree'
         shutil.rmtree(tree, ignore_errors=True)
         files = {'apps/web/server.js': b'require("next")\n', 'apps/web/.next/BUILD_ID': BUILD_ID.encode(), 'node_modules/.pnpm/next/node_modules/next/index.js': b'module.exports = 1\n'}
+        if mcp:
+            files['apps/mcp/server.mjs'] = b'console.log("mcp")\n'
         for rel, data in files.items():
             (tree / rel).parent.mkdir(parents=True, exist_ok=True)
             (tree / rel).write_bytes(data)
@@ -45,6 +47,11 @@ class InstallerTests(unittest.TestCase):
                     'publicBuildEnv': public_env or {'NEXT_PUBLIC_SITE_URL': 'https://eduaipolicy.org'},
                     'files': {'count': len(files), 'symlinks': 1, 'bytes': sum(map(len, files.values())), 'listSha256': m.file_list_digest(file_list),
                               'sourceManifestSha256': hashlib.sha256(list_text.encode()).hexdigest()}}
+        if mcp:
+            listed = hashlib.sha256(files['apps/mcp/server.mjs']).hexdigest()
+            manifest['entries'] = {'web': {'workingDirectory': 'apps/web', 'command': 'node server.js'},
+                                   'mcp': {'workingDirectory': 'apps/mcp', 'command': 'node server.mjs', 'path': 'apps/mcp/server.mjs',
+                                           'sha256': listed if mcp == 'ok' else '0' * 64}}
         if diagnostic:
             manifest['diagnostic'] = True
         manifest_text = json.dumps(manifest, indent=2) + '\n'
@@ -91,6 +98,18 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual(receipt['basis']['BUILD_ID'], BUILD_ID)
         self.assertEqual(receipt['retentionEntry'], {'name': NAME, 'disposition': 'candidate', 'reason': receipt['retentionEntry']['reason']})
         self.assertEqual(self.staging(), [], 'only its own staging copy is removed')
+
+    def test_mcp_entry_must_be_the_listed_bundle(self):
+        self.assertEqual(self.run_install(self.make_artifact(mcp='ok')), 0)
+        release = self.tmp / 'srv/releases' / NAME
+        self.assertTrue((release / 'apps/mcp/server.mjs').is_file())
+        shutil.rmtree(release)
+        (self.tmp / 'srv/receipts' / f'{NAME}.json').unlink()
+        err = io.StringIO()
+        with __import__('contextlib').redirect_stderr(err):
+            self.assertEqual(self.run_install(self.make_artifact(mcp='mismatch')), 1)
+        self.assertIn('MCP entry', err.getvalue())
+        self.assertFalse(release.exists())
 
     def test_existing_release_is_never_replaced(self):
         zip_path = self.make_artifact()

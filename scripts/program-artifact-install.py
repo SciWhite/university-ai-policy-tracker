@@ -36,6 +36,9 @@ HEX64 = re.compile(r'^[0-9a-f]{64}$')
 NAME = re.compile(r'^uapt-program-[0-9a-f]{12}-[A-Za-z0-9_-]{8,64}$')
 
 
+MCP_ENTRY = 'apps/mcp/server.mjs'
+
+
 class Refused(Exception):
     pass
 
@@ -256,6 +259,12 @@ def verify_tree(tree, summary):
     build_id = (tree / 'apps/web/.next/BUILD_ID').read_text().strip()
     if build_id != inner['BUILD_ID']:
         raise Refused('BUILD_ID in the tree differs from the manifest')
+    # Artifacts from f0bafd26 on carry the bundled MCP server; older ones are web-only.
+    mcp = (inner.get('entries') or {}).get('mcp')
+    if mcp is not None:
+        entry = expected_files.get(mcp.get('path', ''))
+        if not entry or entry['sha256'] != mcp.get('sha256') or mcp.get('path') != MCP_ENTRY:
+            raise Refused('The MCP entry is not the listed apps/mcp/server.mjs')
     return inner
 
 
