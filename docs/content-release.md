@@ -282,6 +282,10 @@ at a time, so an older read never replaces a newer selection. `/healthz`
 reports `contentId`, `manifestSha256` and `catalogSha256` for readback.
 Without `UAPT_CONTENT_ROOT`, the legacy `UAPT_MCP_CATALOG` +
 `UAPT_MCP_EXPECTED_RELEASE_ID` pin still applies.
+Production MCP runs this way once a program release's `mcp` step has moved it
+onto the artifact's bundled server (`docs/program-release.md` §7.7). Until
+then, a content switch still needs an MCP drop-in pointing at the new catalog
+and a restart.
 
 ## 8. Publishing a monthly report
 

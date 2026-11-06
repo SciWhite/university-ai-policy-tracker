@@ -25,7 +25,7 @@ Run on the host as root, e.g.
   GH_TOKEN=... program-release.py install --sha <40-hex> --run-id <id>
   program-release.py candidate --op <dir>     (then static, capacity, ...)
 """
-import argparse, concurrent.futures, datetime, fcntl, grp, hashlib, importlib.util, json, os, re, shlex, shutil, subprocess, sys, tempfile, threading, time, urllib.error, urllib.request
+import argparse, concurrent.futures, datetime, fcntl, grp, pwd, hashlib, importlib.util, json, os, re, shlex, shutil, subprocess, sys, tempfile, threading, time, urllib.error, urllib.request
 from pathlib import Path
 
 OPERATIONS = Path('/srv/uapt/operations')
@@ -48,6 +48,9 @@ CANDIDATE_MEMORY_HIGH = 3758096384
 CANDIDATE_MEMORY_MAX = 4294967296
 STATE_SCHEMA = 'uapt-program-release-operation-v1'
 WARMUP_LINE = 'Runtime warm-up finished'
+MCP_ENTRY = 'apps/mcp/server.mjs'
+MCP_TRIAL_PORT = 3162
+MCP_TOOLS = ['get_policy_evidence', 'get_student_policy', 'resolve_university']
 SHA40 = re.compile(r'^[0-9a-f]{40}$')
 HEX64 = re.compile(r'^[0-9a-f]{64}$')
 PLAN_ID = re.compile(r'^[a-z0-9][a-z0-9-]{0,79}$')
@@ -956,6 +959,10 @@ def discover(args):
     mcp_units = [u for u in policy['activeUnits'] if u not in slots]
     mcp_env = unit_env(mcp_units[0]) if len(mcp_units) == 1 else {}
     mcp_port = mcp_env.get('UAPT_MCP_PORT') or mcp_env.get('PORT')
+    mcp_catalog = getattr(args, 'mcp_catalog', None) or mcp_env.get('UAPT_MCP_CATALOG')
+    if not mcp_catalog and mcp_env.get('UAPT_CONTENT_ROOT'):
+        # An MCP unit on the content root serves the catalog the active release declares.
+        mcp_catalog = str(content_release_mcp(mcp_env['UAPT_CONTENT_ROOT'])['path'])
     previous = previous_plan()
     return {
         'policy': policy, 'slots': slots, 'activeUnit': active, 'activePort': slots[active], 'candidateUnit': candidate,
@@ -963,7 +970,7 @@ def discover(args):
         'envSource': str(env_source), 'contentRoot': env.get('UAPT_CONTENT_ROOT'),
         'mcp': {'unit': mcp_units[0] if len(mcp_units) == 1 else None,
                 'endpoint': getattr(args, 'mcp_endpoint', None) or (f'127.0.0.1:{mcp_port}' if mcp_port else None),
-                'catalog': getattr(args, 'mcp_catalog', None) or mcp_env.get('UAPT_MCP_CATALOG')},
+                'catalog': mcp_catalog},
         'keepActive': [u for u in policy['activeUnits'] if u != active],
         'previousPlan': previous,
     }
@@ -1017,6 +1024,117 @@ def require_unchanged_content(state):
     if pointer.get('contentId') != state['content']['contentId'] or pointer.get('manifestSha256') != state['content']['manifestSha256']:
         raise Refused('The content pointer changed since install; start a new operation for the new content basis')
     return pointer
+
+
+def content_release_mcp(root, content_id=None):
+    """The MCP catalog the selected content release declares, as MCP itself checks it
+    (apps/mcp/src/content.ts): path inside the release tree, bytes hash, release id."""
+    root = Path(root)
+    pointer = content_pointer(root)
+    content_id = content_id or pointer['contentId']
+    release = root / 'releases' / content_id
+    manifest_bytes = (release / 'manifest.json').read_bytes()
+    manifest = json.loads(manifest_bytes)
+    mcp = manifest.get('mcp')
+    if not mcp:
+        raise Refused(f'Content release {content_id} declares no MCP catalog')
+    tree = (release / 'tree').resolve()
+    path = (tree / mcp['catalog']).resolve()
+    if tree not in path.parents:
+        raise Refused('MCP catalog escapes its content release')
+    return {'contentId': content_id, 'manifestSha256': sha256_bytes(manifest_bytes), 'path': path,
+            'releaseId': mcp['releaseId'], 'catalogSha256': mcp['sha256']}
+
+
+def mcp_identity_problems(health, expected):
+    """What an MCP /healthz must report to serve the selected content release."""
+    problems = []
+    if not health.get('ok'):
+        problems.append('healthz not ok')
+    for key in ('contentId', 'manifestSha256', 'releaseId', 'catalogSha256'):
+        if health.get(key) != expected.get(key):
+            problems.append(f'{key} is {health.get(key)!r}, expected {expected.get(key)!r}')
+    return problems
+
+
+def mcp_runtime_env(current, *, content_root, port, node_bin, telemetry_file=None):
+    """Env file for MCP on the content root. The catalog pin (UAPT_MCP_CATALOG,
+    UAPT_MCP_EXPECTED_RELEASE_ID) is dropped: the content pointer selects the catalog."""
+    telemetry = telemetry_file or current.get('UAPT_MCP_TELEMETRY_FILE')
+    if not telemetry:
+        raise Refused('The MCP unit has no UAPT_MCP_TELEMETRY_FILE; production MCP requires one')
+    env = {'NODE_ENV': 'production', 'UAPT_CONTENT_ROOT': str(content_root), 'UAPT_MCP_PORT': str(port),
+           'UAPT_MCP_TELEMETRY_FILE': telemetry, 'UAPT_MCP_PUBLIC_ORIGIN': current.get('UAPT_MCP_PUBLIC_ORIGIN') or f'https://{SITE_HOST}',
+           'PATH': f'{Path(node_bin).parent}:/usr/bin:/bin'}
+    for key in ('NODE_OPTIONS', 'UAPT_MCP_CONTENT_POLL_MS'):
+        if current.get(key):
+            env[key] = current[key]
+    return ''.join(f'{k}={shlex.quote(v)}\n' for k, v in env.items())
+
+
+def render_mcp_dropin(*, release, env_file, node_bin, user=SERVICE_USER):
+    mcp = Path(release) / Path(MCP_ENTRY).parent
+    return '\n'.join([
+        '# Managed by scripts/release/program-release.py (mcp step); replaced when the next program release moves MCP.',
+        '[Service]',
+        f'User={user}', f'Group={user}',
+        f'WorkingDirectory={mcp}',
+        'Environment=', 'EnvironmentFile=', 'PassEnvironment=', 'UnsetEnvironment=',
+        f'EnvironmentFile={env_file}',
+        'ExecStart=',
+        f'ExecStart={node_bin} {Path(release) / MCP_ENTRY}',
+        'SuccessExitStatus=143',
+        'Restart=on-failure', 'RestartSec=5s', 'TimeoutStopSec=20s',
+        'ReadWritePaths=',
+        'ReadWritePaths=/srv/uapt/mcp-telemetry',
+        '',
+    ])
+
+
+def mcp_check(endpoint, expected, *, timeout=90, get=http_get, post=None):
+    """Wait until MCP at `endpoint` serves exactly the expected catalog, then list its tools."""
+    post = post or http_post_json
+    deadline = time.monotonic() + timeout
+    problems = ['no answer']
+    while time.monotonic() < deadline:
+        status, body, _, _ = get(f'http://{endpoint}/healthz', {}, 10)
+        if status == 200:
+            health = json.loads(body)
+            problems = mcp_identity_problems(health, expected)
+            if not problems:
+                status, body = post(f'http://{endpoint}/api/mcp', {'jsonrpc': '2.0', 'id': 1, 'method': 'tools/list'})
+                tools = sorted(t['name'] for t in json.loads(body).get('result', {}).get('tools', [])) if status == 200 else []
+                if tools != MCP_TOOLS:
+                    raise Refused(f'MCP at {endpoint} lists tools {tools}, expected {MCP_TOOLS}')
+                return {'health': health, 'tools': tools}
+        else:
+            problems = [f'healthz HTTP {status}']
+        time.sleep(1)
+    raise Refused(f'MCP at {endpoint} does not serve the selected content release: ' + '; '.join(problems))
+
+
+def http_post_json(url, payload, timeout=30):
+    data = json.dumps(payload).encode()
+    request = urllib.request.Request(url, data=data, method='POST', headers={
+        'User-Agent': 'uapt-program-release/1.0', 'Host': SITE_HOST, 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream'})
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            return response.status, response.read()
+    except urllib.error.HTTPError as error:
+        return error.code, error.read() if error.fp else b''
+    except (urllib.error.URLError, OSError):
+        return 0, b''
+
+
+def pwd_uid(user):
+    return pwd.getpwnam(user).pw_uid
+
+
+def port_in_use(port):
+    import socket
+    with socket.socket() as sock:
+        sock.settimeout(1)
+        return sock.connect_ex(('127.0.0.1', int(port))) == 0
 
 
 def candidate_identity(unit):
@@ -1511,6 +1629,26 @@ def controller_call(op, action, *extra, log_name):
     return result
 
 
+def mcp_root_problem(mcp_root, active_root, new_root):
+    """An MCP unit on a program release must run from the active root or this one;
+    `complete` turns the active root into the rollback and holds the one before it."""
+    if mcp_root and mcp_root.startswith('uapt-program-') and mcp_root not in (active_root, new_root):
+        return (f'MCP runs from {mcp_root}, neither the active release {active_root} nor {new_root}; '
+                'run `mcp` for the active release first so this release cannot retire its root')
+    return None
+
+
+def require_mcp_on_live_root(state):
+    unit = (state.get('mcp') or {}).get('unit')
+    if not unit:
+        return
+    mcp_root = release_root_name(show_value(unit_props(unit, 'WorkingDirectory'), 'WorkingDirectory'))
+    active_root = release_root_name(show_value(unit_props(state['activeUnit'], 'WorkingDirectory'), 'WorkingDirectory'))
+    problem = mcp_root_problem(mcp_root, active_root, Path(state['release']).name)
+    if problem:
+        raise Refused(problem)
+
+
 def cmd_plan(args):
     op = open_op(args, 'install', 'candidate', 'static', 'capacity', 'routing', 'ledger')
     state = op.state
@@ -1519,6 +1657,7 @@ def cmd_plan(args):
     if args.helper:
         state['releaseHelper'] = args.helper
     require_unchanged_content(state)
+    require_mcp_on_live_root(state)
     info = require_candidate_running(state)
     capacity = read_json(state['steps']['capacity']['receipt']['path'])
     if capacity['invocationIds'].get(state['candidateUnit']) != info['InvocationID'] or str(capacity['mainPids'].get(state['candidateUnit'])) != info['MainPID']:
@@ -1597,6 +1736,150 @@ def cmd_cutover(args):
         raise Refused('Controller cutover failed (it recovers on failure): ' + (result.stderr or result.stdout)[-2000:])
     op.done('cutover', stage=transaction().get('stage'), seconds=round(time.monotonic() - started))
     log('selected; next: complete (public readback, completion ledger, retirement)')
+
+
+def mcp_unit_dropin(unit):
+    props = unit_props(unit, 'DropInPaths')
+    paths = [p for v in props.get('DropInPaths', []) for p in v.split()]
+    return paths
+
+
+def mcp_apply(unit, target, text):
+    """Write the managed drop-in, reload systemd and check that it applies last."""
+    target.parent.mkdir(exist_ok=True)
+    tmp = target.with_name(target.name + '.tmp')
+    tmp.write_text(text)
+    os.replace(tmp, target)
+    run(['systemctl', 'daemon-reload'])
+    paths = mcp_unit_dropin(unit)
+    if not paths or Path(paths[-1]).name != target.name:
+        raise Refused(f'Drop-in {target.name} is not applied last for {unit}: {paths[-1:]}')
+
+
+def mcp_restore(unit, target, before):
+    """Put the MCP unit back exactly as it was: the previous bytes of our drop-in, or none."""
+    if before is None:
+        target.unlink(missing_ok=True)
+    else:
+        target.write_text(before)
+    run(['systemctl', 'daemon-reload'])
+    run(['systemctl', 'restart', unit])
+
+
+def cmd_mcp(args):
+    """Move the MCP unit onto this release's bundled server, reading the runtime
+    content root (no catalog pin, hot reload on content switches). A trial process
+    on a spare port must serve the selected catalog first; after the switch the unit
+    must serve it too, or it is restored to its previous drop-in and restarted."""
+    op = open_op(args, 'complete')
+    state = op.state
+    unit = state['mcp']['unit']
+    endpoint = state['mcp']['endpoint']
+    if not unit or not endpoint:
+        raise Refused('No single MCP unit/endpoint recorded at install')
+    port = endpoint.rsplit(':', 1)[1]
+    release = Path(state['release'])
+    dropin_dir = SYSTEMD_DIR / f'{unit}.d'
+    record = state.get('mcpSwitch') or {}
+
+    if args.rollback:
+        if not record.get('dropin'):
+            raise Refused('This operation has not moved MCP; nothing to roll back')
+        before = Path(record['before']).read_text() if record.get('before') else None
+        mcp_restore(unit, Path(record['dropin']), before)
+        status, body, _, _ = http_get(f'http://{endpoint}/healthz', {}, 30)
+        for _ in range(60):
+            if status == 200:
+                break
+            time.sleep(1)
+            status, body, _, _ = http_get(f'http://{endpoint}/healthz', {}, 30)
+        if status != 200:
+            raise Refused(f'{unit} does not answer /healthz after the rollback; see journalctl -u {unit}')
+        state['steps'].pop('mcp', None)
+        state['mcpSwitch'] = {**record, 'rolledBackAt': iso(), 'healthAfterRollback': json.loads(body)}
+        op.save()
+        log(f'mcp: {unit} restored to its previous drop-in')
+        return
+
+    manifest = read_json(release / 'build-artifact-manifest.json')
+    entry = (manifest.get('entries') or {}).get('mcp')
+    bundle = release / MCP_ENTRY
+    if not entry or entry.get('path') != MCP_ENTRY or not bundle.is_file() or sha256_file(bundle) != entry.get('sha256'):
+        raise Refused(f'{release.name} carries no verified bundled MCP server ({MCP_ENTRY})')
+    require_unchanged_content(state)
+    content_root = state['content']['root']
+    selected = content_release_mcp(content_root)
+    expected = {k: selected[k] for k in ('contentId', 'manifestSha256', 'releaseId', 'catalogSha256')}
+    current_env = unit_env(unit)
+    node_bin = state['nodeBin']
+
+    mcp_dir = op.path('mcp')
+    mcp_dir.mkdir(exist_ok=True)
+    gid = grp.getgrnam(SERVICE_USER).gr_gid
+    os.chown(mcp_dir, 0, gid)
+    os.chmod(mcp_dir, 0o750)
+
+    def env_file(name, text):
+        path = mcp_dir / name
+        path.write_text(text)
+        os.chown(path, 0, gid)
+        os.chmod(path, 0o640)
+        return path
+
+    # 1. Trial: the same bundle and content root on a spare port, with its own telemetry file.
+    trial_port = args.trial_port
+    if port_in_use(trial_port):
+        raise Refused(f'Trial port 127.0.0.1:{trial_port} is in use; pass --trial-port')
+    trial_telemetry = mcp_dir / 'trial-telemetry.jsonl'
+    trial_telemetry.touch()
+    os.chown(trial_telemetry, pwd_uid(SERVICE_USER), gid)
+    trial_env = env_file('trial.env', mcp_runtime_env(current_env, content_root=content_root, port=trial_port, node_bin=node_bin, telemetry_file=str(trial_telemetry)))
+    trial_unit = f'uapt-mcp-trial-{state["planId"][-40:]}'.rstrip('-')
+    log(f'mcp: trial of {release.name}/{MCP_ENTRY} on 127.0.0.1:{trial_port}')
+    run(['systemd-run', '--unit', trial_unit, '--collect', '--quiet', '-p', f'User={SERVICE_USER}', '-p', f'Group={SERVICE_USER}',
+         '-p', f'WorkingDirectory={bundle.parent}', '-p', f'EnvironmentFile={trial_env}', '-p', 'MemoryMax=1G', node_bin, str(bundle)])
+    try:
+        trial = mcp_check(f'127.0.0.1:{trial_port}', expected, timeout=args.timeout)
+    finally:
+        run(['systemctl', 'stop', trial_unit], check=False)
+    write_json(mcp_dir / 'trial.json', {'checkedAt': iso(), 'endpoint': f'127.0.0.1:{trial_port}', 'expected': expected, **trial})
+    if args.trial_only:
+        log('mcp: trial passed; the unit was not changed (--trial-only)')
+        return
+
+    # 2. Switch the real unit, with the previous drop-in kept for rollback.
+    status, body, _, _ = http_get(f'http://{endpoint}/healthz', {}, 30)
+    previous_health = json.loads(body) if status == 200 else {'status': status}
+    names = [Path(p).name for p in mcp_unit_dropin(unit)]
+    target = dropin_dir / choose_dropin_name(names)
+    before = target.read_text() if target.exists() else None
+    if before is not None:
+        (mcp_dir / f'dropin-before-{target.name}').write_text(before)
+    runtime_env = env_file('mcp.env', mcp_runtime_env(current_env, content_root=content_root, port=port, node_bin=node_bin))
+    text = render_mcp_dropin(release=release, env_file=runtime_env, node_bin=node_bin)
+    (mcp_dir / 'dropin.conf').write_text(text)
+    state['mcpSwitch'] = {'unit': unit, 'dropin': str(target), 'before': str(mcp_dir / f'dropin-before-{target.name}') if before is not None else None,
+                          'previousWorkingDirectory': show_value(unit_props(unit, 'WorkingDirectory'), 'WorkingDirectory'),
+                          'previousHealth': previous_health, 'startedAt': iso()}
+    op.save()
+    try:
+        mcp_apply(unit, target, text)
+        props = unit_props(unit, 'WorkingDirectory', 'ExecStart', 'EnvironmentFiles')
+        if show_value(props, 'WorkingDirectory') != str(bundle.parent) or exec_argv(show_value(props, 'ExecStart'))[-1:] != [str(bundle)] \
+                or env_file_paths(props.get('EnvironmentFiles')) != [str(runtime_env)]:
+            raise Refused(f'{unit} does not resolve to the MCP drop-in after daemon-reload')
+        log(f'mcp: restarting {unit} on {endpoint}')
+        run(['systemctl', 'restart', unit])
+        result = mcp_check(endpoint, expected, timeout=args.timeout)
+    except Exception as error:
+        log(f'mcp: switch failed ({error}); restoring {unit}')
+        mcp_restore(unit, target, before)
+        state['mcpSwitch']['failed'] = str(error)
+        op.save()
+        raise
+    op.done('mcp', unit=unit, release=str(release), bundleSha256=entry['sha256'], dropin=str(target), dropinSha256=sha256_file(target),
+            env=str(runtime_env), endpoint=endpoint, health=result['health'], tools=result['tools'])
+    log(f'mcp: {unit} serves {expected["contentId"]} from {release.name}; content switches now reload it without a restart')
 
 
 def cmd_complete(args):
@@ -1740,6 +2023,12 @@ def main(argv=None):
     p = add('complete', cmd_complete)
     p.add_argument('--no-cache-bust', dest='cache_bust', action='store_false', help='read public pages without the ?uapt_readback= query')
     p.add_argument('--force', action='store_true', help='redo the public readback before the controller completes')
+
+    p = add('mcp', cmd_mcp)
+    p.add_argument('--trial-port', type=int, default=MCP_TRIAL_PORT, help='spare loopback port for the trial process')
+    p.add_argument('--timeout', type=int, default=90, help='seconds to wait for /healthz to show the selected catalog')
+    p.add_argument('--trial-only', action='store_true', help='run the trial and stop; leave the MCP unit unchanged')
+    p.add_argument('--rollback', action='store_true', help='restore the MCP drop-in this operation replaced and restart the unit')
 
     add('status', cmd_status)
 

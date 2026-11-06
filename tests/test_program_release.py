@@ -527,3 +527,85 @@ class CapacityRetentionPlanTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class McpStepTests(unittest.TestCase):
+    """The `mcp` step: MCP runs the release's bundled server on the content root."""
+
+    def content_root(self, tmp, content_id='c-demo-1', mcp=True):
+        catalog = b'{"payload":{"releaseId":"public-release-20260924-002"}}'
+        tree = Path(tmp) / 'releases' / content_id / 'tree' / 'mcp'
+        tree.mkdir(parents=True)
+        (tree / 'catalog.json').write_bytes(catalog)
+        manifest = {'schemaVersion': 'uapt-content-release-v1', 'contentId': content_id}
+        if mcp:
+            manifest['mcp'] = {'catalog': 'mcp/catalog.json', 'releaseId': 'public-release-20260924-002', 'sha256': hashlib.sha256(catalog).hexdigest()}
+        manifest_path = dump(Path(tmp) / 'releases' / content_id / 'manifest.json', manifest)
+        dump(Path(tmp) / 'current.json', {'schemaVersion': 'uapt-content-pointer-v1', 'contentId': content_id, 'manifestSha256': sha(manifest_path)})
+        return manifest_path, hashlib.sha256(catalog).hexdigest()
+
+    def test_selected_catalog_identity_comes_from_the_content_release(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest_path, catalog_sha = self.content_root(tmp)
+            selected = pr.content_release_mcp(tmp)
+            self.assertEqual(selected['contentId'], 'c-demo-1')
+            self.assertEqual(selected['manifestSha256'], sha(manifest_path))
+            self.assertEqual(selected['catalogSha256'], catalog_sha)
+            self.assertEqual(selected['path'], (Path(tmp) / 'releases/c-demo-1/tree/mcp/catalog.json').resolve())
+        with tempfile.TemporaryDirectory() as tmp:
+            self.content_root(tmp, mcp=False)
+            with self.assertRaisesRegex(pr.Refused, 'declares no MCP catalog'):
+                pr.content_release_mcp(tmp)
+
+    def test_identity_problems_name_every_mismatch(self):
+        expected = {'contentId': 'c1', 'manifestSha256': 'a' * 64, 'releaseId': 'r1', 'catalogSha256': 'b' * 64}
+        self.assertEqual(pr.mcp_identity_problems({'ok': True, **expected}, expected), [])
+        # A pinned (pre-content-root) MCP reports no contentId: that is not the selected release.
+        problems = pr.mcp_identity_problems({'ok': True, 'releaseId': 'r1', 'catalogSha256': 'b' * 64}, expected)
+        self.assertEqual(len(problems), 2)
+        self.assertTrue(any('contentId' in p for p in problems))
+
+    def test_runtime_env_drops_the_catalog_pin_and_keeps_telemetry(self):
+        current = {'UAPT_MCP_CATALOG': '/x/catalog.json', 'UAPT_MCP_EXPECTED_RELEASE_ID': 'public-release-1', 'UAPT_MCP_TELEMETRY_FILE': '/srv/uapt/mcp-telemetry/t.jsonl',
+                   'NODE_OPTIONS': '--max-old-space-size=1408', 'PORT': '3100', 'UAPT_INTERNAL_SECRET': 'never-copied'}
+        env = pr.parse_env(pr.mcp_runtime_env(current, content_root='/srv/uapt/content/runtime', port='3161', node_bin='/opt/node/bin/node'))
+        self.assertEqual(env['UAPT_CONTENT_ROOT'], '/srv/uapt/content/runtime')
+        self.assertEqual(env['UAPT_MCP_PORT'], '3161')
+        self.assertEqual(env['NODE_ENV'], 'production')
+        self.assertEqual(env['UAPT_MCP_TELEMETRY_FILE'], '/srv/uapt/mcp-telemetry/t.jsonl')
+        self.assertEqual(env['NODE_OPTIONS'], '--max-old-space-size=1408')
+        for key in ('UAPT_MCP_CATALOG', 'UAPT_MCP_EXPECTED_RELEASE_ID', 'PORT', 'UAPT_INTERNAL_SECRET'):
+            self.assertNotIn(key, env)
+        with self.assertRaisesRegex(pr.Refused, 'TELEMETRY'):
+            pr.mcp_runtime_env({}, content_root='/c', port='3161', node_bin='/n')
+
+    def test_dropin_resets_inherited_environment_and_runs_the_bundle(self):
+        text = pr.render_mcp_dropin(release='/srv/uapt/releases/uapt-program-abc-B1', env_file='/srv/uapt/operations/op/mcp/mcp.env', node_bin='/opt/node/bin/node')
+        lines = text.splitlines()
+        for reset in ('Environment=', 'EnvironmentFile=', 'UnsetEnvironment=', 'ExecStart='):
+            self.assertIn(reset, lines)
+        self.assertLess(lines.index('EnvironmentFile='), lines.index('EnvironmentFile=/srv/uapt/operations/op/mcp/mcp.env'))
+        self.assertIn('WorkingDirectory=/srv/uapt/releases/uapt-program-abc-B1/apps/mcp', lines)
+        self.assertIn('ExecStart=/opt/node/bin/node /srv/uapt/releases/uapt-program-abc-B1/apps/mcp/server.mjs', lines)
+
+    def test_check_waits_for_the_selected_catalog_then_lists_tools(self):
+        expected = {'contentId': 'c2', 'manifestSha256': 'a' * 64, 'releaseId': 'r1', 'catalogSha256': 'b' * 64}
+        answers = [(200, json.dumps({'ok': True, **expected, 'contentId': 'c1'}).encode()), (200, json.dumps({'ok': True, **expected}).encode())]
+        get = lambda url, headers, timeout: (*answers.pop(0), {}, 0.01)
+        post = lambda url, payload: (200, json.dumps({'result': {'tools': [{'name': n} for n in reversed(pr.MCP_TOOLS)]}}).encode())
+        with patch.object(pr.time, 'sleep'):
+            result = pr.mcp_check('127.0.0.1:3162', expected, timeout=30, get=get, post=post)
+        self.assertEqual(result['tools'], pr.MCP_TOOLS)
+        bad_tools = lambda url, payload: (200, b'{"result":{"tools":[]}}')
+        with self.assertRaisesRegex(pr.Refused, 'lists tools'):
+            pr.mcp_check('127.0.0.1:3162', expected, timeout=30, get=lambda u, h, t: (200, json.dumps({'ok': True, **expected}).encode(), {}, 0.01), post=bad_tools)
+        with patch.object(pr.time, 'monotonic', side_effect=[0, 1, 100]), patch.object(pr.time, 'sleep'):
+            with self.assertRaisesRegex(pr.Refused, 'does not serve the selected content release'):
+                pr.mcp_check('127.0.0.1:3162', expected, timeout=30, get=lambda u, h, t: (0, b'', {}, 0.01), post=post)
+
+    def test_plan_refuses_when_mcp_would_be_left_on_a_retiring_program_root(self):
+        self.assertIsNone(pr.mcp_root_problem('uapt-program-a', 'uapt-program-a', 'uapt-program-b'))
+        self.assertIsNone(pr.mcp_root_problem('uapt-program-b', 'uapt-program-a', 'uapt-program-b'))
+        # Legacy full-workspace roots (before the first `mcp` step) do not block a release.
+        self.assertIsNone(pr.mcp_root_problem('uapt-qs101-120-066043dd', 'uapt-program-a', 'uapt-program-b'))
+        self.assertRegex(pr.mcp_root_problem('uapt-program-old', 'uapt-program-a', 'uapt-program-b'), 'run `mcp`')

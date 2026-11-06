@@ -74,6 +74,7 @@ The upload holds three files:
 - `uapt-program-<sha12>-<BUILD_ID>.tar.gz`: the standalone tree (release root):
   `apps/web/server.js`, `apps/web/.next/` (pruned, plus `static/`),
   `apps/web/public/`, `node_modules/` (pnpm layout, relative symlinks only),
+  `apps/mcp/server.mjs` (the MCP server bundled into one ESM file, §7.7),
   `build-artifact-manifest.json`, `source-manifest.json`;
 - `<name>.tar.gz.sha256` (`sha256sum` format);
 - `artifact.json`: the build manifest plus the tarball name, SHA256, size and
@@ -82,7 +83,8 @@ The upload holds three files:
 `build-artifact-manifest.json` (`uapt-program-artifact-v1`): `codeSha`,
 `BUILD_ID`, builder (Node, pnpm, Next, platform, arch, glibc), lockfile and
 `next.config.ts` hashes, `publicBuildEnv`, `contentFree` (held-out checkout,
-pruned count, marker count) and `files` (count, bytes, `listSha256`,
+pruned count, marker count), `entries` (`web`, and `mcp` with the bundle's path
+and SHA256, checked by the installer) and `files` (count, bytes, `listSha256`,
 `sourceManifestSha256`). `source-manifest.json` (`uapt-program-file-list-v1`)
 lists every file (path, SHA256, bytes, mode) and symlink; it is named for the
 lifecycle controller's `basis.sourceManifestSha256` lookup.
@@ -261,6 +263,7 @@ and the next one.
 | `plan` | Retention receipt (register + new root as `candidate`); refuses unclassified roots or temporary artifacts. Lifecycle plan with a fresh transaction id per attempt (`<op>`, then `<op>-p2`, …: the controller keeps `transactions/<id>` even after a failed cutover). Expiry is bounded by the plan window and by the candidate's start time plus `candidateTtlHours`. Peak budgets are at least the measured peaks and the previous plan's, never above policy. `publicChecks` is the BUILD_ID `_buildManifest.js` hash only: it shows the new assets are served from the shared static alias, not that routing switched (the completion readback's BUILD_ID-in-HTML and the controller's `nginx -T` check prove that); cold renders stay out of the cutover window. Then the controller `gate`. | `retention.json`, `plan.json`, `gate.log` |
 | `cutover` | Checks routing drift first, then controller `cutover` (journal, candidate checks, routing switch, nginx reload, static public check). | `cutover.log` |
 | `complete` | Public readback of the same scope on `https://eduaipolicy.org` (pages carry `?uapt_readback=<plan id>` against stale CDN HTML; `--no-cache-bust` turns this off). Completion event and `verify-sync … complete`. Controller `complete`: a retired slot that ended `failed` is `reset-failed` and completion retried once. Confirms that the controller updated the retention register (7.4), then runs the read-only `retention` check. | `sync/program-complete/`, `complete-*.log`, `retention.log`, `RESULT.json` |
+| `mcp` (after `complete`) | Moves the MCP unit onto this release's `apps/mcp/server.mjs`, reading the runtime content root (7.7). A trial process on 127.0.0.1:3162 must report the selected `contentId`, manifest and catalog hashes on `/healthz` and list the three tools. The unit then gets a managed drop-in and one restart, with the same checks; on failure the previous drop-in is restored and the unit restarted. `--trial-only`, `--rollback`. | `mcp/trial.json`, `mcp/mcp.env`, `mcp/dropin.conf`, `mcp/dropin-before-*` |
 
 Restarting the candidate (a crash, or `candidate` after a timeout) voids
 `capacity`, `ledger` and `plan`, which describe the old process. `candidate` and
@@ -414,3 +417,37 @@ Nothing is installed by the PR.
    and `install -m 0755 scripts/program-artifact-install.py /usr/local/libexec/uapt-program-artifact-install.py`.
 4. With no transaction pending, run `uapt-release-lifecycle.py retention`
    (read-only). Then run the next release with the command.
+
+### 7.7 MCP on the program artifact
+
+Before this, MCP (`uapt-shared-v6-r2.service`, 127.0.0.1:3161) ran
+`apps/mcp/src/server.ts` through tsx from an old full-workspace release
+(`uapt-qs101-120-066043dd`), pinned by a drop-in to one catalog file
+(`UAPT_MCP_CATALOG`, `UAPT_MCP_EXPECTED_RELEASE_ID`). Every content release
+therefore needed an MCP restart with a new drop-in.
+
+- **Build.** `program-build.mjs build` bundles `apps/mcp/src/server.ts` with
+  esbuild into `apps/mcp/dist/server.mjs`: the MCP SDK, zod and `@uapt/shared`
+  are inlined and the file imports only Node builtins (about 1.4 MB). The
+  bundle refuses to include checkout content. `package` ships it as
+  `apps/mcp/server.mjs` and records it in `entries.mcp`.
+- **Runtime.** `node server.mjs` with `NODE_ENV=production`,
+  `UAPT_CONTENT_ROOT=/srv/uapt/content/runtime`, `UAPT_MCP_PORT`,
+  `UAPT_MCP_TELEMETRY_FILE`, `UAPT_MCP_PUBLIC_ORIGIN`. MCP serves the catalog
+  the selected content release declares and reloads it when the pointer
+  changes (poll every 15 s, or SIGHUP). `/healthz` reports `contentId`,
+  `manifestSha256`, `releaseId` and `catalogSha256`.
+- **Release.** Run `mcp --op <dir>` after `complete` on every program release,
+  so MCP always runs from the active root. `plan` refuses when MCP still runs
+  from a program root that is neither the active one nor the new one, because
+  `complete` would turn it into a hold. The first move from the legacy
+  workspace root is allowed.
+- **Content releases** then need no MCP restart: `content:switch --mcp-url
+  http://127.0.0.1:3161` confirms that MCP picked up the new catalog.
+- **Rollback.** `mcp --op <dir> --rollback` restores the drop-in that the step
+  replaced (or removes the managed one) and restarts the unit. A failed switch
+  does this automatically.
+- **Tests.** `tests/mcp-bundle.test.mjs` starts the bundle outside the
+  checkout against a fixture content root, lists the tools and follows a
+  pointer switch without a restart. It needs an exported catalog
+  (`apps/mcp/.runtime-data/catalog.json`) and is skipped without one.
