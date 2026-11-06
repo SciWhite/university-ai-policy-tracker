@@ -99,3 +99,7 @@ prebuild 继续检查固定槽位、全局容量、同步凭据和未完成事�
 capacity收据仍保留实际`build/startup/cold_history/steady`全部原始峰值。构建峰值不得超过`buildPeakBytes`，运行阶段峰值不得超过`candidatePeakBytes`；构建8GiB不意味着候选运行预算也要8GiB。两种门禁均检查实时主机余量和UAPT总量，不预支旧服务未来退役释放的内存。候选TTL、固定槽位、串行构建、同步合同和实际退役要求继续生效。
 
 `BUILD_ID`可能在后续类型检查或页面生成失败之前写入。固定构建入口必须确认整个生产构建退出码0、无资源/编译守护失败、无OOM、源码与运行产物身份一致，再生成可部署的artifact依据；退出码非零时即使已有`BUILD_ID`也不得启动候选或切换。普通内容细节可按用户授权在上线后复测，构建兼容失败、候选健康/接口与资源故障、权限和私有内容边界、实际公网回读、事务恢复及旧active退役不能以此豁免。此资源调整本身不授权任何held政策或私有23校材料公开。
+
+## 2026-11-06 complete 自动更新保留登记
+
+`complete` 在退役任何旧 unit 之前计算新的保留登记（存在未分类 release root 时直接拒绝，旧槽位继续运行），在写入 policy 之后写入 `retentionRegister`，并在同目录保留带时间戳的备份。新 release root 记为 `active`（角色取自 `plan.diskBudget.role`）；被退役 unit 的 release root 记为它的 `rollback`；同一角色更早的 `rollback` 转为 `held`：`heldSince` 为完成时间，`reviewBefore` 为 167 小时后（不超过 `maxHoldHours`），并写明具体 `nextAction`。已有的首次暂留时钟原样沿用，不重置、不延长；其他角色的 rollback 和已有 held 不变。新暂留写入 `hold-clocks.json`，随后对结果执行只读 retention 检查，结果记在 `transaction.json` 的 `retentionRegister`。其余门禁不变。一键发布命令与安装步骤见 [程序发布](program-release.md) 第 7 节。

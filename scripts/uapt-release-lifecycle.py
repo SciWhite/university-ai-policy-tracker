@@ -228,6 +228,105 @@ def validate_retention_receipt(plan, observed, policy=None):
         register = Path(policy['retentionRegister'])
         if not register.is_file(): raise ValueError('Authoritative retention register missing')
         validate_retention_deadlines(receipt, observed, policy, retention_with_clocks(json.loads(register.read_text()), policy))
+RETENTION_REVIEW_HOURS = 167
+PROGRAM_RELEASE_PREFIX = 'uapt-program-'
+
+def release_root_of(working_directory, releases):
+    try: parts = Path(working_directory).relative_to(releases).parts
+    except ValueError: return None
+    return parts[0] if parts else None
+
+def same_retention_role(entry, role, new_root):
+    """Only the completed role's previous rollback is demoted. Entries registered
+    before roles were recorded: program-built roots share the program's role."""
+    if entry.get('role'): return entry['role'] == role
+    return new_root.startswith(PROGRAM_RELEASE_PREFIX) and entry.get('name', '').startswith(PROGRAM_RELEASE_PREFIX)
+
+def retention_after_completion(register, clocks, *, observed_roots, running_roots, new_root, retired_roots, role, max_hold_hours, at, plan_id, basis, completion):
+    """Register after an accepted completion: the new root is active, the retired
+    active roots become this role's rollback, and the role's older rollback becomes
+    a bounded hold. Existing hold clocks are reused, never reset; holds stay holds."""
+    by_name = {e['name']: dict(e) for e in register.get('entries', [])}
+    observed = set(observed_roots)
+    if new_root not in observed: raise ValueError('Completed release root is not on disk: ' + new_root)
+    missing = sorted(observed - set(by_name) - {new_root})
+    if missing: raise ValueError('Unclassified release roots; register them before completing: ' + ', '.join(missing))
+    stamp = at.isoformat()
+    hold_hours = min(RETENTION_REVIEW_HOURS, max_hold_hours)
+    summary = {'active': new_root, 'rollback': [], 'held': [], 'unchanged': [], 'dropped': sorted(set(by_name) - observed)}
+    entries = {name: entry for name, entry in by_name.items() if name in observed}
+
+    def hold(name, entry, reason, action):
+        clock = clocks.get(name)
+        entry.update(disposition='held', role=entry.get('role') or role,
+                     heldSince=clock['heldSince'] if clock else stamp,
+                     reviewBefore=clock['reviewBefore'] if clock else (at + datetime.timedelta(hours=hold_hours)).isoformat(),
+                     nextAction=(clock or {}).get('nextAction') or action,
+                     reason=(entry.get('reason', '') + ' | ' + reason).strip(' |')[:900])
+        summary['held'].append(name)
+
+    previous = entries.get(new_root, {})
+    entry = {k: v for k, v in previous.items() if k not in ('heldSince', 'reviewBefore', 'nextAction')}
+    entry.update(name=new_root, disposition='active', role=role, codeSha=basis.get('codeSha', entry.get('codeSha')),
+                 BUILD_ID=basis.get('BUILD_ID', entry.get('BUILD_ID')), registeredAt=entry.get('registeredAt', stamp), activatedAt=stamp,
+                 completedTransaction=plan_id,
+                 reason=f'Accepted program {str(basis.get("codeSha", ""))[:12]} {basis.get("BUILD_ID", "")} active since {stamp} (transaction {plan_id})')
+    if basis.get('sourceManifestSha256'): entry['sourceManifestSha256'] = basis['sourceManifestSha256']
+    entries[new_root] = entry
+    new_rollbacks = sorted(set(retired_roots) - set(running_roots) - {new_root})
+    for name in new_rollbacks:
+        if name not in entries: continue
+        current = entries[name]
+        if current.get('disposition') == 'held':
+            summary['unchanged'].append(name); continue
+        if name in clocks:
+            # A first hold clock cannot be relabelled rollback (validate_retention_deadlines).
+            hold(name, current, f'Retired by {plan_id} at {stamp}; first hold clock kept', 'Cold rollback source for ' + new_root + ' under its original hold clock; archive off-host with hash verification and an isolated restore check, review fresh references, then remove under docs/release-storage-policy.md.')
+            continue
+        current.update(disposition='rollback', role=current.get('role') or role, rollbackFor=new_root, rollbackSince=stamp,
+                       reason=f'Previous accepted release, retired by {plan_id} at {stamp}; cold rollback for {new_root}')
+        summary['rollback'].append(name)
+    # Without a new rollback (a reuse completion retires nothing) the old one stays.
+    for name, current in sorted(entries.items()) if summary['rollback'] else []:
+        if name == new_root or name in new_rollbacks or current.get('disposition') != 'rollback' or not same_retention_role(current, role, new_root): continue
+        hold(name, current, f'Superseded as rollback by {", ".join(summary["rollback"])} ({plan_id}, {stamp})',
+             f'Archive off-host with hash verification and an isolated restore check, review fresh references (units, nginx, symlinks, open files), then remove under docs/release-storage-policy.md; {", ".join(summary["rollback"])} is the rollback for {new_root}.')
+    result = {k: v for k, v in register.items() if k not in ('entries',)}
+    result.update(schemaVersion='uapt-release-retention-v1', basisSha256=completion.get('basisSha256'), checkedAt=stamp,
+                  completedTransaction=plan_id, completionLedger={'path': completion['path'], 'sha256': completion['sha256']},
+                  registerUpdatedBy='uapt-release-lifecycle complete', entries=[entries[n] for n in sorted(entries)])
+    return result, summary
+
+def prepare_retention_update(plan, tx, policy, observed, working_directories, completion, at=None):
+    """Computed before any retirement, so an unclassifiable register stops completion early."""
+    if not policy.get('diskCapacity') or not policy.get('retentionRegister'): return None
+    releases = Path(observed['disk']['root']) / 'releases'
+    basis = json.loads(Path(plan['basis']['path']).read_text())
+    retired = {release_root_of(working_directories.get(u, ''), releases) for u in tx['retireUnits']} - {None}
+    running = {release_root_of(d.get('WorkingDirectory', ''), releases) for u, d in observed['units'].items() if u not in tx['retireUnits']} - {None}
+    clock_path = policy.get('retentionEnforcement', {}).get('clockRegister')
+    clocks = {e['name']: e for e in json.loads(Path(clock_path).read_text()).get('entries', [])} if clock_path and Path(clock_path).is_file() else {}
+    register, summary = retention_after_completion(
+        json.loads(Path(policy['retentionRegister']).read_text()), clocks, observed_roots=observed['disk']['releaseRoots'], running_roots=running,
+        new_root=Path(basis['release']).name, retired_roots=retired, role=plan.get('diskBudget', {}).get('role', 'main'),
+        max_hold_hours=policy.get('retentionEnforcement', {}).get('maxHoldHours', 168), at=at or datetime.datetime.now(datetime.timezone.utc),
+        plan_id=plan['id'], basis=basis, completion={**completion, 'basisSha256': plan['basis']['sha256']})
+    return {'register': register, 'summary': summary, 'retiredRoots': sorted(retired)}
+
+def apply_retention_update(policy, prepared, plan_id):
+    path = Path(policy['retentionRegister'])
+    backup = path.with_name(path.name + '.before-' + plan_id + '-' + datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
+    shutil.copy2(path, backup)
+    write(path, prepared['register'])
+    checkpoint_hold_clocks(prepared['register'], policy)
+    result = {'path': str(path), 'sha256': digest(path), 'backup': str(backup), 'summary': prepared['summary'], 'retiredRoots': prepared['retiredRoots']}
+    try:
+        validate_retention_receipt({'basis': {'sha256': prepared['register']['basisSha256']}, 'retentionReceipt': {'path': str(path), 'sha256': result['sha256']}}, audit(), policy)
+        result['check'] = 'passed'
+    except ValueError as error:
+        result['check'] = 'failed: ' + str(error)
+    return result
+
 def validate_r4_reuse_authorization(plan, policy):
     """One operator-authorized exception retaining the existing 3163 dependency."""
     ref = plan.get('operatorAuthorization') or {}
@@ -1341,12 +1440,20 @@ def main():
             config = run('nginx', '-T')
             for endpoint in plan['retiredEndpoints']:
                 if endpoint in config: raise ValueError('Old endpoint remains in loaded nginx config: ' + endpoint)
+            # Retention register: computed before retirement (an unclassified root stops here),
+            # written after the policy, so the next release starts from an accurate register.
+            current_policy = json.loads(POLICY.read_text())
+            retention = prepare_retention_update(plan, tx, current_policy, audit(), {u: state(u).get('WorkingDirectory', '') for u in tx['retireUnits']}, proof)
             for unit in tx['retireUnits']: run('systemctl', 'disable', '--now', unit)
             for unit in tx['retireUnits']:
                 s = state(unit)
                 if s['ActiveState'] != 'inactive' or s['UnitFileState'] != 'disabled': raise ValueError('Retirement failed')
             policy = json.loads(POLICY.read_text()); policy['activeUnits'] = plan['keepActiveUnits'] + plan['candidateUnits']; policy['candidateSlots'] = list(set(policy['candidateSlots']) - set(plan['candidateUnits']) | set(tx['retireUnits']))
-            write(POLICY, policy); tx.update(stage='complete', completedAt=now(), finalAudit=audit()); write(pending, tx); print('Complete; compatibility units retained' if not tx['retireUnits'] else 'Complete; previous units cold'); return
+            write(POLICY, policy)
+            if retention:
+                tx['retentionRegister'] = apply_retention_update(policy, retention, plan['id'])
+                if tx['retentionRegister']['check'] != 'passed': print('WARNING: retention register written but its check ' + tx['retentionRegister']['check'] + '; the next release gate will refuse until it is resolved', file=sys.stderr)
+            tx.update(stage='complete', completedAt=now(), finalAudit=audit()); write(pending, tx); print('Complete; compatibility units retained' if not tx['retireUnits'] else 'Complete; previous units cold'); return
         plan, policy = load_plan(args.plan, args.action == 'prebuild')
         if pending.exists() and json.loads(pending.read_text())['stage'] not in ['complete', 'rolled_back']: raise ValueError('Unfinished deployment: recover before another release')
         run('node', plan['releaseHelper'], 'verify-sync', plan['syncLedger']['path'], plan['basis']['path'], 'candidate')
