@@ -357,7 +357,7 @@ class LedgerTests(unittest.TestCase):
 
     def gate(self, event_path, phase):
         # The 2.1.0 projection validator needs node + tsx; it is exercised against the real
-        # R1 content event outside this unit test (docs/program-release.md section 6).
+        # R1 content event outside this unit test (docs/program-release.md section 7).
         with patch.object(pi, 'sync_gate_v21', lambda event, root: None):
             return pi.sync_gate(pi.load(event_path), Path(event_path).parent, phase)
 

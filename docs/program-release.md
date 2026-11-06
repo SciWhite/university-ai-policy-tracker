@@ -182,7 +182,7 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
     release (rollback) and nothing else per role; old full-workspace release
     directories follow the archive rules.
 
-## 6. One-command program release (`scripts/release/program-release.py`)
+## 7. One-command program release (`scripts/release/program-release.py`)
 
 Added 2026-11-06 after three releases (R1 launch 11-05, R1 fixes and the
 dashboard cache 11-06) took 1.5–2 h each. Most of that time went to:
@@ -202,7 +202,7 @@ itself, never purges a CDN and never sends search notifications. Running it
 needs the same authorization as any release; reading this section authorizes
 nothing.
 
-### 6.1 Steps
+### 7.1 Steps
 
 Run as root on the host. Every subcommand is idempotent and writes its receipts
 into one operation directory, `/srv/uapt/operations/program-<sha12>-<UTC time>/`.
@@ -212,15 +212,15 @@ and the next one.
 
 | Step | What it does | Receipts in the operation directory |
 |---|---|---|
-| `install --sha <40-hex> --run-id <id>` (`GH_TOKEN` set) or `--zip <file>` | Runs `program-artifact-install.py`, or reuses its receipt when this SHA is already installed. Writes the program basis bound to the current content pointer. Picks the readback scope (6.3). | `release.json` (state), `program-basis.json`, `install.log` |
+| `install --sha <40-hex> --run-id <id>` (`GH_TOKEN` set) or `--zip <file>` | Runs `program-artifact-install.py`, or reuses its receipt when this SHA is already installed. Writes the program basis bound to the current content pointer. Picks the readback scope (7.3). | `release.json` (state), `program-basis.json`, `install.log` |
 | `candidate` | Takes the free fixed web slot. Copies the active slot's env to `runtime.env` (root:uapt 0640); it must not set `PORT`/`HOSTNAME` or allow unsynchronized content. Writes one managed drop-in (env, port, node, `SuccessExitStatus=143`, MemoryHigh/Max, `ReadWritePaths` incl. `.next/cache`), named to sort after every existing drop-in and reused on later releases. Restarts the slot. Waits for the journal line `Runtime warm-up finished` of this invocation. Fallback: after `--warmup-min-wait` (10 min), two consecutive probes in which every sampled page answers 200 within `--latency-ok` (5 s). | `dropin.conf`, `candidate-samples.json` (memory every 5 s) |
 | `static` | Union copy of `.next/static` into the `/_next/static/` alias found in the managed snippets. Refuses same-name/different-bytes collisions; keeps old files. | `static-union.json` |
 | `capacity` | Cold request pass (heavy routes + sampled school pages), then 60 s steady. Peaks combine the warm-up samples (startup ≤ 60 s, cold) with this pass. Refuses a restart during measurement or a peak above `candidatePeakMaxBytes`. | `capacity.json` |
-| `routing` | Retargets every `/etc/nginx/snippets/uapt-*.conf` reference to `127.0.0.1:<active port>` to the candidate port and updates the code-release header in those files. Refuses when the active port is still referenced outside the managed snippets, which the controller cannot switch (the R1 launch missed four proxy-common snippets this way). Runs `nginx -T` on a rewritten copy of `/etc/nginx` and refuses if the retiring endpoint is still in that effective config (the controller's `complete` check, run before cutover). The live tree is not touched. Rerunning `routing` voids an existing plan. `--replace <snippet>=<file>` (repeatable) stages reviewed new content for a managed snippet, e.g. the consolidated minimal routing; it goes through the same retarget, journal and recovery. Once all app traffic goes through `upstream uapt_next_backend`, a release only stages `uapt-main-upstream.conf`. | `routing/` + `routing-files.json` |
-| `ledger` | Contract 2.1.0 `audit` event for the program basis (6.3). Candidate readback, MCP catalog and runtime content state. Ends with the release helper's `verify-sync … candidate`. | `sync/program/`, `ledger.log` |
+| `routing` | Retargets every `/etc/nginx/snippets/uapt-*.conf` reference to `127.0.0.1:<active port>` to the candidate port and updates the code-release header in those files. Refuses when the active port is still referenced outside the managed snippets, which the controller cannot switch (the R1 launch missed four proxy-common snippets this way). Runs `nginx -T` on a rewritten copy of `/etc/nginx` and refuses if the retiring endpoint is still in that effective config (the controller's `complete` check, run before cutover). The live tree is not touched. Rerunning `routing` voids an existing plan. `--replace <snippet>=<file>` (repeatable) stages reviewed new content for a managed snippet, e.g. the consolidated minimal routing; it goes through the same retarget, journal and recovery. Once all app traffic goes through `upstream uapt_next_backend`, a release only stages `uapt-main-upstream.conf`. To install the minimal routing (§6, on `claude/r1-fixes`), pass its generated file for `uapt-proxy-locations.conf` and the reviewed replacement for `uapt-eea1eb21-detail-routes.conf`. | `routing/` + `routing-files.json` |
+| `ledger` | Contract 2.1.0 `audit` event for the program basis (7.3). Candidate readback, MCP catalog and runtime content state. Ends with the release helper's `verify-sync … candidate`. | `sync/program/`, `ledger.log` |
 | `plan` | Retention receipt (register + new root as `candidate`); refuses unclassified roots or temporary artifacts. Lifecycle plan with a fresh transaction id per attempt (`<op>`, then `<op>-p2`, …: the controller keeps `transactions/<id>` even after a failed cutover). Expiry is bounded by the plan window and by the candidate's start time plus `candidateTtlHours`. Peak budgets are at least the measured peaks and the previous plan's, never above policy. `publicChecks` is the BUILD_ID `_buildManifest.js` hash only: it shows the new assets are served from the shared static alias, not that routing switched (the completion readback's BUILD_ID-in-HTML and the controller's `nginx -T` check prove that); cold renders stay out of the cutover window. Then the controller `gate`. | `retention.json`, `plan.json`, `gate.log` |
 | `cutover` | Checks routing drift first, then controller `cutover` (journal, candidate checks, routing switch, nginx reload, static public check). | `cutover.log` |
-| `complete` | Public readback of the same scope on `https://eduaipolicy.org` (pages carry `?uapt_readback=<plan id>` against stale CDN HTML; `--no-cache-bust` turns this off). Completion event and `verify-sync … complete`. Controller `complete`: a retired slot that ended `failed` is `reset-failed` and completion retried once. Confirms that the controller updated the retention register (6.4), then runs the read-only `retention` check. | `sync/program-complete/`, `complete-*.log`, `retention.log`, `RESULT.json` |
+| `complete` | Public readback of the same scope on `https://eduaipolicy.org` (pages carry `?uapt_readback=<plan id>` against stale CDN HTML; `--no-cache-bust` turns this off). Completion event and `verify-sync … complete`. Controller `complete`: a retired slot that ended `failed` is `reset-failed` and completion retried once. Confirms that the controller updated the retention register (7.4), then runs the read-only `retention` check. | `sync/program-complete/`, `complete-*.log`, `retention.log`, `RESULT.json` |
 
 Restarting the candidate (a crash, or `candidate` after a timeout) voids
 `capacity`, `ledger` and `plan`, which describe the old process. `candidate` and
@@ -242,7 +242,7 @@ Content changes are not part of this command. Switch content first with the
 content release flow (`docs/content-release.md`, its own full contract 2.1.0
 event). Then run the program release.
 
-### 6.2 Timings
+### 7.2 Timings
 
 Measured (hand-run steps, 2026-11-06):
 
@@ -269,7 +269,7 @@ The command does not shorten the warm-up. Waiting for it is the point: routing
 before warm-up sent cold 60–110 s renders to users. Operator work drops to
 running the steps in order.
 
-### 6.3 Program-only ledger: sampled readback
+### 7.3 Program-only ledger: sampled readback
 
 The sync gate (`policy-inventory.py sync-gate`) requires every updated surface
 to cover exactly the declared scope, and the 2.1.0 projection validator
@@ -317,7 +317,7 @@ This changes nothing for content releases. A content switch still needs its own
 full-scope 2.1.0 event. A program release refuses to start when the pointer has
 no 2.1.0 sync receipt.
 
-### 6.4 Retention register at `complete` (controller)
+### 7.4 Retention register at `complete` (controller)
 
 The controller now updates `policy.retentionRegister` itself during
 `complete`. The update is computed before any unit retires, so an unclassified
@@ -341,7 +341,7 @@ program role when both names start with `uapt-program-`. The new holds go into
 the result. `transaction.json` records the outcome under `retentionRegister`
 (summary, backup path, check result).
 
-### 6.5 Rollback
+### 7.5 Rollback
 
 - **Before `complete`** (stage `selected_pending_acceptance`): run
   `python3 /usr/local/libexec/uapt-release-lifecycle.py recover`. It restores
@@ -358,7 +358,7 @@ the result. `transaction.json` records the outcome under `retentionRegister`
   A root already moved to `held` cannot be reused this way: the gate refuses
   held → candidate.
 
-### 6.6 Installing (coordinating session, after review)
+### 7.6 Installing (coordinating session, after review)
 
 Nothing is installed by the PR.
 

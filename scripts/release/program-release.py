@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """UAPT program release: the host-side steps of a program (code-only) release
-as one command. Operator guide: docs/program-release.md, section 6.
+as one command. Operator guide: docs/program-release.md, section 7.
 
 Subcommands, in order. Each is idempotent and writes its receipts into one
 operation directory (--op); `install` creates it.
@@ -1641,7 +1641,7 @@ def cmd_complete(args):
     update = tx.get('retentionRegister')
     if not update:
         raise Refused('The installed controller did not update the retention register at complete; install the controller from this '
-                      'repository (docs/program-release.md section 6) and record the register by hand once.')
+                      'repository (docs/program-release.md section 7) and record the register by hand once.')
     check = controller_call(op, 'retention', log_name='retention.log')
     result = {'schemaVersion': 'uapt-program-release-result-v1', 'status': 'COMPLETE' if check.returncode == 0 else 'COMPLETE_RETENTION_CHECK_FAILED',
               'completedAt': tx.get('completedAt'), 'planId': plan_id, 'codeSha': state['codeSha'], 'BUILD_ID': state['BUILD_ID'],
