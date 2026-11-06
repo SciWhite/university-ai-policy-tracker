@@ -181,3 +181,189 @@ Not done by R1-d; each item is a launch step under the lifecycle controller.
 10. **Retention.** Record the new release root, the previous accepted program
     release (rollback) and nothing else per role; old full-workspace release
     directories follow the archive rules.
+
+## 6. One-command program release (`scripts/release/program-release.py`)
+
+Added 2026-11-06 after three releases (R1 launch 11-05, R1 fixes and the
+dashboard cache 11-06) took 1.5–2 h each. Most of that time went to:
+
+- glue scripts written by hand for each release;
+- two full 132-school readbacks;
+- about 40–80 min of warm-up;
+- hand edits to the retention register. One forgotten edit blocked a later
+  release.
+
+The command turns those steps into one tested tool. The lifecycle controller
+keeps every gate (capacity, disk, retention, sync contract 2.1.0, journal and
+recovery). The command only prepares the controller's inputs and calls it.
+
+It never builds, never deletes a release, never writes nginx or policy files
+itself, never purges a CDN and never sends search notifications. Running it
+needs the same authorization as any release; reading this section authorizes
+nothing.
+
+### 6.1 Steps
+
+Run as root on the host. Every subcommand is idempotent and writes its receipts
+into one operation directory, `/srv/uapt/operations/program-<sha12>-<UTC time>/`.
+`install` creates it. A rerun of `install` without `--op` continues the
+unfinished operation for the same SHA. `status --op <dir>` prints the steps done
+and the next one.
+
+| Step | What it does | Receipts in the operation directory |
+|---|---|---|
+| `install --sha <40-hex> --run-id <id>` (`GH_TOKEN` set) or `--zip <file>` | Runs `program-artifact-install.py`, or reuses its receipt when this SHA is already installed. Writes the program basis bound to the current content pointer. Picks the readback scope (6.3). | `release.json` (state), `program-basis.json`, `install.log` |
+| `candidate` | Takes the free fixed web slot. Copies the active slot's env to `runtime.env` (root:uapt 0640); it must not set `PORT`/`HOSTNAME` or allow unsynchronized content. Writes one managed drop-in (env, port, node, `SuccessExitStatus=143`, MemoryHigh/Max, `ReadWritePaths` incl. `.next/cache`), named to sort after every existing drop-in and reused on later releases. Restarts the slot. Waits for the journal line `Runtime warm-up finished` of this invocation. Fallback: after `--warmup-min-wait` (10 min), two consecutive probes in which every sampled page answers 200 within `--latency-ok` (5 s). | `dropin.conf`, `candidate-samples.json` (memory every 5 s) |
+| `static` | Union copy of `.next/static` into the `/_next/static/` alias found in the managed snippets. Refuses same-name/different-bytes collisions; keeps old files. | `static-union.json` |
+| `capacity` | Cold request pass (heavy routes + sampled school pages), then 60 s steady. Peaks combine the warm-up samples (startup ≤ 60 s, cold) with this pass. Refuses a restart during measurement or a peak above `candidatePeakMaxBytes`. | `capacity.json` |
+| `routing` | Retargets every `/etc/nginx/snippets/uapt-*.conf` reference to `127.0.0.1:<active port>` to the candidate port and updates the code-release header in those files. Refuses when the active port is still referenced outside the managed snippets, which the controller cannot switch (the R1 launch missed four proxy-common snippets this way). Runs `nginx -t` on a rewritten copy of `/etc/nginx`; the live tree is not touched. | `routing/` + `routing-files.json` |
+| `ledger` | Contract 2.1.0 `audit` event for the program basis (6.3). Candidate readback, MCP catalog and runtime content state. Ends with the release helper's `verify-sync … candidate`. | `sync/program/`, `ledger.log` |
+| `plan` | Retention receipt (register + new root as `candidate`); refuses unclassified roots or temporary artifacts. Lifecycle plan: `publicChecks` is the BUILD_ID `_buildManifest.js` hash only (page semantics are checked at completion, not by a cold render during cutover). Then the controller `gate`. | `retention.json`, `plan.json`, `gate.log` |
+| `cutover` | Controller `cutover` (journal, candidate checks, routing switch, nginx reload, static public check). | `cutover.log` |
+| `complete` | Public readback of the same scope on `https://eduaipolicy.org` (pages carry `?uapt_readback=<plan id>` against stale CDN HTML; `--no-cache-bust` turns this off). Completion event and `verify-sync … complete`. Controller `complete`: a retired slot that ended `failed` is `reset-failed` and completion retried once. Confirms that the controller updated the retention register (6.4), then runs the read-only `retention` check. | `sync/program-complete/`, `complete-*.log`, `retention.log`, `RESULT.json` |
+
+Defaults come from the host's actual state. Override them when needed:
+
+- web slots: `uapt-mcp-v6-candidate` = 3101 and `uapt-mcp-v6-r2` = 3102 (`--slot unit=port`, twice). The active slot is the one the policy lists as active and that runs; the candidate is the other slot, which must be a registered candidate slot.
+- SHA and BUILD_ID: from the install receipt.
+- content root: `UAPT_CONTENT_ROOT` of the active slot's env file. The command refuses to continue if the pointer changes during the operation.
+- MCP endpoint and catalog: `UAPT_MCP_PORT` and `UAPT_MCP_CATALOG` of the active non-web unit (`--mcp-endpoint`, `--mcp-catalog`).
+- node: the active slot's `ExecStart` (`--node-bin`).
+- release helper for `verify-sync`, disk budget, peak budgets: from the last completed plan (`--helper`, `--candidate-peak-bytes`, `--build-peak-bytes`).
+
+Content changes are not part of this command. Switch content first with the
+content release flow (`docs/content-release.md`, its own full contract 2.1.0
+event). Then run the program release.
+
+### 6.2 Timings
+
+Measured (hand-run steps, 2026-11-06):
+
+- the dashboard release took about 15 min from artifact to completion;
+- it was routed about 75 min before its own warm-up finished (`Runtime warm-up finished` after 4,852 s, 3,937 requests);
+- R1 fixes took about 50 min;
+- the R1 launch, content included, took about 3 h.
+
+Expected with this command. Readback times are from the three releases' own
+receipts; the other rows are estimates, not yet measured with this command.
+
+| Step | Expected |
+|---|---|
+| install | 1–2 min |
+| candidate | warm-up 40–80 min on the loaded host; the fallback can finish after 10 min once sampled pages answer fast |
+| static, routing | under 1 min each |
+| capacity | 3–5 min |
+| ledger | sample (60 school pages + 20 APIs + core): about 1 min; full candidate readback (396 pages + 132 APIs) measured 1–3 min |
+| plan + gate | 1–3 min (`du` of `/srv/uapt`) |
+| cutover | about 1 min |
+| complete | sample: 1–2 min plus controller `complete`; the full public readback measured 7–13 min (00:10–00:22, 03:13–03:26, 03:59–04:05) |
+
+The command does not shorten the warm-up. Waiting for it is the point: routing
+before warm-up sent cold 60–110 s renders to users. Operator work drops to
+running the steps in order.
+
+### 6.3 Program-only ledger: sampled readback
+
+The sync gate (`policy-inventory.py sync-gate`) requires every updated surface
+to cover exactly the declared scope, and the 2.1.0 projection validator
+recomputes the Changes v2 events for that scope. Neither requires all
+published schools. The program event therefore declares the sampled schools as
+its scope instead of claiming 132 while reading back 20.
+
+- **Basis.** The event binds the program basis: release, codeSha, BUILD_ID,
+  file and build manifests, and the content pointer.
+- **Frozen artifacts.** Public data, the Changes v2 projection proof,
+  overviews and event-surface IDs come from the content release's own
+  synchronized event: the one whose hash the pointer's `sync.eventSha256`
+  names. That event is located under `/srv/uapt/operations/*/sync/*/` and
+  checked, including every referenced artifact hash. The artifacts are then
+  restricted to the scope. Proof files are hard-linked, not copied.
+- **Fresh observations.** Candidate pages, API Claim IDs, MCP Claim IDs and the
+  runtime content manifest are observed for every school in scope. Each set
+  must equal the synchronized Claim ID set exactly, which also proves that no
+  held Claim ID is exposed.
+- **Scope record.** `scope.json` records the content event (id, hash, 132
+  schools), the sampling mode and the reason each school was chosen.
+
+Scope modes (`install --readback auto|sample|full`, overridable at `ledger`):
+
+- **sample** (the `auto` choice when the content release is the one the
+  previous accepted program served). About 20 schools: `--sample-slug`
+  additions, the schools with the most and fewest claims, two schools changed
+  in the latest projection revision, then the QS tiers 1–50, 51–100, 101–200,
+  201–400, 401+ and unranked, filled evenly by rank. Plus core pages, feeds,
+  sitemap, `llms.txt`, the changes API and the BUILD_ID manifest.
+- **full** (the `auto` choice when the content differs from the previous
+  accepted program release). All schools of the content event.
+
+Checked locally on 2026-11-06 against the R1 content event
+(`c-20261105-r1`), copied from the host, with the production release helper's
+code (eea1eb21):
+
+- the 20-school and the 132-school program events pass `sync-gate --phase
+  candidate`, and their completion events pass `--phase complete`;
+- the candidate event is refused at `complete`;
+- a removed `latestDiff` event ID is refused by the projection validator even
+  with every hash rewritten.
+
+This changes nothing for content releases. A content switch still needs its own
+full-scope 2.1.0 event. A program release refuses to start when the pointer has
+no 2.1.0 sync receipt.
+
+### 6.4 Retention register at `complete` (controller)
+
+The controller now updates `policy.retentionRegister` itself during
+`complete`. The update is computed before any unit retires, so an unclassified
+release root stops completion while the old slot still runs. It is written
+after the policy, with a timestamped backup next to the register:
+
+- the new release root becomes `active` (role from `plan.diskBudget.role`);
+- the release roots of the retired units become `rollback` for it;
+- the role's older `rollback` becomes `held`:
+  - `heldSince` is the completion time;
+  - `reviewBefore` is 167 h later (never more than `maxHoldHours`);
+  - `nextAction` says to archive off-host with hash verification and a restore
+    check, review references, then remove under the storage policy;
+  - an existing first hold clock is reused, never reset;
+- other roles' rollbacks and existing holds are untouched; roots no longer on
+  disk drop out.
+
+Role detection: entries registered before roles were recorded count as the
+program role when both names start with `uapt-program-`. The new holds go into
+`hold-clocks.json`, and the controller runs the read-only retention check on
+the result. `transaction.json` records the outcome under `retentionRegister`
+(summary, backup path, check result).
+
+### 6.5 Rollback
+
+- **Before `complete`** (stage `selected_pending_acceptance`): run
+  `python3 /usr/local/libexec/uapt-release-lifecycle.py recover`. It restores
+  the journaled snippets, re-enables the retired slot and restores the policy.
+  The boot recovery unit and the TTL timer do the same automatically.
+- **After `complete`:** the previous root is the `rollback` entry. Re-release
+  it through the same gates, without a download:
+
+  ```bash
+  program-release.py install --sha <its codeSha> --existing-release /srv/uapt/releases/<rollback root>
+  ```
+
+  Then run `candidate` … `complete` as usual. It takes the warm-up again.
+  A root already moved to `held` cannot be reused this way: the gate refuses
+  held → candidate.
+
+### 6.6 Installing (coordinating session, after review)
+
+Nothing is installed by the PR.
+
+1. Back up the installed controller:
+   `cp -p /usr/local/libexec/uapt-release-lifecycle.py /srv/uapt/operations/release-lifecycle/controller-before-retention-register-<sha8>.py`.
+2. Install the controller:
+   `install -o root -g root -m 0755 scripts/uapt-release-lifecycle.py /usr/local/libexec/uapt-release-lifecycle.py`.
+   Compare the SHA256 with the reviewed commit and save an install receipt next
+   to the earlier ones.
+3. Install the command and the installer side by side, because the command
+   looks for `uapt-program-artifact-install.py` next to itself:
+   `install -m 0755 scripts/release/program-release.py /usr/local/libexec/uapt-program-release.py`
+   and `install -m 0755 scripts/program-artifact-install.py /usr/local/libexec/uapt-program-artifact-install.py`.
+4. With no transaction pending, run `uapt-release-lifecycle.py retention`
+   (read-only). Then run the next release with the command.

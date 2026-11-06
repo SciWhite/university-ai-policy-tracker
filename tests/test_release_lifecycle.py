@@ -1,4 +1,4 @@
-import unittest, importlib.util, tempfile, json
+import unittest, importlib.util, tempfile, json, sys
 from pathlib import Path
 from unittest.mock import patch
 spec=importlib.util.spec_from_file_location('lifecycle',Path(__file__).parents[1]/'scripts/uapt-release-lifecycle.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
@@ -603,5 +603,116 @@ class ProgramArtifactIdentityTests(unittest.TestCase):
    with self.assertRaisesRegex(ValueError,'requires '+key):self.check({k:v for k,v in self.basis.items() if k!=key})
  def test_legacy_basis_still_requires_in_tree_pointers(self):
   with self.assertRaisesRegex(ValueError,'pagePointer'):self.check({**self.basis,'schemaVersion':'uapt-policy-zone-release-basis-v1'})
+
+
+class RetentionRegisterCompletionTests(unittest.TestCase):
+ """complete updates the register: new root active, retired root rollback, the role's older rollback held."""
+ NEW='uapt-program-bbbbbbbbbbbb-NEW'; OLD='uapt-program-aaaaaaaaaaaa-OLD'; PREV='uapt-program-999999999999-PREV'
+ def setUp(self):
+  self.at=m.datetime.datetime(2026,11,7,1,0,tzinfo=m.datetime.timezone.utc)
+  self.register={'schemaVersion':'uapt-release-retention-v1','basisSha256':'old','checkedAt':'2026-11-06T04:00:00+00:00','referenceInventory':{'path':'/x'},'entries':[
+   {'name':self.OLD,'disposition':'active','reason':'Current program','codeSha':'a'*40},
+   {'name':self.PREV,'disposition':'rollback','reason':'Previous program'},
+   {'name':'uapt-mcp-release','disposition':'active','reason':'MCP 3161'},
+   {'name':'uapt-mcp-previous','disposition':'rollback','reason':'Previous MCP artifact'},
+   {'name':'uapt-failed','disposition':'held','reason':'Failed build','heldSince':'2026-11-05T00:00:00+00:00','reviewBefore':'2026-11-12T00:00:00+00:00','nextAction':'Archive'},
+   {'name':'uapt-vanished','disposition':'held','reason':'Removed','heldSince':'2026-11-05T00:00:00+00:00','reviewBefore':'2026-11-12T00:00:00+00:00','nextAction':'Archive'}],
+   'temporaryArtifacts':[]}
+  self.roots=[self.NEW,self.OLD,self.PREV,'uapt-mcp-release','uapt-mcp-previous','uapt-failed']
+ def update(self,clocks=None,retired=None,roots=None):
+  return m.retention_after_completion(self.register,clocks or {},observed_roots=roots or self.roots,running_roots={self.NEW,'uapt-mcp-release'},new_root=self.NEW,
+   retired_roots={self.OLD} if retired is None else retired,role='main',max_hold_hours=168,at=self.at,plan_id='program-bbbbbbbb',
+   basis={'codeSha':'b'*40,'BUILD_ID':'NEW','sourceManifestSha256':'c'*64},completion={'path':'/op/sync/program-complete/event.json','sha256':'d'*64,'basisSha256':'e'*64})
+ def entries(self,register):return {e['name']:e for e in register['entries']}
+ def test_transitions(self):
+  register,summary=self.update();e=self.entries(register)
+  self.assertEqual(summary,{'active':self.NEW,'rollback':[self.OLD],'held':[self.PREV],'unchanged':[],'dropped':['uapt-vanished']})
+  self.assertEqual((e[self.NEW]['disposition'],e[self.NEW]['role'],e[self.NEW]['codeSha'],e[self.NEW]['completedTransaction']),('active','main','b'*40,'program-bbbbbbbb'))
+  self.assertEqual((e[self.OLD]['disposition'],e[self.OLD]['rollbackFor'],e[self.OLD]['role']),('rollback',self.NEW,'main'))
+  held=e[self.PREV]
+  self.assertEqual(held['disposition'],'held');self.assertEqual(held['heldSince'],self.at.isoformat())
+  self.assertEqual(m.retention_timestamp(held['reviewBefore'],'r')-self.at,m.datetime.timedelta(hours=167))
+  self.assertIn('Archive off-host',held['nextAction']);self.assertIn(self.OLD,held['nextAction'])
+  self.assertEqual(e['uapt-mcp-previous']['disposition'],'rollback')  # another role's rollback is not touched
+  self.assertEqual(e['uapt-failed'],self.register['entries'][4])
+  self.assertEqual(sorted(e),sorted(self.roots))
+  self.assertEqual((register['basisSha256'],register['completedTransaction'],register['referenceInventory']),('e'*64,'program-bbbbbbbb',{'path':'/x'}))
+ def test_hold_bounds_follow_policy_and_existing_clocks_are_kept(self):
+  register,_=m.retention_after_completion(self.register,{},observed_roots=self.roots,running_roots={self.NEW},new_root=self.NEW,retired_roots={self.OLD},role='main',max_hold_hours=24,at=self.at,plan_id='p',basis={},completion={'path':'/e','sha256':'d'*64})
+  self.assertEqual(m.retention_timestamp(self.entries(register)[self.PREV]['reviewBefore'],'r')-self.at,m.datetime.timedelta(hours=24))
+  clock={'name':self.PREV,'disposition':'held','heldSince':'2026-11-01T00:00:00+00:00','reviewBefore':'2026-11-08T00:00:00+00:00','nextAction':'Original action','reason':'r'}
+  register,_=self.update(clocks={self.PREV:clock});held=self.entries(register)[self.PREV]
+  self.assertEqual((held['heldSince'],held['reviewBefore'],held['nextAction']),(clock['heldSince'],clock['reviewBefore'],'Original action'))
+ def test_retired_root_with_a_hold_clock_stays_held_and_holds_are_never_relabelled(self):
+  clock={'name':self.OLD,'disposition':'held','heldSince':'2026-11-02T00:00:00+00:00','reviewBefore':'2026-11-09T00:00:00+00:00','nextAction':'Keep','reason':'r'}
+  register,summary=self.update(clocks={self.OLD:clock})
+  self.assertEqual(self.entries(register)[self.OLD]['disposition'],'held');self.assertEqual(summary['rollback'],[]);self.assertEqual(self.entries(register)[self.PREV]['disposition'],'rollback')
+  register,summary=self.update(retired={'uapt-failed'})
+  self.assertEqual(self.entries(register)['uapt-failed']['disposition'],'held');self.assertEqual(summary['unchanged'],['uapt-failed'])
+ def test_reuse_completion_without_retirement_keeps_the_rollback(self):
+  register,summary=self.update(retired=set())
+  self.assertEqual(self.entries(register)[self.PREV]['disposition'],'rollback');self.assertEqual(summary['held'],[])
+ def test_unclassified_root_or_missing_new_root_refuses(self):
+  with self.assertRaisesRegex(ValueError,'Unclassified release roots'):self.update(roots=self.roots+['uapt-stray'])
+  with self.assertRaisesRegex(ValueError,'not on disk'):self.update(roots=[r for r in self.roots if r!=self.NEW])
+
+class CompleteUpdatesRetentionTests(unittest.TestCase):
+ """The complete action itself: register prepared before retirement, written after the policy, next gate passes."""
+ def setUp(self):
+  self.td=tempfile.TemporaryDirectory();root=Path(self.td.name);self.root=root
+  self.state=root/'state';self.state.mkdir();self.policy_path=self.state/'policy.json'
+  self.register=root/'current-retention.json';self.clocks=root/'hold-clocks.json'
+  new,old,prev=RetentionRegisterCompletionTests.NEW,RetentionRegisterCompletionTests.OLD,RetentionRegisterCompletionTests.PREV
+  self.new,self.old,self.prev=new,old,prev
+  m.write(self.register,{'schemaVersion':'uapt-release-retention-v1','basisSha256':'old','checkedAt':m.now(),'entries':[
+   {'name':old,'disposition':'active','reason':'Current'},{'name':prev,'disposition':'rollback','reason':'Previous'},{'name':'mcp','disposition':'active','reason':'MCP'}],'temporaryArtifacts':[]})
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[]})
+  m.write(self.policy_path,{'activeUnits':['mcp.service','web-a.service'],'candidateSlots':['web-b.service'],'legacyUnits':[],
+   'diskCapacity':{'root':'/srv/uapt'},'retentionRegister':str(self.register),
+   'retentionEnforcement':{'maxHoldHours':168,'blockAfterHours':168,'clockRegister':str(self.clocks)}})
+  basis=root/'basis.json';m.write(basis,{'release':'/srv/uapt/releases/'+new,'codeSha':'b'*40,'BUILD_ID':'NEW'})
+  self.ledger=root/'event.json';m.write(self.ledger,{'basisSha256':m.digest(basis)})
+  helper=root/'helper.mjs';helper.write_text('')
+  self.plan={'id':'program-bbbbbbbb','basis':{'path':str(basis),'sha256':m.digest(basis)},'releaseHelper':str(helper),'releaseHelperSha256':m.digest(helper),
+   'publicChecks':[{'url':'https://eduaipolicy.org/x','sha256':'0'*64}],'retiredEndpoints':['127.0.0.1:3101'],'keepActiveUnits':['mcp.service'],
+   'candidateUnits':['web-b.service'],'retireUnits':['web-a.service'],'diskBudget':{'role':'main'}}
+  m.write(self.state/'transaction.json',{'stage':'selected_pending_acceptance','plan':self.plan,'retireUnits':['web-a.service'],'files':[]})
+  self.units={'web-a.service':{'ActiveState':'active','UnitFileState':'enabled','WorkingDirectory':'/srv/uapt/releases/'+old+'/apps/web'}}
+  self.roots=[new,old,prev,'mcp']
+ def tearDown(self):self.td.cleanup()
+ def observed(self):
+  running={'mcp.service':{'WorkingDirectory':'/srv/uapt/releases/mcp','MemoryCurrent':'1'},'web-b.service':{'WorkingDirectory':'/srv/uapt/releases/'+self.new+'/apps/web','MemoryCurrent':'1'}}
+  running.update({u:{**s,'MemoryCurrent':'1'} for u,s in self.units.items() if s['ActiveState']=='active'})
+  return {'checkedAt':m.now(),'units':running,'memory':{},'uaptMemoryBytes':0,'disk':{'root':'/srv/uapt','releaseRoots':self.roots,'temporaryPaths':[]}}
+ def fake_run(self,*args):
+  if args[:3]==('systemctl','disable','--now'):self.units[args[3]].update(ActiveState='inactive',UnitFileState='disabled')
+  self.calls.append(args);return ''
+ def complete(self):
+  self.calls=[]
+  with patch.object(m,'STATE',self.state),patch.object(m,'POLICY',self.policy_path),patch.object(m,'LOCK',self.root/'lock'),\
+       patch.object(m,'run',side_effect=self.fake_run),patch.object(m,'state',side_effect=lambda u:dict(self.units.get(u,{'ActiveState':'active','WorkingDirectory':''}))),\
+       patch.object(m,'audit',side_effect=self.observed),patch.object(m,'validate_candidate_identity',return_value=True),\
+       patch.object(m,'check_urls',return_value=[]),patch.object(sys,'argv',['controller','complete','--completion-ledger',str(self.ledger)]):
+   m.main()
+ def test_complete_writes_register_and_next_gate_accepts_it(self):
+  self.complete()
+  tx=json.loads((self.state/'transaction.json').read_text())
+  self.assertEqual(tx['stage'],'complete');self.assertEqual(tx['retentionRegister']['check'],'passed')
+  self.assertEqual(tx['retentionRegister']['summary']['rollback'],[self.old]);self.assertEqual(tx['retentionRegister']['retiredRoots'],[self.old])
+  register=json.loads(self.register.read_text());by={e['name']:e['disposition'] for e in register['entries']}
+  self.assertEqual(by,{self.new:'active',self.old:'rollback',self.prev:'held','mcp':'active'})
+  self.assertEqual(register['completionLedger'],{'path':str(self.ledger.resolve()),'sha256':m.digest(self.ledger)})
+  self.assertTrue(Path(tx['retentionRegister']['backup']).is_file())
+  clocks=json.loads(self.clocks.read_text());self.assertEqual([c['name'] for c in clocks['entries']],[self.prev])
+  self.assertEqual(json.loads(self.policy_path.read_text())['activeUnits'],['mcp.service','web-b.service'])
+  # The next release's read-only retention check passes on the written register.
+  policy=json.loads(self.policy_path.read_text())
+  m.validate_retention_receipt({'basis':{'sha256':register['basisSha256']},'retentionReceipt':{'path':str(self.register),'sha256':m.digest(self.register)}},self.observed(),policy)
+ def test_unclassified_root_stops_completion_before_any_retirement(self):
+  self.roots.append('uapt-stray')
+  with self.assertRaisesRegex(ValueError,'Unclassified release roots'):self.complete()
+  self.assertFalse([c for c in self.calls if c[:2]==('systemctl','disable')])
+  self.assertEqual(json.loads((self.state/'transaction.json').read_text())['stage'],'selected_pending_acceptance')
+  self.assertEqual(json.loads(self.policy_path.read_text())['activeUnits'],['mcp.service','web-a.service'])
 
 if __name__=='__main__':unittest.main()
