@@ -191,22 +191,26 @@ IndexNow notifies Microsoft Bing, Yandex, Seznam, and partner engines about URL 
 
 ### Commands
 
-Preview changed URLs in the current release without sending network requests:
+The basis is the selected runtime content release (`--content-root` or
+`UAPT_CONTENT_ROOT`; see `docs/content-release.md`): its `manifest.json` binds
+the sync ledger and its content switch plan lists the changed URLs.
+
+Preview the selected release's changed URLs without sending network requests:
 
 ```bash
-pnpm indexnow:dry-run
+pnpm indexnow:dry-run --content-root <content-root>
 ```
 
-Submit changed URLs for the latest published release:
+Submit them after public readback:
 
 ```bash
-pnpm indexnow:latest --sync-ledger <event.json>
+pnpm indexnow:latest --content-root <content-root> --sync-ledger <event.json>
 ```
 
 Submit all URLs from site sitemaps (full site indexing):
 
 ```bash
-pnpm indexnow:all --sync-ledger <event.json>
+pnpm indexnow:all --content-root <content-root> --sync-ledger <event.json>
 ```
 
 Run test suite:

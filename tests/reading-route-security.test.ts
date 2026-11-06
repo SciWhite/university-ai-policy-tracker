@@ -27,6 +27,25 @@ test("all reading locale routes bypass private analytics auth without weakening 
   }
 });
 
+test("private analytics failure tracking stays bounded under many client keys", () => {
+  const keys = ["NODE_ENV", "INTERNAL_ANALYTICS_PASSWORD", "INGESTION_TOKEN"] as const;
+  const before = Object.fromEntries(keys.map(key => [key, process.env[key]]));
+  const attempt = (ip: string) => proxy(new NextRequest("http://localhost/internal/analytics", { headers: { "x-forwarded-for": ip } }))?.status;
+  try {
+    process.env.NODE_ENV = "production";
+    process.env.INTERNAL_ANALYTICS_PASSWORD = "test-only-secret";
+    delete process.env.INGESTION_TOKEN;
+    for (let i = 0; i < 5; i++) assert.equal(attempt("198.51.100.7"), 401);
+    assert.equal(attempt("198.51.100.7"), 429);
+    // Fresh keys inside the lockout window evict the oldest entry rather than growing without limit.
+    for (let i = 0; i < 1024; i++) assert.equal(attempt(`10.${i >> 8}.${i & 255}.1`), 401);
+    assert.equal(attempt("198.51.100.7"), 401);
+    assert.equal(attempt("10.3.255.1"), 401);
+  } finally {
+    for (const key of keys) before[key] === undefined ? delete process.env[key] : process.env[key] = before[key];
+  }
+});
+
 test("navigation carries the exact reading locale and Hant uses English legacy UI fallback", () => {
   for (const locale of READING_LOCALES) {
     const selected = getReadingLocaleFromPathname(`/${locale}/universities/ucl`);

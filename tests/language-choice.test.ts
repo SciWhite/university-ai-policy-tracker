@@ -2,17 +2,19 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { pageReadingLocales, readingLanguageHref, suggestedReadingLocale } from "../apps/web/lib/language-choice";
 import { READING_LOCALES } from "../apps/web/lib/language-catalog";
-import { SUPPORTED_LOCALES } from "../apps/web/lib/i18n";
 import { localizeHref } from "../apps/web/lib/i18n";
 import { publishedV6Slugs } from "../apps/web/lib/policy-v6-published-gate";
 
 test("reading choices follow page coverage without using search index eligibility", () => {
-  for (const slug of publishedV6Slugs) {
+  for (const slug of publishedV6Slugs()) {
     assert.deepEqual(pageReadingLocales(`/universities/${slug}`), READING_LOCALES);
     assert.deepEqual(pageReadingLocales(`/ja/universities/${slug}`), READING_LOCALES);
   }
-  assert.deepEqual(pageReadingLocales("/universities/aarhus-university"), SUPPORTED_LOCALES);
+  assert.deepEqual(pageReadingLocales("/universities/aarhus-university"), ["en", "zh"]);
+  assert.deepEqual(pageReadingLocales("/fr/universities/aarhus-university"), ["en", "zh"]);
   assert.equal(readingLanguageHref("/universities/aarhus-university", "ja"), undefined);
+  assert.equal(readingLanguageHref("/universities/aarhus-university", "fr"), undefined);
+  assert.equal(readingLanguageHref("/fr/universities/aarhus-university", "zh"), "/zh/universities/aarhus-university");
   assert.deepEqual(pageReadingLocales("/internal/analytics"), ["en"]);
   assert.deepEqual(pageReadingLocales("/api/public/v1/index.json"), ["en"]);
   for (const path of ["/", "/search", "/api-reference", "/widgets", "/review/queue"]) {

@@ -11,8 +11,9 @@ import { policyV6RecordCopy } from "./policy-v6-record-copy";
 import { translatePolicyReferenceUi } from "./policy-reference-ui";
 import { buildPolicyAnalysisProfile } from "./policy-analysis";
 import { getRepairAnalysisContext } from "./public-record-repairs";
-import mitPin from "../../../data/public-record-repairs/current.json";
+import { readContentJson } from "./content-runtime";
 import { policyV6Slugs, policyV6BundlePreviewSlugs } from "./policy-v6-gate";
+import { isPolicyV6BaseTier } from "./policy-v6-tier";
 import type { SupportedLocale } from "./i18n";
 import type { ReadingLocale } from "./language-catalog";
 import { policyV6ReviewState } from "./policy-v6-review";
@@ -81,6 +82,8 @@ export interface PolicyV6Data {
   studentActionsPilot?: boolean;
   /** True only when every policy display field in the active guide has an accepted target string. */
   studentGuideTranslated?: boolean;
+  /** Filled from the public record only; see policy-v6-tier.ts. */
+  baseTier?: boolean;
 }
 const titles: Record<string, string> = {
   coursework: "Coursework",
@@ -228,6 +231,12 @@ export async function getPolicyV6Data(
       ...(studentActionsPilot ? {studentActionsPilot, studentActions:acceptedActions ?? getV6StudentActions(current)} : {}),
     };
   }
+  if (isPolicyV6BaseTier(currentSlug) && !policyV6Slugs.some((slug) => slug === currentSlug) && !policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug)) {
+    // Base tier: the school's own public record only. No student guide, no
+    // private local bundle and no other school's reviewed presentation.
+    const school = await getPolicyV6RecordSchool(locale, currentSlug);
+    return { locale, currentSlug, schools: school ? [school] : [], baseTier: true };
+  }
   const slugs: string[] = [...policyV6Slugs];
   if (policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug)) slugs.push(currentSlug);
   const schools = await Promise.all(slugs.map((slug) => getPolicyV6School(locale, slug)));
@@ -257,6 +266,14 @@ export async function getPolicyV6School(
   if (local) return localSchool(local, locale);
   const bundle = getLocalV6Bundle(slug, locale);
   if (bundle) return bundle.school;
+  return getPolicyV6RecordSchool(locale, slug);
+}
+
+/** V6 topics derived from the school's published record and analysis profile only. */
+async function getPolicyV6RecordSchool(
+  locale: SupportedLocale,
+  slug: string,
+): Promise<LabSchool | undefined> {
   const [summary, loaded] = await Promise.all([
     getPublicUniversitySummaryBySlug(slug),
     getLoadedPolicySnapshotBySlug(slug),
@@ -269,7 +286,7 @@ export async function getPolicyV6School(
   const context = getRepairAnalysisContext(summary);
   const revision =
     context?.revision ??
-    (slug === mitPin.slug ? mitPin.revision : "published baseline");
+    ((mitPin => slug === mitPin.slug ? mitPin.revision : "published baseline")(readContentJson<{ slug: string; revision: string }>("data/public-record-repairs/current.json")));
   const profile = buildPolicyAnalysisProfile(summary);
   const recordTopic = (
     key: string,

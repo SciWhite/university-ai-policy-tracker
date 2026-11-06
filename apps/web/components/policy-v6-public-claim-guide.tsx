@@ -2,12 +2,12 @@ import React from 'react';
 import type {PolicyClaim} from '@uapt/shared';
 import type {LocalV6Bundle} from '@/lib/policy-v6-bundle';
 import type {SupportedLocale} from '@/lib/i18n';
-import references from '../../../data/public-v6-claim-reference-map.json';
+import {readContentJson} from '@/lib/content-runtime';
 
 type Mapping={recordSha256:string;topics:Record<string,string[]>;submissionClaimIds:string[];submissionPermissionGap?:boolean};
 /** Navigation over published Claims. No new advice, translation or snapshot approval. */
 export function PolicyV6PublicClaimGuide({view,locale,sharedUiText={},faq=false}:{view:LocalV6Bundle;locale:SupportedLocale;sharedUiText?:Readonly<Record<string,string>>;faq?:boolean}) {
- const publishedMapping=(references.universities as Record<string,Mapping>)[view.school.slug];
+ const publishedMapping=readContentJson<{universities:Record<string,Mapping>}>('data/public-v6-claim-reference-map.json').universities[view.school.slug];
  const mapping = view.publicReferenceGuide ?? (!view.publication && view.localReferenceGuide ? view.localReferenceGuide : publishedMapping?.recordSha256 === view.school.fingerprint ? publishedMapping : undefined);
  if(!mapping)return null;
  const zh=locale==='zh';

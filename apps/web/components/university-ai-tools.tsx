@@ -274,7 +274,7 @@ export function UniversityAiTools({
     </section>
   );
   return uiLab && !standalone ? (
-    <PolicyV6Tools records={supported} scopedTools={scopedTools}>
+    <PolicyV6Tools recordCount={supported.length} scopedTools={scopedTools}>
       {content}
     </PolicyV6Tools>
   ) : (

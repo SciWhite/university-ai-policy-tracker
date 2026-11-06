@@ -13,7 +13,7 @@ import { GET as recordCorrection } from "../apps/web/app/api/public/v1/record-co
 import { GET as v5Pages } from "../apps/web/app/api/public/v1/policy-pages/v5.json/route";
 import { GET as changeEvents } from "../apps/web/app/api/public/v1/changes/events/[revision]/[slug]/route";
 import { default as localizedRevisionPage } from "../apps/web/app/(default)/changes/[releaseId]/[slug]/page";
-import { V6ChangeDetail } from "../apps/tulsa-zone/components/v6-change-detail";
+import { V6ChangeDetail } from "../apps/web/components/v6-change-detail";
 import { GET as currentUniversity } from "../apps/web/app/api/public/v1/universities/[...slug]/route";
 import { GET as policySnapshot } from "../apps/web/app/api/public/v1/policy-snapshots/universities/[slug]/route";
 import { GET as universityStatusWidget } from "../apps/web/app/api/public/v1/widgets/university-status/[slug]/route";

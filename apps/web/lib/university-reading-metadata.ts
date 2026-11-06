@@ -3,7 +3,7 @@ import { readFile, stat } from "node:fs/promises";
 import type { Metadata } from "next";
 import { getReadingTranslations, isVerifiedReadingBundle } from "./reading-translations";
 import { READING_LOCALES, type ReadingLocale } from "./language-catalog";
-import { DEFAULT_LOCALE, withLocalePrefix } from "./i18n";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, withLocalePrefix } from "./i18n";
 import { getAbsoluteSiteUrl } from "./site-url";
 import { universityIndexLocales, type UniversityLocaleIndexPolicy } from "./university-locale-index-policy";
 import { getPolicyScenePilot } from "./policy-scene-pilot";
@@ -11,9 +11,13 @@ import type { PublicEntitySummary } from "@uapt/shared";
 import { readingTranslation } from "./reading-translations";
 import { getV6PageInput } from "./policy-v6-page-input";
 import { getPolicyV6Data } from "./policy-v6";
-import { publishedV6Slugs } from "./policy-v6-published";
+import { isPublishedV6Slug } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
 import { ByteLru } from "./bounded-cache";
+import { readingPackageSelection } from "./content-runtime";
+import { isPolicyV6BaseTier, policyV6Tier } from "./policy-v6-tier";
+import { schoolTargetLocales, type SchoolLanguageIdentity } from "./school-languages";
+import { getCatalogUniversityBySlug } from "./catalog";
 
 let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
@@ -57,7 +61,14 @@ export function localEvidenceDisplayRequirements(evidence: import("./policy-v6-l
 }
 
 export async function v6DisplayRequirements(slug: string, summary?: PublicEntitySummary): Promise<V6ReadingDisplayInventory> {
-  const publishedScope = publishedV6Slugs.includes(slug);
+  const publishedScope = isPublishedV6Slug(slug);
+  if (!publishedScope && isPolicyV6BaseTier(slug)) {
+    // Base tier shows record-derived topic prose; a reading locale is complete
+    // only when that prose is accepted too. No private local input is read.
+    const output: ReadingDisplayRequirement[] = [];
+    collectV6Display((await getPolicyV6Data("en", slug)).schools, "/v6/schools", output);
+    return { requirements: output.filter(requirement => requirement.source.trim()), sourceScopeComplete: true };
+  }
   const input = getV6PageInput(slug, "en");
   if (!publishedScope && !input.bundle && !input.evidence) return { requirements: [], sourceScopeComplete: true };
   const data = await getPolicyV6Data("en", slug);
@@ -89,7 +100,7 @@ export function policySceneDisplaySources(slug: string, summary: PublicEntitySum
     getPolicyScenePilot(slug, summary.claims, false, true, { isPreview: true }),
     getPolicyScenePilot(slug, summary.claims, false, false, { isPreview: true })
   ].filter(Boolean);
-  if (publishedV6Enabled() && publishedV6Slugs.includes(slug)) {
+  if (publishedV6Enabled() && isPublishedV6Slug(slug)) {
     const updates = new Map<string, ReadingDisplayRequirement>();
     for (const scene of scenes) {
       const source = scene?.sourceUpdate?.text;
@@ -141,25 +152,51 @@ export function readingDisplayRequirementsComplete(requirements: readonly Readin
   return complete;
 }
 
+// Locales whose UI and school pages were already indexed before reading packages.
+const LEGACY_INDEX_LOCALES = new Set<ReadingLocale>(SUPPORTED_LOCALES);
+
+async function completeReadingLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary: PublicEntitySummary, requested: readonly ReadingLocale[], pointer: string, sourceSha256?: string): Promise<ReadingLocale[]> {
+  if (requested.length === 0) return [];
+  const sceneSources = policySceneDisplaySources(slug, summary);
+  let v6Sources: V6ReadingDisplayInventory;
+  try { v6Sources = await v6DisplayRequirements(slug, summary); }
+  catch { return []; }
+  const requirements = [...sceneSources, ...v6Sources.requirements];
+  const complete: ReadingLocale[] = [];
+  for (const locale of requested) {
+    const result = await getReadingTranslations(slug, locale, basis, pointer);
+    if (result.state === "ready" && (!sourceSha256 || (result.school.sourceSha256 === sourceSha256 && result.shared.sourceSha256 === sourceSha256)) && readingDisplayRequirementsComplete(requirements, result.school, result.shared, v6Sources.sourceScopeComplete)) complete.push(locale);
+  }
+  return complete;
+}
+
+/**
+ * Base-tier schools are indexed in English and Simplified Chinese as before
+ * reading packages, plus their country or region language when it is a legacy
+ * UI locale or has a complete reading translation. No other locale is indexed.
+ */
+async function baseTierIndexLocales(identity: SchoolLanguageIdentity, basis: { recordSha256: string; originalEvidenceSha256: string }, summary: PublicEntitySummary, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
+  const slug = identity.slug;
+  const targets = schoolTargetLocales(identity).filter(locale => !onlyLocale || locale === DEFAULT_LOCALE || locale === onlyLocale);
+  const pending = targets.filter(locale => !LEGACY_INDEX_LOCALES.has(locale));
+  const pointer = readingPackageSelection().pointer;
+  const complete = pointer ? await completeReadingLocales(slug, basis, summary, pending, pointer) : [];
+  return targets.filter(locale => LEGACY_INDEX_LOCALES.has(locale) || complete.includes(locale));
+}
+
 export async function universityReadingIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
   if (!summary) return [DEFAULT_LOCALE];
-  const pointer = process.env.UAPT_READING_PACKAGE_POINTER;
+  const identity = policyV6Tier(slug) === "full" ? undefined : await getCatalogUniversityBySlug(slug);
+  if (identity) return baseTierIndexLocales(identity, basis, summary, onlyLocale);
+  // Multilingual (full V6) schools keep their reviewed locale registry.
+  const pointer = readingPackageSelection().pointer;
   if (!pointer) return [DEFAULT_LOCALE];
   const policy = await loadPolicy();
   const school = policy?.schools?.[slug];
   if (!policy || !school || school.recordSha256 !== basis.recordSha256) return [DEFAULT_LOCALE];
   const requested = school.locales.filter(locale => locale !== DEFAULT_LOCALE && (!onlyLocale || locale === onlyLocale));
   if (requested.length === 0) return [DEFAULT_LOCALE];
-  const sceneSources = policySceneDisplaySources(slug, summary);
-  let v6Sources: V6ReadingDisplayInventory;
-  try { v6Sources = await v6DisplayRequirements(slug, summary); }
-  catch { return [DEFAULT_LOCALE]; }
-  const requirements = [...sceneSources, ...v6Sources.requirements];
-  const complete: ReadingLocale[] = [];
-  for (const locale of requested) {
-    const result = await getReadingTranslations(slug, locale, basis, pointer);
-    if (result.state === "ready" && result.school.sourceSha256 === policy.sourceSha256 && result.shared.sourceSha256 === policy.sourceSha256 && readingDisplayRequirementsComplete(requirements, result.school, result.shared, v6Sources.sourceScopeComplete)) complete.push(locale);
-  }
+  const complete = await completeReadingLocales(slug, basis, summary, requested, pointer, policy.sourceSha256);
   return universityIndexLocales(slug, policy, {
     sharedLocales: READING_LOCALES.filter(locale => locale !== DEFAULT_LOCALE),
     schools: { [slug]: { recordSha256: basis.recordSha256, completeLocales: complete } }

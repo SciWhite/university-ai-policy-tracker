@@ -1,17 +1,19 @@
 import {createHash} from 'node:crypto';
 import {publicEntitySummarySchema,policySnapshotSchema,universityToolRecordSchema,type PublicEntitySummary,type PolicySnapshot,type UniversityToolRecord} from '@uapt/shared';
-import pointer from '../../../data/public-v6-records/current.json';
-import revisions from '../../../data/public-v6-records/revisions.json';
-import shardIndex from '../../../data/public-v6-records/sharded/index.json';
 import {publishedV6Enabled} from './policy-v6-published-gate';
 import {readPublishedV6Revision} from './policy-v6-published';
 import {V6ArtifactStore, readVerifiedArtifact, v6PublicDataRoot, type ShardIndex} from './v6-artifact-store';
 import {getLocalQACandidateRecords} from './v6-qa-candidate';
 import {scopedAnalysisRepair} from './scoped-analysis-repair';
+import {readContentJson} from './content-runtime';
 export interface RecordRevision {universityRevisionId:string;datasetReleaseId:string;recordSha256:string;publishedAt:string;baselineRevisionId?:string;previousRevisionId?:string}
 export interface V6RecordPackage {schemaVersion:string;revision:string;publishedAt:string;datasetReleaseId:string;publicationApproved:boolean;candidateOnly?:true;parentRevisionId?:string;changeSummary?:{en:string;zh:string};summaries:PublicEntitySummary[];snapshots:Record<string,PolicySnapshot>;toolsBySlug:Record<string,UniversityToolRecord[]>;recordRevisions:Record<string,RecordRevision>;heldBySlug:Record<string,PublicEntitySummary['claims']>;historical:Record<string,{baseline:PublicEntitySummary;snapshot:PolicySnapshot|null;heldClaims:PublicEntitySummary['claims']}>;aliasesBySlug:Record<string,string[]>;changesBySlug:Record<string,{addedClaimIds:string[];updatedClaimIds:string[];heldClaimIds:string[]}>;mcpPresentationExclusions?:Record<string,string[]>;analysisOverrides?:Record<string,{recordSha256:string;dimensions:Record<string,{claimIds:string[];status:string;summary:string}>}>}
-const useShards=(revision:string)=>process.env.UAPT_V6_LEGACY_DATA!=='1'&&Object.hasOwn(shardIndex.revisions,revision);
-const store=()=>new V6ArtifactStore(v6PublicDataRoot('public-v6-records'),shardIndex as ShardIndex,(value,path)=>{
+const currentPointer=()=>readContentJson<{path:string;sha256:string;revision:string}>('data/public-v6-records/current.json');
+const revisions=()=>readContentJson<Record<string,{path:string;sha256:string}>>('data/public-v6-records/revisions.json');
+const shardIndex=()=>readContentJson<ShardIndex>('data/public-v6-records/sharded/index.json');
+export const v6RecordsRevision=()=>currentPointer().revision;
+const useShards=(revision:string)=>process.env.UAPT_V6_LEGACY_DATA!=='1'&&Object.hasOwn(shardIndex().revisions,revision);
+const store=()=>new V6ArtifactStore(v6PublicDataRoot('public-v6-records'),shardIndex(),(value,path)=>{
   if(path[0]==='summaries')publicEntitySummarySchema.parse(value);
   if(path[0]==='snapshots')policySnapshotSchema.parse(value);
   if(path[0]==='toolsBySlug')(value as unknown[]).forEach(t=>universityToolRecordSchema.parse(t));
@@ -21,7 +23,7 @@ export function readV6RecordCorrections(){
     const candidate = getLocalQACandidateRecords();
     if (candidate) return candidate;
   }
-  return readV6RecordCorrectionRevision(pointer.revision);
+  return readV6RecordCorrectionRevision(v6RecordsRevision());
 }
 /** No aggregate package is retained; fields are lazy per-school readers. */
 export function readV6RecordCorrectionRevision(revision:string):V6RecordPackage|undefined{
@@ -30,7 +32,7 @@ export function readV6RecordCorrectionRevision(revision:string):V6RecordPackage|
    const candidate = getLocalQACandidateRecords();
    if (candidate && candidate.revision === revision) return candidate;
  }
- const entry=(revisions as Record<string,{path:string;sha256:string}>)[revision];
+ const pointer=currentPointer(),entry=revisions()[revision];
  const selected=useShards(revision)?store().view<V6RecordPackage>(revision,entry?.sha256??(revision===pointer.revision?pointer.sha256:undefined)):entry?readVerifiedArtifact<V6RecordPackage>(v6PublicDataRoot('public-v6-records'),entry.path,entry.sha256,128*1024*1024):undefined;
  if(!selected)return undefined;
  const slugs=useShards(revision)?store().manifest(revision)!.scope:selected.summaries.map(s=>s.entity.slug);
@@ -43,7 +45,7 @@ export function readV6RecordCorrectionRevision(revision:string):V6RecordPackage|
  }
  return selected;
 }
-export function v6RecordSlugs(revision=pointer.revision):string[]{
+export function v6RecordSlugs(revision=v6RecordsRevision()):string[]{
  if(!publishedV6Enabled())return [];
  if (process.env.NODE_ENV === "development" && process.env.UAPT_LOCAL_QA_CANDIDATE_RECORDS) {
    const selected = readV6RecordCorrections();
@@ -55,7 +57,7 @@ export function v6RecordSlugs(revision=pointer.revision):string[]{
 export function v6SummaryAtRevision(slug:string,revision?:string):PublicEntitySummary|undefined{
   const selected=readV6RecordCorrections();
   if(!selected)return undefined;
-  const targetRevision = revision ?? selected.revision ?? pointer.revision;
+  const targetRevision = revision ?? selected.revision ?? v6RecordsRevision();
   if(selected.revision === targetRevision) {
     // A keyed shard read must not inflate every school while looking up one slug.
     // Keep the development candidate's separate loader and legacy packages intact.

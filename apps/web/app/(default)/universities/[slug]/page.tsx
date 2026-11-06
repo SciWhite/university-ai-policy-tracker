@@ -1,4 +1,5 @@
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
+import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "@/components/policy-v6-changes";
 import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "@/components/policy-v6-held-records";
@@ -9,7 +10,7 @@ import { PolicyV6HeaderLocation } from "@/components/policy-v6-header-location";
 import { getPolicyV6UniversityTitle } from "@/lib/policy-v6-university-title";
 import {getV6PageInput} from "@/lib/policy-v6-page-input";
 import {universityPolicySeo, universityPolicyStructuredData} from "@/lib/university-policy-seo";
-import {publishedV6Enabled, publishedV6Slugs} from "@/lib/policy-v6-published-gate";
+import {publishedV6Enabled, isPublishedV6Slug} from "@/lib/policy-v6-published-gate";
 import { PolicyV6BundlePage } from "@/components/policy-v6-bundle-page";
 import { PolicyV6Sources } from "@/components/policy-v6-sources";
 import { PolicyV6ClaimGroups } from "@/components/policy-v6-claim-groups";
@@ -51,6 +52,7 @@ import { PolicyQuickGuide, PolicySceneGallery } from "@/components/policy-quick-
 import { PolicyRecordHashReveal } from "@/components/policy-record-hash-reveal";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
+import { getReviewStateLabel } from "@/components/state-label";
 import { StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
 import { DocumentLink as Link } from "@/components/document-link";
 import { RelatedUniversities } from "@/components/related-universities";
@@ -89,6 +91,13 @@ import { v6ChangesCopy } from "@/lib/v6-changes-copy";
 import { universityToolsUi } from "@/lib/university-tools-ui";
 import { v5Ui } from "@/lib/enforcement-v5-ui";
 import { policyV6StaticUiText } from "@/lib/policy-v6-static-ui";
+import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
+import { isPolicyV6BaseTier, POLICY_V6_BASE_TIER_NOTICE } from "@/lib/policy-v6-tier";
+import { schoolSwitcherLocales } from "@/lib/school-languages";
+import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
+import { PageReadingLocales } from "@/components/page-reading-locales";
+import { getPublicReadingUiText } from "@/lib/public-ui-translations";
 
 type PublicUniversitySummary = NonNullable<Awaited<ReturnType<typeof getPublicUniversitySummaryBySlug>>>;
 
@@ -169,14 +178,22 @@ interface UniversityPageProps {
   }>;
 }
 
+// Production never reads searchParams here, so any slug is rendered on its
+// first request and then served from the ISR cache.
+export const dynamicParams = true;
 export const revalidate = 3600;
+
+export function generateStaticParams(): Array<{ slug: string }> {
+  return [];
+}
 
 export async function generateMetadata({ params, searchParams }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   const readingLocale = normalizeReadingLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  if (isEthEnforcementPreview(slug, (await searchParams)?.layout) && !isPolicyV6Preview(slug, (await searchParams)?.layout)) {
+  const layout = (await readDevelopmentPreviewQuery(searchParams))?.layout;
+  if (isEthEnforcementPreview(slug, layout) && !isPolicyV6Preview(slug, layout)) {
     const title = "ETH Zurich AI policy evidence | University AI Policy Tracker";
     const description = "An independent sample of five source-backed ETH Zurich policy facts. Specific penalties and appeal deadlines were not established in the reviewed material; this is an evidence gap, not a finding that no rules exist.";
     return {
@@ -189,7 +206,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
   }
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
-  if (university && publicSummary && isPolicyV6Preview(slug, (await searchParams)?.layout)) {
+  if (university && publicSummary && isPolicyV6Preview(slug, layout)) {
     const seo = universityPolicySeo(publicSummary, locale);
     const metadataBasis = universityReadingBasis(slug, publicSummary) ?? { recordSha256: "", originalEvidenceSha256: "" };
     const localizedMetadata = await universityReadingMetadata(slug, `/universities/${slug}`, readingLocale, metadataBasis, publicSummary);
@@ -242,7 +259,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
     description,
     alternates,
     ...(localizedMetadata?.robots ? { robots: localizedMetadata.robots } : {}),
-    ...((process.env.NODE_ENV === "development" && (isPolicyReferencePreview(slug, (await searchParams)?.layout) || isPolicyV6Preview(slug, (await searchParams)?.layout))) ? { robots: { index: false, follow: false } } : {}),
+    ...((process.env.NODE_ENV === "development" && (isPolicyReferencePreview(slug, layout) || isPolicyV6Preview(slug, layout))) ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       title,
       description,
@@ -284,19 +301,25 @@ export default async function UniversityPage({
   const locale = normalizeLocale(localeParam);
   const readingLocale = normalizeReadingLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  if (isEthEnforcementPreview(slug, (await searchParams)?.layout) && !isPolicyV6Preview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
+  await tagContent("catalog", contentTagFor.school(slug));
+  const pageQuery = await readDevelopmentPreviewQuery(searchParams);
+  if (isEthEnforcementPreview(slug, pageQuery?.layout) && !isPolicyV6Preview(slug, pageQuery?.layout)) return <EthEnforcementPreview locale={locale} />;
 
-  const pageQuery = await searchParams;
-  const uiLab = isPolicyV6Preview(slug, pageQuery?.layout);
+  // One V6 template: published V6 schools (and development previews) render the
+  // full tier; every other catalog school renders the base tier from its record.
+  const v6Preview = isPolicyV6Preview(slug, pageQuery?.layout);
+  const baseTier = !v6Preview && isPolicyV6BaseTier(slug);
+  const uiLab = v6Preview || baseTier;
+  const fullV6 = v6Preview;
   // Preserve the pre-existing seven-locale V6 cache only when no complete
   // accepted reading package is selected. New reading locales stay English based.
   const fallbackV6Locale = readingLocale === locale ? locale : "en";
   // Translation hashes bind to the frozen English display export. Keep V6 input
   // language-neutral so pre-existing zh bundles cannot bypass the accepted 32-locale map.
-  const v6Input = uiLab ? getV6PageInput(slug, "en") : undefined;
-  const fallbackV6Input = uiLab && fallbackV6Locale !== "en" ? getV6PageInput(slug, fallbackV6Locale) : undefined;
+  const v6Input = fullV6 ? getV6PageInput(slug, "en") : undefined;
+  const fallbackV6Input = fullV6 && fallbackV6Locale !== "en" ? getV6PageInput(slug, fallbackV6Locale) : undefined;
   const localBundle = v6Input?.bundle;
-  const v6PublicSummary = uiLab && publishedV6Enabled() && (publishedV6Slugs.includes(slug) || Boolean(v6Input?.bundle || v6Input?.evidence)) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
+  const v6PublicSummary = fullV6 && publishedV6Enabled() && (isPublishedV6Slug(slug) || Boolean(v6Input?.bundle || v6Input?.evidence)) ? await getPublicUniversitySummaryBySlug(slug) : undefined;
   const v6Basis = v6PublicSummary
     ? universityReadingBasis(slug, v6PublicSummary)
     : undefined;
@@ -392,9 +415,10 @@ export default async function UniversityPage({
   );
   const v6School = labData?.schools.find(s => s.slug === slug);
   const sceneLocale = readyTranslations ? "en" : locale;
-  const basePolicyScene = uiLab && v6School ? getPolicyV6IllustratedScene(v6School, sceneLocale) ?? originalPolicyScene : originalPolicyScene;
-  const showSupplements = approvedPolicySupplementSlugs.includes(slug) && (!uiLab || slug === "harvard-university");
-  const enforcementPage = isPublished && enforcementV4RefreshSlugs.includes(slug) && (!uiLab || slug === "harvard-university");
+  // Base tier never shows V6 scene art; an existing reviewed record scene stays.
+  const basePolicyScene = fullV6 && v6School ? getPolicyV6IllustratedScene(v6School, sceneLocale) ?? originalPolicyScene : originalPolicyScene;
+  const showSupplements = approvedPolicySupplementSlugs().includes(slug) && (!fullV6 || slug === "harvard-university");
+  const enforcementPage = isPublished && enforcementV4RefreshSlugs.includes(slug) && (!fullV6 || slug === "harvard-university");
   const policyScene = readyTranslations
     ? acceptedSceneView(basePolicyScene, readyTranslations)
     : enforcementPage && readingLocale === "zh" && locale === "zh" && basePolicyScene
@@ -409,10 +433,12 @@ export default async function UniversityPage({
   const readingUiText = readyTranslations ? acceptedV6UiText(readyTranslations, readingLocale, reviewedClaims.length) : {};
   const LabProvider = labData
     ? function PolicyV6PageProvider({ children }: { children: ReactNode }) {
-        return <PolicyV6Provider data={labData} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
+        return <PolicyV6Provider data={policyV6ClientData(labData)} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
       }
     : Fragment;
-  const referenceUi = (value: string) => readingUiText[value] ?? (referencePreview ? translatePolicyReferenceUi(value, locale) : value);
+  // Record framework labels follow the page language even when the record itself is English.
+  const localizeFramework = referencePreview || locale !== "en";
+  const referenceUi = (value: string) => readingUiText[value] ?? (localizeFramework ? translatePolicyReferenceUi(value, locale) : value);
   const referenceScene = referencePreview && policyScene ? preparePolicyReferenceScene(policyScene) : policyScene;
   const pilotSeoDescription = pilotSlug
     ? buildIndexRecoveryDescription({
@@ -444,13 +470,19 @@ export default async function UniversityPage({
         uiLab
       );
   const structuredDescription = pilotSeoDescription ?? citationReadySummary;
+  const switcherLocales = baseTier
+    // Same decision as robots, hreflang and the sitemap.
+    ? schoolSwitcherLocales(university, await universityReadingIndexLocales(slug, summaryBasis ?? { recordSha256: "", originalEvidenceSha256: "" }, rawPublicSummary).catch(() => []))
+    : undefined;
+  const tierNotice = baseTier ? (await getPublicReadingUiText(readingLocale, [POLICY_V6_BASE_TIER_NOTICE]))[POLICY_V6_BASE_TIER_NOTICE] : undefined;
   const structuredDateModified = pilotSlug
     ? (await getIndexRecoveryLastModified(slug)).toISOString()
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
 
   return (
-    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab?'compact-evidence':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
-      {uiLab ? v6JsonLd : <JsonLd
+    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab?'compact-evidence':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined} data-policy-tier={baseTier ? "base" : fullV6 ? "full" : undefined}>
+      {switcherLocales ? <PageReadingLocales path={`/universities/${slug}`} locales={switcherLocales} /> : null}
+      {uiLab && v6JsonLd ? v6JsonLd : <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
@@ -492,7 +524,11 @@ export default async function UniversityPage({
         actions={uiLab ? <div id="v6-header-actions"><PolicyV6Actions /></div> : undefined}
         leading={uiLab ? <UniversityHomepageMark slug={slug} name={displayName} locale={locale} /> : undefined}
         eyebrow={uiLab ? <PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={publicSummary.lastCheckedAt} changedAt={publicSummary.lastChangedAt} locale={locale} sharedUiText={readingUiText} /> : `${university.region}, ${university.country}`}
-        metadata={uiLab ? undefined :
+        metadata={fullV6 ? undefined : baseTier ? (
+          <MetaLabel label="Ranking">
+            {formatRanking(university.rankings)}
+          </MetaLabel>
+        ) :
           <>
             {referencePreview ? <MetaLabel label={referenceUi("Review")}><PolicyReferenceReview state={publicSummary.reviewState} locale={locale} sharedUiText={readingUiText} /></MetaLabel> : null}
             {compactPolicyPilot ? null : (
@@ -511,10 +547,11 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{uiLab ? getPolicyV6UniversityTitle(slug, displayName) : displayName}</span>}
       />
 
+      {baseTier ? <p className="policy-v6-tier-notice" role="note" data-i18n="preserve" lang={tierNotice ? readingLocale : "en"}>{tierNotice ?? POLICY_V6_BASE_TIER_NOTICE}</p> : null}
       {uiLab ? <PolicyV6Intro /> : null}
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
-      {policyScene ? referencePreview ? <PolicyReferenceHero uiLab={uiLab} scene={policyScene} locale={locale} sharedUiText={readingUiText} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements} /> : <PolicySceneHero scene={policyScene} /> : null}
-      {policyScene && !compactPolicyPilot && !uiLab ? <PolicySceneStory scene={policyScene} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero uiLab={fullV6} scene={policyScene} locale={locale} sharedUiText={readingUiText} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene && !compactPolicyPilot && !fullV6 ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
       {draftPreview ? <section id="candidate-analysis" data-i18n="preserve"><h2>Candidate analysis (pending review)</h2>{buildPolicyAnalysisProfile(publicSummary).dimensions.map(d => <article key={d.key}><h3>{d.key}: {d.status}</h3><p>{d.summary}</p></article>)}</section> : null}
@@ -529,13 +566,14 @@ export default async function UniversityPage({
           snapshot={displaySnapshot!.snapshot}
           guidanceInHero={referencePreview}
           uiLab={uiLab}
+          roleSwitch={pageQuery !== undefined}
         />
       ) : null}
       {labData ? <PolicyV6RecordTopics data={labData} additionalOnly={strongSnapshot} sharedUiText={readingUiText} /> : null}
-      {policyScene?.quickGuide && !strongSnapshot && !uiLab ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
-      {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} uiLab={uiLab} /> : null}
+      {policyScene?.quickGuide && !strongSnapshot && !fullV6 ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
+      {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} uiLab={fullV6} /> : null}
       {uiLab ? <PolicyV6BeforeTools /> : null}
-      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools uiLab={uiLab} draftPreview={draftPreview} locale={locale} sharedUiText={readingUiText} records={readyTranslations ? readingDisplayView(await getUniversityToolRecords(rawPublicSummary), readyTranslations, readingLocale) : await getUniversityToolRecords(publicSummary)} /> : null}
+      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools uiLab={fullV6} draftPreview={draftPreview} locale={locale} sharedUiText={readingUiText} records={readyTranslations ? readingDisplayView(await getUniversityToolRecords(rawPublicSummary), readyTranslations, readingLocale) : await getUniversityToolRecords(publicSummary)} /> : null}
       {uiLab ? <PolicyV6ChecklistFaq includeFaq={false} /> : null}
       {showSupplements ? <PolicySupplements slug={slug} locale={locale} claims={displayReviewedClaims} sharedUiText={readingLocale === locale ? undefined : readingUiText} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
@@ -565,7 +603,7 @@ export default async function UniversityPage({
         <a href={policyScene.sourceUpdate.href} target="_blank" rel="noopener noreferrer">Read the current official source →</a>
       </aside> : null}
       {reviewedClaims.length ? (
-          uiLab ? <PolicyV6ClaimGroups entitySlug={slug} groups={displayClaimGroups ?? groupReviewedClaimsByClaimType(displayReviewedClaims)} locale={locale} sharedUiText={readingUiText} /> : claimGroups ? (
+          uiLab ? <PolicyV6ClaimGroups entitySlug={slug} groups={displayClaimGroups ?? groupReviewedClaimsByClaimType(displayReviewedClaims)} locale={locale} sharedUiText={readingUiText} detailed={baseTier} /> : claimGroups ? (
             <UniversityClaimGroups
               draftPreview={draftPreview}
               entitySlug={slug}
@@ -574,7 +612,7 @@ export default async function UniversityPage({
               scene={compactPolicyPilot ? undefined : policyScene}
               role={role}
               collapsible={compactPolicyPilot}
-              localizeUi={referencePreview}
+              localizeUi={localizeFramework}
             />
           ) : (
             <div className="claim-list">
@@ -590,7 +628,7 @@ export default async function UniversityPage({
             </div>
           )
         ) : (
-          <p className="notice-card">No reviewed claims are published for this record yet.</p>
+          <p className="notice-card">{referenceUi("No reviewed claims are published for this record yet.")}</p>
         )}
       </section>
 
@@ -606,15 +644,15 @@ export default async function UniversityPage({
         {uiLab ? <PolicyV6Sources sources={publicSummary.officialSources} slug={slug} locale={locale} sharedUiText={readingUiText} /> : compactPolicyPilot ? (
           <details className="policy-record-sources">
             <summary>{referenceUi("Open official source list")} <span aria-hidden="true">⌄</span></summary>
-            <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
+            <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={localizeFramework} />
           </details>
         ) : (
-          <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
+          <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={localizeFramework} />
         )}
       </section>
 
       {relatedUniversities?.length ? (
-        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={referencePreview} uiLab={uiLab} sharedUiText={readingUiText} />
+        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={localizeFramework} uiLab={uiLab} sharedUiText={readingUiText} />
       ) : null}
 
       <section className="student-record-info" id="record-info">
@@ -623,11 +661,11 @@ export default async function UniversityPage({
           <div className="student-record-info__body">
             <div className="tag-row" id="snapshot-scope">
               <MetaLabel label={referenceUi("Review")}>
-                {uiLab && v6School?.v6ReviewState === "agent_reviewed" ? <span className="policy-v6-review" data-v6-review-state="agent_reviewed">{policyV6AgentReviewLabel(locale)}</span> : referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} sharedUiText={readingUiText} /> : formatReviewState(publicSummary.reviewState)}
+                {uiLab && v6School?.v6ReviewState === "agent_reviewed" ? <span className="policy-v6-review" data-v6-review-state="agent_reviewed">{policyV6AgentReviewLabel(locale)}</span> : referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} sharedUiText={readingUiText} /> : locale === "en" ? formatReviewState(publicSummary.reviewState) : getReviewStateLabel(publicSummary.reviewState, locale)}
               </MetaLabel>
               <MetaLabel label={referenceUi("Confidence")}>
                 {publicSummary.confidence === undefined
-                  ? "Not listed"
+                  ? referenceUi("Not listed")
                   : `${Math.round(publicSummary.confidence * 100)}%`}
               </MetaLabel>
               <MetaLabel label={referenceUi("Snapshot status")}>
@@ -656,13 +694,13 @@ export default async function UniversityPage({
             {uiLab ? <PolicyV6RecordLinks slug={slug} locale={locale}/> : null}
             {uiLab?<p><a href="https://github.com/SciWhite/university-ai-policy-tracker/issues/new" target="_blank" rel="noopener noreferrer">{locale==='zh'?'发现过期或错误政策？报告问题':'Outdated or incorrect policy? Report an issue'} ↗</a></p>:null}
             <p className="student-record-info__citation">
-              <strong>Citation:</strong> {publicSummary.suggestedCitation}
+              <strong>{referenceUi("Citation")}:</strong> {publicSummary.suggestedCitation}
             </p>
             <p className="muted">
-              Original university source language remains canonical. This tracker is not an official university statement.
+              {referenceUi("Original university source language remains canonical. This tracker is not an official university statement.")}
             </p>
             <Link className="site-action" href={`/changes/${slug}`}>
-              Open change log
+              {referenceUi("Open change log")}
             </Link>
           </div>
         </details>

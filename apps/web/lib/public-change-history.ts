@@ -1,7 +1,7 @@
 import {existsSync,readFileSync} from "node:fs";
 import {resolve} from "node:path";
-import pointer from "../../../data/public-change-history/current.json";
 import { findRepoRoot } from "./repo-root";
+import { activeContent, readContentJson } from "./content-runtime";
 import { publicHistoryBasis, publicHistoryBasisV2 } from "./public-history-basis";
 import { readVerifiedArtifact } from "./v6-artifact-store";
 import type { ChangeRecord } from "./change-records";
@@ -22,18 +22,22 @@ export interface HistoryManifest {
   releases: Record<string, HistoryFile>;
 }
 
-// The published inputs are immutable for a running artifact, as are the existing
-// staged dataset and release caches. New releases ship a regenerated projection.
-let verifiedBasis: Promise<string> | undefined;
-let verifiedEventBasis: Promise<string> | undefined;
+// Published inputs are immutable within one content release; the verified
+// basis is recomputed once per release selected by the content pointer.
+let verifiedBasis: { contentId: string; legacy: Promise<string>; event?: Promise<string> } | undefined;
+
+export const changeHistoryPointer = () => readContentJson<{ path: string; sha256: string }>("data/public-change-history/current.json");
 
 export async function historyManifest() {
+  const { contentId } = activeContent();
   const repoRoot = await findRepoRoot();
-  verifiedBasis ??= publicHistoryBasis(repoRoot);
-  const legacyBasis = await verifiedBasis;
+  const pointer = changeHistoryPointer();
+  if (verifiedBasis?.contentId !== contentId) verifiedBasis = { contentId, legacy: publicHistoryBasis(repoRoot) };
+  const selected = verifiedBasis;
+  const legacyBasis = await selected.legacy;
   const root = `${repoRoot}/data/public-change-history`;
   const manifest = readVerifiedArtifact<HistoryManifest>(root, pointer.path, pointer.sha256, 2 * 1024 * 1024);
-  const basis = manifest.schemaVersion === "uapt-public-change-history-v2" ? await (verifiedEventBasis ??= publicHistoryBasisV2(repoRoot)) : legacyBasis;
+  const basis = manifest.schemaVersion === "uapt-public-change-history-v2" ? await (selected.event ??= publicHistoryBasisV2(repoRoot)) : legacyBasis;
   if (!["uapt-public-change-history-v1", "uapt-public-change-history-v2"].includes(manifest.schemaVersion) || manifest.basisSha256 !== basis) {
     throw new Error("Public change history is out of date; regenerate with scripts/export-public-change-history.ts");
   }
@@ -93,7 +97,7 @@ export class ChangeEventStore {
 export async function readChangeEventHistory(revision:string,slug:string) {
   const {root,manifest}=await historyManifest();
   if(manifest.schemaVersion!=="uapt-public-change-history-v2")throw Error("Verified v2 change history unavailable");
-  return new ChangeEventStore(root,pointer,manifest.basisSha256).history(revision,slug);
+  return new ChangeEventStore(root,changeHistoryPointer(),manifest.basisSha256).history(revision,slug);
 }
 
 /** Explicit projection URLs select only their registered frozen manifest. */

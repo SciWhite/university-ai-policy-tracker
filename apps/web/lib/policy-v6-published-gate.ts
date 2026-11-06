@@ -1,6 +1,5 @@
-import pointer from '../../../data/public-v6-pages/current.json';
-/** Client-safe identity gate; filesystem verification stays in the server loader. */
-export const publishedV6Slugs=pointer.slugs;
-/** Separate bounded V5 cohort; never grants V6 presentation approval. */
-export const publishedV5Slugs=pointer.v5Slugs??[];
+import {isReadingCohortSchool, readingCohortSlugs} from './reading-cohort';
+/** Client-safe identity gate; the active content release supplies the slugs, filesystem verification stays in the server loader. */
+export const publishedV6Slugs=():readonly string[]=>readingCohortSlugs();
+export const isPublishedV6Slug=(slug:string)=>isReadingCohortSchool(slug);
 export const publishedV6Enabled=()=>process.env.UAPT_V6_PUBLISHED_PAGES==='1'||process.env.NEXT_PUBLIC_UAPT_V6_PUBLISHED_PAGES==='1';

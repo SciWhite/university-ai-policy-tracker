@@ -4,8 +4,9 @@ import path from "node:path";
 import { z } from "zod";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import { loadCatalog, topicSchema } from "./catalog.js";
+import { topicSchema } from "./catalog.js";
 import { PolicyService } from "./policy.js";
+import { contentPointerStamp, loadContentCatalog, loadPinnedCatalog, type CatalogSelection } from "./content.js";
 import { DailyTelemetry } from "./telemetry.js";
 import { resolutionOutput, policyOutput, evidenceOutput } from "./output-schemas.js";
 
@@ -41,7 +42,31 @@ export function makeMcpServer(policy: PolicyService, telemetry: DailyTelemetry) 
   return server;
 }
 
-export function createMcpHttpServer(policy: PolicyService, telemetry: DailyTelemetry, publicOrigin = "https://eduaipolicy.org") {
+/** The active catalog; a content switch replaces it between requests, never during one. */
+export class HotCatalog {
+  private service: PolicyService;
+  private selection: CatalogSelection;
+  constructor(initial: CatalogSelection, private readonly load: () => Promise<CatalogSelection>) {
+    this.selection = initial;
+    this.service = new PolicyService(initial.catalog);
+  }
+  current() { return this.service; }
+  get contentId() { return this.selection.contentId; }
+  /** Verify the newly selected catalog; on any failure keep serving the last verified one. */
+  async reload(): Promise<{ ok: boolean; contentId?: string; releaseId: string; error?: string }> {
+    try {
+      const next = await this.load();
+      this.selection = next;
+      this.service = new PolicyService(next.catalog);
+      return { ok: true, contentId: next.contentId, releaseId: next.catalog.releaseId };
+    } catch (error) {
+      return { ok: false, contentId: this.selection.contentId, releaseId: this.service.catalog.releaseId, error: error instanceof Error ? error.message : String(error) };
+    }
+  }
+}
+
+export function createMcpHttpServer(policySource: PolicyService | HotCatalog, telemetry: DailyTelemetry, publicOrigin = "https://eduaipolicy.org") {
+  const current = () => policySource instanceof HotCatalog ? policySource.current() : policySource;
   const validHosts = new Set([new URL(publicOrigin).host, "www.eduaipolicy.org", "localhost:3110", "127.0.0.1:3110"]);
   return createServer(async (req: IncomingMessage, res: ServerResponse) => {
     const start = performance.now();
@@ -55,7 +80,8 @@ export function createMcpHttpServer(policy: PolicyService, telemetry: DailyTelem
     if (!validHosts.has(host) && !/^127\.0\.0\.1:\d+$/.test(host) && !/^localhost:\d+$/.test(host)) { fail(403); return; }
     if (req.headers.origin && req.headers.origin !== publicOrigin && req.headers.origin !== "https://www.eduaipolicy.org") { fail(403); return; }
     const pathname = (req.url ?? "/").split("?")[0];
-    if (pathname === "/healthz" && req.method === "GET") { res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ ok: true, releaseId: policy.catalog.releaseId, universities: policy.catalog.records.length })); return; }
+    const policy = current();
+    if (pathname === "/healthz" && req.method === "GET") { res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ ok: true, releaseId: policy.catalog.releaseId, universities: policy.catalog.records.length, ...(policySource instanceof HotCatalog && policySource.contentId ? { contentId: policySource.contentId } : {}) })); return; }
     if (pathname !== "/api/mcp") { res.writeHead(404).end(); return; }
     // Stateless Streamable HTTP may reject the client's optional SSE GET.
     if (req.method !== "POST") { res.setHeader("Allow", "POST"); res.writeHead(405).end(); return; }
@@ -76,16 +102,28 @@ export function createMcpHttpServer(policy: PolicyService, telemetry: DailyTelem
 }
 
 async function main() {
-  if (process.env.NODE_ENV === "production" && (!process.env.UAPT_MCP_EXPECTED_RELEASE_ID || !process.env.UAPT_MCP_TELEMETRY_FILE)) throw new Error("Production pin and telemetry configuration required");
-  const catalog = await loadCatalog(path.resolve(process.env.UAPT_MCP_CATALOG ?? "apps/mcp/.runtime-data/catalog.json"));
-  if (process.env.UAPT_MCP_EXPECTED_RELEASE_ID && catalog.releaseId !== process.env.UAPT_MCP_EXPECTED_RELEASE_ID) throw new Error("Pinned release mismatch");
+  const contentRoot = process.env.UAPT_CONTENT_ROOT?.trim() ? path.resolve(process.env.UAPT_CONTENT_ROOT.trim()) : undefined;
+  // Production needs either the shared content pointer or the legacy release pin.
+  if (process.env.NODE_ENV === "production" && ((!contentRoot && !process.env.UAPT_MCP_EXPECTED_RELEASE_ID) || !process.env.UAPT_MCP_TELEMETRY_FILE)) throw new Error("Production content/pin and telemetry configuration required");
+  const load = contentRoot
+    ? () => loadContentCatalog(contentRoot)
+    : () => loadPinnedCatalog(path.resolve(process.env.UAPT_MCP_CATALOG ?? "apps/mcp/.runtime-data/catalog.json"), process.env.UAPT_MCP_EXPECTED_RELEASE_ID);
+  const catalog = new HotCatalog(await load(), load);
   const telemetry = new DailyTelemetry(process.env.UAPT_MCP_TELEMETRY_FILE);
   await telemetry.initialize();
-  const server = createMcpHttpServer(new PolicyService(catalog), telemetry, process.env.UAPT_MCP_PUBLIC_ORIGIN);
+  const server = createMcpHttpServer(catalog, telemetry, process.env.UAPT_MCP_PUBLIC_ORIGIN);
+  const reload = (reason: string) => void catalog.reload().then(result => console.log(JSON.stringify({ message: result.ok ? "MCP catalog reloaded" : "MCP catalog reload rejected; serving previous catalog", reason, ...result })));
+  process.on("SIGHUP", () => reload("SIGHUP"));
+  if (contentRoot) {
+    // Pick up pointer switches without a signal; the stat is cheap and the reload is verified.
+    let stamp = contentPointerStamp(contentRoot);
+    const poll = setInterval(() => { const next = contentPointerStamp(contentRoot); if (next !== stamp) { stamp = next; reload("content pointer changed"); } }, Math.max(1000, Number(process.env.UAPT_MCP_CONTENT_POLL_MS ?? 15000)));
+    poll.unref();
+  }
   server.requestTimeout = 15000; server.headersTimeout = 10000;
   const timer = setInterval(() => void telemetry.flush().catch(() => console.error("Telemetry retention failed")), 86400000); timer.unref();
-  server.listen(Number(process.env.UAPT_MCP_PORT ?? 3110), "127.0.0.1", () => console.log(JSON.stringify({ message: "MCP ready", releaseId: catalog.releaseId })));
+  server.listen(Number(process.env.UAPT_MCP_PORT ?? 3110), "127.0.0.1", () => console.log(JSON.stringify({ message: "MCP ready", releaseId: catalog.current().catalog.releaseId, contentId: catalog.contentId })));
   const shutdown = () => server.close(() => { void telemetry.flush().finally(() => process.exit(0)); });
   process.on("SIGTERM",shutdown); process.on("SIGINT",shutdown);
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(() => { console.error("MCP startup failed: check pinned catalog and telemetry configuration"); process.exitCode=1; });
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(() => { console.error("MCP startup failed: check content pointer or pinned catalog and telemetry configuration"); process.exitCode=1; });

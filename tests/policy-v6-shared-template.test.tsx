@@ -23,7 +23,7 @@ const textHtml = (s: string) => renderToStaticMarkup(<p>{s}</p>).slice(3, -4);
 
 test("all published V6 schools and enabled locales share the default reading presentation without changing content", async () => {
   const kinds = new Set<string>();
-  for (const slug of publishedV6Slugs) for (const locale of ["en", "zh", "fr", "pl", "es", "nl", "ms"] as const) {
+  for (const slug of publishedV6Slugs()) for (const locale of ["en", "zh", "fr", "pl", "es", "nl", "ms"] as const) {
     const input = getV6PageInput(slug, locale); kinds.add(input.kind);
     const source = await getPolicyV6Data(locale, slug);
     const frozen = JSON.stringify(source);

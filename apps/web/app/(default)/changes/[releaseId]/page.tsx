@@ -23,6 +23,12 @@ import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { formatDateMedium } from "@/lib/format-date";
 import { currentMonthlyReportPath } from "@/lib/reports";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
+import { readPublishedV6Revision } from "@/lib/policy-v6-published";
+import { V6ChangeNote } from "@/components/v6-change-note";
+import { V6CompactChangeNote } from "@/components/v6-compact-change-note";
+import { ImperialUxChangeNote } from "@/components/imperial-ux-change-note";
+import { MitStudentGuideChangeNote } from "@/components/mit-student-guide-change-note";
 
 interface ChangeDetailPageProps {
   params: Promise<{
@@ -67,6 +73,24 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
 
   const history = await getEntityChangeHistory(releaseId, locale);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
+  // A published V6/V5 revision with no release records or school history
+  // would otherwise 404; it gets its own release note.
+  const v6Revision = history ? undefined : readPublishedV6Revision(releaseId);
+  if (v6Revision) {
+    const v6Title = `${v6Revision.v5Slugs?.length ? "V5 policy evidence release" : "V6 reviewed page supplement release"}: ${releaseId}`;
+    const v6Description = `${v6Revision.slugs.length} university page${v6Revision.slugs.length === 1 ? "" : "s"} in published release ${releaseId}.`;
+    return {
+      title: `${v6Title} | University AI Policy Tracker`,
+      description: v6Description,
+      alternates: getLocalizedAlternates(`/changes/${releaseId}`, "en"),
+      openGraph: {
+        title: v6Title,
+        description: v6Description,
+        url: canonical,
+        type: "article"
+      }
+    };
+  }
   const displayName = history
     ? getLocalizedInstitutionName(history.record.slug, history.record.name, locale)
     : undefined;
@@ -96,22 +120,45 @@ export default async function ChangeDetailPage({
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(releaseId, locale, (slug) => `/changes/${slug}`);
+  // The segment is a release ID or, for per-school history, a school slug.
+  await tagContent("changes", contentTagFor.changesRelease(releaseId), contentTagFor.school(releaseId));
   const eventPage=await SchoolChangeHistoryPage({slug:releaseId,locale});
   if(eventPage)return eventPage;
+  const page = await ReleaseOrEntityHistoryPage({ locale, releaseId });
+  // Presentation and record-correction notes render only for published V6/V5
+  // schools (each returns null otherwise), ahead of the unchanged history.
+  return (
+    <>
+      <V6CompactChangeNote slug={releaseId} locale={locale} />
+      {releaseId === "massachusetts-institute-of-technology" ? <MitStudentGuideChangeNote locale={locale} /> : null}
+      {releaseId === "imperial-college-london" ? <ImperialUxChangeNote locale={locale} /> : null}
+      <V6ChangeNote locale={locale} slug={releaseId} />
+      {page}
+    </>
+  );
+}
+
+async function ReleaseOrEntityHistoryPage({
+  locale,
+  releaseId
+}: {
+  locale: SupportedLocale;
+  releaseId: string;
+}) {
   const recordsForRelease = await getReleaseChangeRecords(releaseId);
   if (recordsForRelease) {
-    return (
-      <ReleaseOverviewPage
-        locale={locale}
-        records={recordsForRelease}
-        releaseId={releaseId}
-      />
-    );
+    // Render inline so the localized route wrapper can translate this release's interface copy.
+    return ReleaseOverviewPage({ locale, records: recordsForRelease, releaseId });
   }
 
   const history = await getEntityChangeHistory(releaseId, locale);
 
-  if (!history) notFound();
+  if (!history) {
+    // Release records and school history keep their pages; only a published
+    // V6/V5 revision that would otherwise 404 renders the release note.
+    if (readPublishedV6Revision(releaseId)) return <main><V6ChangeNote locale={locale} revision={releaseId} /></main>;
+    notFound();
+  }
   const { record, releaseRecords } = history;
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const summaryText = getSummaryText(record, locale);
@@ -189,7 +236,7 @@ export default async function ChangeDetailPage({
           <a className="site-action" href={record.publicJsonUrl}>
             Public JSON
           </a>
-          <Link locale={false} className="site-action" href={currentMonthlyReportPath}>
+          <Link locale={false} className="site-action" href={currentMonthlyReportPath()}>
             Monthly report
           </Link>
           <Link locale={false} className="site-action" href="/universities">
@@ -422,7 +469,7 @@ export default async function ChangeDetailPage({
                 <Link locale={false} href={record.universityUrl}>University record</Link>
               </li>
               <li>
-                <Link locale={false} href={currentMonthlyReportPath}>Monthly report</Link>
+                <Link locale={false} href={currentMonthlyReportPath()}>Monthly report</Link>
               </li>
               <li>
                 <Link locale={false} href="/universities">University index</Link>
@@ -451,7 +498,7 @@ function ReleaseOverviewPage({
 
   return localizeSurfaceTree(
     <main className="page-shell page-shell--wide">
-      {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card" data-i18n="preserve">Tracker audit correction: {typeof records[0].changeSummary === "object" && records[0].changeSummary !== null ? ((records[0].changeSummary as any)[locale] || (records[0].changeSummary as any).en) : records[0].changeSummary} This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged.</p> : null}
+      {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card">{"Tracker audit correction:"} <span data-i18n="preserve">{typeof records[0].changeSummary === "object" && records[0].changeSummary !== null ? ((records[0].changeSummary as any)[locale] || (records[0].changeSummary as any).en) : records[0].changeSummary}</span> {"This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged."}</p> : null}
       <section className="hero">
         <p className="kicker">Release diff</p>
         <h1>University AI Policy Tracker Release Diff: {releaseId}</h1>

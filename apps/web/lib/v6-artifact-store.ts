@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync, realpathSync, statSync } from "node:fs";
 import { resolve, sep } from "node:path";
 import { ByteLru } from "./bounded-cache";
+import { contentDataRoot } from "./content-runtime";
 
 export type ShardNode =
   | {kind: "value"; value: unknown}
@@ -119,6 +120,7 @@ export class V6ArtifactStore {
   }
 }
 
+/** Family root in the active content release (the checkout's data/ in workspace mode). */
 export function v6PublicDataRoot(family: string): string {
-  return resolve(process.cwd(), /\/apps\/(web|tulsa-zone)$/.test(process.cwd()) ? `../../data/${family}` : `data/${family}`);
+  return contentDataRoot(family);
 }

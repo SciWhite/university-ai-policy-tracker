@@ -32,6 +32,7 @@ import {
 } from "./staged-public-data";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
+import { contentScoped } from "./content-runtime";
 
 const SNAPSHOT_DATA_ROOT = ["data", "policy-snapshots", "v1"];
 
@@ -61,7 +62,7 @@ export interface LoadedPolicySnapshotIndex
 let indexPromise: Promise<PolicySnapshotIndex> | undefined;
 
 export async function getPolicySnapshotIndexManifest(): Promise<PolicySnapshotIndex> {
-  indexPromise ??= readPolicySnapshotIndexManifest();
+  indexPromise = contentScoped("policy-snapshot-index", () => readPolicySnapshotIndexManifest());
   return indexPromise;
 }
 

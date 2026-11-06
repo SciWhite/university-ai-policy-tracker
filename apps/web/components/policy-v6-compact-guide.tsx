@@ -1,13 +1,13 @@
 'use client';
 import React,{useEffect,useRef,useState}from'react';
-import type{V6StudentActions,StudentGuideClaim}from'@/lib/policy-v6-student-actions';
+import type{V6StudentGuideView,StudentGuideClaim}from'@/lib/policy-v6-student-actions';
 import type{SupportedLocale}from'@/lib/i18n';
 import type{ReadingLocale}from'@/lib/language-catalog';
 import{PolicyV6Popover}from'./policy-v6-popover';
 import{policyV6StaticUiText}from'@/lib/policy-v6-static-ui';
 
 /** Shared compact composition. Content and procedures are bound to the current school's evidence. */
-export function PolicyV6CompactGuide({guide,locale,readingLocale,sharedUiText={},studentGuideTranslated=false}:{guide:V6StudentActions;locale:SupportedLocale;readingLocale?:ReadingLocale;sharedUiText?:Readonly<Record<string,string>>;studentGuideTranslated?:boolean}){
+export function PolicyV6CompactGuide({guide,locale,readingLocale,sharedUiText={},studentGuideTranslated=false}:{guide:V6StudentGuideView;locale:SupportedLocale;readingLocale?:ReadingLocale;sharedUiText?:Readonly<Record<string,string>>;studentGuideTranslated?:boolean}){
  const displayLanguage=readingLocale??locale,zh=locale==='zh'&&displayLanguage==='zh',language=zh&&!studentGuideTranslated?'zh':'en',prefix=displayLanguage==='en'?'':'/'+displayLanguage;
  const guideLanguage=zh?'zh':studentGuideTranslated?displayLanguage:'en';
  const uiText={...sharedUiText,...policyV6StaticUiText(displayLanguage)};

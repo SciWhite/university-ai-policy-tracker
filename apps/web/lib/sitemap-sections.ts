@@ -7,7 +7,7 @@ import { getCatalogUniversities, getPublicUniversitySummaryBySlug } from "@/lib/
 import { getStagedPublicSummaries } from "@/lib/staged-public-data";
 import { getChangeIndexData, getReleaseChangeRecords } from "@/lib/change-records";
 import { readRecordCorrectionChanges } from "@/lib/record-correction-changes";
-import { getKnownReleaseSummaries } from "@/lib/release-diffs";
+import { getKnownReleaseIds, getKnownReleaseSummaries } from "@/lib/release-diffs";
 import {
   rankingLandingSpecs,
   regionLandingSpecs,
@@ -29,7 +29,8 @@ import { uniqueSitemapEntries } from "@/lib/sitemap-entries";
 import {
   isIndexRecoveryPilotSlug
 } from "@/lib/index-recovery-pilot";
-import { publishedV6Enabled, publishedV6Slugs } from "@/lib/policy-v6-published-gate";
+import { publishedV6Enabled, isPublishedV6Slug } from "@/lib/policy-v6-published-gate";
+import { publishedV6RevisionIds } from "@/lib/policy-v6-published";
 import { universityReadingBasis } from "@/lib/university-reading-basis";
 import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
 import { READING_LOCALES, type ReadingLocale } from "@/lib/language-catalog";
@@ -54,6 +55,10 @@ const READING_SITEMAP_LOCALES = READING_LOCALES.filter(locale => locale !== DEFA
 // crawl budget in the sitemap.
 const RECENT_RELEASE_SITEMAP_COUNT = 2;
 
+// The accepted sitemap also lists this release's event pages in the legacy UI
+// locales; every other localized change page stays out of the sitemap.
+const LOCALIZED_EVENT_SITEMAP_REVISIONS = new Set(["paris-northwestern-v6-r1-20261022"]);
+
 export const SITEMAP_SECTION_IDS = [
   "core",
   "universities",
@@ -67,11 +72,12 @@ export function isSitemapSectionId(value: string): value is SitemapSectionId {
   return (SITEMAP_SECTION_IDS as readonly string[]).includes(value);
 }
 
-const monthlyReportRoutes = monthlyReportSlugs.map(
+// Report months come from the active content release.
+const monthlyReportRoutes = () => monthlyReportSlugs().map(
   (slug) => `/reports/monthly/${slug}`
 );
 
-const staticRoutes = [
+const staticRoutes = () => [
   "/contact", "/support", "/privacy", "/terms", "/about",
   "",
   "/university-ai-policy-database",
@@ -79,7 +85,7 @@ const staticRoutes = [
   "/tools",
   "/sources",
   "/reports",
-  ...monthlyReportRoutes,
+  ...monthlyReportRoutes(),
   "/reports/outreach",
   "/widgets",
   "/search",
@@ -91,13 +97,14 @@ const staticRoutes = [
   "/analysis/policy-coverage",
   "/coverage",
   "/coverage/qs-2026",
+  "/rankings",
   "/source-health",
   "/review/queue",
   "/methodology",
   "/citation",
   "/datasets",
   "/changes"
-] as const;
+];
 
 const referenceRoutes = [
   ...rankingLandingSpecs.map((spec) => `/rankings/${spec.slug}`),
@@ -110,6 +117,7 @@ const phaseOneLocalizedStaticRoutes = [
   "",
   "/search",
   "/universities",
+  "/rankings",
   "/analysis",
   "/changes",
   "/methodology",
@@ -119,7 +127,7 @@ const phaseOneLocalizedStaticRoutes = [
   "/contribute"
 ] as const;
 
-const phaseTwoLocalizedStaticRoutes = [
+const phaseTwoLocalizedStaticRoutes = () => [
   "/university-ai-policy-database",
   "/tools",
   "/sources",
@@ -127,9 +135,9 @@ const phaseTwoLocalizedStaticRoutes = [
   "/coverage/qs-2026",
   "/source-health",
   "/reports",
-  ...monthlyReportRoutes,
+  ...monthlyReportRoutes(),
   "/reports/outreach"
-] as const;
+];
 
 export async function getSitemapLastPublishedAt(): Promise<Date> {
   const releases = await getKnownReleaseSummaries();
@@ -161,7 +169,7 @@ async function buildCoreSection(): Promise<SitemapEntry[]> {
   const reportCoverageRoutes = await getReportCoverageRoutes();
 
   return [
-    ...staticRoutes,
+    ...staticRoutes(),
     ...["es", "nl", "ms"].flatMap(locale => ["contact", "support", "privacy", "terms", "mcp"].map(kind => `/${locale}/${kind}`)),
     ...referenceRoutes,
     ...analysisThemeRoutes,
@@ -218,7 +226,45 @@ async function buildChangesSection(): Promise<SitemapEntry[]> {
     })
   );
 
+  // Every published release, every published history event and each school's
+  // history page, from the active content release. Alias slugs redirect, so
+  // only canonical school slugs are listed.
+  const canonicalSlug = (slug: string) => !aliases.slugAliases.has(slug) && !isIndexPolicySitemapAlias(slug);
+  const releaseDates = new Map(releases.map(({ releaseId, publishedAt: releasePublishedAt }) => [releaseId, toValidDate(releasePublishedAt)]));
+  const eventRows = (eventIndex?.rows ?? []).filter(row => canonicalSlug(row.slug));
+  const knownReleaseIds = [...(await getKnownReleaseIds()), ...publishedV6RevisionIds()];
+  // An event revision has its own release page only when it has release records.
+  const eventReleaseIds: string[] = [];
+  for (const revision of new Set(eventRows.map(row => row.revision))) {
+    if (!knownReleaseIds.includes(revision) && await getReleaseChangeRecords(revision)) eventReleaseIds.push(revision);
+  }
+  const releaseIds = [...new Set([...knownReleaseIds, ...eventReleaseIds])];
+  const releaseIndexEntries = releaseIds.map(releaseId => ({
+    url: new URL(`/changes/${releaseId}`, baseUrl).toString(),
+    lastModified: releaseDates.get(releaseId) ?? publishedAt
+  }));
+  const schoolHistoryDates = new Map<string, Date>();
+  for (const row of eventRows) {
+    const date = toValidDate(row.publishedAt ?? undefined) ?? publishedAt;
+    const latest = schoolHistoryDates.get(row.slug);
+    if (!latest || date > latest) schoolHistoryDates.set(row.slug, date);
+  }
+  const eventEntries = eventRows.flatMap(row => [
+    row.url,
+    ...(LOCALIZED_EVENT_SITEMAP_REVISIONS.has(row.revision) ? LEGACY_LOCALIZED_STATIC_LOCALES.map(locale => withLocalePrefix(row.url, locale)) : [])
+  ].map(route => ({
+    url: new URL(route, baseUrl).toString(),
+    lastModified: toValidDate(row.publishedAt ?? undefined) ?? publishedAt
+  })));
+  const schoolHistoryEntries = [...schoolHistoryDates].map(([slug, lastModified]) => ({
+    url: new URL(`/changes/${slug}`, baseUrl).toString(),
+    lastModified
+  }));
+
   return [
+    ...releaseIndexEntries,
+    ...schoolHistoryEntries,
+    ...eventEntries,
     ...changeRecords.filter(record => !/^\/(?:zh\/|fr\/|pl\/)?universities\//.test(record.changeUrl)).map((record) => ({
       url: new URL(record.changeUrl, baseUrl).toString(),
       lastModified:
@@ -239,7 +285,7 @@ async function buildLocaleSection(
   const universities = (await getCatalogUniversities()).filter(row => !aliases.slugAliases.has(row.slug) && !isIndexPolicySitemapAlias(row.slug));
   const staticEntries = LEGACY_LOCALIZED_STATIC_LOCALES.includes(locale as (typeof LEGACY_LOCALIZED_STATIC_LOCALES)[number]) ? [
     ...phaseOneLocalizedStaticRoutes,
-    ...(phaseTwoEnabled ? phaseTwoLocalizedStaticRoutes : []),
+    ...(phaseTwoEnabled ? phaseTwoLocalizedStaticRoutes() : []),
     ...(phaseTwoEnabled ? referenceRoutes : []),
     ...(phaseTwoEnabled ? await getReportCoverageRoutes() : []),
     ...analysisThemeRoutes
@@ -253,7 +299,7 @@ async function buildLocaleSection(
   const eligibleUniversityEntries: SitemapEntry[] = [];
   for (const university of universities) {
     if (process.env.NODE_ENV === "development") continue;
-    const usePublishedV6 = publishedV6Enabled() && publishedV6Slugs.includes(university.slug);
+    const usePublishedV6 = publishedV6Enabled() && isPublishedV6Slug(university.slug);
     const summary = usePublishedV6
       ? await getPublicUniversitySummaryBySlug(university.slug)
       : summaries.get(university.slug);
@@ -284,7 +330,7 @@ async function getAnalysisThemeRoutes(): Promise<string[]> {
 
 async function getReportCoverageRoutes(): Promise<string[]> {
   const monthlyReports = await Promise.all(
-    monthlyReportSlugs.map((slug) => getMonthlyReport(slug))
+    monthlyReportSlugs().map((slug) => getMonthlyReport(slug))
   );
 
   return monthlyReports.flatMap((report) =>

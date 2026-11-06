@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { getReadingLocaleFromPathname } from "@/lib/i18n";
 import { LANGUAGE_NAMES, isReadingLocale, type ReadingLocale } from "@/lib/language-catalog";
 import { readingLanguageHref, suggestedReadingLocale } from "@/lib/language-choice";
+import { useDeclaredPageReadingLocales } from "@/lib/page-reading-locales";
 import { interpolate } from "@/lib/reading-ui-text";
 import { useShellMessages } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
@@ -14,6 +15,7 @@ const CHOICE_STORAGE_KEY = "uapt-locale-choice";
 
 export function LanguageSuggestion() {
   const pathname = usePathname();
+  const declared = useDeclaredPageReadingLocales(pathname);
   const locale = getReadingLocaleFromPathname(pathname);
   const messages = useShellMessages().locale;
   const [suggestedLocale, setSuggestedLocale] = useState<ReadingLocale | undefined>();
@@ -36,11 +38,11 @@ export function LanguageSuggestion() {
     } catch {
       // Browsing without storage still supports an explicit choice.
     }
-    setSuggestedLocale(suggestedReadingLocale(pathname, window.navigator.languages ?? [], choice, dismissed));
-  }, [pathname]);
+    setSuggestedLocale(suggestedReadingLocale(pathname, window.navigator.languages ?? [], choice, dismissed, declared));
+  }, [pathname, declared]);
 
   if (!suggestedLocale) return null;
-  const targetHref = readingLanguageHref(pathname, suggestedLocale, suffix.search, suffix.hash);
+  const targetHref = readingLanguageHref(pathname, suggestedLocale, suffix.search, suffix.hash, declared);
   if (!targetHref) return null;
 
   function dismiss(source: "stay" | "close") {
@@ -61,7 +63,7 @@ export function LanguageSuggestion() {
         href={targetHref}
         hrefLang={suggestedLocale}
         onClick={(event) => {
-          const target = readingLanguageHref(pathname, suggestedLocale, window.location.search, window.location.hash);
+          const target = readingLanguageHref(pathname, suggestedLocale, window.location.search, window.location.hash, declared);
           if (target) event.currentTarget.href = target;
           trackResearchEvent("language_suggestion_accept", { locale, suggested_locale: suggestedLocale });
           try {

@@ -5,7 +5,7 @@ import {readV6RecordCorrections,readV6RecordCorrectionRevision,v6SummaryAtRevisi
 import {buildPolicyAnalysisProfile} from '../apps/web/lib/policy-analysis';
 import {getEntityChangeHistory,getChangeIndexData} from '../apps/web/lib/change-records';
 import {v6FrozenHistory} from '../apps/web/lib/v6-history-cache';
-import {V6CorrectionDiff} from '../apps/tulsa-zone/components/v6-correction-diff';
+import {V6CorrectionDiff} from '../apps/web/components/v6-correction-diff';
 import {PolicyV6Sources} from '../apps/web/components/policy-v6-sources';
 
 process.env.UAPT_V6_PUBLISHED_PAGES='1';

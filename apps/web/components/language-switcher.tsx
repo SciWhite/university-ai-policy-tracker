@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { getReadingLocaleFromPathname } from "@/lib/i18n";
 import { LANGUAGE_NAMES, readingDirection, type ReadingLocale } from "@/lib/language-catalog";
 import { pageReadingLocales, readingLanguageHref } from "@/lib/language-choice";
+import { useDeclaredPageReadingLocales } from "@/lib/page-reading-locales";
 import { preservePolicyReferenceSearch } from "@/lib/policy-reference-preview";
 import { useShellMessages } from "@/components/reading-ui-text-provider";
 import { trackResearchEvent } from "@/lib/analytics-client";
@@ -31,7 +32,8 @@ function LanguageMenu({ search }: { search: string }) {
   const [open, setOpen] = useState(false);
   const [hash, setHash] = useState("");
   const panelId = useId();
-  const locales = pageReadingLocales(pathname);
+  const declared = useDeclaredPageReadingLocales(pathname);
+  const locales = pageReadingLocales(pathname, declared);
 
   useEffect(() => {
     const updateHash = () => setHash(window.location.hash);
@@ -98,11 +100,11 @@ function LanguageMenu({ search }: { search: string }) {
             <li key={target}>
               <a
                 aria-current={target === locale ? "page" : undefined}
-                href={readingLanguageHref(pathname, target, search, hash)}
+                href={readingLanguageHref(pathname, target, search, hash, declared)}
                 hrefLang={target}
                 lang={target}
                 onClick={(event) => {
-                  const href = readingLanguageHref(pathname, target, window.location.search, window.location.hash);
+                  const href = readingLanguageHref(pathname, target, window.location.search, window.location.hash, declared);
                   if (!href) return;
                   event.currentTarget.href = preservePolicyReferenceSearch(href, window.location.search);
                   rememberChoice(target);

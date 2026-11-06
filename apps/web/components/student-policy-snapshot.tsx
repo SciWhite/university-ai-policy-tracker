@@ -265,6 +265,8 @@ interface StudentPolicySnapshotProps {
   scene?: PolicyScenePilot;
   guidanceInHero?: boolean;
   uiLab?: boolean;
+  /** `?for=` links need a page that reads the query; static production pages do not. */
+  roleSwitch?: boolean;
 }
 
 export function normalizeStudentSnapshotRole(
@@ -349,7 +351,8 @@ export function StudentPolicySnapshot({
   snapshot,
   scene,
   guidanceInHero = false,
-  uiLab = false
+  uiLab = false,
+  roleSwitch = true
 }: StudentPolicySnapshotProps) {
   const t = (value: string) => guidanceInHero ? translatePolicyReferenceUi(value, locale) : value;
   const studentOnly = isStudentOnlyPolicyPage(entitySlug);
@@ -417,7 +420,7 @@ export function StudentPolicySnapshot({
             </p>
           ) : null}
         </div>
-        {studentOnly ? null : <nav aria-label="Snapshot audience" className="student-policy__roles">
+        {studentOnly || !roleSwitch ? null : <nav aria-label="Snapshot audience" className="student-policy__roles">
           {STUDENT_SNAPSHOT_ROLES.map((candidate) => (
             <a
               aria-current={candidate === role ? "page" : undefined}

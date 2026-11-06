@@ -61,7 +61,7 @@ export function getLocalQACandidateRecords(): V6RecordPackage | undefined {
   const config = getValidatedQAConfig();
   if (!config) return undefined;
 
-  const resolved = [resolve(config.recordsPath), resolve(process.cwd(), config.recordsPath), resolve(process.cwd(), "../..", config.recordsPath)].find(existsSync);
+  const resolved = [resolve(/* turbopackIgnore: true */ config.recordsPath), resolve(/* turbopackIgnore: true */ process.cwd(), config.recordsPath), resolve(/* turbopackIgnore: true */ process.cwd(), "../..", config.recordsPath)].find(existsSync);
   if (!resolved) {
     throw new Error(`UAPT_LOCAL_QA_CANDIDATE_RECORDS path not found: ${config.recordsPath}`);
   }
@@ -81,7 +81,7 @@ export function getLocalQACandidateRecords(): V6RecordPackage | undefined {
     return cachedCandidateRecords.pkg;
   }
 
-  const raw = readFileSync(resolved);
+  const raw = readFileSync(/* turbopackIgnore: true */ resolved);
   const hash = sha256(raw);
 
   if (hash !== config.expectedRecordsHash) {
@@ -109,7 +109,7 @@ export function getLocalQACandidatePages(): PublishedV6Package | undefined {
   const config = getValidatedQAConfig();
   if (!config) return undefined;
 
-  const resolved = [resolve(config.pagesPath), resolve(process.cwd(), config.pagesPath), resolve(process.cwd(), "../..", config.pagesPath)].find(existsSync);
+  const resolved = [resolve(/* turbopackIgnore: true */ config.pagesPath), resolve(/* turbopackIgnore: true */ process.cwd(), config.pagesPath), resolve(/* turbopackIgnore: true */ process.cwd(), "../..", config.pagesPath)].find(existsSync);
   if (!resolved) {
     throw new Error(`UAPT_LOCAL_QA_CANDIDATE_PAGES path not found: ${config.pagesPath}`);
   }
@@ -129,7 +129,7 @@ export function getLocalQACandidatePages(): PublishedV6Package | undefined {
     return cachedCandidatePages.pkg;
   }
 
-  const raw = readFileSync(resolved);
+  const raw = readFileSync(/* turbopackIgnore: true */ resolved);
   const hash = sha256(raw);
 
   if (hash !== config.expectedPagesHash) {
@@ -157,7 +157,7 @@ export function getLocalQACandidateHistory(): { schemaVersion: string; basisRevi
   const config = getValidatedQAConfig();
   if (!config || !config.historyPath || !config.expectedHistoryHash) return undefined;
 
-  const resolved = [resolve(config.historyPath), resolve(process.cwd(), config.historyPath), resolve(process.cwd(), "../..", config.historyPath)].find(existsSync);
+  const resolved = [resolve(/* turbopackIgnore: true */ config.historyPath), resolve(/* turbopackIgnore: true */ process.cwd(), config.historyPath), resolve(/* turbopackIgnore: true */ process.cwd(), "../..", config.historyPath)].find(existsSync);
   if (!resolved) {
     throw new Error(`UAPT_LOCAL_QA_CANDIDATE_HISTORY path not found: ${config.historyPath}`);
   }
@@ -174,7 +174,7 @@ export function getLocalQACandidateHistory(): { schemaVersion: string; basisRevi
     return cachedCandidateHistory.pkg;
   }
 
-  const raw = readFileSync(resolved);
+  const raw = readFileSync(/* turbopackIgnore: true */ resolved);
   const hash = sha256(raw);
 
   if (hash !== config.expectedHistoryHash) {

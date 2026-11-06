@@ -32,18 +32,18 @@ test('MCP publishes current reviewed MIT claims and omits held snapshot',async()
 });
 
 test('bounded claims route preserves the claims contract',async()=>{
- const {GET}=await import('../apps/tulsa-zone/app/api/public/v1/[...path]/route');
- const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/claims/'+slug+'.json'),{params:Promise.resolve({path:['claims',slug+'.json']})});
+ const {GET}=await import('../apps/web/app/api/public/v1/claims/[slug]/route');
+ const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/claims/'+slug+'.json'),{params:Promise.resolve({slug:slug+'.json'})});
  const body=await response.json();assert.equal(response.status,200);assert.equal(body.data.claimCount,28);assert.equal(body.data.claims.length,28);assert.equal(body.data.reviewState,'needs_review');
 });
 test('bounded review widget counts held provisions without approving them',async()=>{
- const {GET}=await import('../apps/tulsa-zone/app/api/public/v1/[...path]/route');
- const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/widgets/review-state/'+slug+'.json'),{params:Promise.resolve({path:['widgets','review-state',slug+'.json']})});
+ const {GET}=await import('../apps/web/app/api/public/v1/widgets/review-state/[slug]/route');
+ const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/widgets/review-state/'+slug+'.json'),{params:Promise.resolve({slug:slug+'.json'})});
  const body=await response.json();assert.equal(body.data.claimCount,28);assert.equal(body.data.reviewedClaimCount,26);assert.equal(body.data.candidateClaimCount,2);assert.equal(body.data.reviewState,'needs_review');
 });
 test('bounded API refuses an unlisted university record',async()=>{
- const {GET}=await import('../apps/tulsa-zone/app/api/public/v1/[...path]/route');
- const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/universities/harvard-university.json'),{params:Promise.resolve({path:['universities','harvard-university.json']})});
+ const {GET}=await import('../apps/web/app/api/public/v1/universities/[...slug]/route');
+ const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/universities/harvard-university.json'),{params:Promise.resolve({slug:['harvard-university.json']})});
  assert.equal(response.status,404);
 });
 test('MIT derived dimensions preserve modality and scope rather than keyword inference',async()=>{

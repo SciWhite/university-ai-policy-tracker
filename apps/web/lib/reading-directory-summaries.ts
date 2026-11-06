@@ -1,11 +1,10 @@
 import { createHash } from "node:crypto";
 import type { PublicEntitySummary } from "@uapt/shared";
 import type { ReadingLocale } from "./language-catalog";
-import { publishedV6Slugs } from "./policy-v6-published-gate";
+import { isPublishedV6Slug } from "./policy-v6-published-gate";
 import { getReadingTranslations, readingSummaryBasis, readingTranslation, type ReadingTranslationResult } from "./reading-translations";
 import { getLocalPublicUniversitySummaryBySlug } from "./catalog";
 
-const readingSchools = new Set(publishedV6Slugs);
 
 export function translatedDirectorySummary(summary: PublicEntitySummary, translations: ReadingTranslationResult): string | undefined {
   if (translations.state !== "ready") return undefined;
@@ -22,7 +21,7 @@ export async function localizeDirectorySummaries<T extends { slug: string; summa
   if (locale === "en") return rows;
   const localized: T[] = [];
   for (const row of rows) {
-    if (!row.summary || !readingSchools.has(row.slug)) { localized.push(row); continue; }
+    if (!row.summary || !isPublishedV6Slug(row.slug)) { localized.push(row); continue; }
     const record = await getLocalPublicUniversitySummaryBySlug(row.slug);
     if (!record || record.summary !== row.summary) { localized.push(row); continue; }
     const translations = await getReadingTranslations(row.slug, locale, readingSummaryBasis(record));

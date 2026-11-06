@@ -29,7 +29,7 @@ test("production preview gate fails closed in production and for non-v4 values",
   assert.equal(isHomeV4Preview(null, "development"), false);
 });
 
-test("default SEO and metadata promote V4 to default in production and support legacy layout", async () => {
+test("default SEO and metadata promote V4 to default in production and keep the legacy layout development-only", async () => {
   // Published V4 metadata is default without query parameter
   const defaultMeta = await generateMetadata({});
   assert.equal(defaultMeta.robots, undefined);
@@ -38,12 +38,23 @@ test("default SEO and metadata promote V4 to default in production and support l
   assert(defaultMeta.alternates);
   assert(String(defaultMeta.alternates.canonical).endsWith("/"));
 
-  // Explicit legacy layout fallback
-  const legacyMeta = await generateMetadata({
-    searchParams: Promise.resolve({ layout: "legacy" })
-  });
-  assert.equal(legacyMeta.robots, undefined);
-  assert.match(String(legacyMeta.title), /University AI Policy Database/);
+  // Outside development the query is never read, so the page stays static.
+  const unread = { then() { throw new Error("production homepage must not read searchParams"); } } as unknown as Promise<{ layout: string }>;
+  const productionMeta = await generateMetadata({ searchParams: unread });
+  assert.equal(productionMeta.title, defaultMeta.title);
+
+  // Explicit legacy layout fallback for local comparison
+  const originalEnv = process.env.NODE_ENV;
+  try {
+    process.env.NODE_ENV = "development";
+    const legacyMeta = await generateMetadata({
+      searchParams: Promise.resolve({ layout: "legacy" })
+    });
+    assert.equal(legacyMeta.robots, undefined);
+    assert.match(String(legacyMeta.title), /University AI Policy Database/);
+  } finally {
+    process.env.NODE_ENV = originalEnv;
+  }
 });
 
 test("home-v4 metadata sets robots noindex nofollow and retains canonical hreflangs", async () => {

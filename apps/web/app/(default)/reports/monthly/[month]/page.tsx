@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
-import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 import {
   formatReportDate,
   getMonthlyReport,
@@ -30,8 +30,10 @@ export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = false;
 
+// Report months are content: render on first request and refresh by tag
+// after a content switch, so a new report needs no build.
 export function generateStaticParams() {
-  return monthlyReportSlugs.map((month) => ({ month }));
+  return [];
 }
 
 export async function generateMetadata({ params }: MonthlyReportPageProps) {
@@ -60,6 +62,7 @@ export default async function MonthlyReportPage({
 }: MonthlyReportPageProps) {
   const { locale: localeParam, month } = await params;
   const locale = normalizeReadingLocale(localeParam);
+  await tagContent("reports", contentTagFor.report(month));
   const report = await getMonthlyReport(month, locale);
 
   if (!report) {

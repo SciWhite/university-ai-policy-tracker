@@ -8,9 +8,27 @@ const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 export const MAX_STATIC_ENTRIES = 256;
 const onDemand = [
   "(default)/changes/[releaseId]/page.tsx",
+  // Report months are content (data/monthly-reports/registry.json, R1-b):
+  // rendered on first request and refreshed by tag after a content switch.
+  "(default)/reports/monthly/[month]/page.tsx",
+  "(default)/reports/monthly/[month]/coverage/[region]/page.tsx",
+  "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts",
   "api/public/v1/datasets/[artifact]/route.ts",
   "api/public/v1/datasets/release-snapshots/[releaseId]/[artifact]/route.ts",
-  "sitemaps/[section]/route.ts"
+  "sitemaps/[section]/route.ts",
+  // Catalog-derived landing pages: the content-free program build (R1-d)
+  // renders them on first request from the active content release.
+  "(default)/analysis/[slug]/page.tsx",
+  "(default)/regions/[slug]/page.tsx",
+  "(default)/themes/[slug]/page.tsx"
+];
+// Public pages that read no request data in production: empty build params,
+// rendered on first request and cached. They cannot force-static because the
+// development-only `?layout=` preview still reads the query under next dev.
+const onDemandIsr = [
+  "[locale]/page.tsx",
+  "(default)/universities/[slug]/page.tsx",
+  "[locale]/universities/[slug]/page.tsx"
 ];
 
 function source(root, relative) {
@@ -104,43 +122,17 @@ export function validateWebBuildScope(root = defaultRoot) {
       throw new Error(`Build scope rejected: ${relative} must retain first-request static caching`);
     }
   }
-  const months = collectionCount(root, "apps/web/lib/monthly-report-registry.ts", "monthlyReportRegistry");
-  const macroRegions = collectionCount(root, "apps/web/lib/reports.ts", "macroRegionOrder");
+  for (const relative of onDemandIsr) {
+    const file = source(root, `apps/web/app/${relative}`);
+    if (!emptyParams(file) || literal(file, "dynamicParams") !== true) {
+      throw new Error(`Build scope rejected: ${relative} must use empty build params and cache on-demand paths`);
+    }
+  }
   const bounded = {
-    "(default)/analysis/[slug]/page.tsx": {
-      count: 1 + collectionCount(root, "apps/web/lib/policy-analysis-pages.ts", "analysisThemeSpecs"),
-      body: '{ const themes = await getPublishableAnalysisThemeSpecs(); return [{ slug: "policy-coverage" }, ...themes.map((theme) => ({ slug: theme.slug }))]; }'
-    },
-    "(default)/regions/[slug]/page.tsx": {
-      count: collectionCount(root, "apps/web/lib/reference-pages.ts", "regionLandingSpecs"),
-      body: "{ return regionLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
-    },
-    "(default)/themes/[slug]/page.tsx": {
-      count: collectionCount(root, "apps/web/lib/reference-pages.ts", "themeLandingSpecs"),
-      body: "{ return themeLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
-    },
     "(default)/rankings/[slug]/page.tsx": {
       count: collectionCount(root, "apps/web/lib/reference-pages.ts", "rankingLandingSpecs"),
       body: "{ return rankingLandingSpecs.map((spec) => ({ slug: spec.slug })); }"
     },
-    "(default)/reports/monthly/[month]/page.tsx": {
-      count: months,
-      body: "{ return monthlyReportSlugs.map((month) => ({ month })); }"
-    },
-    "(default)/reports/monthly/[month]/coverage/[region]/page.tsx": {
-      count: months * macroRegions,
-      body: `{
-        const params = await Promise.all(monthlyReportSlugs.map(async (month) => {
-          const report = await getMonthlyReport(month);
-          return (report?.coverageGroups.map((group) => ({ month, region: getMonthlyReportCoverageSlug(group) })) ?? []);
-        }));
-        return params.flat();
-      }`
-    },
-    "api/public/v1/reports/monthly/[month]/chart-data.json/route.ts": {
-      count: months,
-      body: "{ return monthlyReportSlugs.map((month) => ({ month })); }"
-    }
   };
   const runtimeRoutes = [], staticRoutes = [], metadataRoutes = [];
   for (const fileName of appFiles(app)) {
@@ -160,7 +152,7 @@ export function validateWebBuildScope(root = defaultRoot) {
     }
     if (!/^(?:page\.tsx|route\.ts|layout\.tsx)$/.test(name)) continue;
     const file = source(root, `apps/web/app/${relative}`);
-    if (["[locale]/layout.tsx", "(default)/universities/[slug]/page.tsx"].includes(relative) && hasExport(file, "generateStaticParams")) {
+    if (relative === "[locale]/layout.tsx" && hasExport(file, "generateStaticParams")) {
       throw new Error(`Build scope rejected: ${relative} must allow request rendering for pages that read searchParams`);
     }
     if (relative.startsWith("[locale]/") && literal(file, "dynamicParams") === false) {

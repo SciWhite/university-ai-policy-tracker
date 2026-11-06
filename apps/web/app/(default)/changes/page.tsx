@@ -22,6 +22,7 @@ import { ChangesIndexClient } from "./changes-index-client";
 import {ChangeIndexEventsPage} from "@/components/change-index-events-page";
 import {selectedEventIndex} from "@/lib/change-index-events-api";
 import {changeIndexEventsCopy} from "@/lib/change-index-events-copy";
+import { tagContent } from "@/lib/content-cache-tags";
 
 // Static shell + client filter island (same pattern as /universities): filters
 // come from the URL client-side, so crawlers and cold starts get a prebuilt
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: ChangesPageProps) {
 export default async function ChangesPage({ params }: ChangesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).changes;
+  await tagContent("changes");
   const events=await ChangeIndexEventsPage({locale});if(events)return events;
   const ui = discoveryCopy(locale);
   const index = await getChangeIndexData();

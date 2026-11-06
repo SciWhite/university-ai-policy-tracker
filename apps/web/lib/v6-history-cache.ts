@@ -1,9 +1,8 @@
-import pointer from '../../../data/public-v6-history/current.json';
-import shardIndex from '../../../data/public-v6-history/sharded/index.json';
 import {readV6RecordCorrections,v6RecordSlugs} from './v6-effective-records';
 import {V6ArtifactStore,readVerifiedArtifact,v6PublicDataRoot,type ShardIndex} from './v6-artifact-store';
 import {getLocalQACandidateHistory} from './v6-qa-candidate';
 import type {ChangeRecord} from './change-records';
+import {readContentJson} from './content-runtime';
 
 /**
  * Strict shape validation for frozen history records.
@@ -53,11 +52,13 @@ export function v6FrozenHistory(slug:string): ChangeRecord[] | undefined {
    return validateFrozenHistory(slug,qaHistory.records[slug]);
   }
  }
+ const pointer=readContentJson<{path:string;sha256:string;basisRevision:string}>('data/public-v6-history/current.json');
+ const shardIndex=readContentJson<ShardIndex>('data/public-v6-history/sharded/index.json');
  const correction=readV6RecordCorrections();
  if(!correction||correction.revision!==pointer.basisRevision||!correction.recordRevisions[slug])return undefined;
  const root=v6PublicDataRoot('public-v6-history');
  if(process.env.UAPT_V6_LEGACY_DATA!=='1'&&Object.hasOwn(shardIndex.revisions,pointer.basisRevision)){
-  const store=new V6ArtifactStore(root,shardIndex as ShardIndex);
+  const store=new V6ArtifactStore(root,shardIndex);
   const manifest=store.manifest(pointer.basisRevision,pointer.sha256)!;
   const selected=store.view<{schemaVersion:string;basisRevision:string}>(pointer.basisRevision)!;
   if(selected.schemaVersion!=='uapt-bounded-public-history-v1'||selected.basisRevision!==pointer.basisRevision)throw Error('Invalid public history identity');

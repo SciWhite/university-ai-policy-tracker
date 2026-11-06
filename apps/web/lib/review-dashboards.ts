@@ -20,6 +20,7 @@ import {
 import { getEntityAliasResolver } from "./entity-aliases";
 import { getStagedPublicDataset } from "./staged-public-data";
 import { getAbsoluteSiteUrl } from "./site-url";
+import { contentScoped } from "./content-runtime";
 
 const QS_2026_TOP_100 =
   "data/rankings/qs-world-university-rankings-2026-top-100.json";
@@ -629,7 +630,7 @@ export function buildReviewQueueApiResponse(data: ReviewQueueData) {
 }
 
 async function getDashboardContext(): Promise<DashboardContext> {
-  contextPromise ??= buildDashboardContext();
+  contextPromise = contentScoped("review-dashboard-context", () => buildDashboardContext());
 
   return contextPromise;
 }

@@ -2,19 +2,19 @@ import {createHash} from 'node:crypto';
 import type {SupportedLocale} from './i18n';
 import type {LocalV6Bundle} from './policy-v6-bundle';
 import type {StudentAction, V6StudentActions} from './policy-v6-student-actions';
-import registry from '../../../data/policy-v6-qs51-70-projections.json';
+import {readContentJson} from './content-runtime';
 
 type TopicProjection = {claimIds:string[];en:string;zh:string;status:string};
 type Projection = {recordSha256:string;claimsSha256:string;claimTexts:Record<string,string>;
   scope:{en:string;zh:string};topics:Record<string,TopicProjection>;do:StudentAction[];dont:StudentAction[]};
-const projections=registry.schools as Record<string,Projection>;
+const registry=()=>readContentJson<{presentationRevision:string;schools:Record<string,Projection>}>('data/policy-v6-qs51-70-projections.json');
 const sha=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
 /** Explicitly reviewed display mappings, applied by the public pack exporter.
  * No new policy Claims, tool approvals, source checks or student snapshot pins.
  */
 export function projectV6Presentation(view:LocalV6Bundle,locale:SupportedLocale):LocalV6Bundle {
-  const mapping=projections[view.school.slug];
+  const mapping=registry().schools[view.school.slug];
   if(!mapping)return structuredClone(view);
   if(view.publication?.kind!=='v6_presentation_integration' ||
     mapping.recordSha256!==view.school.fingerprint || mapping.claimsSha256!==sha(view.claims) ||
@@ -28,7 +28,7 @@ export function projectV6Presentation(view:LocalV6Bundle,locale:SupportedLocale)
     recommended:['Source guidance','来源指引'],unclear:['Scope or permission not established','具体许可未明确'],
     insufficient_public_evidence:['Specific rule not established in this record','当前条款未明确具体规则']};
   const guide:V6StudentActions={slug:next.school.slug,name:next.school.name,experience:'compact_evidence',
-    presentationRevision:registry.presentationRevision,recordSha256:sha(next.claims),
+    presentationRevision:registry().presentationRevision,recordSha256:sha(next.claims),
     schoolFingerprint:next.school.fingerprint,universityRevisionId:next.school.revision,
     scope:mapping.scope,do:mapping.do,dont:mapping.dont,procedures:{investigation:[],outcomes:[],appeal:[]},
     claims:Object.fromEntries(next.claims.map(c=>[c.id,{id:c.id,text:c.claimText,claimType:c.claimType,

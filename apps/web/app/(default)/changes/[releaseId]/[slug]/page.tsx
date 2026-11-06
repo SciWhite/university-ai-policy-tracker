@@ -19,7 +19,8 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { readPublishedV6Revision } from "@/lib/policy-v6-published";
-import { V6ChangeDetail } from "../../../../../../tulsa-zone/components/v6-change-detail";
+import { V6ChangeDetail } from "@/components/v6-change-detail";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 
 interface ReleaseEntityChangePageProps {
   params: Promise<{
@@ -41,12 +42,20 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   const { locale: localeParam, releaseId, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlugPage(slug, locale, (canonicalSlug) => `/changes/${releaseId}/${canonicalSlug}`);
+  await tagContent("changes", contentTagFor.changesRelease(releaseId), contentTagFor.school(slug));
   const eventMetadata=await changeHistoryMetadata(slug,locale,releaseId);
   if(eventMetadata)return eventMetadata;
   const v6Revision = readPublishedV6Revision(releaseId);
   if (v6Revision) {
     if (![...v6Revision.slugs, ...(v6Revision.v5Slugs ?? [])].includes(slug)) notFound();
-    return { title: `${slug} policy evidence history | University AI Policy Tracker` };
+    const title = `${slug} policy evidence history | University AI Policy Tracker`;
+    const description = `Reviewed policy evidence history for ${slug} in release ${releaseId}.`;
+    return {
+      title,
+      description,
+      alternates: getLocalizedAlternates(`/changes/${releaseId}/${slug}`, "en"),
+      openGraph: { title, description, url: getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`), type: "article" }
+    };
   }
   const record = await getReleaseChangeRecord(releaseId, slug);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`);
@@ -100,8 +109,8 @@ export default async function ReleaseEntityChangePage({
   return (
     <main className="page-shell page-shell--wide">
       {record.publicationKind === "scoped_record_correction" ? (
-        <p className="notice-card" data-i18n="preserve">
-          Tracker audit correction: {typeof record.changeSummary === "object" && record.changeSummary !== null ? ((record.changeSummary as any)[locale] || (record.changeSummary as any).en) : record.changeSummary} Published in the tracker on {record.lastChangedAt}. This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately.
+        <p className="notice-card">
+          {"Tracker audit correction:"} <span data-i18n="preserve">{typeof record.changeSummary === "object" && record.changeSummary !== null ? ((record.changeSummary as any)[locale] || (record.changeSummary as any).en) : record.changeSummary}</span> {"Published in the tracker on"} <span data-i18n="preserve">{record.lastChangedAt}</span>. {"This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately."}
         </p>
       ) : null}
       <section className="entity-header">

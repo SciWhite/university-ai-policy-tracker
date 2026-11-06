@@ -1,10 +1,10 @@
-import registeredProjections from '../../../data/public-change-history/revisions.json';
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { historyManifest, ChangeEventStore, selectChangeEventStore } from "./public-change-history";
 import { readV6ChangeOverview } from "./v6-change-overviews";
 import { readV6RecordCorrections } from "./v6-effective-records";
 import { v6PublicDataRoot } from "./v6-artifact-store";
+import { readContentJson } from "./content-runtime";
 import type { ChangeOverview } from "./change-events";
 import type { EventHistory } from "./change-events";
 import type {ChangeRecord} from "./change-records";
@@ -22,6 +22,7 @@ async function selectedStore(revision?:string) {
   const pilot=process.env.NODE_ENV==="development"&&process.env.UAPT_LOCAL_QA_CHANGE_PACKAGE;
   const base=pilot?resolve(pilot):undefined;
   const root=base?resolve(base,"public-change-history"):(await historyManifest()).root;
+  const registeredProjections=readContentJson<Record<string,{path:string;sha256:string}>>("data/public-change-history/revisions.json");
   const store=selectChangeEventStore(root,revision,registeredProjections);
   if(!store)return undefined;
   return {store,overviewRoot:base?resolve(base,"public-v6-change-overviews"):v6PublicDataRoot("public-v6-change-overviews")};

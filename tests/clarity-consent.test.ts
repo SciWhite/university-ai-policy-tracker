@@ -4,6 +4,10 @@ import { clarityChoice, clarityAllowed, setClarityChoice, CLARITY_CONSENT_KEY, C
 import { isClarityPageEligible, installClarity } from '../apps/web/lib/clarity-client';
 import { clarityCopy } from '../apps/web/lib/clarity-copy';
 import { SUPPORTED_LOCALES } from '../apps/web/lib/i18n';
+import { readingCohortSlugs, setClientReadingCohort } from '../apps/web/lib/reading-cohort';
+
+// Browsers receive the published V6 cohort from the root document (ReadingCohortBootstrap).
+const publishedCohort = readingCohortSlugs();
 
 function browserFixture() {
   const data = new Map<string,string>();
@@ -53,6 +57,7 @@ test('all locale variants exclude internal, search, contribution, query and quer
 
 test('SDK waits for consent, loads once with advertising denied, forces excluded navigation and unloads on withdrawal',()=>{
  const f=browserFixture(); try {
+  setClientReadingCohort(publishedCohort);
   installClarity('ye6c4h9822'); assert.equal(f.scripts.length,0);
   setClarityChoice('denied'); assert.equal(f.scripts.length,0);
   setClarityChoice('granted'); assert.equal(f.scripts.length,1);

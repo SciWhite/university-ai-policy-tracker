@@ -3,6 +3,9 @@ import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/li
 
 export const dynamicParams = true;
 export const revalidate = 3600;
+export function generateStaticParams(): Array<{ locale: string; slug: string }> {
+  return [];
+}
 export const generateMetadata = createLocalizedSurfaceMetadata(
   baseGenerateMetadata as (props: unknown) => ReturnType<typeof baseGenerateMetadata>,
   (params) => `/universities/${params.slug}`

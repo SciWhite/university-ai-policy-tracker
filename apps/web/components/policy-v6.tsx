@@ -11,13 +11,12 @@ import React, {
   useState,
   type ReactNode,
 } from "react";
-import type { PolicyV6Data, LabSchool } from "@/lib/policy-v6";
+import type { PolicyV6ClientData, PolicyV6ClientSchool } from "@/lib/policy-v6-client-data";
 import { policyV6StatusTone } from "@/lib/policy-v6-status";
 import { policyV6AgentReviewLabel } from "@/lib/policy-v6-review";
 import { policyV6RecordCopy } from "@/lib/policy-v6-record-copy";
 import { policyV6DensityCopy } from "@/lib/policy-v6-density-copy";
 import { policyV6Copy } from "@/lib/policy-v6-copy";
-import type { PageToolRecord } from "./university-ai-tools";
 import { PolicyV6Popover, PolicyV6ActionIcon } from "./policy-v6-popover";
 import { PolicyV6Share } from "./policy-v6-share";
 import { PolicyV6SearchPicker } from "./policy-v6-search-picker";
@@ -54,7 +53,7 @@ const v6Classes = {
 };
 
 type LabContext = {
-  data: PolicyV6Data;
+  data: PolicyV6ClientData;
   readingLayout: boolean;
   ui: ReturnType<typeof policyV6Copy>;
   sharedUiText: Readonly<Record<string, string>>;
@@ -92,7 +91,7 @@ export function PolicyV6Provider({
   readingLayout = true,
   sharedUiText = {},
 }: {
-  data?: PolicyV6Data;
+  data?: PolicyV6ClientData;
   children: ReactNode;
   readingLayout?: boolean;
   sharedUiText?: Readonly<Record<string, string>>;
@@ -102,7 +101,7 @@ export function PolicyV6Provider({
   const [selected, setSelected] = useState([
     data?.currentSlug ?? "harvard-university",
   ]);
-  const [extraSchools, setExtraSchools] = useState<LabSchool[]>([]);
+  const [extraSchools, setExtraSchools] = useState<PolicyV6ClientSchool[]>([]);
   const [loadError, setLoadError] = useState(false);
   const [loadRetry, setLoadRetry] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -172,7 +171,7 @@ export function PolicyV6Provider({
         if (
           !Array.isArray(payload.schools) ||
           !missing.every((slug) =>
-            payload.schools.some((school: LabSchool) => school.slug === slug),
+            payload.schools.some((school: PolicyV6ClientSchool) => school.slug === slug),
           )
         )
           throw new Error("Incomplete comparison");
@@ -356,10 +355,7 @@ export function PolicyV6Provider({
           locale={data.locale}
           sharedUiText={sharedUiText}
           selected={selected}
-          names={{
-            ...data.schoolNames,
-            ...Object.fromEntries(knownSchools.map((s) => [s.slug, s.name])),
-          }}
+          names={Object.fromEntries(knownSchools.map((s) => [s.slug, s.name]))}
           onToggle={toggle}
         />
       ) : null}
@@ -440,7 +436,7 @@ export function PolicyV6Provider({
                           {ui.sourceDate}: {s.checkedAt.slice(0, 10)}
                         </small>
                         <a
-                          href={`${schoolPath(s.slug, data.locale)}${data.schools.some((known) => known.slug === s.slug) || Boolean(data.schoolNames?.[s.slug]) || ["local_reviewed_bundle_not_public_snapshot","published_reviewed_page_supplement"].includes(s.snapshotStatus) ? "?layout=v6" : ""}`}
+                          href={`${schoolPath(s.slug, data.locale)}${data.schools.some((known) => known.slug === s.slug) || ["local_reviewed_bundle_not_public_snapshot","published_reviewed_page_supplement"].includes(s.snapshotStatus) ? "?layout=v6" : ""}`}
                         >
                           {ui.openRecord} ↗
                         </a>
@@ -532,7 +528,7 @@ export function PolicyV6Provider({
             {ui.selected}: {selected.length}/4
           </span>
           <span className={v6Classes.trayNames}>
-            {selected.map(slug => knownSchools.find(s => s.slug === slug)?.name ?? data.schoolNames?.[slug] ?? slug).join(" · ")}
+            {selected.map(slug => knownSchools.find(s => s.slug === slug)?.name ?? slug).join(" · ")}
           </span>
           <button onClick={openCompare}>{ui.compare} →</button>
           <button
@@ -673,7 +669,8 @@ export function PolicyV6TopicControls({
   scopeDetail,
 }: {
   dimensionKey: string;
-  originalEvidence?: ReactNode;
+  /** Rendered on the server so topic claims never enter the provider payload. */
+  originalEvidence: ReactNode;
   scopeDetail?: ReactNode;
 }) {
   const lab = useLab();
@@ -685,40 +682,6 @@ export function PolicyV6TopicControls({
       )
     : undefined;
   if (!topic) return null;
-  const originals = originalEvidence ?? (
-    <div className="student-snapshot-card__evidence">
-      {topic.claims.length ? (
-        topic.claims.map((claim) => (
-          <article className="student-evidence" key={claim.id}>
-            <h4 data-i18n="preserve" lang="en">
-              {claim.text}
-            </h4>
-            <small>
-              {claim.id} · {claim.checkedAt?.slice(0, 10) ?? "—"}
-            </small>
-            {claim.evidence.map((e, i) => (
-              <blockquote
-                className="student-evidence__quote"
-                key={`${e.url}:${i}`}
-              >
-                <p data-i18n="preserve" lang={e.language}>
-                  {e.quote}
-                </p>
-                <footer>
-                  <a href={e.url} target="_blank" rel="noopener noreferrer">
-                    {e.title} ↗
-                  </a>
-                  {e.location ? <p data-i18n="preserve">{e.location}</p> : null}
-                </footer>
-              </blockquote>
-            ))}
-          </article>
-        ))
-      ) : (
-        <p>{lab.ui.gap}</p>
-      )}
-    </div>
-  );
   const copyControl = (
     <button
         className={`policy-v6-textAction${lab.readingLayout ? " policy-v6-copyIcon" : ""}`}
@@ -781,7 +744,7 @@ export function PolicyV6TopicControls({
         ))}
         <div className="policy-v6-topicEvidence">
           <h4>{lab.ui.original}</h4>
-          {originals}
+          {originalEvidence}
         </div>
       </PolicyV6Popover>
       {scopeDetail && !lab.readingLayout ? <PolicyV6Popover
@@ -841,11 +804,12 @@ function useGridColumns(
 }
 
 export function PolicyV6Tools({
-  records,
+  recordCount,
   children,
   scopedTools,
 }: {
-  records: PageToolRecord[];
+  /** Only the count is needed; the records are already rendered as children. */
+  recordCount: number;
   children: ReactNode;
   scopedTools?: ReactNode;
 }) {
@@ -872,7 +836,7 @@ export function PolicyV6Tools({
           {scopedTools}
         </div>
       ) : null}
-      {records.length > columns || scopedTools ? (
+      {recordCount > columns || scopedTools ? (
         <div className="policy-v6-showAll">
           <button
             type="button"

@@ -151,7 +151,7 @@ pnpm exec tsx scripts/promote-maintenance-release-candidate.ts \
 | changes | 对应学校 changes、history、latest diff、changes index、recent changes、RSS 六项均完成 |
 | MCP | 全部 observedClaimIdsBySlug 与 scope 一致、remainingClaimIds 为空；published/scope 检查完成，dataBasisSha256 对应真实数据包 |
 | student_snapshot | 同一 dataBasisSha256；记录各校 basisFingerprint/expectedBasisFingerprint/reviewState/effectiveStatus/displayEligible；不匹配或 needs_review 的摘要必须继续暂缓显示 |
-| runtime_content | 受影响路由读回、内容与数据 expected/observed hashes 一致，数据哈希对应冻结 public_data artifact |
+| runtime_content | 受影响路由读回、内容与数据 expected/observed hashes 一致，数据哈希对应冻结 public_data artifact。内容发布（`docs/content-release.md`）：事件的 basis 是该版 `manifest.json`；读回须在指针切换并完成 tag 刷新（及授权的 Cloudflare 清除）之后进行，凭据记录 contentId 与 manifest 哈希 |
 | pages/search/sitemap | 实际受影响语言与对照、身份/排名/搜索、URL/可索引性检查；无影响项仍需排除理由 |
 | candidate/public_readback | 实际路径读回与 artifact identity 对应，不能用候选读回代替公网读回 |
 | notifications | 保存 URL 请求与返回结果，明确 indexingConfirmed=false；接受通知不代表收录 |

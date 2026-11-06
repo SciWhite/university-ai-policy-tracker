@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MetaLabel } from "@/components/meta-label";
-import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 import {
   formatReportDate,
   getMonthlyReport,
-  getMonthlyReportCoverageGroup,
-  getMonthlyReportCoverageSlug
+  getMonthlyReportCoverageGroup
 } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
@@ -25,21 +24,9 @@ export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = false;
 
+// Report months and their coverage groups are content; see the report page.
 export async function generateStaticParams() {
-  const params = await Promise.all(
-    monthlyReportSlugs.map(async (month) => {
-      const report = await getMonthlyReport(month);
-
-      return (
-        report?.coverageGroups.map((group) => ({
-          month,
-          region: getMonthlyReportCoverageSlug(group)
-        })) ?? []
-      );
-    })
-  );
-
-  return params.flat();
+  return [];
 }
 
 export async function generateMetadata({
@@ -79,6 +66,7 @@ export default async function MonthlyReportCoveragePage({
   params
 }: MonthlyReportCoveragePageProps) {
   const { month, region } = await params;
+  await tagContent("reports", contentTagFor.report(month));
   const coverage = await getMonthlyReportCoverageGroup(month, region);
 
   if (!coverage) {

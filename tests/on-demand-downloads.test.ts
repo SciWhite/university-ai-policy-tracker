@@ -69,7 +69,7 @@ test("published artifact GET keeps exact body, checksum and filename while warm 
 
 test("reports share one historical computation across locales while isolating localized consumers", { timeout: 150000 }, async (context) => {
   const root = await findRepoRoot();
-  const manifest = JSON.parse(await readFile(path.join(root, monthlyReportRegistry["2026-05"].releaseManifestPath), "utf8")) as PublicReleaseManifest;
+  const manifest = JSON.parse(await readFile(path.join(root, monthlyReportRegistry().reports["2026-05"].releaseManifestPath), "utf8")) as PublicReleaseManifest;
   const artifactRoot = path.resolve(root, manifest.includeStagedArtifactDirectories[0]);
   const reads = mock.method(fs, "readdir");
   syncBuiltinESMExports();
@@ -118,7 +118,7 @@ test("warm current downloads do not replace earlier report or claim snapshot con
   const root = await findRepoRoot();
   const identities = [];
   for (const month of ["2026-05", "2026-06"] as const) {
-    const manifest = JSON.parse(await readFile(path.join(root, monthlyReportRegistry[month].releaseManifestPath), "utf8")) as PublicReleaseManifest;
+    const manifest = JSON.parse(await readFile(path.join(root, monthlyReportRegistry().reports[month].releaseManifestPath), "utf8")) as PublicReleaseManifest;
     const expected = await getStagedPublicDatasetForManifest(manifest);
     const expectedClaims = expected.publicSummaries.flatMap(summary => summary.claims.map(claim => ({
       slug: summary.entity.slug,
@@ -148,7 +148,7 @@ test("warm current downloads do not replace earlier report or claim snapshot con
 test("the complete report index finishes without constructing historical download artifacts", { timeout: 30000 }, async () => {
   const before = datasetReleaseCacheStats();
   const reports = await getReportsIndex("ja");
-  assert.deepEqual(reports.map(report => report.slug).sort(), [...monthlyReportSlugs].sort());
+  assert.deepEqual(reports.map(report => report.slug).sort(), monthlyReportSlugs().sort());
   assert.ok(reports.every(report => report.metrics.claimCount > 0 && report.releaseId && report.coverageRows.length > 0));
   assert.deepEqual(datasetReleaseCacheStats(), before, "report counts do not materialize the six full export files for every historical month");
   assert.ok(reports.every((report, index) => index === 0 || report.publishedAt <= reports[index - 1].publishedAt));

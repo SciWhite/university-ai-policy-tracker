@@ -26,6 +26,7 @@ import { getLatestReleaseDiff, getReleaseSnapshotManifest } from "./release-diff
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 import { BoundedAsyncCache } from "./bounded-cache";
+import { contentCacheKey } from "./content-runtime";
 
 export interface DatasetReleaseArtifactContent {
   content: string;
@@ -119,7 +120,7 @@ export async function getDatasetRelease(): Promise<DatasetRelease> {
     const dataset = await getStagedPublicDataset();
     return buildDatasetRelease(dataset.publicSummaries, undefined);
   }
-  return datasetReleases.get(`current:${datasetReleaseKey(publicReleaseManifest)}`, async () => {
+  return datasetReleases.get(contentCacheKey(`current:${datasetReleaseKey(publicReleaseManifest)}`), async () => {
     const dataset = await getStagedPublicDataset();
     return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
   });
@@ -128,7 +129,7 @@ export async function getDatasetRelease(): Promise<DatasetRelease> {
 export async function getDatasetReleaseForPublicManifest(
   publicReleaseManifest: PublicReleaseManifest
 ): Promise<DatasetRelease> {
-  return datasetReleases.get(`snapshot:${datasetReleaseKey(publicReleaseManifest)}`, async () => {
+  return datasetReleases.get(contentCacheKey(`snapshot:${datasetReleaseKey(publicReleaseManifest)}`), async () => {
     const dataset = await getStagedPublicDatasetForManifest(publicReleaseManifest);
     return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
   });

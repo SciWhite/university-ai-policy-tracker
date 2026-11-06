@@ -2,7 +2,7 @@ import { createLocalizedReportImage } from "@/components/localized-report-opengr
 import { isSupportedLocale } from "@/lib/i18n";
 import { isMonthlyReportSlug } from "@/lib/monthly-report-registry";
 
-export const runtime = "edge";
+// Node runtime: the report registry is read from the active content release.
 
 // Only tested, existing monthly image paths are selected in the nginx release.
 // Reuse the image renderer without moving report pages into this bounded zone.

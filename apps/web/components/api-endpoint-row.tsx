@@ -1,3 +1,6 @@
+import type { ReadingLocale } from "@/lib/language-catalog";
+import { translateSurfaceText } from "@/lib/surface-localization";
+
 interface ApiEndpointRowProps {
   description: string;
   label: string;
@@ -5,6 +8,8 @@ interface ApiEndpointRowProps {
   path: string;
   status?: string;
   url?: string;
+  readingLocale?: ReadingLocale;
+  sharedUiText?: Readonly<Record<string, string>>;
 }
 
 export function ApiEndpointRow({
@@ -13,7 +18,9 @@ export function ApiEndpointRow({
   method = "GET",
   path,
   status = "Available",
-  url
+  url,
+  readingLocale = "en",
+  sharedUiText = {}
 }: ApiEndpointRowProps) {
   const content = (
     <>
@@ -30,7 +37,7 @@ export function ApiEndpointRow({
       </div>
       <div className="api-endpoint-row__target">
         {url ? <a href={url}>{content}</a> : content}
-        <span className="meta-label">{status}</span>
+        <span className="meta-label">{translateSurfaceText(status, readingLocale, sharedUiText)}</span>
       </div>
     </article>
   );

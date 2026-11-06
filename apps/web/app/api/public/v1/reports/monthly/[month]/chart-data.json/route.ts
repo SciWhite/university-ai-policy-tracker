@@ -1,8 +1,10 @@
-import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
+import { isMonthlyReportSlug } from "@/lib/monthly-report-registry";
 import { getMonthlyReportChartDataResponse } from "@/lib/monthly-report-chart-data";
+import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+// Months come from the content release: unknown ones 404 at request time.
+export const dynamicParams = true;
 
 interface MonthlyReportChartDataRouteProps {
   params: Promise<{
@@ -11,7 +13,7 @@ interface MonthlyReportChartDataRouteProps {
 }
 
 export function generateStaticParams() {
-  return monthlyReportSlugs.map((month) => ({ month }));
+  return [];
 }
 
 export async function GET(
@@ -19,6 +21,8 @@ export async function GET(
   { params }: MonthlyReportChartDataRouteProps
 ) {
   const { month } = await params;
+  if (!isMonthlyReportSlug(month)) return new Response("Not Found", { status: 404 });
+  await tagContent("reports", contentTagFor.report(month));
 
   return getMonthlyReportChartDataResponse(month);
 }

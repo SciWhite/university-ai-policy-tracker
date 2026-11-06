@@ -186,8 +186,11 @@ async function fetchApi<T>(path: string, parser: Parser<T>): Promise<T | null> {
   if (!baseUrl) return null;
 
   try {
+    // Public data changes only with a release; a shorter window here would
+    // lower the revalidate (and CDN s-maxage) of every ISR page that reads it.
     const response = await fetch(new URL(path, baseUrl), {
-      next: { revalidate: 60 }
+      // Tagged so a content switch (revalidateTag "catalog") refreshes the self-fetched catalog too.
+      next: { revalidate: 3600, tags: ["catalog", "content"] }
     });
 
     if (!response.ok) return null;

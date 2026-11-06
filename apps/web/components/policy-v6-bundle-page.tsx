@@ -1,4 +1,5 @@
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
+import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {currentReferenceClaims} from "@/lib/policy-v6-claim-disposition";
 import {PolicyV6PublicClaimDisposition} from "./policy-v6-public-claim-disposition";
 import {PolicyV6PublicClaimGuide} from "./policy-v6-public-claim-guide";
@@ -44,7 +45,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   const onlyScopedTools = scopedTools.length > 0 && unscopedTools.length === 0;
   const scopeNote = locale === "zh" ? "以下工具限特定对象、账户、模式或用途；不代表全体学生获得使用许可，也不代表考核许可。请核对每项获取条件。" : "These tools have audience, account, mode or purpose limits; access is not established for all students and does not grant assessment permission. Check each access condition.";
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
-    <PolicyV6Provider data={data} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
+    <PolicyV6Provider data={policyV6ClientData(data)} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
       <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} sharedUiText={sharedUiText} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />

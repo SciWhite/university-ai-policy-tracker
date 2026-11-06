@@ -1,4 +1,4 @@
-import approvedRecords from "./policy-supplements-approved.json";
+import { contentScoped, readContentJson } from "./content-runtime";
 
 export interface SupplementRecord {
   key: string;
@@ -35,11 +35,12 @@ export interface SupplementRecord {
   };
 }
 
-const records = approvedRecords as SupplementRecord[];
+// Reviewed admitted-record whitelist; ships in the content release (data/).
+const records = () => readContentJson<SupplementRecord[]>("data/policy-supplements-approved.json");
 
 /** Only the fixed 2026-10-07 admitted-record whitelist is available to public pages. */
 export function getApprovedPolicySupplements(slug: string): SupplementRecord[] {
-  return records.filter((record) => record.slug === slug);
+  return records().filter((record) => record.slug === slug);
 }
 
-export const approvedPolicySupplementSlugs = [...new Set(records.map((record) => record.slug))];
+export const approvedPolicySupplementSlugs = (): string[] => contentScoped("policy-supplement-slugs", () => [...new Set(records().map((record) => record.slug))]);
