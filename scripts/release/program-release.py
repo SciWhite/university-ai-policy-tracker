@@ -380,7 +380,9 @@ def isolated_nginx_test(nginx_root, routing_files, workdir, nginx_bin='nginx', r
                     continue
                 if prefix in text:
                     path.write_text(text.replace(prefix, str(copy) + '/'))
-        result = subprocess.run([nginx_bin, '-T', '-c', str(copy / 'nginx.conf'), '-p', str(copy) + '/'], capture_output=True, text=True)
+        # Keep nginx's compiled-in prefix: relative paths such as `load_module
+        # modules/...` resolve against it (/usr/share/nginx on Ubuntu), not the copy.
+        result = subprocess.run([nginx_bin, '-T', '-c', str(copy / 'nginx.conf')], capture_output=True, text=True)
         left = retired_port is not None and bool(port_pattern(retired_port).search(result.stdout))
         return {'ok': result.returncode == 0 and not left, 'retiredEndpointInConfig': left, 'output': (result.stdout[-1000:] + result.stderr)[-4000:]}
     finally:
@@ -1607,8 +1609,11 @@ def cmd_ledger(args):
 
 
 def release_helper(state):
-    previous = previous_plan()
-    path = state.get('releaseHelper') or (previous or {}).get('releaseHelper')
+    # The last plan in the transaction file names the helper: the previous
+    # completed plan before `plan`, and this operation's own plan from `plan`
+    # until `complete` (when `previous_plan()` is None because it is pending).
+    last = read_json(TRANSACTION).get('plan', {}) if TRANSACTION.is_file() else {}
+    path = state.get('releaseHelper') or last.get('releaseHelper')
     if not path or not Path(path).is_file():
         raise Refused('Release helper (uapt-release.mjs with verify-sync) unknown; pass --helper')
     return {'path': path, 'sha256': sha256_file(path)}
