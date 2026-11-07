@@ -100,7 +100,9 @@ export function createLocalizedSurfaceMetadata(
     searchParams?: Promise<Record<string, string | string[] | undefined>>;
   }) {
     const params = (await props.params) ?? {};
-    const searchParams = (await props.searchParams) ?? {};
+    // Reading searchParams makes a page dynamic; only paths that depend on the query (/sources
+    // pagination) take that cost. Static pages (e.g. zh university pages) must not.
+    const searchParams = typeof pathname === "function" && pathname.length > 1 ? (await props.searchParams) ?? {} : {};
     const locale = getSurfaceLocale(params);
     const metadata = typeof source === "function" ? await source(props) : source;
     const uiText = locale === DEFAULT_LOCALE ? {} : await getPublicReadingUiText(locale, [...publicSurfaceTextSources(), ...presentationTextSources(metadata)]);
