@@ -48,15 +48,17 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: AnalysisRouteProps) {
-  const { slug } = await params;
-  const canonical = getAbsoluteSiteUrl(`/analysis/${slug}`);
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
+  const alternates = getLocalizedAlternates(`/analysis/${slug}`, locale);
+  const canonical = String(alternates.canonical);
 
   if (slug === "policy-coverage") {
     return {
       title: "Policy Coverage Score Analysis | University AI Policy Tracker",
       description:
         "Sorted university policy coverage scores with caveats, source-backed dimensions, review states, and public JSON links.",
-      alternates: getLocalizedAlternates(`/analysis/${slug}`, "en"),
+      alternates,
       openGraph: {
         title: "Policy Coverage Score Analysis",
         description:
@@ -74,7 +76,7 @@ export async function generateMetadata({ params }: AnalysisRouteProps) {
       ? `${summary.spec.title} | University AI Policy Tracker`
       : "Analysis page not found",
     description: summary?.spec.description ?? "Analysis page not found.",
-    alternates: getLocalizedAlternates(`/analysis/${slug}`, "en"),
+    alternates,
     openGraph: {
       title: summary?.spec.title ?? "Analysis page not found",
       description: summary?.spec.description ?? "Analysis page not found.",

@@ -466,12 +466,11 @@ export function PolicyV6Provider({
                                 <p lang={data.locale === "zh" && /[\u3400-\u9fff]/.test(d.summary) ? "zh" : d.summaryLanguage ?? "en"} data-i18n="preserve">
                                   {d.summary}
                                 </p>
-                                <small>
-                                  {ui.scope}:{" "}
-                                  {d.basisKind === "record_analysis"
-                                    ? recordUi.scope
-                                    : d.scope}
-                                </small>
+                                {d.basisKind !== "record_analysis" && d.scope?.trim() ? (
+                                  <small>
+                                    {ui.scope}: {d.scope}
+                                  </small>
+                                ) : null}
                                 {d.sources.map((source) => (
                                   <a
                                     key={`${source.url}:${source.hash}`}
@@ -725,7 +724,7 @@ export function PolicyV6TopicControls({
             {scopeDetail}
           </details>
         ) : null}
-        {!lab.readingLayout && topic.basisKind !== "record_analysis" ? (
+        {!lab.readingLayout && topic.basisKind !== "record_analysis" && topic.scope?.trim() ? (
           <p className="policy-v6-muted">{topic.scope}</p>
         ) : null}
         {topic.actions.length ? (

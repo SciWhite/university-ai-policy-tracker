@@ -164,6 +164,17 @@ export function translateSurfaceText(
   if (accepted !== undefined) return `${leading}${accepted}${trailing}`;
   const acceptedTemplate = translateAcceptedTemplate(normalized, sharedUiText);
   if (acceptedTemplate !== undefined) return `${leading}${acceptedTemplate}${trailing}`;
+  const aiPolicyMatch = (normalized.endsWith(brandSuffix) ? normalized.slice(0, -brandSuffix.length) : normalized).match(/^(.*?)(?:\s+| — )(AI [Pp]olicy|AI 政策|Politique d’IA|Polityka AI|Política de IA|AI-beleid|Dasar AI)$/);
+  if (aiPolicyMatch) {
+    const rawSchool = aiPolicyMatch[1];
+    const rawSuffix = aiPolicyMatch[2];
+    const localizedSuffix = sharedUiText[rawSuffix] ?? sharedUiText["AI policy"] ?? sharedUiText["AI Policy"] ?? rawSuffix;
+    const localizedSchool = sharedUiText[rawSchool] ?? rawSchool;
+    if (localizedSchool !== rawSchool || (localizedSuffix && localizedSuffix !== rawSuffix)) {
+      const translatedTitle = `${localizedSchool} ${localizedSuffix}`;
+      return `${leading}${translatedTitle}${normalized.endsWith(brandSuffix) ? brandSuffix : ""}${trailing}`;
+    }
+  }
   const dictionaryLocale = legacyLocale(locale);
   if (dictionaryLocale === DEFAULT_LOCALE) return value;
   const localeMap = translationMaps[dictionaryLocale];
@@ -278,11 +289,21 @@ export function localizeSurfaceMetadata(
   sharedUiText: Readonly<Record<string, string>> = {}
 ): Metadata {
   const localized = localizeSurfaceValue(metadata, locale, undefined, sharedUiText) as Metadata;
+  const universityDetail = /^\/universities\/[a-z0-9-]+\/?$/.test(pathname);
+  if (universityDetail) {
+    const isIndexable = Boolean(metadata.robots && typeof metadata.robots === "object" && metadata.robots.index === true);
+    const alternates = isIndexable && metadata.alternates?.languages && Object.keys(metadata.alternates.languages).length > 0
+      ? metadata.alternates
+      : { canonical: getAbsoluteSiteUrl(localizeHref(pathname, locale)), languages: {} };
+    return {
+      ...localized,
+      alternates,
+      robots: metadata.robots ?? { index: isIndexable, follow: true },
+      openGraph: localized.openGraph ? { ...localized.openGraph, url: String(alternates.canonical) } : undefined
+    };
+  }
   if (locale !== DEFAULT_LOCALE && legacyLocale(locale) === DEFAULT_LOCALE) {
     const canonical = getAbsoluteSiteUrl(localizeHref(pathname, locale));
-    const universityDetail = /^\/universities\/[a-z0-9-]+\/?$/.test(pathname);
-    const acceptedUpstreamIndexDecision = universityDetail && Boolean(metadata.robots && typeof metadata.robots === "object" && metadata.robots.index === true) && Boolean(metadata.alternates?.languages && Object.keys(metadata.alternates.languages).length > 0);
-    if (acceptedUpstreamIndexDecision) return { ...localized, alternates: metadata.alternates, robots: metadata.robots };
     return { ...localized, alternates: { canonical }, robots: { index: false, follow: true }, openGraph: localized.openGraph ? { ...localized.openGraph, url: canonical } : undefined };
   }
   // University detail pages in the index-recovery pilot declare only the

@@ -12,7 +12,9 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import { getReleaseChangeRecord } from "@/lib/change-records";
-import { normalizeLocale } from "@/lib/i18n";
+import { JsonLd } from "@/components/json-ld";
+import { getCatalogUniversityBySlug } from "@/lib/catalog";
+import { withLocalePrefix, normalizeLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -21,6 +23,7 @@ import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { readPublishedV6Revision } from "@/lib/policy-v6-published";
 import { V6ChangeDetail } from "@/components/v6-change-detail";
 import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
+import { formatSchoolChangeDescription } from "@/lib/change-history-view";
 
 interface ReleaseEntityChangePageProps {
   params: Promise<{
@@ -50,8 +53,12 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   const v6Revision = readPublishedV6Revision(releaseId);
   if (v6Revision) {
     if (![...v6Revision.slugs, ...(v6Revision.v5Slugs ?? [])].includes(slug)) notFound();
-    const title = `${slug} policy evidence history | University AI Policy Tracker`;
-    const description = `Reviewed policy evidence history for ${slug} in release ${releaseId}.`;
+    const university = await getCatalogUniversityBySlug(slug);
+    const displayName = university
+      ? getLocalizedInstitutionName(slug, university.name, locale)
+      : slug;
+    const title = `${displayName} policy evidence history: ${releaseId} | University AI Policy Tracker`;
+    const description = formatSchoolChangeDescription(displayName, releaseId, locale);
     return {
       title,
       description,
@@ -67,8 +74,8 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   const title = record
     ? `${displayName} AI Policy Tracker Release Diff: ${releaseId}`
     : "Release change record not found";
-  const description = record
-    ? `${displayName} tracker release diff for ${releaseId}: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
+  const description = displayName
+    ? formatSchoolChangeDescription(displayName, releaseId, locale)
     : "University AI Policy Tracker release change record not found.";
 
   const confirmedEmpty = record && isConfirmedEmptyDiff(record, {releaseId, locale: "en", alias: false, eventState: await releaseDiffEventState(releaseId, slug)});
@@ -107,9 +114,55 @@ export default async function ReleaseEntityChangePage({
     notFound();
   }
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
+  const canonicalUrl = getAbsoluteSiteUrl(withLocalePrefix(`/changes/${releaseId}/${slug}`, locale));
+  const pageDescription = formatSchoolChangeDescription(displayName, releaseId, locale);
 
   return (
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: `${displayName} — ${releaseId}`,
+          description: pageDescription,
+          url: canonicalUrl,
+          inLanguage: locale,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          },
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: getAbsoluteSiteUrl(withLocalePrefix("/", locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Changes",
+                item: getAbsoluteSiteUrl(withLocalePrefix("/changes", locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: releaseId,
+                item: getAbsoluteSiteUrl(withLocalePrefix(`/changes/${releaseId}`, locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: displayName,
+                item: canonicalUrl
+              }
+            ]
+          }
+        }}
+      />
       {record.publicationKind === "scoped_record_correction" ? (
         <p className="notice-card">
           {"Tracker audit correction:"} <span data-i18n="preserve">{typeof record.changeSummary === "object" && record.changeSummary !== null ? ((record.changeSummary as any)[locale] || (record.changeSummary as any).en) : record.changeSummary}</span> {"Published in the tracker on"} <span data-i18n="preserve">{record.lastChangedAt}</span>. {"This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately."}

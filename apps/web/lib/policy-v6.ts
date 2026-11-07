@@ -323,7 +323,7 @@ async function getPolicyV6RecordSchool(
             "No reviewed evidence is included in this dimension.",
             locale,
           ),
-      scope: "Scope stated in the cited claims",
+      scope: "",
       basisKind: "record_analysis",
       actions: [],
       sources: sourceView(basis),

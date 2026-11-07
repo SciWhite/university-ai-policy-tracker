@@ -10,6 +10,22 @@ import {changeHistoryCopy} from "./change-history-copy";
 import {v6ChangesCopy} from "./v6-changes-copy";
 import {getLocalizedAlternates} from "./i18n-metadata";
 
+export function formatSchoolChangeDescription(displayName: string, releaseId: string, locale: SupportedLocale): string {
+  if (locale === "zh") {
+    const desc = `${displayName} 在版本 ${releaseId} 的 AI 政策变更记录、审核状态及已核验原始依据。`;
+    return desc.length >= 50 ? desc : `${displayName} 在 University AI Policy Tracker 版本 ${releaseId} 的政策变更记录与已核验依据。`;
+  }
+  const desc = `Reviewed policy change records and dated evidence for ${displayName} in tracker release ${releaseId}.`;
+  if (desc.length > 170) {
+    const shortDesc = `Policy change records for ${displayName} in release ${releaseId}.`;
+    return shortDesc.length > 170 ? shortDesc.slice(0, 167) + "..." : shortDesc;
+  }
+  if (desc.length < 50) {
+    return `Reviewed university AI policy change records for ${displayName} in release ${releaseId}.`;
+  }
+  return desc;
+}
+
 export const getChangeHistoryView=cache(async(slug:string,locale:SupportedLocale)=>{
   const history=await loadSelectedChangeHistory(slug);
   if(!history)return undefined;
@@ -26,5 +42,8 @@ export async function changeHistoryMetadata(slug:string,locale:SupportedLocale,e
   if(eventRevision&&!event)return undefined;
   const path=event?.url??`/changes/${slug}`,ui=changeHistoryCopy(locale);
   const title=`${view.name} — ${event?ui.revision:ui.history}${event?` · ${event.revision}`:""}`;
-  return {title,description:v6ChangesCopy(locale).scope,alternates:getLocalizedAlternates(path,locale),openGraph:{title,description:v6ChangesCopy(locale).scope,url:getAbsoluteSiteUrl(withLocalePrefix(path,locale)),type:"article" as const}};
+  const description = eventRevision
+    ? formatSchoolChangeDescription(view.name, eventRevision, locale)
+    : v6ChangesCopy(locale).scope;
+  return {title,description,alternates:getLocalizedAlternates(path,locale),openGraph:{title,description,url:getAbsoluteSiteUrl(withLocalePrefix(path,locale)),type:"article" as const}};
 }

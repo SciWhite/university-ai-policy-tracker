@@ -8,7 +8,7 @@ import {
   getReportsIndex
 } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
-import { normalizeReadingLocale } from "@/lib/i18n";
+import { normalizeLocale, normalizeReadingLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { tagContent } from "@/lib/content-cache-tags";
 
@@ -16,14 +16,20 @@ const title = "Reports | University AI Policy Tracker";
 const description =
   "Monthly dataset reports, public feeds, outreach assets, and citation-safe summaries for the University AI Policy Tracker evidence database.";
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/reports");
+export async function generateMetadata({
+  params
+}: {
+  params?: Promise<{ locale?: string }>;
+} = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const alternates = getLocalizedAlternates("/reports", locale);
+  const canonical = String(alternates.canonical);
 
   return {
     title,
     description,
     alternates: {
-      ...getLocalizedAlternates("/reports", "en"),
+      ...alternates,
       types: {
         "application/rss+xml": getAbsoluteSiteUrl("/feeds/reports.xml"),
         "application/atom+xml": getAbsoluteSiteUrl("/feeds/atom.xml")

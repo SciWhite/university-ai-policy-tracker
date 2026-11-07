@@ -36,16 +36,18 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ThemePageProps) {
-  const { slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const spec = getThemeLandingSpec(slug);
-  const canonical = getAbsoluteSiteUrl(`/themes/${slug}`);
+  const alternates = getLocalizedAlternates(`/themes/${slug}`, locale);
+  const canonical = String(alternates.canonical);
 
   return {
     title: spec
       ? `${spec.label} | University AI Policy Tracker`
       : "Theme not found",
     description: spec?.description ?? "Theme not found.",
-    alternates: getLocalizedAlternates(`/themes/${slug}`, "en"),
+    alternates,
     openGraph: {
       title: spec?.title ?? "Theme not found",
       description: spec?.description ?? "Theme not found.",
