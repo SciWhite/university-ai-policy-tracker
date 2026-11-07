@@ -1,3 +1,5 @@
+process.env.NEXT_PUBLIC_MULTILINGUAL_PHASE_TWO = "1";
+
 import assert from "node:assert/strict";
 import test from "node:test";
 
