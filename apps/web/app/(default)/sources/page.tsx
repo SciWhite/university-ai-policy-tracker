@@ -61,20 +61,6 @@ export async function generateMetadata(props: SourcesPageProps): Promise<Metadat
   };
 }
 
-export const metadata: Metadata = {
-  title: "Sources | University AI Policy Tracker",
-  description:
-    "Official source pages and documents behind the public university AI policy records.",
-  alternates: getLocalizedAlternates("/sources", "en"),
-  openGraph: {
-    title: "Sources | University AI Policy Tracker",
-    description:
-      "Official source pages and documents behind the public university AI policy records.",
-    url: String(getLocalizedAlternates("/sources", "en").canonical),
-    type: "website"
-  }
-};
-
 export default async function SourcesPage(props: SourcesPageProps) {
   const searchParams = (await props.searchParams) ?? {};
   const rawSources = await getCatalogSources();
