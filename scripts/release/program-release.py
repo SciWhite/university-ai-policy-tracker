@@ -48,6 +48,7 @@ CANDIDATE_MEMORY_HIGH = 5905580032  # 5.5 GiB (raised 2026-11-06, 24 GB host)
 CANDIDATE_MEMORY_MAX = 6442450944  # 6 GiB
 STATE_SCHEMA = 'uapt-program-release-operation-v1'
 WARMUP_LINE = 'Runtime warm-up finished'
+DEFAULT_RELEASE_HELPER = Path('/srv/uapt/release-helper/scripts/uapt-release.mjs')
 HTML_CACHE_EPOCH = Path('/etc/nginx/conf.d/uapt-html-cache-epoch.inc')
 HTML_CACHE_PURGES = LIFECYCLE / 'html-cache-purges.jsonl'
 MCP_ENTRY = 'apps/mcp/server.mjs'
@@ -1616,6 +1617,9 @@ def release_helper(state):
     # until `complete` (when `previous_plan()` is None because it is pending).
     last = read_json(TRANSACTION).get('plan', {}) if TRANSACTION.is_file() else {}
     path = state.get('releaseHelper') or last.get('releaseHelper')
+    if (not path or not Path(path).is_file()) and DEFAULT_RELEASE_HELPER.is_file():
+        # The helper workspace moved out of the retired eea1eb21 release (2026-11-07).
+        path = str(DEFAULT_RELEASE_HELPER)
     if not path or not Path(path).is_file():
         raise Refused('Release helper (uapt-release.mjs with verify-sync) unknown; pass --helper')
     return {'path': path, 'sha256': sha256_file(path)}
