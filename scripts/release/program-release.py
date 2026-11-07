@@ -1821,8 +1821,12 @@ def cmd_mcp(args):
     content root (no catalog pin, hot reload on content switches). A trial process
     on a spare port must serve the selected catalog first; after the switch the unit
     must serve it too, or it is restored to its previous drop-in and restarted."""
-    op = open_op(args, 'complete')
+    # Runs after cutover and before complete: `complete` classifies the retired web root as
+    # the rollback only when no running unit (MCP included) still uses it.
+    op = open_op(args, 'cutover')
     state = op.state
+    if 'complete' in state['steps'] and not args.rollback:
+        log('note: complete already ran; the retention register may still list the old MCP root as active')
     unit = state['mcp']['unit']
     endpoint = state['mcp']['endpoint']
     if not unit or not endpoint:
@@ -2077,7 +2081,7 @@ def main(argv=None):
     p.add_argument('--no-cache-bust', dest='cache_bust', action='store_false', help='read public pages without the ?uapt_readback= query')
     p.add_argument('--force', action='store_true', help='redo the public readback before the controller completes')
 
-    p = add('mcp', cmd_mcp)
+    p = add('mcp', cmd_mcp)  # after cutover, before complete
     p.add_argument('--trial-port', type=int, default=MCP_TRIAL_PORT, help='spare loopback port for the trial process')
     p.add_argument('--timeout', type=int, default=90, help='seconds to wait for /healthz to show the selected catalog')
     p.add_argument('--trial-only', action='store_true', help='run the trial and stop; leave the MCP unit unchanged')

@@ -49,7 +49,7 @@ separately. Read the doc for the kind of change before starting:
 | Change | Path | Doc |
 |---|---|---|
 | Policy claims, school pages, reports, translations, history (data only) | Runtime **content release**: `pnpm content:correct` (claim corrections) or `content:build`, then `content:validate`, sync contract 2.1.0 event, `content:switch --sync-ledger` on the host. No build, no restart: web and MCP follow the pointer. | `docs/content-release.md` |
-| Code, UI, routes, dependencies, schemas, aliases, marks, UI copy | **Program release**: build once in GitHub Actions (`program-build.yml`, frozen 40-hex SHA, `ubuntu-24.04-arm`), then on the host run `/usr/local/libexec/uapt-program-release.py` steps in order: `install` → `candidate` (warm-up) → `static` → `capacity` → `routing` → `ledger` → `plan` → `cutover` → `complete` → `mcp`. | `docs/program-release.md` §2–§7 |
+| Code, UI, routes, dependencies, schemas, aliases, marks, UI copy | **Program release**: build once in GitHub Actions (`program-build.yml`, frozen 40-hex SHA, `ubuntu-24.04-arm`), then on the host run `/usr/local/libexec/uapt-program-release.py` steps in order: `install` → `candidate` (warm-up) → `static` → `capacity` → `routing` → `ledger` → `plan` → `cutover` → `mcp` → `complete`. | `docs/program-release.md` §2–§7 |
 
 Rules:
 
@@ -61,7 +61,7 @@ Rules:
   disk, retention register, sync contract, journal, recovery) and updates the
   retention register at `complete`. Do not hand-run cutovers, hand-edit routing
   outside `routing`, or call historical controllers or per-zone scripts.
-- Every program release ends with the `mcp` step (trial on 3162, then one MCP
+- Every program release runs the `mcp` step between `cutover` and `complete` (trial on 3162, then one MCP
   restart with automatic restore). `plan` refuses if MCP was left on a
   program root that `complete` would hold.
 - nginx is the minimal routing (`docs/program-release.md` §6): static aliases,
