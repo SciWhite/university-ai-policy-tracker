@@ -141,7 +141,7 @@ class DropinTests(unittest.TestCase):
         text = pr.render_dropin(release='/srv/uapt/releases/r', env_file='/op/runtime.env', port=3102, node_bin='/opt/node/bin/node')
         for line in ['WorkingDirectory=/srv/uapt/releases/r/apps/web', 'Environment=', 'EnvironmentFile=', 'EnvironmentFile=/op/runtime.env',
                      'Environment=PORT=3102 HOSTNAME=127.0.0.1 NODE_ENV=production', 'ExecStart=', 'ExecStart=/opt/node/bin/node /srv/uapt/releases/r/apps/web/server.js',
-                     'SuccessExitStatus=143', 'MemoryHigh=3758096384', 'MemoryMax=4294967296', 'ReadWritePaths=',
+                     'SuccessExitStatus=143', 'MemoryHigh=5905580032', 'MemoryMax=6442450944', 'ReadWritePaths=',
                      'ReadWritePaths=/srv/uapt/mcp-telemetry /srv/uapt/releases/r/apps/web/.next/cache']:
             self.assertIn(line, text.splitlines())
         lines = text.splitlines()
