@@ -5109,3 +5109,58 @@ ol.timeline-list {
 /* Private candidate identities retain full text without widening compact pages. */
 .v6-private-context { min-width: 0; overflow-wrap: anywhere; }
 .v6-private-context .student-evidence { min-width: 0; }
+
+/* Server-paginated catalog read path */
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-default, #d0d7de);
+}
+.pagination-summary {
+  font-size: 0.9rem;
+  color: var(--color-fg-muted, #57606a);
+}
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.pagination-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--color-border-default, #d0d7de);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-fg-default, inherit);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.pagination-link:hover:not(.disabled) {
+  background-color: var(--color-canvas-subtle, #f6f8fa);
+  border-color: var(--color-accent-fg, #0969da);
+  text-decoration: none;
+}
+.pagination-link.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.pagination-status {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-fg-muted, #57606a);
+  padding: 0 0.25rem;
+}
+@media (min-width: 640px) {
+  .pagination {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

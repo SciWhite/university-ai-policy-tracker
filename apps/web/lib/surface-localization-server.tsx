@@ -88,14 +88,23 @@ export function createLocalizedSurfacePage(renderer: unknown, pathname: string) 
 
 export function createLocalizedSurfaceMetadata(
   source: Metadata | ((props: unknown) => Metadata | Promise<Metadata>),
-  pathname: string | ((props: Record<string, string | undefined>) => string)
+  pathname:
+    | string
+    | ((
+        props: Record<string, string | undefined>,
+        searchParams?: Record<string, string | string[] | undefined>
+      ) => string)
 ) {
-  return async function generateLocalizedMetadata(props: { params?: Promise<Record<string, string | undefined>> }) {
+  return async function generateLocalizedMetadata(props: {
+    params?: Promise<Record<string, string | undefined>>;
+    searchParams?: Promise<Record<string, string | string[] | undefined>>;
+  }) {
     const params = (await props.params) ?? {};
+    const searchParams = (await props.searchParams) ?? {};
     const locale = getSurfaceLocale(params);
     const metadata = typeof source === "function" ? await source(props) : source;
     const uiText = locale === DEFAULT_LOCALE ? {} : await getPublicReadingUiText(locale, [...publicSurfaceTextSources(), ...presentationTextSources(metadata)]);
-    const resolvedPath = typeof pathname === "function" ? pathname(params) : pathname;
+    const resolvedPath = typeof pathname === "function" ? pathname(params, searchParams) : pathname;
     return localizeSurfaceMetadata(metadata, resolvedPath, locale, uiText);
   };
 }

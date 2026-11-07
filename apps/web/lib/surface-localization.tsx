@@ -29,6 +29,7 @@ import {
   getIndexRecoveryPilotSlugFromPath
 } from "@/lib/index-recovery-pilot";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getInstitutionNativeName } from "@/lib/institution-localization";
 
 const localizedStrings = {
   zh: zhStrings,
@@ -131,17 +132,24 @@ export function createLocalizedSurfacePage(renderer: unknown) {
 
 export function createLocalizedSurfaceMetadata(
   source: Metadata | ((props: unknown) => Metadata | Promise<Metadata>),
-  pathname: string | ((props: Record<string, string | undefined>) => string)
+  pathname:
+    | string
+    | ((
+        props: Record<string, string | undefined>,
+        searchParams?: Record<string, string | string[] | undefined>
+      ) => string)
 ) {
   return async function generateLocalizedMetadata(props: {
     params?: Promise<Record<string, string | undefined>>;
+    searchParams?: Promise<Record<string, string | string[] | undefined>>;
   }) {
     const params = (await props.params) ?? {};
+    const searchParams = (await props.searchParams) ?? {};
     const locale = getSurfaceLocale(params);
     const metadata =
       typeof source === "function" ? await source(props) : source;
     const resolvedPath =
-      typeof pathname === "function" ? pathname(params) : pathname;
+      typeof pathname === "function" ? pathname(params, searchParams) : pathname;
     return localizeSurfaceMetadata(metadata, resolvedPath, locale);
   };
 }
@@ -169,7 +177,7 @@ export function translateSurfaceText(
     const rawSchool = aiPolicyMatch[1];
     const rawSuffix = aiPolicyMatch[2];
     const localizedSuffix = sharedUiText[rawSuffix] ?? sharedUiText["AI policy"] ?? sharedUiText["AI Policy"] ?? rawSuffix;
-    const localizedSchool = sharedUiText[rawSchool] ?? rawSchool;
+    const localizedSchool = sharedUiText[rawSchool] ?? getInstitutionNativeName(rawSchool, locale) ?? rawSchool;
     if (localizedSchool !== rawSchool || (localizedSuffix && localizedSuffix !== rawSuffix)) {
       const translatedTitle = `${localizedSchool} ${localizedSuffix}`;
       return `${leading}${translatedTitle}${normalized.endsWith(brandSuffix) ? brandSuffix : ""}${trailing}`;
