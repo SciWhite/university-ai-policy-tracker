@@ -19,3 +19,11 @@ test("no route exports both metadata and generateMetadata", () => {
   });
   assert.deepEqual(both, []);
 });
+
+test("shared localized metadata reads searchParams only for query-dependent paths", () => {
+  for (const file of ["apps/web/lib/surface-localization-server.tsx", "apps/web/lib/surface-localization.tsx"]) {
+    const source = readFileSync(file, "utf8");
+    assert.doesNotMatch(source, /^\s*const searchParams = \(await props\.searchParams\) \?\? \{\};/m, file);
+    assert.match(source, /pathname\.length > 1 \? \(await props\.searchParams\)/, file);
+  }
+});
