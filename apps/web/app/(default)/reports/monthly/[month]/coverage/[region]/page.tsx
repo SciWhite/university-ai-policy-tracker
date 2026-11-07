@@ -8,11 +8,13 @@ import {
   getMonthlyReportCoverageGroup
 } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { ReportCoverageTable } from "../../report-coverage-table";
 
 interface MonthlyReportCoveragePageProps {
   params: Promise<{
+    locale?: string;
     month: string;
     region: string;
   }>;
@@ -32,11 +34,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params
 }: MonthlyReportCoveragePageProps) {
-  const { month, region } = await params;
+  const { locale: localeParam, month, region } = await params;
+  const locale = normalizeLocale(localeParam);
   const coverage = await getMonthlyReportCoverageGroup(month, region);
-  const canonical = getAbsoluteSiteUrl(
-    `/reports/monthly/${month}/coverage/${region}`
+  const alternates = getLocalizedAlternates(
+    `/reports/monthly/${month}/coverage/${region}`,
+    locale
   );
+  const canonical = String(alternates.canonical);
 
   return {
     title: coverage
@@ -45,10 +50,7 @@ export async function generateMetadata({
     description: coverage
       ? `${coverage.group.macroRegion} university coverage appendix for ${coverage.report.title}, including public records, JSON links, source counts, and last checked dates.`
       : "Monthly University AI Policy Tracker coverage appendix not found.",
-    alternates: getLocalizedAlternates(
-      `/reports/monthly/${month}/coverage/${region}`,
-      "en"
-    ),
+    alternates,
     openGraph: {
       title: coverage
         ? `${coverage.group.macroRegion} Coverage Appendix | ${coverage.report.title}`

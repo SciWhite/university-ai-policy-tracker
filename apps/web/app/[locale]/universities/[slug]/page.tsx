@@ -1,5 +1,6 @@
 import BasePage, { generateMetadata as baseGenerateMetadata } from "../../../(default)/universities/[slug]/page";
-import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization";
+import { createLocalizedSurfaceMetadata } from "@/lib/surface-localization-server";
+import { createLocalizedSurfacePage } from "@/lib/surface-localization";
 
 export const dynamicParams = true;
 export const revalidate = 3600;

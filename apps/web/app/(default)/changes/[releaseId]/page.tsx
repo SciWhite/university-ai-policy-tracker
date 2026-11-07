@@ -1,3 +1,4 @@
+import React from "react";
 import {SchoolChangeHistoryPage} from "@/components/change-history-pages";
 import {changeHistoryMetadata} from "@/lib/change-history-view";
 import { localizeSurfaceTree } from "@/lib/surface-localization";
@@ -16,7 +17,7 @@ import {
   getReleaseChangeRecords,
   type ChangeRecord
 } from "@/lib/change-records";
-import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
+import { normalizeLocale, withLocalePrefix, type SupportedLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { redirectAliasSlugPage } from "@/lib/entity-alias-redirect";
@@ -156,7 +157,57 @@ async function ReleaseOrEntityHistoryPage({
   if (!history) {
     // Release records and school history keep their pages; only a published
     // V6/V5 revision that would otherwise 404 renders the release note.
-    if (readPublishedV6Revision(releaseId)) return <main><V6ChangeNote locale={locale} revision={releaseId} /></main>;
+    if (readPublishedV6Revision(releaseId)) {
+      const canonical = getAbsoluteSiteUrl(withLocalePrefix(`/changes/${releaseId}`, locale));
+      return localizeSurfaceTree(
+        <main className="page-shell page-shell--wide">
+          <JsonLd
+            data={{
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              name: `University AI Policy Tracker Release: ${releaseId}`,
+              description: `Release notes and policy updates for tracker revision ${releaseId}.`,
+              url: canonical,
+              inLanguage: locale,
+              isPartOf: {
+                "@type": "WebSite",
+                name: "University AI Policy Tracker",
+                url: getAbsoluteSiteUrl("/")
+              },
+              breadcrumb: {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: getAbsoluteSiteUrl(withLocalePrefix("/", locale))
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Changes",
+                    item: getAbsoluteSiteUrl(withLocalePrefix("/changes", locale))
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: releaseId,
+                    item: canonical
+                  }
+                ]
+              }
+            }}
+          />
+          <header className="hero">
+            <p className="kicker">Release note</p>
+            <h1>University AI Policy Tracker Release: {releaseId}</h1>
+          </header>
+          <V6ChangeNote locale={locale} revision={releaseId} />
+        </main>,
+        locale
+      );
+    }
     notFound();
   }
   const { record, releaseRecords } = history;
@@ -180,6 +231,29 @@ async function ReleaseOrEntityHistoryPage({
             "@type": "WebSite",
             name: "University AI Policy Tracker",
             url: getAbsoluteSiteUrl("/")
+          },
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: getAbsoluteSiteUrl(withLocalePrefix("/", locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Changes",
+                item: getAbsoluteSiteUrl(withLocalePrefix("/changes", locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: displayName,
+                item: canonical
+              }
+            ]
           },
           mainEntity: {
             "@type": "Dataset",
@@ -498,6 +572,44 @@ function ReleaseOverviewPage({
 
   return localizeSurfaceTree(
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: `University AI Policy Tracker Release Diff: ${releaseId}`,
+          description: `${changedRecords.length} university tracker records have release diff rows in ${releaseId}.`,
+          url: getAbsoluteSiteUrl(withLocalePrefix(`/changes/${releaseId}`, locale)),
+          inLanguage: locale,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          },
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: getAbsoluteSiteUrl(withLocalePrefix("/", locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Changes",
+                item: getAbsoluteSiteUrl(withLocalePrefix("/changes", locale))
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: releaseId,
+                item: getAbsoluteSiteUrl(withLocalePrefix(`/changes/${releaseId}`, locale))
+              }
+            ]
+          }
+        }}
+      />
       {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card">{"Tracker audit correction:"} <span data-i18n="preserve">{typeof records[0].changeSummary === "object" && records[0].changeSummary !== null ? ((records[0].changeSummary as any)[locale] || (records[0].changeSummary as any).en) : records[0].changeSummary}</span> {"This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged."}</p> : null}
       <section className="hero">
         <p className="kicker">Release diff</p>

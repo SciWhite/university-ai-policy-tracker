@@ -57,7 +57,7 @@ export function PolicyV6RecordTopics({
         </div>
         <PolicyV6TopicControls
           dimensionKey={topic.key}
-          scopeDetail={readthrough?<><p lang={zh&&/[\u3400-\u9fff]/.test(readthrough.meaningZh)?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{readthrough.en}</p></>:<p lang={zh&&/[\u3400-\u9fff]/.test(topic.scope)?'zh':'en'} data-i18n="preserve">{topic.scope}</p>}
+          scopeDetail={readthrough?<><p lang={zh&&/[\u3400-\u9fff]/.test(readthrough.meaningZh)?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{readthrough.en}</p></>:topic.scope?.trim()?<p lang={zh&&/[\u3400-\u9fff]/.test(topic.scope)?'zh':'en'} data-i18n="preserve">{topic.scope}</p>:undefined}
             originalEvidence={readingLayout ? <PolicyV6TopicEvidence topic={topic} locale={data.locale} sharedUiText={sharedUiText} /> :
             <div className="student-snapshot-card__evidence">
               {topic.claims.length ? (

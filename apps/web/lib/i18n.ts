@@ -215,6 +215,11 @@ export function getPathnameWithoutLocale(pathname: string): string {
 export function isLocalizablePath(pathname: string): boolean {
   const { path } = splitPathSuffix(getPathnameWithoutLocale(pathname));
 
+  // Monthly report prose pages are English-only and fall back to English canonical.
+  if (path.startsWith("/reports/monthly/") && !path.includes("/coverage/")) {
+    return false;
+  }
+
   if (
     !isMultilingualPhaseTwoEnabled() &&
     isPhaseTwoLocalizablePath(path)

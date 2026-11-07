@@ -35,16 +35,18 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: RegionPageProps) {
-  const { slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const spec = getRegionLandingSpec(slug);
-  const canonical = getAbsoluteSiteUrl(`/regions/${slug}`);
+  const alternates = getLocalizedAlternates(`/regions/${slug}`, locale);
+  const canonical = String(alternates.canonical);
 
   return {
     title: spec
       ? `${spec.label} | University AI Policy Tracker`
       : "Region not found",
     description: spec?.description ?? "Region not found.",
-    alternates: getLocalizedAlternates(`/regions/${slug}`, "en"),
+    alternates,
     openGraph: {
       title: spec?.title ?? "Region not found",
       description: spec?.description ?? "Region not found.",
