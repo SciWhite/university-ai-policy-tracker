@@ -1,6 +1,6 @@
 {
   "schemaVersion": "uapt-monthly-report-registry-v1",
-  "current": "2026-09",
+  "current": "2026-10",
   "note": "Monthly report specs are content. Publishing a report adds one entry and moves `current`; see docs/content-release.md.",
   "reports": {
     "2026-09": {
@@ -97,6 +97,29 @@
         "alt": "University AI Policy Tracker August 2026 month-end monitoring report share image",
         "headline": "August 2026 Monitoring Report",
         "localizedAlt": "University AI Policy Tracker localized August 2026 monitoring report"
+      }
+    },
+    "2026-10": {
+      "type": "monthly",
+      "month": "2026-10",
+      "title": "University AI Policy Tracker Month-End Report: October 2026",
+      "description": "A retrospective of 300 public tracker events across 132 university records in October 2026, with separate counts for page updates, record maintenance, source updates and review holds.",
+      "releaseLabel": "October 2026 month-end monitoring",
+      "releaseManifestPath": "data/public-releases/history/public-release-20260924-002.json",
+      "reportPeriod": "October 2026 through 31 October",
+      "publishedAt": "2026-11-10T06:00:19.781Z",
+      "summaryIntro": "The public change history records 300 October events across 132 university records and 35 tracker revisions. These event counts use tracker publication dates in UTC. The charts and university coverage appendix use public-release-20260924-002, the most recent versioned full dataset snapshot available at the end of October.",
+      "reportFindings": [
+        "132 of the 300 public events were page updates only. These events track presentation or navigation changes.",
+        "The event categories include 100 record-maintenance entries, 64 tracker corrections, 54 source updates and 51 tracker additions. An event can carry more than one category.",
+        "Examples include MIT source and record maintenance on 10 and 14 October, the University of Chicago tool-record revision on 14 October, and Cornell academic-integrity and source corrections on 16 October. See the corresponding university histories for scope, dates and original evidence.",
+        "16 events carried a held category. A hold records an unresolved review item. The event date records the tracker revision and can differ from the date a university rule took effect.",
+        "The report is retrospective. It counts events published from 1 through 31 October and keeps November revisions outside that window. Coverage and chart counts are tied to the frozen full-dataset snapshot."
+      ],
+      "shareImage": {
+        "alt": "University AI Policy Tracker October 2026 month-end report share image",
+        "headline": "October 2026 Month-End Report",
+        "localizedAlt": "University AI Policy Tracker localized October 2026 monthly report"
       }
     }
   }
