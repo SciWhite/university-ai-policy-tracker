@@ -87,9 +87,13 @@ Rules:
   IndexNow for the changed URLs. Old releases stay as `rollback`/`held` in the
   register until the storage rules archive them.
 
-Authorization: a documentation, review or local-validation request never
-authorizes a push, merge, build, deployment, restart, cutover, Cloudflare purge
-or search notification. Ask, then quote the user's approval in the receipts.
+Authorization: an explicit request from the user to publish authorizes the
+requested release, including its required deployment, cutover and cache purge.
+Quote that request in the release receipts and proceed through all applicable
+review, acceptance and synchronization gates. A second approval from the user
+or a developer is unnecessary. Documentation, review and local-validation
+requests authorize their stated scope. IndexNow and other search notifications
+still require explicit authorization.
 
 Historical (before 2026-11-05, kept for old receipts only): per-zone OCI
 builds, `docs/release-routing-policy.md`, `docs/oci-small-release.md`,

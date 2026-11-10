@@ -343,6 +343,10 @@ the hand-written generators of the first post-R1 correction (9 schools,
 
 ### 12.1 Decisions file (`uapt-content-correction-v1`)
 
+Record the user's explicit publication request in `approval.publication`.
+That request authorizes the scoped content release and its cache purges.
+Independent review, candidate acceptance and synchronization gates still apply.
+
 ```json
 {
   "schemaVersion": "uapt-content-correction-v1",
