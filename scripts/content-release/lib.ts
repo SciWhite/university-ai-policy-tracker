@@ -2,10 +2,11 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
 import {
-  CONTENT_API_VERSION, CONTENT_RELEASE_SCHEMA, selectContentForTools, sha256Hex,
+  CONTENT_API_VERSION, CONTENT_RELEASE_SCHEMA, V6_ENGLISH_ONLY_SCHEMA, selectContentForTools, sha256Hex,
   type ActiveContent, type ContentReleaseManifest
 } from "../../apps/web/lib/content-runtime";
 import { getStagedPublicDataset } from "../../apps/web/lib/staged-public-data";
+import { V6ArtifactStore } from "../../apps/web/lib/v6-artifact-store";
 import { readV6RecordCorrections, v6RecordSlugs } from "../../apps/web/lib/v6-effective-records";
 
 export const CONTENT_ID_PATTERN = /^[a-z0-9][a-z0-9.-]{2,95}$/;
@@ -129,6 +130,13 @@ export function detectSchemas(root: string): { schemas: string[]; requiredSyncCo
     if (!existsSync(path.join(root, file))) continue;
     const value = read(file);
     families[file.split("/")[1]] = { schemaVersion: value.schemaVersion, revision: value.releaseId ?? value.revision ?? value.basisRevision, sha256: value.sha256 ?? sha256File(path.join(root, file)) };
+  }
+  const pagesIndex = "data/public-v6-pages/sharded/index.json";
+  if (existsSync(path.join(root, pagesIndex))) {
+    const pages = read("data/public-v6-pages/current.json");
+    const store = new V6ArtifactStore(path.join(root, "data/public-v6-pages"), read(pagesIndex));
+    const englishOnlySlugs = store.field<string[]>(pages.releaseId, ["englishOnlySlugs"]);
+    if (englishOnlySlugs?.length) schemas.add(V6_ENGLISH_ONLY_SCHEMA);
   }
   const history = read("data/public-change-history/current.json");
   const historySchema = read(`data/public-change-history/${history.path}`).schemaVersion as string;

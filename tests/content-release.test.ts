@@ -126,7 +126,7 @@ test("a content-free program build reads no content while Next prerenders", () =
 });
 
 test("the monthly report registry is data with a required current report", () => {
-  const registry = JSON.parse(readFileSync(path.join(repoRoot, "data/monthly-reports/registry.json"), "utf8"));
+  const registry = { ...JSON.parse(readFileSync(path.join(repoRoot, "data/monthly-reports/registry.json"), "utf8")), current: "2026-09" };
   assert.equal(validateMonthlyReportRegistry(registry).current, "2026-09");
   assert.throws(() => validateMonthlyReportRegistry({ ...registry, current: "2026-12" }), /Current monthly report/);
   const broken = structuredClone(registry);

@@ -14,6 +14,8 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
   if (pages.schemaVersion !== 'uapt-v6-published-pages-v1' || records.schemaVersion !== 'uapt-v6-effective-records-v1' || (options.candidateOnly ? pages.candidateOnly!==true || records.candidateOnly!==true || pages.publicationApproved!==false || records.publicationApproved!==false : !pages.publicationApproved || !records.publicationApproved || pages.candidateOnly===true || records.candidateOnly===true) || pages.releaseId !== records.revision) throw Error('Unpaired V6 release identity');
   const scope = [...pages.slugs, ...(pages.v5Slugs ?? [])];
   if (!sameSet(scope, records.summaries.map(s => s.entity.slug)) || !sameSet(Object.keys(pages.locales), [...SUPPORTED_LOCALES])) throw Error('Incomplete V6 school/locale coverage');
+  const englishOnlySlugs = pages.slugs.filter(slug => pages.locales.en.views[slug]?.presentationLocale === 'en');
+  if (!sameSet(pages.englishOnlySlugs ?? [], englishOnlySlugs)) throw Error('English-only V6 capability does not match the page adapters');
   for (const [slug, ids] of Object.entries(records.mcpPresentationExclusions ?? {})) {
     if (!pages.slugs.includes(slug) || !Array.isArray(ids) || new Set(ids).size !== ids.length) throw Error('Invalid MCP presentation exclusion scope: ' + slug);
     for (const locale of SUPPORTED_LOCALES) {

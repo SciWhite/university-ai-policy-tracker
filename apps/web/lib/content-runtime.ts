@@ -24,10 +24,12 @@ import { registerServerReadingCohort } from "./reading-cohort";
 
 /** Content package API this program reads. Bump only with a loader change. */
 export const CONTENT_API_VERSION = 1;
+export const V6_ENGLISH_ONLY_SCHEMA = "uapt-v6-english-only-presentation-v1";
 /** Family schema versions this program can render. */
 export const SUPPORTED_CONTENT_SCHEMAS = [
   "uapt-public-release-manifest-v1",
   "uapt-v6-published-pages-v1",
+  V6_ENGLISH_ONLY_SCHEMA,
   "uapt-v6-effective-records-v1",
   "uapt-bounded-public-history-v1",
   "uapt-public-change-history-v1",

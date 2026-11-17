@@ -10,7 +10,7 @@ import {getLocalQACandidatePages} from './v6-qa-candidate';
 import {readContentJson} from './content-runtime';
 export {publishedV6Slugs,isPublishedV6Slug,publishedV6Enabled} from './policy-v6-published-gate';
 interface LocaleData {schools:LabSchool[];views:Record<string,LocalV6Bundle>;localEvidence:Record<string,LocalV6Evidence>;entities:Record<string,unknown>;related:Record<string,unknown>}
-export type PublishedV6Package={schemaVersion:string;publicationApproved:boolean;candidateOnly?:true;releaseId:string;slugs:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
+export type PublishedV6Package={schemaVersion:string;publicationApproved:boolean;candidateOnly?:true;releaseId:string;slugs:string[];englishOnlySlugs?:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
 type PagesPointer={path:string;sha256:string;releaseId:string;slugs:string[];v5Slugs?:string[]};
 /** Pointer, registry and shard index come from the active content release, never the build. */
 const currentPointer=()=>readContentJson<PagesPointer>('data/public-v6-pages/current.json');
