@@ -17,6 +17,8 @@ import type { SupportedLocale } from "./i18n";
 export interface LocalV6Bundle {
   completenessReview?: {schemaVersion:'uapt-v6-completeness-review-v1';contentSha256:string;reviewer:string;reviewedAt:string;scope:'presentation_only';policySemanticsApproved:false};
   candidateOnly?: true;
+  /** English-only public presentation. Other reading locales use the catalog page. */
+  presentationLocale?: "en";
   presentationEvidenceAcceptance?: PresentationEvidenceAcceptance;
   toolPresentationAcceptance?: import('./policy-v6-tool-presentation').ToolPresentationAcceptance;
   editorialProjection?: import("./policy-v6-editorial-projection").V6EditorialProjection;
@@ -86,7 +88,7 @@ export function getLocalV6StudentActions(view: LocalV6Bundle): V6StudentActions 
         hash: e.sourceSnapshotHash, location: e.snippetLocation ?? "",
       })))) return undefined;
   }
-  if ([...guide.do, ...guide.dont].some((action) => !["requirement","source_guidance","site_advice"].includes(action.kind) || !action.en || !action.zh || !action.claimIds.length || action.claimIds.some((id) => !guide.claims[id])) ||
+  if ([...guide.do, ...guide.dont].some((action) => !["requirement","source_guidance","site_advice"].includes(action.kind) || !action.en || (view.presentationLocale !== "en" && !action.zh) || !action.claimIds.length || action.claimIds.some((id) => !guide.claims[id])) ||
     Object.values(guide.procedures).flat().some((id) => !guide.claims[id])) return undefined;
   return structuredClone({...guide,privatePreview:!view.publication});
 }

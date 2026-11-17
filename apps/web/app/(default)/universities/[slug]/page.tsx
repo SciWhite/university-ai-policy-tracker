@@ -206,7 +206,9 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
   }
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
-  if (university && publicSummary && isPolicyV6Preview(slug, layout)) {
+  const fullPresentation = isPolicyV6Preview(slug, layout) &&
+    (readingLocale === "en" || getV6PageInput(slug, "en").bundle?.presentationLocale !== "en");
+  if (university && publicSummary && fullPresentation) {
     const seo = universityPolicySeo(publicSummary, locale);
     const metadataBasis = universityReadingBasis(slug, publicSummary) ?? { recordSha256: "", originalEvidenceSha256: "" };
     const localizedMetadata = await universityReadingMetadata(slug, `/universities/${slug}`, readingLocale, metadataBasis, publicSummary);
@@ -307,8 +309,11 @@ export default async function UniversityPage({
 
   // One V6 template: published V6 schools (and development previews) render the
   // full tier; every other catalog school renders the base tier from its record.
-  const v6Preview = isPolicyV6Preview(slug, pageQuery?.layout);
-  const baseTier = !v6Preview && isPolicyV6BaseTier(slug);
+  const requestedV6 = isPolicyV6Preview(slug, pageQuery?.layout);
+  const requestedV6Input = requestedV6 ? getV6PageInput(slug, "en") : undefined;
+  const useCatalogPage = requestedV6Input?.bundle?.presentationLocale === "en" && readingLocale !== "en";
+  const v6Preview = requestedV6 && !useCatalogPage;
+  const baseTier = useCatalogPage || (!v6Preview && isPolicyV6BaseTier(slug));
   const uiLab = v6Preview || baseTier;
   const fullV6 = v6Preview;
   // Preserve the pre-existing seven-locale V6 cache only when no complete
@@ -316,7 +321,7 @@ export default async function UniversityPage({
   const fallbackV6Locale = readingLocale === locale ? locale : "en";
   // Translation hashes bind to the frozen English display export. Keep V6 input
   // language-neutral so pre-existing zh bundles cannot bypass the accepted 32-locale map.
-  const v6Input = fullV6 ? getV6PageInput(slug, "en") : undefined;
+  const v6Input = fullV6 ? requestedV6Input : undefined;
   const fallbackV6Input = fullV6 && fallbackV6Locale !== "en" ? getV6PageInput(slug, fallbackV6Locale) : undefined;
   const localBundle = v6Input?.bundle;
   const v6PublicSummary = fullV6 && publishedV6Enabled() && (isPublishedV6Slug(slug) || Boolean(v6Input?.bundle || v6Input?.evidence)) ? await getPublicUniversitySummaryBySlug(slug) : undefined;

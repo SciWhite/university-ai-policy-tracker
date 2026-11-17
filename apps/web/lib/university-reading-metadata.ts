@@ -11,7 +11,7 @@ import type { PublicEntitySummary } from "@uapt/shared";
 import { readingTranslation } from "./reading-translations";
 import { getV6PageInput } from "./policy-v6-page-input";
 import { getPolicyV6Data } from "./policy-v6";
-import { isPublishedV6Slug } from "./policy-v6-published";
+import { isPublishedV6Slug, publishedV6Bundle } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
 import { ByteLru } from "./bounded-cache";
 import { localeIndexPolicySelection, readingPackageSelection } from "./content-runtime";
@@ -190,6 +190,7 @@ export async function universityReadingIndexLocales(slug: string, basis: { recor
   if (!summary) return [DEFAULT_LOCALE];
   const identity = policyV6Tier(slug) === "full" ? undefined : await getCatalogUniversityBySlug(slug);
   if (identity) return baseTierIndexLocales(identity, basis, summary, onlyLocale);
+  if (publishedV6Bundle(slug, DEFAULT_LOCALE)?.presentationLocale === DEFAULT_LOCALE) return [DEFAULT_LOCALE];
   // Multilingual (full V6) schools keep their reviewed locale registry.
   const pointer = readingPackageSelection().pointer;
   if (!pointer) return [DEFAULT_LOCALE];

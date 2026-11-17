@@ -6,7 +6,7 @@ import {acceptV6SchoolInput} from '../../apps/web/lib/policy-v6-input';
 import {validatePolicySnapshotAgainstPublicData} from '../../apps/web/lib/policy-snapshots';
 import {SUPPORTED_LOCALES} from '../../apps/web/lib/i18n';
 import frozenLegacy from '../../data/policy-v6-legacy-completeness.json';
-import {validateV6Completeness} from '../../apps/web/lib/policy-v6-completeness';
+import {v6InputHash,validateV6Completeness} from '../../apps/web/lib/policy-v6-completeness';
 import {acceptedToolPresentation} from '../../apps/web/lib/policy-v6-tool-presentation';
 
 export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPackage, options: {candidateOnly?:boolean} = {}) {
@@ -39,12 +39,19 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
       if (snapshot.overallStatus === 'strong' && validation.effectiveStatus !== 'strong') throw Error('Stale or held V6 snapshot marked strong: ' + slug);
     }
     if (!pages.slugs.includes(slug)) continue; // Historical V5 has a separate presentation contract.
+    const englishBundle = pages.locales.en.views[slug];
+    const englishOnly = englishBundle?.presentationLocale === 'en';
+    const englishInputHash = englishOnly && v6InputHash({school:englishBundle.school,bundle:englishBundle});
     for (const locale of SUPPORTED_LOCALES) {
       const data = pages.locales[locale];
       if (!sameSet(pages.slugs, data.schools.map(school => school.slug)) || [...Object.keys(data.views), ...Object.keys(data.localEvidence)].some(key => !pages.slugs.includes(key))) throw Error('V6 locale adapter scope drift: ' + locale);
       const school = data.schools.find(school => school.slug === slug)!;
       const allowFrozenLegacy = pages.releaseId === frozenLegacy.releaseId || !frozenLegacy.repairSlugs.includes(slug);
       const input={school, bundle: data.views[slug], evidence: data.localEvidence[slug]};
+      if ((input.bundle?.presentationLocale === 'en') !== englishOnly ||
+          (englishOnly && v6InputHash(input) !== englishInputHash)) {
+        throw Error('English-only V6 adapter drift: ' + slug + '/' + locale);
+      }
       acceptV6SchoolInput(input, s, fingerprint);
       const adapterTools = data.views[slug]?.tools ?? data.localEvidence[slug]?.tools;
       if (adapterTools) {
@@ -68,7 +75,7 @@ export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPack
         }
       }
       if (!sameSet(school.heldClaims.map(c => c.id), held.map(c => c.id!))) throw Error('V6 held mapping drift: ' + slug);
-      validateV6Completeness(input,locale,allowFrozenLegacy);
+      validateV6Completeness(input,englishOnly ? 'en' : locale,allowFrozenLegacy);
     }
   }
   return {slugs: scope, locales: [...SUPPORTED_LOCALES], claims: records.summaries.reduce((n,s) => n+s.claims.length,0), tools: Object.values(records.toolsBySlug).reduce((n,t) => n+t.length,0), held: Object.values(records.heldBySlug).reduce((n,t) => n+t.length,0)};

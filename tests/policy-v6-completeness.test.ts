@@ -31,7 +31,7 @@ test('editorial review retains additional school-specific topics while requiring
   view.editorialProjection={schemaVersion:'uapt-v6-editorial-projection-v1',canonicalRecordSha256:view.school.fingerprint,contentSha256:editorialContentHash(view),reviewState:'pending_independent_presentation_review',researchApprovalGranted:false,publicationApprovalGranted:false};
   assert.doesNotThrow(()=>validateV6EditorialProjection(view));
   view.school.additionalTopics=view.school.additionalTopics.filter(t=>t.key!=='security_procurement');
-  assert.throws(()=>validateV6EditorialProjection(view),/Nine bilingual/);
+  assert.throws(()=>validateV6EditorialProjection(view),/Nine complete/);
 });
 test('complete bilingual presentation passes; exact older input remains readable without extending its approval',()=>{
   assert.doesNotThrow(()=>validateV6Completeness(fixture(),'zh',false));
@@ -82,4 +82,32 @@ test('explicit empty procedure arrays preserve an evidence gap without inventing
   input.bundle.candidateOnly=true;
   input.bundle.studentActions!.procedures={investigation:[],outcomes:[],appeal:[]};
   assert.doesNotThrow(()=>validateV6Completeness(input,'zh',false));
+});
+
+test('an independently reviewed English-only publication requires empty localized fields and English selection', () => {
+  const input = fixture();
+  const view = input.bundle;
+  const guide = view.studentActions!;
+  for (const topic of [...view.school.topics, ...view.school.additionalTopics]) {
+    topic.title = view.topicLabels[topic.key].en;
+    topic.statusLabel = view.topicLabels[topic.key + ':status'].en;
+    topic.summary = view.topicSummaries![topic.key].en;
+    topic.scope = view.topicScopes![topic.key].en;
+    view.topicLabels[topic.key].zh = '';
+    view.topicLabels[topic.key + ':status'].zh = '';
+    view.topicSummaries![topic.key].zh = '';
+    view.topicScopes![topic.key].zh = '';
+    guide.topics[topic.key].zh = '';
+    guide.topics[topic.key].meaningZh = '';
+  }
+  guide.scope.zh = '';
+  for (const action of [...guide.do, ...guide.dont]) action.zh = '';
+  assert.throws(() => validateV6Completeness(input, 'en', false), /EN\/ZH summary required/);
+  view.presentationLocale = 'en';
+  assert.throws(() => validateV6Completeness(input, 'en', false), /independent exact-content/);
+  view.completenessReview!.contentSha256 = v6CompletenessContentHash(input);
+  assert.doesNotThrow(() => validateV6Completeness(input, 'en', false));
+  assert.throws(() => validateV6Completeness(input, 'zh', false), /Invalid English-only/);
+  view.topicSummaries!.coursework.zh = '未审译文';
+  assert.throws(() => validateV6Completeness(input, 'en', false), /EN\/ZH summary required/);
 });

@@ -17,7 +17,7 @@ export function v6InputHash(input: V6SchoolInput) {
 }
 export function v6CompletenessContentHash(input: V6SchoolInput) {
   const view=input.bundle;
-  return hash({school:input.school,topicLabels:view?.topicLabels,topicSummaries:view?.topicSummaries,topicScopes:view?.topicScopes,studentActions:view?.studentActions});
+  return hash({school:input.school,topicLabels:view?.topicLabels,topicSummaries:view?.topicSummaries,topicScopes:view?.topicScopes,studentActions:view?.studentActions,presentationLocale:view?.presentationLocale});
 }
 export function isFrozenLegacyV6Input(input: V6SchoolInput, locale: SupportedLocale) {
   return readContentJson<{inputs:Record<string,Record<string,string>>}>('data/policy-v6-legacy-completeness.json').inputs[input.school.slug]?.[locale] === v6InputHash(input);
@@ -25,6 +25,12 @@ export function isFrozenLegacyV6Input(input: V6SchoolInput, locale: SupportedLoc
 
 /** Structural/presentation completeness, not an independent policy-semantic approval. */
 export function validateV6Completeness(input: V6SchoolInput, locale: SupportedLocale, allowFrozenLegacy = true) {
+  const englishOnly = input.bundle?.presentationLocale === 'en';
+  if (input.bundle?.presentationLocale !== undefined &&
+      (!englishOnly || locale !== 'en' || (!input.bundle.publication && input.bundle.candidateOnly !== true))) {
+    throw Error('Invalid English-only V6 presentation');
+  }
+  const localized = (value: unknown) => englishOnly ? value === '' : chinese(value);
   if (allowFrozenLegacy && isFrozenLegacyV6Input(input, locale)) return;
   const fail = (message: string): never => {throw Error(`Incomplete V6 ${input.school.slug}/${locale}: ${message}`);};
   const view = input.bundle;
@@ -45,8 +51,8 @@ export function validateV6Completeness(input: V6SchoolInput, locale: SupportedLo
     const title = bundle.topicLabels[topic.key];
     const label = bundle.topicLabels[`${topic.key}:status`];
     const actionTopic = guide.topics?.[topic.key];
-    if (!text(summary?.en) || !chinese(summary?.zh) || placeholder(summary.en) || placeholder(summary.zh)) fail(`${topic.key}: concrete EN/ZH summary required`);
-    if (!text(scope?.en) || !chinese(scope?.zh) || !text(title?.en) || !chinese(title?.zh) || !text(label?.en) || !chinese(label?.zh)) fail(`${topic.key}: bilingual scope/title/status required`);
+    if (!text(summary?.en) || !localized(summary?.zh) || placeholder(summary.en) || (!englishOnly && placeholder(summary.zh))) fail(`${topic.key}: concrete EN/ZH summary required`);
+    if (!text(scope?.en) || !localized(scope?.zh) || !text(title?.en) || !localized(title?.zh) || !text(label?.en) || !localized(label?.zh)) fail(`${topic.key}: bilingual scope/title/status required`);
     if (topic.summary !== summary[language] || topic.title !== title[language] || topic.statusLabel !== label[language] || topic.scope !== scope[language]) fail(`${topic.key}: rendered locale differs from explicit mapping`);
     if (!actionTopic || actionTopic.en !== summary.en || actionTopic.zh !== summary.zh || actionTopic.meaningEn !== scope.en || actionTopic.meaningZh !== scope.zh) fail(`${topic.key}: topic/FAQ/action projection drift`);
     // A real evidence gap is permitted; absence never means permission.
@@ -57,11 +63,11 @@ export function validateV6Completeness(input: V6SchoolInput, locale: SupportedLo
     const actions = guide[side];
     if (!Array.isArray(actions) || actions.length < 1 || actions.length > 3) fail(`${side}: one to three evidence-bound actions required`);
     for (const action of actions) {
-      if (!text(action.en) || !chinese(action.zh) || !['requirement','source_guidance','site_advice'].includes(action.kind) || !action.claimIds.length) fail(`${side}: bilingual action/kind/evidence required`);
+      if (!text(action.en) || !localized(action.zh) || !['requirement','source_guidance','site_advice'].includes(action.kind) || !action.claimIds.length) fail(`${side}: bilingual action/kind/evidence required`);
       if (action.claimIds.some(id => !guide.claims[id]?.evidence?.length)) fail(`${side}: dangling action evidence`);
     }
   }
-  if (!text(guide.scope?.en) || !chinese(guide.scope?.zh)) fail('bilingual action scope required');
+  if (!text(guide.scope?.en) || !localized(guide.scope?.zh)) fail('bilingual action scope required');
   if (bundle.publication && bundle.candidateOnly !== true) {
     const receipt=bundle.completenessReview;
     if (!receipt || receipt.schemaVersion !== 'uapt-v6-completeness-review-v1' || receipt.contentSha256 !== v6CompletenessContentHash(input) || !text(receipt.reviewer) || !Number.isFinite(Date.parse(receipt.reviewedAt)) || receipt.scope !== 'presentation_only' || receipt.policySemanticsApproved !== false) fail('independent exact-content completeness review required');

@@ -11,7 +11,7 @@ export function presentationEvidenceHash(view:LocalV6Bundle){
 }
 export function acceptedPresentationEvidence(view:LocalV6Bundle){
  const a=view.presentationEvidenceAcceptance,p=view.editorialProjection;
- const contentSha256=createHash('sha256').update(JSON.stringify({slug:view.school.slug,recordSha256:view.school.fingerprint,topicSummaries:view.topicSummaries,topicScopes:view.topicScopes,studentActions:view.studentActions})).digest('hex');
+ const contentSha256=createHash('sha256').update(JSON.stringify({slug:view.school.slug,recordSha256:view.school.fingerprint,topicSummaries:view.topicSummaries,topicScopes:view.topicScopes,studentActions:view.studentActions,presentationLocale:view.presentationLocale})).digest('hex');
  return Boolean(a&&view.publication&&view.candidateOnly!==true&&view.publicationApproved===false&&
   a.schemaVersion==='uapt-v6-presentation-evidence-acceptance-v1'&&a.scope==='presentation_only'&&
   a.canonicalRecordSha256===view.school.fingerprint&&a.contentSha256===p?.contentSha256&&

@@ -24,6 +24,7 @@ export function editorialContentHash(view: LocalV6Bundle) {
     topicSummaries: view.topicSummaries,
     topicScopes: view.topicScopes,
     studentActions: view.studentActions,
+    presentationLocale: view.presentationLocale,
   })).digest('hex');
 }
 
@@ -43,8 +44,10 @@ export function validateV6EditorialProjection(view: LocalV6Bundle) {
   if (V6_REQUIRED_TOPIC_KEYS.some(key => !topics.some(topic => topic.key === key)) ||
       new Set(topics.map(topic => topic.key)).size !== topics.length || topics.some(topic =>
     !view.topicSummaries?.[topic.key]?.en ||
-    !/[\u3400-\u9fff]/.test(view.topicSummaries?.[topic.key]?.zh ?? ''))) {
-    throw Error('Nine bilingual editorial summaries required');
+    (view.presentationLocale === 'en'
+      ? view.topicSummaries?.[topic.key]?.zh !== ''
+      : !/[\u3400-\u9fff]/.test(view.topicSummaries?.[topic.key]?.zh ?? '')))) {
+    throw Error('Nine complete editorial summaries required');
   }
   const guide = view.studentActions!;
   if (!guide.do.length || !guide.dont.length) throw Error('Bound Do/Don’t content missing');
