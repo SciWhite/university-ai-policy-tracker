@@ -387,10 +387,10 @@ export default async function UniversityPage({
     ? readingDisplayView(reviewedClaims, readyTranslations, readingLocale)
     : reviewedClaims;
   const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
-  const rawLabData = uiLab ? bindPolicyV6ReadingEvidence(await getPolicyV6Data("en", slug), reviewedClaims) : undefined;
+  const rawLabData = uiLab ? bindPolicyV6ReadingEvidence(await getPolicyV6Data("en", slug, { publicRecordOnly: useCatalogPage }), reviewedClaims) : undefined;
   const labRequirements = uiLab && readyTranslations ? await v6DisplayRequirements(slug, rawPublicSummary).catch(() => undefined) : undefined;
   const displayLabTranslations = readyTranslations && labRequirements && readingDisplayRequirementsComplete(labRequirements.requirements, readyTranslations.school, readyTranslations.shared, labRequirements.sourceScopeComplete) ? readyTranslations : undefined;
-  const legacyLabData = uiLab && fallbackV6Locale !== "en" && !displayLabTranslations ? bindPolicyV6ReadingEvidence(await getPolicyV6Data(fallbackV6Locale, slug), reviewedClaims) : undefined;
+  const legacyLabData = uiLab && fallbackV6Locale !== "en" && !displayLabTranslations ? bindPolicyV6ReadingEvidence(await getPolicyV6Data(fallbackV6Locale, slug, { publicRecordOnly: useCatalogPage }), reviewedClaims) : undefined;
   const labData = displayLabTranslations && rawLabData ? { ...readingDisplayView(rawLabData, displayLabTranslations, readingLocale), locale, readingLocale, studentGuideTranslated: isStudentGuideTranslated(rawLabData, displayLabTranslations, readingLocale) } : legacyLabData ?? rawLabData;
   const role = isStudentOnlyPolicyPage(slug) ? "student" : normalizeStudentSnapshotRole(pageQuery?.for);
   const citationReadySummary = buildCitationSummary(

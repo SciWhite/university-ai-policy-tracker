@@ -212,12 +212,13 @@ function sourceView(claims: PolicyClaim[]): LabTopic["sources"] {
 export async function getPolicyV6Data(
   locale: SupportedLocale,
   currentSlug = "harvard-university",
+  options: { publicRecordOnly?: boolean } = {},
 ): Promise<PolicyV6Data> {
   if (process.env.UAPT_CANDIDATE_REPAIR_SLUG)
     throw new Error(
       "V6 published-basis preview must not activate a private candidate loader",
     );
-  const current = publishedV6School(currentSlug, locale);
+  const current = options.publicRecordOnly ? undefined : publishedV6School(currentSlug, locale);
   if(current) {
     const publishedBundle = getLocalV6Bundle(currentSlug, locale);
     const acceptedActions = publishedBundle ? getLocalV6StudentActions(publishedBundle) : undefined;
@@ -231,7 +232,7 @@ export async function getPolicyV6Data(
       ...(studentActionsPilot ? {studentActionsPilot, studentActions:acceptedActions ?? getV6StudentActions(current)} : {}),
     };
   }
-  if (isPolicyV6BaseTier(currentSlug) && !policyV6Slugs.some((slug) => slug === currentSlug) && !policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug)) {
+  if (options.publicRecordOnly || (isPolicyV6BaseTier(currentSlug) && !policyV6Slugs.some((slug) => slug === currentSlug) && !policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug))) {
     // Base tier: the school's own public record only. No student guide, no
     // private local bundle and no other school's reviewed presentation.
     const school = await getPolicyV6RecordSchool(locale, currentSlug);

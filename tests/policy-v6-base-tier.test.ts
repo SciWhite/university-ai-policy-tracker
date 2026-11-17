@@ -96,3 +96,16 @@ test("the base-tier notice is translated for every reading locale", () => {
   const zh = JSON.parse(readFileSync("apps/web/messages/public-ui/zh.json", "utf8")) as Record<string, string>;
   assert.equal(zh[POLICY_V6_BASE_TIER_NOTICE], "本页根据公开政策记录自动整理，尚未经过逐页人工审核。");
 });
+
+test("the catalog fallback never reads a published V6 guide", async () => {
+  const slug = "lund-university";
+  const full = await getPolicyV6Data("en", slug);
+  assert.equal(full.published, true);
+  assert.ok(full.studentActions);
+  const catalog = await getPolicyV6Data("zh", slug, { publicRecordOnly: true });
+  assert.equal(catalog.baseTier, true);
+  assert.equal(catalog.studentActions, undefined);
+  assert.equal(catalog.published, undefined);
+  assert.deepEqual(catalog.schools.map(row => row.slug), [slug]);
+  assert.notDeepEqual(catalog.schools[0].topics, full.schools[0].topics);
+});
