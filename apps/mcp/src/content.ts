@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { lstatSync, readFileSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
 import { loadCatalog, type Catalog } from "./catalog.js";
+import { V6_SOURCE_METADATA_FILE, v6SourceMetadataSchema, type V6SourceMetadata } from "@uapt/shared";
 
 /**
  * MCP side of the runtime content pointer (docs/content-release.md). The web
@@ -12,7 +13,7 @@ import { loadCatalog, type Catalog } from "./catalog.js";
 export const MCP_CONTENT_API_VERSION = 1;
 const sha256 = (value: Buffer | string) => createHash("sha256").update(value).digest("hex");
 
-export interface CatalogSelection { catalog: Catalog; contentId?: string; source: string; catalogSha256: string; manifestSha256?: string }
+export interface CatalogSelection { catalog: Catalog; contentId?: string; source: string; catalogSha256: string; manifestSha256?: string; sourceMetadata?: V6SourceMetadata }
 
 interface Pointer { schemaVersion: string; contentId: string; manifestSha256: string; sync?: { contractVersion: string; eventId: string; eventSha256: string }; unsynchronizedLocalPreview?: true }
 interface Manifest { schemaVersion: string; contentId: string; appCompatibility?: { contentApi?: number[] }; mcp?: { catalog: string; releaseId: string; sha256: string } }
@@ -48,7 +49,23 @@ export async function loadContentCatalog(contentRoot: string, env = process.env)
   const catalog = await loadCatalog(file);
   // The release, not an environment pin, states which dataset release MCP serves.
   if (catalog.releaseId !== manifest.mcp.releaseId) throw new Error("MCP catalog release mismatch");
-  return { catalog, contentId: pointer.contentId, source: file, catalogSha256, manifestSha256: pointer.manifestSha256 };
+  return { catalog, contentId: pointer.contentId, source: file, catalogSha256, manifestSha256: pointer.manifestSha256, sourceMetadata: loadSourceMetadata(tree) };
+}
+
+/** Optional agent-reviewed source metadata of the same release; absent or invalid data is omitted, never fatal. */
+function loadSourceMetadata(tree: string): V6SourceMetadata | undefined {
+  try {
+    const file = path.join(tree, V6_SOURCE_METADATA_FILE);
+    let real: string;
+    try { real = realpathSync(file); } catch { return undefined; }
+    if (!real.startsWith(tree + path.sep) || statSync(real).size > 16 * 1024 * 1024) return undefined;
+    const parsed = v6SourceMetadataSchema.safeParse(JSON.parse(readFileSync(real, "utf8")));
+    if (!parsed.success) { console.error("V6 source metadata failed validation; omitted"); return undefined; }
+    return parsed.data;
+  } catch {
+    console.error("V6 source metadata unreadable; omitted");
+    return undefined;
+  }
 }
 
 /** Pre-R1-b deployments: one catalog file pinned by UAPT_MCP_EXPECTED_RELEASE_ID. */

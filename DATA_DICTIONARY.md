@@ -111,12 +111,12 @@ Bulk exports are available under `/api/public/v1/datasets/...`.
 | State | Meaning |
 | --- | --- |
 | `machine_candidate` | Machine-extracted or generated candidate. |
-| `agent_reviewed` | Reviewed by a review agent, but not necessarily human-approved. |
-| `human_reviewed` | Approved by a human reviewer or deterministic publish rule. |
+| `agent_reviewed` | Reviewed by an independent review agent. This is the publication-ready state; the project has no human review step. |
+| `human_reviewed` | Legacy label (human reviewer or deterministic publish rule). Not required; agents must not assign it. |
 | `needs_review` | Ambiguous, weakly supported, stale, or blocked. |
 | `rejected` | Rejected and should not be presented as a public claim. |
 
-Review state is not confidence. A high-confidence candidate can still need review, and a lower-confidence claim can still be human reviewed with appropriate caveats.
+Review state is not confidence. A high-confidence candidate can still need review, and a lower-confidence claim can still be agent reviewed with appropriate caveats.
 
 ## Evidence
 

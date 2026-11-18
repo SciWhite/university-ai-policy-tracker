@@ -952,7 +952,7 @@ Do not expand from pilot to large crawl until:
 - claim/evidence contract is stable,
 - validation script exists,
 - pilot PR passes validation,
-- at least one human has reviewed the output,
+- an independent review agent has reviewed the output,
 - stop conditions are working,
 - raw artifact retention is not in Git.
 

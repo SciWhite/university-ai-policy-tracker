@@ -267,3 +267,34 @@ test("catalog rejects invalid exclusions and snapshots based on excluded claims"
   await writeFile(candidate, JSON.stringify(envelope));
   await assert.rejects(loadCatalog(candidate), /Snapshot depends on excluded claim/);
 });
+
+test("source metadata: committed file validates; get_student_policy returns a compact, cited-sources-only projection", async () => {
+  const { v6SourceMetadataSchema, v6SourceUrlKey } = await import("@uapt/shared");
+  const metadata = v6SourceMetadataSchema.parse(JSON.parse(await readFile(path.resolve(import.meta.dirname, "../../../data/public-v6-source-metadata.json"), "utf8")));
+  assert.equal(metadata.reviewState, "agent_reviewed");
+  for (const documents of Object.values(metadata.schools)) for (const d of documents) {
+    assert.ok(d.displayDate.kind === "verified" ? d.displayDate.value === d.lastVerifiedOn : d.dates.some(x => x.kind === d.displayDate.kind && x.value === d.displayDate.value));
+  }
+  const catalog = await loadCatalog(file);
+  let checked = 0, largest = 0;
+  for (const slug of Object.keys(metadata.schools)) {
+    if (!catalog.records.some(r => r.summary.entity.slug === slug)) continue;
+    const service = new PolicyService(catalog, metadata);
+    for (const topics of [undefined, ["coursework" as const]]) {
+      const result = service.policy(slug, topics);
+      const parsed = policyOutput.parse(result);
+      largest = Math.max(largest, JSON.stringify(result).length);
+      const cited = new Set((parsed.claims ?? []).flatMap(c => c.officialSourceUrls.map(v6SourceUrlKey)));
+      for (const document of parsed.sourceMetadata?.documents ?? []) {
+        assert.ok(cited.has(v6SourceUrlKey(document.url)), `${slug}: metadata for an uncited source`);
+        assert.equal("quote" in (document.issuer ?? {}), false);
+      }
+      if (parsed.sourceMetadata) assert.ok(parsed.sourceMetadataNotice?.includes(`/universities/${slug}.json`));
+      checked++;
+    }
+  }
+  assert.ok(checked >= 200, `checked ${checked}`);
+  assert.ok(largest < 120_000, `largest response ${largest} bytes`);
+  const without = new PolicyService(catalog).policy(Object.keys(metadata.schools)[0]) as Record<string, unknown>;
+  assert.equal(without.sourceMetadata, undefined);
+});

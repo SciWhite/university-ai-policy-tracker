@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { claimEvidenceSchema, policyClaimSchema, policySnapshotSchema, sourceAttributionSchema, universityToolRecordSchema } from "@uapt/shared";
+import { claimEvidenceSchema, policyClaimSchema, policySnapshotSchema, sourceAttributionSchema, universityToolRecordSchema, v6SourceDocumentSchema } from "@uapt/shared";
 import { topicSchema } from "./catalog.js";
 
 // Recorded HTTP URLs use WHATWG URL validation, which accepts bracketed query
@@ -55,7 +55,16 @@ export const policyOutput = z.object({
   toolEvidenceNotice: z.string().optional(),
   totalRelevantClaims: z.number().int().nonnegative().optional(),
   remainingClaimIds: z.array(z.string()).optional(),
-  insufficientTopics: z.array(topicSchema).optional(), evidenceNotice: z.string().optional()
+  insufficientTopics: z.array(topicSchema).optional(), evidenceNotice: z.string().optional(),
+  sourceMetadata: z.object({
+    schemaVersion: z.literal("uapt-v6-source-metadata-v1"), reviewState: z.literal("agent_reviewed"), generatedAt: z.string(), dateRule: z.string(),
+    documents: z.array(z.object({
+      url: recordedSourceUrl, docType: v6SourceDocumentSchema.shape.docType, stage: v6SourceDocumentSchema.shape.stage,
+      displayDate: v6SourceDocumentSchema.shape.displayDate, latestUpdate: v6SourceDocumentSchema.shape.latestUpdate,
+      issuer: z.object({ name: z.string(), category: z.string() }).nullable(), approvedBy: z.string().nullable()
+    }))
+  }).optional().describe("Official source document metadata for the returned claims (type, date, issuing/approving bodies); agent-reviewed, not confirmed by the university"),
+  sourceMetadataNotice: z.string().optional()
 });
 export const evidenceOutput = z.object({
   ...base,

@@ -118,7 +118,8 @@ error class only. It retries 429/5xx/timeout/gateway failures with exponential
 backoff, then tries the configured fallback model.
 
 Candidate creation never changes `data/public-releases/current.json`. Only
-after an explicit Codex/human confirmation may an operator run:
+after the candidate passes independent agent review and the owner has authorized
+this release (an operational go-ahead, not a content review) may an operator run:
 
 ```bash
 pnpm maintenance:promote-candidate -- --candidate data/public-releases/candidates/<candidate>.json --confirm

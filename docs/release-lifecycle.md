@@ -16,7 +16,7 @@
 2. `gate plan.json` 在服务器检查服务集合、内存容量和 candidate 同步门禁。候选最大并存预算不得超过配置值，扣除尚未占用的候选峰值后仍须满足 hostReserveBytes；UAPT 实际内存加剩余候选预算不得超过 uaptPeakMaxBytes。capacityReceipt 绑定实际 build/startup/cold_history/steady 的 peakBytesByStage 及原始采样依据，门禁拒绝缺阶段或低报预算；预算也必须覆盖 OCI build 峰值；build 前先 gate，再在切换前重新 gate，不能把低负载读数当峰值预算。
 3. 为固定候选槽位安装生产相同用户/env、健康检查和实测 MemoryHigh/Max；候选配置不接正式路由。`cutover plan.json` 加全局 flock；确认候选已 enable/start 且语义检查通过，保存 fsync 的回滚 journal 后才写精确路由。校验失败立即恢复旧配置。成功选中仍为 selected_pending_acceptance。
 4. 公网独立回读完成后，生成实际 completion ledger，再执行 `complete --completion-ledger event.json`。该阶段重新验证合同、精确公网语义、旧 endpoint 已从完整 `nginx -T` 移除，再 stop/disable 原 active 并核对状态，更新固定槽位登记。未退役不算发布完成。
-5. 中断先执行 `recover`，禁止盲目重跑 cutover。开机 recovery oneshot 在 Nginx 之前检查未完成 journal，启动旧服务、还原全部旧配置和 policy。未完成事务阻止下一次发布。恢复入口与候选 TTL guard 均不删除任何产物。计划有效期最长四小时；每五分钟检查，过期未签收自动回滚未完成事务；无事务但已过期的候选须人工核对无路由后停止。
+5. 中断先执行 `recover`，禁止盲目重跑 cutover。开机 recovery oneshot 在 Nginx 之前检查未完成 journal，启动旧服务、还原全部旧配置和 policy。未完成事务阻止下一次发布。恢复入口与候选 TTL guard 均不删除任何产物。计划有效期最长四小时；每五分钟检查，过期未签收自动回滚未完成事务；无事务但已过期的候选须先核对无路由（由 agent 执行并记录）后停止。
 
 计划 JSON 的字段以 Python validator 为准。所有路径须使用实际绝对路径；routingFiles 的 target 仅允许已有 `/etc/nginx/snippets/uapt-*` 文件。receipt 的冻结 hash 不能替代逐文件静态资源和政策语义验收。脚本执行者仍需保存完整 route/public/browser/MCP 凭据，不能只填 contains 标记替代验收。
 

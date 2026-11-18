@@ -167,7 +167,9 @@ Supported review states:
 - `rejected`
 
 Automation may create candidate or agent-reviewed analysis, but it must not mark
-its own output as `human_reviewed` or `institution_verified`.
+its own output as `human_reviewed` or `institution_verified`. `agent_reviewed`
+from an independent review agent is the publication standard; there is no
+human review step.
 
 ## Multilingual Rules
 

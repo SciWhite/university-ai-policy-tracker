@@ -45,7 +45,7 @@ ZIP 解压后以 `university-marks-delta/` 为资源根，对应上面的 `hando
 
 原件私有通过基线位于主工作区 `.local/university-marks-top200-20261018T194605Z/accepted-role-registry.json`，SHA256 为 `230bfb47023da38e8b23d8995d40f5401123dfd3f3db485e2ff0b4f01bb1c5a4`；它的1795个官方QS角色和另列133个历史角色不是本ZIP的内容。该私有基线也不是现网服务注册表，里面的 `directory`/原件路径必须在其冻结依据下解析。
 
-**技术候选通过与可公开使用分开**：`technicalDisplayDecision`、`actual32Accepted` 只说明指定尺寸/背景的技术检查；`officialReferenceVerified` 仅说明记录的来源核实状态；`publicationApproved:false`、`publicUseReviewRequired:true` 和品牌/仪式用途、历史版本、非自由文件限制继续有效。不得改成 true 来适配旧组件的 accepted 标记。
+**技术候选通过与可公开使用分开**：`technicalDisplayDecision`、`actual32Accepted` 只说明指定尺寸/背景的技术检查；`officialReferenceVerified` 仅说明记录的来源核实状态；`publicationApproved:false`、`publicUseReviewRequired:true` 和品牌/仪式用途、历史版本、非自由文件限制继续有效，直到独立 Agent 审核（来源、许可/用途限制、角色）通过并记录证据后才可改为 true；不得为适配旧组件的 accepted 标记而改。本项目没有人工审核环节。
 
 ## 单校选图与合并顺序
 

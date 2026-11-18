@@ -36,6 +36,7 @@ import { PolicyV6Popover } from "./policy-v6-popover";
 import { UniversityAiTools } from "./university-ai-tools";
 import { PolicyV6ClaimGroups } from "./policy-v6-claim-groups";
 import { PolicyV6Sources } from "./policy-v6-sources";
+import { v6SourceMetadataByUrl } from "@/lib/v6-source-metadata";
 
 /** Two newly captured schools reuse V6 UI while leaving the canonical/public route and loaders intact. */
 export function PolicyV6LocalPage({
@@ -275,6 +276,7 @@ export function PolicyV6LocalPage({
             <h2>{t("Official sources")}</h2>
             <PolicyV6Sources
               sources={evidence.record.officialSources}
+              metadata={v6SourceMetadataByUrl(university.slug)}
               slug={university.slug}
               locale={locale}
               sharedUiText={sharedUiText}

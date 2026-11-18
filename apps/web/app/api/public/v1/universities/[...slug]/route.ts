@@ -1,6 +1,7 @@
 import {withSourceHashContract} from "@/lib/source-hash-contract";
 import { buildPublicEntitySummaryResponse } from "@uapt/shared";
 import { NextResponse } from "next/server";
+import { v6SourceMetadataForApi } from "@/lib/v6-source-metadata";
 import { getLocalPublicUniversitySummaryBySlug } from "@/lib/catalog";
 import { aliasSlugJsonRedirect } from "@/lib/entity-alias-redirect";
 import { getPublicUniversityPolicySnapshotLink } from "@/lib/policy-snapshots";
@@ -100,8 +101,10 @@ export async function GET(_request: Request, { params }: PublicUniversityRoutePr
   );
   const revision = v6RecordRevision(universitySlug);
   if (revision) {
+    const sourceMetadata = v6SourceMetadataForApi(summary.entity.slug);
     return NextResponse.json({
       ...response,
+      ...(sourceMetadata ? { sourceMetadata } : {}),
       recordRevision: revision,
       historicalRecordsUrl: `https://eduaipolicy.org/api/public/v1/universities/${universitySlug}/revisions/${v6BaselineRevision(universitySlug)}.json`
     }, { headers: { "Cache-Control": "private, no-store, no-transform" } });

@@ -120,11 +120,11 @@ Claim、工具、held 与记录指纹。新增已发布 V6 学校的工具模块
 
 爬取/审核交付至少包含：学校身份、完整原公开 Claim ID 集、原对象与 held 队列、已审核更正/新增规则、原始来源与连续引文、URL＋版本哈希、定位器、工具、六主题、分析补充主题、缺口、独立验收结果。按 [证据 runbook](policy-evidence-integration-runbook.md) 和当前 registry 冻结依据，不只看目录修改时间。
 
-本地 view 的 schema 是 `uapt-v6-local-view-v1`。它不是公开 API schema 或已批准 student snapshot。顶层 `publicationApproved:false`；sourceBundleSha256 绑定输入 bundle 字节；学校 fingerprint 同一哈希。文件外再有 SHA256 指针。保留六维顺序、主题唯一键及全部 evidence 引用。
+本地 view 的 schema 是 `uapt-v6-local-view-v1`。它不是公开 API schema 或已批准 student snapshot。顶层 `publicationApproved:false`（独立 Agent 审核通过并记录后才置 true，不等人工审核）；sourceBundleSha256 绑定输入 bundle 字节；学校 fingerprint 同一哈希。文件外再有 SHA256 指针。保留六维顺序、主题唯一键及全部 evidence 引用。
 
 显式 mapping 必须提供：slug/name、sourceBundleSha256、revision、checkedAt、topic 原 status → 展示 status / EN-ZH label、补充主题名单、draft topic → 真实 claimType、缺标题 source ID → 标题、工具获取文案、Hero 标题/范围/三图/Do-Don't 行动。来源标题回退是编辑标签，不是捏造文件内容。状态映射需核对含义：`assessment_specific` 不能自动变成 blocked；历史 Copilot 数据说明不能变成当前 tenant 设置已验证。
 
-原主张 VERIFIED 才复用原文；OVERSTATED/UNDERSTATED 只采用已经验收的 suggestedClaimEn，原表述保留在冻结包。新增 draft VERIFIED 且不在 heldDraftIds 才进入本地展示。拒绝把 machine/needs_review/矛盾项统标已审核。六校旧用户确认不能自动授权新学校或新指纹；页面 Agent 审核、完整 QS 审计、公开 strong snapshot 和发布授权各自独立。
+原主张 VERIFIED 才复用原文；OVERSTATED/UNDERSTATED 只采用已经验收的 suggestedClaimEn，原表述保留在冻结包。新增 draft VERIFIED 且不在 heldDraftIds 才进入本地展示。拒绝把 machine/needs_review/矛盾项统标已审核。六校旧用户确认不能自动授权新学校或新指纹，每所新学校/新指纹各自做独立 Agent 审核（本项目没有人工审核环节，见 AGENTS.md）；页面 Agent 审核、完整 QS 审计、公开 strong snapshot 和发布授权各自独立。
 
 修复包的 topic evidenceIds 未必等于原 claim 的证据集。**用实际 evidenceIds 取原文**，不要只按 claimIds 展示旧引文，导致新增 CLIE/博士条件丢失。主题内来源分组的 ID 是 source ID，不制造新的公开 Claim ID。已审核条款则保留原公开 ID 和真实 draft ID；draft 仍未公开提升。
 

@@ -816,7 +816,7 @@ Review state:
 
 - initial: `machine_candidate`
 - after reviewer agent: `agent_reviewed`
-- after human review: `human_reviewed`
+- (no human review step; `agent_reviewed` from an independent review agent is final)
 - after institutional correction: possible `institution_verified`
 
 ## 14. Validation Plan

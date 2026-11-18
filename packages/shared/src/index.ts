@@ -14,3 +14,4 @@ export * from "./tools";
 export * from "./policy-snapshot";
 
 export * from "./search-text";
+export * from "./v6-source-metadata";

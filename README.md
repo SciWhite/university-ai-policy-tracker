@@ -241,7 +241,7 @@ OpenClaw may help with crawl planning, source discovery, snapshot generation, cl
 OpenClaw must not:
 
 - write the production database directly
-- publish canonical claims without review
+- publish canonical claims without independent agent review (there is no human review step)
 - push `main`
 - deploy the public website
 - bypass robots.txt, login walls, paywalls, or access controls

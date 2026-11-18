@@ -330,7 +330,7 @@ recommended action:
 - split overbroad claim;
 - mark source inaccessible;
 - keep current public claim and record maintenance failure;
-- request human review.
+- route to an independent review agent (stronger model) for a recorded decision.
 
 The review queue should distinguish:
 

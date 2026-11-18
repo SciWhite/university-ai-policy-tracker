@@ -240,7 +240,7 @@ If optional private diff metadata is absent, pages must still render with the pu
 
 `pnpm source-diffs:build` also writes:
 
-- `review-report.md`: a Codex/human review report with short hunks, confidence,
+- `review-report.md`: a review-agent report with short hunks, confidence,
   source timing, recommended action, and routing class.
 - `openclaw-queue.json`: only high-confidence `content_policy_delta` rows for
   lightweight OpenClaw review.
