@@ -166,8 +166,8 @@ The bundle must include:
 - `report_draft`
 
 Use `reviewState: "agent_reviewed"` for local Codex-reviewed maintenance
-updates. Do not use `human_reviewed` unless the user explicitly performed human
-review, and do not use `institution_verified` unless the institution confirmed
+updates. There is no human review step: `agent_reviewed` from an independent review
+agent is the publication standard. Do not assign `human_reviewed`, and do not use `institution_verified` unless the institution confirmed
 it.
 
 Staged claims must remain candidates. Do not set `publishAsCanonical: true` or

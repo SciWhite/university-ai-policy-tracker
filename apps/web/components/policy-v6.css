@@ -2461,3 +2461,27 @@
 
 .university-homepage-mark { display:inline-flex; flex-shrink:0; border-radius:12px; }
 .university-homepage-mark:focus-visible { outline:2px solid var(--color-accent); outline-offset:4px; }
+
+/* Agent-reviewed document metadata on official source cards. */
+.policy-v6-sourceMeta {
+  display: grid;
+  gap: 2px;
+  margin: 4px 0 2px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.policy-v6-sourceCard .policy-v6-sourceMeta__line { margin: 0; overflow-wrap: anywhere; }
+.policy-v6-sourceMeta__line > span:first-child { color: var(--color-text); }
+.policy-v6-sourceMeta__details { margin-top: 2px; }
+.policy-v6-sourceMeta__details > summary { cursor: pointer; }
+.policy-v6-sourceMeta__details dl { margin: 6px 0; display: grid; gap: 6px; }
+.policy-v6-sourceMeta__details dt { font-weight: 600; color: var(--color-text); }
+.policy-v6-sourceMeta__details dd { margin: 2px 0 0; }
+.policy-v6-sourceMeta__details blockquote {
+  margin: 0;
+  padding: 2px 0 2px 8px;
+  border-left: 2px solid var(--color-border);
+  overflow-wrap: anywhere;
+}
+.policy-v6-sourceCard .policy-v6-sourceMeta__details p { margin: 4px 0; }

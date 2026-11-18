@@ -22,6 +22,7 @@ import { PolicyV6RecordTopics } from "./policy-v6-record-topics";
 import { UniversityAiTools } from "./university-ai-tools";
 import { PolicyV6ClaimGroups } from "./policy-v6-claim-groups";
 import { PolicyV6Sources } from "./policy-v6-sources";
+import { v6SourceMetadataByUrl } from "@/lib/v6-source-metadata";
 import { RelatedUniversities } from "./related-universities";
 
 /** One composition for normalized local crawl bundles, rather than one layout per school. */
@@ -58,7 +59,7 @@ export function PolicyV6BundlePageLegacy({ university, data, view, locale, relat
       <section id="claims" className="student-record-section student-record-section--compact"><div className="section-heading"><h2>{t("Reviewed claims")}</h2><p>{view.claims.length}</p></div>
         <PolicyV6ClaimGroups entitySlug={university.slug} groups={groupReviewedClaimsByClaimType(view.claims)} locale={locale} claimScopes={view.claimScopes} sharedUiText={sharedUiText} />
       </section>
-      <PolicyV6HeldRecords slug={university.slug} locale={locale} sharedUiText={sharedUiText}/><section id="sources" className="student-record-section student-record-section--compact"><h2>{t("Official sources")}</h2><PolicyV6Sources sources={view.sources} slug={university.slug} locale={locale} sharedUiText={sharedUiText} /></section>
+      <PolicyV6HeldRecords slug={university.slug} locale={locale} sharedUiText={sharedUiText}/><section id="sources" className="student-record-section student-record-section--compact"><h2>{t("Official sources")}</h2><PolicyV6Sources sources={view.sources} metadata={v6SourceMetadataByUrl(university.slug)} slug={university.slug} locale={locale} sharedUiText={sharedUiText} /></section>
       <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi uiLab sharedUiText={sharedUiText} />
       <section id="record-info" className="student-record-info"><details><summary>{t("Record information, JSON & citation")}</summary>
         <PolicyV6RecordLinks slug={university.slug} locale={locale}/>

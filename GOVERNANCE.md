@@ -29,7 +29,8 @@ snapshot hashes, review state, confidence, and source-rights caveats.
 
 Automation may prepare candidates and review metadata, but it must not mark its
 own output as `human_reviewed`, publish directly to the production database, or
-push `main`. Release promotion is governed by the validators and release
+push `main`. Publication needs `agent_reviewed` from an independent review
+agent; the project has no human review step (see `AGENTS.md`). Release promotion is governed by the validators and release
 manifest rules documented in [`docs/dataset-release-process.md`](docs/dataset-release-process.md).
 
 ## Security and conduct

@@ -109,7 +109,7 @@ content is confirmed gone. Known relocations from the 2026-07-26 spot-check:
   - final URL: `https://www.aau.edu.et/news/detail?title=AAU~Launches~Orientation~for~Incoming~Students,~Emphasizes~Academic~Discipline` (1 claims)
 - **la-trobe-university**: `https://www.latrobe.edu.au/mylatrobe/using-artificial-intelligence-ai-responsibly/`
   - final URL: `https://www.latrobe.edu.au/mylatrobe/using-artificial-intelligence-ai-responsibly/` (0 claims)
-  - triage: Final URL equals source; tombstone wording matched in body. Manual check needed.
+  - triage: Final URL equals source; tombstone wording matched in body. Agent check needed.
 - **stellenbosch-university**: `https://libguides.sun.ac.za/education/AI`
   - final URL: `https://libguides.sun.ac.za/c.php?g=1497969&p=11190973` (1 claims)
   - triage: Likely false positive: LibGuides canonical rewrite to c.php?g=... serves the same guide.
@@ -201,7 +201,7 @@ all render-verification and HTTP-failure rows plus the 7 new blocked rows):
 
 - 161 verified alive (74%) — plain-HTTP failures were bot-conditional or
   render-related, not real outages; zero newly dead URLs found.
-- 10 opened with little extractable content — manual check queue.
+- 10 opened with little extractable content — agent check queue.
 - 47 rendered fetches also failed — retry queue (many are hosts that also
   block Firecrawl's egress; retry from OCI or on the next scan cadence).
 
@@ -209,5 +209,5 @@ Re-sourcing outcomes for the four gone-from-public-web sources are recorded in
 release `public-release-20260727-015`: Gazi re-sourced from the 2026 usage
 guide (3 claims, 5 deprecated), Miami re-sourced verbatim from the public UM
 Libraries guide (1 claim, 1 deprecated), WashU DeepSeek claim deprecated
-(general guidance already covered), SQU held at needs_review pending a human
+(general guidance already covered), SQU held at needs_review pending an agent review
 decision on the scanned off-domain replacement document.

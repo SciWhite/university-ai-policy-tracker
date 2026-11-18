@@ -60,7 +60,7 @@ Current review states are:
 - `needs_review`
 - `rejected`
 
-OpenClaw and other automation may propose `machine_candidate`, `agent_reviewed`, or `needs_review` records. Automation must not mark its own output as `human_reviewed`.
+OpenClaw and other automation may propose `machine_candidate`, `agent_reviewed`, or `needs_review` records. Automation must not mark its own output as `human_reviewed`. Publication needs `agent_reviewed` from an independent review agent; there is no human review step.
 
 ## OpenClaw PR Rules
 

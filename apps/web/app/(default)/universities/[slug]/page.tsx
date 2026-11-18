@@ -13,6 +13,7 @@ import {universityPolicySeo, universityPolicyStructuredData} from "@/lib/univers
 import {publishedV6Enabled, isPublishedV6Slug} from "@/lib/policy-v6-published-gate";
 import { PolicyV6BundlePage } from "@/components/policy-v6-bundle-page";
 import { PolicyV6Sources } from "@/components/policy-v6-sources";
+import { v6SourceMetadataByUrl } from "@/lib/v6-source-metadata";
 import { PolicyV6ClaimGroups } from "@/components/policy-v6-claim-groups";
 import { PolicyV6LocalPage } from '@/components/policy-v6-local-page';
 import { policyV6AgentReviewLabel } from '@/lib/policy-v6-review';
@@ -641,7 +642,7 @@ export default async function UniversityPage({
           </div>
           <p>{referenceUi(`${publicSummary.officialSources.length} source${publicSummary.officialSources.length === 1 ? "" : "s"}`)}</p>
         </div>
-        {uiLab ? <PolicyV6Sources sources={publicSummary.officialSources} slug={slug} locale={locale} sharedUiText={readingUiText} /> : compactPolicyPilot ? (
+        {uiLab ? <PolicyV6Sources sources={publicSummary.officialSources} metadata={v6SourceMetadataByUrl(slug)} slug={slug} locale={locale} sharedUiText={readingUiText} /> : compactPolicyPilot ? (
           <details className="policy-record-sources">
             <summary>{referenceUi("Open official source list")} <span aria-hidden="true">⌄</span></summary>
             <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={localizeFramework} />

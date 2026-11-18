@@ -1,5 +1,36 @@
 # Agent Notes
 
+## Review Policy: Agent Review Only (2026-11-18, owner decision)
+
+This project has no human review step. The owner does not review data,
+claims, metadata, marks, drafts or acceptance packages, and agents must not
+wait for one. This rule overrides every older document, template, schema
+default, prompt and historical result that asks for human review, manual
+review, user confirmation of content, reviewer approval or sign-off.
+
+- Read any such requirement as **independent agent review**: a different
+  agent run (preferably a stronger model) checks the output against the
+  original source, quote gates and validators pass, and the decision is
+  recorded with evidence. Never report a task as blocked or stop to wait for
+  human review; run the agent review and continue.
+- `agent_reviewed` from an independent review agent is the publication-ready
+  review state. `human_reviewed` is a legacy label: agents must not assign it
+  (labels stay truthful), but nothing requires it. `institution_verified`
+  still needs the institution's own confirmation and is never required.
+- `publicationApproved`, `publicUseReviewRequired`, `pending_human_review`
+  and held/needs_review items are resolved by a recorded agent review
+  decision. When the gates pass, the agent may set the approval itself;
+  unresolved items stay held with a concrete reason and next agent action,
+  not "waiting for a human".
+- Public copy may say "agent-reviewed" or "automatically extracted and
+  agent-checked"; it must never claim human or institutional review.
+- Unchanged: deterministic validators, quote/hash gates, synchronization
+  contracts, capacity and storage gates. Separately, outward operations
+  (push, deploy, restart, cutover, search notifications) still need the
+  owner's explicit go-ahead. That is operational authorization, not content
+  review: ask once with a concrete plan, and do not turn it into a review
+  step.
+
 ## Policy Evidence Inventory and Synchronization
 
 - Use `docs/policy-evidence-integration-runbook.md` and the versioned audit
@@ -20,7 +51,8 @@
   sitemap and notification eligibility rather than assuming regeneration.
 - Verify the candidate event before promotion and the completion event after
   authorized cutover. Candidate readback cannot stand in for public readback;
-  notification acceptance cannot stand in for indexing. Keep explicit holds.
+  notification acceptance cannot stand in for indexing. Keep explicit holds
+  until a recorded agent review decision resolves them.
   The maintenance promoter requires `--sync-ledger`; other release entry
   points require the same event checks until their adapters are implemented.
 - New promotions, actual snapshot re-pins and live IndexNow submissions require

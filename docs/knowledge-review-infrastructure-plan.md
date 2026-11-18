@@ -19,7 +19,7 @@ What does the current public release include?
 Which staging runs have not been promoted?
 Which QS 2026 targets are public, staging-only, missing, or ambiguous?
 Which runs are likely to fail validation?
-Which data needs human review?
+Which data needs agent review?
 How does a non-authoritative spreadsheet differ from current public/staging data?
 ```
 
@@ -474,7 +474,7 @@ The report should answer:
 - what should be fixed next
 - what should be crawled next
 - what can be promoted after validation
-- what needs manual review
+- what needs agent review
 - what should remain non-public
 
 Acceptance criteria:

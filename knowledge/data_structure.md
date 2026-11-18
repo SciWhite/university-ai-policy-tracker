@@ -157,7 +157,7 @@ Expected files:
 Use for:
 
 - deciding what to merge;
-- prioritizing manual review;
+- prioritizing agent review;
 - planning the next crawl batch.
 
 ### `reviews/`
@@ -180,7 +180,7 @@ Do not use for:
 
 - publishing claims;
 - replacing artifact validation;
-- replacing human or institution review.
+- replacing independent agent review or institution confirmation.
 
 ## Current Status
 

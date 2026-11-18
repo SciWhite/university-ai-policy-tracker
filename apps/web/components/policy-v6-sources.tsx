@@ -1,7 +1,9 @@
 import {sourceHashBinding} from "@/lib/source-hash-contract";
 import {policySourceRole,policyV6EvidenceLabel} from "@/lib/policy-v6-evidence-labels";
 import React from "react";
-import type { PublicEntitySummary } from "@uapt/shared";
+import type { PublicEntitySummary, V6SourceDocument } from "@uapt/shared";
+import { v6SourceUrlKey } from "@uapt/shared";
+import { PolicyV6SourceMetadata } from "./policy-v6-source-metadata";
 import type { SupportedLocale } from "@/lib/i18n";
 import { policyV6Copy } from "@/lib/policy-v6-copy";
 import { policyV6DensityCopy } from "@/lib/policy-v6-density-copy";
@@ -9,11 +11,14 @@ import { PolicyV6SourceGrid } from "./policy-v6";
 
 export function PolicyV6Sources({
   sources,
+  metadata,
   slug,
   locale,
   sharedUiText = {},
 }: {
   sources: PublicEntitySummary["officialSources"];
+  /** Agent-reviewed document metadata keyed by `v6SourceUrlKey`; cards without a match render unchanged. */
+  metadata?: Readonly<Record<string, V6SourceDocument>>;
   slug: string;
   locale: SupportedLocale;
   sharedUiText?: Readonly<Record<string, string>>;
@@ -56,6 +61,7 @@ export function PolicyV6Sources({
                 {source.publisher}
               </p>
             ) : null}
+            {(() => { const urlKey = v6SourceUrlKey(source.sourceUrl); const document = metadata && Object.hasOwn(metadata, urlKey) ? metadata[urlKey] : undefined; return document ? <PolicyV6SourceMetadata document={document} locale={locale} /> : null; })()}
             {slug === "imperial-college-london" &&
             source.sourceUrl.includes(
               "dAIsy-use-guidance-and-process-flows",

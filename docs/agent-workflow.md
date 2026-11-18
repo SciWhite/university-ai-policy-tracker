@@ -32,7 +32,7 @@ Generates weekly or monthly MDX reports from reviewed policy changes.
 
 ## Publish Rule
 
-Agents may write staged records such as crawl runs, snapshots, diffs, extraction candidates, claim evidence, and source attributions. Final public policy claims should require human review, reviewer approval, or deterministic publish rules.
+Agents may write staged records such as crawl runs, snapshots, diffs, extraction candidates, claim evidence, and source attributions. Final public policy claims require independent agent review (`agent_reviewed`) plus deterministic publish rules. No human review step exists; see the Review Policy in `AGENTS.md`.
 
 ## Staged Ingestion Flow
 

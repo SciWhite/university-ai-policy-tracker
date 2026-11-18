@@ -1,11 +1,11 @@
 import type { Catalog, Record, Topic } from "./catalog.js";
-import { normalizeForSearch } from "@uapt/shared";
+import { normalizeForSearch, v6SourceMetadataCompact, type V6SourceMetadata } from "@uapt/shared";
 
 const boundary = "Use the linked official text and preserve its institution, unit, audience, course and assessment scope. Tool availability is not assessment permission. Generic misconduct sanctions do not establish AI-specific penalties. Retrieval dates are not effective dates or a guarantee of current policy.";
 const tracker = (slug: string) => `https://eduaipolicy.org/universities/${slug}?utm_source=chatgpt&utm_medium=plugin&utm_campaign=student_policy`;
 export class PolicyService {
   private bySlug: Map<string, Record>;
-  constructor(readonly catalog: Catalog) { this.bySlug = new Map(catalog.records.map(r => [r.summary.entity.slug, r])); }
+  constructor(readonly catalog: Catalog, private readonly sourceMetadata?: V6SourceMetadata) { this.bySlug = new Map(catalog.records.map(r => [r.summary.entity.slug, r])); }
   has(slug: string) { return this.bySlug.has(slug); }
   private base() { return { releaseId: this.catalog.releaseId, releasePublishedAt: this.catalog.releasePublishedAt, limitations: [boundary,
     "Live availability of official URLs is not checked by these tools. If a source cannot be opened, identify the answer as based on recorded evidence and do not claim fresh verification."] }; }
@@ -45,6 +45,9 @@ export class PolicyService {
     const remainingClaimIds = relevantClaims.slice(15).map(c => c.id!);
     const insufficientTopics = requested.filter(t => !(t === "approved_tools" && tools?.length) && !dimensions.some(d => d.key === t) && !relevantClaims.some(c => claimMatchesTopic(c,t)));
     const base = this.recordBase(record);
+    // Compact source metadata for the official sources of the returned claims only; quotes stay in the public JSON.
+    const sourceMetadata = this.sourceMetadata ? v6SourceMetadataCompact(this.sourceMetadata, slug, claims.flatMap(c => c.evidence.map(e => e.sourceUrl))) : undefined;
+    const sourceMetadataFields = sourceMetadata ? { sourceMetadata, sourceMetadataNotice: `Document type, date and issuing/approving body of the official sources cited by these claims, extracted from the captured pages and checked by AI agents (agent_reviewed); not confirmed by the university. displayDate kind "verified" is our last check, not a document date. Verbatim quotes for every value: sourceMetadata in https://eduaipolicy.org/api/public/v1/universities/${slug}.json` } : {};
     if (excluded.size) base.limitations.push('Some retained public records are excluded from current policy guidance pending review or because they are historical. Consult the tracker record for their disposition.');
     return { ...base, limitations: [...base.limitations, ...(remainingClaimIds.length ? ["This response contains only the first 15 relevant claims. Before presenting a complete account of the requested rules, call get_policy_evidence with remainingClaimIds in batches of at most 10. Preserve the scope of each returned claim."] : [])], status: claims.length || dimensions.length || tools?.length ? "ok" : "insufficient_evidence", university: record.summary.entity.name, slug,
       lastCheckedAt: record.summary.lastCheckedAt, trackerUrl: tracker(slug), publicJsonUrl: `https://eduaipolicy.org/api/public/v1/universities/${slug}.json`,
@@ -52,6 +55,7 @@ export class PolicyService {
       dimensions, claims: claims.map(c => ({ id: c.id, claimType: c.claimType, text: c.claimText, confidence: c.confidence, reviewState: c.reviewState,
         lastCheckedAt: c.lastCheckedAt, trackerEvidenceUrl: `${tracker(slug)}#claim-${encodeURIComponent(c.id!)}`, officialSourceUrls: [...new Set(c.evidence.map(e => e.sourceUrl))] })),
       ...(tools ? { tools, totalToolRecords: tools.length, toolEvidenceNotice: "These are separately published tool and access records, not additional policy claims. Preserve procurement, cost, user eligibility, data and service-mode conditions. Access or a catalogue listing does not establish course, assessment or sensitive-data permission." } : {}),
+      ...sourceMetadataFields,
       totalRelevantClaims: relevantClaims.length, remainingClaimIds, insufficientTopics,
       ...(insufficientTopics.length ? { evidenceNotice: "The published evidence does not support a conclusion for these topics. This does not mean the university has no rule." } : {}) };
   }

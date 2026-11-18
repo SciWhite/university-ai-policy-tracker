@@ -49,7 +49,7 @@ export class HotCatalog {
   private pending: Promise<unknown> = Promise.resolve();
   constructor(initial: CatalogSelection, private readonly load: () => Promise<CatalogSelection>) {
     this.selection = initial;
-    this.service = new PolicyService(initial.catalog);
+    this.service = new PolicyService(initial.catalog, initial.sourceMetadata);
   }
   current() { return this.service; }
   get contentId() { return this.selection.contentId; }
@@ -73,7 +73,7 @@ export class HotCatalog {
     try {
       const next = await this.load();
       this.selection = next;
-      this.service = new PolicyService(next.catalog);
+      this.service = new PolicyService(next.catalog, next.sourceMetadata);
       return { ok: true, contentId: next.contentId, releaseId: next.catalog.releaseId, catalogSha256: next.catalogSha256 };
     } catch (error) {
       return { ok: false, contentId: this.selection.contentId, releaseId: this.service.catalog.releaseId, error: error instanceof Error ? error.message : String(error) };
