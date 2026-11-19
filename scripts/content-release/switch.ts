@@ -3,6 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { CONTENT_POINTER_SCHEMA, type ContentPointer, type ContentReleaseManifest, type ContentSyncReceipt } from "../../apps/web/lib/content-runtime";
 import { READING_LOCALES } from "../../apps/web/lib/language-catalog";
+import { V6_SOURCE_METADATA_FILE } from "../../packages/shared/src/v6-source-metadata";
 import { requirePolicySync } from "../lib/require-policy-sync";
 import { readManifest, releaseDir, selectTree, sha256, sha256File } from "./lib";
 import { readSelection, schoolDigests, validateContentRelease, type ValidationReport } from "./validate";
@@ -49,6 +50,19 @@ export function readingDigests(manifest: ContentReleaseManifest | undefined, tre
   return out;
 }
 
+/**
+ * Per-school digest of the V6 source metadata (document type, dates, issuing
+ * and approving bodies shown on each official source card). The file changes
+ * school pages without changing any record, so the record digests miss it.
+ * Only the per-school document lists count: generatedAt and basis change on
+ * every build and render nowhere.
+ */
+export function sourceMetadataDigests(manifest: ContentReleaseManifest | undefined, tree: string): Record<string, string> {
+  if (!manifest?.files.some(([rel]) => rel === V6_SOURCE_METADATA_FILE)) return {};
+  const metadata = JSON.parse(readFileSync(path.join(tree, V6_SOURCE_METADATA_FILE), "utf8")) as { schools?: Record<string, unknown> };
+  return Object.fromEntries(Object.entries(metadata.schools ?? {}).map(([slug, documents]) => [slug, sha256(JSON.stringify(documents))]));
+}
+
 /** Wait until the MCP service reports the switched release (it polls the pointer; no restart). */
 export async function awaitMcpRelease(baseUrl: string, expected: { contentId: string; catalogSha256?: string }, waitMs = 60_000, intervalMs = 1000) {
   const url = new URL("/healthz", baseUrl);
@@ -73,7 +87,7 @@ function readHistory(contentRoot: string): HistoryRow[] {
 }
 
 /** Tags and exact paths whose pages differ between two releases. */
-export function changedSurface(previous: { manifest?: ContentReleaseManifest; digests?: Record<string, string>; reading?: Record<string, string> }, next: { manifest: ContentReleaseManifest; digests: Record<string, string>; cohort: string[]; reading?: Record<string, string> }) {
+export function changedSurface(previous: { manifest?: ContentReleaseManifest; digests?: Record<string, string>; reading?: Record<string, string>; sourceMetadata?: Record<string, string> }, next: { manifest: ContentReleaseManifest; digests: Record<string, string>; cohort: string[]; reading?: Record<string, string>; sourceMetadata?: Record<string, string> }) {
   const tags = new Set<string>(), paths = new Set<string>();
   const localized = (route: string, all: boolean) => {
     paths.add(route || "/");
@@ -89,6 +103,10 @@ export function changedSurface(previous: { manifest?: ContentReleaseManifest; di
   const readingBefore = previous.reading ?? {}, readingAfter = next.reading ?? {};
   const reading = [...new Set([...Object.keys(readingBefore), ...Object.keys(readingAfter)])].filter(slug => readingBefore[slug] !== readingAfter[slug]).sort();
   for (const slug of reading) { tags.add(`school:${slug}`); localized(`/universities/${slug}`, true); }
+  // Source metadata renders on the school page only (no catalog, sitemap or changes surface).
+  const metaBefore = previous.sourceMetadata ?? {}, metaAfter = next.sourceMetadata ?? {};
+  const sourceMetadata = [...new Set([...Object.keys(metaBefore), ...Object.keys(metaAfter)])].filter(slug => metaBefore[slug] !== metaAfter[slug]).sort();
+  for (const slug of sourceMetadata) { tags.add(`school:${slug}`); localized(`/universities/${slug}`, cohort.has(slug)); }
   if (added.length || reading.length) { tags.add("sitemap"); for (const p of ["/sitemap.xml", "/sitemaps/core.xml", "/sitemaps/universities.xml"]) paths.add(p); }
   const family = (name: string, m?: ContentReleaseManifest) => JSON.stringify(m?.families?.[name] ?? null);
   if (family("public-change-history", previous.manifest) !== family("public-change-history", next.manifest) || family("public-v6-change-overviews", previous.manifest) !== family("public-v6-change-overviews", next.manifest)) {
@@ -108,7 +126,7 @@ export function changedSurface(previous: { manifest?: ContentReleaseManifest; di
     for (const p of ["/api-reference", "/datasets", "/feeds/reports.xml", "/feeds/atom.xml", "/llms.txt"]) paths.add(p);
     if (!tags.has("sitemap")) { tags.add("sitemap"); paths.add("/sitemaps/core.xml"); }
   }
-  return { tags: [...tags].sort(), paths: [...paths].sort(), changedSchools: schools, readingChangedSchools: reading };
+  return { tags: [...tags].sort(), paths: [...paths].sort(), changedSchools: schools, readingChangedSchools: reading, sourceMetadataChangedSchools: sourceMetadata };
 }
 
 function writeAtomically(file: string, body: string) {
@@ -160,9 +178,10 @@ export async function switchContentRelease(options: SwitchOptions) {
     previousDigests = await schoolDigests();
   }
   const tree = path.join(releaseDir(contentRoot, contentId), "tree");
+  const previousTree = previousManifest ? path.join(releaseDir(contentRoot, previousManifest.contentId), "tree") : "";
   const surface = changedSurface(
-    { manifest: previousManifest, digests: previousDigests, reading: previousManifest ? readingDigests(previousManifest, path.join(releaseDir(contentRoot, previousManifest.contentId), "tree")) : undefined },
-    { manifest, digests: validation.schoolDigests ?? {}, cohort: JSON.parse(readFileSync(path.join(tree, "data/public-v6-pages/current.json"), "utf8")).slugs ?? [], reading: readingDigests(manifest, tree) }
+    { manifest: previousManifest, digests: previousDigests, reading: previousManifest ? readingDigests(previousManifest, previousTree) : undefined, sourceMetadata: sourceMetadataDigests(previousManifest, previousTree) },
+    { manifest, digests: validation.schoolDigests ?? {}, cohort: JSON.parse(readFileSync(path.join(tree, "data/public-v6-pages/current.json"), "utf8")).slugs ?? [], reading: readingDigests(manifest, tree), sourceMetadata: sourceMetadataDigests(manifest, tree) }
   );
   // First selection: nothing was served from this content root yet, so there is no
   // changed-URL list; expiring the "content" tag covers every tagged route.
@@ -177,6 +196,7 @@ export async function switchContentRelease(options: SwitchOptions) {
   const plan = {
     schemaVersion: "uapt-content-switch-v1", contentId, previousContentId: pointer.previousContentId, switchedAt: pointer.switchedAt,
     tags, paths: surface.paths, changedSchools: surface.changedSchools, readingChangedSchools: surface.readingChangedSchools,
+    sourceMetadataChangedSchools: surface.sourceMetadataChangedSchools,
     mcp: manifest.mcp ? { catalogSha256: manifest.mcp.sha256, reload: "MCP follows the pointer (poll or SIGHUP); no restart" } : null,
     // Separate, authorized step: POST this body to the zone's purge_cache API. Not sent by this tool.
     cloudflarePurge: { status: "not_sent", body: { files: surface.paths.map(p => new URL(p, siteUrl).toString()) } },
@@ -209,7 +229,7 @@ export async function switchContentRelease(options: SwitchOptions) {
   if (options.mcpUrl) {
     mcp = await awaitMcpRelease(options.mcpUrl, { contentId, catalogSha256: manifest.mcp?.sha256 }, options.mcpWaitMs);
   }
-  return { pointer, planFile, tags, paths: surface.paths, changedSchools: surface.changedSchools, readingChangedSchools: surface.readingChangedSchools, refresh, mcp, notes: validation.notes };
+  return { pointer, planFile, tags, paths: surface.paths, changedSchools: surface.changedSchools, readingChangedSchools: surface.readingChangedSchools, sourceMetadataChangedSchools: surface.sourceMetadataChangedSchools, refresh, mcp, notes: validation.notes };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
