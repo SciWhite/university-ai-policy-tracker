@@ -33,6 +33,22 @@ export const v6SourceDocumentSchema = z.object({
   capture: z.object({ sha256: z.string().regex(/^[a-f0-9]{64}$/), hashKind: z.enum(["raw_captured_bytes", "rendered_dom", "rendered_markdown"]) })
 });
 
+/**
+ * An official source that has no document record, with the reason. Only
+ * `fetch_failed` is open to new work: the source was requested on `checkedOn`
+ * and could not be read (HTTP error, bot challenge, empty page). A source whose
+ * text was read but states no date or issuer is not a gap: it is a document with
+ * `issuer: null`, no dates and `displayDate.kind: "verified"`.
+ */
+export const v6SourceMetadataGapReasons = ["fetch_failed"] as const;
+export const v6SourceMetadataGapSchema = z.object({
+  url: z.string().url().regex(/^https?:\/\//),
+  reason: z.enum(v6SourceMetadataGapReasons),
+  detail: z.string().min(1).max(500),
+  checkedOn: z.iso.date()
+});
+
+const slugKey = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 export const v6SourceMetadataSchema = z.object({
   schemaVersion: z.literal("uapt-v6-source-metadata-v1"),
   generatedAt: z.iso.datetime(),
@@ -40,11 +56,44 @@ export const v6SourceMetadataSchema = z.object({
   method: z.string().min(1),
   dateRule: z.string().min(1),
   basis: z.object({ contentId: z.string().min(1), candidateSha256: z.string().regex(/^[a-f0-9]{64}$/), schools: z.number().int().nonnegative() }),
-  schools: z.record(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), z.array(v6SourceDocumentSchema))
+  schools: z.record(slugKey, z.array(v6SourceDocumentSchema)),
+  gaps: z.record(slugKey, z.array(v6SourceMetadataGapSchema)).optional()
 });
 
 export type V6SourceDocument = z.infer<typeof v6SourceDocumentSchema>;
 export type V6SourceMetadata = z.infer<typeof v6SourceMetadataSchema>;
+export type V6SourceMetadataGap = z.infer<typeof v6SourceMetadataGapSchema>;
+
+/**
+ * Delivery contract for V6 schools: every official source of every V6 school
+ * has a document record or a `fetch_failed` gap. `legacyUnprocessed` lists the
+ * (slug, URL key) pairs the first bulk run (2026-11-18) never processed; they
+ * pass without a record until they are processed. The list may only shrink:
+ * new schools and new sources get no exemption.
+ */
+export function v6SourceMetadataCoverage(
+  metadata: V6SourceMetadata,
+  officialUrlsBySlug: Record<string, readonly string[]>,
+  legacyUnprocessed: Readonly<Record<string, readonly string[]>> = {}
+) {
+  const errors: string[] = [];
+  const stats = { schools: 0, officialSources: 0, documented: 0, fetchFailed: 0, legacyUnprocessed: 0 };
+  for (const [slug, urls] of Object.entries(officialUrlsBySlug).sort(([a], [b]) => a.localeCompare(b))) {
+    stats.schools += 1;
+    const documented = new Set((metadata.schools[slug] ?? []).map((document) => v6SourceUrlKey(document.url)));
+    const gaps = new Map((metadata.gaps?.[slug] ?? []).map((gap) => [v6SourceUrlKey(gap.url), gap]));
+    const legacy = new Set(legacyUnprocessed[slug] ?? []);
+    for (const key of gaps.keys()) if (documented.has(key)) errors.push(`${slug}: ${key} is both documented and listed as a gap`);
+    for (const key of [...new Set(urls.map(v6SourceUrlKey))].sort()) {
+      stats.officialSources += 1;
+      if (documented.has(key)) stats.documented += 1;
+      else if (gaps.has(key)) stats.fetchFailed += 1;
+      else if (legacy.has(key)) stats.legacyUnprocessed += 1;
+      else errors.push(`${slug}: official source ${key} has no source-metadata record (document or fetch_failed gap)`);
+    }
+  }
+  return { errors, stats };
+}
 
 /** Match key for official source URLs: host without www, path without trailing slash, query kept. */
 export function v6SourceUrlKey(url: string): string {

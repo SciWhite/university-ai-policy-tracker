@@ -10,6 +10,27 @@
 
 预览统一使用 `?layout=v6`。自然高度卡片、覆盖阅读面板、来源版本详情、日期、手机单行操作、深链/搜索/打印由共享组件提供。学校只填写真实数据和可选通用模块，HLS/HMS 等例外不得跨校复用。
 
+## 来源元数据（2026-11-19，交付必填）
+
+每所 V6 学校引用的每个官方来源，都要在 `data/public-v6-source-metadata.json` 里有一条记录：
+
+- **文档记录**：文档类型、阶段，发布机构（名称、角色、类别），批准机构，各类日期（effective / approved / adopted / issued_or_published / revised / reviewed / last_updated_page / next_review，带精度），版本、适用范围，抓取哈希和我们的核查日期。每个值都附一段从抓取原文逐字复制的引文。原文没写的字段留空，不推断；没有任何官方日期时，页面显示我们的核查日期，并标明是"核查日期"。
+- **`fetch_failed` 缺口**：来源读不到（HTTP 错误、验证页、空页）时，记录原因和尝试日期。不绕过登录、付费墙或验证码。
+
+生成方法统一使用 `scripts/v6-source-metadata.py`：便宜模型独立抽取两次，逐字引文门禁，更强的模型逐条复核，再做确定性规则，可选独立抽样审计。具体步骤见接入规范"来源元数据"一节。没有记录的来源会让 `pnpm validate:v6-source-metadata`、`content:validate` 和 `v6:pack` 失败。2026-11-18 首轮遗留的 126 个未处理来源冻结在 `scripts/content-release/v6-source-metadata-legacy-unprocessed.json`，只能减少，新学校和新来源没有豁免。
+
+```yaml
+sourceMetadata:
+  run: <private run directory, e.g. .local/v6-source-metadata-<date>/>
+  candidateSha256: <SHA256 of run/candidate.json>
+  publishedFile: <new public-v6-source-metadata.json>
+  publishedFileSha256: <SHA256>
+  documented: <count>
+  fetchFailed: <count, with reasons>
+  verifyModel: <model used for the verify pass>
+  audit: <sample size, findings, fixes; or "not run">
+```
+
 ## 新增或修改内容的强制合同（2026-10-25）
 
 所有新增或修改学校输入必须通过共享 `validateV6Completeness`，由发布打包和实际页面入口共同调用。完整输入必须显式提供九主题的 EN/ZH 摘要、范围、标题、状态和 `studentActions`；不能通过省略可选字段绕开审核。Do/Don't 各 1–3 项，逐项绑定本校有效依据并区分 requirement/source_guidance/site_advice。缺证据写具体 gap，不编许可，也不为凑满三项编动作。
