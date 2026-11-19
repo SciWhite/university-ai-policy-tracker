@@ -9,7 +9,8 @@
     "build": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
-    "test": "tsx --test test/*.test.ts"
+    "test": "tsx --test test/*.test.ts",
+    "readback": "tsx scripts/readback.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

@@ -14,7 +14,8 @@ import { CHANGE_RENDERER_IDENTITIES, publicHistoryBasisV2 } from "../apps/web/li
 import { isContentTag } from "../apps/web/lib/content-cache-tags";
 import { privateFieldViolations, privatePathViolation } from "../scripts/content-release/file-set";
 import { compareClaimSets, type ClaimSets } from "../scripts/content-release/lib";
-import { awaitMcpRelease, changedSurface, readingDigests } from "../scripts/content-release/switch";
+import { awaitMcpRelease, changedSurface, readingDigests, sourceMetadataDigests } from "../scripts/content-release/switch";
+import { V6_SOURCE_METADATA_FILE } from "../packages/shared/src/v6-source-metadata";
 import { createServer } from "node:http";
 import { POST as refreshPost } from "../apps/web/app/api/internal/content/refresh/route";
 
@@ -127,7 +128,9 @@ test("a content-free program build reads no content while Next prerenders", () =
 
 test("the monthly report registry is data with a required current report", () => {
   const registry = JSON.parse(readFileSync(path.join(repoRoot, "data/monthly-reports/registry.json"), "utf8"));
-  assert.equal(validateMonthlyReportRegistry(registry).current, "2026-09");
+  // The current month moves with each report release; the registry must name one it lists.
+  assert.match(registry.current, /^\d{4}-\d{2}$/);
+  assert.equal(validateMonthlyReportRegistry(registry).current, registry.current);
   assert.throws(() => validateMonthlyReportRegistry({ ...registry, current: "2026-12" }), /Current monthly report/);
   const broken = structuredClone(registry);
   broken.reports["2026-09"].month = "2026-08";
@@ -196,6 +199,38 @@ test("a locale-index or translation change refreshes the school and sitemap with
   for (const tag of ["school:yale", "sitemap"]) assert.ok(surface.tags.includes(tag), tag);
   for (const p of ["/universities/yale", "/ja/universities/yale", "/sitemaps/universities.xml"]) assert.ok(surface.paths.includes(p), p);
   assert.ok(!surface.tags.includes("school:mit"));
+});
+
+test("a source-metadata change refreshes only the affected school pages, without a record change", () => {
+  const manifest = { families: {}, files: [] } as unknown as ContentReleaseManifest;
+  const surface = changedSurface(
+    { manifest, digests: { yale: "1", mit: "1", rice: "1" }, sourceMetadata: { yale: "a", mit: "m" } },
+    { manifest, digests: { yale: "1", mit: "1", rice: "1" }, cohort: ["yale", "rice"], sourceMetadata: { yale: "b", mit: "m", rice: "r" } });
+  assert.deepEqual(surface.changedSchools, []);
+  assert.deepEqual(surface.sourceMetadataChangedSchools, ["rice", "yale"]);
+  for (const tag of ["school:yale", "school:rice"]) assert.ok(surface.tags.includes(tag), tag);
+  for (const p of ["/universities/yale", "/zh/universities/yale", "/ja/universities/rice"]) assert.ok(surface.paths.includes(p), p);
+  for (const tag of ["school:mit", "catalog", "sitemap", "changes"]) assert.ok(!surface.tags.includes(tag), tag);
+  assert.ok(surface.tags.every(isContentTag));
+});
+
+test("source-metadata digests cover per-school documents only", () => {
+  const tree = mkdtempSync(path.join(tmpdir(), "uapt-source-meta-"));
+  try {
+    mkdirSync(path.join(tree, "data"));
+    const write = (generatedAt: string, yale: unknown[]) => writeFileSync(path.join(tree, V6_SOURCE_METADATA_FILE), JSON.stringify({ generatedAt, basis: { contentId: generatedAt }, schools: { yale, mit: [{ url: "https://mit.edu/a" }] } }));
+    const listed = { files: [[V6_SOURCE_METADATA_FILE, "x", 1]] } as unknown as ContentReleaseManifest;
+    write("2026-11-18T00:00:00Z", [{ url: "https://yale.edu/a" }]);
+    const first = sourceMetadataDigests(listed, tree);
+    write("2026-11-19T00:00:00Z", [{ url: "https://yale.edu/a" }]);
+    assert.deepEqual(sourceMetadataDigests(listed, tree), first, "a rebuild with the same documents changes nothing");
+    write("2026-11-19T00:00:00Z", [{ url: "https://yale.edu/b" }]);
+    const next = sourceMetadataDigests(listed, tree);
+    assert.notEqual(next.yale, first.yale);
+    assert.equal(next.mit, first.mit);
+    assert.deepEqual(sourceMetadataDigests({ files: [] } as unknown as ContentReleaseManifest, tree), {}, "a release without the file has no digests");
+    assert.deepEqual(sourceMetadataDigests(undefined, tree), {});
+  } finally { rmSync(tree, { recursive: true, force: true }); }
 });
 
 test("the switch reads back that MCP serves the new release, without a restart", async () => {

@@ -190,7 +190,13 @@ UAPT_CONTENT_REFRESH_TOKEN=... pnpm content:switch --content-root "$UAPT_CONTENT
    schools (record digests), cohort locales, catalog, change history, reports,
    sitemap, and schools whose reading locales can change (locale-index entry,
    translation refs or record deltas): their pages in every locale and the
-   sitemaps. Writes `switch-<time>.json` with tags, exact paths and the
+   sitemaps. Schools whose source metadata changed
+   (`data/public-v6-source-metadata.json`, per-school document list) get the
+   `school:<slug>` tag and their pages in every locale
+   (`sourceMetadataChangedSchools`); claims can stay identical. Any other
+   file that renders on school pages needs its own digest here: a page
+   warmed before the switch otherwise keeps serving the old content from the
+   ISR cache. Writes `switch-<time>.json` with tags, exact paths and the
    Cloudflare request body.
 4. Atomically renames `current.json` and appends `pointer-history.jsonl`.
 5. Calls the loopback refresh endpoint in batches of 1,000 paths.
