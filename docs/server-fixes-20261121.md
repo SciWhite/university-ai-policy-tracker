@@ -1,7 +1,8 @@
 # Server fixes after the V6 batch-3 release (2026-11-21)
 
-Status: code, tests and docs on branch `claude/laughing-murdock-3c9e56`. **Nothing on the
-host has been changed.** The production plan in §3 waits for the owner's go-ahead.
+Status: code, tests and docs on branch `claude/laughing-murdock-3c9e56` (not pushed). Plan §3
+steps A–D **applied 2026-11-21 21:21–21:23 UTC** with the owner's go-ahead ("Yes, apply A–D";
+memory budget 8 GiB). Receipts: §4.
 
 ## 1. Web slot memory hang: findings
 
@@ -168,3 +169,38 @@ disable and remove the timer.
 **Not in this plan (separate go-ahead):** push/merge of the branch; a program release of the
 merged code (cache drop on switch, 1.5 GiB ISR cache, `MALLOC_ARENA_MAX=2`);
 archiving the 9 old content releases; crawler rate limiting.
+
+## 4. Applied 2026-11-21 (receipts)
+
+Overall receipt `/srv/uapt/operations/server-fixes-20261121/RESULT.json` (sha256 `603b8367…`).
+
+| Step | Result |
+|---|---|
+| A | 3101 `memory.high` = `memory.max` = 8,589,934,592 after `daemon-reload`, no restart (PID 3206567 kept, probe 200). Policy `candidatePeakMaxBytes` 4 → 8 GiB with `memoryBudgetChange` (owner's words); only these two keys changed. Backups `A-dropin-before.conf`, `policy.json.before-memory-8g-20261121T212121Z`. |
+| B | `/usr/local/libexec/uapt-web-watchdog.py` (`975bc09a…`) + units; dry run `ok`; timer runs every 60 s, first runs `ok`. |
+| C | Controller `7e14b708` → `bc4d3d18`, program-release `5735585b` → `b5a3ee20`; `retention` passed; receipt `release-lifecycle/holds-controller-install-bc4d3d18.json`. |
+| D | `holdLimitHistory` until `2026-11-21T21:22:17Z` (168 h), 336 h after; `contentHoldsSince` same; 10 content releases classified (block 2026-12-05T21:22:17Z); `contentReleaseRoot` set; `retention` and `rescan --dry-run` passed; `uapt-hold-status.timer` daily 06:00 UTC, first run `ok` (11 holds, none overdue or warning). Backups `policy.json.before-hold-14d-…`, `hold-clocks.json.before-classify-…`, `current-retention.json.before-classify-…`. |
+
+Not applied: `MALLOC_ARENA_MAX=2` (needs a restart; comes with the next program release), the
+1.5 GiB cache and the cache drop on switch (program release), push/merge.
+
+### Archiving the program hold `uapt-program-987cbda4201d-nn5iG9cQ0iY1hgfzTGAag` (not done)
+
+It blocks releases from **2026-11-26 15:22 UTC** (heldSince 11-19 15:22, 7-day rule). 172 MB,
+4,689 files; no unit, nginx snippet or running process references it (2026-11-21). Same route
+as `c-20261106-9schools-r1`:
+
+1. `sudo /usr/local/libexec/uapt-release-lifecycle.py rescan --dry-run --reason "archive 987cbda4"`
+   and read its `references`: the root must appear in no unit, nginx, symlink or process.
+2. On the host: `sudo tar -C /srv/uapt/releases -cpzf <op>/uapt-program-987cbda4.tar.gz uapt-program-987cbda4201d-nn5iG9cQ0iY1hgfzTGAag`,
+   `sha256sum` it and write a per-file SHA256 manifest of the tree.
+3. Copy off-host (`~/Documents/uapt-offhost-archive/program-987cbda4-<date>/` on the Mac),
+   check the SHA256 there, extract into a temp directory and compare the manifest (isolated
+   restore check).
+4. Re-check references, then remove exactly that directory; write `deletion-receipt.json`
+   (before/after disk, sha of the archive, manifest, removed path).
+5. Add an `archivedOutsideServer` record (name, path, location, sha256, `removalReceipt` +
+   `removalReceiptSha256`) and run `rescan --reason "archived 987cbda4"`, then `retention`.
+
+The same steps apply to the 10 content holds before 2026-12-05 (link trees; objects are shared
+and are not deleted).
