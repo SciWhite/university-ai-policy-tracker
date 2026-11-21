@@ -49,9 +49,11 @@ const nextConfig: NextConfig = {
   // that runtime cache in a bounded in-memory LRU: flushing every school x
   // locale page (~1-2MB each) to .next would grow without limit on the shared
   // host's disk. Cloudflare holds the long-lived copies; build output is unchanged.
-  // About 0.8 MB HTML plus RSC per page: 2 GB keeps ~1,300 pages in memory. The slot runs
-  // with MemoryHigh 5.5 GiB / MemoryMax 6 GiB and --max-old-space-size=4608 (2026-11-06).
-  cacheMaxMemorySize: 2048 * 1024 * 1024,
+  // About 0.8 MB HTML plus RSC per page: 1.5 GB keeps ~1,000 pages in memory; nginx's disk cache
+  // and Cloudflare (2 h) hold the rest. Budget (2026-11-21): MemoryHigh = MemoryMax = 8 GiB,
+  // --max-old-space-size=4608 and >= 3 GiB off-heap. With a 2 GB cache and a 4,608 MiB heap the
+  // slot reached 6.2 GB anonymous memory and stalled at MemoryHigh (docs/program-release.md §6.2).
+  cacheMaxMemorySize: 1536 * 1024 * 1024,
   experimental: {
     isrFlushToDisk: false,
     cpus: 1,

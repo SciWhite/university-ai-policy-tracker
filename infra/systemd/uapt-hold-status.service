@@ -1,0 +1,12 @@
+# Installed at /etc/systemd/system/uapt-hold-status.service (docs/release-storage-policy.md).
+# Read-only: writes retentionEnforcement.holdStatusFile (default
+# /srv/uapt/operations/release-lifecycle/hold-status.json); never edits the register or the
+# hold clocks and never notifies an external service.
+[Unit]
+Description=UAPT hold deadline early warning (report only)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/libexec/uapt-release-lifecycle.py hold-status --write
+PrivateTmp=yes
+NoNewPrivileges=yes

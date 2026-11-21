@@ -5,7 +5,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import path from "node:path";
 import {
-  CONTENT_API_VERSION, activeContent, contentScoped, readContentJson, refreshContentPointer, resetContentRuntimeForTests,
+  CONTENT_API_VERSION, activeContent, contentCacheKey, contentRuntimeStatus, contentScoped, readContentJson, refreshContentPointer, registerContentKeyedCache, resetContentRuntimeForTests,
   type ContentPointer, type ContentReleaseManifest
 } from "../apps/web/lib/content-runtime";
 import { readingCohortSlugs } from "../apps/web/lib/reading-cohort";
@@ -18,6 +18,7 @@ import { awaitMcpRelease, changedSurface, readingDigests, sourceMetadataDigests 
 import { V6_SOURCE_METADATA_FILE } from "../packages/shared/src/v6-source-metadata";
 import { createServer } from "node:http";
 import { POST as refreshPost } from "../apps/web/app/api/internal/content/refresh/route";
+import { BoundedAsyncCache } from "../apps/web/lib/bounded-cache";
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const repoRoot = process.cwd();
@@ -69,6 +70,36 @@ test("a pointer switch changes the content every loader sees, without a rebuild"
       assert.deepEqual(readingCohortSlugs(), ["harvard-university", "rice-university"]);
       assert.equal(derived(), 2, "content-scoped caches are rebuilt for the new release");
     });
+  } finally { f.cleanup(); }
+});
+
+test("a switch drops the replaced release's cached data instead of leaving it to LRU eviction", async () => {
+  const f = contentRoot();
+  try {
+    const a = f.release("demo-a", ["harvard-university"]);
+    const b = f.release("demo-b", ["rice-university"]);
+    f.point("demo-a", a);
+    const cache = registerContentKeyedCache(new BoundedAsyncCache<string>(8, 1024 * 1024, 1, 8));
+    const previous = process.env.UAPT_CONTENT_ROOT;
+    process.env.UAPT_CONTENT_ROOT = f.root;
+    resetContentRuntimeForTests();
+    try {
+      readContentJson("data/public-v6-pages/current.json");
+      contentScoped("test-scoped", () => 1);
+      await cache.get(contentCacheKey("x"), async () => "a");
+      await cache.get("other-key", async () => "kept");
+      assert.equal(contentRuntimeStatus().jsonCache.entries, 1);
+      f.point("demo-b", b);
+      assert.equal(refreshContentPointer().contentId, "demo-b");
+      // json entry + scoped entry + keyed cache entry of demo-a; the unrelated key stays.
+      assert.deepEqual(contentRuntimeStatus().releasedOnSwitch, { contentId: "demo-a", entries: 3 });
+      assert.equal(contentRuntimeStatus().jsonCache.entries, 0);
+      assert.equal(cache.stats().entries, 1);
+      assert.equal(await cache.get(contentCacheKey("x"), async () => "b"), "b");
+    } finally {
+      if (previous === undefined) delete process.env.UAPT_CONTENT_ROOT; else process.env.UAPT_CONTENT_ROOT = previous;
+      resetContentRuntimeForTests();
+    }
   } finally { f.cleanup(); }
 });
 

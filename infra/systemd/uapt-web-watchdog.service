@@ -1,0 +1,15 @@
+# Installed at /etc/systemd/system/uapt-web-watchdog.service (docs/program-release.md §6.2).
+# Oneshot: probes the routed web slot and restarts it only after consecutive failures.
+[Unit]
+Description=UAPT web slot health watchdog (probe; restart after consecutive failures)
+After=network.target nginx.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/libexec/uapt-web-watchdog.py
+TimeoutStartSec=150
+RuntimeDirectory=uapt-web-watchdog
+RuntimeDirectoryPreserve=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+Nice=-5

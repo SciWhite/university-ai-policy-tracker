@@ -1,0 +1,11 @@
+# Installed at /etc/systemd/system/uapt-hold-status.timer (docs/release-storage-policy.md).
+[Unit]
+Description=Daily UAPT hold deadline report
+
+[Timer]
+OnCalendar=*-*-* 06:00:00 UTC
+OnBootSec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -67,7 +67,7 @@
 
 用户明确授权放宽发布限制时，运维可在 `retentionEnforcement.releaseDeferral` 记录精确依据的限时豁免：schema `uapt-retention-release-deferral-v1`、basisSha256、authorization、approvedAt、expiresAt、nextAction 和逐项原始 name/path、heldSince、reviewBefore。最长24小时，只跳过列明材料的到期阻断；不延长原始时钟、不删除材料、不豁免容量、未分类材料、证据或回滚检查，也不自动适用于下一版本。到期仍需处理依赖或归档，不能自动续期。豁免及控制器变更单独备份审计；不重建已经验收的页面产物。
 
-## 复查提醒与七天处理窗口
+## 复查提醒与七天处理窗口（2026-11-21 起由十四天窗口取代，见下节）
 
 用户本次明确授权放宽暂留使用期限。生产 `retentionEnforcement.maxHoldHours=168`、`blockAfterHours=168`：实际阻断时间为原 `reviewBefore` 与首次 `heldSince + 168 小时` 中较晚者；新登记的 reviewBefore 也不得超过首次暂留后 168 小时。已有首次时钟和复查期限原样保存，不迁移、不覆盖、不从本次调整重新计算七天。旧 24 小时复查到期保留提醒；`retention` 会列出过期提醒和实际阻断时间，提醒本身不拒绝新发布。七天后仍阻止发布，防止无限积累；需要长期依赖的材料须单独审查并迁移或归档。
 
@@ -78,3 +78,27 @@
 本轮用户已授权常规资源配置调整：根文件系统保留12GiB，main角色包体上限12GiB，UAPT项目上限仍为72GiB，free inode要求保持当前policy值。生产policy调整及原配置的恢复依据由独立核验收据记录，不通过续期旧临时容量租约实现。其他角色上限、原件和held时钟不因本次调整自动改变。
 
 包体上限与七阶段累计额外峰值分别核对。main上限12GiB不是已经占用或必将新增12GiB，也不能替代源码、依赖、构建输出、候选运行缓存、静态复制和归档暂存的真实估算。下载、依赖和构建开始前仍按同一冻结预算检查实时可用字节、inode及项目总量；候选运行期间保留实际采样，不删除运行缓存来掩盖峰值。失败构建、日志和恢复材料须准确登记，不能按新上限自动清理。构建和候选内存预算的分离规则见`docs/release-lifecycle.md`本轮固定profile。
+
+## 2026-11-21 受控重新扫描（rescan）
+
+内容发布不写保留收据，`record-retention` 又拒绝陈旧收据；因此新增控制器动作 `uapt-release-lifecycle.py rescan --reason "<原因>"`（可先 `--dry-run`），细节见 [release-lifecycle.md](release-lifecycle.md) 的“2026-11-21 retention rescan”。它是刷新 24 小时引用清单的唯一受控方式，取代手工改写 `checkedAt`：
+
+- 重新读取实际 release 根目录、临时材料、实时磁盘/inode/项目总量，并只读复查 unit 文件、运行进程、完整 Nginx 与符号链接引用，结果写入收据 `lastRescan`。
+- 不分类、不改期：现有 entry、临时材料和 `contentReleaseHolds` 原样保留，`heldSince`、`reviewBefore`、`nextAction` 逐字节不变；新收据先对照现有登记与 `hold-clocks.json` 校验，再备份并原子替换。
+- 拒绝条件与发布门禁一致：未分类材料、无归档凭据的消失项、超过阻断期限的 hold（含内容 release hold）、缺首次时钟的 held、残留 candidate、容量不足、active 无运行进程、rollback 仍在运行、未完成事务。拒绝时不写任何文件。
+- 内容 release hold 的首次时钟同样记入 `hold-clocks.json`（按 path），之后不能被重置、延期或在目录仍在时从台账删除。
+
+上文“修改 checkedAt … 不能消除欠账”继续有效：rescan 只证明清单在 24 小时内重新核对过，过期 hold 仍阻止发布，须归档或解决依赖后才能退出台账。
+
+## 2026-11-21 十四天处理窗口、内容 hold 强制检查与提前预警
+
+起因：内容 hold `c-20261106-9schools-r1`（heldSince 2026-11-06）超过 168 小时阻断期限 8 天才被发现。控制器的 `retention` 和发布门禁只检查程序 release 根目录和 `hold-clocks.json`，内容 hold 只有 rescan 检查，也没有到期前的提醒；另外内容 release 目录除 active/rollback 外都没有登记。
+
+- **期限按 hold 开始时间计算。** 生产 policy 改为 `maxHoldHours=336`、`blockAfterHours=336`（14 天），并写入 `holdLimitHistory: [{"until": <生效时间>, "maxHoldHours": 168, "blockAfterHours": 168}]`。`heldSince` 早于生效时间的 hold 继续按 7 天计算（例如 `uapt-program-987cbda4201d…` 仍在 2026-11-26 阻断）；之后开始的 hold 按 14 天。已有 `heldSince`、`reviewBefore`、`nextAction` 原样保留，不迁移、不重算。`reviewBefore` 仍为开始后约 7 天（167 小时）的复查提醒。
+- **内容 hold 与程序 hold 同等检查。** `retention`、gate、以及调用 `validate_retention_receipt` 的内容发布激活都检查 `contentReleaseHolds`：超过阻断期限、缺行动或期限超界、相对首次时钟被重置或延期、目录仍在却从台账删除，均拒绝。
+- **内容 release 目录全部登记。** `classify-content-releases --reason` 把既不是 active/rollback、也没有 hold 的已安装内容 release 登记为有界 hold：首次时钟取离开选择的时间（`pointer-history.jsonl`），没有记录时取目录 mtime，不早于规则生效时间 `contentHoldsSince`，不晚于当前时间；已有首次时钟原样沿用。policy 设置 `retentionEnforcement.contentReleaseRoot` 后，未登记目录阻止发布。内容 `complete` 后应立即执行一次。
+- **重新被选中的 release 重新计时。** 内容 release 在 hold 开始之后又被选为 active（pointer history 可查）时，旧 hold 已经结束；它再离开选择时从离开时间开始新 hold，旧时钟作为 `previousClock` 保留追溯。新 hold 不得早于那次选中。
+- **补录不能重新计时。** `record-retention` 只在 `heldSince` 不晚于磁盘证据（release/临时材料的 mtime，内容 release 的离开选择时间或 mtime）加 24 小时时，才为没有首次时钟的 hold 建立时钟；手写的“刚开始”hold 不能给旧材料重新计时。rescan 对首次见到的内容 hold 使用同一规则。
+- **提前预警（只读）。** `uapt-release-lifecycle.py hold-status --write` 由 `uapt-hold-status.timer` 每天 06:00 UTC 运行，写 `/srv/uapt/operations/release-lifecycle/hold-status.json`：每个 hold 的阻断时间与剩余小时，`overdue`、`warning`（48 小时内阻断）、`reviewDue`，收据是否已超过 24 小时需要 rescan，以及未登记的内容 release。`retention` 也打印 48 小时内的预警。只报告：不改台账、不改时钟、不发送任何外部通知。代理发布前先读该文件；`warning` 项先归档或解决依赖。
+
+本节放宽的只是新 hold 的处理时间；空间/inode、项目预算、未分类材料、24 小时引用清单新鲜度、同步合同和验收检查不变。归档与删除仍按上文白名单流程，不按年龄自动删除。修改服务器 policy 与安装控制器需要所有者对具体计划的明确同意。
