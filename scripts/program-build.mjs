@@ -18,6 +18,14 @@
  * the same runtime content release as the web app (UAPT_CONTENT_ROOT) and
  * hot-reloads its catalog on a content switch.
  *
+ * `build` also writes the release helper (dist/release-helper, shipped as
+ * release-helper/): the content switch and the 2.1.0 projection validator as
+ * self-contained ESM bundles plus the host tools (content-release.py,
+ * policy-inventory.py, install-tree.py, sync-proof.py, warm-changed-pages.py)
+ * and HELPER.json with their hashes. Content releases run it from the ACTIVE
+ * program root, so the switch tooling always matches the running program
+ * (docs/content-release.md §5; the 2026-11-09 helper copy missed ff3d8218).
+ *
  * --local is a diagnostic mode for a dirty checkout; its artifact is marked
  * `diagnostic: true` and the server installer refuses it.
  */
@@ -43,6 +51,25 @@ export const MCP_SOURCE = "apps/mcp/src/server.ts";
 /** Bundled MCP server, relative to the checkout (build) and to the artifact root (package). */
 export const MCP_BUNDLE = "apps/mcp/dist/server.mjs";
 export const MCP_ENTRY = "apps/mcp/server.mjs";
+/** Release helper: staged by `build` in the checkout, shipped by `package` at the artifact root. */
+export const RELEASE_HELPER_STAGE = "dist/release-helper";
+export const RELEASE_HELPER_ENTRY = "release-helper";
+export const RELEASE_HELPER_SCHEMA = "uapt-release-helper-v1";
+/** [bundle entry, path inside release-helper/] */
+export const RELEASE_HELPER_BUNDLES = [
+  ["scripts/content-release/switch.ts", "scripts/content-release/switch.mjs"],
+  ["scripts/validate-change-event-projection.ts", "scripts/validate-change-event-projection.mjs"]
+];
+/** Copied unchanged (Python 3.10 standard library or data files read next to a bundle). */
+export const RELEASE_HELPER_FILES = [
+  "scripts/release/content-release.py",
+  "scripts/release/remote-bg.sh",
+  "scripts/policy-inventory.py",
+  "scripts/content-release/install-tree.py",
+  "scripts/content-release/sync-proof.py",
+  "scripts/content-release/warm-changed-pages.py",
+  "scripts/content-release/private-field-baseline.json"
+];
 
 // Path rules for anything inside the artifact. Top-level checkout directories
 // that hold content, evidence or tooling must never be traced in.
@@ -250,6 +277,60 @@ export async function bundleMcp({ root = repoRoot, outfile = path.join(root, MCP
   return { outfile, inputs: inputs.length, bytes: lstatSync(outfile).size };
 }
 
+/** In a bundle every module shares the bundle's import.meta.url, so an imported module's own
+ * `import.meta.url === pathToFileURL(process.argv[1]).href` CLI guard would also fire (validate.ts
+ * printed its usage inside switch.mjs). Only the entry keeps its guard. */
+export const CLI_GUARD = /import\.meta\.url\s*===\s*pathToFileURL\(\s*process\.argv\[1\]\s*\)\.href/g;
+function cliGuardsOnlyForEntry(entryFile) {
+  return {
+    name: "uapt-cli-guards",
+    setup(build) {
+      build.onLoad({ filter: /\.(?:ts|tsx|mts)$/ }, async args => {
+        if (args.path.includes("node_modules") || path.resolve(args.path) === path.resolve(entryFile)) return undefined;
+        const source = readFileSync(args.path, "utf8");
+        if (!CLI_GUARD.test(source)) return undefined;
+        CLI_GUARD.lastIndex = 0;
+        return { contents: source.replace(CLI_GUARD, "false /* bundled module, not the entry */"), loader: args.path.endsWith("x") ? "tsx" : "ts" };
+      });
+    }
+  };
+}
+
+/**
+ * The host's content-release tooling as one directory pinned to this program's code SHA. The
+ * switch and the projection validator are bundled (no tsx or node_modules on the host); the
+ * Python tools are copied. Nothing from data/ or staging/ may be bundled in.
+ */
+export async function bundleReleaseHelper({ root = repoRoot, out = path.join(root, RELEASE_HELPER_STAGE), codeSha } = {}) {
+  const { build: esbuild } = await import("esbuild");
+  rmSync(out, { recursive: true, force: true });
+  const files = {};
+  for (const [entry, target] of RELEASE_HELPER_BUNDLES) {
+    const outfile = path.join(out, target);
+    const entryFile = path.join(root, entry);
+    const result = await esbuild({
+      entryPoints: [entryFile], outfile, bundle: true, platform: "node", format: "esm", target: "node22",
+      minify: false, sourcemap: false, legalComments: "none", logLevel: "silent", metafile: true,
+      plugins: [cliGuardsOnlyForEntry(entryFile)],
+      banner: { js: 'import { createRequire as __uaptCreateRequire } from "node:module"; const require = __uaptCreateRequire(import.meta.url);' }
+    });
+    if (result.errors.length) throw new Error(`Release helper bundle failed (${entry}): ${result.errors.map(e => e.text).join("; ")}`);
+    const content = Object.keys(result.metafile.inputs).filter(file => HELD_OUT_CONTENT.some(dir => file.startsWith(`${dir}/`)) || /(^|\/)\.runtime-data\//.test(file) || file.endsWith(".json") && !file.includes("node_modules/"));
+    if (content.length) throw new Error(`Release helper bundle would include checkout content: ${content.slice(0, 5).join(", ")}`);
+  }
+  for (const file of RELEASE_HELPER_FILES) {
+    mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
+    cpSync(path.join(root, file), path.join(out, file));
+  }
+  for (const target of [...RELEASE_HELPER_BUNDLES.map(([, t]) => t), ...RELEASE_HELPER_FILES]) {
+    files[target] = createHash("sha256").update(readFileSync(path.join(out, target))).digest("hex");
+  }
+  const info = { schemaVersion: RELEASE_HELPER_SCHEMA, codeSha: codeSha ?? null, files,
+    usage: "sudo python3 <program-root>/release-helper/scripts/release/content-release.py <check|activate|refresh|complete|status> --op <op-dir>" };
+  writeFileSync(path.join(out, "HELPER.json"), JSON.stringify(info, null, 2) + "\n");
+  return { out, files: Object.keys(files).length, bytes: Object.keys(files).reduce((n, f) => n + lstatSync(path.join(out, f)).size, 0) };
+}
+
 async function build({ sha, local }) {
   checkout(sha, local);
   // The workflow's sparse checkout omits content, so a build that still needed
@@ -264,7 +345,8 @@ async function build({ sha, local }) {
   if (result.status !== 0) throw new Error(`next build failed (${result.status ?? result.signal}); no artifact`);
   if (!existsSync(path.join(dist, "standalone", appDir, "server.js"))) throw new Error("Standalone server missing; check output: standalone");
   const mcp = await bundleMcp();
-  console.log(JSON.stringify({ status: "BUILT", codeSha: sha, BUILD_ID: readFileSync(path.join(dist, "BUILD_ID"), "utf8").trim(), mcpBundleBytes: mcp.bytes }));
+  const helper = await bundleReleaseHelper({ codeSha: local ? null : sha });
+  console.log(JSON.stringify({ status: "BUILT", codeSha: sha, BUILD_ID: readFileSync(path.join(dist, "BUILD_ID"), "utf8").trim(), mcpBundleBytes: mcp.bytes, releaseHelperFiles: helper.files }));
 }
 
 async function packageArtifact({ sha, out, local, markersFrom }) {
@@ -290,6 +372,12 @@ async function packageArtifact({ sha, out, local, markersFrom }) {
   if (!existsSync(mcpBundle)) throw new Error(`${MCP_BUNDLE} missing; run the build step first`);
   mkdirSync(path.join(standalone, path.dirname(MCP_ENTRY)), { recursive: true });
   cpSync(mcpBundle, path.join(standalone, MCP_ENTRY));
+  const helperStage = path.join(repoRoot, RELEASE_HELPER_STAGE);
+  if (!existsSync(path.join(helperStage, "HELPER.json"))) throw new Error(`${RELEASE_HELPER_STAGE} missing; run the build step first`);
+  const helperInfo = JSON.parse(readFileSync(path.join(helperStage, "HELPER.json"), "utf8"));
+  if (!local && helperInfo.codeSha !== head) throw new Error(`Release helper was built for ${helperInfo.codeSha}, not ${head}`);
+  rmSync(path.join(standalone, RELEASE_HELPER_ENTRY), { recursive: true, force: true });
+  cpSync(helperStage, path.join(standalone, RELEASE_HELPER_ENTRY), { recursive: true });
   // Written below; a repeated package run must not list the previous copies.
   for (const name of ["source-manifest.json", "build-artifact-manifest.json"]) rmSync(path.join(standalone, name), { force: true });
 
@@ -319,7 +407,8 @@ async function packageArtifact({ sha, out, local, markersFrom }) {
     entry: { workingDirectory: appDir, command: "node server.js" },
     entries: {
       web: { workingDirectory: appDir, command: "node server.js" },
-      mcp: { workingDirectory: path.dirname(MCP_ENTRY), command: `node ${path.basename(MCP_ENTRY)}`, path: MCP_ENTRY, sha256: createHash("sha256").update(readFileSync(path.join(standalone, MCP_ENTRY))).digest("hex") }
+      mcp: { workingDirectory: path.dirname(MCP_ENTRY), command: `node ${path.basename(MCP_ENTRY)}`, path: MCP_ENTRY, sha256: createHash("sha256").update(readFileSync(path.join(standalone, MCP_ENTRY))).digest("hex") },
+      releaseHelper: { path: RELEASE_HELPER_ENTRY, command: "sudo python3 release-helper/scripts/release/content-release.py <phase> --op <op-dir>", helperSha256: createHash("sha256").update(readFileSync(path.join(standalone, RELEASE_HELPER_ENTRY, "HELPER.json"))).digest("hex") }
     },
     files: { count: scan.files.length, symlinks: scan.symlinks.length, bytes: scan.bytes, listSha256: fileListDigest(scan), sourceManifestSha256: createHash("sha256").update(JSON.stringify(fileList) + "\n").digest("hex") }
   };
