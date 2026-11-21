@@ -296,7 +296,9 @@ process costs a full outage until something kills it.
 - probes `GET /api/plugin/status` (force-dynamic, no content reads) on 127.0.0.1 with a
   20 s timeout;
 - restarts the slot only after **3 consecutive failures**; never while the lifecycle
-  `transaction.json` is unfinished, never within 15 min of the unit's start (warm-up), at
+  `transaction.json` is unfinished or the release lock `/run/lock/uapt-release.lock` is held
+  (a content or program release is running; read from `/proc/locks`, never taken), never
+  within 15 min of the unit's start (warm-up), at
   most once per 30 min and 3 times per 24 h (after that it only writes receipts);
 - writes `/srv/uapt/operations/web-watchdog/restart-<UTC>.json` with the cgroup memory
   facts (memory.current/high/max/peak/events/pressure, anon, process state) taken just

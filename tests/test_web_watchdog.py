@@ -39,6 +39,7 @@ class DecideTests(unittest.TestCase):
         self.assertEqual(self.decide(False, failing, uptime=100.0 + 60)[0], 'skip:start-up-grace')
         self.assertEqual(self.decide(False, failing, u=unit(active='activating'))[0], 'skip:unit-not-active')
         self.assertEqual(self.decide(False, failing, pending=True)[1]['failures'], 0)
+        self.assertEqual(w.decide({'probe': {'ok': False}}, config=CONFIG, pending=False, unit=unit(), previous=failing, at=AT, uptime=10_000.0, locked=True)[0], 'skip:release-lock-held')
 
     def test_a_new_invocation_resets_failures_but_keeps_restart_history(self):
         previous = {'invocation': 'inv-1', 'failures': 2, 'restarts': [(AT - datetime.timedelta(minutes=10)).isoformat()]}
@@ -69,6 +70,17 @@ class PartsTests(unittest.TestCase):
         def failing(req, timeout): raise urllib.error.HTTPError(req.full_url, 504, 'Gateway', {}, None)
         self.assertEqual(w.probe(3101, 1, failing)['status'], 504)
 
+    def test_release_lock_is_read_from_proc_locks_without_locking(self):
+        import fcntl, os
+        with tempfile.TemporaryDirectory() as d:
+            lock = Path(d) / 'uapt-release.lock'
+            self.assertFalse(w.lock_held(lock, ''))
+            lock.write_text('')
+            info = os.stat(lock); key = f'{os.major(info.st_dev):02x}:{os.minor(info.st_dev):02x}:{info.st_ino}'
+            self.assertFalse(w.lock_held(lock, '1: FLOCK  ADVISORY  WRITE 912 00:1b:1468 0 EOF\n'))
+            self.assertTrue(w.lock_held(lock, f'2: FLOCK  ADVISORY  WRITE 4242 {key} 0 EOF\n'))
+            self.assertTrue(w.lock_held(lock, f'2: -> FLOCK  ADVISORY  WRITE 4243 {key} 0 EOF\n'))
+
     def test_transaction_pending(self):
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / 'transaction.json'
@@ -94,7 +106,7 @@ class MainTests(unittest.TestCase):
         opener = (lambda req, timeout: Response(200)) if ok else (lambda req, timeout: (_ for _ in ()).throw(TimeoutError('timed out')))
         with patch.object(w, 'uptime_seconds', return_value=10_000.0), patch('builtins.print'):
             return w.main(list(extra), run=run, opener=opener, state_path=self.root / 'run/state.json', receipts=self.root / 'receipts',
-                          upstream=self.root / 'upstream.conf', transaction=self.root / 'transaction.json')
+                          upstream=self.root / 'upstream.conf', transaction=self.root / 'transaction.json', release_lock=self.root / 'no-lock')
 
     def test_three_failures_restart_once_with_a_receipt(self):
         for _ in range(3): self.run_main(False)

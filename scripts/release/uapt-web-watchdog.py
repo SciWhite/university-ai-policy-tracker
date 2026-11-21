@@ -3,8 +3,8 @@
 
 Run once a minute by uapt-web-watchdog.timer (oneshot, root). Each run probes the slot that nginx
 routes to (uapt-main-upstream.conf) on a cheap dynamic route over loopback. The slot is restarted
-only after N consecutive probe failures, never while a lifecycle transaction is unfinished or
-within the start-up grace, at most once per cooldown and a few times per day. Every restart (and
+only after N consecutive probe failures, never while a lifecycle transaction is unfinished, the
+release lock is held (a content or program release is running) or within the start-up grace, at most once per cooldown and a few times per day. Every restart (and
 every suppressed one) leaves a receipt with the memory evidence taken just before it. Nothing is
 sent anywhere else.
 
@@ -16,6 +16,7 @@ from pathlib import Path
 
 UPSTREAM = Path('/etc/nginx/snippets/uapt-main-upstream.conf')
 TRANSACTION = Path('/srv/uapt/operations/release-lifecycle/transaction.json')
+RELEASE_LOCK = Path('/run/lock/uapt-release.lock')  # held by the controller and by content-release helpers
 WEB_SLOTS = {3101: 'uapt-mcp-v6-candidate.service', 3102: 'uapt-mcp-v6-r2.service'}
 STATE = Path('/run/uapt-web-watchdog/state.json')
 RECEIPTS = Path('/srv/uapt/operations/web-watchdog')
@@ -55,6 +56,16 @@ def transaction_pending(path=TRANSACTION):
         return False
     except (OSError, ValueError):
         return True  # unreadable journal: do not act
+
+
+def lock_held(path=RELEASE_LOCK, locks_text=None):
+    """Whether any process holds a lock on `path`, read from /proc/locks: the watchdog never takes
+    the release lock itself, because every release action takes it with LOCK_NB and would fail."""
+    try: info = os.stat(path)
+    except FileNotFoundError: return False
+    key = f'{os.major(info.st_dev):02x}:{os.minor(info.st_dev):02x}:{info.st_ino}'
+    text = locks_text if locks_text is not None else Path('/proc/locks').read_text()
+    return any(key in line.split() for line in text.splitlines())
 
 
 def probe(port, timeout, opener=urllib.request.urlopen):
@@ -115,7 +126,7 @@ def append_event(event, receipts):
         stream.write(json.dumps(event, sort_keys=True) + '\n')
 
 
-def decide(state, *, config, pending, unit, previous, at, uptime):
+def decide(state, *, config, pending, unit, previous, at, uptime, locked=False):
     """Pure: what this run does with one probe result already in `state['probe']`.
     Returns (action, new_state). action: ok | skip:<why> | fail | restart | suppressed:<why>."""
     invocation = unit.get('InvocationID', '')
@@ -125,6 +136,8 @@ def decide(state, *, config, pending, unit, previous, at, uptime):
         return 'skip:unit-not-active', {**record, 'failures': 0}
     if pending:
         return 'skip:lifecycle-transaction', {**record, 'failures': 0}
+    if locked:
+        return 'skip:release-lock-held', {**record, 'failures': 0}
     started = int(unit.get('ActiveEnterTimestampMonotonic', '0') or 0) / 1e6
     if started and uptime - started < config['grace']:
         return 'skip:start-up-grace', {**record, 'failures': 0}
@@ -143,7 +156,7 @@ def decide(state, *, config, pending, unit, previous, at, uptime):
     return 'restart', record
 
 
-def main(argv=None, *, run=subprocess.run, opener=urllib.request.urlopen, state_path=STATE, receipts=RECEIPTS, upstream=UPSTREAM, transaction=TRANSACTION):
+def main(argv=None, *, run=subprocess.run, opener=urllib.request.urlopen, state_path=STATE, receipts=RECEIPTS, upstream=UPSTREAM, transaction=TRANSACTION, release_lock=RELEASE_LOCK):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('--dry-run', action='store_true', help='probe and report; never restart or write state')
     parser.add_argument('--timeout', type=float, default=DEFAULTS['timeout'])
@@ -161,7 +174,7 @@ def main(argv=None, *, run=subprocess.run, opener=urllib.request.urlopen, state_
     result = probe(port, config['timeout'], opener)
     previous = load_state(state_path)
     action, record = decide({'probe': result}, config=config, pending=transaction_pending(Path(transaction)), unit=unit,
-                            previous=previous, at=at, uptime=uptime_seconds())
+                            previous=previous, at=at, uptime=uptime_seconds(), locked=lock_held(Path(release_lock)))
     event = {'at': at.isoformat(), 'unit': unit_name, 'port': port, 'invocation': unit.get('InvocationID'), 'probe': result,
              'action': action, 'consecutiveFailures': record.get('failures', 0), 'config': config, 'dryRun': args.dry_run}
     if args.dry_run:
