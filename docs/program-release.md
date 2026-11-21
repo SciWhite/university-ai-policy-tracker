@@ -277,14 +277,22 @@ Since 2026-11-21 a switch drops them at once (`registerContentKeyedCache`,
 reports `releasedOnSwitch` and `process.memoryUsage()`). Re-rendering the expired pages still costs CPU and a transient peak, and a build that was
 already running at the switch can put one old entry back (bounded by the LRU).
 
-**Limits (changed in code 2026-11-21).** On the host they take effect as the owner-approved plan applies them: `MemoryHigh` through a drop-in without a restart, heap and arena settings at the next restart of the slot, the cache size with the next program release.
+**Limits (changed 2026-11-21).** `MemoryHigh`/`MemoryMax` and `candidatePeakMaxBytes` take effect on the host at once (drop-in + `daemon-reload`, no restart); `MALLOC_ARENA_MAX` at the next restart of the slot (normally the next program release); the cache size with the next program release.
 
 | Setting | Before | New | Where |
 |---|---|---|---|
-| `MemoryHigh` | 5.5 GiB | = `MemoryMax` (6 GiB): no throttle zone without swap; the kernel kills at the limit and systemd restarts | managed drop-in (`CANDIDATE_MEMORY_HIGH`) |
-| V8 heap | `--max-old-space-size=4608` | 4096 MiB; the candidate step writes it into `runtime.env` and refuses a cap that leaves less than 2 GiB off-heap under `MemoryMax` | `runtime.env` (`CANDIDATE_HEAP_MIB`) |
+| `MemoryMax` | 6 GiB | **8 GiB** (owner-authorized budget raise 2026-11-21; 12 GiB was rejected: two slots coexist during a program release) | managed drop-in (`CANDIDATE_MEMORY_MAX`) |
+| `MemoryHigh` | 5.5 GiB | = `MemoryMax`: no throttle zone without swap; the kernel kills at the limit and systemd restarts | managed drop-in (`CANDIDATE_MEMORY_HIGH`) |
+| `candidatePeakMaxBytes` (policy) | 4 GiB | 8 GiB, so a candidate's measured peak may use its slot limit; `uaptPeakMaxBytes` stays 16 GiB | `release-lifecycle/policy.json` |
+| V8 heap | `--max-old-space-size=4608` | unchanged 4608 MiB; the candidate step writes it into `runtime.env` and refuses a cap that leaves less than 3 GiB off-heap under `MemoryMax` | `runtime.env` (`CANDIDATE_HEAP_MIB`) |
 | `MALLOC_ARENA_MAX` | unset (8 × cores) | 2 (fewer glibc arenas, less RSS growth) | `runtime.env` |
 | Next ISR memory cache | 2 GiB | 1.5 GiB (~1,000 pages; nginx disk cache and Cloudflare hold the rest) | `apps/web/next.config.ts` (program release) |
+
+Capacity check (2026-11-21): 23.4 GiB RAM, no swap; other services ~3.1 GiB anonymous, MCP
+0.12 GiB. Two slots at 8 GiB + the rest ≈ 20 GiB, leaving ≈ 3.4 GiB above the 2 GiB host
+reserve. The lifecycle gate still checks the real `MemAvailable` and refuses a release that
+does not fit. 8 GiB only buys time: the growth per content switch is fixed by the cache drop
+below (next program release).
 
 A memory kill costs a restart (seconds) and a cold cache (warm-up ~40 min); a throttled
 process costs a full outage until something kills it.
@@ -346,7 +354,7 @@ and the next one.
 | Step | What it does | Receipts in the operation directory |
 |---|---|---|
 | `install --sha <40-hex> --run-id <id>` (`GH_TOKEN` set) or `--zip <file>` | Runs `program-artifact-install.py`, or reuses its receipt when this SHA is already installed. Writes the program basis bound to the current content pointer. Picks the readback scope (7.3). | `release.json` (state), `program-basis.json`, `install.log` |
-| `candidate` | Takes the free fixed web slot. Copies the active slot's env to `runtime.env` (root:uapt 0640) with the slot memory settings (§6.2: `--max-old-space-size=4096` in `NODE_OPTIONS`, `MALLOC_ARENA_MAX=2`); it must not set `PORT`/`HOSTNAME`, allow unsynchronized content or leave less than 2 GiB off-heap under `MemoryMax`. Writes one managed drop-in (env, port, node, `SuccessExitStatus=143`, MemoryHigh = MemoryMax = 6 GiB, `ReadWritePaths` incl. `.next/cache`), named to sort after every existing drop-in and reused on later releases. Restarts the slot. Waits for the journal line `Runtime warm-up finished` of this invocation. Fallback: after `--warmup-min-wait` (10 min), two consecutive probes in which every sampled page answers 200 within `--latency-ok` (5 s). | `dropin.conf`, `candidate-samples.json` (memory every 5 s) |
+| `candidate` | Takes the free fixed web slot. Copies the active slot's env to `runtime.env` (root:uapt 0640) with the slot memory settings (§6.2: `--max-old-space-size=4608` in `NODE_OPTIONS`, `MALLOC_ARENA_MAX=2`); it must not set `PORT`/`HOSTNAME`, allow unsynchronized content or leave less than 3 GiB off-heap under `MemoryMax`. Writes one managed drop-in (env, port, node, `SuccessExitStatus=143`, MemoryHigh = MemoryMax = 8 GiB, `ReadWritePaths` incl. `.next/cache`), named to sort after every existing drop-in and reused on later releases. Restarts the slot. Waits for the journal line `Runtime warm-up finished` of this invocation. Fallback: after `--warmup-min-wait` (10 min), two consecutive probes in which every sampled page answers 200 within `--latency-ok` (5 s). | `dropin.conf`, `candidate-samples.json` (memory every 5 s) |
 | `static` | Union copy of `.next/static` into the `/_next/static/` alias found in the managed snippets. Refuses same-name/different-bytes collisions; keeps old files. | `static-union.json` |
 | `capacity` | Cold request pass (heavy routes + sampled school pages), then 60 s steady. Peaks combine the warm-up samples (startup ≤ 60 s, cold) with this pass. Refuses a restart during measurement or a peak above `candidatePeakMaxBytes`. | `capacity.json` |
 | `routing` | Retargets every `/etc/nginx/snippets/uapt-*.conf` reference to `127.0.0.1:<active port>` to the candidate port and updates the code-release header in those files. Refuses when the active port is still referenced outside the managed snippets, which the controller cannot switch (the R1 launch missed four proxy-common snippets this way). Runs `nginx -T` on a rewritten copy of `/etc/nginx` and refuses if the retiring endpoint is still in that effective config (the controller's `complete` check, run before cutover). The live tree is not touched. Rerunning `routing` voids an existing plan. `--replace <snippet>=<file>` (repeatable) stages reviewed new content for a managed snippet, e.g. the consolidated minimal routing; it goes through the same retarget, journal and recovery. Once all app traffic goes through `upstream uapt_next_backend`, a release only stages `uapt-main-upstream.conf`. To install the minimal routing (§6, on `claude/r1-fixes`), pass its generated file for `uapt-proxy-locations.conf` and the reviewed replacement for `uapt-eea1eb21-detail-routes.conf`. | `routing/` + `routing-files.json` |

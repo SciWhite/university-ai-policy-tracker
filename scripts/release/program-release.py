@@ -44,7 +44,10 @@ SITE_HOST = 'eduaipolicy.org'
 WEB_SLOTS = {'uapt-mcp-v6-candidate.service': 3101, 'uapt-mcp-v6-r2.service': 3102}
 SERVICE_USER = 'uapt'
 DROPIN_SUFFIX = '-uapt-program-release.conf'
-CANDIDATE_MEMORY_MAX = 6442450944  # 6 GiB (raised 2026-11-06, 24 GB host)
+# 8 GiB (owner-authorized raise 2026-11-21, from 6 GiB set 2026-11-06). Two slots coexist during a
+# program release: 2 x 8 GiB + other services (~3.1 GiB anon) + MCP fits the 23.4 GiB host with the
+# 2 GiB host reserve; 12 GiB would not. policy.candidatePeakMaxBytes matches it.
+CANDIDATE_MEMORY_MAX = 8589934592
 # MemoryHigh equals MemoryMax (2026-11-21). This host has no swap, so a MemoryHigh below the real
 # footprint does not reclaim anything: it throttles the process in reclaim (D state). On 2026-11-21
 # the slot answered 504 for 41 minutes at MemoryHigh 5.5 GiB before the memcg OOM killer fired at
@@ -53,8 +56,8 @@ CANDIDATE_MEMORY_HIGH = CANDIDATE_MEMORY_MAX
 # V8 old space plus off-heap memory (RSC Buffers, malloc arenas, code) must fit under MemoryMax:
 # the killed process held 6.2 GB anonymous memory under a 4,608 MiB heap cap, so at least 1.6 GB
 # lived outside the heap. The candidate env gets this heap cap and a small malloc arena count.
-CANDIDATE_HEAP_MIB = 4096
-CANDIDATE_OFFHEAP_RESERVE_MIB = 2048
+CANDIDATE_HEAP_MIB = 4608
+CANDIDATE_OFFHEAP_RESERVE_MIB = 3072
 CANDIDATE_MALLOC_ARENA_MAX = '2'
 HEAP_FLAG = re.compile(r'--max-old-space-size=(\d+)')
 STATE_SCHEMA = 'uapt-program-release-operation-v1'

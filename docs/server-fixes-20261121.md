@@ -51,7 +51,7 @@ memory pressure. Not changed here (follow-up).
 | Area | Change | Tests |
 |---|---|---|
 | Root cause | A content switch drops the replaced release's cache entries (`registerContentKeyedCache`, `releasePreviousContent`); refresh `GET` reports `releasedOnSwitch` and `process.memoryUsage()` | `pnpm test:content-release` |
-| Limits | `MemoryHigh = MemoryMax = 6 GiB`; candidate env gets `--max-old-space-size=4096` + `MALLOC_ARENA_MAX=2`, refuses a heap cap leaving < 2 GiB off-heap; ISR cache 2 → 1.5 GiB | `pnpm test:program-release` |
+| Limits | `MemoryHigh = MemoryMax = 8 GiB` (owner-authorized raise); candidate env keeps `--max-old-space-size=4608`, adds `MALLOC_ARENA_MAX=2`, refuses a heap cap leaving < 3 GiB off-heap; ISR cache 2 → 1.5 GiB | `pnpm test:program-release` |
 | Watchdog | `scripts/release/uapt-web-watchdog.py` + `infra/systemd/uapt-web-watchdog.{service,timer}`: probe the routed slot every 60 s; restart after 3 consecutive failures with memory evidence or 10 without; never during a lifecycle transaction, while the release lock is held or before the warm-up finished; ≤ 1 per 30 min and 3 per day; receipt with memory evidence | `tests/test_web_watchdog.py` |
 | Holds | `retention`/gate enforce content-hold deadlines and clocks; `classify-content-releases`; `record-retention` and the program gate cannot adopt a hold whose `heldSince` is later than on-disk evidence + 24 h; a content hold ends when its release is selected again (new hold after it leaves); per-hold limits by start time (`holdLimitHistory`, a raise without it is refused) | `ContentHoldEnforcementTests` |
 | Early warning | `hold-status [--write]` (read-only, lock-free) + `infra/systemd/uapt-hold-status.{service,timer}` daily → `release-lifecycle/hold-status.json`; 48 h warning | same |
@@ -77,24 +77,32 @@ the reviewed commit to `~/uapt-ops/server-fixes-20261121/` and their SHA256 chec
 go to `/srv/uapt/operations/server-fixes-20261121/` (root). The SHA256 values are in the
 receipt list of the hand-over message.
 
-**A. Stop the throttle zone now (no restart).**
+**A. Stop the throttle zone and raise the slot to 8 GiB (no restart).** The owner authorized a
+memory budget raise on 2026-11-21 (8 or 12 GiB, the coordinating session chose 8: two slots
+coexist during a program release and 2 × 12 GiB does not fit 23.4 GiB without swap).
 ```bash
+OP=/srv/uapt/operations/server-fixes-20261121; sudo mkdir -p $OP
 D=$(ls /etc/systemd/system/uapt-mcp-v6-candidate.service.d/*-uapt-program-release.conf)
-sudo cp -p "$D" /srv/uapt/operations/server-fixes-20261121/dropin-before.conf
-sudo sed -i 's/^MemoryHigh=5905580032$/MemoryHigh=6442450944/' "$D"
-grep -x 'MemoryHigh=6442450944' "$D"                                          # must print the line
+sudo cp -p "$D" $OP/dropin-before.conf
+sudo sed -i -e 's/^MemoryHigh=5905580032$/MemoryHigh=8589934592/' -e 's/^MemoryMax=6442450944$/MemoryMax=8589934592/' "$D"
+grep -x 'MemoryHigh=8589934592' "$D" && grep -x 'MemoryMax=8589934592' "$D"
 sudo systemctl daemon-reload
-cat /sys/fs/cgroup/system.slice/uapt-mcp-v6-candidate.service/memory.high   # 6442450944
-systemctl show uapt-mcp-v6-candidate -p MainPID -p ActiveState               # same PID, active
+cat /sys/fs/cgroup/system.slice/uapt-mcp-v6-candidate.service/memory.{high,max}   # 8589934592 twice
+systemctl show uapt-mcp-v6-candidate -p MainPID -p ActiveState                   # same PID, active
+# capacity policy: a candidate may use its slot limit
+L=/srv/uapt/operations/release-lifecycle
+sudo cp -p $L/policy.json $L/policy.json.before-memory-8g-$(date -u +%Y%m%dT%H%M%SZ)
+# python edit (mode/owner kept): candidatePeakMaxBytes 4294967296 -> 8589934592, plus
+# memoryBudgetChange {at, from, to, authorization (owner words), reason}; uaptPeakMaxBytes unchanged
+sudo /usr/local/libexec/uapt-release-lifecycle.py audit > $OP/audit-after-memory.json
 ```
-Only if `memory.high` still shows 5905580032 after the reload:
-`sudo systemctl set-property --runtime uapt-mcp-v6-candidate.service MemoryHigh=6442450944`
-(a runtime override under `/run/systemd/system.control/`, gone at reboot; record it).
-Rollback: copy the backup back, `daemon-reload`; remove
-`/run/systemd/system.control/uapt-mcp-v6-candidate.service.d/50-MemoryHigh.conf` if it was
-created, `daemon-reload` again.
-Effect: above 6 GiB the kernel kills the process and systemd restarts it within seconds (then
-~40 min warm-up; nginx and Cloudflare keep serving cached HTML).
+Only if `memory.high` still shows the old value after the reload:
+`sudo systemctl set-property --runtime uapt-mcp-v6-candidate.service MemoryHigh=8589934592 MemoryMax=8589934592`
+(runtime override under `/run/systemd/system.control/`, gone at reboot; record it).
+Rollback: copy the drop-in and policy backups back, `daemon-reload` (remove a runtime
+override if one was created). Effect: the process is killed and restarted at 8 GiB instead of
+stalling at 5.5 GiB. Heap stays 4608 MiB; `MALLOC_ARENA_MAX=2` waits for the next restart
+(program release).
 
 **B. Install the watchdog.**
 ```bash
@@ -121,7 +129,7 @@ sudo /usr/local/libexec/uapt-release-lifecycle.py hold-status      # read-only
 ```
 Then write `holds-controller-install-<sha8>.json` (before/after SHA256, commit, time, the
 owner's words). Rollback: copy both backups back. Without step C the next program release
-would write `MemoryHigh` 5.5 GiB again.
+would write `MemoryHigh` 5.5 GiB / `MemoryMax` 6 GiB again.
 
 **D. 14-day limit, content classification, daily early warning.**
 ```bash
@@ -158,5 +166,5 @@ and `hold-clocks.json.before-classify-*` backups (only if nothing else wrote the
 disable and remove the timer.
 
 **Not in this plan (separate go-ahead):** push/merge of the branch; a program release of the
-merged code (cache drop on switch, 1.5 GiB ISR cache, heap 4096 MiB, `MALLOC_ARENA_MAX=2`);
+merged code (cache drop on switch, 1.5 GiB ISR cache, `MALLOC_ARENA_MAX=2`);
 archiving the 9 old content releases; crawler rate limiting.

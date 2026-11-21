@@ -96,6 +96,12 @@ Rules:
 - Every program release runs the `mcp` step between `cutover` and `complete` (trial on 3162, then one MCP
   restart with automatic restore). `plan` refuses if MCP was left on a
   program root that `complete` would hold.
+- Web slot memory (2026-11-21, owner-authorized raise): `MemoryHigh = MemoryMax = 8 GiB`
+  per fixed slot and `candidatePeakMaxBytes` 8 GiB, heap `--max-old-space-size=4608`; never a
+  MemoryHigh below MemoryMax (the host has no swap: it throttles instead of restarting). The
+  program-release tool writes these values; do not raise them further without the owner
+  (`docs/program-release.md` §6.2). `uapt-web-watchdog.timer` restarts the routed slot only
+  after repeated failed probes; its receipts are in `/srv/uapt/operations/web-watchdog/`.
 - nginx is the minimal routing (`docs/program-release.md` §6): static aliases,
   redirects, MCP, cached prefixes and one `location /` → `upstream
   uapt_next_backend`. A cutover only retargets `uapt-main-upstream.conf`. Do not
