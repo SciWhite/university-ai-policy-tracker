@@ -10,13 +10,20 @@ import {changeWindow,utcDay,visibleChangeWindow} from "@/lib/v6-changes-window";
 import {changeCategoryKeys,v6ChangesCopy,v6ChangeTopicTitle,historicalChangeTopicOrder} from "@/lib/v6-changes-copy";
 
 const isPrimary=(key:string)=>primaryChangeCategory(key)||key==="record_maintenance"||key==="page_update";
-type Props={slug:string;recordSha256?:string;locale:SupportedLocale;today:string;initial:SelectedChangeOverview;hasHeldRecords?:boolean;sharedUiText?:Readonly<Record<string,string>>};
+// `today` is only for tests and previews. Pages are rendered once per content release and kept
+// for weeks (docs/render-once.md), so the server never puts the render date into the HTML: it
+// renders every dated change, and the browser applies the 90-day window with its own clock.
+type Props={slug:string;recordSha256?:string;locale:SupportedLocale;today?:string;initial:SelectedChangeOverview;hasHeldRecords?:boolean;sharedUiText?:Readonly<Record<string,string>>};
 type EventState={status:"loading"}|{status:"failed"}|{status:"ready";event:ChangeEvent};
+
+const ALL_DATES={start:"1970-01-01",end:"9999-12-31"};
+const utcToday=()=>new Date().toISOString().slice(0,10);
 
 export function PolicyV6ChangesClient({slug,recordSha256,locale,today,initial,hasHeldRecords=false,sharedUiText={}}:Props){
   const rawCopy=v6ChangesCopy(locale),copy=Object.fromEntries(Object.entries(rawCopy).map(([key,value])=>[key,Array.isArray(value)?value.map(item=>sharedUiText[item]??item):sharedUiText[value]??value])) as typeof rawCopy,root=useRef<HTMLDetailsElement>(null);
   const [overview,setOverview]=useState(initial),[retrying,setRetrying]=useState(false);
-  const [range,setRange]=useState(changeWindow(today)),[preset,setPreset]=useState("90");
+  const [clock,setClock]=useState(today);
+  const [range,setRange]=useState(today?changeWindow(today):ALL_DATES),[preset,setPreset]=useState<"30"|"90"|"custom"|"all">(today?"90":"all");
   const [events,setEvents]=useState<Record<string,EventState>>({});
   const pending=useRef(new Set<string>());
   const selection=overview.status==="ready"?visibleChangeWindow(overview.overview,range.start,range.end):undefined;
@@ -28,6 +35,14 @@ export function PolicyV6ChangesClient({slug,recordSha256,locale,today,initial,ha
   const previewThemes=(keys:string[])=>{const names=[...new Set(orderedThemes(keys.filter(key=>key!=="sources")).map(theme))];return names.slice(0,2).join(" · ")+(names.length>2?" · "+copy.moreThemes.replace("{n}",String(names.length-2)):"");};
   const date=(value:string|null)=>value&&utcDay(value)||copy.unknownDate;
 
+  // Server HTML lists every dated change (no render date in the page); apply the default
+  // 90-day window with the reader's clock once hydrated.
+  useEffect(()=>{
+    if(today)return;
+    const now=utcToday();setClock(now);setPreset("90");setRange(changeWindow(now));
+    // Mount-only: later changes come from the filter buttons.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
   useEffect(()=>{
     const reveal=()=>{if(globalThis.location.hash==="#record-changes"&&root.current){root.current.open=true;requestAnimationFrame(()=>root.current?.querySelector<HTMLElement>("summary")?.focus({preventScroll:true}));}};
     reveal();globalThis.addEventListener("hashchange",reveal);
@@ -75,10 +90,10 @@ export function PolicyV6ChangesClient({slug,recordSha256,locale,today,initial,ha
     return <ChangeEventContent event={event} items={event.items.filter(item=>isPrimary(item.category))} locale={locale} themeOrder={themeOrder} heldHref={hasHeldRecords?"#v6-held-public-claims":undefined}/>;
   }
   return <details id="record-changes" ref={root} className="v6-changes">
-    <summary><span className="v6-changes-title">{copy.title}</span><span className="v6-changes-meta">{preset==="90"?copy.recent:preset==="30"?copy.days30:copy.custom}{selection&&selection.kind!=="invalid"&&selection.kind!=="before"?` · ${copy.count.replace("{n}",String(selection.count))}`:""}</span></summary>
+    <summary><span className="v6-changes-title">{copy.title}</span><span className="v6-changes-meta">{preset==="all"?"":preset==="90"?copy.recent:preset==="30"?copy.days30:copy.custom}{selection&&selection.kind!=="invalid"&&selection.kind!=="before"?`${preset==="all"?"":" · "}${copy.count.replace("{n}",String(selection.count))}`:""}</span></summary>
     <div className="v6-changes-body">
       <p>{copy.scope}</p>
-      <div className="v6-changes-filters" role="group" aria-label={copy.custom}>{([['30',copy.days30],['90',copy.recent],['custom',copy.custom]] as const).map(([value,label])=><button key={value} type="button" aria-pressed={preset===value} onClick={()=>{setPreset(value);if(value!=="custom")setRange(changeWindow(today,Number(value) as 30|90));}}>{label}</button>)}</div>
+      <div className="v6-changes-filters" role="group" aria-label={copy.custom}>{([['30',copy.days30],['90',copy.recent],['custom',copy.custom]] as const).map(([value,label])=><button key={value} type="button" aria-pressed={preset===value} onClick={()=>{setPreset(value);if(value!=="custom")setRange(changeWindow(clock??utcToday(),Number(value) as 30|90));}}>{label}</button>)}</div>
       {preset==="custom"?<div className="v6-changes-dates"><label>{copy.start}<input type="date" value={range.start} onChange={e=>setRange({...range,start:e.target.value})}/></label><label>{copy.end}<input type="date" value={range.end} onChange={e=>setRange({...range,end:e.target.value})}/></label></div>:null}
       <div aria-live="polite" aria-atomic="true" className="v6-changes-status">{overview.status!=="ready"?<><p>{overview.status==="failed"?copy.failed:copy.unavailable}</p>{revision?<button type="button" disabled={retrying} onClick={retryOverview}>{retrying?copy.loading:copy.retry}</button>:null}</>:selection?.kind==="invalid"?<p role="alert">{copy.invalid}</p>:selection?<>{selection.kind==="before"?<p>{copy.before}</p>:null}{selection.kind==="partial"?<p>{copy.partial.replace("{date}",selection.from??"")}</p>:null}{selection.kind==="empty"||selection.kind==="partial"&&!selection.count?<p>{copy.empty}</p>:null}{selection.undated?<p>{copy.undated}</p>:null}</>:null}</div>
       {selection&&selection.kind!=="invalid"&&selection.previews.length?<ol className="v6-changes-timeline">{selection.previews.map(preview=>{const state=events[preview.id];return <li key={preview.id} data-event-id={preview.id}><div className="v6-changes-meta"><time dateTime={preview.publishedAt??undefined}>{date(preview.publishedAt)}</time><span>{preview.categories.filter(isPrimary).map(category).join(" · ")}</span></div><p className="v6-changes-preview">{preview.themes.length?previewThemes(preview.themes):copy.other}<span> · {preview.counts.affected?changeCountsText(preview.counts,locale):preview.categories.filter(isPrimary).map(category).join(" · ")||copy.other}</span></p><details className="v6-changes-event" onToggle={e=>{if(e.currentTarget.open)void loadEvent(preview);}}><summary>{copy.details}</summary><div aria-live="polite">{!state||state.status==="loading"?<p>{copy.loading}</p>:state.status==="failed"?<><p>{copy.detailFailed}</p><button type="button" onClick={()=>void loadEvent(preview)}>{copy.retry}</button><a href={withLocalePrefix(preview.url,locale)}>{copy.full}</a></>:eventDetails(state.event)}</div></details></li>;})}</ol>:null}

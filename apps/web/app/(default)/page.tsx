@@ -28,7 +28,9 @@ import { HomeV6View } from "@/components/home-v6-view";
 import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
 import { tagContent } from "@/lib/content-cache-tags";
 
-export const revalidate = 3600;
+// Render once per content release (docs/render-once.md): a switch expires the
+// `home`/`catalog` tags; there is no timer.
+export const revalidate = false;
 
 const quickQueries = [
   "disclosure",

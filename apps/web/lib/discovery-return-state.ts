@@ -8,7 +8,104 @@ interface Position {
   savedAt: number;
 }
 const prefix = "uapt-discovery-position-v2:",
-  intentKey = "uapt-discovery-return-intent-v2";
+  intentKey = "uapt-discovery-return-intent-v2",
+  returnKey = "uapt-discovery-return-v1";
+/** How long a remembered directory/ranking view stays the "back" target of a school page. */
+const RETURN_TTL_MS = 6 * 60 * 60 * 1000;
+interface ReturnEntry {
+  url: string;
+  target: string;
+  at: number;
+}
+
+/**
+ * School links in the directory and ranking views carry no `?returnTo=`
+ * (2026-11-21 audit, phase 2.1): every variant was a separate origin and edge
+ * cache key for the same page. The view the reader came from is kept in this
+ * tab's sessionStorage instead, keyed by the school page path it opened.
+ */
+export function rememberDiscoveryReturn(returnTo: string, target: string) {
+  const url = safeDiscoveryReturn(returnTo);
+  if (!url) return;
+  let path: string;
+  try {
+    path = new URL(target, location.href).pathname;
+  } catch {
+    return;
+  }
+  try {
+    sessionStorage.setItem(
+      returnKey,
+      JSON.stringify({ url, target: path, at: Date.now() } satisfies ReturnEntry),
+    );
+  } catch {}
+}
+
+/** Props for a school link inside a directory or ranking view (no query string). */
+export function discoveryReturnLinkProps(returnTo: string | undefined) {
+  if (!returnTo) return {};
+  return {
+    "data-discovery-return": "",
+    onClick: (event: { currentTarget: HTMLAnchorElement }) =>
+      rememberDiscoveryReturn(returnTo, event.currentTarget.href),
+  };
+}
+
+/** Pure part of {@link takeDiscoveryReturn}; exported for tests. */
+export function selectDiscoveryReturn(
+  pathname: string,
+  search: string,
+  stored: string | null,
+  now: number,
+): { href: string | null; legacy: string | null; cleanSearch: string } {
+  const params = new URLSearchParams(search);
+  const legacyRaw = params.get("returnTo");
+  params.delete("returnTo");
+  const rest = params.toString();
+  const cleanSearch = rest ? "?" + rest : "";
+  const legacy = safeDiscoveryReturn(legacyRaw);
+  if (legacyRaw !== null) return { href: legacy, legacy, cleanSearch };
+  let entry: ReturnEntry | null = null;
+  try {
+    entry = JSON.parse(stored ?? "null");
+  } catch {}
+  const href =
+    entry &&
+    entry.target === pathname &&
+    Number.isFinite(entry.at) &&
+    now - entry.at >= 0 &&
+    now - entry.at <= RETURN_TTL_MS
+      ? safeDiscoveryReturn(entry.url)
+      : null;
+  return { href, legacy: null, cleanSearch };
+}
+
+/**
+ * The "back to the directory" target for the current school page. Old
+ * `?returnTo=` links (bookmarks, other sites, cached pages) still work: the
+ * value is adopted into sessionStorage and removed from the address bar.
+ */
+export function takeDiscoveryReturn(): string | null {
+  let stored: string | null = null;
+  try {
+    stored = sessionStorage.getItem(returnKey);
+  } catch {}
+  const { href, legacy, cleanSearch } = selectDiscoveryReturn(
+    location.pathname,
+    location.search,
+    stored,
+    Date.now(),
+  );
+  if (cleanSearch !== location.search) {
+    if (legacy) rememberDiscoveryReturn(legacy, location.pathname);
+    window.history.replaceState(
+      window.history.state,
+      "",
+      location.pathname + cleanSearch + location.hash,
+    );
+  }
+  return href;
+}
 export function saveDiscoveryPosition(url: string, element?: Element | null) {
   const safe = safeDiscoveryReturn(url);
   if (!safe) return;

@@ -180,9 +180,11 @@ interface UniversityPageProps {
 }
 
 // Production never reads searchParams here, so any slug is rendered on its
-// first request and then served from the ISR cache.
+// first request and then served from the ISR cache. Render once per content
+// release (docs/render-once.md): the page changes only when a content switch
+// expires its `school:<slug>`/`catalog` tags, never on a timer.
 export const dynamicParams = true;
-export const revalidate = 3600;
+export const revalidate = false;
 
 export function generateStaticParams(): Array<{ slug: string }> {
   return [];

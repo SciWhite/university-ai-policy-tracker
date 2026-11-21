@@ -1,9 +1,10 @@
 import BasePage, { generateMetadata as baseGenerateMetadata } from "../(default)/page";
 import { createLocalizedSurfaceMetadata, createLocalizedSurfacePage } from "@/lib/surface-localization-server";
 
-// Locales render on first request and are then served from the ISR cache.
+// Locales render on first request and are then served from the ISR cache until
+// a content switch expires the `home` tag (docs/render-once.md).
 export const dynamicParams = true;
-export const revalidate = 3600;
+export const revalidate = false;
 export function generateStaticParams(): Array<{ locale: string }> {
   return [];
 }

@@ -111,6 +111,9 @@ Rules:
 - nginx keeps a disk HTML cache in front of the app (`docs/program-release.md` §6.1).
   `cutover` purges it; after a content switch run
   `uapt-program-release.py purge-html-cache --reason "content switch <id>"` first.
+  Render once (`docs/render-once.md`, prepared 2026-11-21, not installed): once the page
+  store is installed, a content switch runs `render-once.py generation` + `refresh` (changed
+  URLs, all locales) instead of purging; only program releases change the epoch.
 - Cloudflare caches public HTML for 2 h (Cache Rule; `/internal`, `/api/`,
   `/mcp`, `/search`, `/_next/static/` excluded). After every content switch or
   program cutover, purge the whole zone (`{"purge_everything": true}`, token

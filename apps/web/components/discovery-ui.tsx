@@ -22,6 +22,7 @@ import { isPublishedV6Slug } from "@/lib/policy-v6-published-gate";
 import type { DiscoveryUniversity } from "@/lib/discovery-types";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { formatDiscoveryLocation } from "@/lib/discovery-location";
+import { discoveryReturnLinkProps } from "@/lib/discovery-return-state";
 
 export function DiscoveryIcon({
   name,
@@ -151,6 +152,7 @@ export function DiscoveryUniversityCard({
   const sharedUiText = useReadingUiText();
   const copy = applyAcceptedReadingUiText(discoveryCopy(locale), sharedUiText);
   const name = getLocalizedInstitutionName(record.slug, record.name, locale);
+  const returnLink = discoveryReturnLinkProps(returnTo);
   return (
     <article
       className={`discovery-university-card${featured ? " discovery-university-card--featured" : ""}`}
@@ -171,7 +173,8 @@ export function DiscoveryUniversityCard({
       <div className="discovery-card-content">
         <h3>
           <Link
-            href={`/universities/${record.slug}${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ""}`}
+            href={`/universities/${record.slug}`}
+            {...returnLink}
             data-analytics-event={
               analyticsSource ? "search_result_record_click" : "nav_click"
             }
@@ -214,7 +217,8 @@ export function DiscoveryUniversityCard({
         <div className="discovery-actions">
           <Link
             className="discovery-outline-link"
-            href={`/universities/${record.slug}${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ""}`}
+            href={`/universities/${record.slug}`}
+            {...returnLink}
             data-analytics-event={
               analyticsSource ? "search_result_record_click" : "nav_click"
             }
@@ -226,7 +230,8 @@ export function DiscoveryUniversityCard({
           </Link>
           <Link
             className={featured ? "discovery-outline-link" : undefined}
-            href={`/universities/${record.slug}${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ""}#claims`}
+            href={`/universities/${record.slug}#claims`}
+            {...returnLink}
           >
             {featured ? <DiscoveryIcon name="document" /> : null}
             {featured ? copy.viewEvidence : copy.evidence}
