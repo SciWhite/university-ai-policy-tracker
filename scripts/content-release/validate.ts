@@ -11,6 +11,7 @@ import { monthlyReportRegistry } from "../../apps/web/lib/monthly-report-registr
 import { getStagedPublicDataset } from "../../apps/web/lib/staged-public-data";
 import { loadCatalog } from "../../apps/mcp/src/catalog";
 import { privateFieldViolations, privatePathViolation } from "./file-set";
+import { checkV6SourceMetadata } from "./v6-source-metadata-coverage";
 import { compareClaimSets, computeClaimSets, detectSchemas, objectRelPath, readManifest, releaseDir, selectTree, sha256, type ClaimSets } from "./lib";
 
 export interface ValidationReport {
@@ -212,6 +213,16 @@ export async function validateContentRelease(contentRoot: string, contentId: str
   if (JSON.stringify(current.summary) !== JSON.stringify(manifest.claimSets)) errors.push("Manifest claimSets do not match the computed Claim ID sets");
   Object.assign(stats, { schools: current.summary.schools, claims: current.summary.claims, held: current.summary.held });
   report.schoolDigests = await schoolDigests();
+
+  // 5b. V6 source metadata: every official source of every V6 school has a record (docs/policy-v6-integration-guide.md).
+  try {
+    const metadata = checkV6SourceMetadata();
+    errors.push(...metadata.errors.slice(0, 50));
+    if (metadata.errors.length > 50) errors.push(`... ${metadata.errors.length - 50} more source-metadata problems`);
+    if (metadata.stats) Object.assign(stats, { sourceMetadataDocumented: metadata.stats.documented, sourceMetadataFetchFailed: metadata.stats.fetchFailed, sourceMetadataLegacyUnprocessed: metadata.stats.legacyUnprocessed });
+  } catch (error) {
+    errors.push(`Source-metadata check failed: ${(error as Error).message}`);
+  }
 
   // 6. MCP catalog: same release identity, and only published (never held) Claim IDs.
   if (manifest.mcp) {

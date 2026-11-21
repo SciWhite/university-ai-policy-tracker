@@ -12,11 +12,15 @@ import type {PublishedV6Package} from '../apps/web/lib/policy-v6-published';
 import type {V6RecordPackage} from '../apps/web/lib/v6-effective-records';
 import type {SourceHashBinding} from '../apps/web/lib/source-hash-contract';
 import {mergeSourceHashRegistry, type SourceHashRegistry} from '../apps/web/lib/source-hash-registry';
+import {v6SourceMetadataCoverage, v6SourceMetadataSchema, type V6SourceMetadata} from '../packages/shared/src/v6-source-metadata';
+import {legacyUnprocessed} from './content-release/v6-source-metadata-coverage';
 
 type Ref = {path: string; sha256: string};
 export interface V6ReleaseInput {
   schemaVersion: 'uapt-v6-release-input-v1';
   pages: Ref; records: Ref; acceptance: Ref; syncLedger: Ref;
+  /** Full data/public-v6-source-metadata.json for this release (all V6 schools, see validate:v6-source-metadata). */
+  sourceMetadata: Ref;
   changeProjection?: Ref; changeOverviews?: Ref;
 }
 const hashPattern = /^[a-f0-9]{64}$/;
@@ -45,9 +49,22 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
   if (input.schemaVersion !== 'uapt-v6-release-input-v1') throw Error('Invalid unified V6 release input');
   const pages = read(input.pages), records = read(input.records), acceptance = read(input.acceptance), ledger = read(input.syncLedger);
   rejectPrivate(pages.value); rejectPrivate(records.value);
+  const sourceMetadata = read(input.sourceMetadata);
+  rejectPrivate(sourceMetadata.value);
+  const parsedMetadata = v6SourceMetadataSchema.safeParse(sourceMetadata.value);
+  if (!parsedMetadata.success) throw Error('Invalid V6 source metadata: ' + parsedMetadata.error.issues.slice(0, 3).map(issue => issue.path.join('.') + ' ' + issue.message).join('; '));
+  const summaries = new Map((records.value as V6RecordPackage).summaries.map(summary => [summary.entity.slug, summary]));
+  const officialUrls: Record<string, string[]> = {};
+  for (const slug of (pages.value as PublishedV6Package).slugs) {
+    const summary = summaries.get(slug);
+    if (!summary) throw Error('V6 school has no record in this release: ' + slug);
+    officialUrls[slug] = summary.officialSources.map(source => source.sourceUrl);
+  }
+  const metadataCoverage = v6SourceMetadataCoverage(parsedMetadata.data as V6SourceMetadata, officialUrls, legacyUnprocessed().schools);
+  if (metadataCoverage.errors.length) throw Error('Incomplete V6 source metadata: ' + metadataCoverage.errors.slice(0, 5).join('; ') + (metadataCoverage.errors.length > 5 ? ` (+${metadataCoverage.errors.length - 5} more)` : ''));
   const coverage = acceptV6Release(pages.value as PublishedV6Package, records.value as V6RecordPackage);
   const a = acceptance.value;
-  if (a.schemaVersion !== 'uapt-v6-packaging-acceptance-v1' || a.decision !== 'accepted_for_packaging' || a.pagesSha256 !== input.pages.sha256 || a.recordsSha256 !== input.records.sha256 || a.syncLedgerSha256 !== input.syncLedger.sha256) throw Error('Acceptance does not bind these exact inputs');
+  if (a.schemaVersion !== 'uapt-v6-packaging-acceptance-v1' || a.decision !== 'accepted_for_packaging' || a.pagesSha256 !== input.pages.sha256 || a.recordsSha256 !== input.records.sha256 || a.syncLedgerSha256 !== input.syncLedger.sha256 || a.sourceMetadataSha256 !== input.sourceMetadata.sha256) throw Error('Acceptance does not bind these exact inputs');
   const bindings = a.sourceHashes as (SourceHashBinding & {unresolvedReason?: string})[];
   if (!Array.isArray(bindings)) throw Error('Explicit source hash kinds required');
   rejectPrivate(bindings);
@@ -111,9 +128,10 @@ export function packV6Release(inputPath: string, inputSha256: string, output: st
     renameSync(next,resolve(target,'public-change-history/current.json'));
   }
   const retainedChanges=eventsEnabled?retainChangeRevisions(resolve('data'),target):undefined;
+  writeFileSync(resolve(target,'public-v6-source-metadata.json'), sourceMetadata.raw, {flag:'wx'});
   const provenance = JSON.stringify(mergedProvenance,null,2)+'\n';
   writeFileSync(resolve(target,'source-hash-provenance.json'), provenance, {flag:'wx'});
-  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, ...coverage, ...(eventsEnabled?{projectionSha256:input.changeProjection!.sha256,overviewSha256:input.changeOverviews!.sha256}:{}), retainedChanges, currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
+  const receipt = {previousSourceHashRegistrySha256:digest(previousProvenance), sourceHashProvenanceSha256: digest(Buffer.from(provenance)), reconstructedIdentically:true, schemaVersion:'uapt-v6-packaging-receipt-v1', inputSha256, pagesSha256:input.pages.sha256, recordsSha256:input.records.sha256, acceptanceSha256:input.acceptance.sha256, syncLedgerSha256:input.syncLedger.sha256, sourceMetadataSha256:input.sourceMetadata.sha256, sourceMetadataCoverage:metadataCoverage.stats, ...coverage, ...(eventsEnabled?{projectionSha256:input.changeProjection!.sha256,overviewSha256:input.changeOverviews!.sha256}:{}), retainedChanges, currentPointerSelected:false, semanticApprovalGranted:false, publicationPerformed:false};
   writeFileSync(resolve(target,'receipt.json'), JSON.stringify(receipt,null,2)+'\n', {flag:'wx'});
   return receipt;
 }

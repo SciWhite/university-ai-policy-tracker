@@ -152,6 +152,12 @@ Hard failures:
    public catalog for the rest): no claim without an ID or evidence, no
    duplicate IDs, every quote non-empty, http(s) source, 64-hex snapshot hash;
    `claimSets` must equal the computed sets.
+   V6 source metadata (`data/public-v6-source-metadata.json`) must be present,
+   match its schema, and cover every official source of every V6 school with a
+   document or a `fetch_failed` gap. The only exemptions are the frozen
+   pairs in `scripts/content-release/v6-source-metadata-legacy-unprocessed.json`.
+   This is the same check as `pnpm validate:v6-source-metadata` and `v6:pack`
+   (`docs/policy-v6-integration-guide.md`, 来源元数据合同).
 6. MCP catalog, when present: declared hash and release, and only published,
    never held, Claim IDs.
 7. Against the parent: a Claim ID may not disappear, a held claim may not be
