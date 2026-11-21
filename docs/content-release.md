@@ -214,7 +214,7 @@ UAPT_CONTENT_REFRESH_TOKEN=... pnpm content:switch --content-root "$UAPT_CONTENT
 - body `{ expectedContentId, tags[], paths[] }`; it re-reads the pointer and
   answers 409 unless this process now serves `expectedContentId`, then calls
   `revalidateTag(tag, { expire: 0 })` and `revalidatePath(path)`;
-- `GET` returns the selected release, sync state and cache sizes;
+- `GET` returns the selected release, sync state, cache sizes, the entries dropped at the last switch (`releasedOnSwitch`) and `process.memoryUsage()`;
 - nginx must also deny it: `location ^~ /api/internal/content/ { return 404; }`.
 
 **Tags.** Routes register tags through `tagContent()`
@@ -246,6 +246,33 @@ from the warm origin.
 On the host, also purge the origin HTML cache:
 `sudo /usr/local/libexec/uapt-program-release.py purge-html-cache --reason "content switch <contentId>"`
 (`docs/program-release.md` §6.1). Purge the origin first, then Cloudflare.
+
+**Warm the changed pages before the purge (since 2026-11-21).** The switch expires the
+changed pages, so their next render is cold (10–110 s on the host). After
+`purge_everything` the first public request goes straight to that render, and Cloudflare
+answers HTTP 524 after about 100 s (batch 3, 2026-11-21: Chalmers and Ghent in the first
+readback). Between the refresh and the purges, warm them over loopback, readback paths first:
+
+```bash
+python3 scripts/content-release/warm-changed-pages.py \
+  --plan /srv/uapt/content/runtime/releases/<id>/switch-<time>.json \
+  --path /universities/<slug> --path /zh/universities/<slug> \
+  --receipt <op>/warm-changed-pages.json
+```
+
+It runs as the deploy user (loopback to the routed slot read from
+`uapt-main-upstream.conf`, no secrets), one request at a time with a 180 s timeout and one
+retry, and exits non-zero if a page still fails or the time budget (`--max-seconds`, 1 h)
+ran out. A page-only update that expires pages itself (an `isr-expiry-request.json`) passes
+that file as another `--plan`. Order: switch/refresh → warm → origin purge → Cloudflare
+purge → public readback. A readback 524 after a warm-up is a finding, not a retry case.
+
+**Long host commands.** Run waits and installs that outlive one SSH call with
+`scripts/release/remote-bg.sh start <op-id> -- <command>` and `remote-bg.sh wait <op-id>`.
+The pid, exit code and log go to the deploy user's `~/uapt-ops/<op-id>/`; commands needing
+root use `sudo` inside the command. Do not write pidfiles into root-owned
+`/srv/uapt/operations/<op>/` (2026-11-21: "Permission denied", the wait loop never got the
+PID and had to be stopped by hand).
 
 **Completion.** Public readback of the changed URLs (L1/L2 in full, L3
 sampled, per `docs/release-acceptance-tiers.md`) happens after the refresh and
@@ -334,6 +361,25 @@ regenerated history package under contract 2.1.0.
   unclassified roots, expired or reset holds (content holds included) or a
   capacity shortfall, and records the references it checked. Never hand-edit
   `checkedAt` (`docs/release-lifecycle.md`, 2026-11-21).
+- Content hold deadlines (`contentReleaseHolds`) are checked by `retention`, the
+  gate and every caller of `validate_retention_receipt` (host activation included),
+  not only by `rescan` (2026-11-21). An expired content hold blocks the next release.
+- **Every installed content release is classified.** After a content `complete`
+  the replaced rollback is neither active nor rollback any more. Register it right
+  away (and any other unregistered release directory):
+  `sudo /usr/local/libexec/uapt-release-lifecycle.py classify-content-releases --reason "complete <id>"`
+  (`--dry-run` first). It adds a bounded hold whose first clock is when the release
+  left selection (`pointer-history.jsonl`), never earlier than the rule's
+  `contentHoldsSince` and never later than now; it changes no existing entry. Once
+  `retentionEnforcement.contentReleaseRoot` is set in the policy, an unregistered
+  content release directory blocks the gate.
+- A content helper that writes its own hold (for the release it installs) uses
+  `heldSince` = now. `record-retention` adopts a hold without a first clock only when
+  its `heldSince` is no later than on-disk evidence (pointer history or directory
+  mtime) + 24 h.
+- Before a release, read `/srv/uapt/operations/release-lifecycle/hold-status.json`
+  (daily, `uapt-hold-status.timer`; or run `hold-status` by hand). `warning` = a hold
+  blocks within 48 h; archive it first.
 
 ## 11. Known limits (R1-b)
 

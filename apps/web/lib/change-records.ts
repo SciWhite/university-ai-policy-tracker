@@ -35,7 +35,7 @@ import {
 } from "./release-diffs";
 import { getPolicyThemeLabel } from "./policy-theme-labels";
 import { getSiteBaseUrl } from "./site-url";
-import { contentCacheKey } from "./content-runtime";
+import { contentCacheKey, registerContentKeyedCache } from "./content-runtime";
 
 export interface DiffPreviewLine {
   newLineNumber?: number;
@@ -219,9 +219,9 @@ export interface EntityChangeHistory {
   releaseRecords: ChangeRecord[];
 }
 
-const aggregateChangeRecordsCache = new BoundedAsyncCache<ChangeRecord[]>(1, 8*1024*1024, 1, 32);
-const allReleaseChangedRecordsCache = new BoundedAsyncCache<ChangeRecord[]>(1, 8*1024*1024, 1, 32);
-const changeIndexCache = new BoundedAsyncCache<ChangeIndexData>(1, 4*1024*1024, 1, 32);
+const aggregateChangeRecordsCache = registerContentKeyedCache(new BoundedAsyncCache<ChangeRecord[]>(1, 8*1024*1024, 1, 32));
+const allReleaseChangedRecordsCache = registerContentKeyedCache(new BoundedAsyncCache<ChangeRecord[]>(1, 8*1024*1024, 1, 32));
+const changeIndexCache = registerContentKeyedCache(new BoundedAsyncCache<ChangeIndexData>(1, 4*1024*1024, 1, 32));
 
 export function changeHistoryCacheStats(){return {aggregate:aggregateChangeRecordsCache.stats(),releases:allReleaseChangedRecordsCache.stats(),index:changeIndexCache.stats()};}
 

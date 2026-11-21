@@ -24,7 +24,7 @@ import { reviewedClaimsFingerprint } from "./index-recovery-basis";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 import { readV6RecordCorrections, readV6RecordCorrectionRevision, v6SummaryAtRevision, type V6RecordPackage } from "./v6-effective-records";
-import { contentCacheKey, contentScoped } from "./content-runtime";
+import { contentCacheKey, contentScoped, registerContentKeyedCache } from "./content-runtime";
 
 export type ReleaseDiffChangeType =
   | "claim_added"
@@ -235,9 +235,9 @@ let knownReleaseManifestsPromise: Promise<PublicReleaseManifest[]> | undefined;
 // Every published release diff fits (40 releases, ~52 MB serialized on 2026-11-06; the
 // largest is ~16 MB). With 8 entries / 24 MB, crawlers walking /changes/<release>/<slug>
 // across releases evicted diffs constantly and filled the build queue (HistoryCapacityError).
-const releaseDiffPromises = new BoundedAsyncCache<ReleaseDiff | undefined>(64, 128*1024*1024, 2, 64);
-const manifestDatasetPromises = new BoundedAsyncCache<Awaited<ReturnType<typeof getStagedPublicDataset>>>(2, 24*1024*1024, 1, 32);
-const privateSourceTextDiffPromises = new BoundedAsyncCache<PrivateSourceTextDiffIndex>(8, 4*1024*1024, 2, 32);
+const releaseDiffPromises = registerContentKeyedCache(new BoundedAsyncCache<ReleaseDiff | undefined>(64, 128*1024*1024, 2, 64));
+const manifestDatasetPromises = registerContentKeyedCache(new BoundedAsyncCache<Awaited<ReturnType<typeof getStagedPublicDataset>>>(2, 24*1024*1024, 1, 32));
+const privateSourceTextDiffPromises = registerContentKeyedCache(new BoundedAsyncCache<PrivateSourceTextDiffIndex>(8, 4*1024*1024, 2, 32));
 
 export function releaseHistoryCacheStats(){return {diffs:releaseDiffPromises.stats(),datasets:manifestDatasetPromises.stats(),sourceDiffs:privateSourceTextDiffPromises.stats()};}
 

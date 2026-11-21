@@ -1,0 +1,128 @@
+import datetime, importlib.util, io, json, tempfile, unittest, urllib.error
+from pathlib import Path
+from unittest.mock import patch
+
+spec = importlib.util.spec_from_file_location('watchdog', Path(__file__).parents[1] / 'scripts/release/uapt-web-watchdog.py')
+w = importlib.util.module_from_spec(spec); spec.loader.exec_module(w)
+
+UPSTREAM = 'upstream uapt_next_backend {\n    server 127.0.0.1:3101 max_fails=3 fail_timeout=15s;\n    keepalive 32;\n}\nserver { listen 127.0.0.1:3199; }\n'
+CONFIG = dict(w.DEFAULTS)
+AT = datetime.datetime(2026, 11, 21, 18, 0, tzinfo=datetime.timezone.utc)
+
+
+def unit(invocation='inv-1', started=100.0, active='active'):
+    return {'ActiveState': active, 'InvocationID': invocation, 'MainPID': '42', 'ActiveEnterTimestampMonotonic': str(int(started * 1e6)), 'ControlGroup': '/system.slice/x.service'}
+
+
+class Response(io.BytesIO):
+    def __init__(self, status=200):
+        super().__init__(b'{}'); self.status = status
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+
+
+class DecideTests(unittest.TestCase):
+    def decide(self, ok, previous=None, *, pending=False, u=None, at=AT, uptime=10_000.0, **config):
+        return w.decide({'probe': {'ok': ok}}, config={**CONFIG, **config}, pending=pending, unit=u or unit(), previous=previous or {}, at=at, uptime=uptime)
+
+    def test_restarts_only_after_consecutive_failures(self):
+        action, state = self.decide(False); self.assertEqual((action, state['failures']), ('fail', 1))
+        action, state = self.decide(False, state); self.assertEqual((action, state['failures']), ('fail', 2))
+        action, state = self.decide(True, state); self.assertEqual((action, state['failures']), ('ok', 0))
+        for _ in range(2): action, state = self.decide(False, state)
+        action, state = self.decide(False, state)
+        self.assertEqual(action, 'restart'); self.assertEqual(state['restarts'], [AT.isoformat()]); self.assertEqual(state['failures'], 0)
+
+    def test_never_acts_during_a_transaction_start_up_or_when_inactive(self):
+        failing = {'invocation': 'inv-1', 'failures': 5}
+        self.assertEqual(self.decide(False, failing, pending=True)[0], 'skip:lifecycle-transaction')
+        self.assertEqual(self.decide(False, failing, uptime=100.0 + 60)[0], 'skip:start-up-grace')
+        self.assertEqual(self.decide(False, failing, u=unit(active='activating'))[0], 'skip:unit-not-active')
+        self.assertEqual(self.decide(False, failing, pending=True)[1]['failures'], 0)
+
+    def test_a_new_invocation_resets_failures_but_keeps_restart_history(self):
+        previous = {'invocation': 'inv-1', 'failures': 2, 'restarts': [(AT - datetime.timedelta(minutes=10)).isoformat()]}
+        action, state = self.decide(False, previous, u=unit('inv-2'))
+        self.assertEqual((action, state['failures'], state['invocation']), ('fail', 1, 'inv-2')); self.assertEqual(len(state['restarts']), 1)
+
+    def test_cooldown_and_daily_limit_suppress_restarts(self):
+        recent = {'invocation': 'inv-1', 'failures': 2, 'restarts': [(AT - datetime.timedelta(minutes=10)).isoformat()]}
+        self.assertEqual(self.decide(False, recent)[0], 'suppressed:cooldown')
+        many = {'invocation': 'inv-1', 'failures': 2, 'restarts': [(AT - datetime.timedelta(hours=h)).isoformat() for h in (2, 5, 9)]}
+        self.assertEqual(self.decide(False, many)[0], 'suppressed:daily-limit')
+        old = {'invocation': 'inv-1', 'failures': 2, 'restarts': [(AT - datetime.timedelta(hours=h)).isoformat() for h in (25, 30, 40)]}
+        action, state = self.decide(False, old)
+        self.assertEqual(action, 'restart'); self.assertEqual(state['restarts'], [AT.isoformat()])
+
+
+class PartsTests(unittest.TestCase):
+    def test_routed_port_reads_the_single_upstream_server(self):
+        self.assertEqual(w.routed_port(UPSTREAM), 3101)
+        with self.assertRaises(ValueError): w.routed_port(UPSTREAM.replace('keepalive', 'server 127.0.0.1:3102;\n keepalive'))
+        with self.assertRaises(ValueError): w.routed_port('server { listen 127.0.0.1:3199; }')
+
+    def test_probe_reports_status_and_errors(self):
+        self.assertTrue(w.probe(3101, 1, lambda req, timeout: Response(200))['ok'])
+        self.assertFalse(w.probe(3101, 1, lambda req, timeout: Response(503))['ok'])
+        def slow(req, timeout): raise TimeoutError('timed out')
+        result = w.probe(3101, 1, slow); self.assertEqual((result['ok'], result['status']), (False, 0)); self.assertIn('TimeoutError', result['error'])
+        def failing(req, timeout): raise urllib.error.HTTPError(req.full_url, 504, 'Gateway', {}, None)
+        self.assertEqual(w.probe(3101, 1, failing)['status'], 504)
+
+    def test_transaction_pending(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / 'transaction.json'
+            self.assertFalse(w.transaction_pending(path))
+            path.write_text(json.dumps({'stage': 'complete'})); self.assertFalse(w.transaction_pending(path))
+            path.write_text(json.dumps({'stage': 'selected_pending_acceptance'})); self.assertTrue(w.transaction_pending(path))
+            path.write_text('{broken'); self.assertTrue(w.transaction_pending(path))
+
+
+class MainTests(unittest.TestCase):
+    def setUp(self):
+        self.td = tempfile.TemporaryDirectory(); self.root = Path(self.td.name)
+        (self.root / 'upstream.conf').write_text(UPSTREAM)
+        self.calls = []
+
+    def tearDown(self): self.td.cleanup()
+
+    def run_main(self, ok, *extra):
+        def run(args, **kwargs):
+            self.calls.append(args)
+            class Done: returncode = 0; stderr = ''; stdout = '\n'.join(f'{k}={v}' for k, v in unit().items())
+            return Done()
+        opener = (lambda req, timeout: Response(200)) if ok else (lambda req, timeout: (_ for _ in ()).throw(TimeoutError('timed out')))
+        with patch.object(w, 'uptime_seconds', return_value=10_000.0), patch('builtins.print'):
+            return w.main(list(extra), run=run, opener=opener, state_path=self.root / 'run/state.json', receipts=self.root / 'receipts',
+                          upstream=self.root / 'upstream.conf', transaction=self.root / 'transaction.json')
+
+    def test_three_failures_restart_once_with_a_receipt(self):
+        for _ in range(3): self.run_main(False)
+        restarts = [c for c in self.calls if c[:2] == ['systemctl', 'restart']]
+        self.assertEqual(restarts, [['systemctl', 'restart', 'uapt-mcp-v6-candidate.service']])
+        receipts = list((self.root / 'receipts').glob('restart-*.json'))
+        self.assertEqual(len(receipts), 1)
+        receipt = json.loads(receipts[0].read_text())
+        self.assertEqual(receipt['action'], 'restart'); self.assertIn('evidence', receipt); self.assertIn('after', receipt)
+        events = [json.loads(l) for l in (self.root / 'receipts/events.jsonl').read_text().splitlines()]
+        self.assertEqual([e['action'] for e in events], ['fail', 'fail', 'restart'])
+        # Within the cooldown further failures only leave receipts.
+        for _ in range(3): self.run_main(False)
+        self.assertEqual(len([c for c in self.calls if c[:2] == ['systemctl', 'restart']]), 1)
+        self.assertEqual(json.loads((self.root / 'run/state.json').read_text())['lastAction'], 'suppressed:cooldown')
+
+    def test_healthy_runs_write_no_events_and_dry_run_writes_nothing(self):
+        self.run_main(True); self.run_main(True)
+        self.assertFalse((self.root / 'receipts/events.jsonl').exists())
+        self.run_main(False, '--dry-run', '--failures', '1')
+        self.assertFalse([c for c in self.calls if c[:2] == ['systemctl', 'restart']])
+        self.assertEqual(json.loads((self.root / 'run/state.json').read_text())['lastAction'], 'ok')
+
+    def test_pending_transaction_blocks_any_restart(self):
+        (self.root / 'transaction.json').write_text(json.dumps({'stage': 'prepared'}))
+        for _ in range(5): self.run_main(False)
+        self.assertFalse([c for c in self.calls if c[:2] == ['systemctl', 'restart']])
+
+
+if __name__ == '__main__':
+    unittest.main()

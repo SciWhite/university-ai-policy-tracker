@@ -128,7 +128,7 @@ sudo /usr/local/libexec/uapt-release-lifecycle.py retention
 
 `record-retention`（以及 `complete` 的时钟登记）现在也会把 `contentReleaseHolds` 记入时钟文件；其余行为不变。
 
-已知范围：`retention`/gate 本身仍不检查 `contentReleaseHolds` 的期限（只有 `rescan` 检查）；内容 release 目录只在 `lastRescan.contentReleaseRoots` 报告登记情况（active/rollback/held/unregistered），不作为拒绝条件。
+已知范围（安装时）：`retention`/gate 本身仍不检查 `contentReleaseHolds` 的期限（只有 `rescan` 检查）；内容 release 目录只在 `lastRescan.contentReleaseRoots` 报告登记情况（active/rollback/held/unregistered），不作为拒绝条件。下一节补齐。
 
 仓库副本对照：开发前 `scripts/uapt-release-lifecycle.py`（main `b59ae274`）与服务器已安装的 `/usr/local/libexec/uapt-release-lifecycle.py` 逐字节一致（sha256 `e6ef581f4953d1170c09cc1d3a9293fd3431a68c90adc165eaba146ed79da9c5`，1488 行）。所谓“较旧较小”的副本是主工作区（停在 2026-09 的 `main`）里一个未跟踪的 14 KB 旧文件，不是仓库版本。
 
@@ -137,3 +137,16 @@ sudo /usr/local/libexec/uapt-release-lifecycle.py retention
 1. 无未完成事务时备份：`cp -p /usr/local/libexec/uapt-release-lifecycle.py /srv/uapt/operations/release-lifecycle/controller-before-rescan-e6ef581f.py`。
 2. `install -o root -g root -m 0755 scripts/uapt-release-lifecycle.py /usr/local/libexec/uapt-release-lifecycle.py`，核对 SHA256 与已审提交一致，在同目录写安装收据 `rescan-controller-install-<sha8>.json`（前后 SHA256、提交、时间、授权原文）。
 3. 只读执行 `retention`，再执行 `rescan --dry-run --reason "install check"`；都通过即完成。回退：用第 1 步备份原样复制回去。
+
+## 2026-11-21 内容 hold 强制检查、内容 release 登记、十四天窗口与提前预警
+
+背景与规则见 [磁盘规范](release-storage-policy.md) 的同名一节。控制器改动：
+
+- `validate_retention_receipt`（`retention`、`record-retention`、`prebuild`/`gate`/`cutover` 的计划校验、内容激活脚本）同时执行 `validate_content_holds_against_clocks`（首次时钟不重置、不延期，已安装目录的 hold 不能从台账删除）、`validate_content_release_holds`（期限、行动、阻断）和 `validate_content_release_classification`（仅当 policy 设置 `retentionEnforcement.contentReleaseRoot` 时：每个已安装内容 release 必须是 contentActive、contentRollback 或 hold）。内容 hold 的未来时间检查改为对照当前时间，因为内容脚本登记 hold 时不刷新 `checkedAt`。
+- `hold_limits`：按 hold 的 `heldSince` 选 `maxHoldHours`/`blockAfterHours`；`holdLimitHistory` 记录变更前的限额，变更前开始的 hold 沿用旧限额。程序 hold 与内容 hold 使用同一规则。
+- 新动作 `classify-content-releases --reason "<原因>" [--dry-run]`（发布锁内；有未完成事务时拒绝）：登记未分类的内容 release，备份 `current-retention.json.before-classify-<UTC>`，原子写入，再登记首次时钟。不刷新 `checkedAt`；收据超过 24 小时时接着执行 `rescan`。
+- 新动作 `hold-status [--write]`：只读、不取发布锁（每日 timer 不会阻塞或被发布阻塞），写 `retentionEnforcement.holdStatusFile`（默认 `release-lifecycle/hold-status.json`）。检查本身失败时写 `status: error` 并以非零退出（只在本机 journal 可见）。
+- `record-retention` 建立首次时钟前核对磁盘证据（`HOLD_ADOPTION_GRACE_HOURS = 24`）；`complete` 建立的新 hold 不受影响（其开始时间就是完成时间）。
+- policy 新键（安装须所有者同意）：`maxHoldHours`/`blockAfterHours` 336、`holdLimitHistory`、`contentReleaseRoot`、`contentHoldsSince`、`holdStatusFile`（可选）、`warningHours`（可选，默认 48）。
+
+测试：`pnpm test:program-release`（`ContentHoldEnforcementTests`）。

@@ -30,7 +30,7 @@ import {
   monthlyReportSlugs,
   type MonthlyReportSlug
 } from "./monthly-report-registry";
-import { contentCacheKey } from "./content-runtime";
+import { contentCacheKey, registerContentKeyedCache } from "./content-runtime";
 
 // The latest report comes from the content release's registry, not the build.
 export { currentMonthlyReportSlug };
@@ -326,7 +326,7 @@ export interface OutreachPackage {
 
 type MonthlyReportFacts = Omit<MonthlyReport, "metricCards" | "geoAnswerBlocks" | "summaryBullets">;
 
-const monthlyReports = new BoundedAsyncCache<MonthlyReportFacts>(12, 12 * 1024 * 1024, 1, 64);
+const monthlyReports = registerContentKeyedCache(new BoundedAsyncCache<MonthlyReportFacts>(12, 12 * 1024 * 1024, 1, 64));
 
 export function monthlyReportCacheStats() {
   return monthlyReports.stats();

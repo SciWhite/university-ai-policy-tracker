@@ -54,7 +54,8 @@ export async function GET(request: Request) {
   const denied = authorize(request);
   if (denied) return denied;
   refreshContentPointer();
-  return respond(200, contentRuntimeStatus());
+  // Heap vs off-heap (external/arrayBuffers) for memory diagnosis (docs/program-release.md §6.2).
+  return respond(200, { ...contentRuntimeStatus(), memory: process.memoryUsage() });
 }
 
 export async function POST(request: Request) {

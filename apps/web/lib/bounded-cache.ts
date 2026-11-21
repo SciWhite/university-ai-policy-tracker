@@ -31,6 +31,12 @@ export class ByteLru<T> {
     if (entry) this.bytes -= entry.bytes;
     this.entries.delete(key);
   }
+  /** Drop every entry whose key matches; returns how many were dropped. */
+  deleteWhere(match: (key: string) => boolean): number {
+    let dropped = 0;
+    for (const key of [...this.entries.keys()]) if (match(key)) { this.delete(key); dropped++; }
+    return dropped;
+  }
   clear(): void { this.entries.clear(); this.bytes = 0; this.evictions = 0; }
   stats() { return {entries: this.entries.size, bytes: this.bytes, evictions: this.evictions, maxEntries: this.maxEntries, maxBytes: this.maxBytes}; }
 }
@@ -76,5 +82,7 @@ export class BoundedAsyncCache<T> {
     this.pending.set(key, promise);
     return promise;
   }
+  /** Drop retained results whose key matches (builds in flight finish normally). */
+  dropWhere(match: (key: string) => boolean): number { return this.values.deleteWhere(match); }
   stats() { return {...this.values.stats(), active: this.active, queued: this.queue.length, pending: this.pending.size}; }
 }

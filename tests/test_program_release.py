@@ -141,18 +141,39 @@ class DropinTests(unittest.TestCase):
         text = pr.render_dropin(release='/srv/uapt/releases/r', env_file='/op/runtime.env', port=3102, node_bin='/opt/node/bin/node')
         for line in ['WorkingDirectory=/srv/uapt/releases/r/apps/web', 'Environment=', 'EnvironmentFile=', 'EnvironmentFile=/op/runtime.env',
                      'Environment=PORT=3102 HOSTNAME=127.0.0.1 NODE_ENV=production', 'ExecStart=', 'ExecStart=/opt/node/bin/node /srv/uapt/releases/r/apps/web/server.js',
-                     'SuccessExitStatus=143', 'MemoryHigh=5905580032', 'MemoryMax=6442450944', 'ReadWritePaths=',
+                     'SuccessExitStatus=143', 'MemoryHigh=6442450944', 'MemoryMax=6442450944', 'ReadWritePaths=',
                      'ReadWritePaths=/srv/uapt/mcp-telemetry /srv/uapt/releases/r/apps/web/.next/cache']:
             self.assertIn(line, text.splitlines())
         lines = text.splitlines()
         self.assertLess(lines.index('EnvironmentFile='), lines.index('EnvironmentFile=/op/runtime.env'))
 
     def test_runtime_env_rules(self):
-        good = {'UAPT_CONTENT_ROOT': '/srv/uapt/content/runtime', 'UAPT_CONTENT_REFRESH_TOKEN': 't'}
+        good = {'UAPT_CONTENT_ROOT': '/srv/uapt/content/runtime', 'UAPT_CONTENT_REFRESH_TOKEN': 't', 'NODE_OPTIONS': '--max-old-space-size=4096'}
         self.assertEqual(pr.check_runtime_env(good, '/srv/uapt/content/runtime'), [])
         problems = pr.check_runtime_env({**good, 'PORT': '3101', 'UAPT_CONTENT_ALLOW_UNSYNCHRONIZED': '1'}, '/srv/uapt/content/runtime')
         self.assertEqual(len(problems), 2)
         self.assertTrue(pr.check_runtime_env({}, '/srv/uapt/content/runtime'))
+        # The heap cap must leave the off-heap reserve under MemoryMax (2026-11-21: 4,608 MiB did not).
+        self.assertIn('off-heap', ' '.join(pr.check_runtime_env({**good, 'NODE_OPTIONS': '--max-old-space-size=4608'}, '/srv/uapt/content/runtime')))
+        self.assertIn('heap cap', ' '.join(pr.check_runtime_env({**good, 'NODE_OPTIONS': ''}, '/srv/uapt/content/runtime')))
+
+    def test_memory_limits_do_not_throttle_below_the_kill_limit(self):
+        self.assertEqual(pr.CANDIDATE_MEMORY_HIGH, pr.CANDIDATE_MEMORY_MAX)
+        self.assertLessEqual(pr.CANDIDATE_HEAP_MIB + pr.CANDIDATE_OFFHEAP_RESERVE_MIB, pr.CANDIDATE_MEMORY_MAX // 2**20)
+
+    def test_copied_env_gets_the_heap_cap_and_keeps_everything_else(self):
+        source = '# comment\nSECRET_TOKEN="s3cr=t"\nNODE_OPTIONS="--enable-source-maps --max-old-space-size=4608"\nexport MALLOC_ARENA_MAX=8\nUAPT_WARMUP_ON_START=1\n'
+        text = pr.runtime_memory_settings(source)
+        env = pr.parse_env(text)
+        self.assertEqual(env['NODE_OPTIONS'], '--enable-source-maps --max-old-space-size=4096')
+        self.assertEqual(env['MALLOC_ARENA_MAX'], '2')
+        self.assertEqual(env['SECRET_TOKEN'], 's3cr=t')
+        self.assertEqual(env['UAPT_WARMUP_ON_START'], '1')
+        self.assertIn('# comment', text.splitlines())
+        self.assertEqual(text.count('MALLOC_ARENA_MAX'), 1)
+        self.assertEqual(pr.parse_env(pr.runtime_memory_settings('A=1\n'))['NODE_OPTIONS'], '--max-old-space-size=4096')
+        with self.assertRaises(pr.Refused):
+            pr.runtime_memory_settings('NODE_OPTIONS="--require $HOME/x.js"\n')
 
     def test_warmup_line_and_latency_fallback(self):
         line = 'Nov 06 node[1]: {"message":"Runtime warm-up finished","requests":3937,"failures":1,"seconds":4852}'

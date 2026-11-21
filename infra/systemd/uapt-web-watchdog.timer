@@ -1,0 +1,12 @@
+# Installed at /etc/systemd/system/uapt-web-watchdog.timer (docs/program-release.md §6.2).
+[Unit]
+Description=Probe the routed UAPT web slot every minute
+
+[Timer]
+OnBootSec=5min
+OnActiveSec=60s
+OnUnitInactiveSec=60s
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target
