@@ -111,6 +111,10 @@ Rules:
 - nginx keeps a disk HTML cache in front of the app (`docs/program-release.md` §6.1).
   `cutover` purges it; after a content switch run
   `uapt-program-release.py purge-html-cache --reason "content switch <id>"` first.
+  Content-language URLs (owner decision 2026-11-22, `docs/render-once.md` §10, not yet
+  released): only en, zh and a school's native language with complete accepted prose have URLs;
+  `/<uiLocale>/…` redirects to the English page with `#ui=<locale>` (a browser UI preference).
+  Never add per-locale page URLs, hreflang or sitemap entries for UI-only locales.
   Render once (`docs/render-once.md`, prepared 2026-11-21, not installed): once the page
   store is installed, a content switch runs `render-once.py generation` + `refresh` (changed
   URLs, all locales) instead of purging; only program releases change the epoch.

@@ -1,3 +1,4 @@
+import { registerClaimCardTexts } from "@/lib/evidence-dedup";
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {currentReferenceClaims} from "@/lib/policy-v6-claim-disposition";
@@ -39,6 +40,8 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
 }) {
   if (view.publication && view.publication.kind !== "v6_presentation_integration") return <PolicyV6BundlePageLegacy university={university} data={data} view={view} locale={locale} relatedUniversities={relatedUniversities} sharedUiText={sharedUiText} />;
   data = bindPolicyV6ReadingEvidence(data, view.claims);
+  // #claims below holds the full texts; topic evidence shows excerpts (lib/evidence-dedup.ts).
+  registerClaimCardTexts(currentReferenceClaims(view));
   const t = (s: string) => sharedUiText[s] ?? translate(s, locale);
   const scopedNames = new Set(view.scopedToolNames ?? []);
   const scopedTools = view.tools.filter((tool) => scopedNames.has(tool.rawToolName));

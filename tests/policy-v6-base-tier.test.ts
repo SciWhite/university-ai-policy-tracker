@@ -75,13 +75,12 @@ test("country language joins the switcher only once accepted content exists", ()
   assert.deepEqual(schoolSwitcherLocales(korea, ["en", "ja"]), ["en", "zh"]);
 });
 
-test("base pages use the declared language list; full V6 pages keep all reading locales", () => {
+test("base pages offer every reading language; a declared native language is a URL, the rest are UI preferences", () => {
   const path = `/universities/${baseSlug}`;
-  assert.deepEqual(pageReadingLocales(path), ["en", "zh"]);
-  assert.deepEqual(pageReadingLocales(path, ["en", "zh", "da"]), ["en", "zh", "da"]);
-  assert.equal(readingLanguageHref(path, "da"), undefined);
+  assert.deepEqual(pageReadingLocales(path), READING_LOCALES);
+  assert.equal(readingLanguageHref(path, "da"), `${path}#ui=da`);
   assert.equal(readingLanguageHref(path, "da", "", "", ["en", "zh", "da"]), `/da${path}`);
-  assert.equal(suggestedReadingLocale(path, ["da-DK"], false, false), undefined);
+  assert.equal(suggestedReadingLocale(path, ["da-DK"], false, false), "da");
   assert.equal(suggestedReadingLocale(path, ["da-DK"], false, false, ["en", "zh", "da"]), "da");
   assert.deepEqual(pageReadingLocales("/universities/harvard-university", ["en"]), READING_LOCALES);
 });

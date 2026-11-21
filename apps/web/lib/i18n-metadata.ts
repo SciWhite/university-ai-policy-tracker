@@ -7,6 +7,7 @@ import {
   withLocalePrefix
 } from "@/lib/i18n";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { CONTENT_LOCALES } from "@/lib/content-locales";
 
 export interface LocalizedAlternatesOptions {
   /**
@@ -28,10 +29,13 @@ export function getLocalizedAlternates(
   }
 
   const canonicalPath = withLocalePrefix(pathname, locale);
-  const alternateLocales =
+  // Only content-language URLs are alternates (en, zh; lib/content-locales.ts): the other
+  // locales are UI preferences on the English page, not URLs.
+  const alternateLocales = (
     options?.restrictLocales && options.restrictLocales.length
       ? options.restrictLocales
-      : SUPPORTED_LOCALES;
+      : SUPPORTED_LOCALES
+  ).filter((supportedLocale) => (CONTENT_LOCALES as readonly string[]).includes(supportedLocale));
   const languages = Object.fromEntries(
     alternateLocales.map((supportedLocale) => [
       supportedLocale,

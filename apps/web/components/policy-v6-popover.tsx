@@ -230,6 +230,7 @@ export function PolicyV6Popover({
           const isOpen = (event.nativeEvent as ToggleEvent).newState === "open";
           change(isOpen);
           if (isOpen) {
+            fillDeferredQuotes(panel.current);
             if (reader) {
               readerBody(panel.current)?.removeAttribute("hidden");
               panel.current?.removeAttribute("data-reader-search-prepared");
@@ -276,4 +277,28 @@ function nodeHeading(panel: HTMLDivElement | null) {
 
 function readerBody(panel: HTMLDivElement | null) {
   return panel?.querySelector<HTMLElement>(".policy-v6-popoverBody");
+}
+
+/**
+ * Excerpted quotations (lib/evidence-dedup.ts) get their full text from the claim card that
+ * holds the canonical copy on this page; without that card the excerpt stays as rendered.
+ */
+export function fillDeferredQuotes(root: ParentNode | null) {
+  root?.querySelectorAll<HTMLElement>("[data-quote-ref]").forEach((ref) => {
+    const key = ref.dataset.quoteRef ?? "";
+    if (!/^[0-9a-f]{8}$/.test(key)) return;
+    const source = document.querySelector<HTMLElement>(`[data-quote-key="${key}"]`);
+    // A quotation ref wraps a <p>; a claim-text ref is the <p> itself.
+    const target = ref.tagName === "P" ? ref : ref.querySelector("p");
+    if (!source || !target) return;
+    const copy = source.cloneNode(true) as HTMLElement;
+    copy.querySelector("footer")?.remove();
+    const text = copy.textContent?.replace(/\s+/g, " ").trim();
+    // Only the text the excerpt was cut from (a 32-bit key can collide).
+    const excerpt = (target.textContent ?? "").replace(/\s+/g, " ").trim().replace(/…$/, "");
+    if (!text || !excerpt || !text.startsWith(excerpt)) return;
+    target.textContent = text;
+    ref.removeAttribute("data-quote-ref");
+    ref.setAttribute("data-quote-filled", "");
+  });
 }

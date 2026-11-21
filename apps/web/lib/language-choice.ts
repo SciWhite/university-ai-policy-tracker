@@ -6,22 +6,26 @@ import {
   withLocalePrefix
 } from "./i18n";
 import { READING_LOCALES, preferredReadingLocale, type ReadingLocale } from "./language-catalog";
-import { isPublishedV6Slug } from "./policy-v6-published-gate";
+import { isContentLocale, isNativeCandidatePath, uiLocaleFragment, uiLocaleFromFragment } from "./content-locales";
 
 const englishOnly: readonly ReadingLocale[] = [DEFAULT_LOCALE];
-// Schools outside the multilingual (full V6) cohort offer English and Simplified
-// Chinese, plus their country or region language once accepted content exists;
-// the page declares that list (see page-reading-locales.ts). Other routes remain
-// reachable but are not offered.
-const untranslatedSchoolLocales: readonly ReadingLocale[] = [DEFAULT_LOCALE, "zh"];
 
-/** Reading availability is separate from the narrower search-index policy. */
+/**
+ * Languages the switcher offers. Content languages (en, zh, and a school's declared native
+ * language) are URLs; every other reading locale is a UI preference on the English page
+ * (lib/content-locales.ts), so all of them are offered on localizable pages.
+ */
 export function pageReadingLocales(pathname: string, declared?: readonly ReadingLocale[]): readonly ReadingLocale[] {
   const path = getPathnameWithoutLocale(pathname).split(/[?#]/, 1)[0];
   if (!isLocalizablePath(path)) return englishOnly;
-  const university = /^\/universities\/([^/]+)\/?$/.exec(path);
-  if (university && !isPublishedV6Slug(university[1])) return declared?.length ? declared : untranslatedSchoolLocales;
   return READING_LOCALES;
+}
+
+/** A content URL exists for this language: en/zh everywhere, a native language where the school page declares it. */
+export function hasContentUrl(pathname: string, target: ReadingLocale, declared?: readonly ReadingLocale[]): boolean {
+  if (isContentLocale(target)) return true;
+  const path = getPathnameWithoutLocale(pathname).split(/[?#]/, 1)[0];
+  return isNativeCandidatePath(path) && Boolean(declared?.includes(target));
 }
 
 /** Keep the same resource, filters and evidence anchor when changing language. */
@@ -35,7 +39,9 @@ export function readingLanguageHref(
   if (!pageReadingLocales(pathname, declared).includes(target)) return undefined;
   const path = getPathnameWithoutLocale(pathname).split(/[?#]/, 1)[0];
   const query = search ? (search.startsWith("?") ? search : `?${search}`) : "";
-  const anchor = hash ? (hash.startsWith("#") ? hash : `#${hash}`) : "";
+  // A UI-only language is a preference on the English page: `#ui=<locale>`.
+  if (!hasContentUrl(pathname, target, declared)) return `${path}${query}${uiLocaleFragment(target)}`;
+  const anchor = hash && !uiLocaleFromFragment(hash) ? (hash.startsWith("#") ? hash : `#${hash}`) : "";
   // The target is already checked against this page's languages, including a
   // base school's declared country language, so prefix it directly.
   return `${withLocalePrefix(path, target)}${query}${anchor}`;

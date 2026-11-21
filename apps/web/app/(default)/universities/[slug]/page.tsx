@@ -39,6 +39,8 @@ import { PolicyReferenceInteractions } from "@/components/policy-reference-inter
 import { hasCurrentIndexRecoveryBasis } from "@/lib/index-recovery-basis";
 import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import { notFound, permanentRedirect } from "next/navigation";
+import { isUiOnlyLocale, uiLocaleFragment } from "@/lib/content-locales";
+import { registerClaimCardTexts } from "@/lib/evidence-dedup";
 import {
   getCatalogUniversities,
   getCatalogUniversityBySlug,
@@ -96,7 +98,7 @@ import { readDevelopmentPreviewQuery } from "@/lib/development-preview-query";
 import { contentTagFor, tagContent } from "@/lib/content-cache-tags";
 import { isPolicyV6BaseTier, POLICY_V6_BASE_TIER_NOTICE } from "@/lib/policy-v6-tier";
 import { schoolSwitcherLocales } from "@/lib/school-languages";
-import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
+import { isNativeSchoolLocale, universityReadingIndexLocales } from "@/lib/university-reading-metadata";
 import { PageReadingLocales } from "@/components/page-reading-locales";
 import { getPublicReadingUiText } from "@/lib/public-ui-translations";
 
@@ -473,14 +475,20 @@ export default async function UniversityPage({
         uiLab
       );
   const structuredDescription = pilotSeoDescription ?? citationReadySummary;
-  const switcherLocales = baseTier
-    // Same decision as robots, hreflang and the sitemap.
-    ? schoolSwitcherLocales(university, await universityReadingIndexLocales(slug, summaryBasis ?? { recordSha256: "", originalEvidenceSha256: "" }, rawPublicSummary).catch(() => []))
-    : undefined;
+  // Same decision as robots, hreflang and the sitemap; it also tells the switcher which
+  // languages are content URLs here (the rest are UI preferences, lib/content-locales.ts).
+  // Every index locale is declared (a full V6 school's registry can name languages other than its
+  // country's), so the switcher links exactly the native pages isNativeSchoolLocale keeps.
+  const indexLocales = await universityReadingIndexLocales(slug, summaryBasis ?? { recordSha256: "", originalEvidenceSha256: "" }, rawPublicSummary).catch(() => []);
+  const switcherLocales = [...new Set([...schoolSwitcherLocales(university, indexLocales), ...indexLocales])];
   const tierNotice = baseTier ? (await getPublicReadingUiText(readingLocale, [POLICY_V6_BASE_TIER_NOTICE]))[POLICY_V6_BASE_TIER_NOTICE] : undefined;
   const structuredDateModified = pilotSlug
     ? (await getIndexRecoveryLastModified(slug)).toISOString()
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
+
+  // The claim cards hold the one full copy of each quotation; topic evidence shows excerpts.
+  const cardClaimGroups = uiLab && reviewedClaims.length ? displayClaimGroups ?? groupReviewedClaimsByClaimType(displayReviewedClaims) : undefined;
+  if (cardClaimGroups) registerClaimCardTexts(cardClaimGroups.flatMap(group => group.claims));
 
   return (
     <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab?'compact-evidence':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined} data-policy-tier={baseTier ? "base" : fullV6 ? "full" : undefined}>
@@ -606,7 +614,7 @@ export default async function UniversityPage({
         <a href={policyScene.sourceUpdate.href} target="_blank" rel="noopener noreferrer">Read the current official source →</a>
       </aside> : null}
       {reviewedClaims.length ? (
-          uiLab ? <PolicyV6ClaimGroups entitySlug={slug} groups={displayClaimGroups ?? groupReviewedClaimsByClaimType(displayReviewedClaims)} locale={locale} sharedUiText={readingUiText} detailed={baseTier} /> : claimGroups ? (
+          uiLab && cardClaimGroups ? <PolicyV6ClaimGroups entitySlug={slug} groups={cardClaimGroups} locale={locale} sharedUiText={readingUiText} detailed={baseTier} /> : claimGroups ? (
             <UniversityClaimGroups
               draftPreview={draftPreview}
               entitySlug={slug}
@@ -721,6 +729,14 @@ async function redirectAliasSlug(
   localeParam: string | undefined
 ): Promise<void> {
   await redirectAliasSlugPage(slug, normalizeLocale(localeParam), (canonicalSlug) => `/universities/${canonicalSlug}`);
+  await redirectUiOnlyLocale(slug, localeParam);
+}
+
+/** /<uiLocale>/universities/<slug> without native content: the English page with that UI (lib/content-locales.ts). */
+async function redirectUiOnlyLocale(slug: string, localeParam: string | undefined): Promise<void> {
+  if (!localeParam || !isUiOnlyLocale(localeParam)) return;
+  if (await isNativeSchoolLocale(slug, localeParam)) return;
+  permanentRedirect(`/universities/${slug}${uiLocaleFragment(localeParam)}`);
 }
 
 function isReviewedClaim(reviewState: string): boolean {

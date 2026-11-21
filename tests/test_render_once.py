@@ -137,13 +137,17 @@ class PurgeSemanticsTests(unittest.TestCase):
         school = [u for u in urls if u.endswith('/universities/mit') or u == '/universities/mit']
         self.assertEqual(len(school), len(ro.READING_LOCALES))
         self.assertIn('/zh-Hant/universities/mit', urls); self.assertNotIn('/en/universities/mit', urls)
-        self.assertEqual(len([u for u in urls if re.fullmatch(r'(?:/[A-Za-z-]+)?/changes', u)]), len(ro.READING_LOCALES))
+        self.assertEqual([u for u in urls if re.fullmatch(r'(?:/[A-Za-z-]+)?/changes', u)], ['/changes', '/zh/changes'])  # content locales only
         self.assertEqual(urls[-3:], ['/', '/zh', '/sitemap.xml'])  # generic pages as listed (warm only)
         self.assertEqual(len(urls), len(set(urls)))
         with self.assertRaises(ValueError): ro.expand_paths([], ['/universities/mit?returnTo=x'])
 
 
 class LocaleDriftTests(unittest.TestCase):
+    def test_content_locales_match_the_app(self):
+        text = (ROOT / 'apps/web/lib/content-locales.ts').read_text()
+        self.assertEqual(tuple(re.findall(r'"([^"]+)"', re.search(r'export const CONTENT_LOCALES = \[(.*?)\]', text).group(1))), ro.CONTENT_LOCALES)
+
     def test_reading_locales_match_the_app(self):
         text = (ROOT / 'apps/web/lib/language-catalog.ts').read_text()
         block = re.search(r'export const READING_LOCALES = \[(.*?)\] as const', text, re.S).group(1)

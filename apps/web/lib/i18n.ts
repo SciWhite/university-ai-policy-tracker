@@ -241,10 +241,10 @@ export function localizeHref(
   if (!isLocalizablePath(href)) return href;
 
   const unprefixed = getPathnameWithoutLocale(href);
-  const university = /^\/universities\/([^/?#]+)\/?(?:[?#]|$)/.exec(unprefixed);
-  // Only the selected university cohort has the additional reading versions.
-  // A localized directory must keep other schools' existing records reachable.
-  if (university && !isSupportedLocale(locale) && !isPublishedV6Slug(university[1])) return unprefixed;
+  // Only content languages have their own URLs (lib/content-locales.ts): a UI-only locale links
+  // to the English page, where the reader's UI preference applies. (A school's native-language
+  // page is reached from the language switcher and hreflang, not from every in-page link.)
+  if (locale !== DEFAULT_LOCALE && locale !== "zh") return unprefixed;
   return withLocalePrefix(unprefixed, locale);
 }
 

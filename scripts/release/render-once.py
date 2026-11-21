@@ -31,6 +31,8 @@ READING_LOCALES = ('en', 'zh', 'fr', 'pl', 'es', 'nl', 'ms', 'ja', 'ko', 'pt', '
                    'ur', 'bn', 'uk', 'el', 'zh-Hant')
 assert all(re.fullmatch(r'[A-Za-z-]+', code) for code in READING_LOCALES)
 _LOCALES = '|'.join(READING_LOCALES)
+# apps/web/lib/content-locales.ts CONTENT_LOCALES: languages with their own content URLs.
+CONTENT_LOCALES = ('en', 'zh')
 # School pages and changes pages (index, per school, per release and school) in every locale.
 # Their render never reads the query string (force-static or readDevelopmentPreviewQuery).
 PAGE_STORE_PATTERN = r'^/(?:(?:' + _LOCALES + r')/)?(?:universities/[a-z0-9]+(?:-[a-z0-9]+)*|changes(?:/[A-Za-z0-9._-]+){0,2})$'
@@ -95,7 +97,10 @@ def expand_paths(first, plan_paths, locales=READING_LOCALES):
         locale, base = strip_locale(path)
         (store if page_store_path(base) else other).append(base if page_store_path(base) else path)
     for base in store:
-        for locale in locales:
+        # School pages: every locale (a UI-only locale is a native page or its redirect, and that
+        # status follows the content). Changes pages exist in the content locales only; their
+        # /<uiLocale>/ URLs are constant 301s (apps/web/lib/content-locales.ts).
+        for locale in (locales if base.startswith('/universities/') else CONTENT_LOCALES):
             if locale != 'en': add(localized(base, locale))
             else: add(base)
     for path in other: add(path)

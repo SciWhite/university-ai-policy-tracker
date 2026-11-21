@@ -578,7 +578,8 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
 }
 
 /** Load only exact allowlisted shared UI strings for the server-rendered shell. */
-export async function getReadingSharedUiText(locale: ReadingLocale, sources: readonly string[], pointer = readingPackageSelection().pointer): Promise<Record<string, string>> {
+/** `sources: "all"` returns every accepted shared entry (browser UI dictionaries, lib/ui-text-dictionary.ts). */
+export async function getReadingSharedUiText(locale: ReadingLocale, sources: readonly string[] | "all", pointer = readingPackageSelection().pointer): Promise<Record<string, string>> {
   if (!pointer || !isReadingLocale(locale)) return {};
   try {
     const root = await realpath(path.dirname(pointer));
@@ -608,7 +609,7 @@ export async function getReadingSharedUiText(locale: ReadingLocale, sources: rea
     const shared = await verifiedJson<ReadingTranslationBundle>(root, sharedRef, 4 * 1024 * 1024);
     const exceptions = sampledContract ? selection.samplingAcceptance?.statusEnumExceptions ?? [] : [];
     validateCachedBundle(shared, { sourceSha256: selection.sourceSha256, locale, slug: "_shared" }, { statusEnumExceptions: exceptions, matchAcceptedBrandVocabulary: sampledContract }, ref.sha256);
-    return acceptedReadingUiText(sources, [shared]);
+    return acceptedReadingUiText(sources === "all" ? Object.values(shared.strings).map(entry => entry.source) : sources, [shared]);
   } catch { return {}; }
 }
 

@@ -209,16 +209,11 @@ test("pilot hreflang declares only reviewed locales; other paths unchanged", () 
     "http://localhost:3000/zh/universities/harvard-university"
   );
 
-  // Non-pilot paths keep the full language set.
+  // Non-pilot paths keep the full content-language set (en, zh; apps/web/lib/content-locales.ts).
   const full = getLocalizedAlternates("/universities/university-of-cambridge", "en");
   assert.deepEqual(Object.keys(full.languages ?? {}), [
     "en",
     "zh",
-    "fr",
-    "pl",
-    "es",
-    "nl",
-    "ms",
     "x-default"
   ]);
 
@@ -254,8 +249,8 @@ test("pilot hreflang declares only reviewed locales; other paths unchanged", () 
     const alternates = getLocalizedAlternates(`/universities/${slug}`, "en");
     assert.deepEqual(
       Object.keys(alternates.languages ?? {}),
-      ["en", "zh", "fr", "pl", "es", "nl", "ms", "x-default"],
-      `${slug} must retain full 7-locale hreflang alternates`
+      ["en", "zh", "x-default"],
+      `${slug} must retain the full content-language hreflang alternates (en, zh)`
     );
   }
 });

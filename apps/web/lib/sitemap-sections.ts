@@ -34,6 +34,7 @@ import { publishedV6RevisionIds } from "@/lib/policy-v6-published";
 import { universityReadingBasis } from "@/lib/university-reading-basis";
 import { universityReadingIndexLocales } from "@/lib/university-reading-metadata";
 import { READING_LOCALES, type ReadingLocale } from "@/lib/language-catalog";
+import { CONTENT_LOCALES } from "@/lib/content-locales";
 
 export interface SitemapEntry {
   url: string;
@@ -47,7 +48,10 @@ export interface SitemapEntry {
 const VISIBLE_NON_DEFAULT_LOCALES = VISIBLE_LOCALES.filter(
   (locale) => locale !== DEFAULT_LOCALE
 );
-const LEGACY_LOCALIZED_STATIC_LOCALES = SUPPORTED_LOCALES.filter(locale => locale !== DEFAULT_LOCALE);
+// Content-language URLs only (lib/content-locales.ts, 2026-11-22): the localized static routes
+// and event pages are listed in Simplified Chinese; the other reading locales list only the
+// native-language school pages that pass universityReadingIndexLocales.
+const LEGACY_LOCALIZED_STATIC_LOCALES = CONTENT_LOCALES.filter(locale => locale !== DEFAULT_LOCALE);
 const READING_SITEMAP_LOCALES = READING_LOCALES.filter(locale => locale !== DEFAULT_READING_LOCALE);
 
 // Release-scoped diff pages are only listed for the most recent releases; older
@@ -170,7 +174,6 @@ async function buildCoreSection(): Promise<SitemapEntry[]> {
 
   return [
     ...staticRoutes(),
-    ...["es", "nl", "ms"].flatMap(locale => ["contact", "support", "privacy", "terms", "mcp"].map(kind => `/${locale}/${kind}`)),
     ...referenceRoutes,
     ...analysisThemeRoutes,
     ...reportCoverageRoutes
