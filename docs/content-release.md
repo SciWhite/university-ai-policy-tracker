@@ -290,6 +290,109 @@ file the switch event binds) and its URLs are this switch plan's `paths`
 intersected with the published sitemap; a first selection has no changed-URL
 list.
 
+### 5.1 One host command: `content-release.py` (since 2026-11-21)
+
+Every content release now goes through one command instead of a per-batch
+`host-release.py` copy (nine existed, each with hard-coded IDs and hashes, and
+they ran the 2026-11-09 `switch.ts` from an op-dir helper that lacked ff3d8218).
+
+**Locally**, after the candidate readback and the candidate sync event:
+
+```bash
+pnpm content:bundle --content-root <local runtime root> --content-id <id> --op-id <op> \
+  --sync-dir <candidate sync dir> --schools <changed-slugs.json> --changes-revision <revision> \
+  --authorization "<the release request, quoted>" --hold-reason "<why the package is installed>" \
+  --out <local op dir>
+```
+
+The bundle holds `bundle.json` (schema `uapt-content-release-bundle-v1`: identity,
+parent and both manifest SHA256s, changed schools, hold reason, quoted request),
+only the objects the parent lacks, the candidate sync package with proofs as a
+hash manifest (§5.3), `isr-expiry-request.json` (school tags plus every
+reading-locale path, for page-only changes) and `changed-urls.json` (§5.2). The
+SHA256 of `bundle.json` is what the owner approves; `activate` refuses any
+other bytes.
+
+**On the host** (upload the op dir to `/srv/uapt/operations/<op>/`, then run each
+phase with an exact-PID wait from the operator machine):
+
+```bash
+python3 scripts/release/content-release.py remote check    --op-id <op> --helper <program-root>/release-helper
+python3 scripts/release/content-release.py remote activate --op-id <op> --helper <program-root>/release-helper --bundle-sha256 <sha>
+# operator: Cloudflare purge_everything, public readback (1 worker), complete sync event into sync/content-complete/
+python3 scripts/release/content-release.py remote complete --op-id <op> --helper <program-root>/release-helper
+```
+
+| Phase | What it does (refuses at the first failed gate, nothing after it runs) |
+|---|---|
+| `check` | read-only: retention gate, helper pin, bundle/basis/event identity, uploaded objects, live pointer is the parent |
+| `activate` | retention + transaction + disk gates; uploaded objects verified; proofs materialized; candidate sync gate; web and MCP serve the parent; objects linked; tree installed (`install-tree.py`); hold registered with its first clock; `switch` from the helper; switch result checked against the bundle; page-only ISR expiry; then `refresh` (§5.2) unless `--no-refresh` |
+| `refresh` | warm changed pages over loopback, then the origin-cache step |
+| `complete` | complete sync gate; web and MCP serve the release; register `contentActive`/`contentRollback`, hold removed; `classify-content-releases` when the policy names `contentReleaseRoot`; governed `rescan` (refreshes the receipt's `checkedAt`, so the next release does not stop at "stale receipt"); `hold-status --write`; proofs dehydrated |
+| `status` | pointer, runtime and MCP readback |
+
+**Helper pin.** The program artifact ships `release-helper/` (bundled
+`switch.mjs` and projection validator, `content-release.py`,
+`policy-inventory.py`, `install-tree.py`, `sync-proof.py`,
+`warm-changed-pages.py`, `HELPER.json` with every file's SHA256;
+`scripts/program-build.mjs`). `content-release.py` refuses to run unless it is
+the `release-helper/` of the program the active web slot runs and every file
+still matches `HELPER.json`. Until the first program release that ships the
+helper, pass `--legacy-helper-reason "<why>"` to run from a repository
+checkout at the deployed SHA; the reason is written into every receipt.
+
+Receipts go to `<op>/receipts/{check,activate,refresh,complete,status}.json`.
+
+### 5.2 Refresh interface (plug-in point for the origin page cache)
+
+`content-release.py refresh --op <op>` is the one place where a content release
+touches page caches on the host. Its input is `changed-urls.json`:
+
+```json
+{ "schemaVersion": "uapt-changed-urls-v1", "contentId": "<id>",
+  "readbackFirst": ["/universities/<slug>", "/zh/universities/<slug>"],
+  "paths": ["/universities/<slug>", "/zh/universities/<slug>", "...every changed path...", "/api/public/v1/universities/<slug>.json"] }
+```
+
+Steps, in order:
+
+1. Warm every path over loopback (`warm-changed-pages.py --plan changed-urls.json`,
+   readback paths first). Receipt `receipts/warm.json`.
+2. Origin cache. If an executable `/usr/local/libexec/uapt-origin-refresh`
+   exists (override with `UAPT_ORIGIN_REFRESH_HOOK`), run
+   `<hook> --changed-urls <file> --content-id <id> --receipt <op>/receipts/origin-refresh.json`
+   and require exit 0. Otherwise fall back to today's whole-cache epoch purge
+   (`uapt-program-release.py purge-html-cache --reason "content switch <id>"`).
+3. Receipt `receipts/refresh.json` (`origin.mode` is `hook` or `epoch-purge`).
+
+The hook contract for phase 2 (targeted nginx refresh instead of an epoch purge):
+read only `changed-urls.json`, refresh exactly those URLs (and their `_rsc`
+variants) in the origin cache, write its own receipt, never touch Cloudflare,
+exit non-zero on any URL it could not refresh. Cloudflare stays an operator
+step after `refresh`, because its token never reaches the host.
+
+### 5.3 Sync proofs as hash manifests
+
+A 2.1.0 `changes` receipt points at a frozen copy of the release's change
+projection under `sync/<phase>/proof/`. That copy used to be 1.16 GB of bytes
+per phase (2.3 GB per release in `/srv/uapt/operations`). Every one of those
+files is already a content-addressed object of the release, so
+`scripts/content-release/sync-proof.py` keeps the contract and the gate as they
+are and changes only the transport:
+
+- `dehydrate <sync-dir>` writes `proof-manifest.json` (`uapt-sync-proof-manifest-v1`:
+  `[path, sha256, bytes]` rows) and removes the proof files. `content:bundle`
+  does this before upload.
+- `materialize <sync-dir> --store <objects> [...]` recreates each file as a hard
+  link to `<store>/<sha[:2]>/<sha>`, verifying size and SHA256. `activate` and
+  `complete` do this before their gate (stores: the op's uploaded objects, then
+  the content root's objects).
+- `verify <sync-dir>` checks that every listed file is present with its hash.
+
+The gate reads the same paths and bytes as before, so contract 2.1.0 is
+unchanged (no version bump). `complete` dehydrates both phases again, so an op
+directory keeps receipts and manifests, not bytes.
+
 ## 6. Rollback
 
 ```bash

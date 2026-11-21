@@ -80,7 +80,7 @@ separately. Read the doc for the kind of change before starting:
 
 | Change | Path | Doc |
 |---|---|---|
-| Policy claims, school pages, reports, translations, history (data only) | Runtime **content release**: `pnpm content:correct` (claim corrections) or `content:build`, then `content:validate`, sync contract 2.1.0 event, `content:switch --sync-ledger` on the host. No build, no restart: web and MCP follow the pointer. | `docs/content-release.md` |
+| Policy claims, school pages, reports, translations, history (data only) | Runtime **content release**: V6 batches through `scripts/v6-pipeline/` (`docs/v6-pipeline.md`); claim corrections `pnpm content:correct`; otherwise `content:build`, then `content:validate`, sync contract 2.1.0 event, `pnpm content:bundle`, and on the host `scripts/release/content-release.py` (`check` → `activate` → `complete`, from the active program's `release-helper/`, exact-PID waits via its `remote` subcommand). Never write a per-batch `host-release.py`. No build, no restart: web and MCP follow the pointer. | `docs/content-release.md` §5.1–5.3 |
 | Code, UI, routes, dependencies, schemas, aliases, marks, UI copy | **Program release**: build once in GitHub Actions (`program-build.yml`, frozen 40-hex SHA, `ubuntu-24.04-arm`), then on the host run `/usr/local/libexec/uapt-program-release.py` steps in order: `install` → `candidate` (warm-up) → `static` → `capacity` → `routing` → `ledger` → `plan` → `cutover` → `mcp` → `complete`. | `docs/program-release.md` §2–§7 |
 
 Rules:
