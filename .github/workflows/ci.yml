@@ -1,0 +1,90 @@
+# Checks on every pull request and on main (2026-11-21 audit: until now no test ran
+# automatically; the only workflow was the manual program build). Read-only: no
+# secrets, no deployment, no server access. docs/audit-20261121/REPORT.md §7 (1.5).
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-tooling:
+    name: Release tooling and pipeline (Python ${{ matrix.python }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        # The production host runs Python 3.10; the host tools must keep working there.
+        python: ["3.10", "3.12"]
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Whitespace errors in the change
+        if: github.event_name == 'pull_request'
+        run: git diff --check "origin/${{ github.base_ref }}...HEAD"
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm --filter @uapt/db generate
+
+      - name: Lifecycle controller, program release, watchdog, content-release host command
+        run: pnpm test:program-release
+
+      - name: Program artifact build helpers and release helper bundle
+        run: pnpm test:program-build
+
+      - name: Content release (format, switch, bundle)
+        run: pnpm test:content-release
+
+      - name: V6 pipeline and its gates
+        run: pnpm test:v6-pipeline
+
+      - name: V6 source metadata
+        run: pnpm test:v6-source-metadata
+
+  web-typecheck:
+    name: Web typecheck
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @uapt/db generate
+      - run: pnpm --filter @uapt/web exec tsc --noEmit --incremental false -p tsconfig.json
