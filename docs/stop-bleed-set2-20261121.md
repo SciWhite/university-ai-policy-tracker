@@ -1,7 +1,13 @@
 # Stop-bleed set 2: nginx and Cloudflare (audit phase 0.2–0.5), 2026-11-21
 
-Status: prepared, **not applied**. Applied only after set 1 (server-fixes §3 A–D) is done and
-verified, and after the owner approves this whole list once. Source: audit report
+Status: owner approved the whole set ("Approve all of set 2", 2026-11-21). **nginx part (0.2,
+0.3, 0.5a) applied 21:38 UTC** — receipt `/srv/uapt/operations/stop-bleed-set2-20261121/RESULT-nginx.json`
+(sha256 `3aef9f4e…`): `nginx -t` ok, one reload, workers at 65,536 open files, a `returnTo`
+variant hits the plain page's cache entry, log lines end with `uc= ut= rt=`. **Cloudflare part
+(0.4, 0.5b, 0.5c) not applied yet:** the only token is purge-only; it waits for
+`CLOUDFLARE_EDGE_CONFIG_TOKEN` (below) or the owner's dashboard clicks. Measurement:
+`scripts/release/origin-log-stats.py`; baseline `baseline-before-20261121T2138Z.json` in the
+same directory. Source: audit report
 `docs/audit-20261121/REPORT.md` §3.3, §6.4, §7 phase 0 (branch `claude/clever-shirley-462b54`).
 
 ## Baseline (measured before any change)
