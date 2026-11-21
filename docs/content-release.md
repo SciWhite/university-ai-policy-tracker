@@ -184,7 +184,7 @@ packages and never infers a removal.
 
 ```bash
 UAPT_CONTENT_REFRESH_TOKEN=... pnpm content:switch --content-root "$UAPT_CONTENT_ROOT" \
-  --content-id <id> --sync-ledger <event.json> --refresh-url http://127.0.0.1:3100
+  --content-id <id> --sync-ledger <event.json> --refresh-url http://127.0.0.1:<active slot port: 3101 or 3102>
 ```
 
 1. Re-validates the release.
@@ -293,7 +293,7 @@ list.
 ## 6. Rollback
 
 ```bash
-pnpm content:switch --content-root "$UAPT_CONTENT_ROOT" --content-id <earlier id> --rollback --refresh-url http://127.0.0.1:3100
+pnpm content:switch --content-root "$UAPT_CONTENT_ROOT" --content-id <earlier id> --rollback --refresh-url http://127.0.0.1:<active slot port: 3101 or 3102>
 ```
 
 The target must appear in `pointer-history.jsonl`; its original sync receipt
@@ -336,7 +336,7 @@ and a restart.
    manifest in the package.
 2. Build, validate and switch. Report, coverage, chart-data, feeds, `/reports`,
    `/api-reference`, `/datasets`, sitemap and `/llms.txt` follow. The old
-   `scripts/activate-september-report.py` is retired.
+   `scripts/activate-september-report.py` was removed (2026-11-21).
 
 ## 9. History basis
 
@@ -406,7 +406,7 @@ A reviewed correction of published claims is a content release: no
 per-correction script, no program build, no web or MCP restart. It replaces
 the hand-written generators of the first post-R1 correction (9 schools,
 2026-11-06) and `scripts/prepare-v6-audit-correction.py` /
-`scripts/finalize-v6-audit-correction.ts`, which remain for history only.
+`scripts/finalize-v6-audit-correction.ts` (removed 2026-11-21; see git history).
 
 ### 12.1 Decisions file (`uapt-content-correction-v1`)
 

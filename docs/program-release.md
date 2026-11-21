@@ -29,8 +29,9 @@ controller (`docs/release-lifecycle.md`) and the disk rules
   render on first request and still 404 unknown slugs.
 - `output: "standalone"` with no content tracing (`outputFileTracingIncludes`
   is empty in program builds; `data/`, `staging/`, `.local/`, docs and tests
-  are excluded). Workspace-mode builds (`scripts/uapt-release.mjs build`) are
-  unchanged.
+  are excluded). The pre-R1 workspace build (`scripts/uapt-release.mjs build`)
+  was removed on 2026-11-21; `pnpm build` is now a local diagnostic
+  `program-build.mjs build --local`.
 
 Measured locally (2026-11-04, macOS arm64, Node 26), from a sparse checkout
 without `data/` and `staging/` as in the workflow: build 13 s (warm Turbopack),

@@ -225,8 +225,7 @@ function run(command, args, options = {}) {
   return (result.stdout ?? "").trim();
 }
 
-// `next build` rewrites the dev type paths in this tracked file (the same
-// transformation scripts/release-build-pipeline.mjs accepts); nothing else may change.
+// `next build` rewrites the dev type paths in this tracked file; nothing else may change.
 const NEXT_ENV = `${appDir}/next-env.d.ts`;
 function onlyNextEnvTransform(rows) {
   if (rows.length !== 1 || rows[0] !== ` M ${NEXT_ENV}`) return false;
@@ -437,6 +436,8 @@ function parse(argv) {
     else if (arg === "--markers-from") options.markersFrom = rest[++i];
     else throw new Error(`Unknown argument ${arg}`);
   }
+  // `pnpm build` (local diagnosis only): --local --sha HEAD builds the current checkout.
+  if (options.local && options.sha === "HEAD") options.sha = run("git", ["rev-parse", "HEAD"]);
   return options;
 }
 

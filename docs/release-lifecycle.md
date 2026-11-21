@@ -10,7 +10,7 @@
 
 ## 发布入口
 
-禁止再运行私有一次性 `cutover.py` 或旧 publisher 绕过门禁。唯一快速切换入口为 `scripts/uapt-release-lifecycle.py`；`scripts/uapt-release.mjs lifecycle ...` 调用相同入口。
+禁止再运行私有一次性 `cutover.py` 或旧 publisher 绕过门禁。唯一快速切换入口为 `scripts/uapt-release-lifecycle.py`（`scripts/uapt-release.mjs lifecycle` 包装已于 2026-11-21 删除）。
 
 1. `audit` 保存运行服务、MemAvailable、实际 UAPT 内存和每个服务的 MemoryHigh/Max。计划绑定 policy 的 SHA256、最长 4 小时有效期、冻结代码/BUILD_ID/内容依据和同步事件，列出固定候选、原 active、保留 active、精确 routingFiles、candidateEndpoints、retiredEndpoints、releaseHelper及其SHA256、静态迁移收据、capacityReceipt、候选及公网语义检查。公网 HTTP 200 本身不能验收。
 2. `gate plan.json` 在服务器检查服务集合、内存容量和 candidate 同步门禁。候选最大并存预算不得超过配置值，扣除尚未占用的候选峰值后仍须满足 hostReserveBytes；UAPT 实际内存加剩余候选预算不得超过 uaptPeakMaxBytes。capacityReceipt 绑定实际 build/startup/cold_history/steady 的 peakBytesByStage 及原始采样依据，门禁拒绝缺阶段或低报预算；预算也必须覆盖 OCI build 峰值；build 前先 gate，再在切换前重新 gate，不能把低负载读数当峰值预算。
