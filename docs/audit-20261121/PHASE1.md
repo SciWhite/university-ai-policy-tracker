@@ -115,7 +115,8 @@
 | `pnpm test:content-release`（含 `content-bundle.test.ts`） | 37 pass |
 | `pnpm test:v6-pipeline` | tsc 通过；16 OK；4 pass |
 | `pnpm test:v6-source-metadata` | 4 OK |
-| `pnpm check` | 见提交前的最终运行记录（`docs/audit-20261121/PHASE1.md` 末尾） |
+| `pnpm check`（全部数据校验、typecheck、lint） | 通过（exit 0） |
+| `git diff --check` | 通过 |
 
 `tests/policy-sync-v2.test.py`（不在任何 npm 脚本中）在基线上就失败：仓库数据已选用 Changes v2，2.0.0 夹具会被 gate 拒绝。这与本阶段无关，记为后续事项。
 
