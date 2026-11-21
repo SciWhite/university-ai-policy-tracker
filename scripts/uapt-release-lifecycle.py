@@ -2,7 +2,7 @@
 """Host-side release admission and crash-recoverable routing selection.
 No build, install, deletion, or policy approval. See docs/release-lifecycle.md.
 """
-import argparse, concurrent.futures, datetime, email.utils, fcntl, hashlib, http.client, json, os, re, shutil, socket, ssl, subprocess, sys, time, urllib.error, urllib.request
+import argparse, concurrent.futures, copy, datetime, email.utils, fcntl, hashlib, http.client, json, os, re, shutil, socket, ssl, subprocess, sys, tempfile, time, urllib.error, urllib.request
 from pathlib import Path
 STATE = Path('/srv/uapt/operations/release-lifecycle')
 POLICY = Path('/srv/uapt/operations/release-lifecycle/policy.json')
@@ -196,7 +196,7 @@ def checkpoint_hold_clocks(receipt, policy):
     if not path: return
     path = Path(path)
     clocks = json.loads(path.read_text())
-    for field, key in [('entries', 'name'), ('temporaryArtifacts', 'path')]:
+    for field, key in [('entries', 'name'), ('temporaryArtifacts', 'path'), ('contentReleaseHolds', 'path')]:
         existing = {e[key]: e for e in clocks.get(field, [])}
         for entry in receipt.get(field, []):
             if entry.get('disposition') != 'held': continue
@@ -215,7 +215,7 @@ def validate_retention_receipt(plan, observed, policy=None):
         raise ValueError('Retention receipt basis mismatch')
     checked = datetime.datetime.fromisoformat(receipt.get('checkedAt', '').replace('Z', '+00:00'))
     age = (datetime.datetime.now(datetime.timezone.utc) - checked).total_seconds()
-    if not -300 <= age <= 86400: raise ValueError('Retention receipt is stale; rescan current dependencies')
+    if not -300 <= age <= 86400: raise ValueError('Retention receipt is stale; rescan current dependencies (uapt-release-lifecycle.py rescan --reason ...)')
     entries = receipt.get('entries', [])
     names = [entry.get('name') for entry in entries]
     if len(names) != len(set(names)) or set(names) != set(observed['disk']['releaseRoots']):
@@ -326,6 +326,236 @@ def apply_retention_update(policy, prepared, plan_id):
     except ValueError as error:
         result['check'] = 'failed: ' + str(error)
     return result
+
+# Governed refresh of a stale retention receipt (docs/release-storage-policy.md,
+# "2026-11-21 受控重新扫描"). Only complete used to write a fresh receipt, so a content
+# release more than 24 h after the last program release was blocked. rescan re-reads
+# the disk and the references and refreshes checkedAt; it never classifies, never
+# changes a hold clock and refuses wherever a release gate would.
+ARCHIVE_RECEIPT_KEYS = ('removalReceipt', 'restoreReceipt', 'archiveVerification')
+HOLD_CLOCK_FIELDS = ('heldSince', 'reviewBefore', 'nextAction')
+
+def archive_evidence(record):
+    """Evidence an archived item may leave the register: a removal/restore/verification receipt
+    (hash-checked where the record carries its SHA256), or an off-host location with a hash or verification."""
+    receipts = [record.get(key) for key in ARCHIVE_RECEIPT_KEYS if record.get(key)]
+    for key in ARCHIVE_RECEIPT_KEYS:
+        expected = record.get(key + 'Sha256')
+        if record.get(key) and expected and (not Path(record[key]).is_file() or digest(record[key]) != expected):
+            raise ValueError('Archive receipt missing or changed: ' + str(record[key]))
+    return bool(receipts) or bool(record.get('location') and (record.get('sha256') or record.get('verification')))
+
+def archive_record_for(register, *, name=None, path=None):
+    """An item leaves the register only with its off-host archive record and evidence."""
+    for record in register.get('archivedOutsideServer', []):
+        if not isinstance(record, dict): continue
+        paths = {record.get('path'), record.get('originalRoot')} - {None, ''}
+        if ((name and record.get('name') == name) or (path and path in paths)) and archive_evidence(record): return record
+    return None
+
+def release_references(observed, root):
+    """Read-only reference inventory of release roots: unit files, running processes, loaded nginx, symlinks."""
+    releases = Path(root) / 'releases'
+    pattern = re.compile(re.escape(str(releases)) + r'/([A-Za-z0-9][A-Za-z0-9._-]*)')
+    found = lambda text: sorted(set(pattern.findall(text or '')))
+    running_units = observed.get('units', {})
+    listed = {line.split()[0] for line in run('systemctl', 'list-units', '--all', '--type=service,timer', 'uapt*', '--no-legend', '--no-pager', '--plain').splitlines() if line.split()}
+    units = {}
+    for unit in sorted(listed | set(running_units)):
+        try: config = run('systemctl', 'cat', unit)
+        except subprocess.CalledProcessError: config = ''
+        details = running_units.get(unit)
+        process = set()
+        if details:
+            process.add(release_root_of(details.get('WorkingDirectory', ''), releases))
+            pid = str(details.get('MainPID', '0'))
+            if pid.isdigit() and pid != '0':
+                for link in ('cwd', 'exe'):
+                    try: process.add(release_root_of(os.readlink(f'/proc/{pid}/{link}').removesuffix(' (deleted)'), releases))
+                    except OSError: pass
+        units[unit] = {'running': bool(details), 'configRoots': found(config), 'processRoots': sorted(process - {None})}
+    nginx = run('nginx', '-T')
+    symlinks = {}
+    for base in (Path(root), releases):
+        try: items = list(os.scandir(base))
+        except OSError: continue
+        for item in items:
+            if not item.is_symlink(): continue
+            target = release_root_of(os.path.realpath(item.path), releases.resolve())
+            if target: symlinks[item.path] = target
+    return {'units': units, 'nginxRoots': found(nginx), 'nginxSha256': hashlib.sha256(nginx.encode()).hexdigest(), 'symlinks': symlinks}
+
+def validate_content_release_holds(receipt, policy, current):
+    """contentReleaseHolds (written by content releases) obey the same bounded hold rules."""
+    guard = policy['retentionEnforcement']
+    checked = retention_timestamp(receipt['checkedAt'], 'checkedAt')
+    limit = datetime.timedelta(hours=guard['maxHoldHours'])
+    for hold in receipt.get('contentReleaseHolds', []):
+        identity = hold.get('path', '')
+        if hold.get('disposition') != 'held' or not hold.get('reason') or not hold.get('nextAction'):
+            raise ValueError('Missing or unbounded hold action/deadline: ' + identity)
+        since = retention_timestamp(hold.get('heldSince'), 'heldSince')
+        deadline = retention_timestamp(hold.get('reviewBefore'), 'reviewBefore')
+        if since > checked + datetime.timedelta(minutes=5) or deadline <= since or deadline - since > limit:
+            raise ValueError('Missing or unbounded hold action/deadline: ' + identity)
+        if retention_blocking_deadline(hold, guard) <= current and not authorized_retention_deferral(receipt, policy, hold, current):
+            raise ValueError('Expired content release hold; archive or resolve before release: ' + identity)
+
+def content_release_roots(register, content_root):
+    """Report only: how each installed content release is registered."""
+    releases = Path(content_root) / 'releases'
+    if not releases.is_dir(): return {}
+    held = {Path(h.get('path', '')).name for h in register.get('contentReleaseHolds', [])}
+    active = (register.get('contentActive') or {}).get('contentId')
+    rollback = (register.get('contentRollback') or {}).get('contentId')
+    return {p.name: 'active' if p.name == active else 'rollback' if p.name == rollback else 'held' if p.name in held else 'unregistered'
+            for p in sorted(releases.iterdir()) if p.is_dir() and not p.is_symlink()}
+
+def rescan_retention(policy, observed, references, reason, at=None, content_root=None):
+    """Pure: the refreshed register and a summary, or ValueError.
+    Every kept entry, temporary artifact and content hold is copied unchanged."""
+    if not isinstance(reason, str) or not reason.strip() or len(reason) > 500:
+        raise ValueError('Rescan needs --reason (1-500 characters)')
+    guard, capacity = policy.get('retentionEnforcement'), policy.get('diskCapacity')
+    if not guard or not capacity or not policy.get('retentionRegister'):
+        raise ValueError('Rescan requires diskCapacity, retentionRegister and retentionEnforcement in policy')
+    register_path = Path(policy['retentionRegister'])
+    if not register_path.is_file(): raise ValueError('Authoritative retention register missing')
+    raw = register_path.read_bytes(); register = json.loads(raw)
+    if register.get('schemaVersion') != 'uapt-release-retention-v1' or not register.get('basisSha256'):
+        raise ValueError('Invalid retention register')
+    at = at or datetime.datetime.now(datetime.timezone.utc)
+    disk = observed.get('disk', {})
+    root = Path(capacity['root']).resolve()
+    if disk.get('root') != str(root): raise ValueError('Disk filesystem/root mismatch')
+    # Capacity: the live floor every release needs (no release peak is added here).
+    if disk.get('freeBytes', 0) < capacity['reserveBytes']: raise ValueError('Insufficient disk reserve; archive before releasing')
+    if disk.get('availableInodes', 0) < capacity['reserveInodes']: raise ValueError('Insufficient free disk inodes')
+    if disk.get('projectBytes', 0) > capacity['projectMaxBytes']: raise ValueError('UAPT disk budget exceeded; archive before releasing')
+    releases = root / 'releases'
+    # Release roots: the rescan never classifies; a vanished root needs its archive record.
+    entries = register.get('entries', [])
+    registered = {e.get('name'): e for e in entries}
+    if len(registered) != len(entries) or None in registered: raise ValueError('Duplicate or unnamed retention entries')
+    on_disk = set(disk.get('releaseRoots', []))
+    unclassified = sorted(on_disk - set(registered))
+    if unclassified:
+        raise ValueError('Unclassified release roots; rescan does not classify, register them through complete or a recorded decision: ' + ', '.join(unclassified))
+    dropped = sorted(set(registered) - on_disk)
+    for name in dropped:
+        if not archive_record_for(register, name=name, path=str(releases / name)):
+            raise ValueError('Registered release root is gone without an off-host archive record: ' + name)
+    # Temporary artifacts: the same rules, keyed by path.
+    temps = register.get('temporaryArtifacts', [])
+    registered_paths = {t.get('path') for t in temps}
+    if len(registered_paths) != len(temps) or None in registered_paths: raise ValueError('Duplicate or unnamed temporary artifacts')
+    present = set(disk.get('temporaryPaths', []))
+    new_temps = sorted(present - registered_paths)
+    if new_temps: raise ValueError('Unclassified or changed temporary artifacts; register them as bounded holds first: ' + ', '.join(new_temps))
+    dropped_temps = sorted(registered_paths - present)
+    for path in dropped_temps:
+        if not archive_record_for(register, path=path): raise ValueError('Registered temporary artifact is gone without an archive record: ' + path)
+    # References: an active root must actually run; a rollback is cold.
+    running = set()
+    for unit in references.get('units', {}).values():
+        if unit.get('running'): running |= set(unit.get('processRoots', []))
+    for entry in entries:
+        if entry['name'] not in on_disk: continue
+        if entry.get('disposition') == 'candidate':
+            # rescan runs only without an unfinished transaction, so a registered candidate is stray.
+            raise ValueError('Candidate release root without an unfinished transaction; complete, recover or register it as a bounded hold: ' + entry['name'])
+        if entry.get('disposition') == 'active' and entry['name'] not in running:
+            raise ValueError('Active release root has no running unit; complete or recover before rescanning: ' + entry['name'])
+        if entry.get('disposition') == 'rollback' and entry['name'] in running:
+            raise ValueError('Rollback release root is used by a running unit; resolve it through complete before rescanning: ' + entry['name'])
+    # First hold clocks (hold-clocks.json) are the fixed source; rescan never creates one for a release
+    # root or temporary artifact (complete/record-retention do), so a hand-written hold cannot be adopted.
+    clock_path = Path(guard.get('clockRegister') or '')
+    if not guard.get('clockRegister') or not clock_path.is_file(): raise ValueError('Immutable hold-clock register missing')
+    clocks = json.loads(clock_path.read_text())
+    if clocks.get('schemaVersion') != 'uapt-retention-clocks-v1': raise ValueError('Invalid hold-clock register')
+    for field, key, kept in [('entries', 'name', on_disk), ('temporaryArtifacts', 'path', present)]:
+        known = {c.get(key) for c in clocks.get(field, [])}
+        for item in register.get(field, []):
+            if item.get('disposition') == 'held' and item[key] in kept and item[key] not in known:
+                raise ValueError('Held item has no first hold clock; rescan does not create one: ' + item[key])
+    # Content release holds: kept while installed; removal needs its archive record. Their first clocks
+    # are recorded on first sight and compared on every later rescan.
+    content_clocks = {c.get('path'): c for c in clocks.get('contentReleaseHolds', [])}
+    holds, dropped_holds, new_content_clocks = [], [], []
+    for hold in register.get('contentReleaseHolds', []):
+        path = hold.get('path', '')
+        clock = content_clocks.get(path)
+        if clock:
+            if retention_timestamp(hold.get('heldSince'), 'heldSince') != retention_timestamp(clock.get('heldSince'), 'registered heldSince') or \
+               retention_timestamp(hold.get('reviewBefore'), 'reviewBefore') > retention_timestamp(clock.get('reviewBefore'), 'registered reviewBefore'):
+                raise ValueError('Hold deadline cannot be renewed by refreshing the receipt: ' + path)
+        elif path: new_content_clocks.append(path)
+        if path and Path(path).exists(): holds.append(hold); continue
+        if not archive_record_for(register, path=path): raise ValueError('Content release hold is gone without an archive record: ' + path)
+        dropped_holds.append(path)
+    held_paths = {h.get('path') for h in register.get('contentReleaseHolds', [])}
+    selected = {(register.get(k) or {}).get('contentId') for k in ('contentActive', 'contentRollback')} - {None}
+    # An installed release leaves its hold only by becoming the active/rollback content or by archive.
+    for path in content_clocks:
+        if path in held_paths or not path or not Path(path).exists() or Path(path).name in selected: continue
+        raise ValueError('Content release hold removed from the register while still installed: ' + path)
+    receipt = copy.deepcopy(register)
+    receipt['entries'] = [copy.deepcopy(e) for e in entries if e['name'] in on_disk]
+    receipt['temporaryArtifacts'] = [copy.deepcopy(t) for t in temps if t['path'] in present]
+    if 'contentReleaseHolds' in register: receipt['contentReleaseHolds'] = copy.deepcopy(holds)
+    stamp = at.isoformat()
+    receipt.update(checkedAt=stamp, registerUpdatedBy='uapt-release-lifecycle rescan', lastRescan={
+        'at': stamp, 'reason': reason.strip(), 'previousCheckedAt': register.get('checkedAt'),
+        'previousRegisterUpdatedBy': register.get('registerUpdatedBy'), 'previousRegisterSha256': hashlib.sha256(raw).hexdigest(),
+        'droppedEntries': dropped, 'droppedTemporaryArtifacts': dropped_temps, 'droppedContentReleaseHolds': dropped_holds,
+        'newContentHoldClocks': new_content_clocks,
+        'runningReleaseRoots': sorted(running), 'references': references,
+        'disk': {k: disk.get(k) for k in ('freeBytes', 'availableInodes', 'projectBytes', 'releaseRoots', 'temporaryPaths')},
+        'contentReleaseRoots': content_release_roots(register, content_root or root / 'content/runtime')})
+    # Self-check: nothing kept may differ from the register, hold clocks above all.
+    for field, key in [('entries', 'name'), ('temporaryArtifacts', 'path'), ('contentReleaseHolds', 'path')]:
+        before = {e[key]: e for e in register.get(field, [])}
+        for item in receipt.get(field, []):
+            if json.dumps(item, sort_keys=True) != json.dumps(before[item[key]], sort_keys=True):
+                raise ValueError('Rescan changed a registered item: ' + item[key])
+    validate_content_release_holds(receipt, policy, at)
+    held = [{'id': e.get('name') or e.get('path'), **{f: e.get(f) for f in HOLD_CLOCK_FIELDS},
+             'blockingDeadline': retention_blocking_deadline(e, guard).isoformat()}
+            for e in receipt['entries'] + receipt['temporaryArtifacts'] + receipt.get('contentReleaseHolds', []) if e.get('disposition') == 'held']
+    summary = {'checkedAt': stamp, 'previousCheckedAt': register.get('checkedAt'), 'basisSha256': receipt['basisSha256'],
+               'dispositions': {e['name']: e.get('disposition') for e in receipt['entries']}, 'holds': held,
+               'dropped': {'entries': dropped, 'temporaryArtifacts': dropped_temps, 'contentReleaseHolds': dropped_holds},
+               'newContentHoldClocks': new_content_clocks,
+               'runningReleaseRoots': sorted(running), 'contentReleaseRoots': receipt['lastRescan']['contentReleaseRoots']}
+    return receipt, summary
+
+def rescan(policy, reason, dry_run=False):
+    """Under the release lock: refresh the register only after the same checks the gates run."""
+    pending = STATE / 'transaction.json'
+    if pending.exists() and json.loads(pending.read_text()).get('stage') not in ['complete', 'rolled_back']:
+        raise ValueError('Unfinished deployment: recover before rescanning retention')
+    observed = audit()
+    references = release_references(observed, policy.get('diskCapacity', {}).get('root', '/srv/uapt'))
+    receipt, summary = rescan_retention(policy, observed, references, reason)
+    register = Path(policy['retentionRegister'])
+    # Validate the proposal against the current register and hold clocks before anything is replaced.
+    with tempfile.TemporaryDirectory(prefix='uapt-retention-rescan-') as scratch:
+        proposal = Path(scratch) / register.name
+        write(proposal, receipt)
+        validate_retention_receipt({'basis': {'sha256': receipt['basisSha256']}, 'retentionReceipt': {'path': str(proposal), 'sha256': digest(proposal)}}, observed, policy)
+        if dry_run: return {**summary, 'dryRun': True, 'check': 'passed'}
+        if digest(register) != receipt['lastRescan']['previousRegisterSha256']: raise ValueError('Retention register changed during rescan; run it again')
+        backup = register.with_name(register.name + '.before-rescan-' + datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
+        if backup.exists(): raise ValueError('Rescan backup already exists; run it again: ' + str(backup))
+        shutil.copy2(register, backup)
+        write(register, receipt)
+    try:
+        checkpoint_hold_clocks(receipt, policy)
+        validate_retention_receipt({'basis': {'sha256': receipt['basisSha256']}, 'retentionReceipt': {'path': str(register), 'sha256': digest(register)}}, audit(), policy)
+    except ValueError as error:
+        raise ValueError(f'Register written (previous copy {backup}) but the post-write check failed: {error}') from error
+    return {**summary, 'path': str(register), 'sha256': digest(register), 'backup': str(backup), 'check': 'passed'}
 
 def validate_r4_reuse_authorization(plan, policy):
     """One operator-authorized exception retaining the existing 3163 dependency."""
@@ -1381,12 +1611,22 @@ def recover(tx, reload_nginx=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['audit', 'retention', 'record-retention', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire', 'static-migrate'])
-    parser.add_argument('plan', nargs='?'); parser.add_argument('--boot', action='store_true'); parser.add_argument('--completion-ledger'); args = parser.parse_args()
+    parser.add_argument('action', choices=['audit', 'retention', 'record-retention', 'rescan', 'prebuild', 'gate', 'cutover', 'complete', 'recover', 'expire', 'static-migrate'])
+    parser.add_argument('plan', nargs='?'); parser.add_argument('--boot', action='store_true'); parser.add_argument('--completion-ledger')
+    parser.add_argument('--reason', help='rescan: why the receipt is refreshed (recorded in lastRescan)'); parser.add_argument('--dry-run', action='store_true', help='rescan: run every check, write nothing')
+    args = parser.parse_args()
     LOCK.parent.mkdir(parents=True, exist_ok=True)
     with LOCK.open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if args.action == 'audit': print(json.dumps(audit(), indent=2)); return
+        if args.action == 'rescan':
+            result = rescan(json.loads(POLICY.read_text()), args.reason, dry_run=args.dry_run)
+            current = datetime.datetime.now(datetime.timezone.utc)
+            for hold in result['holds']:
+                if retention_timestamp(hold['reviewBefore'], 'reviewBefore') <= current:
+                    print('Review overdue (release handling window applies): ' + hold['id'] + '; blocking deadline=' + hold['blockingDeadline'])
+            print(json.dumps(result, indent=2))
+            print('Rescan dry run passed; nothing written' if args.dry_run else 'Rescan recorded; hold clocks unchanged; run retention next'); return
         if args.action in ['retention', 'record-retention']:
             policy = json.loads(POLICY.read_text()); register = Path(policy['retentionRegister'])
             receipt = json.loads(register.read_text())

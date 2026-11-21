@@ -325,6 +325,15 @@ regenerated history package under contract 2.1.0.
   directory removes only links; an object may be deleted only when no
   retained manifest lists it, by exact whitelist, after off-host archive and
   hash check. No age-based deletion.
+- A content release does not write the retention receipt, and the host
+  activation step (`validate_retention_receipt`) refuses one older than 24 h. When the last program release is more
+  than 24 h old, refresh it first on the host with
+  `sudo /usr/local/libexec/uapt-release-lifecycle.py rescan --reason "content release <id>"`
+  (try `--dry-run` first), then `retention`. The rescan keeps every hold clock,
+  records each content hold's first clock in `hold-clocks.json`, refuses on
+  unclassified roots, expired or reset holds (content holds included) or a
+  capacity shortfall, and records the references it checked. Never hand-edit
+  `checkedAt` (`docs/release-lifecycle.md`, 2026-11-21).
 
 ## 11. Known limits (R1-b)
 

@@ -78,3 +78,14 @@
 本轮用户已授权常规资源配置调整：根文件系统保留12GiB，main角色包体上限12GiB，UAPT项目上限仍为72GiB，free inode要求保持当前policy值。生产policy调整及原配置的恢复依据由独立核验收据记录，不通过续期旧临时容量租约实现。其他角色上限、原件和held时钟不因本次调整自动改变。
 
 包体上限与七阶段累计额外峰值分别核对。main上限12GiB不是已经占用或必将新增12GiB，也不能替代源码、依赖、构建输出、候选运行缓存、静态复制和归档暂存的真实估算。下载、依赖和构建开始前仍按同一冻结预算检查实时可用字节、inode及项目总量；候选运行期间保留实际采样，不删除运行缓存来掩盖峰值。失败构建、日志和恢复材料须准确登记，不能按新上限自动清理。构建和候选内存预算的分离规则见`docs/release-lifecycle.md`本轮固定profile。
+
+## 2026-11-21 受控重新扫描（rescan）
+
+内容发布不写保留收据，`record-retention` 又拒绝陈旧收据；因此新增控制器动作 `uapt-release-lifecycle.py rescan --reason "<原因>"`（可先 `--dry-run`），细节见 [release-lifecycle.md](release-lifecycle.md) 的“2026-11-21 retention rescan”。它是刷新 24 小时引用清单的唯一受控方式，取代手工改写 `checkedAt`：
+
+- 重新读取实际 release 根目录、临时材料、实时磁盘/inode/项目总量，并只读复查 unit 文件、运行进程、完整 Nginx 与符号链接引用，结果写入收据 `lastRescan`。
+- 不分类、不改期：现有 entry、临时材料和 `contentReleaseHolds` 原样保留，`heldSince`、`reviewBefore`、`nextAction` 逐字节不变；新收据先对照现有登记与 `hold-clocks.json` 校验，再备份并原子替换。
+- 拒绝条件与发布门禁一致：未分类材料、无归档凭据的消失项、超过阻断期限的 hold（含内容 release hold）、缺首次时钟的 held、残留 candidate、容量不足、active 无运行进程、rollback 仍在运行、未完成事务。拒绝时不写任何文件。
+- 内容 release hold 的首次时钟同样记入 `hold-clocks.json`（按 path），之后不能被重置、延期或在目录仍在时从台账删除。
+
+上文“修改 checkedAt … 不能消除欠账”继续有效：rescan 只证明清单在 24 小时内重新核对过，过期 hold 仍阻止发布，须归档或解决依赖后才能退出台账。

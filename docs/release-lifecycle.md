@@ -103,3 +103,37 @@ capacity收据仍保留实际`build/startup/cold_history/steady`全部原始峰�
 ## 2026-11-06 complete 自动更新保留登记
 
 `complete` 在退役任何旧 unit 之前计算新的保留登记（存在未分类 release root 时直接拒绝，旧槽位继续运行），在写入 policy 之后写入 `retentionRegister`，并在同目录保留带时间戳的备份。新 release root 记为 `active`（角色取自 `plan.diskBudget.role`）；被退役 unit 的 release root 记为它的 `rollback`；同一角色更早的 `rollback` 转为 `held`：`heldSince` 为完成时间，`reviewBefore` 为 167 小时后（不超过 `maxHoldHours`），并写明具体 `nextAction`。已有的首次暂留时钟原样沿用，不重置、不延长；其他角色的 rollback 和已有 held 不变。新暂留写入 `hold-clocks.json`，随后对结果执行只读 retention 检查，结果记在 `transaction.json` 的 `retentionRegister`。其余门禁不变。一键发布命令与安装步骤见 [程序发布](program-release.md) 第 7 节。
+
+## 2026-11-21 retention `rescan`（陈旧收据的受控刷新）
+
+问题：只有程序发布的 `complete` 会写新的保留收据；内容发布不会。`record-retention` 先校验现有收据，收据超过 24 小时即拒绝（“Retention receipt is stale”），所以上次程序发布 24 小时之后的内容发布会被阻断（2026-11-21 batch-3 当时靠手工原子改写 `checkedAt` 解除）。
+
+新增动作（同一发布锁内执行）：
+
+```bash
+sudo /usr/local/libexec/uapt-release-lifecycle.py rescan --dry-run --reason "content release <id>"
+sudo /usr/local/libexec/uapt-release-lifecycle.py rescan --reason "content release <id>"
+sudo /usr/local/libexec/uapt-release-lifecycle.py retention
+```
+
+`rescan` 从 `audit()` 重新读取实际 release 根目录、临时材料和磁盘余量，并只读复查引用：systemd 已加载的全部 `uapt*` unit（含未运行的；未加载的已禁用 unit 文件不在内）、运行进程的 WorkingDirectory/cwd、`nginx -T`、`/srv/uapt` 与 `releases/` 下的符号链接。结果写进收据 `lastRescan`（原因、上次 checkedAt、上次登记 SHA256、引用、磁盘、内容 release 目录登记情况）。它不分类，也不改任何暂留时钟：
+
+- 每个现有 entry、临时材料和 `contentReleaseHolds` 原样复制；`heldSince`、`reviewBefore`、`nextAction` 逐字节不变，写入前自检。新收据先在临时目录用 `validate_retention_receipt`（即 `validate_retention_deadlines` 对照现有登记和 `hold-clocks.json`）校验，通过后才备份（`current-retention.json.before-rescan-<UTC>`）并原子替换，然后执行 `checkpoint_hold_clocks`。只更新 `checkedAt`、`registerUpdatedBy` 和 `lastRescan`。
+- 首次暂留时钟：release 根目录和临时材料的 held 项必须已在 `hold-clocks.json` 中（由 `complete`/`record-retention` 登记），`rescan` 不为它们新建时钟，缺时钟即拒绝。`contentReleaseHolds` 的时钟现在也记入 `hold-clocks.json`（`contentReleaseHolds` 字段，按 path，首次见到时登记），以后每次都对照：`heldSince` 不同或 `reviewBefore` 延后即拒绝；有时钟、目录仍在、却既不在 hold 列表也不是 contentActive/contentRollback 的内容 release 视为被删掉的 hold，拒绝。
+- 消失项的归档凭据：`archivedOutsideServer` 记录须有 removalReceipt/restoreReceipt/archiveVerification，或 location 加 sha256/verification；记录带 `<receipt>Sha256` 时核对该文件哈希。
+- 以下情况拒绝，且不写任何文件：未完成的发布事务；policy 缺 diskCapacity/retentionRegister/retentionEnforcement；可用空间低于 reserveBytes、inode 低于 reserveInodes 或项目占用超过 projectMaxBytes；未登记的 release 根目录或临时材料；已登记材料从磁盘消失却没有带凭据的 `archivedOutsideServer` 记录；`active` 根目录没有运行中的 unit；`rollback` 根目录仍被运行进程使用；登记中残留 `candidate`（没有未完成事务）；held 项缺首次时钟；任何 held（含 `contentReleaseHolds`）超过实际阻断期限、缺行动或期限超界；登记或时钟被改写以延长期限；扫描期间登记被他人修改。写入后的复查失败时，错误信息给出备份路径。
+- `--dry-run` 执行全部检查，不写任何文件。`--reason` 必填（1–500 字符）。
+
+`rescan` 只消除“清单陈旧”这一项，不消除归档欠账：过期 hold 仍须归档或解决依赖。`retention` 行为不变。测试：`pnpm test:program-release`（`RescanRetentionTests`、`ReleaseReferencesTests`）。
+
+`record-retention`（以及 `complete` 的时钟登记）现在也会把 `contentReleaseHolds` 记入时钟文件；其余行为不变。
+
+已知范围：`retention`/gate 本身仍不检查 `contentReleaseHolds` 的期限（只有 `rescan` 检查）；内容 release 目录只在 `lastRescan.contentReleaseRoots` 报告登记情况（active/rollback/held/unregistered），不作为拒绝条件。
+
+仓库副本对照：开发前 `scripts/uapt-release-lifecycle.py`（main `b59ae274`）与服务器已安装的 `/usr/local/libexec/uapt-release-lifecycle.py` 逐字节一致（sha256 `e6ef581f4953d1170c09cc1d3a9293fd3431a68c90adc165eaba146ed79da9c5`，1488 行）。所谓“较旧较小”的副本是主工作区（停在 2026-09 的 `main`）里一个未跟踪的 14 KB 旧文件，不是仓库版本。
+
+安装（需 owner 明确同意，属于生产变更）：
+
+1. 无未完成事务时备份：`cp -p /usr/local/libexec/uapt-release-lifecycle.py /srv/uapt/operations/release-lifecycle/controller-before-rescan-e6ef581f.py`。
+2. `install -o root -g root -m 0755 scripts/uapt-release-lifecycle.py /usr/local/libexec/uapt-release-lifecycle.py`，核对 SHA256 与已审提交一致，在同目录写安装收据 `rescan-controller-install-<sha8>.json`（前后 SHA256、提交、时间、授权原文）。
+3. 只读执行 `retention`，再执行 `rescan --dry-run --reason "install check"`；都通过即完成。回退：用第 1 步备份原样复制回去。
