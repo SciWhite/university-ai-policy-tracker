@@ -97,6 +97,7 @@
 - **期限按 hold 开始时间计算。** 生产 policy 改为 `maxHoldHours=336`、`blockAfterHours=336`（14 天），并写入 `holdLimitHistory: [{"until": <生效时间>, "maxHoldHours": 168, "blockAfterHours": 168}]`。`heldSince` 早于生效时间的 hold 继续按 7 天计算（例如 `uapt-program-987cbda4201d…` 仍在 2026-11-26 阻断）；之后开始的 hold 按 14 天。已有 `heldSince`、`reviewBefore`、`nextAction` 原样保留，不迁移、不重算。`reviewBefore` 仍为开始后约 7 天（167 小时）的复查提醒。
 - **内容 hold 与程序 hold 同等检查。** `retention`、gate、以及调用 `validate_retention_receipt` 的内容发布激活都检查 `contentReleaseHolds`：超过阻断期限、缺行动或期限超界、相对首次时钟被重置或延期、目录仍在却从台账删除，均拒绝。
 - **内容 release 目录全部登记。** `classify-content-releases --reason` 把既不是 active/rollback、也没有 hold 的已安装内容 release 登记为有界 hold：首次时钟取离开选择的时间（`pointer-history.jsonl`），没有记录时取目录 mtime，不早于规则生效时间 `contentHoldsSince`，不晚于当前时间；已有首次时钟原样沿用。policy 设置 `retentionEnforcement.contentReleaseRoot` 后，未登记目录阻止发布。内容 `complete` 后应立即执行一次。
+- **重新被选中的 release 重新计时。** 内容 release 在 hold 开始之后又被选为 active（pointer history 可查）时，旧 hold 已经结束；它再离开选择时从离开时间开始新 hold，旧时钟作为 `previousClock` 保留追溯。新 hold 不得早于那次选中。
 - **补录不能重新计时。** `record-retention` 只在 `heldSince` 不晚于磁盘证据（release/临时材料的 mtime，内容 release 的离开选择时间或 mtime）加 24 小时时，才为没有首次时钟的 hold 建立时钟；手写的“刚开始”hold 不能给旧材料重新计时。rescan 对首次见到的内容 hold 使用同一规则。
 - **提前预警（只读）。** `uapt-release-lifecycle.py hold-status --write` 由 `uapt-hold-status.timer` 每天 06:00 UTC 运行，写 `/srv/uapt/operations/release-lifecycle/hold-status.json`：每个 hold 的阻断时间与剩余小时，`overdue`、`warning`（48 小时内阻断）、`reviewDue`，收据是否已超过 24 小时需要 rescan，以及未登记的内容 release。`retention` 也打印 48 小时内的预警。只报告：不改台账、不改时钟、不发送任何外部通知。代理发布前先读该文件；`warning` 项先归档或解决依赖。
 

@@ -115,6 +115,8 @@ def temporary_paths(root, guard):
             if not path.is_symlink() and (path.is_file() or path.is_dir()): paths.add(str(path))
     return sorted(paths)
 
+LEGACY_HOLD_HOURS = 168  # the limit installed 2026-10-26; a higher one needs holdLimitHistory
+
 def hold_limits(entry, guard):
     """maxHoldHours/blockAfterHours for one hold, chosen by when the hold started. A changed limit
     applies to holds that start after the change; `holdLimitHistory` keeps the earlier limits
@@ -123,11 +125,17 @@ def hold_limits(entry, guard):
     limits = {'maxHoldHours': guard['maxHoldHours'], 'blockAfterHours': guard.get('blockAfterHours', 0)}
     history = guard.get('holdLimitHistory', [])
     if not isinstance(history, list): raise ValueError('Invalid hold limit history')
+    # A raised limit must say from when it applies, or it would silently extend every existing hold.
+    if not history and type(limits['maxHoldHours']) is int and limits['maxHoldHours'] > LEGACY_HOLD_HOURS:
+        raise ValueError(f'maxHoldHours above {LEGACY_HOLD_HOURS} needs a holdLimitHistory row for holds that started before the change')
     rows = []
+    latest = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=5)
     for row in history:
         if not isinstance(row, dict) or type(row.get('maxHoldHours')) is not int or row['maxHoldHours'] <= 0 or type(row.get('blockAfterHours')) is not int:
             raise ValueError('Invalid hold limit history')
-        rows.append((retention_timestamp(row.get('until'), 'hold limit history until'), row))
+        until = retention_timestamp(row.get('until'), 'hold limit history until')
+        if until > latest: raise ValueError('Hold limit history cannot start in the future')
+        rows.append((until, row))
     for until, row in sorted(rows, key=lambda item: item[0]):
         if since < until: return {'maxHoldHours': row['maxHoldHours'], 'blockAfterHours': row['blockAfterHours']}
     return limits
@@ -238,11 +246,19 @@ def checkpoint_hold_clocks(receipt, policy, adoption_evidence=None):
     if not path: return
     path = Path(path)
     clocks = json.loads(path.read_text())
+    history = policy_content_history(policy)
     for field, key in CLOCK_FIELDS:
         existing = {e[key]: e for e in clocks.get(field, [])}
         for entry in receipt.get(field, []):
             if entry.get('disposition') != 'held': continue
             prior = existing.get(entry[key])
+            if prior and field == 'contentReleaseHolds' and content_clock_ended(prior, history):
+                # The release was selected after this hold began, so that hold ended; a new hold may
+                # start, never before that selection.
+                validate_new_content_hold(entry, prior, history)
+                existing[entry[key]] = {**{k: entry[k] for k in [key, 'disposition', 'heldSince', 'reviewBefore', 'nextAction', 'reason']},
+                                        'previousClock': {k: prior.get(k) for k in ('heldSince', 'reviewBefore')}}
+                continue
             if prior and (retention_timestamp(entry['heldSince'], 'heldSince') != retention_timestamp(prior['heldSince'], 'registered heldSince') or retention_timestamp(entry['reviewBefore'], 'reviewBefore') > retention_timestamp(prior['reviewBefore'], 'registered reviewBefore')):
                 raise ValueError('Hold clock cannot be overwritten by a refreshed register: ' + entry[key])
             if not prior and adoption_evidence: validate_hold_adoption(field, entry, adoption_evidence)
@@ -254,17 +270,25 @@ def path_mtime(path):
     try: return datetime.datetime.fromtimestamp(Path(path).lstat().st_mtime, datetime.timezone.utc)
     except OSError: return None
 
+def policy_content_root(policy):
+    guard = policy.get('retentionEnforcement', {})
+    return Path(guard.get('contentReleaseRoot') or Path(policy.get('diskCapacity', {}).get('root', '/srv/uapt')) / 'content/runtime')
+
+def policy_content_history(policy):
+    return content_pointer_history(policy_content_root(policy))
+
 def hold_adoption_evidence(policy):
     """On-disk evidence of when an unclocked hold started: a release root's or temporary
-    artifact's mtime; for a content release, when it left active/rollback (pointer history), else its mtime."""
-    guard = policy.get('retentionEnforcement', {})
+    artifact's mtime; for a content release the latest of its directory mtime, its last activation
+    and when it left active/rollback (pointer history)."""
     disk_root = Path(policy.get('diskCapacity', {}).get('root', '/srv/uapt'))
-    content_root = Path(guard.get('contentReleaseRoot') or disk_root / 'content/runtime')
-    history = content_pointer_history(content_root)
+    history = policy_content_history(policy)
     def evidence(field, entry):
         if field == 'entries': return path_mtime(disk_root / 'releases' / entry['name'])
         if field == 'temporaryArtifacts': return path_mtime(entry['path'])
-        return content_left_selection(history, Path(entry['path']).name) or path_mtime(entry['path'])
+        name = Path(entry['path']).name
+        found = [t for t in (path_mtime(entry['path']), content_last_activation(history, name), content_left_selection(history, name)) if t]
+        return max(found) if found else None
     return evidence
 
 def validate_retention_receipt(plan, observed, policy=None):
@@ -291,7 +315,7 @@ def validate_retention_receipt(plan, observed, policy=None):
         validate_retention_deadlines(receipt, observed, policy, registered)
         # Content release holds obey the same deadlines at every gate, not only at rescan (2026-11-21):
         # first clocks (or the registered hold) cannot be reset, extended or dropped while installed.
-        validate_content_holds_against_clocks(receipt, registered)
+        validate_content_holds_against_clocks(receipt, registered, policy_content_history(policy))
         validate_content_release_holds(receipt, policy, datetime.datetime.now(datetime.timezone.utc))
         validate_content_release_classification(receipt, policy['retentionEnforcement'])
 RETENTION_REVIEW_HOURS = 167
@@ -469,29 +493,47 @@ def validate_content_release_holds(receipt, policy, current):
         if retention_blocking_deadline(hold, guard) <= current and not authorized_retention_deferral(receipt, policy, hold, current):
             raise ValueError('Expired content release hold; archive or resolve before release: ' + identity)
 
-def validate_content_holds_against_clocks(receipt, clocks):
+def validate_content_holds_against_clocks(receipt, clocks, history=()):
     """First content-hold clocks (hold-clocks.json) are fixed: no reset, no later deadline, and a hold
-    leaves the register only by becoming the active/rollback content or with its archive record."""
+    leaves the register only by becoming the active/rollback content or with its archive record.
+    A clock whose release was selected after the hold began has ended (pointer history); a new hold
+    for that release starts no earlier than that selection."""
     content_clocks = {c.get('path'): c for c in clocks.get('contentReleaseHolds', [])}
     for hold in receipt.get('contentReleaseHolds', []):
         path = hold.get('path', ''); clock = content_clocks.get(path)
+        if clock and content_clock_ended(clock, history):
+            validate_new_content_hold(hold, clock, history); continue
         if clock and (retention_timestamp(hold.get('heldSince'), 'heldSince') != retention_timestamp(clock.get('heldSince'), 'registered heldSince') or
                       retention_timestamp(hold.get('reviewBefore'), 'reviewBefore') > retention_timestamp(clock.get('reviewBefore'), 'registered reviewBefore')):
             raise ValueError('Hold deadline cannot be renewed by refreshing the receipt: ' + path)
     held_paths = {h.get('path') for h in receipt.get('contentReleaseHolds', [])}
     selected = {(receipt.get(k) or {}).get('contentId') for k in ('contentActive', 'contentRollback')} - {None}
-    for path in content_clocks:
-        if path in held_paths or not path or not Path(path).exists() or Path(path).name in selected: continue
+    for path, clock in content_clocks.items():
+        if path in held_paths or not path or not Path(path).exists() or Path(path).name in selected or content_clock_ended(clock, history): continue
         raise ValueError('Content release hold removed from the register while still installed: ' + path)
+
+def content_last_activation(history, content_id):
+    times = [retention_timestamp(row.get('at'), 'pointer history at') for row in history if row.get('contentId') == content_id]
+    return max(times) if times else None
+
+def content_clock_ended(clock, history):
+    """Whether the release was selected (switched to) after its hold began: that hold ended."""
+    activated = content_last_activation(history, Path(clock.get('path', '')).name)
+    return bool(activated and activated > retention_timestamp(clock.get('heldSince'), 'registered heldSince'))
+
+def validate_new_content_hold(hold, clock, history):
+    activated = content_last_activation(history, Path(clock.get('path', '')).name)
+    if retention_timestamp(hold.get('heldSince'), 'heldSince') < activated:
+        raise ValueError('A new hold after a selection cannot start before that selection: ' + hold.get('path', ''))
 
 def content_release_roots(register, content_root):
     """How each installed content release is registered: active, rollback, held or unregistered."""
     releases = Path(content_root) / 'releases'
     if not releases.is_dir(): return {}
-    held = {Path(h.get('path', '')).name for h in register.get('contentReleaseHolds', [])}
+    held = {h.get('path', '') for h in register.get('contentReleaseHolds', [])}
     active = (register.get('contentActive') or {}).get('contentId')
     rollback = (register.get('contentRollback') or {}).get('contentId')
-    return {p.name: 'active' if p.name == active else 'rollback' if p.name == rollback else 'held' if p.name in held else 'unregistered'
+    return {p.name: 'active' if p.name == active else 'rollback' if p.name == rollback else 'held' if str(p) in held else 'unregistered'
             for p in sorted(releases.iterdir()) if p.is_dir() and not p.is_symlink()}
 
 def validate_content_release_classification(receipt, guard):
@@ -516,9 +558,10 @@ def content_pointer_history(content_root):
 def content_left_selection(history, content_id):
     """When a content release stopped being the active or rollback content: the second switch after
     its last activation (pointer-history.jsonl); None when it never left or never was selected."""
-    last = max((i for i, row in enumerate(history) if row.get('contentId') == content_id), default=None)
-    if last is None or last + 2 >= len(history): return None
-    return retention_timestamp(history[last + 2].get('at'), 'pointer history at')
+    rows = [row for i, row in enumerate(history) if i == 0 or row.get('contentId') != history[i - 1].get('contentId')]
+    last = max((i for i, row in enumerate(rows) if row.get('contentId') == content_id), default=None)
+    if last is None or last + 2 >= len(rows): return None
+    return retention_timestamp(rows[last + 2].get('at'), 'pointer history at')
 
 def classify_content_releases(register, policy, reason, at, clocks=None):
     """Pure: register every installed content release that is neither active, rollback nor held as a
@@ -542,10 +585,11 @@ def classify_content_releases(register, policy, reason, at, clocks=None):
         path = str(root / 'releases' / name)
         left = content_left_selection(history, name)
         clock = content_clocks.get(path)
+        if clock and content_clock_ended(clock, history): clock = None  # selected since; a new hold starts
         if clock:
             since, review, action = clock['heldSince'], clock['reviewBefore'], clock['nextAction']
         else:
-            evidence = left or path_mtime(path) or at
+            evidence = left or max([t for t in (path_mtime(path), content_last_activation(history, name)) if t], default=at)
             start = min(max(evidence, rule_since) if rule_since else evidence, at)
             limits = hold_limits({'heldSince': start.isoformat()}, guard)
             since = start.isoformat()
@@ -572,7 +616,7 @@ def classify_content(policy, reason, dry_run=False):
     at = datetime.datetime.now(datetime.timezone.utc)
     clocks = load_hold_clocks(policy) or {}
     result, added = classify_content_releases(json.loads(raw), policy, reason, at, clocks)
-    validate_content_holds_against_clocks(result, clocks)
+    validate_content_holds_against_clocks(result, clocks, content_pointer_history(Path(result['lastContentClassification']['contentRoot'])))
     validate_content_release_holds(result, policy, at)
     validate_content_release_classification(result, {**policy['retentionEnforcement'], 'contentReleaseRoot': result['lastContentClassification']['contentRoot']})
     summary = {'added': added, 'contentRoot': result['lastContentClassification']['contentRoot']}
@@ -599,11 +643,13 @@ def hold_status(policy, at, register=None, clocks=None):
     if clocks is None: clocks = load_hold_clocks(policy) or {}
     warning = datetime.timedelta(hours=guard.get('warningHours', HOLD_WARNING_HOURS))
     clocked = {field: {c.get(key): c for c in clocks.get(field, [])} for field, key in CLOCK_FIELDS}
+    history = policy_content_history(policy)
     rows = []
     for field, key in CLOCK_FIELDS:
         for entry in register.get(field, []):
             if entry.get('disposition') != 'held': continue
             identity = entry.get(key, ''); clock = clocked[field].get(identity)
+            if clock and field == 'contentReleaseHolds' and content_clock_ended(clock, history): clock = None
             basis = {**entry, **{f: clock[f] for f in ('heldSince', 'reviewBefore') if clock and clock.get(f)}}
             row = {'id': identity, 'kind': {'entries': 'release-root', 'temporaryArtifacts': 'temporary-artifact', 'contentReleaseHolds': 'content-release'}[field],
                    'heldSince': basis.get('heldSince'), 'reviewBefore': basis.get('reviewBefore'), 'firstClock': bool(clock),
@@ -729,7 +775,7 @@ def rescan_retention(policy, observed, references, reason, at=None, content_root
     content_clocks = {c.get('path'): c for c in clocks.get('contentReleaseHolds', [])}
     # No reset or later deadline; an installed release leaves its hold only by becoming the
     # active/rollback content or by archive.
-    validate_content_holds_against_clocks(register, clocks)
+    validate_content_holds_against_clocks(register, clocks, policy_content_history(policy))
     adoption = hold_adoption_evidence(policy)
     holds, dropped_holds, new_content_clocks = [], [], []
     for hold in register.get('contentReleaseHolds', []):
@@ -1097,7 +1143,7 @@ def load_plan(path, prebuild=False):
     path = Path(path).resolve(); plan = json.loads(path.read_text()); policy = json.loads(POLICY.read_text()); policy['_sha256'] = digest(POLICY)
     validate_plan(plan, policy, audit(), prebuild=prebuild)
     if policy.get('retentionEnforcement'):
-        checkpoint_hold_clocks(json.loads(Path(plan['retentionReceipt']['path']).read_text()), policy)
+        checkpoint_hold_clocks(json.loads(Path(plan['retentionReceipt']['path']).read_text()), policy, hold_adoption_evidence(policy))
     for unit in plan['candidateUnits']:
         limits = state(unit)
         if limits.get('MemoryHigh') in [None, 'infinity'] or limits.get('MemoryMax') in [None, 'infinity']: raise ValueError('Candidate limits must be installed before admission')
@@ -1858,7 +1904,12 @@ def main():
     args = parser.parse_args()
     if args.action == 'hold-status':
         # Read-only and lock-free, so the daily timer never waits on or blocks a release.
-        policy = json.loads(POLICY.read_text())
+        try: policy = json.loads(POLICY.read_text())
+        except (OSError, ValueError) as error:
+            if args.write:  # never leave an old "ok" in place
+                write(STATE / 'hold-status.json', {'schemaVersion': HOLD_STATUS_SCHEMA, 'generatedAt': now(), 'status': 'error',
+                                                   'error': 'policy unreadable: ' + str(error), 'note': 'Run retention by hand before any release.'})
+            raise ValueError('Hold status check failed: policy unreadable: ' + str(error))
         if args.write: status, target = write_hold_status(policy); print('Hold status written to ' + str(target))
         else: status = hold_status(policy, datetime.datetime.now(datetime.timezone.utc))
         print(json.dumps({k: status.get(k) for k in ('status', 'overdue', 'warning', 'reviewDue', 'invalid', 'nextBlockingDeadline', 'receipt', 'unregisteredContentReleases', 'error') if k in status}, indent=2))

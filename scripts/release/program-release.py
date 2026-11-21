@@ -1284,15 +1284,17 @@ def install_runtime_env(op, source):
     """Copy of the active slot's env with the slot memory settings, root:uapt 0640. It holds secrets: never printed."""
     target = op.path('runtime.env')
     if not target.exists():
+        text = runtime_memory_settings(Path(source).read_text())  # may refuse: then no file is left
         # Written with its final mode before any secret lands in it.
         fd = os.open(target, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o640)
         with os.fdopen(fd, 'w') as stream:
-            stream.write(runtime_memory_settings(Path(source).read_text()))
+            stream.write(text)
         os.chown(target, 0, grp.getgrnam(SERVICE_USER).gr_gid)
         os.chmod(target, 0o640)
     problems = check_runtime_env(parse_env(target.read_text()), op.state['content']['root'])
     if problems:
-        raise Refused('Runtime env refused (' + str(target) + '): ' + '; '.join(problems))
+        raise Refused('Runtime env refused (' + str(target) + '): ' + '; '.join(problems) +
+                      ' (an operation started before 2026-11-21 keeps its old runtime.env: start a new operation)')
     return target
 
 

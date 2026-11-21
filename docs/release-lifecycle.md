@@ -147,6 +147,9 @@ sudo /usr/local/libexec/uapt-release-lifecycle.py retention
 - 新动作 `classify-content-releases --reason "<原因>" [--dry-run]`（发布锁内；有未完成事务时拒绝）：登记未分类的内容 release，备份 `current-retention.json.before-classify-<UTC>`，原子写入，再登记首次时钟。不刷新 `checkedAt`；收据超过 24 小时时接着执行 `rescan`。
 - 新动作 `hold-status [--write]`：只读、不取发布锁（每日 timer 不会阻塞或被发布阻塞），写 `retentionEnforcement.holdStatusFile`（默认 `release-lifecycle/hold-status.json`）。检查本身失败时写 `status: error` 并以非零退出（只在本机 journal 可见）。
 - `record-retention` 建立首次时钟前核对磁盘证据（`HOLD_ADOPTION_GRACE_HOURS = 24`）；`complete` 建立的新 hold 不受影响（其开始时间就是完成时间）。
+- 内容 hold 的首次时钟在该 release 之后被选中（`pointer-history.jsonl` 中晚于 heldSince 的切换）时视为结束：它不再被比较，也不再阻止从台账删除该 hold；该 release 之后再离开选择时，`classify-content-releases` 从离开选择的时间开始新 hold（不早于那次选中），`hold-clocks.json` 用新时钟替换并保留 `previousClock`。没有这条规则，重新上线过的 release 一离开选择就会带着旧时钟立即“过期”，阻断所有发布直到归档。
+- `hold_limits` 拒绝没有 `holdLimitHistory` 却把 `maxHoldHours` 提到 168 以上的 policy（否则会悄悄延长所有现有 hold），也拒绝生效时间在未来的历史行。
+- 程序发布的 `prebuild`/`gate`/`cutover`（`load_plan`）登记首次时钟时同样核对磁盘证据，与 `record-retention` 一致；`complete` 新建的 hold 不受影响。
 - policy 新键（安装须所有者同意）：`maxHoldHours`/`blockAfterHours` 336、`holdLimitHistory`、`contentReleaseRoot`、`contentHoldsSince`、`holdStatusFile`（可选）、`warningHours`（可选，默认 48）。
 
 测试：`pnpm test:program-release`（`ContentHoldEnforcementTests`）。

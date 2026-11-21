@@ -3,8 +3,8 @@
 
 Run once a minute by uapt-web-watchdog.timer (oneshot, root). Each run probes the slot that nginx
 routes to (uapt-main-upstream.conf) on a cheap dynamic route over loopback. The slot is restarted
-only after N consecutive probe failures, never while a lifecycle transaction is unfinished, the
-release lock is held (a content or program release is running) or within the start-up grace, at most once per cooldown and a few times per day. Every restart (and
+only after consecutive probe failures (3 with memory evidence, 10 without), never while a lifecycle transaction is unfinished, the
+release lock is held (a content or program release is running) or before its warm-up finished, at most once per cooldown and a few times per day. Every restart (and
 every suppressed one) leaves a receipt with the memory evidence taken just before it. Nothing is
 sent anywhere else.
 
@@ -22,7 +22,13 @@ STATE = Path('/run/uapt-web-watchdog/state.json')
 RECEIPTS = Path('/srv/uapt/operations/web-watchdog')
 PROBE_PATH = '/api/plugin/status'  # force-dynamic, no content reads: answers whenever the event loop runs
 SITE_HOST = 'eduaipolicy.org'
-DEFAULTS = {'timeout': 20.0, 'failures': 3, 'grace': 900, 'cooldown': 1800, 'daily_max': 3}
+# 3 failed probes restart only with memory evidence (memory.current near MemoryMax, memory
+# pressure, or the process in D state); without it CPU saturation under crawler load is the likely
+# cause, and a restart would make every page cold, so it takes 10.
+DEFAULTS = {'timeout': 20.0, 'failures': 3, 'failures_no_memory': 10, 'grace': 900, 'max_grace': 3600, 'cooldown': 1800, 'daily_max': 3}
+WARMUP_LINE = 'Runtime warm-up finished'
+MEMORY_NEAR_MAX = 0.95
+PRESSURE_FULL_AVG60 = 10.0
 CGROUP_FILES = ('memory.current', 'memory.high', 'memory.max', 'memory.peak', 'memory.events', 'memory.pressure')
 
 
@@ -104,6 +110,26 @@ def evidence(state):
     return facts
 
 
+def memory_evidence(facts):
+    """Whether the memory facts point at memory as the cause (near MemoryMax, pressure, D state)."""
+    reasons = []
+    try:
+        current, limit = int(facts.get('memory.current', '')), facts.get('memory.max', 'max')
+        if limit != 'max' and current >= MEMORY_NEAR_MAX * int(limit): reasons.append('memory.current near memory.max')
+    except ValueError: pass
+    full = re.search(r'full avg10=[\d.]+ avg60=([\d.]+)', facts.get('memory.pressure', ''))
+    if full and float(full.group(1)) >= PRESSURE_FULL_AVG60: reasons.append('memory.pressure full avg60 ' + full.group(1))
+    if facts.get('process', {}).get('State', '').startswith('D'): reasons.append('process in D state')
+    return reasons
+
+
+def warmup_finished(invocation, run=subprocess.run):
+    """Whether this invocation logged its warm-up line (journal of the invocation only)."""
+    if not invocation: return False
+    out = run(['journalctl', f'_SYSTEMD_INVOCATION_ID={invocation}', '-o', 'cat', '--no-pager', '-q'], capture_output=True, text=True)
+    return WARMUP_LINE in (out.stdout or '')
+
+
 def load_state(path):
     try: return json.loads(path.read_text())
     except (OSError, ValueError): return {}
@@ -126,9 +152,11 @@ def append_event(event, receipts):
         stream.write(json.dumps(event, sort_keys=True) + '\n')
 
 
-def decide(state, *, config, pending, unit, previous, at, uptime, locked=False):
+def decide(state, *, config, pending, unit, previous, at, uptime, locked=False, warmed=False, memory=()):
     """Pure: what this run does with one probe result already in `state['probe']`.
-    Returns (action, new_state). action: ok | skip:<why> | fail | restart | suppressed:<why>."""
+    Returns (action, new_state). action: ok | skip:<why> | fail | restart | suppressed:<why>.
+    The start-up grace lasts until the invocation's warm-up finished (at least `grace`, at most
+    `max_grace` seconds). `memory`: reasons from memory_evidence() for this failed probe."""
     invocation = unit.get('InvocationID', '')
     record = dict(previous) if previous.get('invocation') == invocation else {'invocation': invocation, 'failures': 0}
     record['restarts'] = [t for t in previous.get('restarts', []) if at - datetime.datetime.fromisoformat(t) < datetime.timedelta(days=1)]
@@ -139,12 +167,14 @@ def decide(state, *, config, pending, unit, previous, at, uptime, locked=False):
     if locked:
         return 'skip:release-lock-held', {**record, 'failures': 0}
     started = int(unit.get('ActiveEnterTimestampMonotonic', '0') or 0) / 1e6
-    if started and uptime - started < config['grace']:
-        return 'skip:start-up-grace', {**record, 'failures': 0}
+    age = uptime - started if started else float('inf')
+    if age < config['grace'] or (not warmed and age < config['max_grace']):
+        return 'skip:start-up-grace', {**record, 'failures': 0, 'memoryFailures': 0}
     if state['probe']['ok']:
-        return 'ok', {**record, 'failures': 0}
+        return 'ok', {**record, 'failures': 0, 'memoryFailures': 0}
     record['failures'] = record.get('failures', 0) + 1
-    if record['failures'] < config['failures']:
+    record['memoryFailures'] = record.get('memoryFailures', 0) + 1 if memory else 0
+    if record['memoryFailures'] < config['failures'] and record['failures'] < config['failures_no_memory']:
         return 'fail', record
     last = max(record['restarts'], default=None)
     if last and at - datetime.datetime.fromisoformat(last) < datetime.timedelta(seconds=config['cooldown']):
@@ -152,7 +182,8 @@ def decide(state, *, config, pending, unit, previous, at, uptime, locked=False):
     if len(record['restarts']) >= config['daily_max']:
         return 'suppressed:daily-limit', record
     record['restarts'] = record['restarts'] + [at.isoformat()]
-    record['failures'] = 0
+    record['restartReason'] = ('memory: ' + '; '.join(memory)) if record['memoryFailures'] >= config['failures'] else f'{record["failures"]} consecutive failures without memory evidence'
+    record['failures'] = record['memoryFailures'] = 0
     return 'restart', record
 
 
@@ -160,12 +191,15 @@ def main(argv=None, *, run=subprocess.run, opener=urllib.request.urlopen, state_
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('--dry-run', action='store_true', help='probe and report; never restart or write state')
     parser.add_argument('--timeout', type=float, default=DEFAULTS['timeout'])
-    parser.add_argument('--failures', type=int, default=DEFAULTS['failures'], help='consecutive failed probes before a restart')
-    parser.add_argument('--grace', type=int, default=DEFAULTS['grace'], help='seconds after a start in which nothing is restarted')
+    parser.add_argument('--failures', type=int, default=DEFAULTS['failures'], help='consecutive failed probes with memory evidence before a restart')
+    parser.add_argument('--failures-no-memory', type=int, default=DEFAULTS['failures_no_memory'], help='consecutive failed probes without memory evidence before a restart')
+    parser.add_argument('--grace', type=int, default=DEFAULTS['grace'], help='minimum seconds after a start in which nothing is restarted')
+    parser.add_argument('--max-grace', type=int, default=DEFAULTS['max_grace'], help='the grace ends at the warm-up line or after this many seconds')
     parser.add_argument('--cooldown', type=int, default=DEFAULTS['cooldown'], help='seconds between two watchdog restarts')
     parser.add_argument('--daily-max', type=int, default=DEFAULTS['daily_max'], help='watchdog restarts per 24 h; then only receipts')
     args = parser.parse_args(argv)
-    config = {'timeout': args.timeout, 'failures': max(1, args.failures), 'grace': args.grace, 'cooldown': args.cooldown, 'daily_max': args.daily_max}
+    config = {'timeout': args.timeout, 'failures': max(1, args.failures), 'failures_no_memory': max(1, args.failures_no_memory), 'grace': args.grace,
+              'max_grace': max(args.grace, args.max_grace), 'cooldown': args.cooldown, 'daily_max': args.daily_max}
     at = now()
     port = routed_port(Path(upstream).read_text())
     unit_name = WEB_SLOTS.get(port)
@@ -173,17 +207,26 @@ def main(argv=None, *, run=subprocess.run, opener=urllib.request.urlopen, state_
     unit = unit_state(unit_name, run)
     result = probe(port, config['timeout'], opener)
     previous = load_state(state_path)
+    invocation = unit.get('InvocationID', '')
+    warmed = previous.get('warmedInvocation') == invocation or warmup_finished(invocation, run)
+    facts = evidence(unit) if not result['ok'] else None
     action, record = decide({'probe': result}, config=config, pending=transaction_pending(Path(transaction)), unit=unit,
-                            previous=previous, at=at, uptime=uptime_seconds(), locked=lock_held(Path(release_lock)))
-    event = {'at': at.isoformat(), 'unit': unit_name, 'port': port, 'invocation': unit.get('InvocationID'), 'probe': result,
-             'action': action, 'consecutiveFailures': record.get('failures', 0), 'config': config, 'dryRun': args.dry_run}
+                            previous=previous, at=at, uptime=uptime_seconds(), locked=lock_held(Path(release_lock)),
+                            warmed=warmed, memory=memory_evidence(facts) if facts else ())
+    if warmed: record['warmedInvocation'] = invocation
+    event = {'at': at.isoformat(), 'unit': unit_name, 'port': port, 'invocation': invocation, 'probe': result,
+             'action': action, 'consecutiveFailures': record.get('failures', 0), 'memoryFailures': record.get('memoryFailures', 0),
+             'warmed': warmed, 'config': config, 'dryRun': args.dry_run}
     if args.dry_run:
         print(json.dumps(event, indent=2)); return 0
-    if action in ('restart',) or action.startswith('suppressed'):
-        event['evidence'] = evidence(unit)
+    if facts and (action == 'restart' or action.startswith('suppressed') or action == 'fail'):
+        event['evidence'] = facts
     if action == 'restart':
+        # The restart is recorded before it happens, so a killed run still counts for cooldown and cap.
+        save_json(state_path, {**record, 'lastAction': 'restart-started', 'lastProbe': result, 'at': at.isoformat()})
         receipt = receipts / ('restart-' + at.strftime('%Y%m%dT%H%M%SZ') + '.json')
-        save_json(receipt, {**event, 'reason': f'{config["failures"]} consecutive failed probes of {PROBE_PATH} (timeout {config["timeout"]} s)'})
+        event['reason'] = record.get('restartReason', '') + f' (probe {PROBE_PATH}, timeout {config["timeout"]} s)'
+        save_json(receipt, event)
         done = run(['systemctl', 'restart', unit_name], capture_output=True, text=True)
         event['restart'] = {'exitCode': done.returncode, 'stderr': done.stderr[-500:], 'receipt': str(receipt)}
         after = unit_state(unit_name, run)

@@ -862,6 +862,8 @@ class ContentHoldEnforcementTests(unittest.TestCase):
   for cid in ['c-old','c-older','c-rollback','c-active']:(self.runtime/'releases'/cid).mkdir()
   history=[{'at':self.h(-300),'contentId':'c-older'},{'at':self.h(-200),'contentId':'c-old'},{'at':self.h(-100),'contentId':'c-rollback'},{'at':self.h(-50),'contentId':'c-active'}]
   (self.runtime/'pointer-history.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in history))
+  for r in history:  # a release directory's mtime is its install time
+   t=m.retention_timestamp(r['at'],'at').timestamp();m.os.utime(self.runtime/'releases'/r['contentId'],(t,t))
   self.register=root/'current-retention.json';self.clocks=root/'hold-clocks.json'
   m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[]})
   self.policy={'diskCapacity':{'root':str(root)},'retentionRegister':str(self.register),
@@ -978,6 +980,29 @@ class ContentHoldEnforcementTests(unittest.TestCase):
        patch('builtins.print'),patch.object(sys,'argv',['controller','record-retention']):
    m.write(self.root/'policy.json',{**self.policy,'retentionEnforcement':{**self.policy['retentionEnforcement'],'contentReleaseRoot':str(self.runtime)}})
    with self.assertRaisesRegex(ValueError,'cannot restart the clock'):m.main()
+ # a hold ended by selection
+ def test_a_release_selected_again_gets_a_new_hold_not_its_old_clock(self):
+  self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  old_clock={'path':str(self.runtime/'releases/c-old'),'disposition':'held','heldSince':self.h(-250),'reviewBefore':self.h(-90),'nextAction':'Archive','reason':'staged'}
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[],'contentReleaseHolds':[old_clock]})
+  self.write_register([self.hold('c-older',-100,60)])  # c-old: held at -250, active at -200, left selection at -50
+  with self.assertRaisesRegex(ValueError,'Unclassified content releases.*: c-old$'):self.gate()  # not "removed while installed"
+  result,added=m.classify_content_releases(json.loads(self.register.read_text()),self.policy,'catch up',self.time,json.loads(self.clocks.read_text()))
+  self.assertEqual([(Path(a['path']).name,a['heldSince'],a['reusedClock']) for a in added],[('c-old',self.h(-50),False)])
+  m.write(self.register,result);m.checkpoint_hold_clocks(result,self.policy);self.gate()
+  clock=next(c for c in json.loads(self.clocks.read_text())['contentReleaseHolds'] if c['path']==old_clock['path'])
+  self.assertEqual((clock['heldSince'],clock['previousClock']['heldSince']),(self.h(-50),self.h(-250)))
+ def test_a_new_hold_cannot_start_before_the_selection_that_ended_the_old_one(self):
+  self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  old_clock={'path':str(self.runtime/'releases/c-old'),'disposition':'held','heldSince':self.h(-250),'reviewBefore':self.h(-90),'nextAction':'Archive','reason':'staged'}
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[],'contentReleaseHolds':[old_clock]})
+  self.write_register([self.hold('c-old',-210,-50),self.hold('c-older',-100,60)])
+  with self.assertRaisesRegex(ValueError,'cannot start before that selection'):self.gate()
+ def test_raising_the_limit_without_history_or_with_a_future_change_refuses(self):
+  guard={'maxHoldHours':336,'blockAfterHours':336}
+  with self.assertRaisesRegex(ValueError,'needs a holdLimitHistory'):m.hold_limits({'heldSince':self.h(-1)},guard)
+  guard['holdLimitHistory']=[{'until':self.h(2),'maxHoldHours':168,'blockAfterHours':168}]
+  with self.assertRaisesRegex(ValueError,'future'):m.hold_limits({'heldSince':self.h(-1)},guard)
  # early warning
  def test_hold_status_flags_overdue_warning_review_due_and_stale_receipt(self):
   self.write_register([self.hold('c-old',-150,10),self.hold('c-older',-10,-1)],checkedAt=self.h(-30),

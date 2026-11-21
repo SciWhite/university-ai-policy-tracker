@@ -52,8 +52,8 @@ memory pressure. Not changed here (follow-up).
 |---|---|---|
 | Root cause | A content switch drops the replaced release's cache entries (`registerContentKeyedCache`, `releasePreviousContent`); refresh `GET` reports `releasedOnSwitch` and `process.memoryUsage()` | `pnpm test:content-release` |
 | Limits | `MemoryHigh = MemoryMax = 6 GiB`; candidate env gets `--max-old-space-size=4096` + `MALLOC_ARENA_MAX=2`, refuses a heap cap leaving < 2 GiB off-heap; ISR cache 2 → 1.5 GiB | `pnpm test:program-release` |
-| Watchdog | `scripts/release/uapt-web-watchdog.py` + `infra/systemd/uapt-web-watchdog.{service,timer}`: probe the routed slot every 60 s, restart after 3 consecutive failures, never during a lifecycle transaction or 15 min start-up grace, ≤ 1 per 30 min and 3 per day, receipt with memory evidence | `tests/test_web_watchdog.py` |
-| Holds | `retention`/gate enforce content-hold deadlines and clocks; `classify-content-releases`; `record-retention` cannot adopt a hold whose `heldSince` is later than on-disk evidence + 24 h; per-hold limits by start time (`holdLimitHistory`) | `ContentHoldEnforcementTests` |
+| Watchdog | `scripts/release/uapt-web-watchdog.py` + `infra/systemd/uapt-web-watchdog.{service,timer}`: probe the routed slot every 60 s; restart after 3 consecutive failures with memory evidence or 10 without; never during a lifecycle transaction, while the release lock is held or before the warm-up finished; ≤ 1 per 30 min and 3 per day; receipt with memory evidence | `tests/test_web_watchdog.py` |
+| Holds | `retention`/gate enforce content-hold deadlines and clocks; `classify-content-releases`; `record-retention` and the program gate cannot adopt a hold whose `heldSince` is later than on-disk evidence + 24 h; a content hold ends when its release is selected again (new hold after it leaves); per-hold limits by start time (`holdLimitHistory`, a raise without it is refused) | `ContentHoldEnforcementTests` |
 | Early warning | `hold-status [--write]` (read-only, lock-free) + `infra/systemd/uapt-hold-status.{service,timer}` daily → `release-lifecycle/hold-status.json`; 48 h warning | same |
 | 14 days | Docs + AGENTS.md: 336 h for holds that start after the policy change; older holds keep 168 h | — |
 | Release traps | `scripts/content-release/warm-changed-pages.py` (warm changed pages over loopback before purge/readback); `scripts/release/remote-bg.sh` (pid/exit/log in `~/uapt-ops/<op>/`) | `tests/test_content_warmup.py` |
@@ -62,6 +62,12 @@ Simulated on copies of today's register, clocks, policy and pointer history: the
 passes `retention` with the installed policy; with the proposed policy it refuses until the 9
 unregistered content releases are classified, then passes; `hold-status` flags all 9 as
 `warning` 47 h before their 14-day deadline.
+
+An independent review (Opus agent) of the first version found two hold-clock bugs (a
+re-selected release came back with its old, expired clock; the program gate adopted
+unclocked holds without evidence), a watchdog false-restart risk (grace shorter than the
+warm-up; CPU saturation alone could restart) and a lost-cooldown case, plus plan-command
+issues. All were fixed with tests on this branch.
 
 ## 3. Production plan (needs the owner's go-ahead; one step at a time)
 
@@ -76,12 +82,17 @@ receipt list of the hand-over message.
 D=$(ls /etc/systemd/system/uapt-mcp-v6-candidate.service.d/*-uapt-program-release.conf)
 sudo cp -p "$D" /srv/uapt/operations/server-fixes-20261121/dropin-before.conf
 sudo sed -i 's/^MemoryHigh=5905580032$/MemoryHigh=6442450944/' "$D"
+grep -x 'MemoryHigh=6442450944' "$D"                                          # must print the line
 sudo systemctl daemon-reload
-sudo systemctl set-property --runtime uapt-mcp-v6-candidate.service MemoryHigh=6442450944
 cat /sys/fs/cgroup/system.slice/uapt-mcp-v6-candidate.service/memory.high   # 6442450944
 systemctl show uapt-mcp-v6-candidate -p MainPID -p ActiveState               # same PID, active
 ```
-Rollback: copy the backup back, `daemon-reload`, `set-property --runtime … MemoryHigh=5905580032`.
+Only if `memory.high` still shows 5905580032 after the reload:
+`sudo systemctl set-property --runtime uapt-mcp-v6-candidate.service MemoryHigh=6442450944`
+(a runtime override under `/run/systemd/system.control/`, gone at reboot; record it).
+Rollback: copy the backup back, `daemon-reload`; remove
+`/run/systemd/system.control/uapt-mcp-v6-candidate.service.d/50-MemoryHigh.conf` if it was
+created, `daemon-reload` again.
 Effect: above 6 GiB the kernel kills the process and systemd restarts it within seconds (then
 ~40 min warm-up; nginx and Cloudflare keep serving cached HTML).
 
@@ -93,7 +104,7 @@ sudo install -o root -g root -m 0644 uapt-web-watchdog.service uapt-web-watchdog
 sudo systemctl daemon-reload
 sudo /usr/local/libexec/uapt-web-watchdog.py --dry-run     # expect "action": "ok"
 sudo systemctl enable --now uapt-web-watchdog.timer
-systemctl list-timers uapt-web-watchdog.timer; sudo cat /run/uapt-web-watchdog/state.json
+sleep 75; systemctl list-timers uapt-web-watchdog.timer; sudo cat /run/uapt-web-watchdog/state.json   # first run 60 s after enable
 ```
 Rollback: `sudo systemctl disable --now uapt-web-watchdog.timer`, remove the two unit files
 and the script, `daemon-reload` (receipts in `/srv/uapt/operations/web-watchdog/` stay).
@@ -118,21 +129,28 @@ T=$(date -u +%Y-%m-%dT%H:%M:%S+00:00); L=/srv/uapt/operations/release-lifecycle
 sudo cp -p $L/policy.json $L/policy.json.before-hold-14d-$(date -u +%Y%m%dT%H%M%SZ)
 sudo cp -p $L/hold-clocks.json $L/hold-clocks.json.before-classify-$(date -u +%Y%m%dT%H%M%SZ)
 sudo python3 - "$T" <<'PY'
-import json, sys; from pathlib import Path
+import json, os, sys; from pathlib import Path
 p = Path('/srv/uapt/operations/release-lifecycle/policy.json'); d = json.loads(p.read_text()); g = d['retentionEnforcement']; t = sys.argv[1]
 g['holdLimitHistory'] = [{'until': t, 'maxHoldHours': 168, 'blockAfterHours': 168}]
 g.update(maxHoldHours=336, blockAfterHours=336, contentHoldsSince=t, holdLimitChangedAt=t,
          holdLimitAuthorization='<owner words, quoted>')
-tmp = p.with_suffix('.json.tmp'); tmp.write_text(json.dumps(d, indent=2) + '\n'); tmp.replace(p)
+st = p.stat(); tmp = p.with_suffix('.json.tmp'); tmp.write_text(json.dumps(d, indent=2) + '\n')
+os.chmod(tmp, st.st_mode & 0o7777); os.chown(tmp, st.st_uid, st.st_gid); tmp.replace(p)
 PY
 sudo /usr/local/libexec/uapt-release-lifecycle.py classify-content-releases --dry-run --reason "server fixes 2026-11-21: register installed content releases"
 sudo /usr/local/libexec/uapt-release-lifecycle.py classify-content-releases --reason "server fixes 2026-11-21: register installed content releases"
-sudo python3 -c "import json;from pathlib import Path;p=Path('$L/policy.json');d=json.loads(p.read_text());d['retentionEnforcement']['contentReleaseRoot']='/srv/uapt/content/runtime';t=p.with_suffix('.json.tmp');t.write_text(json.dumps(d,indent=2)+'\n');t.replace(p)"
+sudo python3 -c "import json,os;from pathlib import Path;p=Path('$L/policy.json');st=p.stat();d=json.loads(p.read_text());d['retentionEnforcement']['contentReleaseRoot']='/srv/uapt/content/runtime';t=p.with_suffix('.json.tmp');t.write_text(json.dumps(d,indent=2)+'\n');os.chmod(t,st.st_mode&0o7777);os.chown(t,st.st_uid,st.st_gid);t.replace(p)"
+ls -l $L/policy.json $L/policy.json.before-hold-14d-*                     # same mode and owner
 sudo /usr/local/libexec/uapt-release-lifecycle.py retention
 sudo install -o root -g root -m 0644 uapt-hold-status.service uapt-hold-status.timer /etc/systemd/system/
 sudo systemctl daemon-reload && sudo systemctl enable --now uapt-hold-status.timer
 sudo systemctl start uapt-hold-status.service && sudo cat $L/hold-status.json | head -40
 ```
+From then on every content `complete` is followed by
+`classify-content-releases --reason "complete <id>"` (the replaced rollback becomes a hold);
+otherwise the next activation refuses it as unclassified. The batch helpers
+(`host-release.py`) validate the register before installing the new release, so their own
+hold is not affected; add the classify call to their `complete` phase.
 Existing holds keep their clocks and their 7-day limit (`uapt-program-987cbda4201d…` still
 blocks 2026-11-26 15:22 UTC). The 9 old content releases get first clocks at `T` and block 14
 days later unless archived. Rollback: restore the policy, `current-retention.json.before-classify-*`

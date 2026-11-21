@@ -274,7 +274,8 @@ by `contentId`, so the replaced release's entries could never be hit again but s
 LRU eviction; their budgets count raw JSON bytes, several times smaller than the parsed heap.
 Since 2026-11-21 a switch drops them at once (`registerContentKeyedCache`,
 `releasePreviousContent` in `apps/web/lib/content-runtime.ts`; the refresh endpoint's `GET`
-reports `releasedOnSwitch` and `process.memoryUsage()`). Re-rendering the expired pages still costs CPU and a transient peak.
+reports `releasedOnSwitch` and `process.memoryUsage()`). Re-rendering the expired pages still costs CPU and a transient peak, and a build that was
+already running at the switch can put one old entry back (bounded by the LRU).
 
 **Limits (changed in code 2026-11-21).** On the host they take effect as the owner-approved plan applies them: `MemoryHigh` through a drop-in without a restart, heap and arena settings at the next restart of the slot, the cache size with the next program release.
 
@@ -295,11 +296,17 @@ process costs a full outage until something kills it.
 - reads the routed slot from `uapt-main-upstream.conf` (never the idle slot);
 - probes `GET /api/plugin/status` (force-dynamic, no content reads) on 127.0.0.1 with a
   20 s timeout;
-- restarts the slot only after **3 consecutive failures**; never while the lifecycle
-  `transaction.json` is unfinished or the release lock `/run/lock/uapt-release.lock` is held
-  (a content or program release is running; read from `/proc/locks`, never taken), never
-  within 15 min of the unit's start (warm-up), at
-  most once per 30 min and 3 times per 24 h (after that it only writes receipts);
+- restarts the slot only after **3 consecutive failures with memory evidence**
+  (memory.current ≥ 95 % of memory.max, memory.pressure full avg60 ≥ 10 %, or the process in
+  D state), or **10 consecutive failures without it** (CPU saturation under crawler load is
+  the likely cause then, and a restart makes every page cold);
+- never while the lifecycle `transaction.json` is unfinished or the release lock
+  `/run/lock/uapt-release.lock` is held (a content or program release is running; read from
+  `/proc/locks`, never taken), and never before this invocation's `Runtime warm-up finished`
+  journal line (at least 15 min, at most 60 min after the start);
+- at most once per 30 min and 3 times per 24 h (after that it only writes receipts); the
+  restart is written to its state before `systemctl restart` runs, so a killed run still
+  counts;
 - writes `/srv/uapt/operations/web-watchdog/restart-<UTC>.json` with the cgroup memory
   facts (memory.current/high/max/peak/events/pressure, anon, process state) taken just
   before the restart, and appends failures, restarts and state changes to `events.jsonl`
