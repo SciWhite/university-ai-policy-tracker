@@ -111,10 +111,12 @@ Rules:
 - nginx keeps a disk HTML cache in front of the app (`docs/program-release.md` §6.1).
   `cutover` purges it; after a content switch run
   `uapt-program-release.py purge-html-cache --reason "content switch <id>"` first.
-- Cloudflare caches public HTML for 2 h (Cache Rule; `/internal`, `/api/`,
-  `/mcp`, `/search`, `/_next/static/` excluded). After every content switch or
-  program cutover, purge the whole zone (`{"purge_everything": true}`, token
-  in `.env.agents.local`, never printed). A URL purge misses `?_rsc=` variants.
+- Cloudflare caches public HTML for **7 days** since 2026-11-21 (Cache Rule; `/internal`,
+  `/api/`, `/mcp`, `/search`, `/_next/static/` excluded), so a missed purge shows stale
+  pages for up to a week. After every content switch or program cutover, purge the whole
+  zone (`{"purge_everything": true}`, token in `.env.agents.local`, never printed). A URL
+  purge misses `?_rsc=` variants. Zone config (WAF, rate limit, cache rules, Tiered Cache)
+  uses `CLOUDFLARE_EDGE_CONFIG_TOKEN` (zone-only; `docs/stop-bleed-set2-20261121.md`).
 - Local gates: `pnpm check`, the affected test suites, `git diff --check`, and
   useful dev/browser QA. Do not build all pages locally.
 - Keep source, public content and private candidate inventories separate.
