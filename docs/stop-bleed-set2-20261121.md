@@ -3,7 +3,7 @@
 Status: owner approved the whole set ("Approve all of set 2", 2026-11-21). **nginx part (0.2,
 0.3, 0.5a) applied 21:38 UTC** — receipt `/srv/uapt/operations/stop-bleed-set2-20261121/RESULT-nginx.json`
 (sha256 `3aef9f4e…`): `nginx -t` ok, one reload, workers at 65,536 open files, a `returnTo`
-variant hits the plain page's cache entry, log lines end with `uc= ut= rt=`. **Cloudflare part applied 22:1x UTC** with the owner-created token
+variant hits the plain page's cache entry, log lines end with `uc= ut= rt=`. **Cloudflare part applied 21:54 UTC (2026-11-21)** with the owner-created token
 `uapt-eduaipolicy-edge-config` (`CLOUDFLARE_EDGE_CONFIG_TOKEN`) — receipt `RESULT-cloudflare.json`
 (sha256 `514999cb…`), before/after rulesets in `cloudflare-before/` and `cloudflare-after/`:
 WAF managed challenge for 43.172/16 + 43.173/16 (not verified bots); rate limit 60 requests /
