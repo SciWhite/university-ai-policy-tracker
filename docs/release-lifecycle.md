@@ -51,7 +51,7 @@ MemoryHigh 用于提前回收，MemoryMax 是最后隔离边界，不能代替�
 - 尚有 9 个 legacy 动态/历史/资源 fallback 服务，加 main/shared-web/shared-mcp 共 12 个。历史版本对照发现部分正文或 JSON 差异，不能直接换上游后宣称不变；fallback/common include 也不是“无依赖”。这 9 个为冻结过渡清单，不宣称已全部收敛到 3 个角色。
 - `/usr/local/libexec/uapt-release-lifecycle.py` 为 root 拥有的安装副本。`uapt-release-recovery.service` 已启用，`uapt-release-ttl.timer` 每五分钟检查。两个固定候选槽位已安装但 disabled/inactive；没有为部署门禁新增常驻应用。
 
-本次实际执行与剩余依赖见 [治理结果](release-lifecycle-20261016-result.md)。
+本次实际执行与剩余依赖的治理结果文档已于 2026-11-22 移出仓库，提交见 [HISTORY](HISTORY.md)。
 
 
 ## 首次产物的构建前准入（2026-10-17）

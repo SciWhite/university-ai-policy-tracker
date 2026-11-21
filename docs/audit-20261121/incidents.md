@@ -1,5 +1,7 @@
 # eduaipolicy.org: incident inventory (read-only audit, compiled 2026-11-21)
 
+> Note (2026-11-22): several `docs/` files cited below as evidence were removed from the tree; `docs/HISTORY.md` gives the commit that still has each one.
+
 Sources: git history of worktree `clever-shirley-462b54` (HEAD b59ae274 = origin/main), unmerged branches
 `claude/laughing-murdock-3c9e56` / `claude/modest-bun-549899`, `docs/` (116 entries), memory notes
 (`~/.claude/projects/-Users-newvolume-Documents-university-ai-policy-tracker/memory/`), the three V6 batch

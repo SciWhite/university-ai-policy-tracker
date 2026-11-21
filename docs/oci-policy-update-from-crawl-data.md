@@ -26,7 +26,6 @@ Related detailed docs:
 
 - `docs/maintenance-oci-runbook.md`
 - `docs/openclaw-data-prs.md`
-- `docs/source-snapshot-storage-plan.md`
 - `docs/data-contract.md`
 - `docs/crawler-policy.md`
 

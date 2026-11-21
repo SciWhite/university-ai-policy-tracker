@@ -1,5 +1,7 @@
 # Tooling sprawl inventory (eduaipolicy.org / university-ai-policy-tracker)
 
+> Note (2026-11-22): several `docs/` files cited below as evidence were removed from the tree; `docs/HISTORY.md` gives the commit that still has each one.
+
 Audit date 2026-11-21. Read-only. Repo basis: worktree `clever-shirley-462b54` at `b59ae274` (= `origin/main`).
 No server access: everything about the host is from docs and from paths hard-coded in scripts; it is marked "per docs" or "per script".
 

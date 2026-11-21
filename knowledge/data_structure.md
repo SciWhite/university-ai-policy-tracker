@@ -20,7 +20,7 @@ These project files define the current data and review contract:
 
 - `docs/data-contract.md` - public claim/evidence/citation contract.
 - `docs/crawler-policy.md` - crawler behavior, access boundaries, and artifact expectations.
-- `docs/exposure-distribution-architecture.md` - distribution, SEO/GEO, dataset, API, and contribution roadmap.
+- `docs/README.md` - index of the current project docs.
 - `docs/openclaw-data-prs.md` - staged artifact PR workflow.
 - `packages/shared/src/openclaw-artifacts.ts` - validator schema for OpenClaw staged artifacts.
 - `packages/shared/src/claims.ts` - public API and claim/evidence schemas.
@@ -168,7 +168,8 @@ staging runs, ranking coverage, and non-authoritative reference sheets.
 Current files:
 
 - `data_structure.md`
-- `2026-05-12-public-vs-staging-vs-qs.md`
+- dated review notes written by `pnpm knowledge:update` (none are kept in Git;
+  regenerate one when needed).
 
 Use for:
 

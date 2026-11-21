@@ -18,7 +18,7 @@ production build。Mac完整production build始终不是常规发布前提。
 流程；不得在未分析时自动跑`@uapt/web build`。
 
 - 小规模命令与验收权威：[OCI small release](oci-small-release.md)。
-- 大规模命令与验收权威：[OCI build-once release](oci-build-once-release.md)。
+- 大规模命令与验收权威：OCI build-once release（已移除，见 [HISTORY](HISTORY.md)）。
 - 审核、原文/数据契约、候选验收、精确影响范围、旧artifact回滚在两条
   流程都保留。发布授权不会因为“无build”而自动扩大。
 - 大版本切换要核对已有zone仍然覆盖哪些路径；共享数据/组件变化必须

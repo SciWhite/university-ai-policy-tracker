@@ -1,5 +1,7 @@
 # eduaipolicy.org 全面审计报告（2026-11-21）
 
+> 注（2026-11-22）：下文作为证据引用的部分 `docs/` 文件已从仓库移除，`docs/HISTORY.md` 列出仍含该文件的提交。
+
 状态：只读审计。本报告没有修改生产环境，没有 push、部署、重启，也没有发送通知。
 服务器上的所有测量都是只读的（`/proc`、cgroup、systemd、journal、nginx 日志与 `nginx -T`、`du`）。
 对公网只发了 3 个串行请求。另一个会话（server-retention-fixes，分支

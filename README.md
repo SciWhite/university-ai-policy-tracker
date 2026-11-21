@@ -41,7 +41,7 @@ The following signals are intentionally tied to public, reproducible sources:
   presented as human adoption.
 
 Production deployment and maintainer-only operational procedures live in the
-runbooks under [`docs/`](docs/), while this README focuses on the public
+runbooks indexed in [`docs/README.md`](docs/README.md), while this README focuses on the public
 contract, contribution path, and evidence boundary.
 
 ## Current Status
