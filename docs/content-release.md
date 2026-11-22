@@ -350,12 +350,22 @@ itself, not the other).
 **Completion.** Public readback of the changed URLs (L1/L2 in full, L3
 sampled, per `docs/release-acceptance-tiers.md`) happens after the refresh and
 the purge. Then `python3 scripts/policy-inventory.py sync-gate <event.json>
---phase complete`. IndexNow stays a separate step (`pnpm indexnow:latest
---content-root "$UAPT_CONTENT_ROOT" --sync-ledger <event.json>`), only after
-public readback. Its basis is the selected release's `manifest.json` (the same
-file the switch event binds) and its URLs are this switch plan's `paths`
-intersected with the published sitemap; a first selection has no changed-URL
-list.
+--phase complete`. IndexNow stays a separate, opt-in step (`pnpm indexnow:latest
+--content-root "$UAPT_CONTENT_ROOT" --sync-ledger <complete event.json> --authorization
+"<owner quote, who, when, where>"`), only after public readback; the quote is recorded in
+both receipts and each ledger announces once (a spent ledger or a completion event is
+refused). The ledger is the release's complete event; the script runs
+the same `--phase complete` gate before sending and again on the completion event it
+writes. Its basis is the selected release's `manifest.json` (the same file the switch
+event binds) and its URLs are this switch plan's `paths` ∩ the frozen scope
+(`scope.json` `changedUrls`, site-relative, normalized the same way) ∩ the published
+sitemap. The plan also lists purge paths that have no URL (UI-only locales,
+`docs/render-once.md` §10) and pages outside the frozen scope (`/changes/<slug>`, history
+and diff pages, `/`); the scope and sitemap filters drop them, so only the scope's
+school pages are announced. `--urls`/`--all`
+outside the scope fail closed. `pnpm indexnow:dry-run --content-root <root>
+--sync-ledger <event.json>` is the offline preflight (gate + scope, no request, no
+receipts). A first selection has no changed-URL list.
 
 ### 5.1 One host command: `content-release.py` (since 2026-11-21)
 

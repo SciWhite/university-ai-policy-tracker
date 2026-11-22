@@ -302,6 +302,35 @@ export function getLatestReleaseIndexNowUrls(
 }
 
 /**
+ * The frozen synchronization scope (scope.json `changedUrls`) as normalized
+ * absolute URLs. Scope entries are site-relative paths; candidate URLs are
+ * absolute, so both sides go through normalizeIndexNowUrl before comparing.
+ */
+export function frozenScopeIndexNowUrls(
+  changedUrls: unknown,
+  baseUrl: string = DEFAULT_INDEXNOW_BASE_URL
+): Set<string> {
+  if (!Array.isArray(changedUrls) || changedUrls.length === 0 || changedUrls.some((u) => typeof u !== "string" || !u)) {
+    throw new Error("Frozen synchronization scope has no valid changedUrls list");
+  }
+  return new Set(changedUrls.map((u: string) => normalizeIndexNowUrl(u, baseUrl)));
+}
+
+/** Splits candidate URLs (normalized) into those inside and outside the frozen scope. */
+export function partitionIndexNowUrlsByScope(
+  urls: string[],
+  scope: Set<string>,
+  baseUrl: string = DEFAULT_INDEXNOW_BASE_URL
+): { inScope: string[]; outOfScope: string[] } {
+  const inScope: string[] = [];
+  const outOfScope: string[] = [];
+  for (const url of new Set(urls.map((u) => normalizeIndexNowUrl(u, baseUrl)))) {
+    (scope.has(url) ? inScope : outOfScope).push(url);
+  }
+  return { inScope, outOfScope };
+}
+
+/**
  * Collects all URLs from all sitemap sections.
  */
 export async function getAllIndexNowUrls(
