@@ -70,8 +70,16 @@ export const RELEASE_HELPER_FILES = [
   "scripts/content-release/install-tree.py",
   "scripts/content-release/sync-proof.py",
   "scripts/content-release/warm-changed-pages.py",
-  "scripts/content-release/private-field-baseline.json"
+  "scripts/content-release/private-field-baseline.json",
+  "scripts/content-release/v6-source-metadata-legacy-unprocessed.json"
 ];
+/** `new URL("./file", import.meta.url)` in a bundled module resolves next to the bundle, not the source. */
+const BUNDLE_DATA_REFERENCE = /new URL\(\s*["'](\.\/[^"']+)["']\s*,\s*import\.meta\.url\s*\)/g;
+
+/** Data files a bundled helper reads next to itself (paths inside release-helper/). */
+export function bundleDataReferences(bundleSource, target) {
+  return [...new Set([...bundleSource.matchAll(BUNDLE_DATA_REFERENCE)].map(m => path.posix.join(path.posix.dirname(target), m[1])))].sort();
+}
 
 // Path rules for anything inside the artifact. Top-level checkout directories
 // that hold content, evidence or tooling must never be traced in.
@@ -322,6 +330,12 @@ export async function bundleReleaseHelper({ root = repoRoot, out = path.join(roo
   for (const file of RELEASE_HELPER_FILES) {
     mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
     cpSync(path.join(root, file), path.join(out, file));
+  }
+  // A data file a bundle reads next to itself must ship, or the host switch fails with ENOENT
+  // (2026-11-22: v6-source-metadata-legacy-unprocessed.json was missing from 6edae12c's helper).
+  for (const [, target] of RELEASE_HELPER_BUNDLES) {
+    const missing = bundleDataReferences(readFileSync(path.join(out, target), "utf8"), target).filter(file => !RELEASE_HELPER_FILES.includes(file));
+    if (missing.length) throw new Error(`Release helper ${target} reads files not in RELEASE_HELPER_FILES: ${missing.join(", ")}`);
   }
   for (const target of [...RELEASE_HELPER_BUNDLES.map(([, t]) => t), ...RELEASE_HELPER_FILES]) {
     files[target] = createHash("sha256").update(readFileSync(path.join(out, target))).digest("hex");
