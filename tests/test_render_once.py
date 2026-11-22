@@ -122,8 +122,9 @@ class PurgeSemanticsTests(unittest.TestCase):
 
     def test_cache_never_fills_the_disk(self):
         path = re.search(r'^proxy_cache_path .*;$', STORE_CONF, re.M).group(0)
-        for item in ('max_size=12g', 'inactive=30d', 'min_free=', 'keys_zone=uapt_html:64m'):
+        for item in ('max_size=6g', 'inactive=30d', 'keys_zone=uapt_html:64m'):
             self.assertIn(item, path)
+        self.assertNotIn('min_free=', path)  # production nginx 1.18 rejects it (1.19.1+)
         # Same zone and size as the installed cache: a reload cannot resize a shared zone.
         old = re.search(r'^proxy_cache_path .*;$', (ROOT / 'infra/nginx/uapt-html-cache.conf').read_text(), re.M).group(0)
         self.assertIn('keys_zone=uapt_html:64m', old)

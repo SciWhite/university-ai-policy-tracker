@@ -49,10 +49,10 @@ Files: `infra/nginx/uapt-page-store.conf` (http context; replaces `uapt-html-cac
 installed), `infra/nginx/uapt-html-content-generation.inc`, generator
 `scripts/nginx-minimal-routing.py --page-store [--page-tree <root>]`.
 
-- `proxy_cache_path … keys_zone=uapt_html:64m max_size=12g min_free=20g inactive=30d`. Same zone
-  name, path and zone size as today (a reload cannot resize a shared zone). `min_free` stops the
-  cache from taking the last 20 GB of the shared disk (today 26 GB free, so it grows to ~9 GB
-  until the disk reclaim of the audit §6.2 lands).
+- `proxy_cache_path … keys_zone=uapt_html:64m max_size=6g inactive=30d`. Same zone name, path and
+  zone size as today (a reload cannot resize a shared zone). No `min_free`: the host runs nginx
+  1.18 and it needs 1.19.1 (found at R1, 2026-11-22). 6 GB is above the 2–4 GB working set and
+  keeps the disk well over the controller's 12 GiB reserve.
 - One pattern location (not per page) for school and changes pages in every reading locale:
   `^/(?:(<33 locales>)/)?(?:universities/<slug>|changes(/<id>){0,2})$`. Kept `=`/`^~` locations
   still win; the generator refuses kept prefix locations the pattern would shadow.
@@ -166,7 +166,7 @@ estimated at 150–300 MB.
 | CPU | ~0.85 core steady, 0.24 CPU-s per origin request, ISR hit < 5 % | Node renders store misses only (first touch of a long-tail locale per program release, RSC/generic pages once per content release, refresh). **~0.1–0.3 core** (audit target < 0.3); a 12-school content refresh ≈ 400 renders ≈ 3–5 min of one core |
 | Candidate warm-up | 23–43 min (~4,000 renders) | with a tree: ~640 renders ≈ **4–7 min**; without a tree: unchanged |
 | Full pre-render | — | offline 6 processes: ~2 min + upload 150–300 MB; on the host against the candidate: ~19–36 min (one Node thread) |
-| nginx disk | 3 GB full, 59,873 files, cold after every content switch | ≤ 12 GB (≤ ~9 GB until disk reclaim, `min_free=20g`); school/changes entries survive content releases; working set est. 4–8 GB |
+| nginx disk | 3 GB full, 59,873 files, cold after every content switch | ≤ 6 GB (`max_size`; nginx 1.18 has no `min_free`); school/changes entries survive content releases; working set est. 2–4 GB |
 | Tree disk | — | 150–300 MB per program × content; a content release adds only changed pages (MBs); keep current + rollback |
 
 The memory and CPU figures are estimates; check them after rollout (§8 verification).
@@ -254,7 +254,7 @@ Phase 0 is installed. The cache-leak fix (`laughing-murdock`) and this branch ar
 Consequences:
 - **R0 – archive `987cbda4` first.** Use the off-host tar with hash and an isolated restore check, then delete by exact allowlist. Otherwise the candidate makes four program roots, against "active + rollback + one candidate", and the hold blocks on 11-26.
 - **Install `render-once.py` before R2.** Install it as `/usr/local/libexec/uapt-render-once.py`. Content switches after R2 need its `generation` step.
-- **Disk.** `min_free=20g` leaves the page store about 6 GB of headroom at the current 26 GB free.
+- **Disk.** nginx is 1.18, which has no `min_free` (the first R1 attempt failed `nginx -t` on it and was restored). The store is bounded by `max_size=6g`: at most about 3 GB more than today, well over the 12 GiB reserve.
 
 **R1 – nginx http configuration (no behavior change).** Root, with a receipt: back up
 `/etc/nginx/conf.d/uapt-html-cache.conf`; install `infra/nginx/uapt-page-store.conf` in its place
@@ -451,7 +451,7 @@ ids instead of full evidence rows.
 | Candidate warm-up without a tree | 23–43 min | ≈ 20–35 min (3,385 URLs) |
 | Origin load | ~80 % of origin requests were the 32 locale prefixes (audit §3.3) | those become 301/308 answered from Cloudflare or nginx after the first hit; Node renders en/zh/native pages and store misses only. Estimate **≤ 0.1–0.2 core** steady |
 | Web slot memory | 4.5 GB after warm-up | ≈ 3.0–3.5 GB; the 1 GiB ISR LRU now holds most en/zh pages (~1,700 school pages at ~0.5 MB HTML+RSC) |
-| nginx store working set | — | ≈ 2–4 GB (en/zh/native documents + RSC + cached redirects), well under 12 GB |
+| nginx store working set | — | ≈ 2–4 GB (en/zh/native documents + RSC + cached redirects), well under 6 GB |
 | Per UI-locale reader | 1 page render per locale per URL (server) | one dictionary download (~100–115 KB gzip, cached a year) |
 
 CPU and memory are estimates from these measurements and the audit's host figures; check them in

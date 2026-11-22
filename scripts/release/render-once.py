@@ -198,7 +198,7 @@ def render_generation(content_id):
 
 def write_generation(content_id, *, file=GENERATION_FILE, log=GENERATION_LOG, reason='', runner=None, dry_run=False):
     """New content generation: write, `nginx -t` (restore on failure), reload, log. Nothing is
-    deleted: old generic/RSC entries stop matching and age out (inactive/max_size/min_free)."""
+    deleted: old generic/RSC entries stop matching and age out (inactive/max_size)."""
     runner = runner or (lambda argv: subprocess.run(argv, capture_output=True, text=True))
     file = Path(file)
     if not file.is_file(): raise ValueError(f'{file} is missing: install the page store first (docs/render-once.md)')
