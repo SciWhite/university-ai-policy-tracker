@@ -330,6 +330,43 @@ class ReadbackTests(unittest.TestCase):
         wrong = pr.page_row('/universities/a', 404, self.html('/universities/b', lang='zh'), 'BID', 0.5)
         self.assertEqual(pr.school_page_problems(wrong), ['status', 'canonical', 'lang'])
 
+    def test_public_fetch_waits_out_rate_limit(self):
+        pr._public_pace['next'] = 0.0
+        calls, sleeps = [], []
+        replies = [(429, b'', {'retry-after': '5'}, 0.01), (429, b'', {}, 0.01), (200, b'ok', {}, 0.01)]
+
+        def get(url, headers, timeout):
+            calls.append(url)
+            return replies[len(calls) - 1]
+        status, body, _, _ = pr.fetch('https://eduaipolicy.org', '/api/public/v1/universities/a.json', candidate=False, get=get, sleep=sleeps.append)
+        self.assertEqual((status, body), (200, b'ok'))
+        self.assertEqual(len(calls), 3)
+        self.assertEqual([s for s in sleeps if s >= 5], [12, 12])  # Retry-After below the 12 s floor is raised to it
+
+    def test_public_fetch_gives_up_after_bounded_rate_limit_retries(self):
+        calls = []
+
+        def get(url, headers, timeout):
+            calls.append(url)
+            return 429, b'', {'retry-after': '30'}, 0.01
+        sleeps = []
+        status, _, _, _ = pr.fetch('https://eduaipolicy.org', '/x', candidate=False, get=get, sleep=sleeps.append)
+        self.assertEqual(status, 429)
+        self.assertEqual(len(calls), 4)  # 3 rate-limit retries, then the result is reported
+        self.assertIn(30, sleeps)
+
+    def test_public_reads_are_paced_candidate_reads_are_not(self):
+        pr._public_pace['next'] = 0.0
+        sleeps = []
+        get = lambda url, headers, timeout: (200, b'', {}, 0.0)
+        for _ in range(3):
+            pr.fetch('https://eduaipolicy.org', '/universities/a', candidate=False, get=get, sleep=sleeps.append)
+        self.assertGreaterEqual(len([s for s in sleeps if s > 0]), 2)  # the 2nd and 3rd read wait for their slot
+        candidate_sleeps = []
+        for _ in range(3):
+            pr.fetch('http://127.0.0.1:3102', '/universities/a', candidate=True, get=get, sleep=candidate_sleeps.append)
+        self.assertEqual(candidate_sleeps, [])
+
     def test_readback_with_injected_http_and_problem_report(self):
         manifest = b'self.__BUILD_MANIFEST={}'
         claims = {'a': ['a:1', 'a:2']}

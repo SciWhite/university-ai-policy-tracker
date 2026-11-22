@@ -550,14 +550,49 @@ def http_get(url, headers=None, timeout=120):
         return 0, b'', {'error': str(error)}, time.monotonic() - started
 
 
-def fetch(base, path, *, candidate, attempts=3, timeout=120, get=http_get):
+# Public readback goes through Cloudflare, whose rate limit (docs/stop-bleed-set2-20261121.md 0.4b)
+# allows 60 requests / 10 s per IP on */universities/* and */changes/* and then blocks for 10 s.
+# A 2026-11-22 program completion was refused because its API reads got 429. Public reads are
+# therefore paced below that limit, and a 429 waits out the block (Retry-After, at least 12 s).
+PUBLIC_MIN_INTERVAL_SECONDS = 0.2
+RATE_LIMIT_WAIT_SECONDS = 12
+_public_pace = {'lock': threading.Lock(), 'next': 0.0}
+
+
+def _pace_public(sleep=time.sleep, clock=time.monotonic):
+    with _public_pace['lock']:
+        now = clock()
+        wait = _public_pace['next'] - now
+        _public_pace['next'] = max(now, _public_pace['next']) + PUBLIC_MIN_INTERVAL_SECONDS
+    if wait > 0:
+        sleep(wait)
+
+
+def _retry_after(response_headers):
+    try:
+        return max(RATE_LIMIT_WAIT_SECONDS, int(response_headers.get('retry-after', '0')))
+    except (TypeError, ValueError):
+        return RATE_LIMIT_WAIT_SECONDS
+
+
+def fetch(base, path, *, candidate, attempts=3, timeout=120, get=http_get, sleep=time.sleep):
     headers = {'Host': SITE_HOST, 'X-Forwarded-Proto': 'https'} if candidate else {}
-    for attempt in range(attempts):
+    rate_limited_retries = 3
+    attempt = 0
+    while True:
+        if not candidate:
+            _pace_public(sleep=sleep)
         status, body, response_headers, seconds = get(base + path, headers, timeout)
+        if status == 429 and rate_limited_retries > 0:
+            rate_limited_retries -= 1
+            sleep(_retry_after(response_headers))
+            continue
+        attempt += 1
         if status and status < 500:
             break
-        if attempt + 1 < attempts:
-            time.sleep(3)
+        if attempt >= attempts:
+            break
+        sleep(3)
     return status, body, response_headers, seconds
 
 
