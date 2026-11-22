@@ -16,7 +16,9 @@
     }
   ],
   "englishOnlySlugs": [],
-  "discovery": { "keywords": [], "contentPattern": "", "multiPartSuffixes": [], "extraPerSchool": 10, "parallelSchools": 3 },
+  "discovery": { "keywords": [], "contentPattern": "", "multiPartSuffixes": [], "extraPerSchool": 10, "parallelSchools": 3, "firecrawlCap": 25 },
+  "capture": { "workers": 12 },
+  "run": { "timeoutMinutes": { "discover": 90, "firecrawl": 60, "capture": 240, "render-capture": 90 } },
   "reviewDir": "review",
   "outDir": "release-candidate",
   "sourceMetadataFile": "source-metadata/public-v6-source-metadata.json",

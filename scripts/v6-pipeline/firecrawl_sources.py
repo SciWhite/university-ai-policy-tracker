@@ -35,6 +35,7 @@ def main():
         domains = B.official_domains(batch, school)
         seen = {B.norm(json.loads(f.read_text())['url']) for f in (ws / 'captures' / abbr).glob('*.json')}
         seen |= {B.norm(r.split('\t')[3]) for r in rows if r.startswith(abbr + '\t')}
+        seen |= B.queued_urls(ws, abbr)  # sources.tsv, chatgpt-sources.tsv, extra-sources.tsv: never queue a URL twice
         leads = {}
         for f in sorted(d.glob('search-*.json')) + [d / 'map.json']:
             if not f.exists(): continue

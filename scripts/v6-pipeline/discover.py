@@ -66,8 +66,13 @@ async def main():
     async def one(school):
         async with sem:
             await crawl(ws, batch, school, keywords, content, suffixes)
-    await asyncio.gather(*(one(s) for s in B.schools(batch, args)))
+    chosen = B.schools(batch, args)
+    results = await asyncio.gather(*(one(s) for s in chosen), return_exceptions=True)  # one school never cancels the others
+    failed = [(s['abbr'], r) for s, r in zip(chosen, results) if isinstance(r, BaseException)]
+    for abbr, error in failed:
+        print(abbr, 'failed', f'{type(error).__name__}: {error}'[:300], file=sys.stderr, flush=True)
+    return 1 if failed else 0
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    sys.exit(asyncio.run(main()))
