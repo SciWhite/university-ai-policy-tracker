@@ -88,8 +88,9 @@ def read_plan_paths(files):
 
 # Switch-plan fields naming schools whose native pages can appear or disappear: native status
 # (isNativeSchoolLocale, apps/web/lib/university-reading-metadata.ts) depends on the school's
-# record (changedSchools: record digests) and its reading data (readingChangedSchools). Source
-# metadata does not enter it, so sourceMetadataChangedSchools is not listed here.
+# record (changedSchools: record digests), its reading data (readingChangedSchools) and its V6 page
+# data (page-only changes: the bundle lists every locale of those schools in changed-urls.json).
+# Source metadata does not enter it, so sourceMetadataChangedSchools is not listed here.
 STATUS_FIELDS = ('changedSchools', 'readingChangedSchools')
 
 
@@ -121,11 +122,12 @@ def expand_paths(first, plan_paths, status_changed=None):
     Only content-language URLs exist (apps/web/lib/content-locales.ts, docs/render-once.md §10):
     every page has en and zh; a school can also have a native-language page. Every other
     /<uiLocale>/... URL is a 301/308 to the English page, so a changed path is not expanded to
-    all 33 reading locales. Every /<uiLocale>/universities/<slug> URL of a school in
-    `status_changed` (record or reading change, STATUS_FIELDS) is re-rendered here, listed or not:
-    its native page can turn into its 308 or back. Without that information (no switch plan) every
-    listed UI-locale school URL is. The other UI-locale school URLs are probed (probe_paths).
-    /<uiLocale>/changes... URLs are constant 301s."""
+    all 33 reading locales. A /<uiLocale>/universities/<slug> URL is re-rendered here when a plan
+    lists it (switch.ts for cohort and reading changes, the bundle's changed-urls.json for its
+    page-only schools: V6 page data also decides native status) and, listed or not, for every
+    school in `status_changed` (switch plan changedSchools/readingChangedSchools, STATUS_FIELDS):
+    there a native page can turn into its 308 or back. The other UI-locale school URLs are probed
+    (probe_paths). /<uiLocale>/changes... URLs are constant 301s."""
     ordered, seen = [], set()
     def add(path):
         if path not in seen: seen.add(path); ordered.append(path)
@@ -135,7 +137,7 @@ def expand_paths(first, plan_paths, status_changed=None):
         locale, base = strip_locale(path)
         if not page_store_path(base): other.append(path)
         elif locale in (None, *CONTENT_LOCALES): store.append(base)
-        elif _school_slug(base) and status_changed is None: ui_school.append(path)
+        elif _school_slug(base): ui_school.append(path)  # listed: re-render whatever it is now
     for base in store:
         for locale in CONTENT_LOCALES: add(localized(base, locale))
     for base in store:
@@ -148,8 +150,9 @@ def expand_paths(first, plan_paths, status_changed=None):
 
 def probe_paths(plan_paths, refreshed):
     """Every UI-locale URL of every school page in the plans that is not refreshed already, i.e.
-    of schools whose native status cannot change in this release (page-only and source-metadata
-    changes). Such a URL stays a native page or stays a 308, so refresh() reads the stored entry
+    unlisted URLs of schools whose native status cannot change in this release (a switch plan
+    lists such a school in en/zh only, e.g. a source-metadata change). Such a URL stays a native
+    page or stays a 308, so refresh() reads the stored entry
     first and re-renders only a stored native page (200); a stored redirect stays as it is, and a
     miss is fetched and stored fresh by that read (a full render). A school the switch plan lists
     in en/zh only can still have a native page; without the probe it would keep old content."""

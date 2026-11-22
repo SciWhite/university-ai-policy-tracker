@@ -149,7 +149,8 @@ class PurgeSemanticsTests(unittest.TestCase):
         # rollback): every UI locale is re-rendered, listed or not. Other UI-locale school URLs
         # are probed instead (stored native page -> refresh).
         cohort = ['/universities/epfl'] + [f'/{l}/universities/epfl' for l in ro.READING_LOCALES if l != 'en']
-        self.assertEqual(ro.expand_paths([], cohort, status_changed=set()), ['/universities/epfl', '/zh/universities/epfl'])
+        self.assertEqual(len(ro.expand_paths([], cohort, status_changed=set())), len(ro.READING_LOCALES))  # listed (page-only V6 data decides too)
+        self.assertEqual(ro.expand_paths([], cohort[:1], status_changed=set()), ['/universities/epfl', '/zh/universities/epfl'])
         self.assertEqual(len(ro.expand_paths([], cohort, status_changed={'epfl'})), len(ro.READING_LOCALES))
         base_tier = ro.expand_paths([], ['/universities/mit', '/zh/universities/mit'], status_changed={'mit'})
         self.assertEqual(len(base_tier), len(ro.READING_LOCALES)); self.assertIn('/ko/universities/mit', base_tier)
@@ -165,7 +166,7 @@ class PurgeSemanticsTests(unittest.TestCase):
         # A non-cohort school is listed in en/zh only, but may have a native page (base-tier
         # schoolTargetLocales): its UI-locale URLs are probed, so a stored native page is refreshed.
         plan = ['/universities/mit', '/zh/universities/mit', '/changes/mit']
-        urls = ro.expand_paths([], plan, status_changed=set())  # e.g. a source-metadata-only change
+        urls = ro.expand_paths([], plan, status_changed=set())  # e.g. a source-metadata-only change, listed in en/zh
         probe = ro.probe_paths(plan, urls)
         self.assertEqual(len(urls), 4)  # renders: school en/zh + changes en/zh
         self.assertEqual(len(probe), len(ro.UI_LOCALES)); self.assertIn('/ko/universities/mit', probe)

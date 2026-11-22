@@ -570,7 +570,7 @@ def cmd_refresh(host, op, args):
         origin = {'mode': 'epoch-purge-fallback' if installed else 'epoch-purge', 'fallbackReason': reason,
                   **({'pageStore': store} if installed else {}), 'purge': purge}
         failed = 'Origin cache step failed (purge-html-cache)' if purge['exit'] else None
-    status = 'incomplete' if failed or (warm and warm['exit']) else 'ok'
+    status = 'refused' if store.get('pageTree') and not failed else 'incomplete' if failed or (warm and warm['exit']) else 'ok'
     op.write('refresh.json', {'status': status, 'origin': origin, **({'warm': warm} if warm else {}),
                               'next': 'Cloudflare purge_everything (operator), then the paced public readback (<= 5 requests/s, waits out 429), then complete.'})
     if failed:

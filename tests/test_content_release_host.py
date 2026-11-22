@@ -302,6 +302,7 @@ class ContentReleaseHostTest(unittest.TestCase):
         self.assertEqual(self.commands('render-once.py'), [])
         self.assertEqual(len(self.commands('purge-html-cache')), 1)  # generic pages and the store are not left on the old release
         self.assertIn('page tree is active', self.refresh_receipt()['origin']['fallbackReason'])
+        self.assertEqual(self.refresh_receipt()['status'], 'refused')
 
     def test_standalone_refresh_checks_the_helper_pin(self):
         self.install_page_store()

@@ -263,16 +263,18 @@ changes documents for 30 days; a content switch does not purge it. `content-rele
 
 Only content-language URLs are rendered: en and zh of every changed path. A
 `/<uiLocale>/universities/<slug>` URL is a native page or a 308 to the English page, and which
-one depends on the school's record and reading data (`isNativeSchoolLocale`). So all 31 UI-locale
-URLs are re-rendered for the switch plan's `changedSchools` and `readingChangedSchools` (also on a
-rollback, where a 308 can turn back into a native page). Every other UI-locale URL of a school in
-the plans (page-only and source-metadata changes, whose native status cannot change) is
-**probed**: `refresh` reads the stored entry (both encodings, no refresh header) and re-renders
+one depends on the school's record, reading data and V6 page data (`isNativeSchoolLocale`). So a
+UI-locale URL is re-rendered when a plan lists it (the switch plan for cohort and reading changes,
+`changed-urls.json` for every locale of the bundle's page-only schools), and all 31 are
+re-rendered for the switch plan's `changedSchools` and `readingChangedSchools`, listed or not
+(also on a rollback, where a 308 can turn back into a native page). The unlisted UI-locale URLs of
+the other schools in the plans (listed in en/zh only, e.g. source-metadata changes, which do not
+decide native status) are **probed**: `refresh` reads the stored entry (both encodings, no refresh header) and re-renders
 only a stored native page (200); a stored redirect stays, and a miss is a fresh render by the
 probe itself. This also covers native pages of base-tier schools that the switch plan lists in
 en/zh only. `/<uiLocale>/changes…` URLs are constant 301s and are skipped. Cost: a school with a
-record or reading change costs 2–4 content renders plus 31 redirect or native renders (each 2
-requests); a page-only or source-metadata school costs 2–4 renders plus 31 probes (2 requests
+record, reading or page-only change costs 2–4 content renders plus 31 redirect or native renders
+(each 2 requests); a source-metadata-only school costs 2–4 renders plus 31 probes (2 requests
 each, store hits when seen before, a full render on a miss, 3 more requests for a stored native
 page). The step shares the `--warm-max-seconds` budget (2,400 s); running out of time is a
 problem row, so it falls back to the epoch purge.
@@ -437,9 +439,9 @@ Steps, in order:
    helper's own `scripts/release/render-once.py` (pinned by `HELPER.json`, so its URL rules match
    the running program; it is the same file as `/usr/local/libexec/uapt-render-once.py`;
    `UAPT_RENDER_ONCE` overrides it). Its path and SHA256 go into the receipt. `refresh` adds the
-   en/zh URL of every page-store path, re-renders all 31 UI-locale URLs of the switch plan's
-   `changedSchools` and `readingChangedSchools`, and probes the other UI-locale URLs of the plans'
-   schools (re-render only a stored native page). A standalone `refresh` checks the helper pin like
+   en/zh URL of every page-store path, re-renders every listed UI-locale school URL and all 31 of
+   the switch plan's `changedSchools` and `readingChangedSchools`, and probes the other UI-locale
+   URLs of the plans' schools (re-render only a stored native page). A standalone `refresh` checks the helper pin like
    `activate`. If a pre-rendered page tree is active (`/srv/uapt/page-tree/current`, or
    `UAPT_PAGE_TREE_ROOT`; R3), `refresh` runs the fallback purge and then refuses: the switch is
    live, but nginx serves the tree first and neither path updates it yet.
