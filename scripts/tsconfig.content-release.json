@@ -8,6 +8,6 @@
       "@uapt/shared": ["../packages/shared/src/index.ts"]
     }
   },
-  "include": ["content-release/*.ts", "export-mcp-catalog.ts", "../tests/content-release.test.ts", "../tests/content-correct.test.ts", "../tests/reading-record-delta.test.ts", "../apps/web/next-env.d.ts"],
+  "include": ["content-release/*.ts", "export-mcp-catalog.ts", "../tests/content-release.test.ts", "../tests/content-correct.test.ts", "../tests/reading-record-delta.test.ts", "../tests/content-bundle.test.ts", "../apps/web/next-env.d.ts"],
   "exclude": ["../node_modules"]
 }

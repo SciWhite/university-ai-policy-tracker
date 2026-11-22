@@ -87,7 +87,8 @@ Immediately before the combined release, activate the report locally with the
 actual publication timestamp:
 
 ```bash
-python3 scripts/activate-september-report.py --published-at <actual-ISO-timestamp>
+# Historical (September 2026). scripts/activate-september-report.py was retired and removed on 2026-11-21;
+# reports now ship as content releases (docs/content-release.md §8).
 ```
 
 This updates registry, latest pointers, llms.txt and editorial status. Preserve

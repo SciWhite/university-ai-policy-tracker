@@ -29,8 +29,9 @@ controller (`docs/release-lifecycle.md`) and the disk rules
   render on first request and still 404 unknown slugs.
 - `output: "standalone"` with no content tracing (`outputFileTracingIncludes`
   is empty in program builds; `data/`, `staging/`, `.local/`, docs and tests
-  are excluded). Workspace-mode builds (`scripts/uapt-release.mjs build`) are
-  unchanged.
+  are excluded). The pre-R1 workspace build (`scripts/uapt-release.mjs build`)
+  was removed on 2026-11-21; `pnpm build` is now a local diagnostic
+  `program-build.mjs build --local`.
 
 Measured locally (2026-11-04, macOS arm64, Node 26), from a sparse checkout
 without `data/` and `staging/` as in the workflow: build 13 s (warm Turbopack),
@@ -226,7 +227,7 @@ Keep the old files for rollback.
 
 ### 6.1 Origin HTML cache (nginx, from 2026-11-06)
 
-The app's ISR cache lives in process memory (now 768 MB, about 500 pages), so every
+The app's ISR cache lives in process memory (2 GiB; 1.5 GiB from the next program release, §6.2), so every
 restart or cutover starts cold. `--html-cache` makes the generated `location /` cache
 public HTML/RSC on disk (`infra/nginx/uapt-html-cache.conf`, installed once as
 `/etc/nginx/conf.d/uapt-html-cache.conf` with `uapt-html-cache-epoch.inc`):
@@ -248,6 +249,80 @@ with Cloudflare (`docs/content-release.md` §5).
 Isolated test on the host (2026-11-06, separate nginx on 127.0.0.1:18080 against the live
 app): MISS then HIT; gzip and identity variants cached separately; `/internal`, `/search`
 and Authorization bypass; security headers present; a new epoch gives MISS then HIT.
+
+### 6.2 Web slot memory limits and the health watchdog (2026-11-21)
+
+**Incident.** On 2026-11-21 the web slot (`uapt-mcp-v6-candidate`, 3101, up since 2026-11-19
+14:52) returned 504 on every uncached request from about 17:40 to 18:21 UTC. It sat in D
+state at `MemoryHigh` 5.5 GiB (memory.pressure full ~88 %, oom 0). The host has no swap, so
+`MemoryHigh` could not reclaim the anonymous memory; it only throttled the process. At 18:21:12
+the memcg OOM killer fired at `MemoryMax` 6 GiB (anon-rss 6.2 GB; `journalctl -k`) and
+`Restart=on-failure` started a new process; the manual restart at 18:30 hit that new process
+during its warm-up. 504s also came in bursts on 2026-11-20/21 (about 19,000 and 26,000 a day
+against 300–800 a day the week before).
+
+**Footprint.** A fresh process is at about 4.5 GB anonymous memory after its warm-up (4,021
+requests, 43 min). Its heap cap was 4,608 MiB, so at least 1.6 GB of the 6.2 GB lived off-heap
+(RSC Buffers in the 2 GB ISR LRU, malloc arenas, code). Heap cap + off-heap was larger than
+`MemoryHigh`.
+
+**Root cause of the growth: content switches.** The content switch at 19:58:31 the same day
+(`c-20261121-v6-batch12-zh`) raised the restarted process from a flat 4.55 GB to 5.0 GB (peak
+5.4 GB). The killed process had served six switches since its start on 2026-11-19. The
+in-process caches (`readContentJson`, `contentScoped`, and the `BoundedAsyncCache`s keyed by
+`contentCacheKey`: datasets, release diffs, change records, monthly reports) key their entries
+by `contentId`, so the replaced release's entries could never be hit again but stayed until
+LRU eviction; their budgets count raw JSON bytes, several times smaller than the parsed heap.
+Since 2026-11-21 a switch drops them at once (`registerContentKeyedCache`,
+`releasePreviousContent` in `apps/web/lib/content-runtime.ts`; the refresh endpoint's `GET`
+reports `releasedOnSwitch` and `process.memoryUsage()`). Re-rendering the expired pages still costs CPU and a transient peak, and a build that was
+already running at the switch can put one old entry back (bounded by the LRU).
+
+**Limits (changed 2026-11-21).** `MemoryHigh`/`MemoryMax` and `candidatePeakMaxBytes` take effect on the host at once (drop-in + `daemon-reload`, no restart); `MALLOC_ARENA_MAX` at the next restart of the slot (normally the next program release); the cache size with the next program release.
+
+| Setting | Before | New | Where |
+|---|---|---|---|
+| `MemoryMax` | 6 GiB | **8 GiB** (owner-authorized budget raise 2026-11-21; 12 GiB was rejected: two slots coexist during a program release) | managed drop-in (`CANDIDATE_MEMORY_MAX`) |
+| `MemoryHigh` | 5.5 GiB | = `MemoryMax`: no throttle zone without swap; the kernel kills at the limit and systemd restarts | managed drop-in (`CANDIDATE_MEMORY_HIGH`) |
+| `candidatePeakMaxBytes` (policy) | 4 GiB | 8 GiB, so a candidate's measured peak may use its slot limit; `uaptPeakMaxBytes` stays 16 GiB | `release-lifecycle/policy.json` |
+| V8 heap | `--max-old-space-size=4608` | unchanged 4608 MiB; the candidate step writes it into `runtime.env` and refuses a cap that leaves less than 3 GiB off-heap under `MemoryMax` | `runtime.env` (`CANDIDATE_HEAP_MIB`) |
+| `MALLOC_ARENA_MAX` | unset (8 × cores) | 2 (fewer glibc arenas, less RSS growth) | `runtime.env` |
+| Next ISR memory cache | 2 GiB | 1.5 GiB (~1,000 pages; nginx disk cache and Cloudflare hold the rest) | `apps/web/next.config.ts` (program release) |
+
+Capacity check (2026-11-21): 23.4 GiB RAM, no swap; other services ~3.1 GiB anonymous, MCP
+0.12 GiB. Two slots at 8 GiB + the rest ≈ 20 GiB, leaving ≈ 3.4 GiB above the 2 GiB host
+reserve. The lifecycle gate still checks the real `MemAvailable` and refuses a release that
+does not fit. 8 GiB only buys time: the growth per content switch is fixed by the cache drop
+below (next program release).
+
+A memory kill costs a restart (seconds) and a cold cache (warm-up ~40 min); a throttled
+process costs a full outage until something kills it.
+
+**Watchdog.** `scripts/release/uapt-web-watchdog.py`, installed as
+`/usr/local/libexec/uapt-web-watchdog.py` with `infra/systemd/uapt-web-watchdog.{service,timer}`
+(oneshot, root, every 60 s; not a resident service). Each run:
+
+- reads the routed slot from `uapt-main-upstream.conf` (never the idle slot);
+- probes `GET /api/plugin/status` (force-dynamic, no content reads) on 127.0.0.1 with a
+  20 s timeout;
+- restarts the slot only after **3 consecutive failures with memory evidence**
+  (memory.current ≥ 95 % of memory.max, memory.pressure full avg60 ≥ 10 %, or the process in
+  D state), or **10 consecutive failures without it** (CPU saturation under crawler load is
+  the likely cause then, and a restart makes every page cold);
+- never while the lifecycle `transaction.json` is unfinished or the release lock
+  `/run/lock/uapt-release.lock` is held (a content or program release is running; read from
+  `/proc/locks`, never taken), and never before this invocation's `Runtime warm-up finished`
+  journal line (at least 15 min, at most 60 min after the start);
+- at most once per 30 min and 3 times per 24 h (after that it only writes receipts); the
+  restart is written to its state before `systemctl restart` runs, so a killed run still
+  counts;
+- writes `/srv/uapt/operations/web-watchdog/restart-<UTC>.json` with the cgroup memory
+  facts (memory.current/high/max/peak/events/pressure, anon, process state) taken just
+  before the restart, and appends failures, restarts and state changes to `events.jsonl`
+  (bounded). State is in `/run/uapt-web-watchdog/`. Nothing is sent outside the host.
+
+Check without acting: `sudo /usr/local/libexec/uapt-web-watchdog.py --dry-run`. Tests:
+`pnpm test:program-release` (`tests/test_web_watchdog.py`).
 
 ## 7. One-command program release (`scripts/release/program-release.py`)
 
@@ -280,7 +355,7 @@ and the next one.
 | Step | What it does | Receipts in the operation directory |
 |---|---|---|
 | `install --sha <40-hex> --run-id <id>` (`GH_TOKEN` set) or `--zip <file>` | Runs `program-artifact-install.py`, or reuses its receipt when this SHA is already installed. Writes the program basis bound to the current content pointer. Picks the readback scope (7.3). | `release.json` (state), `program-basis.json`, `install.log` |
-| `candidate` | Takes the free fixed web slot. Copies the active slot's env to `runtime.env` (root:uapt 0640); it must not set `PORT`/`HOSTNAME` or allow unsynchronized content. Writes one managed drop-in (env, port, node, `SuccessExitStatus=143`, MemoryHigh/Max, `ReadWritePaths` incl. `.next/cache`), named to sort after every existing drop-in and reused on later releases. Restarts the slot. Waits for the journal line `Runtime warm-up finished` of this invocation. Fallback: after `--warmup-min-wait` (10 min), two consecutive probes in which every sampled page answers 200 within `--latency-ok` (5 s). | `dropin.conf`, `candidate-samples.json` (memory every 5 s) |
+| `candidate` | Takes the free fixed web slot. Copies the active slot's env to `runtime.env` (root:uapt 0640) with the slot memory settings (§6.2: `--max-old-space-size=4608` in `NODE_OPTIONS`, `MALLOC_ARENA_MAX=2`); it must not set `PORT`/`HOSTNAME`, allow unsynchronized content or leave less than 3 GiB off-heap under `MemoryMax`. Writes one managed drop-in (env, port, node, `SuccessExitStatus=143`, MemoryHigh = MemoryMax = 8 GiB, `ReadWritePaths` incl. `.next/cache`), named to sort after every existing drop-in and reused on later releases. Restarts the slot. Waits for the journal line `Runtime warm-up finished` of this invocation. Fallback: after `--warmup-min-wait` (10 min), two consecutive probes in which every sampled page answers 200 within `--latency-ok` (5 s). | `dropin.conf`, `candidate-samples.json` (memory every 5 s) |
 | `static` | Union copy of `.next/static` into the `/_next/static/` alias found in the managed snippets. Refuses same-name/different-bytes collisions; keeps old files. | `static-union.json` |
 | `capacity` | Cold request pass (heavy routes + sampled school pages), then 60 s steady. Peaks combine the warm-up samples (startup ≤ 60 s, cold) with this pass. Refuses a restart during measurement or a peak above `candidatePeakMaxBytes`. | `capacity.json` |
 | `routing` | Retargets every `/etc/nginx/snippets/uapt-*.conf` reference to `127.0.0.1:<active port>` to the candidate port and updates the code-release header in those files. Refuses when the active port is still referenced outside the managed snippets, which the controller cannot switch (the R1 launch missed four proxy-common snippets this way). Runs `nginx -T` on a rewritten copy of `/etc/nginx` and refuses if the retiring endpoint is still in that effective config (the controller's `complete` check, run before cutover). The live tree is not touched. Rerunning `routing` voids an existing plan. `--replace <snippet>=<file>` (repeatable) stages reviewed new content for a managed snippet, e.g. the consolidated minimal routing; it goes through the same retarget, journal and recovery. Once all app traffic goes through `upstream uapt_next_backend`, a release only stages `uapt-main-upstream.conf`. To install the minimal routing (§6, on `claude/r1-fixes`), pass its generated file for `uapt-proxy-locations.conf` and the reviewed replacement for `uapt-eea1eb21-detail-routes.conf`. | `routing/` + `routing-files.json` |

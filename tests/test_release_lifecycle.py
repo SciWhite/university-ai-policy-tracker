@@ -715,4 +715,332 @@ class CompleteUpdatesRetentionTests(unittest.TestCase):
   self.assertEqual(json.loads((self.state/'transaction.json').read_text())['stage'],'selected_pending_acceptance')
   self.assertEqual(json.loads(self.policy_path.read_text())['activeUnits'],['mcp.service','web-a.service'])
 
+class RescanRetentionTests(unittest.TestCase):
+ """rescan refreshes a stale receipt from the live disk and references; it never classifies or moves a hold clock."""
+ ACTIVE='uapt-program-dddddddddddd-ACT';ROLLBACK='uapt-program-777777777777-RB';HELD='uapt-program-999999999999-HELD'
+ def setUp(self):
+  self.td=tempfile.TemporaryDirectory();root=Path(self.td.name);self.root=root
+  self.state=root/'state';self.state.mkdir();self.register=root/'current-retention.json';self.clocks=root/'hold-clocks.json'
+  self.time=m.datetime.datetime.now(m.datetime.timezone.utc);h=lambda n:(self.time+m.datetime.timedelta(hours=n)).isoformat()
+  self.held={'name':self.HELD,'disposition':'held','role':'main','reason':'Superseded rollback','heldSince':h(-48),'reviewBefore':h(100),'nextAction':'Archive off-host, verify, review references, remove'}
+  self.content=root/'content-releases';self.content.mkdir();(self.content/'c-installed').mkdir()
+  self.content_hold={'path':str(self.content/'c-installed'),'disposition':'held','heldSince':h(-2),'reviewBefore':h(165),'reason':'Installed for an operation','nextAction':'Complete the release or archive the link tree'}
+  self.write_register(checkedAt=h(-72))
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','checkedAt':h(-72),'entries':[{k:self.held[k] for k in ['name','disposition','heldSince','reviewBefore','nextAction','reason']}],'temporaryArtifacts':[]})
+  self.policy={'diskCapacity':{'root':'/srv/uapt','reserveBytes':100,'reserveInodes':10,'projectMaxBytes':1000,'artifactMaxBytesByRole':{}},'retentionRegister':str(self.register),
+   'retentionEnforcement':{'maxHoldHours':168,'blockAfterHours':168,'clockRegister':str(self.clocks)}}
+  self.disk={'root':'/srv/uapt','freeBytes':500,'availableInodes':100,'projectBytes':500,'releaseRoots':[self.ACTIVE,self.ROLLBACK,self.HELD],'temporaryPaths':[]}
+  self.running={'web.service':{'WorkingDirectory':'/srv/uapt/releases/'+self.ACTIVE+'/apps/web','MainPID':'0','MemoryCurrent':'1'}}
+ def tearDown(self):self.td.cleanup()
+ def write_register(self,**changes):
+  value={'schemaVersion':'uapt-release-retention-v1','basisSha256':'basis','checkedAt':m.now(),'registerUpdatedBy':'uapt-release-lifecycle complete','referenceInventory':{'path':'/x'},
+   'entries':[{'name':self.ACTIVE,'disposition':'active','role':'main','reason':'Accepted program'},{'name':self.ROLLBACK,'disposition':'rollback','role':'main','reason':'Previous accepted'},dict(self.held)],
+   'temporaryArtifacts':[],'contentReleaseHolds':[dict(self.content_hold)],'archivedOutsideServer':[]}
+  value.update(changes);m.write(self.register,value);return value
+ def observed(self):return {'checkedAt':m.now(),'units':self.running,'memory':{},'uaptMemoryBytes':0,'disk':dict(self.disk)}
+ def references(self,observed,root):
+  roots=lambda u:[m.release_root_of(u['WorkingDirectory'],Path('/srv/uapt/releases'))]
+  return {'units':{n:{'running':True,'configRoots':roots(u),'processRoots':roots(u)} for n,u in self.running.items()},'nginxRoots':[],'nginxSha256':'0'*64,'symlinks':{}}
+ def rescan(self,reason='Content release c-next more than 24 h after the last program release',dry_run=False):
+  with patch.object(m,'STATE',self.state),patch.object(m,'audit',side_effect=self.observed),patch.object(m,'release_references',side_effect=self.references):
+   return m.rescan(self.policy,reason,dry_run=dry_run)
+ def plan(self):return {'basis':{'sha256':'basis'},'retentionReceipt':{'path':str(self.register),'sha256':m.digest(self.register)}}
+ def snapshot(self):return self.register.read_bytes(),self.clocks.read_bytes(),sorted(p.name for p in self.root.iterdir())
+ def assertRefusedUnchanged(self,pattern,**kwargs):
+  before=self.snapshot()
+  with self.assertRaisesRegex(ValueError,pattern):self.rescan(**kwargs)
+  self.assertEqual(self.snapshot(),before)
+ def test_stale_receipt_refused_by_record_retention_is_refreshed_by_rescan(self):
+  with self.assertRaisesRegex(ValueError,'stale'):m.validate_retention_receipt(self.plan(),self.observed(),self.policy)
+  old=json.loads(self.register.read_text());old_bytes=self.register.read_bytes();old_clocks=json.loads(self.clocks.read_text())
+  result=self.rescan()
+  self.assertEqual(result['check'],'passed');self.assertEqual(Path(result['backup']).read_bytes(),old_bytes)
+  new=json.loads(self.register.read_text())
+  self.assertEqual(new['entries'],old['entries']);self.assertEqual(new['contentReleaseHolds'],old['contentReleaseHolds'])
+  for key in old:
+   if key not in ('checkedAt','registerUpdatedBy'):self.assertEqual(new[key],old[key],key)
+  self.assertEqual(new['registerUpdatedBy'],'uapt-release-lifecycle rescan');self.assertEqual(new['lastRescan']['previousCheckedAt'],old['checkedAt'])
+  self.assertEqual(new['lastRescan']['previousRegisterSha256'],m.hashlib.sha256(old_bytes).hexdigest());self.assertEqual(new['lastRescan']['runningReleaseRoots'],[self.ACTIVE])
+  clocks=json.loads(self.clocks.read_text());self.assertEqual(clocks['entries'],old_clocks['entries']);self.assertNotEqual(clocks['checkedAt'],old_clocks['checkedAt'])
+  m.validate_retention_receipt(self.plan(),self.observed(),self.policy)  # the next release gate accepts it
+  self.assertEqual([h['id'] for h in result['holds']],[self.HELD,self.content_hold['path']])
+ def test_hold_clocks_stay_byte_identical(self):
+  self.rescan();held={e['name']:e for e in json.loads(self.register.read_text())['entries']}[self.HELD]
+  self.assertEqual({f:held[f] for f in m.HOLD_CLOCK_FIELDS},{f:self.held[f] for f in m.HOLD_CLOCK_FIELDS})
+ def test_dry_run_checks_everything_and_writes_nothing(self):
+  before=self.snapshot();result=self.rescan(dry_run=True)
+  self.assertTrue(result['dryRun']);self.assertEqual(result['check'],'passed');self.assertEqual(self.snapshot(),before)
+ def test_reason_is_required(self):
+  for reason in [None,'','   ','x'*501]:
+   with self.subTest(reason=reason):self.assertRefusedUnchanged('--reason',reason=reason)
+ def test_expired_hold_refuses(self):
+  h=lambda n:(self.time+m.datetime.timedelta(hours=n)).isoformat();self.held.update(heldSince=h(-200),reviewBefore=h(-40))
+  self.write_register(checkedAt=h(-72));m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[dict(self.held)],'temporaryArtifacts':[]})
+  self.assertRefusedUnchanged('Expired registered hold')
+ def test_register_edit_cannot_extend_the_clock(self):
+  self.held['reviewBefore']=(self.time+m.datetime.timedelta(hours=110)).isoformat();self.write_register(checkedAt='2026-01-01T00:00:00+00:00')
+  self.assertRefusedUnchanged('cannot be renewed')
+ def test_unclassified_root_or_temporary_artifact_refuses(self):
+  self.disk['releaseRoots'].append('uapt-stray');self.assertRefusedUnchanged('Unclassified release roots')
+  self.disk['releaseRoots'].remove('uapt-stray');self.disk['temporaryPaths']=['/srv/uapt/builds/failed'];self.assertRefusedUnchanged('Unclassified or changed temporary artifacts')
+ def test_vanished_root_needs_an_archive_record(self):
+  self.disk['releaseRoots'].remove(self.HELD);self.assertRefusedUnchanged('gone without an off-host archive record')
+  self.write_register(archivedOutsideServer=[{'name':self.HELD,'archivedAt':m.now(),'location':'off-host','verification':'sha256 + restore check'}])
+  result=self.rescan();self.assertEqual(result['dropped']['entries'],[self.HELD])
+  self.assertNotIn(self.HELD,[e['name'] for e in json.loads(self.register.read_text())['entries']])
+  self.write_register(archivedOutsideServer=[{'name':self.HELD,'note':'no evidence'}]);self.assertRefusedUnchanged('archive record')
+ def test_capacity_shortfall_refuses(self):
+  for key,value,pattern in [('freeBytes',99,'disk reserve'),('availableInodes',9,'inodes'),('projectBytes',1001,'UAPT disk budget')]:
+   with self.subTest(key=key):
+    saved=self.disk[key];self.disk[key]=value;self.assertRefusedUnchanged(pattern);self.disk[key]=saved
+ def test_active_must_run_and_rollback_must_be_cold(self):
+  self.running={};self.assertRefusedUnchanged('Active release root has no running unit')
+  self.running={'web.service':{'WorkingDirectory':'/srv/uapt/releases/'+self.ACTIVE+'/apps/web'},'old.service':{'WorkingDirectory':'/srv/uapt/releases/'+self.ROLLBACK+'/apps/web'}}
+  self.assertRefusedUnchanged('Rollback release root is used by a running unit')
+ def test_unfinished_transaction_refuses(self):
+  m.write(self.state/'transaction.json',{'stage':'selected_pending_acceptance'});self.assertRefusedUnchanged('Unfinished deployment')
+ def test_content_release_holds_are_bounded_and_need_archive_records(self):
+  h=lambda n:(self.time+m.datetime.timedelta(hours=n)).isoformat()
+  self.content_hold.update(heldSince=h(-200),reviewBefore=h(-33));self.write_register(checkedAt=h(-72));self.assertRefusedUnchanged('Expired content release hold')
+  self.content_hold.update(heldSince=h(-2),reviewBefore=h(200));self.write_register(checkedAt=h(-72));self.assertRefusedUnchanged('unbounded')
+  self.content_hold.update(reviewBefore=h(100),path=str(self.content/'c-removed'));self.write_register(checkedAt=h(-72));self.assertRefusedUnchanged('Content release hold is gone')
+  self.write_register(checkedAt=h(-72),archivedOutsideServer=[{'name':'content-c-removed','path':self.content_hold['path'],'sha256':'a'*64,'removalReceipt':'/op/deletion-receipt.json'}])
+  result=self.rescan();self.assertEqual(result['dropped']['contentReleaseHolds'],[self.content_hold['path']]);self.assertEqual(json.loads(self.register.read_text())['contentReleaseHolds'],[])
+ def test_content_hold_clock_is_recorded_then_cannot_be_reset(self):
+  result=self.rescan();self.assertEqual(result['newContentHoldClocks'],[self.content_hold['path']])
+  clock=json.loads(self.clocks.read_text())['contentReleaseHolds'][0];self.assertEqual({f:clock[f] for f in m.HOLD_CLOCK_FIELDS},{f:self.content_hold[f] for f in m.HOLD_CLOCK_FIELDS})
+  self.assertEqual(self.rescan()['newContentHoldClocks'],[])
+  h=lambda n:(self.time+m.datetime.timedelta(hours=n)).isoformat()
+  self.content_hold.update(heldSince=h(-1),reviewBefore=h(160));self.write_register(checkedAt=h(-72));self.assertRefusedUnchanged('cannot be renewed')
+ def test_content_hold_cannot_be_deleted_while_installed(self):
+  self.rescan();self.write_register(checkedAt=m.now(),contentReleaseHolds=[])
+  self.assertRefusedUnchanged('removed from the register while still installed')
+  self.write_register(checkedAt=m.now(),contentReleaseHolds=[],contentActive={'contentId':'c-installed'});self.rescan()  # switched: the hold ends by becoming active
+ def test_held_item_without_first_clock_refuses(self):
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[]})
+  self.assertRefusedUnchanged('no first hold clock')
+ def test_registered_candidate_without_transaction_refuses(self):
+  value=self.write_register();value['entries'][1].update(disposition='candidate');m.write(self.register,value)
+  self.assertRefusedUnchanged('Candidate release root without an unfinished transaction')
+ def test_archive_receipt_hash_is_checked(self):
+  receipt=self.root/'deletion-receipt.json';receipt.write_text('{}');self.disk['releaseRoots'].remove(self.HELD)
+  self.write_register(archivedOutsideServer=[{'name':self.HELD,'removalReceipt':str(receipt),'removalReceiptSha256':'0'*64}]);self.assertRefusedUnchanged('Archive receipt missing or changed')
+  self.write_register(archivedOutsideServer=[{'name':self.HELD,'removalReceipt':str(receipt),'removalReceiptSha256':m.digest(receipt)}]);self.assertEqual(self.rescan()['dropped']['entries'],[self.HELD])
+ def test_post_write_failure_names_the_previous_copy(self):
+  calls=[]
+  def observed():
+   calls.append(1);value=self.observed()
+   if len(calls)>1:value['disk']['releaseRoots']=value['disk']['releaseRoots']+['uapt-appeared']
+   return value
+  with patch.object(m,'STATE',self.state),patch.object(m,'audit',side_effect=observed),patch.object(m,'release_references',side_effect=self.references):
+   with self.assertRaisesRegex(ValueError,'previous copy .*before-rescan-.*post-write check failed'):m.rescan(self.policy,'race')
+ def test_content_release_roots_are_reported(self):
+  runtime=self.root/'runtime'
+  for cid in ['c-active','c-rollback','c-old','c-installed']:(runtime/'releases'/cid).mkdir(parents=True)
+  hold={**self.content_hold,'path':str(runtime/'releases/c-installed')}
+  register={'contentActive':{'contentId':'c-active'},'contentRollback':{'contentId':'c-rollback'},'contentReleaseHolds':[hold]}
+  self.assertEqual(m.content_release_roots(register,self.root/'missing'),{})
+  self.assertEqual(m.content_release_roots(register,runtime),{'c-active':'active','c-installed':'held','c-old':'unregistered','c-rollback':'rollback'})
+ def test_command_line_action(self):
+  out=[]
+  with patch.object(m,'STATE',self.state),patch.object(m,'POLICY',self.root/'policy.json'),patch.object(m,'LOCK',self.root/'lock'),\
+       patch.object(m,'audit',side_effect=self.observed),patch.object(m,'release_references',side_effect=self.references),patch('builtins.print',side_effect=lambda *a,**k:out.append(' '.join(map(str,a)))):
+   m.write(self.root/'policy.json',self.policy)
+   with patch.object(sys,'argv',['controller','rescan','--dry-run','--reason','check']):m.main()
+   self.assertIn('nothing written',out[-1])
+   with patch.object(sys,'argv',['controller','rescan']),self.assertRaisesRegex(ValueError,'--reason'):m.main()
+   with patch.object(sys,'argv',['controller','rescan','--reason','Content release c-next']):m.main()
+  self.assertIn('Rescan recorded',out[-1]);self.assertEqual(json.loads(self.register.read_text())['lastRescan']['reason'],'Content release c-next')
+
+class ContentHoldEnforcementTests(unittest.TestCase):
+ """2026-11-21: retention/gate enforce content-hold deadlines, the hold limit follows the hold's start,
+ unregistered content releases are classified, record-retention cannot restart a clock, early warning."""
+ def setUp(self):
+  self.td=tempfile.TemporaryDirectory();root=Path(self.td.name);self.root=root
+  self.time=m.datetime.datetime.now(m.datetime.timezone.utc);self.h=lambda n:(self.time+m.datetime.timedelta(hours=n)).isoformat()
+  self.runtime=root/'runtime';(self.runtime/'releases').mkdir(parents=True)
+  for cid in ['c-old','c-older','c-rollback','c-active']:(self.runtime/'releases'/cid).mkdir()
+  history=[{'at':self.h(-300),'contentId':'c-older'},{'at':self.h(-200),'contentId':'c-old'},{'at':self.h(-100),'contentId':'c-rollback'},{'at':self.h(-50),'contentId':'c-active'}]
+  (self.runtime/'pointer-history.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in history))
+  for r in history:  # a release directory's mtime is its install time
+   t=m.retention_timestamp(r['at'],'at').timestamp();m.os.utime(self.runtime/'releases'/r['contentId'],(t,t))
+  self.register=root/'current-retention.json';self.clocks=root/'hold-clocks.json'
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[]})
+  self.policy={'diskCapacity':{'root':str(root)},'retentionRegister':str(self.register),
+   'retentionEnforcement':{'maxHoldHours':168,'blockAfterHours':168,'clockRegister':str(self.clocks)}}
+  self.write_register()
+ def tearDown(self):self.td.cleanup()
+ def write_register(self,holds=(),**changes):
+  value={'schemaVersion':'uapt-release-retention-v1','basisSha256':'basis','checkedAt':m.now(),'entries':[],'temporaryArtifacts':[],
+   'contentActive':{'contentId':'c-active'},'contentRollback':{'contentId':'c-rollback'},'contentReleaseHolds':list(holds),'archivedOutsideServer':[]}
+  value.update(changes);m.write(self.register,value);return value
+ def hold(self,cid,since,review,**extra):return {'path':str(self.runtime/'releases'/cid),'disposition':'held','heldSince':self.h(since),'reviewBefore':self.h(review),'reason':'Installed','nextAction':'Archive the link tree',**extra}
+ def plan(self):return {'basis':{'sha256':'basis'},'retentionReceipt':{'path':str(self.register),'sha256':m.digest(self.register)}}
+ def observed(self):return {'units':{},'disk':{'root':str(self.root),'releaseRoots':[],'temporaryPaths':[]}}
+ def gate(self):return m.validate_retention_receipt(self.plan(),self.observed(),self.policy)
+ def raised(self):
+  self.policy['retentionEnforcement'].update(maxHoldHours=336,blockAfterHours=336,holdLimitHistory=[{'until':self.h(-24),'maxHoldHours':168,'blockAfterHours':168}])
+ # retention/gate: content holds
+ def test_gate_refuses_an_expired_content_hold(self):
+  self.write_register([self.hold('c-old',-170,-3),self.hold('c-older',-10,100)]);
+  with self.assertRaisesRegex(ValueError,'Expired content release hold'):self.gate()
+  self.write_register([self.hold('c-old',-100,60),self.hold('c-older',-10,100)]);self.gate()
+ def test_gate_refuses_a_reset_or_extended_or_dropped_content_hold(self):
+  first=self.hold('c-old',-100,60);self.write_register([first,self.hold('c-older',-10,100)]);m.checkpoint_hold_clocks(json.loads(self.register.read_text()),self.policy)
+  self.write_register([self.hold('c-old',-1,100),self.hold('c-older',-10,100)])
+  with self.assertRaisesRegex(ValueError,'cannot be renewed'):self.gate()
+  self.write_register([{**first,'reviewBefore':self.h(65)},self.hold('c-older',-10,100)])
+  with self.assertRaisesRegex(ValueError,'cannot be renewed'):self.gate()
+  self.write_register([self.hold('c-older',-10,100)])
+  with self.assertRaisesRegex(ValueError,'removed from the register while still installed'):self.gate()
+  self.write_register([first,self.hold('c-older',-10,100)]);self.gate()
+ def test_content_hold_registered_after_checked_at_is_accepted(self):
+  self.write_register([self.hold('c-old',-0.5,100),self.hold('c-older',-1,100)],checkedAt=self.h(-3));self.gate()
+  self.write_register([self.hold('c-old',2,100),self.hold('c-older',-1,100)])
+  with self.assertRaisesRegex(ValueError,'unbounded'):self.gate()
+ def test_retention_action_reports_content_and_early_warning(self):
+  self.write_register([self.hold('c-old',-150,10),self.hold('c-older',-10,100)]);out=[]
+  with patch.object(m,'POLICY',self.root/'policy.json'),patch.object(m,'LOCK',self.root/'lock'),patch.object(m,'audit',side_effect=self.observed),\
+       patch('builtins.print',side_effect=lambda *a,**k:out.append(' '.join(map(str,a)))),patch.object(sys,'argv',['controller','retention']):
+   m.write(self.root/'policy.json',self.policy);m.main()
+  self.assertTrue(any(line.startswith('Early warning: '+str(self.runtime/'releases/c-old')) for line in out),out);self.assertIn('content holds included',out[-1])
+ # hold limit follows the start of the hold
+ def test_raised_limit_applies_to_holds_that_start_after_the_change(self):
+  self.raised();guard=self.policy['retentionEnforcement']
+  old={'heldSince':self.h(-200),'reviewBefore':self.h(-33)};new={'heldSince':self.h(-2),'reviewBefore':self.h(165)}
+  self.assertEqual(m.retention_blocking_deadline(old,guard),m.retention_timestamp(self.h(-32),'x'))
+  self.assertEqual(m.retention_blocking_deadline(new,guard),m.retention_timestamp(self.h(334),'x'))
+  self.assertEqual(m.hold_limits(old,guard)['maxHoldHours'],168);self.assertEqual(m.hold_limits(new,guard)['maxHoldHours'],336)
+  self.write_register([self.hold('c-old',-2,300),self.hold('c-older',-30,100)]);self.gate()  # a new hold may run 14 days
+  self.write_register([self.hold('c-old',-2,300),self.hold('c-older',-30,150)])  # an old hold keeps the 7-day bound
+  with self.assertRaisesRegex(ValueError,'unbounded'):self.gate()
+ def test_hold_limit_history_is_validated(self):
+  for bad in ['x',[{'until':'2026-11-21T00:00:00','maxHoldHours':168,'blockAfterHours':168}],[{'until':self.h(0),'maxHoldHours':'168','blockAfterHours':168}]]:
+   with self.subTest(bad=bad),self.assertRaises(ValueError):m.hold_limits({'heldSince':self.h(-1)},{'maxHoldHours':336,'blockAfterHours':336,'holdLimitHistory':bad})
+ def test_release_root_deadlines_follow_the_same_schedule(self):
+  self.raised();held={'name':'r','disposition':'held','reason':'x','nextAction':'y','heldSince':self.h(-200),'reviewBefore':self.h(-33)}
+  receipt={'checkedAt':self.h(0),'entries':[held],'temporaryArtifacts':[]}
+  with self.assertRaisesRegex(ValueError,'Expired'):m.validate_retention_deadlines(receipt,{'disk':{'root':'/srv/uapt','temporaryPaths':[]},'units':{}},self.policy,{'entries':[held]})
+  fresh={**held,'heldSince':self.h(-200+190),'reviewBefore':self.h(157)};receipt['entries']=[fresh]
+  m.validate_retention_deadlines(receipt,{'disk':{'root':'/srv/uapt','temporaryPaths':[]},'units':{}},self.policy,{'entries':[fresh]})
+ # classification of installed content releases
+ def test_unregistered_content_release_is_refused_once_enforced(self):
+  self.gate();self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  with self.assertRaisesRegex(ValueError,'Unclassified content releases.*c-old, c-older'):self.gate()
+ def test_classification_uses_pointer_history_and_the_rule_start(self):
+  guard=self.policy['retentionEnforcement'];guard.update(contentReleaseRoot=str(self.runtime),contentHoldsSince=self.h(-120))
+  result,added=m.classify_content_releases(json.loads(self.register.read_text()),self.policy,'catch up',self.time,{})
+  holds={Path(h['path']).name:h for h in result['contentReleaseHolds']}
+  self.assertEqual(sorted(holds),['c-old','c-older'])
+  self.assertEqual(holds['c-old']['leftSelectionAt'],self.h(-50));self.assertEqual(holds['c-old']['heldSince'],self.h(-50))  # left selection after the rule began
+  self.assertEqual(holds['c-older']['leftSelectionAt'],self.h(-100));self.assertEqual(holds['c-older']['heldSince'],self.h(-100))
+  guard['contentHoldsSince']=self.h(-20)
+  result,_=m.classify_content_releases(json.loads(self.register.read_text()),self.policy,'catch up',self.time,{})
+  self.assertEqual({h['heldSince'] for h in result['contentReleaseHolds']},{self.h(-20)})  # never before the rule existed
+  self.assertEqual(result['lastContentClassification']['added'],[str(self.runtime/'releases/c-old'),str(self.runtime/'releases/c-older')])
+  with self.assertRaisesRegex(ValueError,'--reason'):m.classify_content_releases({},self.policy,' ',self.time)
+ def test_classify_command_registers_holds_clocks_and_the_gate_passes(self):
+  self.policy['retentionEnforcement'].update(contentReleaseRoot=str(self.runtime),contentHoldsSince=self.h(-1))
+  state=self.root/'state';state.mkdir();out=[]
+  with patch.object(m,'STATE',state),patch.object(m,'POLICY',self.root/'policy.json'),patch.object(m,'LOCK',self.root/'lock'),patch('builtins.print',side_effect=lambda *a,**k:out.append(' '.join(map(str,a)))):
+   m.write(self.root/'policy.json',self.policy);before=self.register.read_bytes()
+   with patch.object(sys,'argv',['controller','classify-content-releases','--dry-run','--reason','catch up']):m.main()
+   self.assertEqual(self.register.read_bytes(),before);self.assertIn('nothing written',out[-1])
+   with patch.object(sys,'argv',['controller','classify-content-releases','--reason','catch up']):m.main()
+   self.assertIn('registered as bounded holds',out[-1])
+   with patch.object(sys,'argv',['controller','classify-content-releases','--reason','again']):m.main()
+   self.assertIn('already classified',out[-1])
+  self.assertEqual(len(json.loads(self.clocks.read_text())['contentReleaseHolds']),2);self.gate()
+  self.assertEqual(len(list(self.root.glob('current-retention.json.before-classify-*'))),1)
+ def test_classification_reuses_an_existing_first_clock(self):
+  self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  clock={'path':str(self.runtime/'releases/c-old'),'disposition':'held','heldSince':self.h(-90),'reviewBefore':self.h(70),'nextAction':'Archive','reason':'x'}
+  result,added=m.classify_content_releases(json.loads(self.register.read_text()),self.policy,'catch up',self.time,{'contentReleaseHolds':[clock]})
+  hold=next(h for h in result['contentReleaseHolds'] if h['path']==clock['path'])
+  self.assertEqual((hold['heldSince'],hold['reviewBefore']),(clock['heldSince'],clock['reviewBefore']));self.assertTrue(next(a for a in added if a['path']==clock['path'])['reusedClock'])
+ # record-retention adoption
+ def test_record_retention_cannot_restart_an_old_items_clock(self):
+  history=m.content_pointer_history(self.runtime);self.assertEqual(m.content_left_selection(history,'c-older'),m.retention_timestamp(self.h(-100),'x'))
+  evidence=m.hold_adoption_evidence({**self.policy,'retentionEnforcement':{**self.policy['retentionEnforcement'],'contentReleaseRoot':str(self.runtime)}})
+  receipt={'contentReleaseHolds':[self.hold('c-older',-1,160)]}
+  with self.assertRaisesRegex(ValueError,'cannot restart the clock'):m.checkpoint_hold_clocks(receipt,self.policy,evidence)
+  self.assertNotIn('contentReleaseHolds',json.loads(self.clocks.read_text()))
+  receipt={'contentReleaseHolds':[self.hold('c-older',-100,60)]};m.checkpoint_hold_clocks(receipt,self.policy,evidence)
+  self.assertEqual(json.loads(self.clocks.read_text())['contentReleaseHolds'][0]['heldSince'],self.h(-100))
+ def test_record_retention_adopts_a_fresh_failed_candidate_but_not_a_backdated_one(self):
+  (self.root/'releases/uapt-failed').mkdir(parents=True);evidence=m.hold_adoption_evidence(self.policy)
+  fresh={'name':'uapt-failed','disposition':'held','heldSince':self.h(-0.1),'reviewBefore':self.h(100),'nextAction':'Archive','reason':'Failed candidate'}
+  m.checkpoint_hold_clocks({'entries':[fresh]},self.policy,evidence)
+  old=m.time.time()-10*86400;m.os.utime(self.root/'releases/uapt-failed',(old,old));m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[]})
+  with self.assertRaisesRegex(ValueError,'cannot restart the clock'):m.checkpoint_hold_clocks({'entries':[fresh]},self.policy,evidence)
+  with self.assertRaisesRegex(ValueError,'no on-disk evidence'):m.checkpoint_hold_clocks({'entries':[{**fresh,'name':'uapt-missing'}]},self.policy,evidence)
+ def test_record_retention_command_refuses_hand_written_reset(self):
+  self.write_register([self.hold('c-old',-100,60),self.hold('c-older',-1,160)])
+  with patch.object(m,'POLICY',self.root/'policy.json'),patch.object(m,'LOCK',self.root/'lock'),patch.object(m,'audit',side_effect=self.observed),\
+       patch('builtins.print'),patch.object(sys,'argv',['controller','record-retention']):
+   m.write(self.root/'policy.json',{**self.policy,'retentionEnforcement':{**self.policy['retentionEnforcement'],'contentReleaseRoot':str(self.runtime)}})
+   with self.assertRaisesRegex(ValueError,'cannot restart the clock'):m.main()
+ # a hold ended by selection
+ def test_a_release_selected_again_gets_a_new_hold_not_its_old_clock(self):
+  self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  old_clock={'path':str(self.runtime/'releases/c-old'),'disposition':'held','heldSince':self.h(-250),'reviewBefore':self.h(-90),'nextAction':'Archive','reason':'staged'}
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[],'contentReleaseHolds':[old_clock]})
+  self.write_register([self.hold('c-older',-100,60)])  # c-old: held at -250, active at -200, left selection at -50
+  with self.assertRaisesRegex(ValueError,'Unclassified content releases.*: c-old$'):self.gate()  # not "removed while installed"
+  result,added=m.classify_content_releases(json.loads(self.register.read_text()),self.policy,'catch up',self.time,json.loads(self.clocks.read_text()))
+  self.assertEqual([(Path(a['path']).name,a['heldSince'],a['reusedClock']) for a in added],[('c-old',self.h(-50),False)])
+  m.write(self.register,result);m.checkpoint_hold_clocks(result,self.policy);self.gate()
+  clock=next(c for c in json.loads(self.clocks.read_text())['contentReleaseHolds'] if c['path']==old_clock['path'])
+  self.assertEqual((clock['heldSince'],clock['previousClock']['heldSince']),(self.h(-50),self.h(-250)))
+ def test_a_new_hold_cannot_start_before_the_selection_that_ended_the_old_one(self):
+  self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  old_clock={'path':str(self.runtime/'releases/c-old'),'disposition':'held','heldSince':self.h(-250),'reviewBefore':self.h(-90),'nextAction':'Archive','reason':'staged'}
+  m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[],'contentReleaseHolds':[old_clock]})
+  self.write_register([self.hold('c-old',-210,-50),self.hold('c-older',-100,60)])
+  with self.assertRaisesRegex(ValueError,'cannot start before that selection'):self.gate()
+ def test_raising_the_limit_without_history_or_with_a_future_change_refuses(self):
+  guard={'maxHoldHours':336,'blockAfterHours':336}
+  with self.assertRaisesRegex(ValueError,'needs a holdLimitHistory'):m.hold_limits({'heldSince':self.h(-1)},guard)
+  guard['holdLimitHistory']=[{'until':self.h(2),'maxHoldHours':168,'blockAfterHours':168}]
+  with self.assertRaisesRegex(ValueError,'future'):m.hold_limits({'heldSince':self.h(-1)},guard)
+ # early warning
+ def test_hold_status_flags_overdue_warning_review_due_and_stale_receipt(self):
+  self.write_register([self.hold('c-old',-150,10),self.hold('c-older',-10,-1)],checkedAt=self.h(-30),
+   entries=[{'name':'r-late','disposition':'held','heldSince':self.h(-170),'reviewBefore':self.h(-40),'nextAction':'a','reason':'b'},{'name':'r-act','disposition':'active','reason':'c'}])
+  status=m.hold_status(self.policy,self.time)
+  self.assertEqual(status['status'],'blocked');self.assertEqual(status['overdue'],['r-late'])
+  self.assertEqual(status['warning'],[str(self.runtime/'releases/c-old')]);self.assertEqual(status['reviewDue'],[str(self.runtime/'releases/c-older')])
+  self.assertTrue(status['receipt']['rescanNeededBeforeRelease']);self.assertEqual(status['unregisteredContentReleases'],[])
+  self.assertEqual(status['nextBlockingDeadline'],self.h(18))
+ def test_hold_status_uses_first_clocks_and_reports_unregistered_content(self):
+  self.write_register([self.hold('c-old',-10,100)]);m.write(self.clocks,{'schemaVersion':'uapt-retention-clocks-v1','entries':[],'temporaryArtifacts':[],'contentReleaseHolds':[self.hold('c-old',-160,5)]})
+  self.policy['retentionEnforcement']['contentReleaseRoot']=str(self.runtime)
+  status=m.hold_status(self.policy,self.time)
+  self.assertEqual(status['warning'],[str(self.runtime/'releases/c-old')]);self.assertEqual(status['unregisteredContentReleases'],['c-older']);self.assertTrue(status['contentClassificationEnforced'])
+ def test_hold_status_command_writes_the_status_file_without_the_lock(self):
+  self.write_register([self.hold('c-old',-10,100),self.hold('c-older',-10,100)]);target=self.root/'status/hold-status.json'
+  self.policy['retentionEnforcement']['holdStatusFile']=str(target);lock=self.root/'missing-dir/lock'
+  with patch.object(m,'POLICY',self.root/'policy.json'),patch.object(m,'LOCK',lock),patch('builtins.print'),patch.object(sys,'argv',['controller','hold-status','--write']):
+   m.write(self.root/'policy.json',self.policy);m.main()
+  status=json.loads(target.read_text());self.assertEqual(status['status'],'ok');self.assertEqual(status['inputs']['registerSha256'],m.digest(self.register))
+  self.assertFalse(lock.parent.exists())
+  self.register.write_text('{broken')
+  with patch.object(m,'POLICY',self.root/'policy.json'),patch('builtins.print'),patch.object(sys,'argv',['controller','hold-status','--write']):
+   with self.assertRaisesRegex(ValueError,'Hold status check failed'):m.main()
+  self.assertEqual(json.loads(target.read_text())['status'],'error')
+
+class ReleaseReferencesTests(unittest.TestCase):
+ def test_inventory_reads_unit_files_processes_nginx_and_symlinks(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d).resolve();releases=root/'releases';(releases/'uapt-a').mkdir(parents=True);(releases/'uapt-b').mkdir()
+   (root/'current').symlink_to(releases/'uapt-a',target_is_directory=True)
+   outputs={('systemctl','list-units'):'uapt-web.service loaded active running Web\nuapt-old.service loaded inactive dead Old\n',
+    ('systemctl','cat','uapt-web.service'):f'WorkingDirectory={releases}/uapt-a/apps/web\n',('systemctl','cat','uapt-old.service'):f'ExecStart=/usr/bin/node {releases}/uapt-b/server.js\n',
+    ('nginx','-T'):f'alias {releases}/uapt-b/static/;\n'}
+   fake=lambda *a:outputs[a[:3]] if a[:3] in outputs else outputs[a[:2]]
+   with patch.object(m,'run',side_effect=fake):
+    refs=m.release_references({'units':{'uapt-web.service':{'WorkingDirectory':f'{releases}/uapt-a/apps/web','MainPID':'0'}}},root)
+  self.assertEqual(refs['units'],{'uapt-old.service':{'running':False,'configRoots':['uapt-b'],'processRoots':[]},'uapt-web.service':{'running':True,'configRoots':['uapt-a'],'processRoots':['uapt-a']}})
+  self.assertEqual(refs['nginxRoots'],['uapt-b']);self.assertEqual(refs['symlinks'],{str(root/'current'):'uapt-a'})
+
 if __name__=='__main__':unittest.main()

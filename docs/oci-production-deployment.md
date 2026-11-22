@@ -1,3 +1,5 @@
+> **Superseded (2026-11-06; marked 2026-11-21).** Pre-R1 pull/build/restart deployment, kept for history. New releases use `docs/program-release.md` (code) and `docs/content-release.md` (content); see `AGENTS.md`, "Website Release Method".
+
 # OCI Production Deployment
 
 This document records the production migration from Vercel to an OCI origin.

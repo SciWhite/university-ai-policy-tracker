@@ -44,8 +44,22 @@ SITE_HOST = 'eduaipolicy.org'
 WEB_SLOTS = {'uapt-mcp-v6-candidate.service': 3101, 'uapt-mcp-v6-r2.service': 3102}
 SERVICE_USER = 'uapt'
 DROPIN_SUFFIX = '-uapt-program-release.conf'
-CANDIDATE_MEMORY_HIGH = 5905580032  # 5.5 GiB (raised 2026-11-06, 24 GB host)
-CANDIDATE_MEMORY_MAX = 6442450944  # 6 GiB
+# 8 GiB (owner-authorized raise 2026-11-21, from 6 GiB set 2026-11-06). Two slots coexist during a
+# program release: 2 x 8 GiB + other services (~3.1 GiB anon) + MCP fits the 23.4 GiB host with the
+# 2 GiB host reserve; 12 GiB would not. policy.candidatePeakMaxBytes matches it.
+CANDIDATE_MEMORY_MAX = 8589934592
+# MemoryHigh equals MemoryMax (2026-11-21). This host has no swap, so a MemoryHigh below the real
+# footprint does not reclaim anything: it throttles the process in reclaim (D state). On 2026-11-21
+# the slot answered 504 for 41 minutes at MemoryHigh 5.5 GiB before the memcg OOM killer fired at
+# MemoryMax. At MemoryMax the kernel kills the process and Restart=on-failure starts it again.
+CANDIDATE_MEMORY_HIGH = CANDIDATE_MEMORY_MAX
+# V8 old space plus off-heap memory (RSC Buffers, malloc arenas, code) must fit under MemoryMax:
+# the killed process held 6.2 GB anonymous memory under a 4,608 MiB heap cap, so at least 1.6 GB
+# lived outside the heap. The candidate env gets this heap cap and a small malloc arena count.
+CANDIDATE_HEAP_MIB = 4608
+CANDIDATE_OFFHEAP_RESERVE_MIB = 3072
+CANDIDATE_MALLOC_ARENA_MAX = '2'
+HEAP_FLAG = re.compile(r'--max-old-space-size=(\d+)')
 STATE_SCHEMA = 'uapt-program-release-operation-v1'
 WARMUP_LINE = 'Runtime warm-up finished'
 DEFAULT_RELEASE_HELPER = Path('/srv/uapt/release-helper/scripts/uapt-release.mjs')
@@ -280,7 +294,32 @@ def check_runtime_env(env, content_root):
             problems.append(f'{key} must not be in the env file; the slot drop-in sets it')
     if not env.get('UAPT_CONTENT_REFRESH_TOKEN'):
         problems.append('UAPT_CONTENT_REFRESH_TOKEN is missing (runtime content readback needs it)')
+    heap = heap_mib(env)
+    if heap is None:
+        problems.append('NODE_OPTIONS sets no --max-old-space-size; the slot needs an explicit heap cap')
+    elif heap + CANDIDATE_OFFHEAP_RESERVE_MIB > CANDIDATE_MEMORY_MAX // 2**20:
+        problems.append(f'heap cap {heap} MiB leaves less than {CANDIDATE_OFFHEAP_RESERVE_MIB} MiB off-heap under MemoryMax {CANDIDATE_MEMORY_MAX // 2**20} MiB')
     return problems
+
+
+def heap_mib(env):
+    found = HEAP_FLAG.findall(env.get('NODE_OPTIONS', ''))
+    return int(found[-1]) if found else None
+
+
+def runtime_memory_settings(text):
+    """The copied env with the slot heap cap and malloc arena limit; every other line unchanged."""
+    options = HEAP_FLAG.sub('', parse_env(text).get('NODE_OPTIONS', '')).split()
+    updates = {'NODE_OPTIONS': ' '.join(options + [f'--max-old-space-size={CANDIDATE_HEAP_MIB}']), 'MALLOC_ARENA_MAX': CANDIDATE_MALLOC_ARENA_MAX}
+    if any(ch in value for value in updates.values() for ch in '"\\$`'):
+        raise Refused('NODE_OPTIONS holds characters this tool does not rewrite; set the heap cap by hand')
+    def key_of(raw):
+        line = raw.strip()
+        if not line or line.startswith('#') or '=' not in line:
+            return None
+        return line.removeprefix('export ').split('=', 1)[0].strip()
+    kept = [raw for raw in text.splitlines() if key_of(raw) not in updates]
+    return '\n'.join(kept + [f'{key}="{value}"' for key, value in updates.items()]) + '\n'
 
 
 def warmup_finished(lines):
@@ -1245,15 +1284,20 @@ def open_op(args, *required):
 
 
 def install_runtime_env(op, source):
-    """Copy of the active slot's env, root:uapt 0640. It holds secrets: never printed."""
+    """Copy of the active slot's env with the slot memory settings, root:uapt 0640. It holds secrets: never printed."""
     target = op.path('runtime.env')
     if not target.exists():
-        shutil.copyfile(source, target)
+        text = runtime_memory_settings(Path(source).read_text())  # may refuse: then no file is left
+        # Written with its final mode before any secret lands in it.
+        fd = os.open(target, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o640)
+        with os.fdopen(fd, 'w') as stream:
+            stream.write(text)
         os.chown(target, 0, grp.getgrnam(SERVICE_USER).gr_gid)
         os.chmod(target, 0o640)
     problems = check_runtime_env(parse_env(target.read_text()), op.state['content']['root'])
     if problems:
-        raise Refused('Runtime env refused (' + str(target) + '): ' + '; '.join(problems))
+        raise Refused('Runtime env refused (' + str(target) + '): ' + '; '.join(problems) +
+                      ' (an operation started before 2026-11-21 keeps its old runtime.env: start a new operation)')
     return target
 
 

@@ -5,7 +5,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import path from "node:path";
 import {
-  CONTENT_API_VERSION, activeContent, contentScoped, readContentJson, refreshContentPointer, resetContentRuntimeForTests,
+  CONTENT_API_VERSION, activeContent, contentCacheKey, contentRuntimeStatus, contentScoped, readContentJson, refreshContentPointer, registerContentKeyedCache, resetContentRuntimeForTests,
   type ContentPointer, type ContentReleaseManifest
 } from "../apps/web/lib/content-runtime";
 import { readingCohortSlugs } from "../apps/web/lib/reading-cohort";
@@ -15,9 +15,11 @@ import { isContentTag } from "../apps/web/lib/content-cache-tags";
 import { privateFieldViolations, privatePathViolation } from "../scripts/content-release/file-set";
 import { compareClaimSets, type ClaimSets } from "../scripts/content-release/lib";
 import { awaitMcpRelease, changedSurface, readingDigests, sourceMetadataDigests } from "../scripts/content-release/switch";
-import { V6_SOURCE_METADATA_FILE } from "../packages/shared/src/v6-source-metadata";
+import { V6_SOURCE_METADATA_FILE, v6SourceMetadataCoverage, v6SourceMetadataSchema, v6SourceUrlKey, type V6SourceMetadata } from "../packages/shared/src/v6-source-metadata";
+import { legacyUnprocessed } from "../scripts/content-release/v6-source-metadata-coverage";
 import { createServer } from "node:http";
 import { POST as refreshPost } from "../apps/web/app/api/internal/content/refresh/route";
+import { BoundedAsyncCache } from "../apps/web/lib/bounded-cache";
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const repoRoot = process.cwd();
@@ -69,6 +71,36 @@ test("a pointer switch changes the content every loader sees, without a rebuild"
       assert.deepEqual(readingCohortSlugs(), ["harvard-university", "rice-university"]);
       assert.equal(derived(), 2, "content-scoped caches are rebuilt for the new release");
     });
+  } finally { f.cleanup(); }
+});
+
+test("a switch drops the replaced release's cached data instead of leaving it to LRU eviction", async () => {
+  const f = contentRoot();
+  try {
+    const a = f.release("demo-a", ["harvard-university"]);
+    const b = f.release("demo-b", ["rice-university"]);
+    f.point("demo-a", a);
+    const cache = registerContentKeyedCache(new BoundedAsyncCache<string>(8, 1024 * 1024, 1, 8));
+    const previous = process.env.UAPT_CONTENT_ROOT;
+    process.env.UAPT_CONTENT_ROOT = f.root;
+    resetContentRuntimeForTests();
+    try {
+      readContentJson("data/public-v6-pages/current.json");
+      contentScoped("test-scoped", () => 1);
+      await cache.get(contentCacheKey("x"), async () => "a");
+      await cache.get("other-key", async () => "kept");
+      assert.equal(contentRuntimeStatus().jsonCache.entries, 1);
+      f.point("demo-b", b);
+      assert.equal(refreshContentPointer().contentId, "demo-b");
+      // json entry + scoped entry + keyed cache entry of demo-a; the unrelated key stays.
+      assert.deepEqual(contentRuntimeStatus().releasedOnSwitch, { contentId: "demo-a", entries: 3 });
+      assert.equal(contentRuntimeStatus().jsonCache.entries, 0);
+      assert.equal(cache.stats().entries, 1);
+      assert.equal(await cache.get(contentCacheKey("x"), async () => "b"), "b");
+    } finally {
+      if (previous === undefined) delete process.env.UAPT_CONTENT_ROOT; else process.env.UAPT_CONTENT_ROOT = previous;
+      resetContentRuntimeForTests();
+    }
   } finally { f.cleanup(); }
 });
 
@@ -293,4 +325,43 @@ test("reading digests change only for schools whose policy entry, refs or deltas
     assert.notEqual(before.yale, after.yale);
     assert.equal(before.mit, after.mit, "another school's delta and the new selection pin leave mit alone");
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+function metadataFixture(schools: Record<string, string[]>, gaps: Record<string, string[]> = {}): V6SourceMetadata {
+  const doc = (url: string) => ({ url, docType: "policy" as const, stage: "issued" as const, issuer: null, approvedBy: null, dates: [], displayDate: { kind: "verified" as const, value: "2026-11-19", precision: "day" as const }, latestUpdate: null, version: null, scope: null, lastVerifiedOn: "2026-11-19", capture: { sha256: "a".repeat(64), hashKind: "raw_captured_bytes" as const } });
+  return v6SourceMetadataSchema.parse({
+    schemaVersion: "uapt-v6-source-metadata-v1", generatedAt: "2026-11-19T00:00:00Z", reviewState: "agent_reviewed", method: "m", dateRule: "r",
+    basis: { contentId: "c-test", candidateSha256: "b".repeat(64), schools: Object.keys(schools).length },
+    schools: Object.fromEntries(Object.entries(schools).map(([slug, urls]) => [slug, urls.map(doc)])),
+    gaps: Object.fromEntries(Object.entries(gaps).map(([slug, urls]) => [slug, urls.map((url) => ({ url, reason: "fetch_failed", detail: "HTTP 404", checkedOn: "2026-11-19" }))]))
+  }) as V6SourceMetadata;
+}
+
+test("source-metadata coverage: every official source needs a document, a fetch_failed gap or a legacy exemption", () => {
+  const metadata = metadataFixture({ rice: ["https://www.rice.edu/ai/"] }, { rice: ["https://rice.edu/gone"] });
+  const official = { rice: ["https://rice.edu/ai", "https://rice.edu/gone", "https://rice.edu/old", "https://rice.edu/new"], yale: ["https://yale.edu/ai"] };
+  const result = v6SourceMetadataCoverage(metadata, official, { rice: [v6SourceUrlKey("https://rice.edu/old")] });
+  assert.deepEqual(result.stats, { schools: 2, officialSources: 5, documented: 1, fetchFailed: 1, legacyUnprocessed: 1 });
+  assert.deepEqual(result.errors, [
+    "rice: official source rice.edu/new has no source-metadata record (document or fetch_failed gap)",
+    "yale: official source yale.edu/ai has no source-metadata record (document or fetch_failed gap)"
+  ]);
+  const both = v6SourceMetadataCoverage(metadataFixture({ rice: ["https://rice.edu/ai"] }, { rice: ["https://rice.edu/ai"] }), { rice: ["https://rice.edu/ai"] });
+  assert.match(both.errors[0], /both documented and listed as a gap/);
+});
+
+test("source-metadata gaps only accept fetch_failed with a check date; files without gaps stay valid", () => {
+  assert.equal(v6SourceMetadataSchema.safeParse({ ...metadataFixture({}), gaps: { rice: [{ url: "https://rice.edu/x", reason: "not_processed", detail: "later", checkedOn: "2026-11-19" }] } }).success, false);
+  assert.equal(v6SourceMetadataSchema.safeParse({ ...metadataFixture({}), gaps: { rice: [{ url: "https://rice.edu/x", reason: "fetch_failed", detail: "HTTP 404" }] } }).success, false);
+  const { gaps: _gaps, ...withoutGaps } = metadataFixture({ rice: ["https://rice.edu/ai"] });
+  assert.equal(v6SourceMetadataSchema.safeParse(withoutGaps).success, true);
+});
+
+test("the legacy-unprocessed list is frozen: it may only shrink", () => {
+  const legacy = legacyUnprocessed();
+  assert.equal(legacy.frozenOn, "2026-11-19");
+  const pairs = Object.entries(legacy.schools).flatMap(([slug, keys]) => keys.map((key) => `${slug} ${key}`));
+  assert.ok(pairs.length <= 126, `legacy list grew to ${pairs.length}; new sources get no exemption`);
+  assert.equal(new Set(pairs).size, pairs.length);
+  for (const keys of Object.values(legacy.schools)) assert.deepEqual(keys, keys.map(v6SourceUrlKey), "entries are URL match keys");
 });

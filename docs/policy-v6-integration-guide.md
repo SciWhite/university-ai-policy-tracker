@@ -13,6 +13,22 @@
 - **升级条件**：只能通过内容发布把该校加入已发布 V6 包，且该包通过 `pnpm content:validate`（完整 Claim ID 集、held、引文与父版本核对、同步合同）。`candidateOnly`、`publicationApproved: false` 的本地候选（例如 2026-11-03 closeout 中的 10 所）不能直接升级，也不能借用其他学校的审核结论。
 - **语言**：基础档学校的语言切换、hreflang 和 sitemap 只考虑英文、简体中文和所在国家/地区语言（`apps/web/lib/school-languages.ts`）。hreflang 与 sitemap 仍要求该语言的阅读包完整覆盖页面文字（含基础档主题文字）；国家/地区语言只有在有完整译文后才出现在切换列表中，简体中文始终可选。其他语言的地址仍可访问，但不出现、不索引。
 
+### 来源元数据合同（2026-11-19）
+
+V6 完整档的完整数据 = 已发布 V6 页面输入（`CompleteV6Bundle` 及其完整性、证据、工具验收记录） + 已发布 V6 记录 + **来源元数据** `data/public-v6-source-metadata.json`。来源元数据记录每个官方来源的文档类型、发布机构、批准机构、各类日期、版本和适用范围，每个值都附一段从抓取原文逐字复制的引文。页面的官方来源卡片、大学 API 和 MCP 都会读取这份数据（PR #46，2026-11-18 起对 132 所学校上线）。
+
+- **交付要求**：每所 V6 学校引用的每个官方来源，都要有一条文档记录，或者一条 `fetch_failed` 缺口（写明原因和尝试日期）。原文读到了但没写日期或机构时，仍然是一条文档记录，只是这些字段留空，显示日期回落到我们的核查日期（`displayDate.kind: "verified"`），不推断。
+- **门禁**：`pnpm validate:v6-source-metadata`（已加入 `pnpm check`）、`content:validate` 和 `v6:pack` 共用同一个覆盖检查（`v6SourceMetadataCoverage`）。`v6:pack` 的冻结输入必须带 `sourceMetadata` 引用，验收文件必须绑定 `sourceMetadataSha256`；打包结果里有 `public-v6-source-metadata.json`，回执记录覆盖统计。2026-11-18 首轮遗留的 126 个未处理来源冻结在 `scripts/content-release/v6-source-metadata-legacy-unprocessed.json`，只能减少，不能增加。
+- **生成流程**（`scripts/v6-source-metadata.py`，私有运行目录放在 `.local/`）：
+  1. 列出目标：已发布学校用 `pnpm validate:v6-source-metadata --targets <run>/gate-targets.json --slugs a,b`；新学校直接读它的 V6 view。然后 `python3 scripts/v6-source-metadata.py targets --run <run> --gate <run>/gate-targets.json --view <view.json>`。
+  2. `fetch`：普通 HTTPS 抓取，同一主机间隔 4 秒，保存原始字节和哈希，PDF 用 pdftotext 提取。遇到验证页或空页记为 `fetch_failed`，不绕过。可以用 `--monitor-export` 复用源监控已有的抓取。
+  3. `batch`，然后用便宜模型（如 Haiku）对每个批次文件各独立跑两次，提示词在 `<run>/extract/prompt.md`，输出存为 `extract/A|B/bNNN.json`。
+  4. `merge`：逐字引文门禁，加两次结果比对，然后对每条记录生成复核批次。用更强的模型（Sonnet 或 Opus，高推理强度）逐条复核，输出存为 `verify/out/vNNN.json`。
+  5. `finalize`：再做一次引文门禁，加上确定性规则（学年标签不算生效日期、网站页脚授权行不算发布机构、approver 写入 approvedBy），计算显示日期，写出 `candidate.json`。
+  6. 可选 `sample`：另一个强模型做独立抽样审计。审计发现的问题修正后再发布。
+  7. `publish --metadata <当前文件> --out <新文件> --content-id <id>`：只替换处理过的学校和 URL，其他学校原样保留。之后运行 `pnpm validate:v6-source-metadata --metadata <新文件>`，并从冻结清单里删掉已处理的条目。
+- **边界**：抽取和复核都只用抓取原文，不联网补充，不用 URL 或模型自身知识推断。审核状态只写 `agent_reviewed`，不写人工或学校确认。来源元数据变化不是大学政策变化，不改 Claim、不刷新政策日期。内容切换会让元数据变化的学校页面在所有阅读语言下过期（PR #47）。
+
 ### 共享阅读模板（2026-10-26，本地实现）
 
 当前共享 V6 模板采用已独立验收的 Harvard R3 阅读方式，覆盖 record、bundle（含历史适配器）、evidence 三条组合路径。它是共享组件的本地实现更新，**不是学校上线或政策批准**；数据 allowlist、正式快照、学校结论、held 和发布门禁不随界面改变。下列条目取代早期“作业/工具/研究/教学”、卡片等高和窄屏操作自然换行要求；历史实测记录保留原结论。
@@ -86,7 +102,7 @@ Claim、工具、held 与记录指纹。新增已发布 V6 学校的工具模块
 | AI 工具 | 默认一行，超出展开全部；机构一般工具优先；特殊院内工具默认折叠 | 产品原名、获取条件、费用未知项、原文和适用范围 |
 | 提交清单 | 合并到提交前快速检查，保留旧锚点，不另设重复勾选模块 | 不作合规证明 |
 | 已审核条款 | 分类卡片；详情浮层；完整引文和定位器保留 | 经过筛选的主张/候选规则，未审项单列 |
-| 官方来源 | 卡片网格，默认一行，展开全部 | 官方 URL、标题、来源身份、版本及健康限制 |
+| 官方来源 | 卡片网格，默认一行，展开全部；卡片显示来源元数据（类型、日期、发布/批准机构） | 官方 URL、标题、来源身份、版本及健康限制；每个来源一条来源元数据记录或 `fetch_failed` 缺口 |
 | 相关大学 | FAQ 上方的末尾区域；地理优先、同国/主题相关，再回退 | 使用真实 catalog 记录，通常 4 所；不代表政策一致 |
 | 记录信息与 FAQ | 记录信息收起；FAQ 当前 12 项，两列/窄屏一列 | FAQ 复用主题摘要及来源，不另造答案 |
 
@@ -140,7 +156,8 @@ Claim、工具、held 与记录指纹。新增已发布 V6 学校的工具模块
 4. 新学校明确获准本地试套后，在 `policyV6BundlePreviewSlugs` 加 slug；**不要改六校历史 policyV6Slugs**。更新私有 `.local/policy-v6/bundles-current.json` 的相对 path、view sha256、sourceBundleSha256。指针仅在校验通过后选择。
 5. 路由/组件已经通用；新增同形包不新建 JSX/CSS。新输入格式首次需要适配；学校特殊内容通过数据或可选通用模块加入，避免 `slug === ...` 长链。
 6. EN/ZH先做；全部启用语言进行路由/文案键/切换检查。其余语言保留明确英语内容回退，不把 UI 翻译当政策译文审核或 SEO 扩语种许可。
-7. 按 [验收清单](templates/policy-v6-acceptance.md) 核验并登记同步事件。默认只本地；不推送、不生产构建、不切内容、不改 API/changes/MCP/pins、不通知。
+7. 按上文"来源元数据合同"为本校全部官方来源生成来源元数据，并通过 `pnpm validate:v6-source-metadata --metadata <新文件>`。
+8. 按 [验收清单](templates/policy-v6-acceptance.md) 核验并登记同步事件。默认只本地；不推送、不生产构建、不切内容、不改 API/changes/MCP/pins、不通知。
 
 ```bash
 # 工作目录是拥有 V6 文件的 checkout；变量为任务实际私有目录。

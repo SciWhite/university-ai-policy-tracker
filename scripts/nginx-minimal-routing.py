@@ -42,7 +42,7 @@ head=f"""# Generated {__import__('datetime').datetime.now(__import__('datetime')
 server_level=re.search(r'(set_real_ip_from[\s\S]*?add_header X-Frame-Options "SAMEORIGIN" always;)',files['/etc/nginx/snippets/uapt-proxy-locations.conf']).group(1)
 cache=("""    # Disk HTML cache (infra/nginx/uapt-html-cache.conf): survives app restarts.
     proxy_cache uapt_html;
-    proxy_cache_key "$uapt_html_cache_epoch|$scheme|$host|$request_uri|rsc=$http_rsc";
+    proxy_cache_key "$uapt_html_cache_epoch|$scheme|$host|$uapt_html_cache_uri|rsc=$http_rsc";
     proxy_cache_valid 200 301 308 6h;
     proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
     proxy_cache_background_update on;

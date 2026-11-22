@@ -26,7 +26,7 @@ import { getLatestReleaseDiff, getReleaseSnapshotManifest } from "./release-diff
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 import { BoundedAsyncCache } from "./bounded-cache";
-import { contentCacheKey } from "./content-runtime";
+import { contentCacheKey, registerContentKeyedCache } from "./content-runtime";
 
 export interface DatasetReleaseArtifactContent {
   content: string;
@@ -106,7 +106,7 @@ export const datasetArtifactRouteSegments = datasetArtifactDefinitions.map(
   (definition) => definition.routeSegment
 );
 const artifactRouteSegments = new Set<string>(datasetArtifactRouteSegments);
-const datasetReleases = new BoundedAsyncCache<DatasetRelease>(2, 32 * 1024 * 1024, 1, 32);
+const datasetReleases = registerContentKeyedCache(new BoundedAsyncCache<DatasetRelease>(2, 32 * 1024 * 1024, 1, 32));
 
 export function datasetReleaseCacheStats() {
   return datasetReleases.stats();

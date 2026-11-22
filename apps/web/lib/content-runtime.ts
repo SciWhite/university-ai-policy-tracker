@@ -104,6 +104,28 @@ let lastError: string | undefined;
 const listeners = new Set<(next: ActiveContent, previous: ActiveContent | undefined) => void>();
 const jsonCache = new ByteLru<unknown>(64, 24 * 1024 * 1024);
 const scoped = new Map<string, { contentId: string; value: unknown }>();
+const contentKeyedCaches = new Set<{ dropWhere(match: (key: string) => boolean): number }>();
+let releasedOnSwitch = { contentId: "", entries: 0 };
+
+/**
+ * A cache whose keys come from contentCacheKey(). At a content switch its entries for the
+ * replaced release are dropped; they cannot be hit again. Their byte budgets count raw JSON, so
+ * leaving them to LRU eviction kept several releases' parsed data on the heap: each switch on
+ * 2026-11-19..21 added about 0.4 GB until the web slot reached MemoryMax.
+ */
+export function registerContentKeyedCache<T extends { dropWhere(match: (key: string) => boolean): number }>(cache: T): T {
+  contentKeyedCaches.add(cache);
+  return cache;
+}
+
+function releasePreviousContent(previous: ActiveContent | undefined) {
+  if (!previous) return;
+  const json = `${previous.contentId}\0`, keyed = `${previous.contentId}:`;
+  let entries = jsonCache.deleteWhere(key => key.startsWith(json));
+  for (const [key, entry] of scoped) if (entry.contentId === previous.contentId) { scoped.delete(key); entries++; }
+  for (const cache of contentKeyedCaches) entries += cache.dropWhere(key => key.startsWith(keyed));
+  releasedOnSwitch = { contentId: previous.contentId, entries };
+}
 
 export const sha256Hex = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 
@@ -258,6 +280,7 @@ function load(force: boolean): ActiveContent {
   if (!active || active.contentId !== next.contentId || active.root !== next.root) {
     const previous = active;
     active = next;
+    if (previous && previous.contentId !== next.contentId) releasePreviousContent(previous);
     for (const listener of listeners) listener(next, previous);
   }
   return active;
@@ -385,14 +408,15 @@ export function contentRuntimeStatus() {
     manifestSha256: selected?.pointer?.manifestSha256,
     sync: selected?.pointer?.sync ? { contractVersion: selected.pointer.sync.contractVersion, eventId: selected.pointer.sync.eventId } : selected?.pointer?.unsynchronizedLocalPreview ? "unsynchronized-local-preview" : undefined,
     lastError,
-    jsonCache: jsonCache.stats()
+    jsonCache: jsonCache.stats(),
+    releasedOnSwitch
   };
 }
 
 export function resetContentRuntimeForTests() {
   pinnedForTools = false;
   active = undefined; checkedAt = 0; pointerStamp = ""; lastError = undefined;
-  jsonCache.clear(); scoped.clear();
+  jsonCache.clear(); scoped.clear(); releasedOnSwitch = { contentId: "", entries: 0 };
 }
 
 registerServerReadingCohort(() => {

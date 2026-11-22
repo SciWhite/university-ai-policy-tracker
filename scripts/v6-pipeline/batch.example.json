@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "uapt-v6-batch-v1",
+  "batchId": "batch4-20261125",
+  "mode": "add",
+  "revision": "v6-qs171-180-batch4-20261125",
+  "contentId": "c-20261126-v6-batch4",
+  "parentRelease": "/absolute/path/to/a/local/runtime/releases/<live-content-id>",
+  "rankingEdition": "QS 2026",
+  "localRevisionPrefix": "qs2026",
+  "schools": [
+    {
+      "slug": "kyushu-university", "rank": "=170", "abbr": "kyushu", "language": "ja",
+      "extraDomains": [],
+      "extraSources": [],
+      "firecrawl": { "domain": "kyushu-u.ac.jp", "mapQuery": "ai", "queries": ["生成AI 学生 利用", "生成AI 論文 レポート", "試験 不正行為 処分", "generative AI students guidelines"] }
+    }
+  ],
+  "englishOnlySlugs": [],
+  "discovery": { "keywords": [], "contentPattern": "", "multiPartSuffixes": [], "extraPerSchool": 10, "parallelSchools": 3 },
+  "reviewDir": "review",
+  "outDir": "release-candidate",
+  "sourceMetadataFile": "source-metadata/public-v6-source-metadata.json",
+  "changeSummary": {
+    "en": "Added agent-reviewed V6 presentations in English and Simplified Chinese for <n> universities (QS 2026 ...), with document metadata for their official sources. The official rules themselves did not change in this tracker update.",
+    "zh": "<n> 所大学（QS 2026 第 ... 名）新增经 agent 审核的 V6 中英文政策展示，并补充官方来源的文件信息。本次为资料展示更新，学校规定本身没有变化。"
+  },
+  "review": { "reviewer": "Claude Opus 5.5 independent agent presentation review", "method": "" },
+  "release": {
+    "opId": "content-v6-batch4-20261126",
+    "authorization": "Quote the owner's release request here, verbatim.",
+    "continuity": "What changed (schools, pages, metadata) and what stayed byte-identical (every other school's records and pages).",
+    "pagesScope": ["Every school in scope was read in en and zh; fr, es and de were read for four schools each; other reading locales carry the same component and were not read individually."]
+  },
+  "readback": { "controls": [] },
+  "deploymentAuthorizedBy": null
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "uapt-v6-source-metadata-batch-output-v1",
+  "title": "One model run over one batch file: one record per docId",
+  "type": "object",
+  "required": ["records"],
+  "properties": {
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["docId", "docType", "stage", "issuer", "approvedBy", "dates", "version", "scope", "changes"],
+        "properties": {
+          "docId": { "type": "string" },
+          "docType": { "type": "string", "enum": ["policy", "procedure", "guideline", "guidance_page", "faq", "committee_report", "announcement", "course_statement", "form_or_template", "tool_listing", "other"] },
+          "stage": { "type": "string", "enum": ["issued", "draft", "unknown"] },
+          "issuer": {
+            "type": ["object", "null"],
+            "required": ["name", "role", "category", "quote"],
+            "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string", "enum": ["owner", "approver", "publisher_unit"] },
+              "category": { "type": "string", "enum": ["university_leadership", "provost_academic_affairs", "academic_senate_or_board", "teaching_learning_centre", "library", "it_services", "faculty_or_department", "graduate_school", "research_office", "student_affairs_or_integrity", "communications_or_news", "legal_or_compliance", "other"] },
+              "quote": { "type": "string" }
+            }
+          },
+          "approvedBy": {
+            "type": ["object", "null"],
+            "required": ["name", "quote"],
+            "properties": { "name": { "type": "string" }, "quote": { "type": "string" } }
+          },
+          "dates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["kind", "value", "precision", "quote"],
+              "properties": {
+                "kind": { "type": "string", "enum": ["effective", "approved", "adopted", "issued_or_published", "revised", "reviewed", "last_updated_page", "next_review"] },
+                "value": { "type": "string", "description": "YYYY-MM-DD, YYYY-MM or YYYY" },
+                "precision": { "type": "string", "enum": ["day", "month", "year"] },
+                "quote": { "type": "string" }
+              }
+            }
+          },
+          "version": {
+            "type": ["object", "null"],
+            "required": ["value", "quote"],
+            "properties": { "value": { "type": "string" }, "quote": { "type": "string" } }
+          },
+          "scope": {
+            "type": ["object", "null"],
+            "required": ["en", "quote"],
+            "properties": { "en": { "type": "string" }, "quote": { "type": "string" } }
+          },
+          "changes": { "type": "string", "description": "Extraction runs: \"none\". Verify runs: one line on what was corrected, removed or added, or \"none\"." }
+        }
+      }
+    }
+  }
+}

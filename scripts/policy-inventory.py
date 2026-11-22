@@ -577,6 +577,19 @@ def sync_gate_v2(event, root, phase):
             if receipt["observedDataHash"] != data_hash: raise ValueError("Runtime uses a different public data artifact")
 
 
+def projection_validator(repo):
+    """The same validator in either layout: a repository checkout runs the TypeScript through tsx;
+    the release helper shipped in a program artifact (release-helper/, scripts/program-build.mjs)
+    carries it as one bundled ESM file and has no node_modules."""
+    tsx = repo / "node_modules/tsx/dist/cli.mjs"
+    if tsx.is_file():
+        return ["node", str(tsx), "--tsconfig", str(repo / "apps/web/tsconfig.json"), str(repo / "scripts/validate-change-event-projection.ts")]
+    bundled = repo / "scripts/validate-change-event-projection.mjs"
+    if bundled.is_file():
+        return [os.environ.get("UAPT_NODE", "node"), str(bundled)]
+    raise ValueError("No change projection validator: neither tsx nor the bundled release-helper validator is present")
+
+
 def sync_gate_v21(event, root):
     """v2.0 typed receipts plus deterministic event/input/overview and surface checks."""
     import subprocess
@@ -591,7 +604,8 @@ def sync_gate_v21(event, root):
     changes_path, change_receipt = receipt("changes")
     data_path, data_receipt = receipt("public_data")
     repo = Path(__file__).resolve().parent.parent
-    command = ["node", str(repo / "node_modules/tsx/dist/cli.mjs"), "--tsconfig", str(repo / "apps/web/tsconfig.json"), str(repo / "scripts/validate-change-event-projection.ts"), str(changes_path), str(safe_path(root, event["scopeArtifact"]["path"])), str(safe_path(root, data_receipt["dataArtifact"]["path"])), event["basisSha256"], str(root)]
+    args = [str(changes_path), str(safe_path(root, event["scopeArtifact"]["path"])), str(safe_path(root, data_receipt["dataArtifact"]["path"])), event["basisSha256"], str(root)]
+    command = projection_validator(repo) + args
     result = subprocess.run(command, cwd=repo, capture_output=True, text=True, timeout=120)
     if result.returncode != 0: raise ValueError("Event projection gate rejected: " + result.stderr[-4000:])
 

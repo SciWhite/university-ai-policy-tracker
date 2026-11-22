@@ -1,0 +1,237 @@
+{
+ "schemaVersion": "uapt-v6-source-metadata-legacy-unprocessed-v1",
+ "frozenOn": "2026-11-19",
+ "reason": "Official sources of the 132 V6 schools that the first source-metadata bulk run (content c-20261118-source-metadata) left without a record: 12 unreadable at the time, the rest never bound to a captured text. Process them with scripts/v6-source-metadata.py and remove each entry once it has a document or fetch_failed gap. Do not add entries.",
+ "schools": {
+  "aalto-university": [
+   "aalto.fi/en/services/responsible-use-of-artificial-intelligence-in-the-research-process",
+   "aalto.fi/en/student-guide/students-using-ai-in-your-studies-tools-tips-and-best-practices"
+  ],
+  "adelaide-university": [
+   "adelaideuni.edu.au/about/policies/academic-integrity-policy",
+   "adelaideuni.edu.au/about/policies/academic-integrity-policy/academic-misconduct-procedure",
+   "adelaideuni.edu.au/about/policies/assessment-policy/assessment-procedure",
+   "adelaideuni.edu.au/about/policies/cyber-security-policy",
+   "adelaideuni.edu.au/about/policies/research-integrity-policy/research-integrity-authorship-procedure",
+   "adelaideuni.edu.au/research/graduate-research-school/graduate-research-handbook/conduct-of-research",
+   "adelaideuni.edu.au/students/manage-study/assessments-exams/online-exam-rules"
+  ],
+  "brown-university": [
+   "ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+   "ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+   "ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools"
+  ],
+  "city-university-of-hong-kong": [
+   "cityu.edu.hk/its/news-events/news/2024/09/16/microsoft-copilot-enterprise-now-available-all-staff-and-students"
+  ],
+  "columbia": [
+   "ai.columbia.edu/resources",
+   "cuit.columbia.edu/content/generative-ai-services-columbia",
+   "cuit.columbia.edu/content/google-gemini-notebooklm",
+   "etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university"
+  ],
+  "duke-university": [
+   "ai.duke.edu/ai-tools",
+   "dukecommunitystandard.students.duke.edu/policy/academic-dishonesty",
+   "myresearchpath.duke.edu/using-generative-ai-artificial-intelligence-tools-research",
+   "oit.duke.edu/ai-suite"
+  ],
+  "edinburgh": [
+   "academic-services.ed.ac.uk/staff/discipline/academic-misconduct",
+   "ed.ac.uk/sites/default/files/atoms/files/generative_ai_guidance_for_students_october_2024.pdf",
+   "information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students",
+   "research-office.ed.ac.uk/research-integrity-governance/research-misconduct"
+  ],
+  "harvard-university": [
+   "ari.hms.harvard.edu/ai",
+   "it.hms.harvard.edu/about/policies-and-guidelines/generative-ai"
+  ],
+  "hkust": [
+   "vprd.hkust.edu.hk/guiding-principles-responsible-use-generative-ai-research"
+  ],
+  "imperial-college-london": [
+   "imperial.ac.uk/media/imperial-college/administration-and-support-services/ict/public/dAIsy-use-guidance-and-process-flows-(2).pdf",
+   "learn.microsoft.com/en-us/copilot/privacy-and-protections"
+  ],
+  "institut-polytechnique-de-paris": [
+   "ip-paris.fr/sites/default/files/pages/documents/Masters/2025-01-21_reglement_des_etudes_de_master_ip_paris_2023_2024_approuve_en_CA.pdf",
+   "polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants"
+  ],
+  "jhu": [
+   "eduaipolicy.org/api/v1/students/jhu",
+   "eduaipolicy.org/api/v1/universities/jhu",
+   "eduaipolicy.org/universities/jhu/changes",
+   "guides.library.jhu.edu/c.php?g=1327116&p=9770857",
+   "krieger.jhu.edu/hwgradaffairs/wp-content/uploads/sites/35/2018/08/Homewood-WSE_KSAS_-WSE-EP_KSAS-AAP-Graduate-Academic-Misconduct-Policy-2018SU.pdf"
+  ],
+  "korea-university": [
+   "ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+   "ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311772&mode=download&totalBoardNo=&totalNoticeYn="
+  ],
+  "kth-royal-institute-of-technology": [
+   "intra.kth.se/en/utbildning/systemstod/generativ-ai/assessing-knowledge/prevent-and-discourage-prohibited-use-1.1253705"
+  ],
+  "kyoto-university": [
+   "oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+  ],
+  "lund-university": [
+   "education.lu.se/en/current-themes/generative-ai-tools/questions-and-answers-genai-tools",
+   "staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university"
+  ],
+  "massachusetts-institute-of-technology": [
+   "sites.mit.edu/ai-use/ai-committee-final-report-aug-13"
+  ],
+  "monash": [
+   "monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+   "monash.edu/students/admin/exams/electronic-exams/rules"
+  ],
+  "national-taiwan-university": [
+   "emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf"
+  ],
+  "new-york-university": [
+   "nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+   "nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+   "nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html",
+   "nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/ai-studio.html",
+   "nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/gemini.html",
+   "nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/notebooklm.html",
+   "nyu.edu/life/information-technology/communication-and-collaboration/email-and-communication/nyu-zoom.html",
+   "nyu.edu/life/information-technology/computing-support/software/software/adobe_express.html",
+   "nyu.edu/life/information-technology/computing-support/software/software/ms-office.html"
+  ],
+  "pennsylvania-state-university": [
+   "ai.psu.edu/resources/frequently-asked-questions",
+   "ai.psu.edu/resources/guidelines"
+  ],
+  "princeton-university": [
+   "oit.princeton.edu/generative-ai",
+   "oit.princeton.edu/generative-ai/ai-tools",
+   "oit.princeton.edu/policies/generative-ai-tools-use-policy"
+  ],
+  "purdue-university": [
+   "purdue.edu/ai/generative-ai-toolkit"
+  ],
+  "queen-mary-university-of-london": [
+   "qmul.ac.uk/governance-and-legal-services/media/dgls-media/policy/current-policies/Academic-Integrity-&-Misconduct-Policy.pdf",
+   "qmul.ac.uk/its/basic-introduction-to-ai/ai-faqs"
+  ],
+  "snu": [
+   "brainscience.snu.ac.kr/bbs/board.php?bo_table=notice&wr_id=1383",
+   "health.snu.ac.kr?kboard_content_redirect=5406"
+  ],
+  "stanford-university": [
+   "communitystandards.stanford.edu/generative-ai-policy-guidance"
+  ],
+  "technical-university-of-denmark": [
+   "bibliotek.dtu.dk/en/publishing/reference-management/kunstig-intelligens/eksempler"
+  ],
+  "technical-university-of-munich": [
+   "chat-ai.academiccloud.de",
+   "eduaipolicy.org/api/public/v1/policy-snapshots/universities/technical-university-of-munich.json",
+   "eduaipolicy.org/api/public/v1/universities/technical-university-of-munich/snapshot.json",
+   "eduaipolicy.org/changes/technical-university-of-munich",
+   "eduaipolicy.org/universities/technical-university-of-munich",
+   "eduaipolicy.org/zh/changes/technical-university-of-munich",
+   "eduaipolicy.org/zh/universities/technical-university-of-munich",
+   "portal.mytum.de/archiv/kompendium_rechtsangelegenheiten/sonstiges/TUM_SGwP.pdf"
+  ],
+  "the-university-of-western-australia": [
+   "uwa.edu.au/policy/-/media/project/uwa/uwa/policy-library/policy/student-administration/academic-integrity/academic-integrity-policy.doc",
+   "uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf"
+  ],
+  "u-tokyo": [
+   "u-tokyo.ac.jp/gen01/reiki_int/reiki_honbun/au07408830.html",
+   "u-tokyo.ac.jp/gen01/reiki_int/reiki_honbun/au07408832.html"
+  ],
+  "ucl": [
+   "ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/generative-ai-and-assessments",
+   "uclpress.co.uk/pages/editorial-policies"
+  ],
+  "universitat-heidelberg": [
+   "graduateacademy.uni-heidelberg.de/promovieren/ai_en.html"
+  ],
+  "university-college-dublin": [
+   "ucd.ie/registrar/t4media/Faculty%20Guidelines%20for%20the%20Use%20of%20AI%20in%20T&L.pdf"
+  ],
+  "university-of-amsterdam": [
+   "tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment",
+   "uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html"
+  ],
+  "university-of-auckland": [
+   "auckland.ac.nz/en/students/my-tools/generative-ai.html"
+  ],
+  "university-of-california-berkeley": [
+   "ai.berkeley.edu/guidance-use-ai",
+   "grad.berkeley.edu/policies-and-procedures/graduate-academic-integrity",
+   "oercs.berkeley.edu/appropriate-use-generative-ai-tools"
+  ],
+  "university-of-california-san-diego": [
+   "blink.ucsd.edu/technology/ai/index.html",
+   "blink.ucsd.edu/technology/file-sharing/google/gemini-notebooklm.html"
+  ],
+  "university-of-copenhagen": [
+   "pkunet-shared.ku.dk/newsroom/news/Pages/Three-guidelines-and-a-new-tool-for-using-AI.aspx"
+  ],
+  "university-of-glasgow": [
+   "gla.ac.uk/myglasgow/apg/policies/uniregs/regulations2025-26/feesandgeneral/studentsupportandconductmatters/reg32",
+   "gla.ac.uk/myglasgow/learningandteaching/af-aiguidance",
+   "gla.ac.uk/myglasgow/learningandteaching/af-aiguidance/howcaniadaptassessmenttodealwithgenai"
+  ],
+  "university-of-hong-kong": [
+   "its.hku.hk/services/ai-as-a-service/hku-chatgpt"
+  ],
+  "university-of-leeds": [
+   "generative-ai.leeds.ac.uk/ai-and-assessments",
+   "generative-ai.leeds.ac.uk/ai-and-assessments/categories-of-assessments",
+   "generative-ai.leeds.ac.uk/ai-use-in-research/postgraduate-researcher-guidance/assessment-categories-for-research-degrees"
+  ],
+  "university-of-melbourne": [
+   "students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne"
+  ],
+  "university-of-oslo": [
+   "uio.no/studier/ressurser/ki-student.html"
+  ],
+  "university-of-oxford": [
+   "infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely"
+  ],
+  "university-of-st-andrews": [
+   "st-andrews.ac.uk/policy/information-governance-and-management-information-security/use-of-generative-ai---llm.pdf"
+  ],
+  "university-of-sydney": [
+   "sydney.edu.au/students/academic-appeals.html",
+   "sydney.edu.au/students/academic-integrity/investigation.html",
+   "sydney.edu.au/students/chatgpt-edu.html",
+   "sydney.edu.au/students/responsible-ai-use.html",
+   "sydney.edu.au/students/student-it/apps.html",
+   "sydney.edu.au/students/student-misconduct/appeal-outcome.html"
+  ],
+  "university-of-texas-at-austin": [
+   "ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+   "provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance",
+   "provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-use-in-graduate-education",
+   "provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom",
+   "provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools"
+  ],
+  "university-of-twente": [
+   "utwente.nl/en/learning-teaching/Expertise/ai-in-education",
+   "utwente.nl/en/learning-teaching/Expertise/ai-in-education/use-of-ai-in-education-at-the-university-of-twente.pdf",
+   "utwente.nl/en/learning-teaching/assessment/additional-topics/AI_Assessment",
+   "utwente.nl/en/news/2025/10/655534/ut-takes-first-step-toward-a-shared-vision-on-artificial-intelligence"
+  ],
+  "university-of-washington": [
+   "teaching.washington.edu/course-design/ai/sample-ai-syllabus-statements"
+  ],
+  "university-of-wisconsin-madison": [
+   "conduct.students.wisc.edu/artificial-intelligence",
+   "it.wisc.edu/generative-ai-services-uw-madison",
+   "it.wisc.edu/generative-ai-services-uw-madison/generative-ai-uw-madison-use-policies",
+   "it.wisc.edu/generative-ai-services-uw-madison/statement-on-use-of-generative-ai"
+  ],
+  "utrecht-university": [
+   "uu.nl/en/organisation/ai-policy/students/conditions-of-use-of-ai-tools"
+  ],
+  "yale-university": [
+   "guides.library.yale.edu/libraryAI"
+  ]
+ }
+}
