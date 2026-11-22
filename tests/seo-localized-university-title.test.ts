@@ -6,6 +6,23 @@ import { generateMetadata as generateDefaultUniversityMetadata } from "../apps/w
 import { READING_LOCALES } from "../apps/web/lib/language-catalog";
 import { getPublicReadingUiText } from "../apps/web/lib/public-ui-translations";
 
+// Content-language URLs (apps/web/lib/content-locales.ts, 2026-11-22): a school page in a UI-only
+// locale renders only with complete accepted native prose (none in local data); otherwise it
+// redirects to the English page with the locale as a UI preference. Native-name titles still
+// apply to native pages (getInstitutionNativeName above; zh-Hant cases below where they render).
+async function expectUiRedirect(locale: string, slug: string) {
+  try {
+    await generateLocaleUniversityMetadata({ params: Promise.resolve({ locale, slug }) });
+  } catch (error) {
+    const digest = (error as { digest?: string }).digest ?? "";
+    assert.ok(digest.startsWith("NEXT_REDIRECT"), String(error));
+    assert.equal(digest.split(";")[2], `/universities/${slug}#ui=${locale}`, `${locale} ${slug}`);
+    return;
+  }
+  assert.fail(`${locale} ${slug} rendered; expected a redirect to the English page`);
+}
+
+
 test("all 33 reading locales have 'AI policy' translated in public-ui messages", async () => {
   for (const locale of READING_LOCALES) {
     if (locale === "en") continue;
@@ -23,58 +40,29 @@ test("all 33 reading locales have 'AI policy' translated in public-ui messages",
   }
 });
 
-test("university page title is localized for reading locales and unchanged in English (V6=0)", async () => {
+test("university page title is localized for reading locales and unchanged in English (V6=0) (UI-only locales now redirect)", async () => {
   process.env.UAPT_V6_PUBLISHED_PAGES = "0";
-
-  // English default page
   const enMeta = await generateDefaultUniversityMetadata({
     params: Promise.resolve({ slug: "stanford-university" }),
   });
   assert.equal(enMeta.title, "Stanford University AI policy | University AI Policy Tracker");
-
-  // Japanese page
-  const jaMeta = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "ja", slug: "stanford-university" }),
-  });
-  assert.equal(jaMeta.title, "スタンフォード大学 AI方針 | University AI Policy Tracker");
-
-  // Chinese page
   const zhMeta = await generateLocaleUniversityMetadata({
     params: Promise.resolve({ locale: "zh", slug: "stanford-university" }),
   });
   assert.equal(zhMeta.title, "斯坦福大学 AI 政策 | University AI Policy Tracker");
-
-  // German page
-  const deMeta = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "de", slug: "stanford-university" }),
-  });
-  assert.equal(deMeta.title, "Stanford University KI-Richtlinie | University AI Policy Tracker");
-
-  // Korean page
-  const koMeta = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "ko", slug: "stanford-university" }),
-  });
-  assert.equal(koMeta.title, "스탠퍼드 대학교(Stanford University) AI 정책 | University AI Policy Tracker");
+  await expectUiRedirect("ja", "stanford-university");
+  await expectUiRedirect("de", "stanford-university");
+  await expectUiRedirect("ko", "stanford-university");
 });
-
-test("university page title is localized for reading locales and unchanged in English (V6=1)", async () => {
+test("university page title is localized for reading locales and unchanged in English (V6=1) (UI-only locales now redirect)", async () => {
   process.env.UAPT_V6_PUBLISHED_PAGES = "1";
-
-  // English default page
   const enMeta = await generateDefaultUniversityMetadata({
     params: Promise.resolve({ slug: "stanford-university" }),
   });
   assert.equal(enMeta.title, "Stanford University AI Policy");
-
-  // Japanese page
-  const jaMeta = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "ja", slug: "stanford-university" }),
-  });
-  assert.equal(jaMeta.title, "スタンフォード大学 AI方針");
-
-  // Chinese page
   const zhMeta = await generateLocaleUniversityMetadata({
     params: Promise.resolve({ locale: "zh", slug: "stanford-university" }),
   });
   assert.equal(zhMeta.title, "斯坦福大学 AI 政策");
+  await expectUiRedirect("ja", "stanford-university");
 });

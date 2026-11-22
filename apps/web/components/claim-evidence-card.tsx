@@ -1,3 +1,4 @@
+import { quoteKey } from "@/lib/evidence-dedup";
 import type {
   ClaimEvidence,
   ClaimReviewState,
@@ -65,7 +66,7 @@ export function ClaimEvidenceCard({
               {translatePolicyReferenceUi(formatClaimType(claim.claimType), locale)}
             </p>
           ) : null}
-          <h3>{claim.claimText}</h3>
+          <h3 data-quote-key={quoteKey(claim.claimText)}>{claim.claimText}</h3>
         </div>
         <div className="claim-evidence-card__status">
           {compact ? (
@@ -179,7 +180,7 @@ function EvidenceBlock({
         </span>
       </div>
 
-      <blockquote className="evidence-snippet" dir="auto" lang={evidence.sourceLanguage}>
+      <blockquote className="evidence-snippet" dir="auto" lang={evidence.sourceLanguage} data-quote-key={quoteKey(evidence.evidenceSnippet)}>
         <PolicyBidiText text={evidence.evidenceSnippet} />
         <footer>
           {ui("Source", translateSurfaceText("Source", locale))}:{" "}

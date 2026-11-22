@@ -100,14 +100,17 @@ async function main() {
   );
 
   assert(JSON.stringify(ROUTED_LOCALES) === JSON.stringify(READING_LOCALES), "Reading locale selector contract changed");
-  assert(localizeHref("/tools", "es") === "/es/tools", "Localized public link failed");
+  // Content-language URLs (apps/web/lib/content-locales.ts): only en and zh are URL prefixes;
+  // the other reading locales are UI preferences on the English page.
+  assert(localizeHref("/tools", "zh") === "/zh/tools", "Localized public link failed");
+  assert(localizeHref("/tools", "es") === "/tools", "A UI-only locale must not become a URL prefix");
   assert(
     localizeHref("/search?q=harvard.edu", "zh") === "/zh/search?q=harvard.edu",
     "Localized public link with query failed"
   );
   for (const locale of READING_LOCALES) {
     for (const route of ["/api-reference", "/widgets", "/review", "/review/queue"]) {
-      assert(localizeHref(route, locale) === (locale === "en" ? route : `/${locale}${route}`), `${locale}: public interface link failed for ${route}`);
+      assert(localizeHref(route, locale) === (locale === "zh" ? `/zh${route}` : route), `${locale}: public interface link failed for ${route}`);
     }
   }
   assert(localizeHref("/api/public/v1/index.json", "zh") === "/api/public/v1/index.json", "Public API URL changed during localization");

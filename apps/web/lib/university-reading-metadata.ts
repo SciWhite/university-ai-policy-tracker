@@ -3,7 +3,9 @@ import { readFile, stat } from "node:fs/promises";
 import type { Metadata } from "next";
 import { getReadingTranslations, isVerifiedReadingBundle } from "./reading-translations";
 import { READING_LOCALES, type ReadingLocale } from "./language-catalog";
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, withLocalePrefix } from "./i18n";
+import { DEFAULT_LOCALE, withLocalePrefix } from "./i18n";
+import { CONTENT_LOCALES } from "./content-locales";
+import { universityReadingBasis } from "./university-reading-basis";
 import { getAbsoluteSiteUrl } from "./site-url";
 import { universityIndexLocales, type UniversityLocaleIndexPolicy } from "./university-locale-index-policy";
 import { getPolicyScenePilot } from "./policy-scene-pilot";
@@ -17,7 +19,7 @@ import { ByteLru } from "./bounded-cache";
 import { localeIndexPolicySelection, readingPackageSelection } from "./content-runtime";
 import { isPolicyV6BaseTier, policyV6Tier } from "./policy-v6-tier";
 import { schoolTargetLocales, type SchoolLanguageIdentity } from "./school-languages";
-import { getCatalogUniversityBySlug } from "./catalog";
+import { getCatalogUniversityBySlug, getPublicUniversitySummaryBySlug } from "./catalog";
 
 let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
 
@@ -154,8 +156,11 @@ export function readingDisplayRequirementsComplete(requirements: readonly Readin
   return complete;
 }
 
-// Locales whose UI and school pages were already indexed before reading packages.
-const LEGACY_INDEX_LOCALES = new Set<ReadingLocale>(SUPPORTED_LOCALES);
+// Content-language URLs (lib/content-locales.ts, 2026-11-22): English and Simplified Chinese
+// for every school. Before, the five other legacy UI locales (fr/pl/es/nl/ms) were indexed for
+// a school in that country even when the page showed English prose in a foreign UI; now a
+// country language needs complete accepted display prose, like every other reading locale.
+const LEGACY_INDEX_LOCALES = new Set<ReadingLocale>(CONTENT_LOCALES);
 
 async function completeReadingLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary: PublicEntitySummary, requested: readonly ReadingLocale[], pointer: string, sourceSha256?: string): Promise<ReadingLocale[]> {
   if (requested.length === 0) return [];
@@ -215,4 +220,19 @@ export async function universityReadingMetadata(slug: string, pathname: string, 
     ? undefined
     : Object.fromEntries(eligible.map(language => [language, getAbsoluteSiteUrl(withLocalePrefix(pathname, language))]));
   return { alternates: { canonical, ...(languages ? { languages: { ...languages, "x-default": getAbsoluteSiteUrl(pathname) } } : {}) }, robots };
+}
+
+/**
+ * The data-driven native-language hook: /<locale>/universities/<slug> is a separate content page
+ * only when the school's record has complete accepted display prose in that language (and the
+ * language applies to the school). Otherwise the URL redirects to the English page with the
+ * locale as a UI preference.
+ */
+export async function isNativeSchoolLocale(slug: string, locale: ReadingLocale): Promise<boolean> {
+  if (locale === DEFAULT_LOCALE) return true;
+  const summary = await getPublicUniversitySummaryBySlug(slug);
+  if (!summary) return false;
+  const basis = universityReadingBasis(slug, summary);
+  if (!basis) return false;
+  return (await universityReadingIndexLocales(slug, basis, summary, locale).catch(() => [] as ReadingLocale[])).includes(locale);
 }

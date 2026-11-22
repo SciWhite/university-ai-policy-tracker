@@ -100,26 +100,14 @@ test("generateMetadata emits correct title and canonical for default /sources", 
   );
 });
 
-test("generateMetadata emits correct localized canonical for /ja/sources", async () => {
-  // Page 1 in Japanese
-  const jaMeta1 = await generateLocaleSourcesMetadata({
-    params: Promise.resolve({ locale: "ja" }),
-    searchParams: Promise.resolve({})
-  });
-  assert.ok(
-    String(jaMeta1.alternates?.canonical).endsWith("/ja/sources"),
-    `Expected /ja/sources canonical, got ${jaMeta1.alternates?.canonical}`
-  );
-
-  // Page 2 in Japanese
-  const jaMeta2 = await generateLocaleSourcesMetadata({
-    params: Promise.resolve({ locale: "ja" }),
-    searchParams: Promise.resolve({ page: "2" })
-  });
-  assert.ok(
-    String(jaMeta2.alternates?.canonical).endsWith("/ja/sources?page=2"),
-    `Expected /ja/sources?page=2 canonical, got ${jaMeta2.alternates?.canonical}`
-  );
+test("/ja/sources is a UI preference: its metadata points at the English URL", async () => {
+  // Content-language URLs (apps/web/lib/content-locales.ts): /ja/sources answers 301 in the
+  // proxy; if its metadata is ever rendered, the canonical is the English page.
+  const jaMeta1 = await generateLocaleSourcesMetadata({ params: Promise.resolve({ locale: "ja" }), searchParams: Promise.resolve({}) });
+  assert.ok(String(jaMeta1.alternates?.canonical).endsWith("/sources"), `got ${jaMeta1.alternates?.canonical}`);
+  assert.ok(!String(jaMeta1.alternates?.canonical).includes("/ja/"));
+  const jaMeta2 = await generateLocaleSourcesMetadata({ params: Promise.resolve({ locale: "ja" }), searchParams: Promise.resolve({ page: "2" }) });
+  assert.ok(String(jaMeta2.alternates?.canonical).endsWith("/sources?page=2"), `got ${jaMeta2.alternates?.canonical}`);
 });
 
 test("SourcesPage renders paginated slice with rel=prev/next links", async () => {

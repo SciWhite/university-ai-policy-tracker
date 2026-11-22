@@ -22,6 +22,7 @@ Do not follow a doc that is not on this page.
 | [v6-pipeline.md](v6-pipeline.md) | Running a batch of schools from crawl to V6 to a content release |
 | [server-fixes-20261121.md](server-fixes-20261121.md) | Memory, watchdog and hold-deadline fixes applied on 2026-11-21 |
 | [stop-bleed-set2-20261121.md](stop-bleed-set2-20261121.md) | nginx and Cloudflare changes applied on 2026-11-21, and how to measure them |
+| [render-once.md](render-once.md) | Page store, pre-rendered tree, content-language URLs and the combined rollout plan (not yet released) |
 | [release-routing-policy.md](release-routing-policy.md), [oci-small-release.md](oci-small-release.md) | **Historical (pre-R1).** Only for reading old zone-era receipts; never for new releases |
 
 ## V6 school pages and marks

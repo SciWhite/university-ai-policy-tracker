@@ -1,3 +1,4 @@
+import { registerClaimCardTexts } from "@/lib/evidence-dedup";
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "./policy-v6-changes";
@@ -57,6 +58,8 @@ export function PolicyV6LocalPage({
   sharedUiText?: Readonly<Record<string, string>>;
 }) {
   if (readingLayout) data = bindPolicyV6ReadingEvidence(data, evidence.record.claims);
+  // #claims below holds the full texts; topic evidence shows excerpts (lib/evidence-dedup.ts).
+  registerClaimCardTexts(evidence.record.claims);
   const school = data.schools.find((s) => s.slug === university.slug)!;
   const scene = getPolicyV6IllustratedScene(school, locale);
   const zh = locale === "zh",

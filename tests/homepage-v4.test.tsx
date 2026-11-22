@@ -130,7 +130,8 @@ test("HomeV4View renders all 7 UI sections with SSR content across all 7 locales
     assert(html.includes(esc(copy.heroHeading)), `${locale} missing hero heading`);
     assert(html.includes(esc(copy.heroSubtitle)), `${locale} missing hero subtitle`);
     assert(html.includes(esc(copy.searchLabel)), `${locale} missing visible search label`);
-    assert(html.includes(`action="${locale === "en" ? "/search" : `/${locale}/search`}"`), `${locale} form action not localized`);
+    // Only content languages are URL prefixes (apps/web/lib/content-locales.ts).
+    assert(html.includes(`action="${locale === "zh" ? "/zh/search" : "/search"}"`), `${locale} form action not localized`);
     assert(html.includes(esc(copy.browseAllUniversities)), `${locale} missing browse all universities`);
     assert(html.includes("/assets/home-v4/library-study-v1.webp"), `${locale} missing library-study-v1.webp hero art`);
     const expectedCoverage = copy.coverageNote(
@@ -202,9 +203,9 @@ test("HomeV4View renders all 7 UI sections with SSR content across all 7 locales
     }
 
     // JSON-LD WebSite includes locale-preserving SearchAction
-    const expectedPath = locale === "en"
-      ? "/search?q={search_term_string}"
-      : `/${locale}/search?q={search_term_string}`;
+    const expectedPath = locale === "zh"
+      ? "/zh/search?q={search_term_string}"
+      : "/search?q={search_term_string}";
     assert(html.includes(expectedPath), `${locale} JSON-LD search target mismatch: expected ${expectedPath}`);
   }
 });

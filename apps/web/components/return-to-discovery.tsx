@@ -1,8 +1,7 @@
 "use client";
-import { requestDiscoveryPosition } from "@/lib/discovery-return-state";
+import { requestDiscoveryPosition, takeDiscoveryReturn } from "@/lib/discovery-return-state";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { safeDiscoveryReturn } from "@/lib/discovery-query";
 import { rankingBrowserCopy } from "@/lib/ranking-browser-copy";
 import { getReadingLocaleFromPathname, legacyLocale, localizeHref } from "@/lib/i18n";
 import { useReadingUiText } from "./reading-ui-text-provider";
@@ -13,15 +12,9 @@ export function ReturnToDiscovery() {
     copy = rankingBrowserCopy(legacyLocale(readingLocale));
   const sharedUiText = useReadingUiText();
   const [href, setHref] = useState<string | null>(null);
-  useEffect(
-    () =>
-      setHref(
-        safeDiscoveryReturn(
-          new URLSearchParams(location.search).get("returnTo"),
-        ),
-      ),
-    [pathname],
-  );
+  // The directory/ranking view this tab came from (sessionStorage); an old
+  // `?returnTo=` link is adopted and dropped from the address bar.
+  useEffect(() => setHref(takeDiscoveryReturn()), [pathname]);
   useEffect(() => {
     const returning = () => {
       if (href) requestDiscoveryPosition(href);

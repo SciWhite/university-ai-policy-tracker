@@ -4,6 +4,8 @@ import {
   isPhaseTwoLocalizablePath,
   stripReadingLocalePrefix
 } from "@/lib/i18n";
+import { uiLocaleRedirectTarget } from "@/lib/content-locales";
+import { getSiteBaseUrl } from "@/lib/site-url";
 
 const PRIVATE_ANALYTICS_USERNAME = "uapt";
 const MAX_FAILED_ATTEMPTS = 5;
@@ -25,6 +27,17 @@ export function proxy(request: NextRequest) {
   const localizedPath = stripReadingLocalePrefix(request.nextUrl.pathname);
 
   if (localizedPath.hadLocalePrefix) {
+    // UI-only locales are browser preferences, not URLs (lib/content-locales.ts): one
+    // cacheable 301 per old URL, the preference in the fragment (no cache-key variant).
+    // School pages are left to the page, which may be a native-language content page.
+    const target = uiLocaleRedirectTarget(request.nextUrl.pathname, request.nextUrl.search);
+    if (target) {
+      // The site's public origin (NEXT_PUBLIC_SITE_URL, baked into the program build): behind
+      // nginx the request URL's origin is the loopback slot, and Next needs an absolute Location.
+      const response = NextResponse.redirect(new URL(target, getSiteBaseUrl()), 301);
+      response.headers.set("Cache-Control", "public, max-age=86400, s-maxage=31536000");
+      return response;
+    }
     if (
       !isMultilingualPhaseTwoEnabled() &&
       isPhaseTwoLocalizablePath(localizedPath.pathname)

@@ -5,82 +5,40 @@ import { generateMetadata as generateDefaultUniversityMetadata } from "../apps/w
 import { generateMetadata as generateLocaleUniversityMetadata } from "../apps/web/app/[locale]/universities/[slug]/page";
 import { getAbsoluteSiteUrl } from "../apps/web/lib/site-url";
 
-test("hreflang alternates on university pages only list indexable locales for that school", async () => {
-  // Case 1: universite-paris-cite is indexable in en, zh, fr
-  const upcEn = await generateDefaultUniversityMetadata({
-    params: Promise.resolve({ slug: "universite-paris-cite" }),
-  });
+// Content-language URLs (apps/web/lib/content-locales.ts, 2026-11-22): hreflang lists en, zh,
+// x-default and a native language only where the school has complete accepted display prose.
+
+async function redirectTarget(run: () => Promise<unknown>): Promise<string | undefined> {
+  try { await run(); return undefined; } catch (error) {
+    const digest = (error as { digest?: string }).digest ?? "";
+    if (!digest.startsWith("NEXT_REDIRECT")) throw error;
+    return digest.split(";")[2];
+  }
+}
+
+test("hreflang alternates on university pages list content-language URLs only", async () => {
+  // universite-paris-cite: French was indexed as a legacy UI locale with English prose; without a
+  // complete accepted French reading package it is now en + zh, and /fr/ is a UI preference.
+  const upcEn = await generateDefaultUniversityMetadata({ params: Promise.resolve({ slug: "universite-paris-cite" }) });
   const upcLanguages = (upcEn.alternates as { languages: Record<string, string> }).languages;
-  assert.deepEqual(
-    Object.keys(upcLanguages).sort(),
-    ["en", "fr", "x-default", "zh"],
-    "universite-paris-cite should have exactly en, zh, fr, and x-default"
-  );
+  assert.deepEqual(Object.keys(upcLanguages).sort(), ["en", "x-default", "zh"]);
   assert.equal(upcLanguages["en"], getAbsoluteSiteUrl("/universities/universite-paris-cite"));
-  assert.equal(upcLanguages["fr"], getAbsoluteSiteUrl("/fr/universities/universite-paris-cite"));
   assert.equal(upcLanguages["zh"], getAbsoluteSiteUrl("/zh/universities/universite-paris-cite"));
   assert.equal(upcLanguages["x-default"], getAbsoluteSiteUrl("/universities/universite-paris-cite"));
 
-  // Check French localized page for universite-paris-cite
-  const upcFr = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "fr", slug: "universite-paris-cite" }),
-  });
-  const upcFrLanguages = (upcFr.alternates as { languages: Record<string, string> }).languages;
-  assert.deepEqual(
-    Object.keys(upcFrLanguages).sort(),
-    ["en", "fr", "x-default", "zh"],
-    "universite-paris-cite /fr/ page should have reciprocal hreflang for en, zh, fr, x-default"
-  );
+  const stanfordEn = await generateDefaultUniversityMetadata({ params: Promise.resolve({ slug: "stanford-university" }) });
+  assert.deepEqual(Object.keys((stanfordEn.alternates as { languages: Record<string, string> }).languages).sort(), ["en", "x-default"]);
 
-  // Case 2: stanford-university is indexable in en only
-  const stanfordEn = await generateDefaultUniversityMetadata({
-    params: Promise.resolve({ slug: "stanford-university" }),
-  });
-  const stanfordLanguages = (stanfordEn.alternates as { languages: Record<string, string> }).languages;
-  assert.deepEqual(
-    Object.keys(stanfordLanguages).sort(),
-    ["en", "x-default"],
-    "stanford-university should have only en and x-default in hreflang"
-  );
-  assert.equal(stanfordLanguages["en"], getAbsoluteSiteUrl("/universities/stanford-university"));
-  assert.equal(stanfordLanguages["x-default"], getAbsoluteSiteUrl("/universities/stanford-university"));
-
-  // Case 3: arizona-state-university is indexable in en, zh
-  const asuEn = await generateDefaultUniversityMetadata({
-    params: Promise.resolve({ slug: "arizona-state-university" }),
-  });
-  const asuLanguages = (asuEn.alternates as { languages: Record<string, string> }).languages;
-  assert.deepEqual(
-    Object.keys(asuLanguages).sort(),
-    ["en", "x-default", "zh"],
-    "arizona-state-university should have en, zh, and x-default"
-  );
+  const asuEn = await generateDefaultUniversityMetadata({ params: Promise.resolve({ slug: "arizona-state-university" }) });
+  assert.deepEqual(Object.keys((asuEn.alternates as { languages: Record<string, string> }).languages).sort(), ["en", "x-default", "zh"]);
 });
 
-test("noindex university pages omit hreflang alternates (do not point to or from noindex pages)", async () => {
-  // Japanese page for stanford-university is not indexable (robots: noindex, follow)
-  const stanfordJa = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "ja", slug: "stanford-university" }),
-  });
-  const stanfordJaRobots = stanfordJa.robots as { index: boolean; follow: boolean };
-  assert.equal(stanfordJaRobots.index, false, "Japanese stanford page must be noindex");
-  const stanfordJaLanguages = (stanfordJa.alternates as { languages: Record<string, string> }).languages;
-  assert.deepEqual(
-    stanfordJaLanguages,
-    {},
-    "Japanese stanford page (noindex) must have empty hreflang languages"
-  );
-
-  // Polish page for universite-paris-cite is not indexable (robots: noindex, follow)
-  const upcPl = await generateLocaleUniversityMetadata({
-    params: Promise.resolve({ locale: "pl", slug: "universite-paris-cite" }),
-  });
-  const upcPlRobots = upcPl.robots as { index: boolean; follow: boolean };
-  assert.equal(upcPlRobots.index, false, "Polish UPC page must be noindex");
-  const upcPlLanguages = (upcPl.alternates as { languages: Record<string, string> }).languages;
-  assert.deepEqual(
-    upcPlLanguages,
-    {},
-    "Polish UPC page (noindex) must have empty hreflang languages"
-  );
+test("a UI-only locale school URL without native content redirects to the English page with the UI preference", async () => {
+  for (const [locale, slug] of [["ja", "stanford-university"], ["pl", "universite-paris-cite"], ["fr", "universite-paris-cite"]] as const) {
+    const target = await redirectTarget(() => generateLocaleUniversityMetadata({ params: Promise.resolve({ locale, slug }) }));
+    assert.equal(target, `/universities/${slug}#ui=${locale}`, `${locale} ${slug}`);
+  }
+  // Content locales stay pages.
+  const zh = await generateLocaleUniversityMetadata({ params: Promise.resolve({ locale: "zh", slug: "arizona-state-university" }) });
+  assert.equal((zh.robots as { index: boolean }).index, true);
 });

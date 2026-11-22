@@ -19,7 +19,10 @@ export default function robots(): MetadataRoute.Robots {
   const baseUrl = getSiteBaseUrl();
   // A crawler obeys only the most specific group that names it, so every group repeats the
   // disallows; otherwise Googlebot or GPTBot would ignore the `*` rules.
-  const disallow = ["/internal/analytics", ...readingOnlyChangePaths()];
+  // The reading-only change paths are no longer disallowed: since 2026-11-22 every
+  // /<uiLocale>/... URL is a cached 301 to the English page (lib/content-locales.ts), and a
+  // crawler must be allowed to fetch it to consolidate the old URLs.
+  const disallow = ["/internal/analytics"];
   const agents = ["OAI-SearchBot", "ChatGPT-User", "GPTBot", "Googlebot", "Bingbot", "*"];
 
   return {

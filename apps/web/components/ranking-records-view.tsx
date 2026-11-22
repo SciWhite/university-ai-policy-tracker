@@ -596,7 +596,7 @@ export function RankingRecordsView({
   );
   const onResultClick = (event: React.MouseEvent<HTMLElement>) => {
     const link = (event.target as Element).closest("a");
-    if (link?.getAttribute("href")?.includes("returnTo="))
+    if (link?.hasAttribute("data-discovery-return"))
       saveDiscoveryPosition(returnTo, link);
   };
   const Layout =

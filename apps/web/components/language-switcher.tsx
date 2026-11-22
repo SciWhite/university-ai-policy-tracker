@@ -4,7 +4,8 @@ import { Suspense, useEffect, useId, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { getReadingLocaleFromPathname } from "@/lib/i18n";
 import { LANGUAGE_NAMES, readingDirection, type ReadingLocale } from "@/lib/language-catalog";
-import { pageReadingLocales, readingLanguageHref } from "@/lib/language-choice";
+import { hasContentUrl, pageReadingLocales, readingLanguageHref } from "@/lib/language-choice";
+import { useUiLocale, writeUiLocale } from "@/lib/ui-locale-preference";
 import { useDeclaredPageReadingLocales } from "@/lib/page-reading-locales";
 import { preservePolicyReferenceSearch } from "@/lib/policy-reference-preview";
 import { useShellMessages } from "@/components/reading-ui-text-provider";
@@ -25,7 +26,10 @@ function LanguageMenuWithSearch() {
 
 function LanguageMenu({ search }: { search: string }) {
   const pathname = usePathname();
-  const locale = getReadingLocaleFromPathname(pathname);
+  const pathLocale = getReadingLocaleFromPathname(pathname);
+  // On the English page a UI-only preference is the language the reader sees.
+  const uiLocale = useUiLocale();
+  const locale = pathLocale === "en" && uiLocale ? uiLocale : pathLocale;
   const messages = useShellMessages().locale;
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
@@ -66,6 +70,8 @@ function LanguageMenu({ search }: { search: string }) {
     } catch {
       // The explicit language URL still works when storage is unavailable.
     }
+    // A content language clears the UI preference; a UI-only one sets it (the #ui= link does too).
+    writeUiLocale(hasContentUrl(pathname, nextLocale, declared) ? undefined : nextLocale);
   }
 
   if (locales.length < 2) return null;

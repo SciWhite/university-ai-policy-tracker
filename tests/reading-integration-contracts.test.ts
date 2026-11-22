@@ -500,11 +500,12 @@ test("all reading locales route distinctly while legacy UI remains seven-locale 
     assert.equal(isReadingLocale(locale), true);
     assert.equal(normalizeReadingLocale(locale), locale);
     assert.equal(getReadingLocaleFromPathname(`/${locale}/universities/ucl`), locale);
-    assert.equal(localizeHref("/universities/ucl", locale), locale === "en" ? "/universities/ucl" : `/${locale}/universities/ucl`);
+    // Routing still parses every reading locale; only content languages are link prefixes (apps/web/lib/content-locales.ts).
+    assert.equal(localizeHref("/universities/ucl", locale), locale === "zh" ? "/zh/universities/ucl" : "/universities/ucl");
   }
   assert.equal(matchReadingLocale("zh_TW"), "zh-Hant");
   assert.equal(normalizeReadingLocale("zh-Hant-TW"), "zh-Hant");
-  assert.equal(localizeHref("/zh-Hant/universities/ucl", "zh-Hant"), "/zh-Hant/universities/ucl");
+  assert.equal(localizeHref("/zh-Hant/universities/ucl", "zh-Hant"), "/universities/ucl");
   assert.equal(legacyLocale("zh-Hant"), "en");
   assert.equal(legacyLocale("fr"), "fr");
   assert.equal(preferredReadingLocale(["xx-YY", "he-IL"]), "he");

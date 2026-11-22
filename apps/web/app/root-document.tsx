@@ -10,6 +10,7 @@ import { applyAcceptedReadingUiText } from "@/lib/reading-ui-text";
 import { isSupportedLocale } from "@/lib/i18n";
 import { ReadingCohortBootstrap } from "@/components/reading-cohort-bootstrap";
 import { publishedV6Slugs } from "@/lib/policy-v6-published";
+import { UiLocaleOverlay } from "@/components/ui-locale-overlay";
 
 interface RootDocumentProps {
   children: ReactNode;
@@ -35,6 +36,7 @@ export function RootDocument({ children, locale, enableClarity = false, sharedUi
         <ReadingUiTextProvider value={sharedUiText} shell={shell}>
           <SiteShell showEnglishFallback={showEnglishFallback}>{children}</SiteShell>
           {enableClarity ? <ClarityIntegration /> : null}
+          {locale === "en" ? <UiLocaleOverlay /> : null}
         </ReadingUiTextProvider>
       </body>
     </html>
