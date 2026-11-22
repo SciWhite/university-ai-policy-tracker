@@ -9,6 +9,7 @@ sys.path.insert(0, str(PIPE))
 import v6batch as B  # noqa: E402
 import gates  # noqa: E402
 import capture  # noqa: E402
+import readback  # noqa: E402
 
 KEYS = B.TOPIC_KEYS
 
@@ -159,6 +160,49 @@ class StageTest(Workspace):
         report = status.status(self.ws, self.batch)
         self.assertIn('G0 alpha: alpha-university/public-tools.json missing', report['problems'])
         self.assertTrue(report['next'].startswith('Provide the G0 inputs'))
+
+
+class ReadbackSourceMetadataTest(unittest.TestCase):
+    """readback.py source-metadata rule, on wuhan-university (batch 6): its 4 displayed official sources are fetch_failed
+    gaps, so its pages render 0 blocks although the school has metadata documents for other URLs."""
+    SLUG = 'wuhan-university'
+    GAPS = ['https://aix.whu.edu.cn/', 'https://oldwww.lib.whu.edu.cn/webfile/category/1104.html',
+            'https://oldwww.lib.whu.edu.cn/webfile/category/1105.html', 'https://oldwww.lib.whu.edu.cn/webfile/category/AI_navigator.html']
+    DOCS = ['https://uc.whu.edu.cn/info/1520/128641.htm', 'https://info.whu.edu.cn/info/1452/5373.htm']
+    META = {'schools': {SLUG: [{'url': u} for u in DOCS]},
+            'gaps': {SLUG: [{'url': u, 'reason': 'fetch_failed', 'detail': 'HTTP 403', 'checkedOn': '2026-11-22'} for u in GAPS]}}
+
+    def html(self, urls, blocks=0):
+        cards = ''.join(f'<a href="{u}" target="_blank" rel="noopener noreferrer" data-analytics-entity-slug="{self.SLUG}">x</a>' for u in urls)
+        return '<main class="policy-v6">' + cards + '<div class="policy-v6-sourceMeta"></div>' * blocks + '</main>'
+
+    def errors(self, urls, blocks=0, meta=None):
+        meta = meta or self.META
+        row = {'status': 200, 'v6Layout': True, 'applicationError': False, **readback.source_cards(self.html(urls, blocks), self.SLUG, meta)}
+        return [p for p in (f'/universities/{self.SLUG}', f'/zh/universities/{self.SLUG}', f'/fr/universities/{self.SLUG}') if readback.row_error(p, row, meta)]
+
+    def test_all_fetch_failed_cards_expect_no_blocks(self):
+        row = readback.source_cards(self.html(self.GAPS), self.SLUG, self.META)
+        self.assertEqual(row, {'sourceCards': 4, 'expectedSourceMetadata': 0, 'fetchFailedSourceCards': 4, 'renderedSourceMetadata': 0})
+        self.assertEqual(self.errors(self.GAPS), [])
+
+    def test_attempt_20_row_without_the_count_still_fails(self):
+        old = {'status': 200, 'sourceCards': 4, 'expectedSourceMetadata': 0, 'renderedSourceMetadata': 0, 'v6Layout': True, 'applicationError': False}
+        self.assertTrue(readback.row_error(f'/universities/{self.SLUG}', old, self.META))
+
+    def test_missing_blocks_are_still_caught(self):
+        self.assertEqual(len(self.errors([])), 3)  # no cards found at all
+        self.assertEqual(len(self.errors(self.GAPS[:3] + ['https://aix.whu.edu.cn/other'])), 3)  # one card is neither documented nor a gap
+        self.assertEqual(len(self.errors(self.GAPS + self.DOCS[:1])), 3)  # a documented card without its block
+        self.assertEqual(len(self.errors(self.GAPS, blocks=1)), 3)  # a block nobody expects
+        self.assertEqual(self.errors(self.GAPS + self.DOCS[:1], blocks=1), [])
+
+    def test_only_fetch_failed_gaps_count(self):
+        other = {'schools': self.META['schools'], 'gaps': {self.SLUG: [{'url': u, 'reason': 'not_official'} for u in self.GAPS]}}
+        self.assertEqual(len(self.errors(self.GAPS, meta=other)), 3)
+        both = {'schools': {self.SLUG: [{'url': u} for u in self.DOCS + self.GAPS[:1]]}, 'gaps': self.META['gaps']}
+        self.assertEqual(len(self.errors(self.GAPS, meta=both)), 3)  # a documented URL needs its block even if also listed as a gap
+        self.assertEqual(self.errors(self.GAPS, meta={'schools': {}, 'gaps': {}}), [])  # no documents: nothing expected, as before
 
 
 if __name__ == '__main__':
