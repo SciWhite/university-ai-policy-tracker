@@ -133,6 +133,9 @@ async function main() {
     const prior=records.recordRevisions[slug];
     assert.equal(prior.recordSha256,jsha(packet.canonical));
     records.recordRevisions[slug]={...prior,universityRevisionId:revision,publishedAt:at,previousRevisionId:prior.universityRevisionId};
+    // The record moves to this revision with no claim change (page-only update): this revision's changes are empty;
+    // the parent's entry described an earlier revision and must not be re-announced in this event.
+    records.changesBySlug[slug]={addedClaimIds:[],updatedClaimIds:[],heldClaimIds:[]};
     entry=projection.schools[slug];
     assert.ok(entry&&entry.currentRecordSha256===jsha(packet.canonical),slug);
     previousRevision=entry.currentRevision;
