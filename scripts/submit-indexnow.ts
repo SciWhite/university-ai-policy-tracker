@@ -47,6 +47,9 @@ Options:
   --content-root <dir>    Runtime content root (default: UAPT_CONTENT_ROOT); required for --latest
                           and for any live submission. The basis is the selected release manifest.
   --dry-run               Simulate submission without making real network requests
+  --authorization <text>  Required for live submission: the owner's authorization for this
+                          submission, quoted with who/when/where. IndexNow is opt-in per
+                          submission (AGENTS.md); it is recorded in both receipts.
   --sync-ledger <file>    Required for live submission: the release's complete 2.1.0 event (fresh public
                           readback, exact URL scope). With --dry-run it runs the same gate as a preflight.
   --key <key>             Override IndexNow API key (default: ${DEFAULT_INDEXNOW_KEY})
@@ -103,7 +106,21 @@ async function main(): Promise<void> {
   // Notification follows cutover and public readback, so the ledger is the release's
   // complete event and must pass the complete-phase gate (a dry run with a ledger
   // runs the same gate as a preflight; it never writes receipts).
+  const authorization = getArgValue("--authorization")?.trim();
   const syncEvent = dryRun && !ledgerPath ? undefined : await requirePolicySync({ ledgerPath, basisFile: basis!.manifestFile, allowedTypes: ["policy_release", "index_notification"], requirePublicReadback: true, phase: "complete" });
+  if (!dryRun && !authorization) throw Error("Live submission needs --authorization \"<owner quote, who, when, where>\": IndexNow is opt-in per submission.");
+  // One announcement per ledger. A completion event (notifications already updated) also
+  // passes the complete gate, so it must not be reusable as the next run's ledger, and a
+  // ledger directory that already holds a pending or accepted notification is spent.
+  if (syncEvent && ledgerPath) {
+    if ((syncEvent.surfaces as Record<string, { status?: string }> | undefined)?.notifications?.status === "updated") {
+      throw Error("This ledger already records a sent notification; a new announcement needs its own release event.");
+    }
+    const spent = fs.readdirSync(path.dirname(ledgerPath)).filter((name) => /^notification-\d+\.json$/.test(name)).find((name) => {
+      try { return JSON.parse(fs.readFileSync(path.join(path.dirname(ledgerPath), name), "utf8")).status !== "failed"; } catch { return true; }
+    });
+    if (spent) throw Error(`A notification was already sent or is pending for this ledger (${spent}); not announcing again.`);
+  }
 
   if (!isLatest && !isAll && !rawUrlsArg) {
     console.error("Error: Please specify submission mode: --latest, --all, or --urls <url1,url2,...>\n");
@@ -237,10 +254,10 @@ async function main(): Promise<void> {
   }
 
   if (syncEvent && notificationPath && completionPath && notificationScope) {
-    const receipt = { schemaVersion: "uapt-policy-surface-receipt-v1", surface: "notifications", basisSha256: syncEvent.basisSha256, checkedAt: new Date().toISOString(), checkedSlugs: notificationScope.universities.map((u) => u.slug), checks: { requestRecorded: true, responsesRecorded: true, indexingNotAssumed: true }, urls: finalUrls, results, status: allOk ? "accepted" : "failed", indexingConfirmed: false };
+    const receipt = { schemaVersion: "uapt-policy-surface-receipt-v1", surface: "notifications", basisSha256: syncEvent.basisSha256, checkedAt: new Date().toISOString(), checkedSlugs: notificationScope.universities.map((u) => u.slug), checks: { requestRecorded: true, responsesRecorded: true, indexingNotAssumed: true }, authorization, urls: finalUrls, results, status: allOk ? "accepted" : "failed", indexingConfirmed: false };
     const bytes = `${JSON.stringify(receipt, null, 2)}\n`;
     fs.writeFileSync(notificationPath, bytes);
-    const completion = { ...syncEvent, eventId: `${syncEvent.eventId}-indexnow-${Date.now()}`, generatedAt: new Date().toISOString(), surfaces: { ...(syncEvent.surfaces as Record<string, unknown>), notifications: { status: allOk ? "updated" : "failed", evidence: [{ path: path.basename(notificationPath), sha256: createHash("sha256").update(bytes).digest("hex"), basisSha256: syncEvent.basisSha256 }] } } };
+    const completion = { ...syncEvent, eventId: `${syncEvent.eventId}-indexnow-${Date.now()}`, generatedAt: new Date().toISOString(), notificationAuthorization: authorization, surfaces: { ...(syncEvent.surfaces as Record<string, unknown>), notifications: { status: allOk ? "updated" : "failed", evidence: [{ path: path.basename(notificationPath), sha256: createHash("sha256").update(bytes).digest("hex"), basisSha256: syncEvent.basisSha256 }] } } };
     fs.writeFileSync(completionPath, `${JSON.stringify(completion, null, 2)}\n`, { flag: "wx" });
     if (allOk) runSyncGate(completionPath, "complete");
   }

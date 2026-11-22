@@ -305,7 +305,7 @@ async function liveRunFixture(scopePaths: string[]) {
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
   const origin = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
   const run = (...args: string[]) => new Promise<{ status: number | null; stdout: string; stderr: string }>((resolve) => {
-    const child = spawn(process.execPath, ["--import", "tsx", "scripts/submit-indexnow.ts", "--content-root", content.root, "--sync-ledger", ledger, "--base-url", origin, "--endpoint", `${origin}/indexnow`, ...args], { env: { ...process.env, UAPT_CONTENT_ROOT: "", UAPT_INVENTORY_PYTHON: gate } });
+    const child = spawn(process.execPath, ["--import", "tsx", "scripts/submit-indexnow.ts", "--content-root", content.root, ...(args.includes("--sync-ledger") ? [] : ["--sync-ledger", ledger]), "--base-url", origin, "--endpoint", `${origin}/indexnow`, ...args], { env: { ...process.env, UAPT_CONTENT_ROOT: "", UAPT_INVENTORY_PYTHON: gate } });
     let stdout = ""; let stderr = "";
     child.stdout.on("data", (c) => { stdout += c; });
     child.stderr.on("data", (c) => { stderr += c; });
@@ -323,7 +323,10 @@ const releaseScope = (slug: string) => [
 test("live --latest announces plan ∩ relative frozen scope ∩ published sitemap under the complete gate", async () => {
   const f = await liveRunFixture(releaseScope("university-of-bristol"));
   try {
-    const result = await f.run("--latest");
+    const missing = await f.run("--latest");
+    assert.match(missing.stderr, /needs --authorization/);
+    assert.equal(f.posts.length, 0);
+    const result = await f.run("--latest", "--authorization", "Owner, 2026-11-22, test fixture");
     assert.equal(result.status, 0, result.stderr + result.stdout);
     assert.match(result.stdout, /Frozen scope filter: 7 plan URLs -> 4 in scope \(3 not announced\)/);
     assert.match(result.stdout, /Published sitemap filter: 4 candidate URLs -> 2 published URLs/);
@@ -333,8 +336,9 @@ test("live --latest announces plan ∩ relative frozen scope ∩ published sitem
       `https://eduaipolicy.org/universities/${f.slug}`,
       `https://eduaipolicy.org/zh/universities/${f.slug}`
     ]);
-    // Pre-send gate and completion gate both run the complete phase.
-    const calls = f.gateCalls();
+    // Pre-send gate and completion gate both run the complete phase (the first call
+    // belongs to the refused run without --authorization).
+    const calls = f.gateCalls().slice(1);
     assert.equal(calls.length, 2);
     assert.match(calls[0], new RegExp(`sync-gate ${f.ledger.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} --phase complete$`));
     assert.match(calls[1], /completion-indexnow-\d+\.json --phase complete$/);
@@ -345,6 +349,17 @@ test("live --latest announces plan ∩ relative frozen scope ∩ published sitem
     assert.equal(notification.status, "accepted");
     assert.deepEqual(notification.checkedSlugs, [f.slug]);
     assert.equal(notification.indexingConfirmed, false);
+    assert.equal(notification.authorization, "Owner, 2026-11-22, test fixture");
+    assert.equal(completion.notificationAuthorization, "Owner, 2026-11-22, test fixture");
+    // One announcement per ledger: neither the same ledger nor the completion event re-sends.
+    const again = await f.run("--latest", "--authorization", "Owner, 2026-11-22, test fixture");
+    assert.match(again.stderr, /already sent or is pending/);
+    const fresh = path.join(f.sync, "chained");
+    fs.mkdirSync(fresh);
+    for (const name of ["scope.json", completionFile]) fs.copyFileSync(path.join(f.sync, name), path.join(fresh, name));
+    const chained = await f.run("--latest", "--authorization", "Owner, 2026-11-22, test fixture", "--sync-ledger", path.join(fresh, completionFile));
+    assert.match(chained.stderr, /already records a sent notification/);
+    assert.equal(f.posts.length, 1);
     // The input ledger is never rewritten.
     assert.equal(JSON.parse(fs.readFileSync(f.ledger, "utf8")).eventId, "uapt-c-20261110-002-complete");
   } finally { f.cleanup(); }
@@ -353,7 +368,7 @@ test("live --latest announces plan ∩ relative frozen scope ∩ published sitem
 test("explicit --urls outside the frozen scope still fail closed before any network request", async () => {
   const f = await liveRunFixture(releaseScope("university-of-bristol"));
   try {
-    const result = await f.run("--urls", "/universities/university-of-bristol,/universities/university-of-oxford");
+    const result = await f.run("--urls", "/universities/university-of-bristol,/universities/university-of-oxford", "--authorization", "Owner, test fixture");
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /exceed the frozen synchronization scope/);
     assert.equal(f.posts.length, 0);
