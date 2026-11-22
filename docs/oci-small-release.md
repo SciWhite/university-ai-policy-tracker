@@ -3,7 +3,7 @@
 # 小规模发布：运行时内容包与有界页面服务
 
 小规模更新默认使用此流程。大规模/全站版本更新才使用
-[OCI build-once](oci-build-once-release.md)。先按[发布方式选择](release-routing-policy.md)
+OCI build-once（已移除，见 [HISTORY](HISTORY.md)）。先按[发布方式选择](release-routing-policy.md)
 判定范围，不再因为改动一个页面而默认生成全站。
 
 ## 已验证的实现
@@ -127,7 +127,7 @@
 
 ## 证据
 
-原始实测报告：[十校上线结果](ten-runtime-zone-release/RESULT.md)。
+原始实测报告：十校上线结果（`ten-runtime-zone-release/RESULT.md`，从未纳入本仓库，见下行路径）。
 若当前checkout没有该报告，查看本地保存副本：
 `/Users/newvolume/Documents/uapt-tulsa-runtime-zone/docs/ten-runtime-zone-release/RESULT.md`。
 报告数据来自真实OCI与公网验收；不覆盖全站压力或长期稳定性结论。

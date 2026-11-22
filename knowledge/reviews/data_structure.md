@@ -16,8 +16,9 @@ review workflow.
 
 ## Current Files
 
-- `2026-05-12-public-vs-staging-vs-qs.md` - current public release versus
-  staging runs versus QS 2026 top 100 coverage, with Excel benchmark caveats.
+None in Git. `pnpm knowledge:update` writes a dated
+`<date>-public-vs-staging-vs-qs.md` note here when needed; the 2026-05-12 and
+2026-07-26 notes were removed on 2026-11-22 (see `docs/HISTORY.md`).
 
 ## Refresh Inputs
 
