@@ -5,10 +5,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, realpathSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, realpathSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { CLI_GUARD, RELEASE_HELPER_BUNDLES, RELEASE_HELPER_FILES, bundleReleaseHelper } from "../scripts/program-build.mjs";
+import { CLI_GUARD, RELEASE_HELPER_BUNDLES, RELEASE_HELPER_FILES, bundleDataReferences, bundleReleaseHelper } from "../scripts/program-build.mjs";
 
 test("release helper bundles the switch and validator and pins every file", async () => {
   // Real path: the CLI guard compares import.meta.url (resolved) with argv[1] (macOS /var is a link).
@@ -29,6 +29,11 @@ test("release helper bundles the switch and validator and pins every file", asyn
     assert.doesNotMatch(run.stdout + run.stderr, /content:validate/);
     const validator = spawnSync(process.execPath, [path.join(out, "scripts/validate-change-event-projection.mjs")], { cwd: out, encoding: "utf8" });
     assert.match(validator.stderr, /Use <changes-receipt\.json>/);
+    // Every data file a bundle reads next to itself ships with it (6edae12c lacked the
+    // source-metadata legacy list, and the host switch failed with ENOENT on 2026-11-22).
+    const references = RELEASE_HELPER_BUNDLES.flatMap(([, target]) => bundleDataReferences(readFileSync(path.join(out, target), "utf8"), target));
+    assert.ok(references.includes("scripts/content-release/v6-source-metadata-legacy-unprocessed.json"), references.join(", "));
+    for (const file of references) assert.ok(existsSync(path.join(out, file)), `${file} missing from the release helper`);
   } finally {
     rmSync(out, { recursive: true, force: true });
   }
