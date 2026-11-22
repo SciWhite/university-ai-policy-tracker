@@ -238,6 +238,24 @@ content or program release running; ≥ 25 GB free; `nginx -V 2>&1 | tr ' ' '\n'
 'gzip_static|gunzip|realip'` shows all three. One authoritative build: `program-build.yml` on the
 merged 40-hex SHA (the locale change is global, so no partial or per-zone release).
 
+**Preflight (read-only, 2026-11-22 01:45Z).**
+
+| Check | Result |
+| --- | --- |
+| Web and MCP | Web runs `uapt-program-d9f6b48016a3` on 3101; MCP runs on the same root. |
+| Program roots | Rollback `716cd5e9f576`. Stale `987cbda4201d` (184 MB, hold blocks 2026-11-26 15:22Z). |
+| Disk | 26 GB free (83 %), nginx cache 3.1 GB. |
+| nginx modules | gzip_static, gunzip and realip are all present. |
+| Holds | `hold-status` ok: 0 overdue, retention receipt 5 h old. |
+| Installed tools | Controller, `program-release.py` and the artifact installer match main. `render-once.py` and `content-release.py` are not installed. |
+
+Phase 0 is installed. The cache-leak fix (`laughing-murdock`) and this branch are merged.
+
+Consequences:
+- **R0 – archive `987cbda4` first.** Use the off-host tar with hash and an isolated restore check, then delete by exact allowlist. Otherwise the candidate makes four program roots, against "active + rollback + one candidate", and the hold blocks on 11-26.
+- **Install `render-once.py` before R2.** Install it as `/usr/local/libexec/uapt-render-once.py`. Content switches after R2 need its `generation` step.
+- **Disk.** `min_free=20g` leaves the page store about 6 GB of headroom at the current 26 GB free.
+
 **R1 – nginx http configuration (no behavior change).** Root, with a receipt: back up
 `/etc/nginx/conf.d/uapt-html-cache.conf`; install `infra/nginx/uapt-page-store.conf` in its place
 and `uapt-html-content-generation.inc` with `default "<current contentId>"`; `nginx -t`;
