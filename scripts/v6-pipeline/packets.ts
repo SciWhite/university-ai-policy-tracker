@@ -43,7 +43,10 @@ async function main() {
     assert.equal(hash(localBytes), ref.sha256);
     const view = JSON.parse(localBytes.toString());
     const canonical = JSON.parse(JSON.stringify(publicEntitySummarySchema.parse(dataset.publicSummaries.find(s => s.entity.slug === slug))));
-    assert.deepEqual(canonical, read(P + '/' + slug + '/public.json').data, slug + ': live API record differs from the parent release record');
+    // The universities API route adds `policySnapshot` (a link to the school's policy snapshot) at serve time; it is not
+    // part of the release record, so it is left out of the comparison.
+    const { policySnapshot: _servedLink, ...liveRecord } = read(P + '/' + slug + '/public.json').data;
+    assert.deepEqual(canonical, liveRecord, slug + ': live API record differs from the parent release record');
     assert.deepEqual(canonical, catalog.find((r: any) => r.summary.entity.slug === slug).summary);
     const tools = read(P + '/' + slug + '/public-tools.json').map((t: unknown) => universityToolRecordSchema.parse(t));
     const audited = read(P + '/' + slug + '/audit.json').recordAudit;
