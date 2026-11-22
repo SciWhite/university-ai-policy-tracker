@@ -185,6 +185,8 @@ class ReadbackSourceMetadataTest(unittest.TestCase):
         row = readback.source_cards(self.html(self.GAPS), self.SLUG, self.META)
         self.assertEqual(row, {'sourceCards': 4, 'expectedSourceMetadata': 0, 'fetchFailedSourceCards': 4, 'renderedSourceMetadata': 0})
         self.assertEqual(self.errors(self.GAPS), [])
+        cards = ['https://www.aix.whu.edu.cn', 'https://oldwww.lib.whu.edu.cn/webfile/category/1104.html/'] + self.GAPS[2:]
+        self.assertEqual(readback.source_cards(self.html(cards), self.SLUG, self.META)['fetchFailedSourceCards'], 4)  # same key as v6SourceUrlKey
 
     def test_attempt_20_row_without_the_count_still_fails(self):
         old = {'status': 200, 'sourceCards': 4, 'expectedSourceMetadata': 0, 'renderedSourceMetadata': 0, 'v6Layout': True, 'applicationError': False}
