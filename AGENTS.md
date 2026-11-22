@@ -72,11 +72,12 @@ is-active`) and MCP on 3161.
 - **Retention:** holds keep their first `heldSince`/`reviewBefore`/`nextAction`. A hold blocks
   after 14 days (7 if it started before 2026-11-21). Read `hold-status.json` (the early warning) first; `rescan`
   refreshes only a stale receipt. Delete only by exact allowlist, after a hash-verified off-server archive.
-- Locales (owner, 2026-11-22; `docs/render-once.md` §10, not yet released): only en, zh and a
+- Locales (owner, 2026-11-22; `docs/render-once.md` §10, live since 2026-11-22): only en, zh and a
   school's native language with complete accepted prose have URLs; other UI locales redirect to
   the English page with `#ui=<locale>`. Never add per-locale URLs, hreflang or sitemap entries for
-  UI-only locales. Once the render-once page store is installed, a content switch runs
-  `render-once.py generation` + `refresh` instead of a purge.
+  UI-only locales. The render-once page store is installed (nginx 1.18: no `min_free`); until
+  `content-release.py` calls `uapt-render-once.py generation` + `refresh`, a content switch keeps
+  `purge-html-cache` + the Cloudflare purge.
 - Local gates: `pnpm check`, the affected tests, `git diff --check`. Integrate on the latest
   main and never overwrite other sessions' uncommitted work.
 
