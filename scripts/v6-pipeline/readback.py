@@ -9,62 +9,96 @@ on */universities/* and */changes/*). Redirects are never followed. Reads en and
 record of every school, batch.json readback.controls (default: unchanged controls), and fr/es/de for four sampled
 schools: only content languages have URLs (en, zh, a school's native language), so a sampled UI-locale URL must be a
 native V6 page (200) or a 308 to the English page. Errors: non-200, application errors, missing V6 layout,
-source-metadata or Claim ID mismatch, a UI-locale URL that is neither.
+source-metadata or Claim ID mismatch, a UI-locale URL that is neither. A page whose displayed official sources are all
+fetch_failed gaps renders no source-metadata block by design (source_metadata_error).
 """
 import json, re, sys, hashlib, html, random, runpy, concurrent.futures as cf, datetime, pathlib
 from urllib.parse import urlsplit
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import v6batch as Bt  # noqa: E402
-RELEASE = runpy.run_path(str(pathlib.Path(__file__).resolve().parents[1] / "release/content-release.py"))
-WS, ARGS = Bt.workspace_from_argv()
-BATCH = Bt.load(WS)
-BASE, OUT, CID, MSHA = ARGS[0].rstrip("/"), ARGS[1], ARGS[2], ARGS[3]
-W = int(ARGS[6]) if len(ARGS) > 6 else 1
-meta = json.load(open(ARGS[4]))
-scope = {u["slug"]: u["publicClaimIds"] for u in json.load(open(ARGS[5]))["universities"]}
-slugs = sorted(scope)
+
+
 def key(u):
     s = urlsplit(html.unescape(u).strip()); return s.netloc.lower().removeprefix("www.") + s.path.rstrip("/") + (("?" + s.query) if s.query else "")
-READ = RELEASE["PublicReader"](BASE, timeout=300)  # paced unless BASE is loopback
-LOCATION = {}
-def get(path, extra=""):
-    st, body, headers, _ = READ(path + extra)
-    if st in (301, 308): LOCATION[path] = headers.get("location", "")
-    return st, body if st else headers.get("error", "").encode()
-rng = random.Random(11)
-pages = [f"{'' if l == 'en' else '/' + l}/universities/{s}" for s in slugs for l in ("en", "zh")]
-ui_pages = [f"/{l}/universities/{s}" for l in ("fr", "es", "de") for s in rng.sample(slugs, min(4, len(slugs)))]
-pages += ui_pages
-apis = [f"/api/public/v1/universities/{s}.json" for s in slugs]
-controls = BATCH.get("readback", {}).get("controls") or ["/", "/universities", "/changes", "/sitemap.xml", "/llms.txt", "/universities/harvard-university", "/zh/universities/rice-university", "/universities/university-of-bristol", "/api/public/v1/universities/harvard-university.json"]
-def page(p):
-    st, b = get(p, "?uapt_readback=" + BATCH["batchId"] if BASE.startswith("https") else ""); h = b.decode("utf-8", "replace"); slug = p.rsplit("/", 1)[1]
-    if p in ui_pages and st in (301, 308):  # UI-only locale: the English page with #ui=<locale>
-        target = urlsplit(LOCATION.get(p, ""))
-        return p, {"status": st, "location": LOCATION.get(p), "uiLocaleRedirect": target.path == f"/universities/{slug}"}
+
+
+def source_cards(h, slug, meta):
+    """Source-card counts of one rendered page. A card is documented (its URL has a metadata document, so it must render
+    one source-metadata block) or a fetch_failed gap (the source could not be read, so it renders none)."""
     hrefs = list(dict.fromkeys(re.findall(r'<a href="([^"]+)" target="_blank" rel="noopener noreferrer" data-analytics-entity-slug', h)))
-    expected = {key(d["url"]) for d in meta["schools"].get(slug, [])}
-    lang = (re.search(r'<html[^>]* lang="([^"]+)"', h) or [None, None])[1]
-    canon = (re.search(r'<link rel="canonical" href="([^"]+)"', h) or [None, None])[1]
-    return p, {"status": st, "sha256": hashlib.sha256(b).hexdigest(), "lang": lang, "canonical": canon, "sourceCards": len(hrefs),
-               "expectedSourceMetadata": sum(1 for x in hrefs if key(x) in expected), "renderedSourceMetadata": h.count('class="policy-v6-sourceMeta"'), "v6Layout": 'data-ui-experience="compact-evidence"' in h or "policy-v6" in h,
-               "applicationError": "Application error" in h or "__next_error__" in h}
-def api(p):
-    st, b = get(p); slug = p.rsplit("/", 1)[1][:-5]
-    try: d = json.loads(b); ids = sorted(c["id"] for c in d.get("data", d)["claims"]); docs = len(d.get("sourceMetadata", {}).get("documents", []))
-    except Exception: ids, docs = None, -1
-    return p, {"status": st, "sha256": hashlib.sha256(b).hexdigest(), "claimIds": ids, "claimIdsMatchScope": ids == sorted(scope[slug]), "sourceMetadataDocuments": docs, "expectedSourceMetadataDocuments": len(meta["schools"].get(slug, []))}
-def ctrl(p):
-    st, b = get(p); return p, {"status": st, "sha256": hashlib.sha256(b).hexdigest(), "bytes": len(b)}
-rows = {}
-with cf.ThreadPoolExecutor(W) as ex:
-    for f, items in ((page, pages), (api, apis), (ctrl, controls)):
-        for p, r in ex.map(f, items): rows[p] = r
-errors = [p for p, r in rows.items() if r.get("uiLocaleRedirect") is False or ("uiLocaleRedirect" not in r and r["status"] != 200) or r.get("applicationError") or r.get("v6Layout") is False or ("renderedSourceMetadata" in r and (r["renderedSourceMetadata"] != r["expectedSourceMetadata"] or (not r["expectedSourceMetadata"] and meta["schools"].get(p.rsplit("/", 1)[1])))) or ("claimIdsMatchScope" in r and (not r["claimIdsMatchScope"] or (r["sourceMetadataDocuments"] not in (r["expectedSourceMetadataDocuments"], 0))))]
-retried = {p: [x for x in READ.retried.get(p, []) if x != 429] for p in rows}
-for p, earlier in retried.items():
-    if earlier: rows[p]["retriedAfter"] = earlier  # a 5xx/524 answered on a retry is still a finding
-errors += [p for p, earlier in retried.items() if earlier and p not in errors]
-out = {"contentId": CID, "manifestSha256": MSHA, "base": BASE, "paced": READ.paced, "requests": READ.requests, "rateLimited": READ.rate_limited, "checkedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "rows": rows, "errors": errors}
-json.dump(out, open(OUT, "w"), indent=1)
-print(json.dumps({"rows": len(rows), "pages": len(pages), "apis": len(apis), "controls": len(controls), "errors": errors[:10], "errorCount": len(errors)}))
+    documented = {key(d["url"]) for d in meta["schools"].get(slug, [])}
+    failed = {key(g["url"]) for g in (meta.get("gaps") or {}).get(slug, []) if g.get("reason") == "fetch_failed"} - documented
+    return {"sourceCards": len(hrefs), "expectedSourceMetadata": sum(1 for x in hrefs if key(x) in documented),
+            "fetchFailedSourceCards": sum(1 for x in hrefs if key(x) in failed), "renderedSourceMetadata": h.count('class="policy-v6-sourceMeta"')}
+
+
+def source_metadata_error(slug, r, meta):
+    """Rendered blocks must equal the documented cards. A school with metadata documents must show at least one documented
+    card, unless every displayed card is a fetch_failed gap: then 0 blocks is the exact expected result. A page with no
+    cards, or with an undocumented card that is not a fetch_failed gap, still fails."""
+    if r["renderedSourceMetadata"] != r["expectedSourceMetadata"]: return True
+    if r["expectedSourceMetadata"] or not meta["schools"].get(slug): return False
+    return not r["sourceCards"] or r.get("fetchFailedSourceCards", 0) != r["sourceCards"]
+
+
+def row_error(p, r, meta):
+    slug = p.rsplit("/", 1)[1].removesuffix(".json")
+    return bool(r.get("uiLocaleRedirect") is False or ("uiLocaleRedirect" not in r and r["status"] != 200) or r.get("applicationError") or r.get("v6Layout") is False
+                or ("renderedSourceMetadata" in r and source_metadata_error(slug, r, meta))
+                or ("claimIdsMatchScope" in r and (not r["claimIdsMatchScope"] or (r["sourceMetadataDocuments"] not in (r["expectedSourceMetadataDocuments"], 0)))))
+
+
+def main():
+    RELEASE = runpy.run_path(str(pathlib.Path(__file__).resolve().parents[1] / "release/content-release.py"))
+    WS, ARGS = Bt.workspace_from_argv()
+    BATCH = Bt.load(WS)
+    BASE, OUT, CID, MSHA = ARGS[0].rstrip("/"), ARGS[1], ARGS[2], ARGS[3]
+    W = int(ARGS[6]) if len(ARGS) > 6 else 1
+    meta = json.load(open(ARGS[4]))
+    scope = {u["slug"]: u["publicClaimIds"] for u in json.load(open(ARGS[5]))["universities"]}
+    slugs = sorted(scope)
+    READ = RELEASE["PublicReader"](BASE, timeout=300)  # paced unless BASE is loopback
+    LOCATION = {}
+    def get(path, extra=""):
+        st, body, headers, _ = READ(path + extra)
+        if st in (301, 308): LOCATION[path] = headers.get("location", "")
+        return st, body if st else headers.get("error", "").encode()
+    rng = random.Random(11)
+    pages = [f"{'' if l == 'en' else '/' + l}/universities/{s}" for s in slugs for l in ("en", "zh")]
+    ui_pages = [f"/{l}/universities/{s}" for l in ("fr", "es", "de") for s in rng.sample(slugs, min(4, len(slugs)))]
+    pages += ui_pages
+    apis = [f"/api/public/v1/universities/{s}.json" for s in slugs]
+    controls = BATCH.get("readback", {}).get("controls") or ["/", "/universities", "/changes", "/sitemap.xml", "/llms.txt", "/universities/harvard-university", "/zh/universities/rice-university", "/universities/university-of-bristol", "/api/public/v1/universities/harvard-university.json"]
+    def page(p):
+        st, b = get(p, "?uapt_readback=" + BATCH["batchId"] if BASE.startswith("https") else ""); h = b.decode("utf-8", "replace"); slug = p.rsplit("/", 1)[1]
+        if p in ui_pages and st in (301, 308):  # UI-only locale: the English page with #ui=<locale>
+            target = urlsplit(LOCATION.get(p, ""))
+            return p, {"status": st, "location": LOCATION.get(p), "uiLocaleRedirect": target.path == f"/universities/{slug}"}
+        lang = (re.search(r'<html[^>]* lang="([^"]+)"', h) or [None, None])[1]
+        canon = (re.search(r'<link rel="canonical" href="([^"]+)"', h) or [None, None])[1]
+        return p, {"status": st, "sha256": hashlib.sha256(b).hexdigest(), "lang": lang, "canonical": canon, **source_cards(h, slug, meta),
+                   "v6Layout": 'data-ui-experience="compact-evidence"' in h or "policy-v6" in h,
+                   "applicationError": "Application error" in h or "__next_error__" in h}
+    def api(p):
+        st, b = get(p); slug = p.rsplit("/", 1)[1][:-5]
+        try: d = json.loads(b); ids = sorted(c["id"] for c in d.get("data", d)["claims"]); docs = len(d.get("sourceMetadata", {}).get("documents", []))
+        except Exception: ids, docs = None, -1
+        return p, {"status": st, "sha256": hashlib.sha256(b).hexdigest(), "claimIds": ids, "claimIdsMatchScope": ids == sorted(scope[slug]), "sourceMetadataDocuments": docs, "expectedSourceMetadataDocuments": len(meta["schools"].get(slug, []))}
+    def ctrl(p):
+        st, b = get(p); return p, {"status": st, "sha256": hashlib.sha256(b).hexdigest(), "bytes": len(b)}
+    rows = {}
+    with cf.ThreadPoolExecutor(W) as ex:
+        for f, items in ((page, pages), (api, apis), (ctrl, controls)):
+            for p, r in ex.map(f, items): rows[p] = r
+    errors = [p for p, r in rows.items() if row_error(p, r, meta)]
+    retried = {p: [x for x in READ.retried.get(p, []) if x != 429] for p in rows}
+    for p, earlier in retried.items():
+        if earlier: rows[p]["retriedAfter"] = earlier  # a 5xx/524 answered on a retry is still a finding
+    errors += [p for p, earlier in retried.items() if earlier and p not in errors]
+    out = {"contentId": CID, "manifestSha256": MSHA, "base": BASE, "paced": READ.paced, "requests": READ.requests, "rateLimited": READ.rate_limited, "checkedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "rows": rows, "errors": errors}
+    json.dump(out, open(OUT, "w"), indent=1)
+    print(json.dumps({"rows": len(rows), "pages": len(pages), "apis": len(apis), "controls": len(controls), "errors": errors[:10], "errorCount": len(errors)}))
+
+
+if __name__ == "__main__":
+    main()

@@ -121,7 +121,10 @@ The manual steps between runs: S1c ChatGPT audits (`save-clip.sh`), dispositions
    content languages, a UI-locale sample) and `pnpm v6:readback --workspace <ws> https://eduaipolicy.org …`
    (Claim IDs, source metadata, V6 layout), one after the other (each paces only itself).
    `v6:readback` checks fr/es/de for four schools: each must be a native V6 page or a 308 to the
-   English page (only content languages have URLs). Both wait out a 429 (`Retry-After`, 12–60 s),
+   English page (only content languages have URLs). A page must render as many metadata blocks
+   as it shows documented source cards; a page of a school with metadata documents must show a documented
+   card, unless every displayed card is a `fetch_failed` gap (`fetchFailedSourceCards`; 0 blocks
+   is then exact, e.g. Wuhan University 2026-11-22). Both wait out a 429 (`Retry-After`, 12–60 s),
    never follow redirects, and report a 5xx/524 even when a retry succeeded (`retriedAfter`).
 4. `v6:event complete`, then `remote complete`.
 5. OpenClaw enrollment (S8b, §2.4).
