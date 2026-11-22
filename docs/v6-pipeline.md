@@ -52,7 +52,8 @@ S1a, S1b, S1c's lead queueing, S1d and G1 run as one command, `v6:run` (§2.1).
 | S6 candidate | local preview, `v6:readback` (local), `v6:sync-basis`, `sync-proof.py materialize`, `v6:event candidate` | candidate sync package |
 | S7 bundle | `pnpm content:bundle` | op dir + bundle SHA256 for the owner |
 | S8 release | `content-release.py remote check/activate` (its `refresh` step: page-store `generation` + `refresh`, fallback `purge-html-cache`; check `receipts/refresh.json`), Cloudflare `purge_everything`, `content-release.py readback`, then `v6:readback` (public, 1 worker, each paced ≤ 5 requests/s, wait out 429), `v6:event complete`, `remote complete` | live release, receipts |
-| S9 live check | ChatGPT check of the live pages → findings into the next batch (`update` mode only for high-severity findings) | `chatgpt-live-check.md` |
+| **S8b OpenClaw enrollment** | after `remote complete`: `v6:openclaw-enroll --workspace <ws>` (plan: live API + read-only monitor state + payload), `… dry-run`, owner approves the payload SHA256, `… install --approve <sha> --authorization "<quote>"`, `… readback` (§2.4) | `openclaw/<contentId>/receipt.json`, `payload/coverage.json`, `host/*.json` |
+| S9 live check | ChatGPT check of the live pages → findings into the next batch (`update` mode only for high-severity findings). A page-only `update` release that cites new sources runs S8b again under its own contentId (adds only the missing watches and bindings) | `chatgpt-live-check.md` |
 
 ### 2.1 S1–G1 in one command: `v6:run` (since 2026-11-22)
 
@@ -123,10 +124,66 @@ The manual steps between runs: S1c ChatGPT audits (`save-clip.sh`), dispositions
    English page (only content languages have URLs). Both wait out a 429 (`Retry-After`, 12–60 s),
    never follow redirects, and report a 5xx/524 even when a retry succeeded (`retriedAfter`).
 4. `v6:event complete`, then `remote complete`.
+5. OpenClaw enrollment (S8b, §2.4).
 
-OpenClaw enrollment of the new official sources is still the batch-3 script
-pair (`openclaw-enrollment/`), not yet ported: it writes to the OpenClaw host
-and needs its own review.
+### 2.4 S8b OpenClaw enrollment: `v6:openclaw-enroll` (since 2026-11-22)
+
+Every released batch adds its schools' sources to the OpenClaw source monitor (changedetection.io on the
+OCI host, `/home/openclaw/.local/share/uapt-monitor`). Until batch 3 this was a per-batch copy of
+`build.py`/`install.py`/`dry_run.py`/`readback.py` (`.local/policy-v6/<batch>/openclaw-enrollment*/`);
+`scripts/v6-pipeline/openclaw_enroll.py` (operator machine) and `openclaw_install.py` (host) replace
+them with the same rules. Regression: on batch 3's frozen monitor state the port rebuilds the 2026-11-21
+enrollment (1,663 → 2,009 watches, same source IDs, intervals, bindings and skipped URLs; the York PDF →
+Google Docs change of r2 aside) and the r2 follow-up (2,010, byte-for-byte the same sources and York status).
+
+```
+pnpm v6:openclaw-enroll --workspace <ws>            # plan (default)
+pnpm v6:openclaw-enroll --workspace <ws> dry-run
+pnpm v6:openclaw-enroll --workspace <ws> install --approve <payload-manifest sha256> --authorization "<owner quote>"
+pnpm v6:openclaw-enroll --workspace <ws> readback
+pnpm v6:openclaw-enroll --workspace <ws> status     # local receipt only
+```
+
+- **Only after the release is live.** `plan` reads each school's public API record (1 request per school,
+  ≤ 5/s, 429 waited out) and refuses unless `recordRevision.universityRevisionId` is the batch `revision`.
+  These bytes become the baseline of a new school group.
+- **Host access is read-only except `install`.** `plan` tars the monitor state (`sources.json`,
+  `watch-bindings.json`, `source-resolutions.json`, `fetch-policy.json`, `monitor_control.py`,
+  `monitor_noise.py`, existing baselines of the batch's schools) into `parent/`; `dry-run` runs the
+  installer from a temporary copy that is removed afterwards and only GETs the monitor API; `readback`
+  only GETs. SSH: `OPENCLAW_HOST`, `OPENCLAW_USER`, `OPENCLAW_SSH_KEY` from the environment, `--env-file`
+  or `.env.agents.local` (only these keys are read; never printed). Commands run as `openclaw` via `sudo -n`.
+- **What is watched** (per school): public claim evidence URLs, `officialSources` and the V6 bundle sources.
+  A URL gets a watch or a binding only with an HTTP 200 capture in `captures/`. Not watched, listed in
+  `coverage.json` `skippedUrls` with the reason: non-200 or challenge captures, browser-rendered captures
+  whose plain HTTP answer is not 200 (`rendered_only_plain_http_*`; a watch would only make access-gap
+  packages), eduaipolicy.org (`self_site`), URLs settled in `source-resolutions.json` (relocations map to
+  their replacement watch; retired probes and paused self-site URLs are never revived) and ten-day
+  control URLs. Cited URLs get 3-day watches, official-only ones 7 days; `html_requests`, script/style/
+  nav/footer removed, per-school muted tags, created paused and muted, journaled, then unpaused (the
+  native scheduler makes the first check). Monitor noise rules (2026-11-06) stay as they are.
+- **Claims.** Every live public Claim ID of the batch must end up bound to a watched source. If its only
+  source is not watchable, `plan` refuses until `batch.json` `openclaw.unboundClaims` `{claimId: reason}`
+  holds it (listed in `coverage.json` `unboundClaims`).
+- **Additive and idempotent.** New schools become new groups; a school already in the monitor (local
+  candidate, or an earlier release for `update` mode) gets only the status fields (`publishedContentId`,
+  `localViewRevision` and its history, `sourcePublishedV6`, `candidateOnly`) and its existing baseline must
+  equal the live data (a baseline refresh is separate monitor maintenance). An already watched URL gains a
+  binding only when this school/source/Claim binding is missing. Existing URLs, metadata, bindings,
+  pauses, intervals, ten-day controls, baselines and `fetch-policy.json` never change (the installer
+  refuses otherwise and checks them again after install). Rerunning `plan` after `install` (with
+  `--refresh-parent`) gives `nothing_to_enroll`; a second `install` reports `already_installed`.
+- **One approval.** The payload is deterministic; the owner approves `payloadManifestSha256` once (a host
+  write: AGENTS.md go-ahead rule) and `install` refuses other bytes, a payload without a passed dry-run, and
+  a host whose state moved since `plan` (`Concurrent state change`: run `plan --refresh-parent` again). It
+  stages the payload in `<monitor>/enrollment-<contentId>/` (new or byte-identical), takes the collect and
+  review locks, and writes `before.json`, `creation-journal.json` and `installed.json` there (copied to
+  `host/`). A journal without `installed.json` means a partial install: recover from the journal by hand.
+- **Receipts.** `<ws>/openclaw/<contentId>/receipt.json` (`uapt-v6-openclaw-enrollment-receipt-v1`) records
+  each step with time, status, next action, payload SHA256 and the quoted authorization.
+- **After readback.** Record the counts in the batch `RESULT.md` and in the OpenClaw notes
+  (`~/Documents/OpenClaw/docs/UAPT_DEDICATED_MONITOR_20261025.md`, `AGENTS.md`). The enrollment never
+  approves a policy, a package or a publication (`publicationApproved` stays false).
 
 ## 3. Gates
 
@@ -164,6 +221,13 @@ after the gate changes the hash and forces a rerun. The only override is
 `packets.ts`, `receipts.py` and `assemble.ts` refuse without it, and
 `assemble.ts` checks the assembled zh pages again (`locale-gate.ts`). To audit
 any release: `pnpm v6:zh-gate <release-dir> [slug ...]`.
+The release audit also counts the approved zh reading-translation package (`translations/current.json`,
+hash- and record-checked, with pinned record deltas), as the site does for the 132 older V6 schools, and
+reports `coveredOnlyByReadingPackage`; `--no-reading-package` gives the strict count. Rows the page never
+renders (the hero of `v6_presentation_integration` pages, tools without any description/access/cost text)
+are not counted; `historical_discovery` tool lists are checked on their own record text. `assemble.ts`
+passes no package, so a new school must carry its own Chinese. Check of the 1,526 phase-1 rows:
+`docs/audit-20261121/ZH-COVERAGE.md`.
 
 The country-language check is not automated yet: V6 inputs carry en and zh,
 while the 33 reading locales come from the translation pipeline
@@ -178,3 +242,4 @@ while the 33 reading locales come from the translation pipeline
 - Refresh the retention receipt by hand (`complete` runs the governed `rescan`).
 - Wait on host jobs with `pgrep -f` (`content-release.py remote` waits on the exact PID).
 - Drive S1 stage by stage, or launch a capture with `nohup`/`&` and poll it (`v6:run`, §2.1).
+- Copy `openclaw-enrollment/` scripts into the workspace or edit their constants (`v6:openclaw-enroll`, §2.4).

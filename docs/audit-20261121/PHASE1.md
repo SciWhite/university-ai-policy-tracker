@@ -124,8 +124,8 @@
 
 1. **合并或开 PR 需要 owner 批准。** 合并后，需要一次**程序发布**把 `release-helper/` 带上线，之后内容发布才能去掉 `--legacy-helper-reason`。
 2. 1.7（服务器清理）按指示未做。
-3. 移植 OpenClaw enrollment 脚本。
-4. 核实旧 V6 学校的 1,526 条中文覆盖问题：是真缺失，还是由其他层提供中文。
+3. 移植 OpenClaw enrollment 脚本。→ 2026-11-22 已移植为 S8b `pnpm v6:openclaw-enroll`（`docs/v6-pipeline.md` §2.4）；尚未对已发布批次运行，需 owner 批准。
+4. 核实旧 V6 学校的 1,526 条中文覆盖问题：是真缺失，还是由其他层提供中文。→ 2026-11-22 已核实（`ZH-COVERAGE.md`）：线上真实缺口 0；197 条已由 batch12-zh 修复，1,329 条为误报（阅读翻译包或不显示的行），门禁已修正。
 5. 把学校本地语言纳入覆盖门禁（目前 V6 输入只有英文和中文）。
 6. 修复或删除 `policy-sync-v2.test.py` 的 2.0.0 夹具。
 7. 清理分支：`modest-bun` 和 `ea719b70` 的一个双胞胎。
