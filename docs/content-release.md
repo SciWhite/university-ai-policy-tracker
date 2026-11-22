@@ -238,13 +238,14 @@ restart.
 plan allows) after the refresh, with the purge-only token in
 `.env.agents.local`.
 
-**Edge HTML cache (since 2026-11-06).** A Cloudflare Cache Rule ("Cache public
-HTML") caches every GET on `eduaipolicy.org` for 2 hours at the edge, ignoring
+**Edge HTML cache (since 2026-11-06; 7 days since 2026-11-21).** A Cloudflare Cache Rule ("Cache public
+HTML") caches every GET on `eduaipolicy.org` for 7 days at the edge (2 hours before 2026-11-21), ignoring
 the origin's `no-store`. It excludes `/internal*`, `/api/*`, `/mcp*`,
 `/search*` and `/_next/static/*`, never stores responses with status ≥ 400, and
 passes the origin's `no-store` to browsers, so a purge takes effect at once.
 Without a purge, a switch reaches visitors only when the edge entry expires
-(up to 2 hours). A file purge does not clear the client-navigation variants
+(up to 7 days), so the purge is a required step of every release, and the public readback
+runs after it. A file purge does not clear the client-navigation variants
 (`?_rsc=…`), which are cached under their own keys. After a switch or a
 program cutover, purge the whole zone instead:
 `{"purge_everything": true}` with the same token. A cold edge then refills
