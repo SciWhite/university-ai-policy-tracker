@@ -83,26 +83,32 @@ def read_plan_paths(files):
     return paths
 
 
-def expand_paths(first, plan_paths, locales=READING_LOCALES):
+def expand_paths(first, plan_paths):
     """The URLs a content release must refresh in the page store, in order: the readback set,
-    then every page-store path in every reading locale (a switch plan lists most schools in
-    en/zh only, but all locales are served and stored), then the plan's other paths as listed
-    (generic pages go cold with the content generation; fetching them only warms them)."""
+    then every page-store path in the content languages (en, zh), then the UI-locale school
+    pages the plan lists itself, then the plan's other paths as listed (generic pages go cold
+    with the content generation; fetching them only warms them).
+
+    Only content-language URLs exist (apps/web/lib/content-locales.ts, docs/render-once.md §10):
+    every page has en and zh; a school can also have a native-language page. Every other
+    /<uiLocale>/... URL is a 301/308 to the English page, so a changed path is not expanded to
+    all 33 reading locales. A /<uiLocale>/universities/<slug> URL is refreshed only when the plan
+    lists it (switch.ts lists every locale for V6 cohort schools and reading-locale changes, where
+    it is a native page or its redirect and may turn from one into the other).
+    /<uiLocale>/changes... URLs are constant 301s and are dropped."""
     ordered, seen = [], set()
     def add(path):
         if path not in seen: seen.add(path); ordered.append(path)
     for path in first: add(_check_path(path))
-    store, other = [], []
+    store, ui_school, other = [], [], []
     for path in map(_check_path, plan_paths):
         locale, base = strip_locale(path)
-        (store if page_store_path(base) else other).append(base if page_store_path(base) else path)
+        if not page_store_path(base): other.append(path)
+        elif locale in (None, *CONTENT_LOCALES): store.append(base)
+        elif base.startswith('/universities/'): ui_school.append(path)
     for base in store:
-        # School pages: every locale (a UI-only locale is a native page or its redirect, and that
-        # status follows the content). Changes pages exist in the content locales only; their
-        # /<uiLocale>/ URLs are constant 301s (apps/web/lib/content-locales.ts).
-        for locale in (locales if base.startswith('/universities/') else CONTENT_LOCALES):
-            if locale != 'en': add(localized(base, locale))
-            else: add(base)
+        for locale in CONTENT_LOCALES: add(localized(base, locale))
+    for path in ui_school: add(path)
     for path in other: add(path)
     return ordered
 

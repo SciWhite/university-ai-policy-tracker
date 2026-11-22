@@ -250,18 +250,47 @@ runs after it. A file purge does not clear the client-navigation variants
 program cutover, purge the whole zone instead:
 `{"purge_everything": true}` with the same token. A cold edge then refills
 from the warm origin.
-Once the render-once page store is installed (`docs/render-once.md` §6), a content switch does
-not purge the origin: `render-once.py generation` and `refresh` replace `purge-html-cache` and
-refresh the changed URLs in all 33 locales. Until then:
-On the host, also purge the origin HTML cache:
-`sudo /usr/local/libexec/uapt-program-release.py purge-html-cache --reason "content switch <contentId>"`
-(`docs/program-release.md` §6.1). Purge the origin first, then Cloudflare.
+**Origin page store (since 2026-11-22, `docs/render-once.md` §6).** nginx keeps school and
+changes documents for 30 days; a content switch does not purge it. `content-release.py refresh`
+(§5.2; it runs at the end of `activate`) does, as root on the host:
 
-**Warm the changed pages before the purge (since 2026-11-21).** The switch expires the
-changed pages, so their next render is cold (10–110 s on the host). After
-`purge_everything` the first public request goes straight to that render, and Cloudflare
-answers HTTP 524 after about 100 s (batch 3, 2026-11-21: Chalmers and Ghent in the first
-readback). Between the refresh and the purges, warm them over loopback, readback paths first:
+1. `render-once.py generation --content-id <id>`: the new content generation (part of the
+   generic and RSC cache keys), `nginx -t`, reload; the file is restored if `nginx -t` fails;
+2. `render-once.py refresh --plan <release>/switch-<time>.json --plan changed-urls.json --path
+   <readbackFirst…>`: every changed URL in its content languages, fetched through nginx on
+   loopback with `X-UAPT-Refresh: 1` (both stored encodings, then a read that must be a store
+   `HIT`). This renders the changed pages too, so it replaces the warm-up.
+
+Only content-language URLs are refreshed (en, zh, and the `/<uiLocale>/universities/<slug>`
+URLs the plan lists, which are native pages or their 308); a changed path is not multiplied by
+the 33 reading locales, and `/<uiLocale>/changes…` (constant 301s) is skipped.
+
+**Fallback: the epoch purge.** If the page store is not installed (no
+`/etc/nginx/conf.d/uapt-html-content-generation.inc`), the switch plan is missing, or
+`generation` or `refresh` exits non-zero, `refresh` warms the changed pages and runs
+`uapt-program-release.py purge-html-cache --reason "content switch <id>"` (the practice before
+2026-11-22: correct, but the whole store goes cold). `receipts/refresh.json` records
+`origin.mode` = `page-store`, `epoch-purge-fallback` (with `fallbackReason` and the failed
+step's output) or `epoch-purge` (store not installed). Read it before the Cloudflare purge. A
+fallback is not a failure of the release, but note it in the release receipts; if the purge
+itself fails, `refresh` refuses and the operator runs it again after fixing the cause.
+
+By hand (only when `content-release.py` is not used, e.g. a rollback in §6):
+
+```bash
+sudo python3 <program-root>/release-helper/scripts/release/render-once.py generation --content-id <id> --reason "content switch <id>"
+sudo python3 <program-root>/release-helper/scripts/release/render-once.py refresh --plan <release>/switch-<time>.json \
+  --path /universities/<slug> --path /zh/universities/<slug> --receipt <op>/page-store-refresh.json
+# on a non-zero exit of either: warm-changed-pages.py (below), then
+sudo /usr/local/libexec/uapt-program-release.py purge-html-cache --reason "content switch <id>"
+```
+
+**Warm the changed pages before the purge (since 2026-11-21; the fallback path since
+2026-11-22).** The switch expires the changed pages, so their next render is cold (10–110 s on
+the host). After `purge_everything` the first public request goes straight to that render, and
+Cloudflare answers HTTP 524 after about 100 s (batch 3, 2026-11-21: Chalmers and Ghent in the
+first readback). The page-store refresh renders them; without it, warm them over loopback
+before the purges, readback paths first:
 
 ```bash
 python3 scripts/content-release/warm-changed-pages.py \
@@ -274,8 +303,9 @@ It runs as the deploy user (loopback to the routed slot read from
 `uapt-main-upstream.conf`, no secrets), one request at a time with a 180 s timeout and one
 retry, and exits non-zero if a page still fails or the time budget (`--max-seconds`, 1 h)
 ran out. A page-only update that expires pages itself (an `isr-expiry-request.json`) passes
-that file as another `--plan`. Order: switch/refresh → warm → origin purge → Cloudflare
-purge → public readback. A readback 524 after a warm-up is a finding, not a retry case.
+that file as another `--plan`. Order: switch/refresh → page-store generation + refresh (or
+warm → origin purge) → Cloudflare `purge_everything` → paced public readback. A readback 524
+after a refresh or warm-up is a finding, not a retry case.
 
 **Long host commands.** Run waits and installs that outlive one SSH call with
 `scripts/release/remote-bg.sh start <op-id> -- <command>` and `remote-bg.sh wait <op-id>`.
@@ -283,6 +313,22 @@ The pid, exit code and log go to the deploy user's `~/uapt-ops/<op-id>/`; comman
 root use `sudo` inside the command. Do not write pidfiles into root-owned
 `/srv/uapt/operations/<op>/` (2026-11-21: "Permission denied", the wait loop never got the
 PID and had to be stopped by hand).
+
+**Public readback (paced).** Public reads go through Cloudflare, whose rate limit allows 60
+requests per 10 s per IP on `*/universities/*` and `*/changes/*` (the 2026-11-22 program
+completion was refused on 429s, PR #53). Every public readback is therefore paced at ≤ 5
+requests/s, waits out a 429 (`Retry-After`, at least 12 s, up to 3 times) and never follows a
+redirect. On the operator machine, after the Cloudflare purge:
+
+```bash
+python3 scripts/release/content-release.py readback --op-dir <local op dir>   # receipts/public-readback.json
+```
+
+It reads `changed-urls.json` in the content languages (readback set first, then the other
+changed paths and the API records) and one `/<uiLocale>/universities/<slug>` per changed school
+(up to 8), which must be a native page (200) or a 308 to the English page; exit 1 lists the
+problems. V6 batches also run `v6:readback` (Claim IDs, source metadata; `docs/v6-pipeline.md`
+S8), which uses the same paced reader.
 
 **Completion.** Public readback of the changed URLs (L1/L2 in full, L3
 sampled, per `docs/release-acceptance-tiers.md`) happens after the refresh and
@@ -323,7 +369,10 @@ phase with an exact-PID wait from the operator machine):
 ```bash
 python3 scripts/release/content-release.py remote check    --op-id <op> --helper <program-root>/release-helper
 python3 scripts/release/content-release.py remote activate --op-id <op> --helper <program-root>/release-helper --bundle-sha256 <sha>
-# operator: Cloudflare purge_everything, public readback (1 worker), complete sync event into sync/content-complete/
+# check receipts/refresh.json: origin.mode page-store (or epoch-purge-fallback + fallbackReason)
+# operator: Cloudflare purge_everything, then the paced public readback:
+python3 scripts/release/content-release.py readback --op-dir <local op dir>
+# complete sync event into sync/content-complete/
 python3 scripts/release/content-release.py remote complete --op-id <op> --helper <program-root>/release-helper
 ```
 
@@ -331,13 +380,14 @@ python3 scripts/release/content-release.py remote complete --op-id <op> --helper
 |---|---|
 | `check` | read-only: retention gate, helper pin, bundle/basis/event identity, uploaded objects, live pointer is the parent |
 | `activate` | retention + transaction + disk gates; uploaded objects verified; proofs materialized; candidate sync gate; web and MCP serve the parent; objects linked; tree installed (`install-tree.py`); hold registered with its first clock; `switch` from the helper; switch result checked against the bundle; page-only ISR expiry; then `refresh` (§5.2) unless `--no-refresh` |
-| `refresh` | warm changed pages over loopback, then the origin-cache step |
+| `refresh` | page store: `render-once.py generation`, then `render-once.py refresh` of the changed content-language URLs; fallback warm + `purge-html-cache` (§5.2) |
+| `readback` | operator machine, after the Cloudflare purge: paced public readback (≤ 5 requests/s, waits out 429) of `changed-urls.json`; `receipts/public-readback.json` in the local op dir |
 | `complete` | complete sync gate; web and MCP serve the release; register `contentActive`/`contentRollback`, hold removed; `classify-content-releases` when the policy names `contentReleaseRoot`; governed `rescan` (refreshes the receipt's `checkedAt`, so the next release does not stop at "stale receipt"); `hold-status --write`; proofs dehydrated |
 | `status` | pointer, runtime and MCP readback |
 
 **Helper pin.** The program artifact ships `release-helper/` (bundled
 `switch.mjs` and projection validator, `content-release.py`,
-`policy-inventory.py`, `install-tree.py`, `sync-proof.py`,
+`render-once.py`, `policy-inventory.py`, `install-tree.py`, `sync-proof.py`,
 `warm-changed-pages.py`, `HELPER.json` with every file's SHA256;
 `scripts/program-build.mjs`). `content-release.py` refuses to run unless it is
 the `release-helper/` of the program the active web slot runs and every file
@@ -345,12 +395,15 @@ still matches `HELPER.json`. Until the first program release that ships the
 helper, pass `--legacy-helper-reason "<why>"` to run from a repository
 checkout at the deployed SHA; the reason is written into every receipt.
 
-Receipts go to `<op>/receipts/{check,activate,refresh,complete,status}.json`.
+Receipts go to `<op>/receipts/{check,activate,refresh,page-store-refresh,warm,complete,status}.json`
+on the host and `receipts/public-readback.json` in the local op dir.
 
-### 5.2 Refresh interface (plug-in point for the origin page cache)
+### 5.2 Refresh: the origin page store (since 2026-11-22)
 
 `content-release.py refresh --op <op>` is the one place where a content release
-touches page caches on the host. Its input is `changed-urls.json`:
+touches page caches on the host. Its inputs are the switch plan
+(`switch-receipt.json` → `planFile`, which must be a `switch-<time>.json` of this
+release) and `changed-urls.json`:
 
 ```json
 { "schemaVersion": "uapt-changed-urls-v1", "contentId": "<id>",
@@ -360,20 +413,23 @@ touches page caches on the host. Its input is `changed-urls.json`:
 
 Steps, in order:
 
-1. Warm every path over loopback (`warm-changed-pages.py --plan changed-urls.json`,
-   readback paths first). Receipt `receipts/warm.json`.
-2. Origin cache. If an executable `/usr/local/libexec/uapt-origin-refresh`
-   exists (override with `UAPT_ORIGIN_REFRESH_HOOK`), run
-   `<hook> --changed-urls <file> --content-id <id> --receipt <op>/receipts/origin-refresh.json`
-   and require exit 0. Otherwise fall back to today's whole-cache epoch purge
-   (`uapt-program-release.py purge-html-cache --reason "content switch <id>"`).
-3. Receipt `receipts/refresh.json` (`origin.mode` is `hook` or `epoch-purge`).
+1. Page store, when `/etc/nginx/conf.d/uapt-html-content-generation.inc` exists
+   (override with `UAPT_HTML_CONTENT_GENERATION_FILE`):
+   `render-once.py generation --content-id <id> --file <that file> --reason "content switch <id> (<op>)"`
+   (log: `<state>/html-content-generations.jsonl`), then
+   `render-once.py refresh --plan <switch plan> --plan changed-urls.json --path <readbackFirst…>
+   --origin https://127.0.0.1 --receipt <op>/receipts/page-store-refresh.json`. The tool is the
+   helper's own `scripts/release/render-once.py` (pinned by `HELPER.json`, so its URL rules match
+   the running program; it is the same file as `/usr/local/libexec/uapt-render-once.py`;
+   `UAPT_RENDER_ONCE` overrides it). Its path and SHA256 go into the receipt.
+2. Fallback, when the store is not installed, the plan is missing or foreign, or step 1 exits
+   non-zero: `warm-changed-pages.py --plan changed-urls.json` (receipt `receipts/warm.json`), then
+   `uapt-program-release.py purge-html-cache --reason "content switch <id>"`.
+3. Receipt `receipts/refresh.json`: `origin.mode` is `page-store`, `epoch-purge-fallback` (with
+   `fallbackReason` and the page-store step's exit codes and output) or `epoch-purge`.
 
-The hook contract for phase 2 (targeted nginx refresh instead of an epoch purge):
-read only `changed-urls.json`, refresh exactly those URLs (and their `_rsc`
-variants) in the origin cache, write its own receipt, never touch Cloudflare,
-exit non-zero on any URL it could not refresh. Cloudflare stays an operator
-step after `refresh`, because its token never reaches the host.
+Cloudflare stays an operator step after `refresh`, because its token never reaches the host.
+Keep `purge_everything` until the edge bypasses `?_rsc=` (`docs/render-once.md` §2).
 
 ### 5.3 Sync proofs as hash manifests
 
@@ -406,7 +462,10 @@ pnpm content:switch --content-root "$UAPT_CONTENT_ROOT" --content-id <earlier id
 The target must appear in `pointer-history.jsonl`; its original sync receipt
 is reused. The changed surface is computed against the release being replaced,
 so the refresh covers both sides (for example the removed report month). No
-build or restart. Then purge and read back as in §5.
+build or restart. Then the page-store generation and refresh by hand with the
+rollback's `switch-<time>.json` (§5, "Origin page store"; the generation is the
+target's contentId, so its old RSC entries may hit again), the Cloudflare purge
+and the paced public readback as in §5.
 
 ## 7. Runtime configuration
 

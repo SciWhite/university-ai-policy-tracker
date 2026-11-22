@@ -21,7 +21,8 @@
  * `build` also writes the release helper (dist/release-helper, shipped as
  * release-helper/): the content switch and the 2.1.0 projection validator as
  * self-contained ESM bundles plus the host tools (content-release.py,
- * policy-inventory.py, install-tree.py, sync-proof.py, warm-changed-pages.py)
+ * render-once.py, policy-inventory.py, install-tree.py, sync-proof.py,
+ * warm-changed-pages.py)
  * and HELPER.json with their hashes. Content releases run it from the ACTIVE
  * program root, so the switch tooling always matches the running program
  * (docs/content-release.md §5; the 2026-11-09 helper copy missed ff3d8218).
@@ -63,6 +64,7 @@ export const RELEASE_HELPER_BUNDLES = [
 /** Copied unchanged (Python 3.10 standard library or data files read next to a bundle). */
 export const RELEASE_HELPER_FILES = [
   "scripts/release/content-release.py",
+  "scripts/release/render-once.py",
   "scripts/release/remote-bg.sh",
   "scripts/policy-inventory.py",
   "scripts/content-release/install-tree.py",

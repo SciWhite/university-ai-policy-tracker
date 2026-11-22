@@ -47,8 +47,26 @@ batch stands and names the next step. The `pnpm v6:*` scripts wrap each stage.
 | S6 assemble | `v6:assemble` (re-runs the Chinese gate on the assembled pages) | `<outDir>/runtime/releases/<contentId>` |
 | S6 candidate | local preview, `v6:readback` (local), `v6:sync-basis`, `sync-proof.py materialize`, `v6:event candidate` | candidate sync package |
 | S7 bundle | `pnpm content:bundle` | op dir + bundle SHA256 for the owner |
-| S8 release | `content-release.py remote check/activate`, Cloudflare purge, `v6:readback` (public, 1 worker), `v6:event complete`, `remote complete` | live release, receipts |
+| S8 release | `content-release.py remote check/activate` (its `refresh` step: page-store `generation` + `refresh`, fallback `purge-html-cache`; check `receipts/refresh.json`), Cloudflare `purge_everything`, `content-release.py readback` and `v6:readback` (public, 1 worker, both paced ≤ 5 requests/s, wait out 429), `v6:event complete`, `remote complete` | live release, receipts |
 | S9 live check | ChatGPT check of the live pages → findings into the next batch (`update` mode only for high-severity findings) | `chatgpt-live-check.md` |
+
+**S8 in detail (since 2026-11-22).**
+
+1. `content-release.py remote check`, then `remote activate --bundle-sha256 <approved sha>`. The
+   activate step ends with `refresh`: a new nginx content generation and a loopback refresh of the
+   batch's changed URLs in the page store (en, zh, and the UI-locale school URLs the switch plan
+   lists). Read `receipts/refresh.json`: `origin.mode` `page-store` is the normal case;
+   `epoch-purge-fallback` means `generation` or `refresh` failed and the whole origin store was
+   purged instead (`fallbackReason`; record it in the batch notes, the release is still correct).
+2. Cloudflare `purge_everything` (token in `.env.agents.local`; covered by the release request).
+3. Public readback, paced at ≤ 5 requests/s because Cloudflare blocks an IP for 10 s after 60
+   requests in 10 s on `*/universities/*` and `*/changes/*`:
+   `python3 scripts/release/content-release.py readback --op-dir <local op dir>` (changed URLs,
+   content languages, a UI-locale sample) and `pnpm v6:readback --workspace <ws> https://eduaipolicy.org …`
+   (Claim IDs, source metadata, V6 layout). `v6:readback` checks fr/es/de for four schools: each
+   must be a native V6 page or a 308 to the English page (only content languages have URLs). Both
+   wait out a 429 and never follow redirects.
+4. `v6:event complete`, then `remote complete`.
 
 OpenClaw enrollment of the new official sources is still the batch-3 script
 pair (`openclaw-enrollment/`), not yet ported: it writes to the OpenClaw host

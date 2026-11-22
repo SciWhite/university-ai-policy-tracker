@@ -55,7 +55,11 @@ class FakeHost:
         self.state = base / 'state'
         self.controller_path = base / 'controller.py'
         self.program_release = base / 'program-release.py'
-        self.origin_hook = base / 'no-hook'
+        self.generation_file = base / 'nginx/uapt-html-content-generation.inc'  # absent: page store not installed
+        self.page_store_origin = 'https://127.0.0.1'
+        self.render_once = None  # the helper's own render-once.py
+        self.render_once_exit = {'generation': 0, 'refresh': 0}
+        self.purge_exit = 0
         self.content_root = base / 'content'
         self.ops_root = base / 'operations'
         self.releases_root = base / 'releases'
@@ -88,13 +92,23 @@ class FakeHost:
         self.commands.append(argv)
         joined = ' '.join(map(str, argv))
         ok = subprocess.CompletedProcess(argv, 0, stdout='{}', stderr='')
-        if 'policy-inventory.py' in joined or 'warm-changed-pages.py' in joined or 'purge-html-cache' in joined:
+        if 'policy-inventory.py' in joined or 'warm-changed-pages.py' in joined:
             return ok
+        if 'purge-html-cache' in joined:
+            return subprocess.CompletedProcess(argv, self.purge_exit, stdout='{}', stderr='purge failed' if self.purge_exit else '')
+        if 'render-once.py' in joined:
+            action = argv[2]
+            code = self.render_once_exit[action]
+            if action == 'refresh':
+                write_json(argv[argv.index('--receipt') + 1], {'schemaVersion': 'uapt-page-store-refresh-v1', 'problems': [{'path': '/x'}] if code else []})
+            return subprocess.CompletedProcess(argv, code, stdout=json.dumps({'action': action}), stderr='nginx -t failed' if code else '')
         if 'switch.ts' in joined or 'switch.mjs' in joined:
             cid = argv[argv.index('--content-id') + 1]
             manifest = (self.content_root / 'releases' / cid / 'manifest.json').read_bytes()
             write_json(self.content_root / 'current.json', {'contentId': cid, 'manifestSha256': sha(manifest)})
-            out = {'pointer': {'manifestSha256': sha(manifest)}, 'mcp': {'status': 'updated'}, 'refresh': {'contentId': cid}, 'changedSchools': ['alpha-university']}
+            plan = write_json(self.content_root / 'releases' / cid / 'switch-2026-11-22T10-00-00-000Z.json',
+                              {'schemaVersion': 'uapt-content-switch-v1', 'contentId': cid, 'paths': ['/universities/alpha-university', '/zh/universities/alpha-university']})
+            out = {'pointer': {'manifestSha256': sha(manifest)}, 'planFile': str(plan), 'mcp': {'status': 'updated'}, 'refresh': {'contentId': cid}, 'changedSchools': ['alpha-university']}
             return subprocess.CompletedProcess(argv, 0, stdout=json.dumps(out), stderr='')
         if 'install-tree.py' in joined:
             return subprocess.run(argv, **kw)
@@ -171,12 +185,105 @@ class ContentReleaseHostTest(unittest.TestCase):
         receipts = sorted(p.name for p in (self.op / 'receipts').iterdir())
         self.assertEqual(receipts, ['activate.json', 'refresh.json'])
         refresh = json.loads((self.op / 'receipts/refresh.json').read_text())
-        self.assertEqual(refresh['origin']['mode'], 'epoch-purge')
+        self.assertEqual(refresh['origin']['mode'], 'epoch-purge')  # no page store on this host
+        self.assertIn('page store not installed', refresh['origin']['fallbackReason'])
+        self.assertEqual(self.commands('render-once.py'), [])
         proofs = json.loads((self.op / 'receipts/activate.json').read_text())['proofs']
         self.assertEqual((proofs['mode'], proofs['linked']), ('hash-manifest', 1))
         # The proof was materialized as a hard link to the content store object.
         linked = self.op / 'sync/content-candidate/proof/public-change-history/objects/x.json'
         self.assertGreater(linked.stat().st_nlink, 1)
+
+    # ---- refresh: page store first, epoch purge as the fallback (docs/render-once.md §6)
+
+    def install_page_store(self):
+        self.host.generation_file.parent.mkdir(parents=True, exist_ok=True)
+        self.host.generation_file.write_text('map "" $uapt_html_content_generation { default "c-parent"; }\n')
+
+    def commands(self, needle):
+        return [c for c in self.host.commands if any(needle in str(a) for a in c)]
+
+    def refresh_receipt(self):
+        return json.loads((self.op / 'receipts/refresh.json').read_text())
+
+    def test_page_store_generation_then_refresh_replaces_the_purge(self):
+        self.install_page_store()
+        code, _, _ = self.activate()
+        self.assertEqual(code, 0)
+        gen, ref = self.commands('render-once.py')
+        self.assertEqual(gen[2], 'generation')
+        self.assertEqual(gen[gen.index('--content-id') + 1], 'c-new')
+        self.assertEqual(gen[gen.index('--file') + 1], str(self.host.generation_file))
+        self.assertIn('content switch c-new', gen[gen.index('--reason') + 1])
+        self.assertEqual(ref[2], 'refresh')
+        plans = [ref[i + 1] for i, a in enumerate(ref) if a == '--plan']
+        self.assertEqual(plans, [str(self.base / 'content/releases/c-new/switch-2026-11-22T10-00-00-000Z.json'), str(self.op.resolve() / 'changed-urls.json')])
+        self.assertEqual([ref[i + 1] for i, a in enumerate(ref) if a == '--path'], ['/universities/alpha-university'])
+        self.assertEqual(ref[ref.index('--receipt') + 1], str(self.op.resolve() / 'receipts/page-store-refresh.json'))
+        self.assertEqual(ref[ref.index('--origin') + 1], 'https://127.0.0.1')
+        self.assertEqual(self.commands('purge-html-cache'), [])
+        self.assertEqual(self.commands('warm-changed-pages.py'), [])
+        receipt = self.refresh_receipt()
+        self.assertEqual((receipt['status'], receipt['origin']['mode']), ('ok', 'page-store'))
+        self.assertEqual(receipt['origin']['toolSha256'], sha((REPO / 'scripts/release/render-once.py').read_bytes()))
+        self.assertNotIn('fallbackReason', receipt['origin'])
+        self.assertIn('<= 5 requests/s', receipt['next'])
+
+    def test_failed_generation_falls_back_to_warm_and_purge(self):
+        self.install_page_store(); self.host.render_once_exit['generation'] = 2
+        code, _, err = self.activate()
+        self.assertEqual(code, 0)
+        self.assertEqual([c[2] for c in self.commands('render-once.py')], ['generation'])  # no refresh after a failed generation
+        self.assertEqual(len(self.commands('purge-html-cache')), 1)
+        self.assertEqual(len(self.commands('warm-changed-pages.py')), 1)
+        receipt = self.refresh_receipt()
+        self.assertEqual((receipt['status'], receipt['origin']['mode']), ('ok', 'epoch-purge-fallback'))
+        self.assertIn('generation exited 2', receipt['origin']['fallbackReason'])
+        self.assertEqual(receipt['origin']['pageStore']['generation']['exit'], 2)
+        self.assertIn('falling back', err)
+
+    def test_failed_page_store_refresh_falls_back_to_warm_and_purge(self):
+        self.install_page_store(); self.host.render_once_exit['refresh'] = 1
+        self.activate()
+        self.assertEqual([c[2] for c in self.commands('render-once.py')], ['generation', 'refresh'])
+        self.assertEqual(len(self.commands('purge-html-cache')), 1)
+        receipt = self.refresh_receipt()
+        self.assertEqual(receipt['origin']['mode'], 'epoch-purge-fallback')
+        self.assertIn('refresh exited 1', receipt['origin']['fallbackReason'])
+        self.assertEqual(receipt['origin']['pageStore']['refresh']['exit'], 1)
+        self.assertTrue((self.op / 'receipts/page-store-refresh.json').is_file())
+
+    def test_without_a_switch_plan_the_store_is_purged_not_half_refreshed(self):
+        self.install_page_store()
+        self.activate('--no-refresh')
+        (self.op / 'switch-receipt.json').unlink()
+        code, _, _ = self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
+        self.assertEqual(code, 0)
+        self.assertEqual(self.commands('render-once.py'), [])
+        receipt = self.refresh_receipt()
+        self.assertEqual(receipt['origin']['mode'], 'epoch-purge-fallback')
+        self.assertIn('switch-receipt.json', receipt['origin']['fallbackReason'])
+
+    def test_switch_plan_must_belong_to_this_release(self):
+        self.install_page_store()
+        self.activate('--no-refresh')
+        foreign = write_json(self.base / 'content/releases/c-parent/switch-2026-11-21T00-00-00-000Z.json', {'contentId': 'c-parent', 'paths': []})
+        write_json(self.op / 'switch-receipt.json', {'planFile': str(foreign)})
+        self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
+        self.assertEqual(self.commands('render-once.py'), [])
+        self.assertIn('is not a switch-<time>.json of releases/c-new', self.refresh_receipt()['origin']['fallbackReason'])
+
+    def test_failed_fallback_purge_is_refused_and_recorded(self):
+        self.install_page_store(); self.host.render_once_exit['generation'] = 2; self.host.purge_exit = 1
+        self.activate('--no-refresh')
+        with self.assertRaisesRegex(self.module['Refused'], 'purge-html-cache'):
+            self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
+        receipt = self.refresh_receipt()
+        self.assertEqual((receipt['status'], receipt['origin']['mode'], receipt['origin']['purge']['exit']), ('incomplete', 'epoch-purge-fallback', 1))
+
+    def test_refresh_runs_only_after_the_switch(self):
+        with self.assertRaisesRegex(self.module['Refused'], 'refresh runs after activate'):
+            self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
 
     def test_activate_refuses_other_bundle_bytes(self):
         with self.assertRaisesRegex(self.module['Refused'], 'approved bundle'):
@@ -264,6 +371,109 @@ class ContentReleaseHostTest(unittest.TestCase):
         self.assertIn('--bundle-sha256', calls[0])
         self.assertEqual(calls[1][2], 'content-new-op-activate')
         self.assertFalse(any('pgrep' in ' '.join(c) for c in calls))
+
+
+class PublicReadbackTest(unittest.TestCase):
+    """Operator-side public readback after the Cloudflare purge: <= 5 requests/s, waits out 429."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(); self.dir = Path(self.tmp.name) / 'local-op'
+        self.module = runpy.run_path(str(TOOL))
+        slugs = ['alpha-university', 'beta-university']
+        paths = ['/universities/alpha-university', '/zh/universities/alpha-university', '/fr/universities/alpha-university', '/zh-Hant/universities/alpha-university',
+                 '/universities/beta-university', '/zh/universities/beta-university', '/changes', '/zh/changes', '/changes/alpha-university', '/sitemaps/changes.xml',
+                 '/api/public/v1/universities/alpha-university.json', '/api/public/v1/universities/beta-university.json']
+        write_json(self.dir / 'changed-urls.json', {'schemaVersion': 'uapt-changed-urls-v1', 'contentId': 'c-new', 'paths': paths,
+                                                    'readbackFirst': ['/universities/alpha-university', '/zh/universities/alpha-university', '/universities/beta-university', '/zh/universities/beta-university']})
+        write_json(self.dir / 'bundle.json', {'schemaVersion': 'uapt-content-release-bundle-v1', 'opId': 'content-new-op', 'contentId': 'c-new', 'parentContentId': 'c-parent',
+                                              'manifestSha256': '1' * 64, 'parentManifestSha256': '2' * 64, 'requiredSyncContract': '2.1.0', 'changedSchools': slugs,
+                                              'files': {'syncCandidate': 'sync/content-candidate/event.json', 'changedUrls': 'changed-urls.json'},
+                                              'hold': {'reason': 'r'}, 'authorization': 'User: "publish it"'})
+        self.t = 0.0; self.sleeps = []; self.starts = []
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def clock(self): return self.t
+
+    def sleep(self, seconds):
+        self.sleeps.append(seconds); self.t += seconds
+
+    def site(self, overrides=None):
+        def get(url, headers, timeout):
+            self.starts.append((self.t, url)); self.t += 0.01  # a fast edge: 10 ms per answer
+            path = '/' + url.split('/', 3)[3]
+            if overrides and path in overrides:
+                answer = overrides[path]
+                return answer.pop(0) if isinstance(answer, list) else answer
+            if path.startswith(('/fr/', '/de/')):
+                return 308, b'', {'location': '/universities/' + path.rsplit('/', 1)[1] + '#ui=' + path.split('/')[1]}, 0.01
+            return 200, b'<html lang="en">ok</html>', {'cf-cache-status': 'MISS'}, 0.01
+        return get
+
+    def run_readback(self, get):
+        args = self.module['main'].__globals__['argparse'].Namespace(op_dir=str(self.dir), origin='https://eduaipolicy.org')
+        with redirect_stdout(io.StringIO()):
+            code = self.module['cmd_readback'](args, get=get, sleep=self.sleep, clock=self.clock)
+        return code, json.loads((self.dir / 'receipts/public-readback.json').read_text())
+
+    def test_paced_at_five_per_second(self):
+        code, receipt = self.run_readback(self.site())
+        self.assertEqual(code, 0, receipt['problems'])
+        starts = [t for t, _ in self.starts]
+        self.assertGreaterEqual(len(starts), 12)
+        self.assertTrue(all(b - a >= 0.2 - 1e-9 for a, b in zip(starts, starts[1:])), starts)
+        for i in range(len(starts)):  # never more than 60 requests in any 10 s window (Cloudflare's limit)
+            self.assertLessEqual(sum(1 for t in starts if starts[i] <= t < starts[i] + 10), 50)
+        self.assertTrue(receipt['paced'])
+        self.assertEqual(receipt['minIntervalSeconds'], 0.2)
+
+    def test_reads_content_languages_and_samples_ui_locales(self):
+        _, receipt = self.run_readback(self.site())
+        paths = [r['path'] for r in receipt['rows']]
+        self.assertEqual(paths[:4], ['/universities/alpha-university', '/zh/universities/alpha-university', '/universities/beta-university', '/zh/universities/beta-university'])
+        self.assertIn('/api/public/v1/universities/beta-university.json', paths)
+        self.assertNotIn('/zh-Hant/universities/alpha-university', paths)  # UI-only locales are not expanded
+        self.assertEqual(paths[-2:], ['/fr/universities/alpha-university', '/de/universities/beta-university'])  # sample: native page or 308
+        self.assertEqual(receipt['problems'], [])
+
+    def test_waits_out_429_and_retries(self):
+        limited = (429, b'', {'retry-after': '20'}, 0.01)
+        code, receipt = self.run_readback(self.site({'/universities/alpha-university': [limited, limited, (200, b'ok', {}, 0.01)]}))
+        self.assertEqual(code, 0)
+        self.assertEqual(self.sleeps.count(20), 2)
+        self.assertEqual(receipt['rateLimited'], 2)
+        self.assertEqual(receipt['rows'][0]['status'], 200)
+        short = (429, b'', {}, 0.01)
+        self.sleeps.clear()
+        self.run_readback(self.site({'/universities/alpha-university': [short, (200, b'ok', {}, 0.01)]}))
+        self.assertIn(12, self.sleeps)  # at least 12 s when Retry-After is missing or shorter
+
+    def test_persistent_429_or_wrong_redirect_is_a_problem(self):
+        limited = (429, b'', {}, 0.01)
+        wrong = (308, b'', {'location': '/universities/other#ui=fr'}, 0.01)
+        code, receipt = self.run_readback(self.site({'/universities/beta-university': limited, '/fr/universities/alpha-university': wrong,
+                                                     '/changes': (200, b'<html>__next_error__</html>', {}, 0.01)}))
+        self.assertEqual(code, 1)
+        problems = {p['path']: p['problems'] for p in receipt['problems']}
+        self.assertEqual(problems['/universities/beta-university'], ['status 429'])
+        self.assertIn('English page', problems['/fr/universities/alpha-university'][0])
+        self.assertEqual(problems['/changes'], ['application error in the page'])
+
+    def test_redirect_on_a_content_language_url_is_a_problem(self):
+        code, receipt = self.run_readback(self.site({'/zh/universities/alpha-university': (308, b'', {'location': '/universities/alpha-university'}, 0.01)}))
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt['problems'][0]['path'], '/zh/universities/alpha-university')
+
+    def test_loopback_reads_are_not_paced(self):
+        reader = self.module['PublicReader']('http://127.0.0.1:3102', get=self.site(), sleep=self.sleep, clock=self.clock)
+        for _ in range(10): reader('/universities/alpha-university')
+        self.assertEqual(self.sleeps, [])
+        self.assertFalse(reader.paced)
+
+    def test_v6_readback_uses_the_paced_reader(self):
+        text = (REPO / 'scripts/v6-pipeline/readback.py').read_text()
+        self.assertIn('RELEASE["PublicReader"]', text)
+        self.assertNotIn('urlopen', text)
 
 
 class SyncProofTest(unittest.TestCase):

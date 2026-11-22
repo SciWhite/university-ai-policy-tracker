@@ -2,9 +2,10 @@
 
 Status (2026-11-22 04:47Z): **R0–R2 are live** (owner: "批准 R0–R2"); the rollout record is in §8.
 Program `6edae12c` (BUILD_ID `J4x3ToOXY2hYWYVS4SpfX`) is active on 3102, with page-store routing and
-content-language URLs. R3 (pre-rendered tree) is not done. Content releases do not call
-`uapt-render-once.py generation`/`refresh` yet (§6): until that lands, run `purge-html-cache` plus the
-Cloudflare purge as before; it is correct, but the whole store goes cold.
+content-language URLs. R3 (pre-rendered tree) is not done. `content-release.py refresh` calls
+`render-once.py generation` and `refresh` (§6) once a program release ships the updated release
+helper; until then a content release still runs `purge-html-cache` (correct, but the whole store
+goes cold). `purge-html-cache` stays the fallback when either step fails.
 The owner approved the locale redesign on 2026-11-22: "按新结构改" (§10).
 
 A page is a pure function of (program build, content release, path). Content changes only at a
@@ -91,14 +92,18 @@ rules):
 | Event | Documents (school/changes) | RSC (school/changes) | Other pages | Pre-rendered tree |
 |---|---|---|---|---|
 | Program release (`cutover`) | cold (new epoch) | cold | cold | switch to the new program's tree (§3) |
-| Content release | kept; changed URLs refreshed in **all 33 locales** | cold (new generation) | cold (new generation) | new tree = old tree + re-rendered changed pages |
+| Content release | kept; changed URLs refreshed in their **content languages** (en, zh, listed native/UI-locale school URLs) | cold (new generation) | cold (new generation) | new tree = old tree + re-rendered changed pages |
 | Content rollback | same as a content release (the switch plan covers both sides) | old entries of that contentId may hit | same | activate the earlier tree |
 | School removed | refresh stores the 404 (10 min) | cold | cold | page leaves the tree (gap `html status 404`) |
 | No refresh (missed URL) | stays old until refreshed, 30 d, or the next program release | — | — | stays old |
 
 Known limits:
-- `switch.ts` lists a non-cohort school in en/zh only; `render-once.py urls/refresh` expands every
-  page-store path to all 33 locales. Other plan paths are fetched as listed (they only warm).
+- `render-once.py urls/refresh` adds the en and zh URL of every page-store path in the plan; a
+  `/<uiLocale>/universities/<slug>` URL is refreshed only when the plan lists it (`switch.ts` lists
+  every locale for V6 cohort schools and reading-locale changes, where it is a native page or its
+  308 and can turn from one into the other); `/<uiLocale>/changes…` URLs are constant 301s and are
+  skipped. Other plan paths are fetched as listed (they only warm). Since 2026-11-22 a changed path
+  is no longer multiplied by the 33 reading locales (a 132-school release: 528 URLs, not ~4,400).
 - School pages also show catalog-wide data (related universities, counts). A content release that
   changes only the catalog of *other* schools leaves those bits on unchanged school pages until the
   next program release or 30 days. Next's own ISR still expires them (`catalog` tag); the nginx
@@ -190,8 +195,10 @@ One file, stdlib only: `scripts/release/render-once.py` (install as
 `/usr/local/libexec/uapt-render-once.py`, root 0755). All network calls are loopback; exit 0 = ok,
 1 = problems in the receipt, 2 = refused.
 
-Content release, once the page store is installed (replaces `purge-html-cache` and complements
-`warm-changed-pages.py`):
+Content release, once the page store is installed (replaces `purge-html-cache` and
+`warm-changed-pages.py`). `content-release.py refresh` runs these steps with the release helper's
+copy of this file and falls back to warm + `purge-html-cache` when either exits non-zero
+(`docs/content-release.md` §5.2):
 
 ```bash
 pnpm content:switch … --refresh-url http://127.0.0.1:<routed port>          # unchanged: Next ISR tags/paths
@@ -205,8 +212,8 @@ uapt-render-once.py refresh --plan <release>/switch-<time>.json --path <readback
 # then the Cloudflare purge (purge_everything until the edge bypasses _rsc), public readback
 ```
 
-`urls` prints the expanded list (readback paths first, page-store paths × 33 locales, then the
-plan's other paths); `refresh` fetches each through nginx (`https://127.0.0.1`, SNI
+`urls` prints the expanded list (readback paths first, page-store paths in en and zh, then the
+UI-locale school URLs the plan lists, then the plan's other paths); `refresh` fetches each through nginx (`https://127.0.0.1`, SNI
 `eduaipolicy.org`) with `X-UAPT-Refresh: 1` for the gzip and identity entries (one retry), then
 reads it back and requires `HIT`/`STATIC` for stored pages. 404/410 count as answered.
 
@@ -242,7 +249,8 @@ previous build, or `deactivate` (everything falls through to the store).
 | After | Origin: MISS→HIT; `?returnTo=` HIT; `X-UAPT-Refresh` from loopback BYPASS, with an edge header HIT; `/fr/changes/<id>` 301 (MISS, then HIT). Public: en/zh/native 200, old locale URLs 301/308 with `#ui=`, BUILD_ID in HTML. Web slot memory 2.86 GB (was 5.1 GB) |
 
 Still open: watch for 24 h (5xx, memory ≤ 3.5 GB, CPU, 301 share, GSC "Page with redirect"); R3;
-wiring `generation`/`refresh` into `content-release.py`; IndexNow and GSC sitemap resubmission
+shipping the `content-release.py` page-store refresh (merged in code, reaches the host with the next
+program release's helper); IndexNow and GSC sitemap resubmission
 (each needs separate authorization); archive `716cd5e9` before 2026-12-06.
 
 **中文摘要（给 owner）**：这次是全站路由/语言结构变更，按现行流程作为**一次程序发布**上线（GitHub Actions
@@ -427,8 +435,8 @@ with its own fragment (`#claims`) loses it on the redirect.
 school pages only, core no longer lists es/nl/ms static pages); robots (the 26 `/<locale>/changes/`
 disallows are removed so crawlers can follow the 301s); `switch.ts` ISR expiry and Cloudflare
 lists (non-school routes in en/zh only; school pages keep every locale because a UI-locale school
-URL is a native page or its redirect); `render-once.py urls/refresh` (changes pages en/zh, school
-pages all locales); `validate:i18n` (UI-only locales are not link prefixes). The public API, MCP
+URL is a native page or its redirect); `render-once.py urls/refresh` (en/zh, plus the UI-locale
+school URLs a plan lists); `validate:i18n` (UI-only locales are not link prefixes). The public API, MCP
 and `llms.txt` list no locale URLs (checked). The three i18n message systems are unchanged and
 `validate:i18n` passes.
 
