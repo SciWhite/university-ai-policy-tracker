@@ -12,8 +12,23 @@ import {
   intersectIndexNowUrlsWithPublishedSitemap,
   getAllIndexNowUrls,
   submitToIndexNow,
-  normalizeIndexNowUrl
+  normalizeIndexNowUrl,
+  frozenScopeIndexNowUrls,
+  partitionIndexNowUrlsByScope
 } from "../apps/web/lib/indexnow";
+
+interface FrozenScope { universities: Array<{ slug: string }>; urls: Set<string> }
+
+/** scope.json bound by the ledger's scopeArtifact, re-hashed on every read. */
+function readFrozenScope(ledgerPath: string, event: Record<string, unknown>, baseUrl: string): FrozenScope {
+  const proof = event.scopeArtifact as { path?: string; sha256?: string } | undefined;
+  if (!proof?.path || !proof.sha256) throw Error("The synchronization ledger has no bound scope artifact.");
+  const bytes = fs.readFileSync(path.resolve(path.dirname(ledgerPath), proof.path));
+  if (createHash("sha256").update(bytes).digest("hex") !== proof.sha256) throw Error("Notification scope changed after validation.");
+  const scope = JSON.parse(bytes.toString("utf8")) as { universities?: Array<{ slug: string }>; changedUrls?: unknown };
+  if (!Array.isArray(scope.universities) || scope.universities.length === 0) throw Error("Notification scope has no universities.");
+  return { universities: scope.universities, urls: frozenScopeIndexNowUrls(scope.changedUrls, baseUrl) };
+}
 
 function printUsage(): void {
   console.log(`
@@ -23,7 +38,8 @@ Usage:
   tsx --tsconfig apps/web/tsconfig.json scripts/submit-indexnow.ts [options]
 
 Modes (choose at least one):
-  --latest                Submit URLs the selected content release changed (its content:switch plan)
+  --latest                Submit URLs the selected content release changed (its content:switch plan),
+                          intersected with the ledger's frozen scope, then with the published sitemap
   --all                   Submit all sitemap URLs (full site indexing)
   --urls <url1,url2,...>  Submit specific comma-separated URLs or paths
 
@@ -31,7 +47,8 @@ Options:
   --content-root <dir>    Runtime content root (default: UAPT_CONTENT_ROOT); required for --latest
                           and for any live submission. The basis is the selected release manifest.
   --dry-run               Simulate submission without making real network requests
-  --sync-ledger <file>     Required for live submission; fresh public readback and exact URL scope
+  --sync-ledger <file>    Required for live submission: the release's complete 2.1.0 event (fresh public
+                          readback, exact URL scope). With --dry-run it runs the same gate as a preflight.
   --key <key>             Override IndexNow API key (default: ${DEFAULT_INDEXNOW_KEY})
   --host <host>           Override host (default: ${DEFAULT_INDEXNOW_HOST})
   --base-url <url>        Override base URL (default: https://<host>)
@@ -82,7 +99,11 @@ async function main(): Promise<void> {
   if (isLatest && !basis) throw Error("--latest reads the selected content release's changed-URL list; pass --content-root.");
   // Sitemap sections (--all) render from the same release.
   if (contentRoot) process.env.UAPT_CONTENT_ROOT = contentRoot;
-  const syncEvent = dryRun ? undefined : await requirePolicySync({ ledgerPath, basisFile: basis!.manifestFile, allowedTypes: ["policy_release", "index_notification"], requirePublicReadback: true });
+  if (dryRun && ledgerPath && !basis) throw Error("--sync-ledger is bound to the selected content release; pass --content-root.");
+  // Notification follows cutover and public readback, so the ledger is the release's
+  // complete event and must pass the complete-phase gate (a dry run with a ledger
+  // runs the same gate as a preflight; it never writes receipts).
+  const syncEvent = dryRun && !ledgerPath ? undefined : await requirePolicySync({ ledgerPath, basisFile: basis!.manifestFile, allowedTypes: ["policy_release", "index_notification"], requirePublicReadback: true, phase: "complete" });
 
   if (!isLatest && !isAll && !rawUrlsArg) {
     console.error("Error: Please specify submission mode: --latest, --all, or --urls <url1,url2,...>\n");
@@ -111,13 +132,26 @@ async function main(): Promise<void> {
     console.warn(`Make sure https://${host}/${key}.txt is publicly reachable on production.\n`);
   }
 
+  // Reject out-of-scope requests before any public sitemap network request.
+  const scope = syncEvent && ledgerPath ? readFrozenScope(ledgerPath, syncEvent, baseUrl) : undefined;
+  if (scope) console.log(`Scope:    ${scope.urls.size} frozen URLs for ${scope.universities.length} universities`);
+
+  // --all and --urls name URLs explicitly: every one must be inside the frozen scope.
   let urls: string[] = [];
+  // --latest takes the switch plan, which also lists refresh/purge paths that are not
+  // pages of this release's scope (e.g. UI-only locales, which have no URLs since
+  // 2026-11-22, docs/render-once.md §10). Only plan paths inside the scope are kept.
+  let latestUrls: string[] = [];
 
   if (isLatest && basis) {
     console.log("\nReading changed URLs from the content switch plan...");
-    const latestUrls = getLatestReleaseIndexNowUrls(basis, baseUrl);
+    latestUrls = getLatestReleaseIndexNowUrls(basis, baseUrl);
     console.log(`Found ${latestUrls.length} URLs in ${basis.switchPlanFile ? path.basename(basis.switchPlanFile) : "a first selection (no changed-URL list)"}.`);
-    urls.push(...latestUrls);
+    if (scope) {
+      const { inScope, outOfScope } = partitionIndexNowUrlsByScope(latestUrls, scope.urls, baseUrl);
+      console.log(`Frozen scope filter: ${latestUrls.length} plan URLs -> ${inScope.length} in scope (${outOfScope.length} not announced).`);
+      latestUrls = inScope;
+    }
   }
 
   if (isAll) {
@@ -137,16 +171,11 @@ async function main(): Promise<void> {
     urls.push(...customUrls);
   }
 
-  // Deduplicate and normalize
-  const candidateUrls = Array.from(new Set(urls.map((u) => normalizeIndexNowUrl(u, baseUrl))));
-  // Reject out-of-scope requests before any public sitemap network request.
-  if (syncEvent && ledgerPath) {
-    const proof = syncEvent.scopeArtifact as { path: string; sha256: string };
-    const bytes = fs.readFileSync(path.resolve(path.dirname(ledgerPath), proof.path));
-    if (createHash("sha256").update(bytes).digest("hex") !== proof.sha256) throw Error("Notification scope changed after validation.");
-    const scope = JSON.parse(bytes.toString("utf8")) as { changedUrls?: string[] };
-    if (!Array.isArray(scope.changedUrls) || candidateUrls.some((url) => !scope.changedUrls!.includes(url))) throw Error("Notification URLs exceed the frozen synchronization scope.");
+  if (scope && partitionIndexNowUrlsByScope(urls, scope.urls, baseUrl).outOfScope.length > 0) {
+    throw Error("Notification URLs exceed the frozen synchronization scope.");
   }
+  // Deduplicate and normalize
+  const candidateUrls = Array.from(new Set([...latestUrls, ...urls].map((u) => normalizeIndexNowUrl(u, baseUrl))));
   const finalUrls = dryRun ? candidateUrls : candidateUrls.length > 0
     ? await intersectIndexNowUrlsWithPublishedSitemap(candidateUrls, baseUrl) : [];
   if (dryRun) console.log(`Offline preview: ${candidateUrls.length} local URLs; live submission also filters against the published sitemap.`);
@@ -154,13 +183,10 @@ async function main(): Promise<void> {
   if (!dryRun && finalUrls.length === 0) throw Error("No eligible URLs; no notification sent.");
   let completionPath: string | undefined;
   let notificationPath: string | undefined;
-  let notificationScope: { universities: Array<{ slug: string }>; changedUrls: string[] } | undefined;
-  if (syncEvent && ledgerPath) {
-    const scopeProof = syncEvent.scopeArtifact as { path: string; sha256: string };
-    const scopeBytes = fs.readFileSync(path.resolve(path.dirname(ledgerPath), scopeProof.path));
-    if (createHash("sha256").update(scopeBytes).digest("hex") !== scopeProof.sha256) throw Error("Notification scope changed after validation.");
-    notificationScope = JSON.parse(scopeBytes.toString("utf8"));
-    if (!notificationScope || !Array.isArray(notificationScope.changedUrls) || finalUrls.some((url) => !notificationScope!.changedUrls.includes(url))) {
+  let notificationScope: FrozenScope | undefined;
+  if (!dryRun && syncEvent && ledgerPath) {
+    notificationScope = readFrozenScope(ledgerPath, syncEvent, baseUrl);
+    if (partitionIndexNowUrlsByScope(finalUrls, notificationScope.urls, baseUrl).outOfScope.length > 0) {
       throw Error("Notification URLs exceed the frozen synchronization scope.");
     }
     const stamp = Date.now().toString();
