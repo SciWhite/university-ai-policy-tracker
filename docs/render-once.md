@@ -1,8 +1,10 @@
 # Render once per release, keep pages on disk (audit 2026-11-21, phase 2) + content-language URLs (2026-11-22)
 
-Status (2026-11-22): code, tests and docs on branch `claude/pensive-elion-2fc75f` (built on
-`claude/laughing-murdock-3c9e56`). **Nothing is installed on the host.** §8 is the one combined
-rollout plan (phase 2 + content-language URLs); every production step needs the owner's go-ahead.
+Status (2026-11-22 04:47Z): **R0–R2 are live** (owner: "批准 R0–R2"); the rollout record is in §8.
+Program `6edae12c` (BUILD_ID `J4x3ToOXY2hYWYVS4SpfX`) is active on 3102, with page-store routing and
+content-language URLs. R3 (pre-rendered tree) is not done. Content releases do not call
+`uapt-render-once.py generation`/`refresh` yet (§6): until that lands, run `purge-html-cache` plus the
+Cloudflare purge as before; it is correct, but the whole store goes cold.
 The owner approved the locale redesign on 2026-11-22: "按新结构改" (§10).
 
 A page is a pure function of (program build, content release, path). Content changes only at a
@@ -49,7 +51,7 @@ Files: `infra/nginx/uapt-page-store.conf` (http context; replaces `uapt-html-cac
 installed), `infra/nginx/uapt-html-content-generation.inc`, generator
 `scripts/nginx-minimal-routing.py --page-store [--page-tree <root>]`.
 
-- `proxy_cache_path … keys_zone=uapt_html:64m max_size=6g inactive=30d`. Same zone name, path and
+- `proxy_cache_path … keys_zone=uapt_html:64m max_size=6g inactive=30d` (installed 2026-11-22). Same zone name, path and
   zone size as today (a reload cannot resize a shared zone). No `min_free`: the host runs nginx
   1.18 and it needs 1.19.1 (found at R1, 2026-11-22). 6 GB is above the 2–4 GB working set and
   keeps the disk well over the controller's 12 GiB reserve.
@@ -223,7 +225,25 @@ previous build, or `deactivate` (everything falls through to the store).
   `tests/v6-changes-module.test.tsx`.
 - `pnpm check`, `pnpm test:content-release`, `pnpm test:program-release` unchanged and passing.
 
-## 8. Combined rollout plan: phase 2 + content-language URLs (owner go-ahead per step; nothing done yet)
+## 8. Combined rollout plan: phase 2 + content-language URLs (R0–R2 done 2026-11-22)
+
+**Rollout record (2026-11-22).** Authorization: owner in chat, "批准 R0–R2". Receipts are under
+`/srv/uapt/operations/program-6edae12c-render-once-20261122/` (R0, R1, tools) and
+`/srv/uapt/operations/program-6edae12cf227-20261122t0342z/` (R2).
+
+| Step | Result |
+|---|---|
+| R0 | `uapt-program-987cbda4…` archived to the Mac (`~/Documents/uapt-offhost-archive/program-987cbda4-20261122/`, tar sha256 `a898b15f…`, 4,689/4,689 files restored and hash-checked), removed by exact path at 03:35:49Z, `archivedOutsideServer` record + `rescan` + `retention` passed; next hold deadline 2026-12-05 |
+| Tools | `uapt-render-once.py` installed (sha256 `42c0ba31…`, source `6edae12c`) |
+| Build | Actions run 44981403749 on `6edae12c` (arm64) |
+| R1 | First try failed `nginx -t`: the host runs **nginx 1.18**, which has no `min_free`; restored at once. PR #52 set `max_size=6g` without `min_free`; installed 03:41Z, `nginx -t` ok, MISS→HIT |
+| R2 | `install` 03:42 → `candidate` warm-up 51 min (04:33) → `static` → `capacity` (steady 3.0 GB, cold 3.2 GB) → acceptance on 3102 (131/132; the one miss, `/zh/universities/ludwig-…` noindex, is identical on the old slot and not in the zh sitemap; browser `#ui=ja` switch, switch back and evidence popover OK) → `routing --replace uapt-proxy-locations.conf` (page store) → `ledger` → `plan` → `cutover` 04:41:27Z (epoch purge) → Cloudflare `purge_everything` 04:41:36Z → `mcp` → `complete` |
+| complete | The first run was refused: the public readback tripped the Cloudflare rate limit (60 req / 10 s per IP on `*/universities/*`) and the API reads got 429. PR #53 paces public reads at 5/s and waits out 429. After installing it, `complete --force` passed at 04:47:36Z. Register: active `6edae12c`, rollback `d9f6b480`, held `716cd5e9` (hold from 04:47Z, 14 days) |
+| After | Origin: MISS→HIT; `?returnTo=` HIT; `X-UAPT-Refresh` from loopback BYPASS, with an edge header HIT; `/fr/changes/<id>` 301 (MISS, then HIT). Public: en/zh/native 200, old locale URLs 301/308 with `#ui=`, BUILD_ID in HTML. Web slot memory 2.86 GB (was 5.1 GB) |
+
+Still open: watch for 24 h (5xx, memory ≤ 3.5 GB, CPU, 301 share, GSC "Page with redirect"); R3;
+wiring `generation`/`refresh` into `content-release.py`; IndexNow and GSC sitemap resubmission
+(each needs separate authorization); archive `716cd5e9` before 2026-12-06.
 
 **中文摘要（给 owner）**：这次是全站路由/语言结构变更，按现行流程作为**一次程序发布**上线（GitHub Actions
 在冻结 SHA 上构建一次，主机上用 `uapt-program-release.py` 生命周期各步；旧文档
