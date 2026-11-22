@@ -221,6 +221,13 @@ after the gate changes the hash and forces a rerun. The only override is
 `packets.ts`, `receipts.py` and `assemble.ts` refuse without it, and
 `assemble.ts` checks the assembled zh pages again (`locale-gate.ts`). To audit
 any release: `pnpm v6:zh-gate <release-dir> [slug ...]`.
+The release audit also counts the approved zh reading-translation package (`translations/current.json`,
+hash- and record-checked, with pinned record deltas), as the site does for the 132 older V6 schools, and
+reports `coveredOnlyByReadingPackage`; `--no-reading-package` gives the strict count. Rows the page never
+renders (the hero of `v6_presentation_integration` pages, tools without any description/access/cost text)
+are not counted; `historical_discovery` tool lists are checked on their own record text. `assemble.ts`
+passes no package, so a new school must carry its own Chinese. Check of the 1,526 phase-1 rows:
+`docs/audit-20261121/ZH-COVERAGE.md`.
 
 The country-language check is not automated yet: V6 inputs carry en and zh,
 while the 33 reading locales come from the translation pipeline
