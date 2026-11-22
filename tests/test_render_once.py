@@ -144,22 +144,36 @@ class PurgeSemanticsTests(unittest.TestCase):
         self.assertEqual(ro.expand_paths([], ['/zh/changes/mit']), ['/changes/mit', '/zh/changes/mit'])
         self.assertEqual(ro.expand_paths([], ['/universities/epfl']), ['/universities/epfl', '/zh/universities/epfl'])
 
-    def test_ui_locale_school_pages_only_when_the_plan_lists_them(self):
-        # switch.ts lists every locale of a V6 cohort school or a reading-locale change: there a
-        # /<uiLocale>/ URL is a native page or its 308 and may turn from one into the other.
+    def test_ui_locale_school_pages_are_forced_only_for_reading_changes(self):
+        # A reading-locale change can turn a native page into its 308 or back: every listed locale
+        # is refreshed. Other UI-locale school URLs are probed instead (stored native page -> refresh).
         cohort = ['/universities/epfl'] + [f'/{l}/universities/epfl' for l in ro.READING_LOCALES if l != 'en']
-        urls = ro.expand_paths(['/universities/epfl', '/zh/universities/epfl'], cohort + ['/fr/changes', '/ja/changes/epfl'])
+        self.assertEqual(ro.expand_paths([], cohort, reading_changed=set()), ['/universities/epfl', '/zh/universities/epfl'])
+        self.assertEqual(len(ro.expand_paths([], cohort, reading_changed={'epfl'})), len(ro.READING_LOCALES))
+        urls = ro.expand_paths(['/universities/epfl', '/zh/universities/epfl'], cohort + ['/fr/changes', '/ja/changes/epfl'])  # no plan says: listed = forced
         self.assertEqual(urls[:2], ['/universities/epfl', '/zh/universities/epfl'])
         self.assertEqual(len(urls), len(ro.READING_LOCALES))  # exactly the listed school URLs
         self.assertIn('/fr/universities/epfl', urls); self.assertIn('/zh-Hant/universities/epfl', urls)
         self.assertNotIn('/fr/changes', urls); self.assertNotIn('/ja/changes/epfl', urls)  # constant 301s
         self.assertEqual(len(urls), len(set(urls)))
 
-    def test_large_release_stays_proportional_to_content_languages(self):
-        # 132-school metadata rollout: en/zh listed per school; before 2026-11-22 this became 132 x 33 URLs.
-        plan = [p for i in range(132) for p in (f'/universities/s{i}', f'/zh/universities/s{i}', f'/changes/s{i}')]
-        urls = ro.expand_paths([], plan)
-        self.assertEqual(len(urls), 132 * 4)  # school en/zh + changes en/zh
+    def test_every_ui_locale_of_a_changed_school_is_probed_not_rendered(self):
+        # A non-cohort school is listed in en/zh only, but may have a native page (base-tier
+        # schoolTargetLocales): its UI-locale URLs are probed, so a stored native page is refreshed.
+        plan = ['/universities/mit', '/zh/universities/mit', '/changes/mit']
+        urls = ro.expand_paths([], plan, reading_changed=set())
+        probe = ro.probe_paths(plan, urls)
+        self.assertEqual(len(urls), 4)  # renders: school en/zh + changes en/zh
+        self.assertEqual(len(probe), len(ro.UI_LOCALES)); self.assertIn('/ko/universities/mit', probe)
+        self.assertFalse([p for p in probe if '/changes' in p])
+        self.assertEqual(ro.probe_paths(['/universities/epfl', '/fr/universities/epfl'], ['/universities/epfl', '/fr/universities/epfl'])[0], '/pl/universities/epfl')
+
+    def test_reading_changed_comes_from_switch_plans_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            switch = Path(tmp) / 's.json'; switch.write_text(json.dumps({'paths': [], 'readingChangedSchools': ['epfl']}))
+            changed = Path(tmp) / 'c.json'; changed.write_text(json.dumps({'paths': []}))
+            self.assertEqual(ro.read_reading_changed([switch, changed]), {'epfl'})
+            self.assertIsNone(ro.read_reading_changed([changed]))
 
     def test_urls_cli_prints_the_expanded_list(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -170,7 +184,9 @@ class PurgeSemanticsTests(unittest.TestCase):
             out = io.StringIO()
             with redirect_stdout(out):
                 self.assertEqual(ro.main(['urls', '--plan', str(plan), '--plan', str(changed), '--path', '/universities/mit']), 0)
-            self.assertEqual(json.loads(out.getvalue())['paths'], ['/universities/mit', '/zh/universities/mit', '/api/public/v1/universities/mit.json'])
+            printed = json.loads(out.getvalue())
+            self.assertEqual(printed['paths'], ['/universities/mit', '/zh/universities/mit', '/api/public/v1/universities/mit.json'])
+            self.assertEqual(printed['probeCount'], len(ro.UI_LOCALES))
 
 
 def strip(path):
@@ -243,6 +259,24 @@ class RefreshTests(unittest.TestCase):
         self.assertEqual(len(calls), 2)  # both stored encodings, no readback of a redirect
         self.assertTrue(rows[0]['pageStore'])
         self.assertEqual(ro.refresh_problems(rows), [])
+
+    def test_probe_refreshes_a_stored_native_page_and_keeps_a_stored_redirect(self):
+        calls = []
+        def nginx(stored):
+            def get(origin, path, headers, timeout):
+                calls.append((path, headers.get('X-UAPT-Refresh')))
+                if headers.get('X-UAPT-Refresh') == '1': return 200, {'x-uapt-origin-cache': 'BYPASS'}, b'', 0.5
+                return stored[path]
+            return get
+        stored = {'/ko/universities/mit': (200, {'x-uapt-origin-cache': 'HIT'}, b'', 0.01),
+                  '/fr/universities/mit': (308, {'x-uapt-origin-cache': 'HIT'}, b'', 0.01),
+                  '/de/universities/mit': (200, {'x-uapt-origin-cache': 'MISS'}, b'', 0.9)}
+        rows = ro.refresh('https://127.0.0.1', [], probe=list(stored), get=nginx(stored))
+        refreshed = sorted({p for p, h in calls if h == '1'})
+        self.assertEqual(refreshed, ['/ko/universities/mit'])  # the redirect stays, the miss was just fetched fresh
+        self.assertEqual(ro.refresh_problems(rows), [])
+        failing = {'/ko/universities/mit': (502, {}, b'', 1.0)}
+        self.assertTrue(ro.refresh_problems(ro.refresh('https://127.0.0.1', [], probe=['/ko/universities/mit'], get=nginx(failing))))
 
     def test_time_budget_skips_and_reports(self):
         ticks = iter([0, 0, 5000, 5000, 5000])

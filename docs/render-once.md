@@ -98,12 +98,15 @@ rules):
 | No refresh (missed URL) | stays old until refreshed, 30 d, or the next program release | — | — | stays old |
 
 Known limits:
-- `render-once.py urls/refresh` adds the en and zh URL of every page-store path in the plan; a
-  `/<uiLocale>/universities/<slug>` URL is refreshed only when the plan lists it (`switch.ts` lists
-  every locale for V6 cohort schools and reading-locale changes, where it is a native page or its
-  308 and can turn from one into the other); `/<uiLocale>/changes…` URLs are constant 301s and are
-  skipped. Other plan paths are fetched as listed (they only warm). Since 2026-11-22 a changed path
-  is no longer multiplied by the 33 reading locales (a 132-school release: 528 URLs, not ~4,400).
+- `render-once.py urls/refresh` renders the en and zh URL of every page-store path in the plans.
+  A `/<uiLocale>/universities/<slug>` URL (a native page or its 308) is re-rendered when the plan
+  lists it and the school is in a switch plan's `readingChangedSchools` (the page can turn into its
+  308 or back; with no switch plan, every listed one). Every other UI-locale URL of a changed school
+  is probed: read as stored, re-rendered only when the store holds a 200 (a native page, also of a
+  base-tier school the plan lists in en/zh only); a stored redirect is kept, a miss is fetched
+  fresh. `/<uiLocale>/changes…` URLs are constant 301s and are skipped. Other plan paths are fetched
+  as listed (they only warm). Renders scale with the content languages (2–4 per changed school);
+  the 31 probes per school are mostly store hits.
 - School pages also show catalog-wide data (related universities, counts). A content release that
   changes only the catalog of *other* schools leaves those bits on unchanged school pages until the
   next program release or 30 days. Next's own ISR still expires them (`catalog` tag); the nginx
@@ -213,7 +216,8 @@ uapt-render-once.py refresh --plan <release>/switch-<time>.json --path <readback
 ```
 
 `urls` prints the expanded list (readback paths first, page-store paths in en and zh, then the
-UI-locale school URLs the plan lists, then the plan's other paths); `refresh` fetches each through nginx (`https://127.0.0.1`, SNI
+UI-locale school URLs of reading changes, then the plan's other paths) and the `probe` list (the
+other UI-locale school URLs; refreshed only when the store holds a native page); `refresh` fetches each through nginx (`https://127.0.0.1`, SNI
 `eduaipolicy.org`) with `X-UAPT-Refresh: 1` for the gzip and identity entries (one retry), then
 reads it back and requires `HIT`/`STATIC` for stored pages. 404/410 count as answered.
 
@@ -436,7 +440,7 @@ school pages only, core no longer lists es/nl/ms static pages); robots (the 26 `
 disallows are removed so crawlers can follow the 301s); `switch.ts` ISR expiry and Cloudflare
 lists (non-school routes in en/zh only; school pages keep every locale because a UI-locale school
 URL is a native page or its redirect); `render-once.py urls/refresh` (en/zh, plus the UI-locale
-school URLs a plan lists); `validate:i18n` (UI-only locales are not link prefixes). The public API, MCP
+school URLs of reading changes, other UI-locale school URLs probed); `validate:i18n` (UI-only locales are not link prefixes). The public API, MCP
 and `llms.txt` list no locale URLs (checked). The three i18n message systems are unchanged and
 `validate:i18n` passes.
 

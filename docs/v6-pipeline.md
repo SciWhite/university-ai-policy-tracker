@@ -47,7 +47,7 @@ batch stands and names the next step. The `pnpm v6:*` scripts wrap each stage.
 | S6 assemble | `v6:assemble` (re-runs the Chinese gate on the assembled pages) | `<outDir>/runtime/releases/<contentId>` |
 | S6 candidate | local preview, `v6:readback` (local), `v6:sync-basis`, `sync-proof.py materialize`, `v6:event candidate` | candidate sync package |
 | S7 bundle | `pnpm content:bundle` | op dir + bundle SHA256 for the owner |
-| S8 release | `content-release.py remote check/activate` (its `refresh` step: page-store `generation` + `refresh`, fallback `purge-html-cache`; check `receipts/refresh.json`), Cloudflare `purge_everything`, `content-release.py readback` and `v6:readback` (public, 1 worker, both paced ≤ 5 requests/s, wait out 429), `v6:event complete`, `remote complete` | live release, receipts |
+| S8 release | `content-release.py remote check/activate` (its `refresh` step: page-store `generation` + `refresh`, fallback `purge-html-cache`; check `receipts/refresh.json`), Cloudflare `purge_everything`, `content-release.py readback`, then `v6:readback` (public, 1 worker, each paced ≤ 5 requests/s, wait out 429), `v6:event complete`, `remote complete` | live release, receipts |
 | S9 live check | ChatGPT check of the live pages → findings into the next batch (`update` mode only for high-severity findings) | `chatgpt-live-check.md` |
 
 **S8 in detail (since 2026-11-22).**
@@ -63,9 +63,10 @@ batch stands and names the next step. The `pnpm v6:*` scripts wrap each stage.
    requests in 10 s on `*/universities/*` and `*/changes/*`:
    `python3 scripts/release/content-release.py readback --op-dir <local op dir>` (changed URLs,
    content languages, a UI-locale sample) and `pnpm v6:readback --workspace <ws> https://eduaipolicy.org …`
-   (Claim IDs, source metadata, V6 layout). `v6:readback` checks fr/es/de for four schools: each
-   must be a native V6 page or a 308 to the English page (only content languages have URLs). Both
-   wait out a 429 and never follow redirects.
+   (Claim IDs, source metadata, V6 layout), one after the other (each paces only itself).
+   `v6:readback` checks fr/es/de for four schools: each must be a native V6 page or a 308 to the
+   English page (only content languages have URLs). Both wait out a 429 (`Retry-After`, 12–60 s),
+   never follow redirects, and report a 5xx/524 even when a retry succeeded (`retriedAfter`).
 4. `v6:event complete`, then `remote complete`.
 
 OpenClaw enrollment of the new official sources is still the batch-3 script

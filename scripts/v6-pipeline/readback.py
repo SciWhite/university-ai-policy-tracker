@@ -61,6 +61,10 @@ with cf.ThreadPoolExecutor(W) as ex:
     for f, items in ((page, pages), (api, apis), (ctrl, controls)):
         for p, r in ex.map(f, items): rows[p] = r
 errors = [p for p, r in rows.items() if r.get("uiLocaleRedirect") is False or ("uiLocaleRedirect" not in r and r["status"] != 200) or r.get("applicationError") or r.get("v6Layout") is False or ("renderedSourceMetadata" in r and (r["renderedSourceMetadata"] != r["expectedSourceMetadata"] or (not r["expectedSourceMetadata"] and meta["schools"].get(p.rsplit("/", 1)[1])))) or ("claimIdsMatchScope" in r and (not r["claimIdsMatchScope"] or (r["sourceMetadataDocuments"] not in (r["expectedSourceMetadataDocuments"], 0))))]
+retried = {p: [x for x in READ.retried.get(p, []) if x != 429] for p in rows}
+for p, earlier in retried.items():
+    if earlier: rows[p]["retriedAfter"] = earlier  # a 5xx/524 answered on a retry is still a finding
+errors += [p for p, earlier in retried.items() if earlier and p not in errors]
 out = {"contentId": CID, "manifestSha256": MSHA, "base": BASE, "paced": READ.paced, "requests": READ.requests, "rateLimited": READ.rate_limited, "checkedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "rows": rows, "errors": errors}
 json.dump(out, open(OUT, "w"), indent=1)
 print(json.dumps({"rows": len(rows), "pages": len(pages), "apis": len(apis), "controls": len(controls), "errors": errors[:10], "errorCount": len(errors)}))

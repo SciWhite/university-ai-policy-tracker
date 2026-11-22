@@ -57,6 +57,7 @@ class FakeHost:
         self.program_release = base / 'program-release.py'
         self.generation_file = base / 'nginx/uapt-html-content-generation.inc'  # absent: page store not installed
         self.page_store_origin = 'https://127.0.0.1'
+        self.page_tree_current = base / 'page-tree/current'
         self.render_once = None  # the helper's own render-once.py
         self.render_once_exit = {'generation': 0, 'refresh': 0}
         self.purge_exit = 0
@@ -281,6 +282,32 @@ class ContentReleaseHostTest(unittest.TestCase):
         receipt = self.refresh_receipt()
         self.assertEqual((receipt['status'], receipt['origin']['mode'], receipt['origin']['purge']['exit']), ('incomplete', 'epoch-purge-fallback', 1))
 
+    def test_an_unexpected_error_in_the_page_store_step_still_purges(self):
+        self.install_page_store()
+        self.activate('--no-refresh')
+        (self.op / 'switch-receipt.json').write_text('{not json')
+        code, _, _ = self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
+        self.assertEqual(code, 0)
+        receipt = self.refresh_receipt()
+        self.assertEqual(receipt['origin']['mode'], 'epoch-purge-fallback')
+        self.assertIn('raised JSONDecodeError', receipt['origin']['fallbackReason'])
+        self.assertEqual(len(self.commands('purge-html-cache')), 1)
+
+    def test_active_page_tree_refuses_instead_of_reporting_a_refresh(self):
+        self.install_page_store()
+        self.host.page_tree_current.parent.mkdir(parents=True); self.host.page_tree_current.symlink_to('trees/t1')
+        self.activate('--no-refresh')
+        with self.assertRaisesRegex(self.module['Refused'], 'pre-rendered page tree is active'):
+            self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
+        self.assertEqual(self.commands('render-once.py'), [])
+
+    def test_standalone_refresh_checks_the_helper_pin(self):
+        self.install_page_store()
+        self.activate('--no-refresh')
+        with self.assertRaisesRegex(self.module['Refused'], 'No HELPER.json'):
+            self.main('refresh', '--op', str(self.op))  # no --legacy-helper-reason and no packaged helper
+        self.assertEqual(self.commands('render-once.py'), [])
+
     def test_refresh_runs_only_after_the_switch(self):
         with self.assertRaisesRegex(self.module['Refused'], 'refresh runs after activate'):
             self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
@@ -447,6 +474,16 @@ class PublicReadbackTest(unittest.TestCase):
         self.sleeps.clear()
         self.run_readback(self.site({'/universities/alpha-university': [short, (200, b'ok', {}, 0.01)]}))
         self.assertIn(12, self.sleeps)  # at least 12 s when Retry-After is missing or shorter
+        self.sleeps.clear()
+        self.run_readback(self.site({'/universities/alpha-university': [(429, b'', {'retry-after': '3600'}, 0.01), (200, b'ok', {}, 0.01)]}))
+        self.assertIn(60, self.sleeps)  # capped: a huge Retry-After does not stall the release
+
+    def test_a_5xx_answered_on_retry_is_still_reported(self):
+        code, receipt = self.run_readback(self.site({'/universities/alpha-university': [(524, b'', {}, 100.0), (200, b'ok', {}, 0.01)]}))
+        self.assertEqual(code, 1)
+        row = receipt['rows'][0]
+        self.assertEqual((row['status'], row['retriedAfter']), (200, [524]))
+        self.assertIn('retried', receipt['problems'][0]['problems'][0])
 
     def test_persistent_429_or_wrong_redirect_is_a_problem(self):
         limited = (429, b'', {}, 0.01)

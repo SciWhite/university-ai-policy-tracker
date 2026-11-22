@@ -65,6 +65,8 @@ class Host:
         # Page store (docs/render-once.md): the generation file exists once the store is installed.
         self.generation_file = env_path('UAPT_HTML_CONTENT_GENERATION_FILE', '/etc/nginx/conf.d/uapt-html-content-generation.inc')
         self.page_store_origin = os.environ.get('UAPT_PAGE_STORE_ORIGIN', 'https://127.0.0.1')
+        # A pre-rendered tree (R3) answers before the store; content releases cannot update it yet.
+        self.page_tree_current = env_path('UAPT_PAGE_TREE_ROOT', '/srv/uapt/page-tree') / 'current'
         # Default: the helper's own render-once.py, pinned by HELPER.json like every helper file,
         # so its URL rules match the running program (UAPT_RENDER_ONCE overrides it).
         self.render_once = Path(os.environ['UAPT_RENDER_ONCE']) if os.environ.get('UAPT_RENDER_ONCE') else None
@@ -444,6 +446,7 @@ def cmd_activate(host, op, args):
                                'incomingBytes': total, 'proofs': proofs, 'hold': hold, 'switch': {k: result.get(k) for k in ('pointer', 'changedSchools')},
                                'isrExpiry': expired, 'authorization': op.bundle['authorization']})
     if not args.no_refresh:
+        args.helper_checked = True
         cmd_refresh(host, op, args)
 
 
@@ -488,6 +491,11 @@ def page_store_refresh(host, op, args, changed):
     step = {'mode': 'page-store'}
     if not host.generation_file.is_file():
         return step, f'page store not installed ({host.generation_file} is missing)'
+    if os.path.lexists(host.page_tree_current):
+        # nginx try_files serves the tree before the store; neither a refresh nor the epoch purge
+        # changes it. Capture + activate for content releases is R3 (docs/render-once.md §8).
+        raise Refused(f'A pre-rendered page tree is active ({host.page_tree_current}); content releases cannot refresh it yet. '
+                      'Deactivate it (render-once.py deactivate) or capture and activate a tree for this release, then run refresh again.')
     plan, problem = switch_plan(host, op)
     if problem:
         return step, problem
@@ -541,8 +549,15 @@ def cmd_refresh(host, op, args):
     changed = read_json(op.path('changedUrls'))
     if changed.get('schemaVersion') != CHANGED_URLS_SCHEMA or changed.get('contentId') != op.cid or not isinstance(changed.get('paths'), list):
         raise Refused('Invalid changed-urls.json')
+    if not getattr(args, 'helper_checked', False):  # standalone refresh: same pin as every other phase
+        check_helper(host, slot_context(host)['cwd'], args.legacy_helper_reason)
     op.receipts.mkdir(exist_ok=True)
-    store, reason = page_store_refresh(host, op, args, changed)
+    try:
+        store, reason = page_store_refresh(host, op, args, changed)
+    except Refused:
+        raise
+    except Exception as error:  # malformed receipt or plan, OSError: never skip the fallback
+        store, reason = {'mode': 'page-store', 'error': repr(error)[:800]}, f'page-store step raised {type(error).__name__}: {str(error)[:300]}'
     warm = None
     if reason is None:
         origin = {**store, 'status': 'ok'}
@@ -655,6 +670,7 @@ def cmd_status(host, op, args):
 PUBLIC_MIN_INTERVAL_SECONDS = 0.2
 RATE_LIMIT_WAIT_SECONDS = 12
 RATE_LIMIT_RETRIES = 3
+RATE_LIMIT_MAX_WAIT_SECONDS = 60
 PUBLIC_ORIGIN = 'https://eduaipolicy.org'
 PUBLIC_READBACK_SCHEMA = 'uapt-content-public-readback-v1'
 UI_SAMPLE_LOCALES = ('fr', 'de', 'ja', 'es', 'ko', 'ar', 'pl', 'nl')
@@ -694,6 +710,7 @@ class PublicReader:
         self.paced = (not is_loopback(base)) if paced is None else paced
         self.lock = threading.Lock(); self.next_at = 0.0
         self.requests = 0; self.rate_limited = 0
+        self.retried = {}  # path -> statuses answered before the final one (5xx, 0, 429)
 
     def _pace(self):
         with self.lock:
@@ -711,16 +728,18 @@ class PublicReader:
             status, body, response_headers, seconds = self.get(self.base + path, headers, self.timeout)
             if status == 429 and limited > 0:
                 limited -= 1
-                with self.lock: self.rate_limited += 1
+                with self.lock: self.rate_limited += 1; self.retried.setdefault(path, []).append(status)
                 self.sleep(retry_after(response_headers)); continue
             attempt += 1
             if (status and status < 500) or attempt >= self.attempts:
                 return status, body, response_headers, seconds
+            # A 5xx/524 is retried but kept: after a refresh it is a finding (docs/content-release.md §5).
+            with self.lock: self.retried.setdefault(path, []).append(status)
             self.sleep(3)
 
 
 def retry_after(headers):
-    try: return max(RATE_LIMIT_WAIT_SECONDS, int(headers.get('retry-after', '0')))
+    try: return min(RATE_LIMIT_MAX_WAIT_SECONDS, max(RATE_LIMIT_WAIT_SECONDS, int(headers.get('retry-after', '0'))))
     except (TypeError, ValueError): return RATE_LIMIT_WAIT_SECONDS
 
 
@@ -768,6 +787,11 @@ def cmd_readback(args, *, get=http_get, sleep=time.sleep, clock=time.monotonic):
     reader = PublicReader(args.origin, get=get, sleep=sleep, clock=clock)
     started = now().isoformat()
     rows = [readback_row(p, *reader(p)) for p in content] + [readback_row(p, *reader(p), ui_locale=True) for p in sample]
+    for row in rows:
+        earlier = [s for s in reader.retried.get(row['path'], []) if s != 429]
+        if earlier:  # answered on a retry: still a finding (a 524 means a cold render reached the edge)
+            row['retriedAfter'] = earlier
+            row.setdefault('problems', []).append(f'answered only after {earlier} (retried)')
     problems = [r for r in rows if r.get('problems')]
     receipt = {'schemaVersion': PUBLIC_READBACK_SCHEMA, 'opId': bundle['opId'], 'contentId': bundle['contentId'], 'origin': reader.base,
                'startedAt': started, 'checkedAt': now().isoformat(), 'paced': reader.paced, 'minIntervalSeconds': PUBLIC_MIN_INTERVAL_SECONDS,

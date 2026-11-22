@@ -261,9 +261,19 @@ changes documents for 30 days; a content switch does not purge it. `content-rele
    loopback with `X-UAPT-Refresh: 1` (both stored encodings, then a read that must be a store
    `HIT`). This renders the changed pages too, so it replaces the warm-up.
 
-Only content-language URLs are refreshed (en, zh, and the `/<uiLocale>/universities/<slug>`
-URLs the plan lists, which are native pages or their 308); a changed path is not multiplied by
-the 33 reading locales, and `/<uiLocale>/changes…` (constant 301s) is skipped.
+Only content-language URLs are rendered: en and zh of every changed path. A
+`/<uiLocale>/universities/<slug>` URL is a native page or a 308 to the English page; it is
+re-rendered when the school's reading locales changed (`readingChangedSchools` in the switch
+plan: the page can turn into its 308 or back), and otherwise **probed**: `refresh` reads the
+stored entry (both encodings, no refresh header) and re-renders only a stored native page (200).
+A stored 308 is unchanged by definition; a miss is fetched fresh by the probe. This also covers
+native pages of non-cohort (base-tier) schools, which the switch plan lists in en/zh only.
+`/<uiLocale>/changes…` URLs are constant 301s and are skipped. Size: a changed school costs 2
+renders (en, zh; 4 with its changes page) plus 31 probes, which are store hits for a page or
+redirect seen before (a 10-school batch: about 40 renders and 620 cheap probe reads; a school in
+`readingChangedSchools`, e.g. a new V6 school, adds 31 renders that mostly end in a 308). The step
+shares the `--warm-max-seconds` budget (2,400 s); running out of time is a problem row, so it
+falls back to the epoch purge.
 
 **Fallback: the epoch purge.** If the page store is not installed (no
 `/etc/nginx/conf.d/uapt-html-content-generation.inc`), the switch plan is missing, or
@@ -327,8 +337,11 @@ python3 scripts/release/content-release.py readback --op-dir <local op dir>   # 
 It reads `changed-urls.json` in the content languages (readback set first, then the other
 changed paths and the API records) and one `/<uiLocale>/universities/<slug>` per changed school
 (up to 8), which must be a native page (200) or a 308 to the English page; exit 1 lists the
-problems. V6 batches also run `v6:readback` (Claim IDs, source metadata; `docs/v6-pipeline.md`
-S8), which uses the same paced reader.
+problems. A 5xx or 524 that is answered on a retry stays in the receipt as a problem
+(`retriedAfter`): after a refresh it is a finding. `Retry-After` is honoured up to 60 s. V6
+batches also run `v6:readback` (Claim IDs, source metadata; `docs/v6-pipeline.md` S8), which
+uses the same paced reader. Run the two one after the other, never at the same time (each paces
+itself, not the other).
 
 **Completion.** Public readback of the changed URLs (L1/L2 in full, L3
 sampled, per `docs/release-acceptance-tiers.md`) happens after the refresh and
@@ -421,9 +434,14 @@ Steps, in order:
    --origin https://127.0.0.1 --receipt <op>/receipts/page-store-refresh.json`. The tool is the
    helper's own `scripts/release/render-once.py` (pinned by `HELPER.json`, so its URL rules match
    the running program; it is the same file as `/usr/local/libexec/uapt-render-once.py`;
-   `UAPT_RENDER_ONCE` overrides it). Its path and SHA256 go into the receipt.
-2. Fallback, when the store is not installed, the plan is missing or foreign, or step 1 exits
-   non-zero: `warm-changed-pages.py --plan changed-urls.json` (receipt `receipts/warm.json`), then
+   `UAPT_RENDER_ONCE` overrides it). Its path and SHA256 go into the receipt. `refresh` adds the
+   en/zh URL of every page-store path, re-renders all listed UI-locale school URLs of
+   `readingChangedSchools`, and probes the other UI-locale URLs of every changed school (re-render
+   only a stored native page). A standalone `refresh` checks the helper pin like `activate`.
+   If a pre-rendered page tree is active (`/srv/uapt/page-tree/current`, R3), `refresh` refuses:
+   nginx serves the tree first and neither path updates it yet.
+2. Fallback, when the store is not installed, the plan is missing, foreign or unreadable, step 1
+   raises, or either command exits non-zero: `warm-changed-pages.py --plan changed-urls.json` (receipt `receipts/warm.json`), then
    `uapt-program-release.py purge-html-cache --reason "content switch <id>"`.
 3. Receipt `receipts/refresh.json`: `origin.mode` is `page-store`, `epoch-purge-fallback` (with
    `fallbackReason` and the page-store step's exit codes and output) or `epoch-purge`.
