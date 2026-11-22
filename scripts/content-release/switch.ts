@@ -3,6 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { CONTENT_POINTER_SCHEMA, type ContentPointer, type ContentReleaseManifest, type ContentSyncReceipt } from "../../apps/web/lib/content-runtime";
 import { READING_LOCALES } from "../../apps/web/lib/language-catalog";
+import { CONTENT_LOCALES } from "../../apps/web/lib/content-locales";
 import { V6_SOURCE_METADATA_FILE } from "../../packages/shared/src/v6-source-metadata";
 import { requirePolicySync } from "../lib/require-policy-sync";
 import { readManifest, releaseDir, selectTree, sha256, sha256File } from "./lib";
@@ -89,9 +90,13 @@ function readHistory(contentRoot: string): HistoryRow[] {
 /** Tags and exact paths whose pages differ between two releases. */
 export function changedSurface(previous: { manifest?: ContentReleaseManifest; digests?: Record<string, string>; reading?: Record<string, string>; sourceMetadata?: Record<string, string> }, next: { manifest: ContentReleaseManifest; digests: Record<string, string>; cohort: string[]; reading?: Record<string, string>; sourceMetadata?: Record<string, string> }) {
   const tags = new Set<string>(), paths = new Set<string>();
+  // Content-language URLs (apps/web/lib/content-locales.ts): only school pages can exist in a
+  // UI-only locale (a native-language page or its redirect); every other /<uiLocale>/... URL is a
+  // proxy 301 with no ISR entry and needs no expiry or purge.
   const localized = (route: string, all: boolean) => {
     paths.add(route || "/");
-    for (const locale of all ? READING_LOCALES : ["zh"]) if (locale !== "en") paths.add(`/${locale}${route}`);
+    const school = route.startsWith("/universities/");
+    for (const locale of school && all ? READING_LOCALES : CONTENT_LOCALES) if (locale !== "en") paths.add(`/${locale}${route}`);
   };
   const before = previous.digests ?? {};
   const schools = [...new Set([...Object.keys(before), ...Object.keys(next.digests)])].filter(slug => before[slug] !== next.digests[slug]).sort();

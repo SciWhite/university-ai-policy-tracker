@@ -227,7 +227,7 @@ Keep the old files for rollback.
 
 ### 6.1 Origin HTML cache (nginx, from 2026-11-06)
 
-The app's ISR cache lives in process memory (2 GiB; 1.5 GiB from the next program release, §6.2), so every
+The app's ISR cache lives in process memory (2 GiB; 1 GiB from the next program release, §6.2 and `docs/render-once.md`), so every
 restart or cutover starts cold. `--html-cache` makes the generated `location /` cache
 public HTML/RSC on disk (`infra/nginx/uapt-html-cache.conf`, installed once as
 `/etc/nginx/conf.d/uapt-html-cache.conf` with `uapt-html-cache-epoch.inc`):
@@ -240,6 +240,12 @@ public HTML/RSC on disk (`infra/nginx/uapt-html-cache.conf`, installed once as
 - `proxy_buffering on` in that location (nginx cannot cache unbuffered responses), and the
   server-level security headers are repeated there;
 - `X-UAPT-Origin-Cache: HIT|MISS|EXPIRED|UPDATING|BYPASS` on responses.
+
+**Render-once page store (prepared 2026-11-21, not installed).** `docs/render-once.md`:
+`--page-store` keeps school and changes pages for 30 days in a 12 GB store, ignores their query
+string, and a content release refreshes only the changed URLs (`render-once.py generation` +
+`refresh`) instead of purging; `--page-tree` serves pre-rendered pages first. Until it is
+installed, the rules below apply.
 
 **Purge** = `uapt-program-release.py purge-html-cache --reason "<why>"`: a new epoch in the
 key, `nginx -t`, reload, a line in `release-lifecycle/html-cache-purges.jsonl`. Nothing is
@@ -287,7 +293,7 @@ already running at the switch can put one old entry back (bounded by the LRU).
 | `candidatePeakMaxBytes` (policy) | 4 GiB | 8 GiB, so a candidate's measured peak may use its slot limit; `uaptPeakMaxBytes` stays 16 GiB | `release-lifecycle/policy.json` |
 | V8 heap | `--max-old-space-size=4608` | unchanged 4608 MiB; the candidate step writes it into `runtime.env` and refuses a cap that leaves less than 3 GiB off-heap under `MemoryMax` | `runtime.env` (`CANDIDATE_HEAP_MIB`) |
 | `MALLOC_ARENA_MAX` | unset (8 × cores) | 2 (fewer glibc arenas, less RSS growth) | `runtime.env` |
-| Next ISR memory cache | 2 GiB | 1.5 GiB (~1,000 pages; nginx disk cache and Cloudflare hold the rest) | `apps/web/next.config.ts` (program release) |
+| Next ISR memory cache | 2 GiB | 1 GiB (~650 pages; render once: the nginx page store and the pre-rendered tree hold the rest, `docs/render-once.md`) | `apps/web/next.config.ts` (program release) |
 
 Capacity check (2026-11-21): 23.4 GiB RAM, no swap; other services ~3.1 GiB anonymous, MCP
 0.12 GiB. Two slots at 8 GiB + the rest ≈ 20 GiB, leaving ≈ 3.4 GiB above the 2 GiB host

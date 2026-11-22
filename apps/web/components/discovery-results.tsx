@@ -16,6 +16,7 @@ import {
 } from "@/lib/discovery-location";
 import type { ReadingLocale } from "@/lib/language-catalog";
 import type { RankingViewRow } from "@/lib/rankings-view-data";
+import { discoveryReturnLinkProps } from "@/lib/discovery-return-state";
 export interface DiscoveryResultsProps {
   rows: RankingViewRow[];
   locale: ReadingLocale;
@@ -132,7 +133,8 @@ export function RankingTable(p: DiscoveryResultsProps) {
                   <>
                     <UniversityMark slug={row.slug} />
                     <Link
-                      href={`/universities/${row.slug}?returnTo=${encodeURIComponent(p.returnTo)}`}
+                      href={`/universities/${row.slug}`}
+                      {...discoveryReturnLinkProps(p.returnTo)}
                     >
                       {getLocalizedInstitutionName(
                         row.slug,
@@ -167,7 +169,8 @@ export function RankingTable(p: DiscoveryResultsProps) {
                 {row.slug ? (
                   <>
                     <Link
-                      href={`/universities/${row.slug}?returnTo=${encodeURIComponent(p.returnTo)}`}
+                      href={`/universities/${row.slug}`}
+                      {...discoveryReturnLinkProps(p.returnTo)}
                     >
                       {row.claimCount ? ui.viewGuide : copy.linked} →
                     </Link>

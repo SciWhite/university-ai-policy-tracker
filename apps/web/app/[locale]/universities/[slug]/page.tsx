@@ -2,8 +2,9 @@ import BasePage, { generateMetadata as baseGenerateMetadata } from "../../../(de
 import { createLocalizedSurfaceMetadata } from "@/lib/surface-localization-server";
 import { createLocalizedSurfacePage } from "@/lib/surface-localization";
 
+// Render once per content release; see the (default) route.
 export const dynamicParams = true;
-export const revalidate = 3600;
+export const revalidate = false;
 export function generateStaticParams(): Array<{ locale: string; slug: string }> {
   return [];
 }

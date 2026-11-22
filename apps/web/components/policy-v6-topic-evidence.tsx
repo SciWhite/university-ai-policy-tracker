@@ -1,4 +1,5 @@
 import { policyV6ReaderCopy } from "@/lib/policy-v6-reader-copy";
+import { deferredQuoteExcerpt, quoteKey } from "@/lib/evidence-dedup";
 import { PolicyBidiText } from "@/components/policy-bidi-text";
 import React from "react";
 import type { LabTopic } from "@/lib/policy-v6";
@@ -71,9 +72,14 @@ export function PolicyV6TopicEvidence({ topic, locale, sharedUiText = {} }: { to
         const shared = bindings.length > 1;
         const BindingsContainer = shared ? "details" : "div";
         return <article className="student-evidence" key={key} data-evidence-binding-count={bindings.length}>
-          <blockquote className="student-evidence__quote" dir="auto">
-            <p data-i18n="preserve" lang={evidence.language}><PolicyBidiText text={evidence.quote} /></p>
-          </blockquote>
+          {(() => {
+            // A claim card on this page holds the full quotation: show an excerpt here and fill
+            // it in on open (lib/evidence-dedup.ts).
+            const excerpt = deferredQuoteExcerpt(evidence.quote);
+            return <blockquote className="student-evidence__quote" dir="auto" {...(excerpt ? { "data-quote-ref": quoteKey(evidence.quote) } : {})}>
+              <p data-i18n="preserve" lang={evidence.language}><PolicyBidiText text={excerpt ?? evidence.quote} /></p>
+            </blockquote>;
+          })()}
           <div className="policy-v6-readerDates" data-quote-dates>
             <span>{copy.retrieved}: {[...new Set(bindings.map(b => b.evidence.retrievedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)))].join(", ")}</span>
             {bindings.some(b => b.claim.basisObjectType !== "source") ? <span>{copy.claimChecked}: {[...new Set(bindings.filter(b => b.claim.basisObjectType !== "source").map(b => b.claim.checkedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)))].join(", ")}</span> : null}
@@ -81,14 +87,14 @@ export function PolicyV6TopicEvidence({ topic, locale, sharedUiText = {} }: { to
           <BindingsContainer className={shared ? "policy-v6-readerBindings" : undefined}>
             {shared ? <summary className="policy-v6-readerBindingsLabel">{reader.bindings(bindings.length)}</summary> : null}
             {bindings.map(({ claim, evidence: boundEvidence, index }) => <div className="policy-v6-readerBinding" key={`${claim.id}:${index}`} data-reader-claim-id={claim.id}>
-              {shared ? <p className="policy-v6-readerBindingTitle" data-i18n="preserve" lang="en">{claim.text}</p> : null}
+              {shared ? <DeferredText className="policy-v6-readerBindingTitle" text={claim.text} /> : null}
               {shared ? <div className="policy-v6-readerDates">
                 <span>{copy.retrieved}: {boundEvidence.retrievedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)}</span>
                 {claim.basisObjectType !== "source" ? <span>{copy.claimChecked}: {claim.checkedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)}</span> : null}
               </div> : null}
               <details className="policy-v6-readerRecord">
                 <summary>{reader.claimLocation}</summary>
-                {!shared ? <p data-i18n="preserve" lang="en">{claim.text}</p> : null}
+                {!shared ? <DeferredText text={claim.text} /> : null}
                 <p className="hash-value">{claim.id}</p>
                 {boundEvidence.title !== group.title ? <p data-i18n="preserve">{boundEvidence.title}</p> : null}
                 {boundEvidence.location ? <p data-i18n="preserve">{boundEvidence.location}</p> : null}
@@ -106,4 +112,10 @@ export function PolicyV6TopicEvidence({ topic, locale, sharedUiText = {} }: { to
       <small>{claim.id} · {copy.claimChecked}: {claim.checkedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded", locale)}</small>
     </article>)}
   </div>;
+}
+
+/** Claim text that a claim card on this page holds in full: an excerpt, filled on open (lib/evidence-dedup.ts). */
+function DeferredText({ text, className }: { text: string; className?: string }) {
+  const excerpt = deferredQuoteExcerpt(text);
+  return <p className={className} data-i18n="preserve" lang="en" {...(excerpt ? { "data-quote-ref": quoteKey(text) } : {})}>{excerpt ?? text}</p>;
 }

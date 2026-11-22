@@ -21,7 +21,9 @@ test("all reading locale routes bypass private analytics auth without weakening 
     assert.equal(proxy(new NextRequest("http://localhost/internal/analytics"))?.status, 401);
     assert.equal(proxy(new NextRequest("http://localhost/api/internal/analytics/dashboard"))?.status, 401);
     process.env.NEXT_PUBLIC_MULTILINGUAL_PHASE_TWO = "0";
-    assert.equal(proxy(new NextRequest("http://localhost/ja/tools"))?.status, 404);
+    assert.equal(proxy(new NextRequest("http://localhost/zh/tools"))?.status, 404);
+    // A UI-only locale is not a URL any more: 301 to the English page (apps/web/lib/content-locales.ts).
+    assert.equal(proxy(new NextRequest("http://localhost/ja/tools"))?.status, 301);
   } finally {
     for (const key of keys) before[key] === undefined ? delete process.env[key] : process.env[key] = before[key];
   }
@@ -49,7 +51,8 @@ test("private analytics failure tracking stays bounded under many client keys", 
 test("navigation carries the exact reading locale and Hant uses English legacy UI fallback", () => {
   for (const locale of READING_LOCALES) {
     const selected = getReadingLocaleFromPathname(`/${locale}/universities/ucl`);
-    assert.equal(localizeHref("/universities/university-of-oxford", selected), locale === "en" ? "/universities/university-of-oxford" : `/${locale}/universities/university-of-oxford`);
+    // Only content languages have URLs (apps/web/lib/content-locales.ts): en and zh.
+    assert.equal(localizeHref("/universities/university-of-oxford", selected), locale === "zh" ? "/zh/universities/university-of-oxford" : "/universities/university-of-oxford");
   }
   assert.equal(normalizeLocale("zh-Hant"), "en");
   assert.equal(normalizeLocale("zh-Hant-TW"), "en");
@@ -72,7 +75,8 @@ test("university metadata preserves the shared accepted index decision while ord
   const incomplete = localizeSurfaceMetadata({ title: "Tools", alternates: { canonical: "https://eduaipolicy.org/ja/tools" }, robots: { index: true, follow: true } }, "/tools", "ja");
   assert.equal(incomplete.robots?.index, false);
   assert.equal(incomplete.robots?.follow, true);
-  assert.equal(incomplete.alternates?.canonical, "http://localhost:3000/ja/tools");
+  // A /ja/ page no longer renders (proxy 301); its canonical is the English URL.
+  assert.equal(incomplete.alternates?.canonical, "http://localhost:3000/tools");
   assert.equal(incomplete.alternates?.languages, undefined);
   } finally {
     if (previousPhaseTwo === undefined) delete process.env.NEXT_PUBLIC_MULTILINGUAL_PHASE_TWO;

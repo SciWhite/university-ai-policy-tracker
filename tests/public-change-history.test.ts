@@ -50,10 +50,11 @@ test("every exported historical row equals the original full public diff reconst
 test("university and localized sitemap sections contain each canonical university exactly once", async () => {
   const universities = await getStagedCatalogUniversities();
   const { slugAliases } = await getEntityAliasResolver();
-  // Base-tier schools are listed in zh and in their own legacy country locale;
-  // full-tier schools need the server registry and package, absent locally.
+  // Base-tier schools are listed in zh; a country language (fr, pl, ...) needs a complete
+  // reading package (apps/web/lib/content-locales.ts), absent locally; full-tier schools need
+  // the server registry and package, also absent locally.
   const expected = (section: string) => universities.filter(row => section === "universities" ||
-    (policyV6Tier(row.slug) === "base" && schoolTargetLocales(row).includes(section as never)));
+    (section === "zh" && policyV6Tier(row.slug) === "base" && schoolTargetLocales(row).includes(section as never)));
   for (const section of ["universities", "zh", "fr", "pl"] as SitemapSectionId[]) {
     const entries = await buildSitemapSection(section);
     assert.equal(new Set(entries.map(e => e.url)).size, entries.length, section);

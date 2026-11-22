@@ -9,19 +9,18 @@ import { SUPPORTED_LOCALES } from "../apps/web/lib/i18n";
 
 const root = process.cwd();
 
-test("robots blocks /changes only in the noindex reading-only locales, in every crawler group", () => {
-  const blocked = readingOnlyChangePaths();
-  assert.equal(blocked.length, READING_LOCALES.length - SUPPORTED_LOCALES.length);
-  for (const locale of SUPPORTED_LOCALES) assert.ok(!blocked.includes(`/${locale}/changes/`), locale);
-  for (const p of ["/de/changes/", "/ja/changes/", "/zh-Hant/changes/", "/ar/changes/"]) assert.ok(blocked.includes(p), p);
+test("robots no longer blocks the old reading-locale change paths: they are cached 301s crawlers must follow", () => {
+  // Since 2026-11-22 every /<uiLocale>/changes/... URL redirects to the English page
+  // (apps/web/lib/content-locales.ts); a disallow would keep the old URLs in the index.
+  assert.ok(readingOnlyChangePaths().includes("/ja/changes/"));
   const rules = [robots().rules].flat();
   assert.ok(rules.length >= 6);
   for (const rule of rules) {
     const disallow = [rule.disallow ?? []].flat();
-    assert.ok(disallow.includes("/internal/analytics"), String(rule.userAgent));
-    for (const p of blocked) assert.ok(disallow.includes(p), `${rule.userAgent} ${p}`);
+    assert.deepEqual(disallow, ["/internal/analytics"], String(rule.userAgent));
   }
   assert.ok(rules.some((r) => r.userAgent === "Googlebot"));
+  assert.ok(READING_LOCALES.length > SUPPORTED_LOCALES.length);
 });
 
 test("per-school release change pages are cached like their release page", () => {

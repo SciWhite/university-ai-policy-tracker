@@ -14,14 +14,16 @@ import { getEntityAliasResolver } from "../apps/web/lib/entity-aliases";
 
 process.env.UAPT_V6_PUBLISHED_PAGES = "1";
 
-// R1 indexes base-tier schools in English and Simplified Chinese as live did,
-// plus the country language when it is a legacy UI locale (fr, pl, es, nl, ms)
-// or has a complete reading translation. Robots, hreflang, the sitemap and the
-// language switcher read the same decision.
+// Base-tier schools are indexed in English and Simplified Chinese (the content languages,
+// apps/web/lib/content-locales.ts), plus their country language only with a complete accepted
+// reading translation. Since 2026-11-22 a legacy UI locale (fr, pl, es, nl, ms) no longer
+// qualifies by itself: those pages showed English prose in a foreign UI. No reading package is
+// loaded locally, so every case is en + zh. Robots, hreflang, the sitemap and the language
+// switcher read the same decision.
 const cases: Array<[string, string[]]> = [
-  ["universite-paris-cite", ["en", "zh", "fr"]],
-  ["universite-de-montreal", ["en", "zh", "fr"]],
-  ["jagiellonian-university", ["en", "zh", "pl"]],
+  ["universite-paris-cite", ["en", "zh"]],
+  ["universite-de-montreal", ["en", "zh"]],
+  ["jagiellonian-university", ["en", "zh"]],
   ["arizona-state-university", ["en", "zh"]]
 ];
 
@@ -32,7 +34,7 @@ async function indexLocales(slug: string, onlyLocale?: string) {
   return { summary, basis, locales: await universityReadingIndexLocales(slug, basis, summary, onlyLocale as never) };
 }
 
-test("base-tier schools index en, zh and a legacy country language without a reading package", async () => {
+test("base-tier schools index en and zh; a country language needs its reading package", async () => {
   for (const [slug, expected] of cases) {
     assert.equal(policyV6Tier(slug), "base", slug);
     assert.deepEqual((await indexLocales(slug)).locales, expected, slug);
@@ -42,7 +44,7 @@ test("base-tier schools index en, zh and a legacy country language without a rea
   }
 });
 
-test("a non-legacy country language needs a complete reading translation", async () => {
+test("a non-legacy country language also needs a complete reading translation", async () => {
   const korean = (await getCatalogUniversities()).find(school => school.country === "South Korea" && policyV6Tier(school.slug) === "base");
   assert.ok(korean);
   assert.deepEqual((await indexLocales(korean.slug)).locales, ["en", "zh"]);
@@ -70,10 +72,13 @@ test("full-tier schools keep the reviewed registry", async () => {
   assert.deepEqual((await indexLocales("harvard-university")).locales, ["en"]);
 });
 
-test("the rankings index is listed in English and the legacy locales", async () => {
+test("the rankings index is listed in the content languages only", async () => {
   assert.ok((await buildSitemapSection("core")).some(entry => new URL(entry.url).pathname === "/rankings"));
-  for (const locale of ["zh", "fr", "pl", "es", "nl", "ms"] as const) {
-    assert.ok((await buildSitemapSection(locale)).some(entry => new URL(entry.url).pathname === `/${locale}/rankings`), locale);
+  assert.ok((await buildSitemapSection("zh")).some(entry => new URL(entry.url).pathname === "/zh/rankings"));
+  for (const locale of ["fr", "pl", "es", "nl", "ms", "ja"] as const) {
+    const entries = await buildSitemapSection(locale);
+    // A UI-only locale section lists native-language school pages only (none locally).
+    assert.ok(entries.every(entry => /^\/[A-Za-z-]+\/universities\/[a-z0-9-]+$/.test(new URL(entry.url).pathname)), locale);
   }
 });
 
@@ -91,8 +96,10 @@ test("the changes sitemap lists every release, history event and school history 
   assert.ok(paths.has("/changes/v6-target-r7-candidate-20261021"));
   // Event-only revisions without release records have no release page.
   assert.ok(!paths.has("/changes/qs20-24-v6-r3-20261020"));
-  for (const locale of ["zh", "fr", "pl", "es", "nl", "ms"]) assert.ok(paths.has(`/${locale}/changes/paris-northwestern-v6-r1-20261022/northwestern-university`), locale);
-  assert.ok(![...paths].some(path => /^\/(?:zh|fr|pl|es|nl|ms)\/changes\/(?!paris-northwestern-v6-r1-20261022\/)/.test(path)));
+  assert.ok(paths.has("/zh/changes/paris-northwestern-v6-r1-20261022/northwestern-university"));
+  // Localized change pages exist in zh only; /<uiLocale>/changes/... are 301s.
+  for (const locale of ["fr", "pl", "es", "nl", "ms"]) assert.ok(![...paths].some(path => path.startsWith(`/${locale}/`)), locale);
+  assert.ok(![...paths].some(path => /^\/zh\/changes\/(?!paris-northwestern-v6-r1-20261022\/)/.test(path)));
   // Largest live group that R1 had dropped.
   assert.ok([...paths].filter(path => path.startsWith("/changes/public-release-20260715-005/")).length >= 300);
   for (const path of paths) {

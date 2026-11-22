@@ -71,3 +71,14 @@ test("metadata-only revisions do not masquerade as zero revised Claim records",(
   const html=renderToStaticMarkup(<PolicyV6ChangesClient slug="school" locale="zh" today="2026-10-23" initial={{status:"ready",overview:view}}/>);
   assert(!html.includes("修订 0 条"));assert(html.includes("1 次记录更新"));
 });
+
+test("server HTML carries no render date: without today it lists every dated change and no 90-day label (render once, docs/render-once.md)",()=>{
+  const view=overview([preview("old","2025-01-05"),preview("new","2026-10-20")]);
+  const html=renderToStaticMarkup(<PolicyV6ChangesClient slug="school" recordSha256={view.recordSha256} locale="en" initial={{status:"ready",overview:view}}/>);
+  assert.equal((html.match(/class="v6-changes-event"/g)??[]).length,2);
+  assert(html.includes(v6ChangesCopy("en").count.replace("{n}","2")));
+  assert(html.includes(`<span class="v6-changes-meta">${v6ChangesCopy("en").count.replace("{n}","2")}</span>`));
+  assert(!html.includes('aria-pressed="true"'));
+  // Same input, same bytes: nothing time-dependent reaches the markup.
+  assert.equal(html,renderToStaticMarkup(<PolicyV6ChangesClient slug="school" recordSha256={view.recordSha256} locale="en" initial={{status:"ready",overview:view}}/>));
+});

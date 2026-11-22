@@ -11,8 +11,9 @@ import { generateMetadata as generateCoverageMetadata } from "../apps/web/app/(d
 import { generateMetadata as generateMonthlyReportMetadata } from "../apps/web/app/(default)/reports/monthly/[month]/page";
 import { SUPPORTED_LOCALES, withLocalePrefix } from "../apps/web/lib/i18n";
 import { getAbsoluteSiteUrl } from "../apps/web/lib/site-url";
+import { CONTENT_LOCALES } from "../apps/web/lib/content-locales";
 
-test("reports, analysis, themes, regions, and coverage pages have self-canonical and reciprocal hreflang for SUPPORTED_LOCALES", async () => {
+test("reports, analysis, themes, regions, and coverage pages have self-canonical and reciprocal hreflang for the content languages", async () => {
   const sectionEndpoints = [
     {
       name: "/reports",
@@ -53,8 +54,10 @@ test("reports, analysis, themes, regions, and coverage pages have self-canonical
     },
   ];
 
+  // Content-language URLs (apps/web/lib/content-locales.ts): only en and zh pages render; the
+  // other legacy UI locales are 301s to the English page and are no hreflang alternates.
   for (const endpoint of sectionEndpoints) {
-    for (const locale of SUPPORTED_LOCALES) {
+    for (const locale of CONTENT_LOCALES) {
       const meta = await endpoint.run(locale);
       const expectedCanonical = getAbsoluteSiteUrl(withLocalePrefix(endpoint.basePath, locale));
       const alternates = meta.alternates as { canonical?: string; languages?: Record<string, string> };
@@ -66,9 +69,10 @@ test("reports, analysis, themes, regions, and coverage pages have self-canonical
         `Expected self-canonical ${expectedCanonical} for ${endpoint.name} in ${locale}, got ${alternates.canonical}`
       );
 
-      // Verify reciprocal hreflang for all SUPPORTED_LOCALES + x-default
+      // Verify reciprocal hreflang for the content languages + x-default, and nothing else
       assert.ok(alternates.languages, `Expected languages for ${endpoint.name} in ${locale}`);
-      for (const targetLocale of SUPPORTED_LOCALES) {
+      assert.deepEqual(Object.keys(alternates.languages).sort(), [...CONTENT_LOCALES, "x-default"].sort());
+      for (const targetLocale of CONTENT_LOCALES) {
         const expectedTargetUrl = getAbsoluteSiteUrl(withLocalePrefix(endpoint.basePath, targetLocale));
         assert.equal(
           alternates.languages[targetLocale],

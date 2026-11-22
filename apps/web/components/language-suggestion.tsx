@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getReadingLocaleFromPathname } from "@/lib/i18n";
 import { LANGUAGE_NAMES, isReadingLocale, type ReadingLocale } from "@/lib/language-catalog";
-import { readingLanguageHref, suggestedReadingLocale } from "@/lib/language-choice";
+import { hasContentUrl, readingLanguageHref, suggestedReadingLocale } from "@/lib/language-choice";
+import { writeUiLocale } from "@/lib/ui-locale-preference";
 import { useDeclaredPageReadingLocales } from "@/lib/page-reading-locales";
 import { interpolate } from "@/lib/reading-ui-text";
 import { useShellMessages } from "@/components/reading-ui-text-provider";
@@ -69,6 +70,7 @@ export function LanguageSuggestion() {
           try {
             window.localStorage.setItem(CHOICE_STORAGE_KEY, suggestedLocale);
             window.localStorage.setItem(DISMISS_STORAGE_KEY, "1");
+            if (!hasContentUrl(pathname, suggestedLocale, declared)) writeUiLocale(suggestedLocale);
           } catch {
             // The destination URL preserves the selected language.
           }

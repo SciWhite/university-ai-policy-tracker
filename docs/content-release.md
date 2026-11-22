@@ -250,6 +250,9 @@ runs after it. A file purge does not clear the client-navigation variants
 program cutover, purge the whole zone instead:
 `{"purge_everything": true}` with the same token. A cold edge then refills
 from the warm origin.
+Once the render-once page store is installed (`docs/render-once.md` §6), a content switch does
+not purge the origin: `render-once.py generation` and `refresh` replace `purge-html-cache` and
+refresh the changed URLs in all 33 locales. Until then:
 On the host, also purge the origin HTML cache:
 `sudo /usr/local/libexec/uapt-program-release.py purge-html-cache --reason "content switch <contentId>"`
 (`docs/program-release.md` §6.1). Purge the origin first, then Cloudflare.
