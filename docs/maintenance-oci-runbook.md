@@ -38,6 +38,9 @@ record that gap explicitly. They must not claim a complete university audit.
   `needs_openclaw` rows, using one lightweight agent per source/page.
 - Maintenance output is metadata. It is not claim evidence and does not upgrade
   review state.
+- Enrolling a released V6 batch in the source monitor is pipeline stage S8b,
+  `pnpm v6:openclaw-enroll` (`docs/v6-pipeline.md` §2.4): additive, read-only on
+  the host except the approved install, with a receipt per step.
 
 ## Host Paths
 
