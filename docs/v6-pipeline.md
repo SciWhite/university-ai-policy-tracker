@@ -54,8 +54,9 @@ batch stands and names the next step. The `pnpm v6:*` scripts wrap each stage.
 
 1. `content-release.py remote check`, then `remote activate --bundle-sha256 <approved sha>`. The
    activate step ends with `refresh`: a new nginx content generation and a loopback refresh of the
-   batch's changed URLs in the page store (en, zh, and the UI-locale school URLs the switch plan
-   lists). Read `receipts/refresh.json`: `origin.mode` `page-store` is the normal case;
+   batch's changed URLs in the page store (en and zh; every UI-locale URL of a school whose record
+   or reading data changed, since its native page can appear or turn into a 308; other UI-locale
+   school URLs are probed and re-rendered only when the store holds a native page). Read `receipts/refresh.json`: `origin.mode` `page-store` is the normal case;
    `epoch-purge-fallback` means `generation` or `refresh` failed and the whole origin store was
    purged instead (`fallbackReason`; record it in the batch notes, the release is still correct).
 2. Cloudflare `purge_everything` (token in `.env.agents.local`; covered by the release request).

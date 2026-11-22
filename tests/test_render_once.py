@@ -144,12 +144,16 @@ class PurgeSemanticsTests(unittest.TestCase):
         self.assertEqual(ro.expand_paths([], ['/zh/changes/mit']), ['/changes/mit', '/zh/changes/mit'])
         self.assertEqual(ro.expand_paths([], ['/universities/epfl']), ['/universities/epfl', '/zh/universities/epfl'])
 
-    def test_ui_locale_school_pages_are_forced_only_for_reading_changes(self):
-        # A reading-locale change can turn a native page into its 308 or back: every listed locale
-        # is refreshed. Other UI-locale school URLs are probed instead (stored native page -> refresh).
+    def test_ui_locale_school_pages_are_rendered_when_native_status_can_change(self):
+        # A record or reading change can turn a native page into its 308 or back (also on a
+        # rollback): every UI locale is re-rendered, listed or not. Other UI-locale school URLs
+        # are probed instead (stored native page -> refresh).
         cohort = ['/universities/epfl'] + [f'/{l}/universities/epfl' for l in ro.READING_LOCALES if l != 'en']
-        self.assertEqual(ro.expand_paths([], cohort, reading_changed=set()), ['/universities/epfl', '/zh/universities/epfl'])
-        self.assertEqual(len(ro.expand_paths([], cohort, reading_changed={'epfl'})), len(ro.READING_LOCALES))
+        self.assertEqual(ro.expand_paths([], cohort, status_changed=set()), ['/universities/epfl', '/zh/universities/epfl'])
+        self.assertEqual(len(ro.expand_paths([], cohort, status_changed={'epfl'})), len(ro.READING_LOCALES))
+        base_tier = ro.expand_paths([], ['/universities/mit', '/zh/universities/mit'], status_changed={'mit'})
+        self.assertEqual(len(base_tier), len(ro.READING_LOCALES)); self.assertIn('/ko/universities/mit', base_tier)
+        self.assertEqual(ro.probe_paths(['/universities/mit'], base_tier), [])
         urls = ro.expand_paths(['/universities/epfl', '/zh/universities/epfl'], cohort + ['/fr/changes', '/ja/changes/epfl'])  # no plan says: listed = forced
         self.assertEqual(urls[:2], ['/universities/epfl', '/zh/universities/epfl'])
         self.assertEqual(len(urls), len(ro.READING_LOCALES))  # exactly the listed school URLs
@@ -161,19 +165,20 @@ class PurgeSemanticsTests(unittest.TestCase):
         # A non-cohort school is listed in en/zh only, but may have a native page (base-tier
         # schoolTargetLocales): its UI-locale URLs are probed, so a stored native page is refreshed.
         plan = ['/universities/mit', '/zh/universities/mit', '/changes/mit']
-        urls = ro.expand_paths([], plan, reading_changed=set())
+        urls = ro.expand_paths([], plan, status_changed=set())  # e.g. a source-metadata-only change
         probe = ro.probe_paths(plan, urls)
         self.assertEqual(len(urls), 4)  # renders: school en/zh + changes en/zh
         self.assertEqual(len(probe), len(ro.UI_LOCALES)); self.assertIn('/ko/universities/mit', probe)
         self.assertFalse([p for p in probe if '/changes' in p])
         self.assertEqual(ro.probe_paths(['/universities/epfl', '/fr/universities/epfl'], ['/universities/epfl', '/fr/universities/epfl'])[0], '/pl/universities/epfl')
 
-    def test_reading_changed_comes_from_switch_plans_only(self):
+    def test_status_changes_come_from_switch_plans_only(self):
         with tempfile.TemporaryDirectory() as tmp:
-            switch = Path(tmp) / 's.json'; switch.write_text(json.dumps({'paths': [], 'readingChangedSchools': ['epfl']}))
+            switch = Path(tmp) / 's.json'
+            switch.write_text(json.dumps({'paths': [], 'changedSchools': ['mit'], 'readingChangedSchools': ['epfl'], 'sourceMetadataChangedSchools': ['yale']}))
             changed = Path(tmp) / 'c.json'; changed.write_text(json.dumps({'paths': []}))
-            self.assertEqual(ro.read_reading_changed([switch, changed]), {'epfl'})
-            self.assertIsNone(ro.read_reading_changed([changed]))
+            self.assertEqual(ro.read_status_changed([switch, changed]), {'mit', 'epfl'})  # source metadata does not decide native status
+            self.assertIsNone(ro.read_status_changed([changed]))
 
     def test_urls_cli_prints_the_expanded_list(self):
         with tempfile.TemporaryDirectory() as tmp:

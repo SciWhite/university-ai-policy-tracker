@@ -9,8 +9,9 @@ nginx page store (2.2):
   refresh     --plan switch.json [--path ...] [--origin https://127.0.0.1] [--receipt r.json]
               GET every URL through nginx with `X-UAPT-Refresh: 1` (overwrites the stored entry),
               both stored encodings, then read back that nginx now answers it from the store.
-              Content-language URLs only (en, zh); UI-locale school URLs are probed and refreshed
-              when the store holds a native page (expand_paths, probe_paths).
+              Content-language URLs (en, zh); every UI-locale URL of a school whose record or
+              reading data changed; other UI-locale school URLs are probed and refreshed when the
+              store holds a native page (expand_paths, probe_paths).
   generation  --content-id <id> [--file ...] [--log ...] [--dry-run]   (root) new content
               generation for generic pages and RSC variants; nginx -t, reload, restore on failure
 
@@ -85,14 +86,22 @@ def read_plan_paths(files):
     return paths
 
 
-def read_reading_changed(files):
-    """Union of the switch plans' readingChangedSchools (schools whose reading locales, and so
-    their native pages, can appear or disappear); None when no plan carries the field."""
+# Switch-plan fields naming schools whose native pages can appear or disappear: native status
+# (isNativeSchoolLocale, apps/web/lib/university-reading-metadata.ts) depends on the school's
+# record (changedSchools: record digests) and its reading data (readingChangedSchools). Source
+# metadata does not enter it, so sourceMetadataChangedSchools is not listed here.
+STATUS_FIELDS = ('changedSchools', 'readingChangedSchools')
+
+
+def read_status_changed(files):
+    """Union of the switch plans' changedSchools and readingChangedSchools; None when no plan
+    carries either field (then every listed UI-locale URL is re-rendered)."""
     found = None
     for file in files:
         data = json.loads(Path(file).read_text())
-        if isinstance(data, dict) and isinstance(data.get('readingChangedSchools'), list):
-            found = (found or set()) | set(data['readingChangedSchools'])
+        for field in STATUS_FIELDS:
+            if isinstance(data, dict) and isinstance(data.get(field), list):
+                found = (found or set()) | set(data[field])
     return found
 
 
@@ -103,7 +112,7 @@ def _school_slug(base):
     return base[len('/universities/'):] if base.startswith('/universities/') else None
 
 
-def expand_paths(first, plan_paths, reading_changed=None):
+def expand_paths(first, plan_paths, status_changed=None):
     """The URLs a content release must refresh in the page store, in order: the readback set,
     then every page-store path in the content languages (en, zh), then the UI-locale school
     pages that must be refreshed whatever they are now, then the plan's other paths as listed
@@ -112,10 +121,11 @@ def expand_paths(first, plan_paths, reading_changed=None):
     Only content-language URLs exist (apps/web/lib/content-locales.ts, docs/render-once.md §10):
     every page has en and zh; a school can also have a native-language page. Every other
     /<uiLocale>/... URL is a 301/308 to the English page, so a changed path is not expanded to
-    all 33 reading locales. A /<uiLocale>/universities/<slug> URL is refreshed here only when a
-    plan lists it and the school's reading locales changed (`reading_changed`; when no plan says,
-    every listed one): there a native page can turn into its 308 or back. The other UI-locale
-    school URLs are probed (probe_paths). /<uiLocale>/changes... URLs are constant 301s."""
+    all 33 reading locales. Every /<uiLocale>/universities/<slug> URL of a school in
+    `status_changed` (record or reading change, STATUS_FIELDS) is re-rendered here, listed or not:
+    its native page can turn into its 308 or back. Without that information (no switch plan) every
+    listed UI-locale school URL is. The other UI-locale school URLs are probed (probe_paths).
+    /<uiLocale>/changes... URLs are constant 301s."""
     ordered, seen = [], set()
     def add(path):
         if path not in seen: seen.add(path); ordered.append(path)
@@ -125,21 +135,24 @@ def expand_paths(first, plan_paths, reading_changed=None):
         locale, base = strip_locale(path)
         if not page_store_path(base): other.append(path)
         elif locale in (None, *CONTENT_LOCALES): store.append(base)
-        elif _school_slug(base) and (reading_changed is None or _school_slug(base) in reading_changed): ui_school.append(path)
+        elif _school_slug(base) and status_changed is None: ui_school.append(path)
     for base in store:
         for locale in CONTENT_LOCALES: add(localized(base, locale))
+    for base in store:
+        if status_changed is not None and _school_slug(base) in status_changed:
+            for locale in UI_LOCALES: add(localized(base, locale))
     for path in ui_school: add(path)
     for path in other: add(path)
     return ordered
 
 
 def probe_paths(plan_paths, refreshed):
-    """Every UI-locale URL of every school page in the plans that is not refreshed already. Such a
-    URL is the school's native page or a 308 to the English page, and only a reading change (which
-    is refreshed) switches between the two. So refresh() reads the stored entry first and
-    re-renders only a stored native page (200); a stored redirect stays as it is. A miss is fetched
-    and stored fresh by that read. A non-cohort school's native page is listed in en/zh only by
-    switch.ts, so without this it would keep the old content for 30 days."""
+    """Every UI-locale URL of every school page in the plans that is not refreshed already, i.e.
+    of schools whose native status cannot change in this release (page-only and source-metadata
+    changes). Such a URL stays a native page or stays a 308, so refresh() reads the stored entry
+    first and re-renders only a stored native page (200); a stored redirect stays as it is, and a
+    miss is fetched and stored fresh by that read (a full render). A school the switch plan lists
+    in en/zh only can still have a native page; without the probe it would keep old content."""
     done, ordered = set(refreshed), []
     for path in map(_check_path, plan_paths):
         slug = _school_slug(strip_locale(path)[1])
@@ -539,7 +552,7 @@ def main(argv=None, *, get=http_get):
 
     if args.command in ('urls', 'refresh'):
         plan_paths = read_plan_paths(args.plan)
-        paths = expand_paths(args.path, plan_paths, read_reading_changed(args.plan))
+        paths = expand_paths(args.path, plan_paths, read_status_changed(args.plan))
         probe = probe_paths(plan_paths + args.path, paths)
         if not paths: raise ValueError('No paths; pass --plan and/or --path')
         if args.command == 'urls':

@@ -293,13 +293,15 @@ class ContentReleaseHostTest(unittest.TestCase):
         self.assertIn('raised JSONDecodeError', receipt['origin']['fallbackReason'])
         self.assertEqual(len(self.commands('purge-html-cache')), 1)
 
-    def test_active_page_tree_refuses_instead_of_reporting_a_refresh(self):
+    def test_active_page_tree_purges_the_rest_then_refuses(self):
         self.install_page_store()
         self.host.page_tree_current.parent.mkdir(parents=True); self.host.page_tree_current.symlink_to('trees/t1')
         self.activate('--no-refresh')
-        with self.assertRaisesRegex(self.module['Refused'], 'pre-rendered page tree is active'):
+        with self.assertRaisesRegex(self.module['Refused'], 'switch is live.*pre-rendered page tree is active'):
             self.main('refresh', '--op', str(self.op), '--legacy-helper-reason', 'test')
         self.assertEqual(self.commands('render-once.py'), [])
+        self.assertEqual(len(self.commands('purge-html-cache')), 1)  # generic pages and the store are not left on the old release
+        self.assertIn('page tree is active', self.refresh_receipt()['origin']['fallbackReason'])
 
     def test_standalone_refresh_checks_the_helper_pin(self):
         self.install_page_store()
@@ -500,6 +502,13 @@ class PublicReadbackTest(unittest.TestCase):
         code, receipt = self.run_readback(self.site({'/zh/universities/alpha-university': (308, b'', {'location': '/universities/alpha-university'}, 0.01)}))
         self.assertEqual(code, 1)
         self.assertEqual(receipt['problems'][0]['path'], '/zh/universities/alpha-university')
+
+    def test_retries_are_kept_per_path_without_the_query(self):
+        # v6:readback adds ?uapt_readback=<batch> to page reads and looks rows up by the bare path.
+        reader = self.module['PublicReader']('https://eduaipolicy.org', get=self.site({'/universities/alpha-university?uapt_readback=b4': [(524, b'', {}, 1.0), (200, b'ok', {}, 0.01)]}),
+                                             sleep=self.sleep, clock=self.clock)
+        self.assertEqual(reader('/universities/alpha-university?uapt_readback=b4')[0], 200)
+        self.assertEqual(reader.retried, {'/universities/alpha-university': [524]})
 
     def test_loopback_reads_are_not_paced(self):
         reader = self.module['PublicReader']('http://127.0.0.1:3102', get=self.site(), sleep=self.sleep, clock=self.clock)

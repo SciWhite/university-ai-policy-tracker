@@ -262,18 +262,20 @@ changes documents for 30 days; a content switch does not purge it. `content-rele
    `HIT`). This renders the changed pages too, so it replaces the warm-up.
 
 Only content-language URLs are rendered: en and zh of every changed path. A
-`/<uiLocale>/universities/<slug>` URL is a native page or a 308 to the English page; it is
-re-rendered when the school's reading locales changed (`readingChangedSchools` in the switch
-plan: the page can turn into its 308 or back), and otherwise **probed**: `refresh` reads the
-stored entry (both encodings, no refresh header) and re-renders only a stored native page (200).
-A stored 308 is unchanged by definition; a miss is fetched fresh by the probe. This also covers
-native pages of non-cohort (base-tier) schools, which the switch plan lists in en/zh only.
-`/<uiLocale>/changes…` URLs are constant 301s and are skipped. Size: a changed school costs 2
-renders (en, zh; 4 with its changes page) plus 31 probes, which are store hits for a page or
-redirect seen before (a 10-school batch: about 40 renders and 620 cheap probe reads; a school in
-`readingChangedSchools`, e.g. a new V6 school, adds 31 renders that mostly end in a 308). The step
-shares the `--warm-max-seconds` budget (2,400 s); running out of time is a problem row, so it
-falls back to the epoch purge.
+`/<uiLocale>/universities/<slug>` URL is a native page or a 308 to the English page, and which
+one depends on the school's record and reading data (`isNativeSchoolLocale`). So all 31 UI-locale
+URLs are re-rendered for the switch plan's `changedSchools` and `readingChangedSchools` (also on a
+rollback, where a 308 can turn back into a native page). Every other UI-locale URL of a school in
+the plans (page-only and source-metadata changes, whose native status cannot change) is
+**probed**: `refresh` reads the stored entry (both encodings, no refresh header) and re-renders
+only a stored native page (200); a stored redirect stays, and a miss is a fresh render by the
+probe itself. This also covers native pages of base-tier schools that the switch plan lists in
+en/zh only. `/<uiLocale>/changes…` URLs are constant 301s and are skipped. Cost: a school with a
+record or reading change costs 2–4 content renders plus 31 redirect or native renders (each 2
+requests); a page-only or source-metadata school costs 2–4 renders plus 31 probes (2 requests
+each, store hits when seen before, a full render on a miss, 3 more requests for a stored native
+page). The step shares the `--warm-max-seconds` budget (2,400 s); running out of time is a
+problem row, so it falls back to the epoch purge.
 
 **Fallback: the epoch purge.** If the page store is not installed (no
 `/etc/nginx/conf.d/uapt-html-content-generation.inc`), the switch plan is missing, or
@@ -435,11 +437,12 @@ Steps, in order:
    helper's own `scripts/release/render-once.py` (pinned by `HELPER.json`, so its URL rules match
    the running program; it is the same file as `/usr/local/libexec/uapt-render-once.py`;
    `UAPT_RENDER_ONCE` overrides it). Its path and SHA256 go into the receipt. `refresh` adds the
-   en/zh URL of every page-store path, re-renders all listed UI-locale school URLs of
-   `readingChangedSchools`, and probes the other UI-locale URLs of every changed school (re-render
-   only a stored native page). A standalone `refresh` checks the helper pin like `activate`.
-   If a pre-rendered page tree is active (`/srv/uapt/page-tree/current`, R3), `refresh` refuses:
-   nginx serves the tree first and neither path updates it yet.
+   en/zh URL of every page-store path, re-renders all 31 UI-locale URLs of the switch plan's
+   `changedSchools` and `readingChangedSchools`, and probes the other UI-locale URLs of the plans'
+   schools (re-render only a stored native page). A standalone `refresh` checks the helper pin like
+   `activate`. If a pre-rendered page tree is active (`/srv/uapt/page-tree/current`, or
+   `UAPT_PAGE_TREE_ROOT`; R3), `refresh` runs the fallback purge and then refuses: the switch is
+   live, but nginx serves the tree first and neither path updates it yet.
 2. Fallback, when the store is not installed, the plan is missing, foreign or unreadable, step 1
    raises, or either command exits non-zero: `warm-changed-pages.py --plan changed-urls.json` (receipt `receipts/warm.json`), then
    `uapt-program-release.py purge-html-cache --reason "content switch <id>"`.

@@ -494,8 +494,9 @@ def page_store_refresh(host, op, args, changed):
     if os.path.lexists(host.page_tree_current):
         # nginx try_files serves the tree before the store; neither a refresh nor the epoch purge
         # changes it. Capture + activate for content releases is R3 (docs/render-once.md §8).
-        raise Refused(f'A pre-rendered page tree is active ({host.page_tree_current}); content releases cannot refresh it yet. '
-                      'Deactivate it (render-once.py deactivate) or capture and activate a tree for this release, then run refresh again.')
+        # cmd_refresh purges the rest first, then refuses.
+        step['pageTree'] = str(host.page_tree_current)
+        return step, f'a pre-rendered page tree is active ({host.page_tree_current})'
     plan, problem = switch_plan(host, op)
     if problem:
         return step, problem
@@ -574,6 +575,10 @@ def cmd_refresh(host, op, args):
                               'next': 'Cloudflare purge_everything (operator), then the paced public readback (<= 5 requests/s, waits out 429), then complete.'})
     if failed:
         raise Refused(failed + '; nothing else changed. Run refresh again after fixing it.')
+    if store.get('pageTree'):
+        raise Refused(f'The switch is live and the origin cache was purged, but a pre-rendered page tree is active ({store["pageTree"]}; '
+                      'UAPT_PAGE_TREE_ROOT if nginx --page-tree points elsewhere): its school/changes pages still show the previous release. '
+                      'Deactivate it (render-once.py deactivate) or capture and activate a tree for this release (R3), then purge Cloudflare.')
     if warm and warm['exit']:
         log('Warm-up left some pages cold (see receipts/warm.json); readback retries 524s, or run refresh again.')
 
@@ -710,7 +715,7 @@ class PublicReader:
         self.paced = (not is_loopback(base)) if paced is None else paced
         self.lock = threading.Lock(); self.next_at = 0.0
         self.requests = 0; self.rate_limited = 0
-        self.retried = {}  # path -> statuses answered before the final one (5xx, 0, 429)
+        self.retried = {}  # path (without query) -> statuses answered before the final one (5xx, 0, 429)
 
     def _pace(self):
         with self.lock:
@@ -728,13 +733,13 @@ class PublicReader:
             status, body, response_headers, seconds = self.get(self.base + path, headers, self.timeout)
             if status == 429 and limited > 0:
                 limited -= 1
-                with self.lock: self.rate_limited += 1; self.retried.setdefault(path, []).append(status)
+                with self.lock: self.rate_limited += 1; self.retried.setdefault(path.split('?', 1)[0], []).append(status)
                 self.sleep(retry_after(response_headers)); continue
             attempt += 1
             if (status and status < 500) or attempt >= self.attempts:
                 return status, body, response_headers, seconds
             # A 5xx/524 is retried but kept: after a refresh it is a finding (docs/content-release.md §5).
-            with self.lock: self.retried.setdefault(path, []).append(status)
+            with self.lock: self.retried.setdefault(path.split('?', 1)[0], []).append(status)
             self.sleep(3)
 
 
