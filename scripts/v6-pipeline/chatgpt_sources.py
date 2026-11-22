@@ -27,6 +27,7 @@ def main():
         domains = B.official_domains(batch, school)
         seen = {B.norm(json.loads(f.read_text())['url']) for f in (ws / 'captures' / abbr).glob('*.json')}
         seen |= {B.norm(l.split('\t')[3]) for l in existing if l.startswith(abbr + '\t')}
+        seen |= B.queued_urls(ws, abbr)  # never queue a URL another queue already holds
         n = sum(1 for l in existing if l.startswith(abbr + '\t'))
         added, offsite = 0, []
         for u in chatgpt_urls(json.loads(audit_file.read_text())):

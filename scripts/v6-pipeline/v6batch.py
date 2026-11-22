@@ -30,6 +30,8 @@ DEFAULT_CONTENT_PATTERN = (
     r"künstliche intelligenz|generative ki|\bKI\b|kunstig intelligens|generativ ai|人工智能|生成式|大模型|"
     r"kecerdasan buatan|inteligencia artificial|\bIA\b|intelligenza artificiale|kunstmatige intelligentie|generatieve ai|"
     r"artificiell intelligens|intelligence artificielle|IA générative|\bIAG\b|intel·ligència artificial|生成AI|生成系AI|人工知能|생성형|인공지능")
+# Capture queues (abbr, key, language, url); gates.py requires a receipt for every row.
+QUEUE_FILES = ('sources.tsv', 'chatgpt-sources.tsv', 'firecrawl-sources.tsv', 'extra-sources.tsv')
 DEFAULT_MULTI_SUFFIXES = ["edu.au", "ac.uk", "edu.cn", "edu.my", "ac.za", "ac.at", "ac.nz", "utm.my", "ac.kr", "ac.jp"]
 
 
@@ -104,6 +106,18 @@ def norm(url):
     from urllib.parse import urlsplit
     s = urlsplit(url.strip())
     return (s.hostname or '').lower().removeprefix('www.') + s.path.rstrip('/') + (('?' + s.query) if s.query else '')
+
+
+def queued_urls(ws, abbr):
+    """Normalized URLs already queued for a school in any capture queue (so no lead is queued twice)."""
+    out = set()
+    for name in QUEUE_FILES:
+        path = Path(ws) / name
+        for line in path.read_text().splitlines() if path.is_file() else []:
+            parts = line.split('\t')
+            if len(parts) >= 4 and parts[0] == abbr:
+                out.add(norm(parts[3]))
+    return out
 
 
 def multi_suffixes(batch):

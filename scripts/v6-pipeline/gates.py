@@ -26,7 +26,7 @@ import v6batch as B  # noqa: E402
 CJK = re.compile(r'[㐀-鿿]')
 LAYERS = ('crawl', 'firecrawl', 'chatgpt')
 DISPOSITIONS = {'covered', 'not_material', 'duplicate', 'out_of_scope', 'superseded'}
-QUEUE_FILES = ('sources.tsv', 'chatgpt-sources.tsv', 'firecrawl-sources.tsv', 'extra-sources.tsv')
+QUEUE_FILES = B.QUEUE_FILES
 
 
 def _json(path, default=None):
@@ -93,18 +93,22 @@ def discovery_gate(ws, batch):
         fire = _json(ws / 'firecrawl' / a / 'leads.json', [])
         leads += [('firecrawl', l['url']) for l in fire if l.get('candidate')]
         dispositions = dispositions_all.get(a, {})
-        resolved = {'captured': 0, 'accessGap': 0, 'disposed': 0}
+        resolved = {'captured': 0, 'accessGap': 0, 'textGap': 0, 'disposed': 0}
         unresolved = []
         for layer, url in dict.fromkeys(leads):
             receipt = captured.get(B.norm(url))
             if receipt:
-                resolved['captured' if receipt.get('status') == '200' else 'accessGap'] += 1
+                # non-200 = access gap; 200 without text (capture.py textError) = text gap; both are typed and resolved
+                resolved['captured' if receipt.get('status') == '200' and not receipt.get('textError') else
+                         'textGap' if receipt.get('status') == '200' else 'accessGap'] += 1
             elif _disposed(url, dispositions):
                 resolved['disposed'] += 1
             else:
                 unresolved.append(f'{layer}: {url}')
         problems += [f'lead neither captured nor disposed: {u}' for u in unresolved]
-        report[a] = {'layers': layer_state, 'leads': len(dict.fromkeys(leads)), **resolved, 'captures': len(receipts), 'problems': problems}
+        text_gaps = sorted(k for k, r in receipts.items() if r.get('textError'))
+        report[a] = {'layers': layer_state, 'leads': len(dict.fromkeys(leads)), **resolved, 'captures': len(receipts),
+                     'textGaps': text_gaps, 'problems': problems}
         failures += [f'{a}: {p}' for p in problems]
     return report, failures
 

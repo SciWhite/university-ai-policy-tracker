@@ -36,8 +36,8 @@ def status(ws, batch):
     receipts = (ws / batch.get('reviewDir', 'review') / 'independent-review.json').is_file()
     assembled = (ws / batch.get('outDir', 'release-candidate') / 'assembly-receipt.json').is_file()
     if problems: step = 'Provide the G0 inputs listed above.'
-    elif not all(r['crawl'] and r['firecrawl'] and r['chatgpt'] for r in rows): step = 'S1 discovery: discover.py, firecrawl_discover.py + firecrawl_sources.py, ChatGPT audit (save-clip.sh) + chatgpt_sources.py, then capture.py.'
-    elif gates['discovery'] != 'pass': step = 'Capture queued rows, dispose remaining leads, then gates.py discovery.'
+    elif not all(r['crawl'] and r['firecrawl'] and r['chatgpt'] for r in rows): step = 'S1 discovery: pnpm v6:run --workspace <ws> (harness background command; read its summary), plus the ChatGPT audit per school (save-clip.sh), then v6:run again.'
+    elif gates['discovery'] != 'pass': step = 'Dispose remaining leads or record typed gaps, then pnpm v6:run (captures queued rows and reruns G1).'
     elif not all(r['view'] for r in rows): step = 'S3 drafting (prompts/DRAFT-BRIEF.md) -> build_view.py -> finalize.ts.'
     elif gates['locale'] != 'pass': step = 'gates.py locale (Chinese on every /zh/ row).'
     elif not all(r['packet'] for r in rows): step = 'finalize.ts (full run, writes selection.json) -> packets.ts.'
