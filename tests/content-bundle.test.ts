@@ -5,14 +5,17 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, wri
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { READING_LOCALES } from "../apps/web/lib/language-catalog";
+import { CONTENT_LOCALES } from "../apps/web/lib/content-locales";
 import { buildBundle, changedUrls, deltaObjects, isrExpiryRequest } from "../scripts/content-release/bundle";
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 
-test("ISR expiry covers every reading locale of each changed school plus the change listings", () => {
+test("ISR expiry covers every reading locale of each changed school plus the content-language change listings", () => {
   const request = isrExpiryRequest("c-new", ["alpha-university", "beta-university"], "v6-rev");
   assert.deepEqual(request.tags, ["school:alpha-university", "school:beta-university", "changes", "changes:v6-rev"]);
-  assert.equal(request.paths.length, 2 + (READING_LOCALES.length - 1) + 2 * (1 + READING_LOCALES.length));
+  assert.equal(request.paths.length, 2 + (CONTENT_LOCALES.length - 1) + 2 * (1 + READING_LOCALES.length));
+  assert.ok(request.paths.includes("/zh/changes"));
+  assert.ok(!request.paths.includes("/fr/changes"), "/<uiLocale>/changes is a constant 301");
   assert.ok(request.paths.includes("/universities/alpha-university"));
   assert.ok(request.paths.includes("/zh-Hant/universities/beta-university"));
   assert.ok(request.paths.includes("/sitemaps/changes.xml"));

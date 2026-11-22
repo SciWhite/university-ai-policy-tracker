@@ -21,6 +21,7 @@ import { existsSync, linkSync, mkdirSync, readFileSync, readdirSync, statSync, w
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { READING_LOCALES } from "../../apps/web/lib/language-catalog";
+import { CONTENT_LOCALES } from "../../apps/web/lib/content-locales";
 import { CONTENT_ID_PATTERN } from "./lib";
 
 export const BUNDLE_SCHEMA = "uapt-content-release-bundle-v1";
@@ -32,10 +33,14 @@ const sha = (bytes: Buffer | string) => createHash("sha256").update(bytes).diges
 
 const localePath = (locale: string, rest: string) => (locale === "en" ? "" : `/${locale}`) + rest;
 
-/** Tags and paths a page-only change of these schools must expire (matches the batch 2/3 requests). */
+/**
+ * Tags and paths a page-only change of these schools must expire. School pages in every reading
+ * locale (a UI-only locale is a native page or its redirect, like switch.ts); the changes index in
+ * the content languages only, because /<uiLocale>/changes is a constant 301 (lib/content-locales.ts).
+ */
 export function isrExpiryRequest(contentId: string, slugs: string[], changesRevision: string, locales: readonly string[] = READING_LOCALES) {
   const paths = new Set<string>(["/changes", "/sitemaps/changes.xml"]);
-  for (const locale of locales) if (locale !== "en") paths.add(`/${locale}/changes`);
+  for (const locale of CONTENT_LOCALES) if (locale !== "en") paths.add(`/${locale}/changes`);
   for (const slug of slugs) {
     paths.add(`/changes/${slug}`);
     for (const locale of locales) paths.add(localePath(locale, `/universities/${slug}`));

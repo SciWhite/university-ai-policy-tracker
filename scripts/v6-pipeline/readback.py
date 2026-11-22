@@ -3,14 +3,19 @@
 
   python3 scripts/v6-pipeline/readback.py --workspace <dir> <base-url> <out.json> <contentId> <manifestSha256> <metadata.json> <scope.json> [workers]
 
-Public readback uses 1 worker (2 concurrent requests trip nginx 503 on /api/public/v1). Reads en and zh for every school
-in scope, fr/es/de for four sampled schools, the API record of every school and batch.json readback.controls (default:
-unchanged controls). Errors: non-200, application errors, missing V6 layout, source-metadata or Claim ID mismatch.
+Public readback uses 1 worker (2 concurrent requests trip nginx 503 on /api/public/v1) and the paced reader of
+scripts/release/content-release.py: at most 5 requests/s, a 429 waits out Cloudflare's block (60 requests / 10 s per IP
+on */universities/* and */changes/*). Redirects are never followed. Reads en and zh for every school in scope, the API
+record of every school, batch.json readback.controls (default: unchanged controls), and fr/es/de for four sampled
+schools: only content languages have URLs (en, zh, a school's native language), so a sampled UI-locale URL must be a
+native V6 page (200) or a 308 to the English page. Errors: non-200, application errors, missing V6 layout,
+source-metadata or Claim ID mismatch, a UI-locale URL that is neither.
 """
-import json, re, sys, hashlib, html, random, urllib.request, concurrent.futures as cf, datetime, pathlib
+import json, re, sys, hashlib, html, random, runpy, concurrent.futures as cf, datetime, pathlib
 from urllib.parse import urlsplit
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import v6batch as Bt  # noqa: E402
+RELEASE = runpy.run_path(str(pathlib.Path(__file__).resolve().parents[1] / "release/content-release.py"))
 WS, ARGS = Bt.workspace_from_argv()
 BATCH = Bt.load(WS)
 BASE, OUT, CID, MSHA = ARGS[0].rstrip("/"), ARGS[1], ARGS[2], ARGS[3]
@@ -20,19 +25,23 @@ scope = {u["slug"]: u["publicClaimIds"] for u in json.load(open(ARGS[5]))["unive
 slugs = sorted(scope)
 def key(u):
     s = urlsplit(html.unescape(u).strip()); return s.netloc.lower().removeprefix("www.") + s.path.rstrip("/") + (("?" + s.query) if s.query else "")
+READ = RELEASE["PublicReader"](BASE, timeout=300)  # paced unless BASE is loopback
+LOCATION = {}
 def get(path, extra=""):
-    req = urllib.request.Request(BASE + path + extra, headers={"User-Agent": "uapt-readback"})
-    try:
-        with urllib.request.urlopen(req, timeout=300) as r: return r.status, r.read()
-    except urllib.error.HTTPError as e: return e.code, b""
-    except Exception as e: return 0, str(e).encode()
+    st, body, headers, _ = READ(path + extra)
+    if st in (301, 308): LOCATION[path] = headers.get("location", "")
+    return st, body if st else headers.get("error", "").encode()
 rng = random.Random(11)
 pages = [f"{'' if l == 'en' else '/' + l}/universities/{s}" for s in slugs for l in ("en", "zh")]
-pages += [f"/{l}/universities/{s}" for l in ("fr", "es", "de") for s in rng.sample(slugs, min(4, len(slugs)))]
+ui_pages = [f"/{l}/universities/{s}" for l in ("fr", "es", "de") for s in rng.sample(slugs, min(4, len(slugs)))]
+pages += ui_pages
 apis = [f"/api/public/v1/universities/{s}.json" for s in slugs]
 controls = BATCH.get("readback", {}).get("controls") or ["/", "/universities", "/changes", "/sitemap.xml", "/llms.txt", "/universities/harvard-university", "/zh/universities/rice-university", "/universities/university-of-bristol", "/api/public/v1/universities/harvard-university.json"]
 def page(p):
     st, b = get(p, "?uapt_readback=" + BATCH["batchId"] if BASE.startswith("https") else ""); h = b.decode("utf-8", "replace"); slug = p.rsplit("/", 1)[1]
+    if p in ui_pages and st in (301, 308):  # UI-only locale: the English page with #ui=<locale>
+        target = urlsplit(LOCATION.get(p, ""))
+        return p, {"status": st, "location": LOCATION.get(p), "uiLocaleRedirect": target.path == f"/universities/{slug}"}
     hrefs = list(dict.fromkeys(re.findall(r'<a href="([^"]+)" target="_blank" rel="noopener noreferrer" data-analytics-entity-slug', h)))
     expected = {key(d["url"]) for d in meta["schools"].get(slug, [])}
     lang = (re.search(r'<html[^>]* lang="([^"]+)"', h) or [None, None])[1]
@@ -51,7 +60,11 @@ rows = {}
 with cf.ThreadPoolExecutor(W) as ex:
     for f, items in ((page, pages), (api, apis), (ctrl, controls)):
         for p, r in ex.map(f, items): rows[p] = r
-errors = [p for p, r in rows.items() if r["status"] != 200 or r.get("applicationError") or r.get("v6Layout") is False or ("renderedSourceMetadata" in r and (r["renderedSourceMetadata"] != r["expectedSourceMetadata"] or (not r["expectedSourceMetadata"] and meta["schools"].get(p.rsplit("/", 1)[1])))) or ("claimIdsMatchScope" in r and (not r["claimIdsMatchScope"] or (r["sourceMetadataDocuments"] not in (r["expectedSourceMetadataDocuments"], 0))))]
-out = {"contentId": CID, "manifestSha256": MSHA, "base": BASE, "checkedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "rows": rows, "errors": errors}
+errors = [p for p, r in rows.items() if r.get("uiLocaleRedirect") is False or ("uiLocaleRedirect" not in r and r["status"] != 200) or r.get("applicationError") or r.get("v6Layout") is False or ("renderedSourceMetadata" in r and (r["renderedSourceMetadata"] != r["expectedSourceMetadata"] or (not r["expectedSourceMetadata"] and meta["schools"].get(p.rsplit("/", 1)[1])))) or ("claimIdsMatchScope" in r and (not r["claimIdsMatchScope"] or (r["sourceMetadataDocuments"] not in (r["expectedSourceMetadataDocuments"], 0))))]
+retried = {p: [x for x in READ.retried.get(p, []) if x != 429] for p in rows}
+for p, earlier in retried.items():
+    if earlier: rows[p]["retriedAfter"] = earlier  # a 5xx/524 answered on a retry is still a finding
+errors += [p for p, earlier in retried.items() if earlier and p not in errors]
+out = {"contentId": CID, "manifestSha256": MSHA, "base": BASE, "paced": READ.paced, "requests": READ.requests, "rateLimited": READ.rate_limited, "checkedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(), "rows": rows, "errors": errors}
 json.dump(out, open(OUT, "w"), indent=1)
 print(json.dumps({"rows": len(rows), "pages": len(pages), "apis": len(apis), "controls": len(controls), "errors": errors[:10], "errorCount": len(errors)}))

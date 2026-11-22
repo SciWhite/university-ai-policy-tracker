@@ -9,6 +9,9 @@ nginx page store (2.2):
   refresh     --plan switch.json [--path ...] [--origin https://127.0.0.1] [--receipt r.json]
               GET every URL through nginx with `X-UAPT-Refresh: 1` (overwrites the stored entry),
               both stored encodings, then read back that nginx now answers it from the store.
+              Content-language URLs (en, zh); every UI-locale URL of a school whose record or
+              reading data changed; other UI-locale school URLs are probed and refreshed when the
+              store holds a native page (expand_paths, probe_paths).
   generation  --content-id <id> [--file ...] [--log ...] [--dry-run]   (root) new content
               generation for generic pages and RSC variants; nginx -t, reload, restore on failure
 
@@ -83,27 +86,83 @@ def read_plan_paths(files):
     return paths
 
 
-def expand_paths(first, plan_paths, locales=READING_LOCALES):
+# Switch-plan fields naming schools whose native pages can appear or disappear: native status
+# (isNativeSchoolLocale, apps/web/lib/university-reading-metadata.ts) depends on the school's
+# record (changedSchools: record digests), its reading data (readingChangedSchools) and its V6 page
+# data (page-only changes: the bundle lists every locale of those schools in changed-urls.json).
+# Source metadata does not enter it, so sourceMetadataChangedSchools is not listed here.
+STATUS_FIELDS = ('changedSchools', 'readingChangedSchools')
+
+
+def read_status_changed(files):
+    """Union of the switch plans' changedSchools and readingChangedSchools; None when no plan
+    carries either field (then every listed UI-locale URL is re-rendered)."""
+    found = None
+    for file in files:
+        data = json.loads(Path(file).read_text())
+        for field in STATUS_FIELDS:
+            if isinstance(data, dict) and isinstance(data.get(field), list):
+                found = (found or set()) | set(data[field])
+    return found
+
+
+UI_LOCALES = tuple(l for l in READING_LOCALES if l not in CONTENT_LOCALES)
+
+
+def _school_slug(base):
+    return base[len('/universities/'):] if base.startswith('/universities/') else None
+
+
+def expand_paths(first, plan_paths, status_changed=None):
     """The URLs a content release must refresh in the page store, in order: the readback set,
-    then every page-store path in every reading locale (a switch plan lists most schools in
-    en/zh only, but all locales are served and stored), then the plan's other paths as listed
-    (generic pages go cold with the content generation; fetching them only warms them)."""
+    then every page-store path in the content languages (en, zh), then the UI-locale school
+    pages that must be refreshed whatever they are now, then the plan's other paths as listed
+    (generic pages go cold with the content generation; fetching them only warms them).
+
+    Only content-language URLs exist (apps/web/lib/content-locales.ts, docs/render-once.md §10):
+    every page has en and zh; a school can also have a native-language page. Every other
+    /<uiLocale>/... URL is a 301/308 to the English page, so a changed path is not expanded to
+    all 33 reading locales. A /<uiLocale>/universities/<slug> URL is re-rendered here when a plan
+    lists it (switch.ts for cohort and reading changes, the bundle's changed-urls.json for its
+    page-only schools: V6 page data also decides native status) and, listed or not, for every
+    school in `status_changed` (switch plan changedSchools/readingChangedSchools, STATUS_FIELDS):
+    there a native page can turn into its 308 or back. The other UI-locale school URLs are probed
+    (probe_paths). /<uiLocale>/changes... URLs are constant 301s."""
     ordered, seen = [], set()
     def add(path):
         if path not in seen: seen.add(path); ordered.append(path)
     for path in first: add(_check_path(path))
-    store, other = [], []
+    store, ui_school, other = [], [], []
     for path in map(_check_path, plan_paths):
         locale, base = strip_locale(path)
-        (store if page_store_path(base) else other).append(base if page_store_path(base) else path)
+        if not page_store_path(base): other.append(path)
+        elif locale in (None, *CONTENT_LOCALES): store.append(base)
+        elif _school_slug(base): ui_school.append(path)  # listed: re-render whatever it is now
     for base in store:
-        # School pages: every locale (a UI-only locale is a native page or its redirect, and that
-        # status follows the content). Changes pages exist in the content locales only; their
-        # /<uiLocale>/ URLs are constant 301s (apps/web/lib/content-locales.ts).
-        for locale in (locales if base.startswith('/universities/') else CONTENT_LOCALES):
-            if locale != 'en': add(localized(base, locale))
-            else: add(base)
+        for locale in CONTENT_LOCALES: add(localized(base, locale))
+    for base in store:
+        if status_changed is not None and _school_slug(base) in status_changed:
+            for locale in UI_LOCALES: add(localized(base, locale))
+    for path in ui_school: add(path)
     for path in other: add(path)
+    return ordered
+
+
+def probe_paths(plan_paths, refreshed):
+    """Every UI-locale URL of every school page in the plans that is not refreshed already, i.e.
+    unlisted URLs of schools whose native status cannot change in this release (a switch plan
+    lists such a school in en/zh only, e.g. a source-metadata change). Such a URL stays a native
+    page or stays a 308, so refresh() reads the stored entry
+    first and re-renders only a stored native page (200); a stored redirect stays as it is, and a
+    miss is fetched and stored fresh by that read (a full render). A school the switch plan lists
+    in en/zh only can still have a native page; without the probe it would keep old content."""
+    done, ordered = set(refreshed), []
+    for path in map(_check_path, plan_paths):
+        slug = _school_slug(strip_locale(path)[1])
+        if not slug or not page_store_path('/universities/' + slug): continue
+        for locale in UI_LOCALES:
+            url = f'/{locale}/universities/{slug}'
+            if url not in done: done.add(url); ordered.append(url)
     return ordered
 
 
@@ -150,16 +209,29 @@ def _attempt(get, origin, path, headers, timeout):
 
 # ---------------------------------------------------------------- page store refresh
 
-def refresh(origin, paths, *, timeout=180.0, max_seconds=3600.0, get=http_get, clock=time.monotonic):
+def refresh(origin, paths, *, probe=(), timeout=180.0, max_seconds=3600.0, get=http_get, clock=time.monotonic):
     """One request at a time (the app renders on one thread). For each URL: the gzip and the
     identity entry with `X-UAPT-Refresh: 1`, one retry each, then a plain gzip read that must be
-    answered by nginx (HIT) for a 200 in the page store. Returns receipt rows."""
+    answered by nginx (HIT) for a 200 in the page store. A `probe` URL is first read as stored
+    (both encodings, no refresh header) and refreshed only when a stored entry is a 200.
+    Returns receipt rows."""
     started, rows = clock(), []
-    for index, path in enumerate(paths):
+    queue = [(p, False) for p in paths] + [(p, True) for p in probe]
+    for index, (path, probing) in enumerate(queue):
         if clock() - started > max_seconds:
-            rows += [{'path': p, 'skipped': 'time budget'} for p in paths[index:]]
+            rows += [{'path': p, 'skipped': 'time budget'} for p, _ in queue[index:]]
             break
         row = {'path': path, 'pageStore': page_store_path(strip_locale(path)[1])}
+        if probing:
+            row['probe'] = {}
+            for encoding in ('gzip', 'identity'):
+                headers = {'Accept-Encoding': 'gzip'} if encoding == 'gzip' else {}
+                status, response, _, _ = _attempt(get, origin, path, headers, timeout)
+                if status not in OK_STATUS: status, response, _, _ = _attempt(get, origin, path, headers, timeout)
+                row['probe'][encoding] = {'status': status, 'cache': response.get('x-uapt-origin-cache')}
+            # A stored (not just fetched) 200 is a native page rendered before the switch.
+            if not any(p['status'] == 200 and p['cache'] != 'MISS' for p in row['probe'].values()):
+                rows.append(row); continue
         for encoding in ('gzip', 'identity'):
             headers = {'X-UAPT-Refresh': '1', **({'Accept-Encoding': 'gzip'} if encoding == 'gzip' else {})}
             status, response, _, seconds = _attempt(get, origin, path, headers, timeout)
@@ -178,6 +250,9 @@ def refresh_problems(rows):
     problems = []
     for row in rows:
         if 'skipped' in row: problems.append({'path': row['path'], 'problem': 'skipped (time budget)'}); continue
+        for encoding, probe in row.get('probe', {}).items():
+            if probe['status'] not in OK_STATUS: problems.append({'path': row['path'], 'problem': f'{encoding} probe status {probe["status"]}'})
+        if 'gzip' not in row: continue  # probed, not refreshed: a stored redirect or a fresh fetch
         for encoding in ('gzip', 'identity'):
             if row[encoding]['status'] not in OK_STATUS: problems.append({'path': row['path'], 'problem': f'{encoding} refresh status {row[encoding]["status"]}'})
             elif row[encoding]['cache'] not in ('BYPASS', None) and row[encoding]['status'] == 200:
@@ -479,19 +554,22 @@ def main(argv=None, *, get=http_get):
     args = parser.parse_args(argv)
 
     if args.command in ('urls', 'refresh'):
-        paths = expand_paths(args.path, read_plan_paths(args.plan))
+        plan_paths = read_plan_paths(args.plan)
+        paths = expand_paths(args.path, plan_paths, read_status_changed(args.plan))
+        probe = probe_paths(plan_paths + args.path, paths)
         if not paths: raise ValueError('No paths; pass --plan and/or --path')
         if args.command == 'urls':
-            print(json.dumps({'paths': paths, 'count': len(paths)}, indent=1)); return 0
+            print(json.dumps({'paths': paths, 'count': len(paths), 'probe': probe, 'probeCount': len(probe)}, indent=1)); return 0
         parse_origin(args.origin)
         begun = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        rows = refresh(args.origin, paths, timeout=args.timeout, max_seconds=args.max_seconds, get=get)
+        rows = refresh(args.origin, paths, probe=probe, timeout=args.timeout, max_seconds=args.max_seconds, get=get)
         problems = refresh_problems(rows)
         receipt = {'schemaVersion': REFRESH_SCHEMA, 'startedAt': begun, 'finishedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                   'origin': args.origin, 'plans': args.plan, 'requested': len(paths), 'problems': problems,
+                   'origin': args.origin, 'plans': args.plan, 'requested': len(paths), 'probed': len(probe),
+                   'probeRefreshed': sum(1 for r in rows if 'probe' in r and 'gzip' in r), 'problems': problems,
                    'slowest': sorted(({'path': r['path'], 'seconds': r['gzip']['seconds']} for r in rows if 'gzip' in r and r['gzip']['seconds']), key=lambda r: -r['seconds'])[:10], 'rows': rows}
         _write(args.receipt, receipt)
-        print(json.dumps({k: receipt[k] for k in ('origin', 'requested')} | {'problems': len(problems), 'firstProblems': problems[:5]}, indent=2))
+        print(json.dumps({k: receipt[k] for k in ('origin', 'requested', 'probed', 'probeRefreshed')} | {'problems': len(problems), 'firstProblems': problems[:5]}, indent=2))
         return 1 if problems else 0
     if args.command == 'generation':
         print(json.dumps(write_generation(args.content_id, file=args.file, log=args.log or None, reason=args.reason, dry_run=args.dry_run), indent=2)); return 0
