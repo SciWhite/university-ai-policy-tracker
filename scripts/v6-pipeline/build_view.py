@@ -49,7 +49,13 @@ for school in Bt.schools(BATCH, args):
     history = get(d / 'historical-inventory.json'); old = history['records']; bypublic = {r['id']: r for r in old if r['layer'] == 'basic'}
     current = public['claims']
     assert [c['id'] for c in current] == [c['claimId'] for c in cfg['claims']], 'inputs.claims must follow public order with claimId'
-    assert set(bypublic) == {c['id'] for c in current}, 'Historic and live public IDs diverged'
+    live_ids = {c['id'] for c in current}
+    # mode "update" re-presents V6 schools whose public claims may be newer than the frozen private inventory
+    # (20261011-integration-v5). A live Claim ID without an inventory record keeps its public recordKey and is listed in
+    # audit.json; an inventory ID that is no longer public stays an older record below. mode "add" keeps exact parity.
+    newer_public = sorted(live_ids - set(bypublic)) if BATCH['mode'] == 'update' else []
+    for rid in newer_public: bypublic[rid] = dict(recordKey='basic:' + slug + ':' + rid)
+    assert set(bypublic) >= live_ids and (BATCH['mode'] == 'update' or set(bypublic) == live_ids), 'Historic and live public IDs diverged'
     captures = P / 'captures' / abbr
     source_data = {f.stem: get(f) for f in sorted(captures.glob('*.json'))}
     source_map = {}; bindings = {}
@@ -142,7 +148,7 @@ for school in Bt.schools(BATCH, args):
                                     localProjection=rid, evidenceIds=ee, publicationApproved=False)
         else:
             record_audit[rk] = dict(recordKey=rk, status='HELD', scope=r['layer'], reason='Historical object lacks a sufficiently exact current-source mapping for local promotion.', evidenceIds=[], publicationApproved=False)
-    assert len(record_audit) == len(old)
+    assert len(record_audit) == len(old) + len(newer_public)
     dims = []; ml = {}; summaries = {}; scopes = {}
     assert [t['key'] for t in cfg['topics']] == keys, 'topics must be the nine keys in order'
     for key, title, t in zip(keys, titles, cfg['topics'], strict=True):
@@ -196,7 +202,7 @@ for school in Bt.schools(BATCH, args):
     put(d / 'view-prehash.json', view)
     put(d / 'audit.json', dict(schemaVersion='uapt-private-v6-school-audit-v1', slug=slug, name=name, rankYear=2026, rank=rank, language='en', institutionAuditStatus='PARTIAL', publicationApproved=False, verifiedOn=NOW,
                                basis=dict(publicRecordSha256=h(d / 'public.json'), publicToolsSha256=h(d / 'public-tools.json'), historicManifestSha256=history['parentManifestSha256'], historicSubsetSha256=h(d / 'historical-inventory.json'), registrySha256=h(W / 'docs/policy-audit-requirements-v1.1.json')),
-                               historicalSourceObjectGaps=archive_gaps, publicClaimIds=list(decisions), preservedRecordKeys=list(record_audit), recordAudit=list(record_audit.values()), publicToolAudit=tool_audit,
+                               historicalSourceObjectGaps=archive_gaps, publicClaimIdsNewerThanInventory=newer_public, publicClaimIds=list(decisions), preservedRecordKeys=list(record_audit), recordAudit=list(record_audit.values()), publicToolAudit=tool_audit,
                                verifiedNamedLocalTools=[t['rawToolName'] for t in tools], unresolvedHistoricalRecordKeys=workflow_holds, excludedClaimIds=held, sourceReadbacks=list(source_data.values()), gaps=gaps,
                                discoveryGate=(Bt.read_gate(P, 'discovery') or {}).get('inputsSha256'), discoveryGateOverride=override or None))
     print(abbr, 'ready; public IDs', len(current), 'records', len(old), 'tools', len(tools), 'quotes', len(bindings), 'held', len(workflow_holds) + len(held), flush=True)
