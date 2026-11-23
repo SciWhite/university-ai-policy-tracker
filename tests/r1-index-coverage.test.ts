@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { getCatalogUniversities, getPublicUniversitySummaryBySlug } from "../apps/web/lib/catalog";
 import { universityReadingBasis } from "../apps/web/lib/university-reading-basis";
-import { universityReadingIndexLocales, universityReadingMetadata } from "../apps/web/lib/university-reading-metadata";
+import { mergeIndexLocales, universityReadingIndexLocales, universityReadingMetadata } from "../apps/web/lib/university-reading-metadata";
 import { policyV6Tier } from "../apps/web/lib/policy-v6-tier";
 import { schoolSwitcherLocales } from "../apps/web/lib/school-languages";
 import { buildSitemapSection } from "../apps/web/lib/sitemap-sections";
@@ -66,10 +66,30 @@ test("robots, hreflang and the switcher agree for base-tier schools", async () =
   }
 });
 
-test("full-tier schools keep the reviewed registry", async () => {
-  // No registry is loaded locally, so a full school stays English-only.
-  assert.equal(policyV6Tier("harvard-university"), "full");
-  assert.deepEqual((await indexLocales("harvard-university")).locales, ["en"]);
+// A full V6 school was indexed from the reviewed registry only, which no pipeline step writes, so
+// every base -> full upgrade dropped /zh/ from the index (2026-11-23: 13 of 183 V6 schools).
+test("full-tier schools are indexed in zh from their own view and in no other language without a package", async () => {
+  const zh: string[] = [], englishOnly: string[] = [];
+  for (const school of await getCatalogUniversities()) {
+    if (policyV6Tier(school.slug) !== "full" || !(await getPublicUniversitySummaryBySlug(school.slug))) continue;
+    // No reading package and no registry locally: only the view can add a language, and only zh.
+    const { locales } = await indexLocales(school.slug);
+    assert.ok(["en", "en,zh"].includes(locales.join()), `${school.slug}: ${locales}`);
+    (locales.includes("zh") ? zh : englishOnly).push(school.slug);
+    for (const other of ["fr", "de", "ja"]) assert.deepEqual((await indexLocales(school.slug, other)).locales, ["en"], `${school.slug} ${other}`);
+  }
+  // Both outcomes must occur, or the test proves nothing.
+  assert.ok(zh.length > 0, "no full-tier school indexed in zh");
+  assert.ok(englishOnly.length > 0, "every full-tier school passed without a package");
+  // Named, so an inverted decision fails too: Durham's view carries its own Chinese; Adelaide's relies on a package.
+  assert.ok(zh.includes("durham-university") && englishOnly.includes("adelaide-university"));
+});
+
+test("merge: targets first, registry extras kept, a target language only with evidence", () => {
+  assert.deepEqual(mergeIndexLocales(["en", "zh", "de"], ["en"], []), ["en"]);
+  assert.deepEqual(mergeIndexLocales(["en", "zh", "de"], ["en"], ["zh"]), ["en", "zh"]);
+  assert.deepEqual(mergeIndexLocales(["en", "zh", "de"], ["en"], ["de", "zh"]), ["en", "zh", "de"]);
+  assert.deepEqual(mergeIndexLocales(["en", "zh"], ["en", "pl"], ["zh"]), ["en", "zh", "pl"]);
 });
 
 test("the rankings index is listed in the content languages only", async () => {

@@ -26,59 +26,12 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { zhCoverageProblems, type ReadingLookup } from "../../apps/web/lib/v6-zh-coverage";
 
-const CJK = /[㐀-鿿]/;
-const zh = (value: unknown) => typeof value === "string" && value.trim() !== "" && CJK.test(value);
 const text = (value: unknown): value is string => typeof value === "string" && value.trim() !== "";
 
-/** True when the zh reading-translation package has an accepted unit for this exact English string. */
-export type ReadingLookup = (source: string) => boolean;
-const TOOL_PROSE = ["description", "howToObtain", "costToUser"] as const;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function zhCoverageProblems(view: any, translated?: ReadingLookup): string[] {
-  const out: string[] = [];
-  const tr = (source: unknown) => Boolean(translated && text(source) && translated(source));
-  const topics = [...(view.school?.topics ?? []), ...(view.school?.additionalTopics ?? [])];
-  for (const t of topics) {
-    const k = t.key;
-    if (!zh(view.topicLabels?.[k]?.zh) && !tr(view.topicLabels?.[k]?.en)) out.push(`topicLabels.${k}.zh`);
-    if (!zh(view.topicLabels?.[`${k}:status`]?.zh) && !tr(view.topicLabels?.[`${k}:status`]?.en)) out.push(`topicLabels.${k}:status.zh`);
-    // The page shows the view entry when it is set, else the zh school topic's own summary/scope
-    // (applyLocalV6Bundle in apps/web/lib/policy-v6-bundle.ts).
-    for (const [family, field] of [["topicSummaries", "summary"], ["topicScopes", "scope"]] as const) {
-      const entry = view[family]?.[k];
-      const shown = text(entry?.zh) ? entry.zh : t[field];
-      if (!zh(shown) && !tr(entry?.en || t[field])) out.push(`${family}.${k}.zh`);
-    }
-  }
-  // Only the legacy page renders the hero; v6_presentation_integration pages use the catalog name.
-  if (view.publication?.kind !== "v6_presentation_integration") {
-    for (const part of ["title", "scope"]) if (!zh(view.hero?.[part]?.zh) && !tr(view.hero?.[part]?.en)) out.push(`hero.${part}.zh`);
-  }
-  const guide = view.studentActions ?? {};
-  const linked = new Set<string>();
-  for (const side of ["do", "dont"]) (guide[side] ?? []).forEach((a: { en?: string; zh?: string; claimIds?: string[] }, i: number) => {
-    if (!zh(a.zh) && !tr(a.en)) out.push(`studentActions.${side}[${i}].zh`);
-    for (const id of a.claimIds ?? []) linked.add(id);
-  });
-  for (const ids of Object.values(guide.procedures ?? {}) as string[][]) for (const id of ids) linked.add(id);
-  for (const id of [...linked].sort()) {
-    const row = guide.claims?.[id];
-    if (!row) out.push(`linked evidence row missing: ${id}`);
-    else if (!zh(row.summaryZh) && !tr(row.text)) out.push(`evidence row without summaryZh (English on /zh/): ${id}`);
-  }
-  for (const tool of view.tools ?? []) {
-    const prose = TOOL_PROSE.map(field => tool[field]).filter(text);
-    if (!prose.length) continue; // name and labels only; nothing to translate
-    const proseTranslated = prose.every(tr);
-    if (view.toolDisplayMode === "historical_discovery") {
-      // PolicyV6PublicToolContext never reads toolDisplayCopy; it shows the record's prose.
-      if (!proseTranslated) out.push(`tool discovery prose without Chinese (historical_discovery): ${tool.rawToolName}`);
-    } else if (!text(view.toolDisplayCopy?.zh?.[tool.rawToolName]?.description) && !proseTranslated) out.push(`toolDisplayCopy.zh: ${tool.rawToolName}`);
-  }
-  return out;
-}
+export { zhCoverageProblems };
+export type { ReadingLookup };
 
 export interface PagesZhOptions {
   /** Per-slug zh reading-translation lookups (release audit only; assemble passes none). */

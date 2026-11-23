@@ -122,7 +122,8 @@
     "content:bundle": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/bundle.ts",
     "content:host-release": "python3 scripts/release/content-release.py",
     "content:sync-proof": "python3 scripts/content-release/sync-proof.py",
-    "test:content-release": "tsc --noEmit -p scripts/tsconfig.content-release.json && tsx --tsconfig apps/web/tsconfig.json --test tests/content-release.test.ts tests/content-correct.test.ts tests/reading-record-delta.test.ts tests/content-bundle.test.ts"
+    "content:index-locales": "tsx --tsconfig apps/web/tsconfig.json scripts/content-release/index-locales.ts",
+    "test:content-release": "tsc --noEmit -p scripts/tsconfig.content-release.json && tsx --tsconfig apps/web/tsconfig.json --test tests/content-release.test.ts tests/content-correct.test.ts tests/reading-record-delta.test.ts tests/content-bundle.test.ts tests/content-index-locales.test.ts tests/r1-index-coverage.test.ts tests/policy-v6-base-tier.test.ts tests/v6-zh-coverage.test.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

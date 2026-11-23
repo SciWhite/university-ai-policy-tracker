@@ -98,6 +98,7 @@ export function changedSurface(previous: { manifest?: ContentReleaseManifest; di
     const school = route.startsWith("/universities/");
     for (const locale of school && all ? READING_LOCALES : CONTENT_LOCALES) if (locale !== "en") paths.add(`/${locale}${route}`);
   };
+  const family = (name: string, m?: ContentReleaseManifest) => JSON.stringify(m?.families?.[name] ?? null);
   const before = previous.digests ?? {};
   const schools = [...new Set([...Object.keys(before), ...Object.keys(next.digests)])].filter(slug => before[slug] !== next.digests[slug]).sort();
   const cohort = new Set(next.cohort);
@@ -112,8 +113,10 @@ export function changedSurface(previous: { manifest?: ContentReleaseManifest; di
   const metaBefore = previous.sourceMetadata ?? {}, metaAfter = next.sourceMetadata ?? {};
   const sourceMetadata = [...new Set([...Object.keys(metaBefore), ...Object.keys(metaAfter)])].filter(slug => metaBefore[slug] !== metaAfter[slug]).sort();
   for (const slug of sourceMetadata) { tags.add(`school:${slug}`); localized(`/universities/${slug}`, cohort.has(slug)); }
-  if (added.length || reading.length) { tags.add("sitemap"); for (const p of ["/sitemap.xml", "/sitemaps/core.xml", "/sitemaps/universities.xml"]) paths.add(p); }
-  const family = (name: string, m?: ContentReleaseManifest) => JSON.stringify(m?.families?.[name] ?? null);
+  // A page update can also change a school's index languages: zh follows the V6 view, and a reading
+  // package is complete only for the display strings the view shows (batch 7 rewrote them, 2026-11-22).
+  const pagesChanged = family("public-v6-pages", previous.manifest) !== family("public-v6-pages", next.manifest);
+  if (added.length || reading.length || pagesChanged) { tags.add("sitemap"); for (const p of ["/sitemap.xml", "/sitemaps/core.xml", "/sitemaps/universities.xml"]) paths.add(p); }
   if (family("public-change-history", previous.manifest) !== family("public-change-history", next.manifest) || family("public-v6-change-overviews", previous.manifest) !== family("public-v6-change-overviews", next.manifest)) {
     tags.add("changes"); localized("/changes", true); paths.add("/sitemaps/changes.xml");
     const revision = next.manifest.families["public-v6-records"]?.revision;

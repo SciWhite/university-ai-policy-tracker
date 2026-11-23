@@ -12,7 +12,7 @@ const sha = (value: string | Buffer) => createHash("sha256").update(value).diges
 
 test("ISR expiry covers every reading locale of each changed school plus the content-language change listings", () => {
   const request = isrExpiryRequest("c-new", ["alpha-university", "beta-university"], "v6-rev");
-  assert.deepEqual(request.tags, ["school:alpha-university", "school:beta-university", "changes", "changes:v6-rev"]);
+  assert.deepEqual(request.tags, ["school:alpha-university", "school:beta-university", "sitemap", "changes", "changes:v6-rev"]);
   assert.equal(request.paths.length, 2 + (CONTENT_LOCALES.length - 1) + 2 * (1 + READING_LOCALES.length));
   assert.ok(request.paths.includes("/zh/changes"));
   assert.ok(!request.paths.includes("/fr/changes"), "/<uiLocale>/changes is a constant 301");

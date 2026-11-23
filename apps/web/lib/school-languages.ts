@@ -6,7 +6,8 @@ import type { ReadingLocale } from "./language-catalog";
  * Simplified Chinese comes second, and each school may add the language of its
  * country or region. A language in this target set is offered, declared in
  * hreflang and listed in the sitemap only once accepted content exists for it.
- * Multilingual (full V6) schools keep their existing reading locales instead.
+ * Since 2026-11-23 this holds for base and full V6 schools alike; a full school also keeps the
+ * languages its reviewed registry names (lib/university-reading-metadata.ts).
  */
 export const SECOND_SCHOOL_LOCALE = "zh" satisfies ReadingLocale;
 
@@ -89,10 +90,17 @@ const regionLocale: Readonly<Record<string, Readonly<Record<string, ReadingLocal
   }
 };
 
-// Institutions whose region is itself bilingual.
-const institutionLocale: Readonly<Record<string, ReadingLocale>> = {
+// The institution's own language wins over its place (owner, 2026-11-23): a French-language
+// university in an English-speaking country is indexed in French, and the other way round.
+// `null` = the institution works in English, so its place adds no language.
+const institutionLocale: Readonly<Record<string, ReadingLocale | null>> = {
   "universite-libre-de-bruxelles": "fr",
-  "vrije-universiteit-brussel-vub": "nl"
+  "vrije-universiteit-brussel-vub": "nl",
+  "mcgill-university": null, // English-language universities in Montréal
+  "concordia-university": null,
+  "university-of-ottawa": "fr", // bilingual (English/French) by statute
+  "abo-akademi-university": "sv", // Swedish-language university in Finland
+  "saint-joseph-university-of-beirut-usj": "fr" // French-language university in Lebanon
 };
 
 export interface SchoolLanguageIdentity {
@@ -103,8 +111,8 @@ export interface SchoolLanguageIdentity {
 
 /** The school's country or region language, if it is a reading locale. */
 export function schoolRegionalLocale(school: SchoolLanguageIdentity): ReadingLocale | undefined {
-  return institutionLocale[school.slug]
-    ?? (school.region ? regionLocale[school.country]?.[school.region] : undefined)
+  if (Object.hasOwn(institutionLocale, school.slug)) return institutionLocale[school.slug] ?? undefined;
+  return (school.region ? regionLocale[school.country]?.[school.region] : undefined)
     ?? countryLocale[school.country];
 }
 

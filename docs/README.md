@@ -19,6 +19,7 @@ Do not follow a doc that is not on this page.
 | [program-release.md](program-release.md) | Shipping code, UI, routes, dependencies, schemas or UI copy; it also covers nginx, caches and slot memory |
 | [release-lifecycle.md](release-lifecycle.md) | Controller gates, journal, recovery, `rescan`, `classify-content-releases`, `hold-status` |
 | [release-storage-policy.md](release-storage-policy.md) | Disk budgets, retention register, hold deadlines, archiving and cleanup |
+| [index-languages.md](index-languages.md) | Which languages a school page is indexed in, the 2026-11-23 loss, and the release check |
 | [v6-pipeline.md](v6-pipeline.md) | Running a batch of schools from crawl to V6 to a content release |
 | [server-fixes-20261121.md](server-fixes-20261121.md) | Memory, watchdog and hold-deadline fixes applied on 2026-11-21 |
 | [stop-bleed-set2-20261121.md](stop-bleed-set2-20261121.md) | nginx and Cloudflare changes applied on 2026-11-21, and how to measure them |

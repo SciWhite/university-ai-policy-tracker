@@ -45,7 +45,9 @@ export function isrExpiryRequest(contentId: string, slugs: string[], changesRevi
     paths.add(`/changes/${slug}`);
     for (const locale of locales) paths.add(localePath(locale, `/universities/${slug}`));
   }
-  return { expectedContentId: contentId, tags: [...slugs.map(s => `school:${s}`), "changes", `changes:${changesRevision}`], paths: [...paths].sort() };
+  return { expectedContentId: contentId, // Index languages (robots, hreflang, sitemap) follow the page content: docs/index-languages.md. Tag only:
+    // a refresh of the cold /sitemaps/zh.xml can outlast the proxy timeout and fail the whole refresh.
+    tags: [...slugs.map(s => `school:${s}`), "sitemap", "changes", `changes:${changesRevision}`], paths: [...paths].sort() };
 }
 
 /** Warm order: en and zh school pages first (the readback set), then every other changed path. */

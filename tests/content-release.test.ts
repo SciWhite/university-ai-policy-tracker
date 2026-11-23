@@ -233,6 +233,15 @@ test("a locale-index or translation change refreshes the school and sitemap with
   assert.ok(!surface.tags.includes("school:mit"));
 });
 
+test("a page-only update refreshes the sitemap: index languages follow the V6 pages", () => {
+  const at = (revision: string) => ({ families: { "public-v6-pages": { revision } }, files: [] }) as unknown as ContentReleaseManifest;
+  const digests = { yale: "1" };
+  const surface = changedSurface({ manifest: at("r1"), digests }, { manifest: at("r2"), digests, cohort: ["yale"] });
+  assert.deepEqual(surface.changedSchools, []);
+  assert.ok(surface.tags.includes("sitemap"));
+  assert.ok(!changedSurface({ manifest: at("r1"), digests }, { manifest: at("r1"), digests, cohort: ["yale"] }).tags.includes("sitemap"));
+});
+
 test("a source-metadata change refreshes only the affected school pages, without a record change", () => {
   const manifest = { families: {}, files: [] } as unknown as ContentReleaseManifest;
   const surface = changedSurface(
