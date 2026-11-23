@@ -72,10 +72,14 @@ is-active`) and MCP on 3161.
 - **Retention:** holds keep their first `heldSince`/`reviewBefore`/`nextAction`. A hold blocks
   after 14 days (7 if it started before 2026-11-21). Read `hold-status.json` (the early warning) first; `rescan`
   refreshes only a stale receipt. Delete only by exact allowlist, after a hash-verified off-server archive.
-- Locales (owner, 2026-11-22; `docs/render-once.md` §10, live since 2026-11-22): only en, zh and a
-  school's native language with complete accepted prose have URLs; other UI locales redirect to
-  the English page with `#ui=<locale>`. Never add per-locale URLs, hreflang or sitemap entries for
-  UI-only locales. The render-once page store is installed (nginx 1.18: no `min_free`); until
+- Locales (owner, 2026-11-22/23; `docs/index-languages.md`, `docs/render-once.md` §10): whatever its tier, a
+  school is indexed in English, in Simplified Chinese, and in **its own language** (the institution's,
+  else its region's or country's: Université de Montréal → French) once its prose in that language is
+  complete (limits, also for zh: the doc). Never index a page in a language its package or view does
+  not cover. Moving a school to V6, or rewriting its page, must never drop an indexed language: run
+  `pnpm content:index-locales --against <parent>` on every candidate. Other UI locales redirect to the
+  English page with `#ui=<locale>`: no per-locale URLs, hreflang or sitemap entries for them.
+- The render-once page store is installed (nginx 1.18: no `min_free`); until
   `content-release.py` calls `uapt-render-once.py generation` + `refresh`, a content switch keeps
   `purge-html-cache` + the Cloudflare purge.
 - Local gates: `pnpm check`, the affected tests, `git diff --check`. Integrate on the latest

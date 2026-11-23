@@ -50,6 +50,7 @@ S1a, S1b, S1c's lead queueing, S1d and G1 run as one command, `v6:run` (§2.1).
 | S5 source metadata | `scripts/v6-source-metadata.py` (two runs + tie-break), `v6:check-meta` | `source-metadata/public-v6-source-metadata.json` |
 | S6 assemble | `v6:assemble` (re-runs the Chinese gate on the assembled pages) | `<outDir>/runtime/releases/<contentId>` |
 | S6 candidate | local preview, `v6:readback` (local), `v6:sync-basis`, `sync-proof.py materialize`, `v6:event candidate` | candidate sync package |
+| S6b index languages | `pnpm content:index-locales --out … --against <parent>` ([index-languages.md](index-languages.md)) | exit 0: no school loses an indexed language |
 | S7 bundle | `pnpm content:bundle` | op dir + bundle SHA256 for the owner |
 | S8 release | `content-release.py remote check/activate` (its `refresh` step: page-store `generation` + `refresh`, fallback `purge-html-cache`; check `receipts/refresh.json`), Cloudflare `purge_everything`, `content-release.py readback`, then `v6:readback` (public, 1 worker, each paced ≤ 5 requests/s, wait out 429), `v6:event complete`, `remote complete` | live release, receipts |
 | **S8b OpenClaw enrollment** | after `remote complete`: `v6:openclaw-enroll --workspace <ws>` (plan: live API + read-only monitor state + payload), `… dry-run`, owner approves the payload SHA256, `… install --approve <sha> --authorization "<quote>"`, `… readback` (§2.4) | `openclaw/<contentId>/receipt.json`, `payload/coverage.json`, `host/*.json` |

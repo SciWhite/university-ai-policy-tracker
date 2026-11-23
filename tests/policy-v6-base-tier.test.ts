@@ -61,7 +61,13 @@ test("school languages: English, Simplified Chinese, then the country or region 
     ["eth-zurich", "Switzerland", "Zürich", ["en", "zh", "de"]],
     ["vrije-universiteit-brussel-vub", "Belgium", "Brussels", ["en", "zh", "nl"]],
     ["universite-libre-de-bruxelles", "Belgium", "Brussels", ["en", "zh", "fr"]],
-    ["harvard-university", "United States", "Cambridge", ["en", "zh"]]
+    ["harvard-university", "United States", "Cambridge", ["en", "zh"]],
+    // The institution's own language wins over its place.
+    ["mcgill-university", "Canada", "Montreal", ["en", "zh"]],
+    ["concordia-university", "Canada", "Montreal", ["en", "zh"]],
+    ["university-of-ottawa", "Canada", "Ottawa", ["en", "zh", "fr"]],
+    ["abo-akademi-university", "Finland", "Turku", ["en", "zh", "sv"]],
+    ["saint-joseph-university-of-beirut-usj", "Lebanon", "Beirut", ["en", "zh", "fr"]]
   ];
   for (const [slug, country, region, expected] of cases) assert.deepEqual(schoolTargetLocales({ slug, country, region }), expected, slug);
   assert.equal(schoolRegionalLocale({ slug: "x", country: "Atlantis" }), undefined);

@@ -16,9 +16,11 @@ import { getPolicyV6Data } from "./policy-v6";
 import { isPublishedV6Slug } from "./policy-v6-published";
 import { publishedV6Enabled } from "./policy-v6-published-gate";
 import { ByteLru } from "./bounded-cache";
-import { localeIndexPolicySelection, readingPackageSelection } from "./content-runtime";
+import { contentScoped, localeIndexPolicySelection, readingPackageSelection } from "./content-runtime";
 import { isPolicyV6BaseTier, policyV6Tier } from "./policy-v6-tier";
-import { schoolTargetLocales, type SchoolLanguageIdentity } from "./school-languages";
+import { schoolTargetLocales, SECOND_SCHOOL_LOCALE, type SchoolLanguageIdentity } from "./school-languages";
+import { publishedV6Bundle } from "./policy-v6-published";
+import { zhCoverageProblems } from "./v6-zh-coverage";
 import { getCatalogUniversityBySlug, getPublicUniversitySummaryBySlug } from "./catalog";
 
 let cachedPolicy: { path: string; sha256: string; fileVersion: string; policy: UniversityLocaleIndexPolicy } | undefined;
@@ -191,12 +193,34 @@ async function baseTierIndexLocales(identity: SchoolLanguageIdentity, basis: { r
   return targets.filter(locale => LEGACY_INDEX_LOCALES.has(locale) || complete.includes(locale));
 }
 
-export async function universityReadingIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
-  if (!summary) return [DEFAULT_LOCALE];
-  const identity = policyV6Tier(slug) === "full" ? undefined : await getCatalogUniversityBySlug(slug);
-  if (identity) return baseTierIndexLocales(identity, basis, summary, onlyLocale);
-  // Multilingual (full V6) schools keep their reviewed locale registry.
-  const pointer = readingPackageSelection().pointer;
+/**
+ * The published V6 view carries its own Chinese for the rows G3 checks: topic cards, Do/Don't,
+ * evidence summaries and tool descriptions. Claim cards, gaps and held records on the same page
+ * stay in the source language (docs/index-languages.md). An unreadable artifact is not complete;
+ * it must not take the whole zh sitemap down.
+ */
+function v6ViewCompleteInChinese(slug: string): boolean {
+  if (!isPublishedV6Slug(slug)) return false;
+  const decided = contentScoped("v6-zh-view-complete", () => new Map<string, boolean>());
+  let complete = decided.get(slug);
+  if (complete === undefined) {
+    try {
+      const view = publishedV6Bundle(slug, SECOND_SCHOOL_LOCALE);
+      complete = Boolean(view) && zhCoverageProblems(view).length === 0;
+    } catch (error) { console.warn(`zh index decision: unreadable V6 view ${slug}`, error); return false; }
+    decided.set(slug, complete);
+  }
+  return complete;
+}
+
+/** Target order first, then the registry's extra languages; a target language only with evidence. */
+export function mergeIndexLocales(targets: readonly ReadingLocale[], registry: readonly ReadingLocale[], complete: readonly ReadingLocale[]): ReadingLocale[] {
+  const eligible = new Set<ReadingLocale>([DEFAULT_LOCALE, ...registry, ...complete]);
+  return [...new Set<ReadingLocale>([...targets, ...registry])].filter(locale => eligible.has(locale));
+}
+
+/** The reviewed registry (full V6 schools): language + exact record + complete accepted package. */
+async function registryIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary: PublicEntitySummary, pointer: string | undefined, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
   if (!pointer) return [DEFAULT_LOCALE];
   const policy = await loadPolicy();
   const school = policy?.schools?.[slug];
@@ -210,7 +234,34 @@ export async function universityReadingIndexLocales(slug: string, basis: { recor
   });
 }
 
-/** Index alternates are emitted only when the reviewed registry and exact package both pass. */
+/**
+ * Owner rule (2026-11-23, docs/index-languages.md): a school is indexed in English, in Simplified
+ * Chinese, and in its own language (institution, region or country, lib/school-languages.ts),
+ * whatever its tier. zh: a base school always (as before); a full V6 school when its view's own
+ * Chinese passes G3 or its reading package is complete. Own language: a complete reading package.
+ *
+ * Until then a full V6 school used only the reviewed registry, which no pipeline step writes, so
+ * upgrading a school from base to full removed its Chinese index entry: 13 of 183 V6 schools were
+ * indexed in zh against 632 of 632 base schools. The registry still adds the languages it reviewed;
+ * it no longer decides zh or the school's own language.
+ */
+export async function universityReadingIndexLocales(slug: string, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary, onlyLocale?: ReadingLocale): Promise<ReadingLocale[]> {
+  if (!summary) return [DEFAULT_LOCALE];
+  const full = policyV6Tier(slug) === "full";
+  const identity = await getCatalogUniversityBySlug(slug);
+  if (identity && !full) return baseTierIndexLocales(identity, basis, summary, onlyLocale);
+  const pointer = readingPackageSelection().pointer;
+  const registry = await registryIndexLocales(slug, basis, summary, pointer, onlyLocale);
+  if (!identity) return registry;
+  const own = schoolTargetLocales(identity).filter(locale =>
+    locale !== DEFAULT_LOCALE && !registry.includes(locale) && (!onlyLocale || locale === onlyLocale));
+  const fromView = own.filter(locale => locale === SECOND_SCHOOL_LOCALE && v6ViewCompleteInChinese(slug));
+  const pending = own.filter(locale => !fromView.includes(locale));
+  const fromPackage = pointer ? await completeReadingLocales(slug, basis, summary, pending, pointer) : [];
+  return mergeIndexLocales(schoolTargetLocales(identity), registry, [...fromView, ...fromPackage]);
+}
+
+/** Robots and hreflang from the one index decision (universityReadingIndexLocales). */
 export async function universityReadingMetadata(slug: string, pathname: string, locale: ReadingLocale, basis: { recordSha256: string; originalEvidenceSha256: string }, summary?: PublicEntitySummary): Promise<Pick<Metadata, "alternates" | "robots">> {
   const canonical = getAbsoluteSiteUrl(withLocalePrefix(pathname, locale));
   const eligible: ReadingLocale[] = await universityReadingIndexLocales(slug, basis, summary).catch(() => [DEFAULT_LOCALE as ReadingLocale]);
