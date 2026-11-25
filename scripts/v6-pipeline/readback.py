@@ -69,6 +69,8 @@ def main():
     pages += ui_pages
     apis = [f"/api/public/v1/universities/{s}.json" for s in slugs]
     controls = BATCH.get("readback", {}).get("controls") or ["/", "/universities", "/changes", "/sitemap.xml", "/llms.txt", "/universities/harvard-university", "/zh/universities/rice-university", "/universities/university-of-bristol", "/api/public/v1/universities/harvard-university.json"]
+    # A control that is also a batch page or API keeps its full row (Claim IDs, layout); checking it again as a control would overwrite it.
+    controls = [c for c in controls if c not in pages and c not in apis]
     def page(p):
         st, b = get(p, "?uapt_readback=" + BATCH["batchId"] if BASE.startswith("https") else ""); h = b.decode("utf-8", "replace"); slug = p.rsplit("/", 1)[1]
         if p in ui_pages and st in (301, 308):  # UI-only locale: the English page with #ui=<locale>

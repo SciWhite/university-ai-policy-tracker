@@ -14,6 +14,7 @@ import { preparePresentationEvidence } from '../../apps/web/lib/policy-v6-presen
 import { acceptV6SchoolInput } from '../../apps/web/lib/policy-v6-input';
 import { validateV6Completeness } from '../../apps/web/lib/policy-v6-completeness';
 import { selectTree } from '../../scripts/content-release/lib';
+import { loadSelected } from '../../scripts/content-release/correct';
 import { loadBatch, requireGatePassed, workspaceFromArgv } from './batch';
 
 const { ws: P } = workspaceFromArgv();
@@ -36,16 +37,32 @@ async function main() {
   selectTree(manifest.contentId, PARENT + '/tree', manifest);
   const dataset = await getStagedPublicDataset();
   const catalog = read(PARENT + '/tree/mcp/catalog.json').payload.records;
+  // mode "update": the school is already V6. Its record, tools and held claims stay exactly as the parent stores them
+  // (same objects, same key order), so the record fingerprint and tool hash the release checks are unchanged.
+  const parentData: any = BATCH.mode === 'update' ? loadSelected(PARENT + '/tree/data') : null;
+  const parentViews = parentData ? parentData.pages.locales.en.views : {};
   const selection = read(P + '/selection.json');
   const frozen: Record<string, unknown> = {};
   for (const [slug, ref] of (Object.entries(selection) as [string, { path: string; sha256: string; sourceBundleSha256: string }][]).filter(([slug]) => SLUGS.includes(slug))) {
     const localBytes = readFileSync(P + '/' + ref.path);
     assert.equal(hash(localBytes), ref.sha256);
     const view = JSON.parse(localBytes.toString());
-    const canonical = JSON.parse(JSON.stringify(publicEntitySummarySchema.parse(dataset.publicSummaries.find(s => s.entity.slug === slug))));
-    assert.deepEqual(canonical, read(P + '/' + slug + '/public.json').data, slug + ': live API record differs from the parent release record');
+    let canonical = JSON.parse(JSON.stringify(publicEntitySummarySchema.parse(dataset.publicSummaries.find(s => s.entity.slug === slug))));
+    // The universities API route adds `policySnapshot` (a link to the school's policy snapshot) at serve time; it is not
+    // part of the release record, so it is left out of the comparison.
+    const { policySnapshot: _servedLink, ...liveRecord } = read(P + '/' + slug + '/public.json').data;
+    assert.deepEqual(canonical, liveRecord, slug + ': live API record differs from the parent release record');
     assert.deepEqual(canonical, catalog.find((r: any) => r.summary.entity.slug === slug).summary);
-    const tools = read(P + '/' + slug + '/public-tools.json').map((t: unknown) => universityToolRecordSchema.parse(t));
+    let tools = read(P + '/' + slug + '/public-tools.json').map((t: unknown) => universityToolRecordSchema.parse(t));
+    if (parentData) {
+      // The stored record may carry fields the public schema strips; its public form must equal the live record.
+      const stored = parentData.records.summaries.find((x: any) => x.entity.slug === slug);
+      assert.deepEqual(JSON.parse(JSON.stringify(publicEntitySummarySchema.parse(stored))), canonical, slug + ': stored record differs from the live record');
+      const storedTools = parentData.records.toolsBySlug[slug];
+      assert.deepEqual(JSON.parse(JSON.stringify(storedTools.map((t: unknown) => universityToolRecordSchema.parse(t)))), JSON.parse(JSON.stringify(tools)), slug + ': stored tools differ from the live tools');
+      canonical = structuredClone(stored);
+      tools = structuredClone(storedTools);
+    }
     const audited = read(P + '/' + slug + '/audit.json').recordAudit;
     const canonicalHash = jhash(canonical);
     const decisions = canonical.claims.map((c: any) => {
@@ -64,7 +81,7 @@ async function main() {
     view.claimScopes = Object.fromEntries(decisions.map((x: any) => [x.claimId, x.scope]));
     view.claimDispositions = decisions;
     view.school.fingerprint = canonicalHash;
-    view.school.heldClaims = [];
+    view.school.heldClaims = BATCH.mode === 'update' ? structuredClone(parentViews[slug]?.school?.heldClaims ?? []) : [];
     view.school.revision = revision;
     view.school.newReviewPending = true;
     view.school.reviewedClaimCount = canonical.claims.length;

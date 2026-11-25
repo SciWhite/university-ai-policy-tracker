@@ -44,6 +44,19 @@ for school in BATCH['schools']:
         L += ['', f"## {'Do' if side == 'do' else 'Don’t'}"]
         for a in acts.get(side, []):
             L.append(f"- [{a.get('kind')}] {a['text']['en'] if isinstance(a.get('text'), dict) else a.get('en') or a.get('text')} / 中文: {a['text']['zh'] if isinstance(a.get('text'), dict) else a.get('zh', '')}")
+    # Procedures (investigation / outcomes / appeal) are shown on the page as evidence rows; without them the reviewer
+    # reports procedures as missing that the page does show.
+    L += ['', '## Procedures (what happens after a suspected breach; each step as shown, EN and ZH, with its quotes)']
+    any_step = False
+    for key in ('investigation', 'outcomes', 'appeal'):
+        for cid in acts.get('procedures', {}).get(key, []):
+            c = acts.get('claims', {}).get(cid) or {}
+            any_step = True
+            L.append(f"- [{key}] {c.get('text', '')} / 中文: {c.get('summaryZh', '')}")
+            for e in c.get('evidence', []):
+                L.append(f"  - Quote ({e['url']}): \"{' '.join(e['quote'].split())[:500]}\"")
+    if not any_step:
+        L.append('- (none shown)')
     L += ['', '## Tools']
     for tool in t.get('tools', []):
         L.append(f"- {tool['rawToolName']}: availability `{tool['availability']}`, {tool.get('endorsementType')}. {tool.get('description', '')} How to obtain: {tool.get('howToObtain', '')} Cost: {tool.get('costToUser', '')}")
