@@ -36,6 +36,8 @@ export interface ClaimDecision {
   evidence: EvidenceDecision[];
   /** correct: earlier evidence IDs to keep after the new evidence. */
   keepEvidenceIds?: string[];
+  /** correct: a wording-only correction keeps every earlier quote as it is (some older evidence has no ID). */
+  keepAllEvidence?: true;
   /** add: place after this Claim ID (default: end). */
   insertAfter?: string;
   /** amend: text appended to the claim; claimValue follows when it mirrored the text. */
@@ -111,7 +113,9 @@ export function checkDecisions(value: Json): string[] {
       need(["add", "correct", "amend"].includes(claim?.action), `${where}: action must be add, correct or amend`);
       if (claim?.action !== "amend") need(claim?.claimType && claim?.claimText?.trim() && typeof claim?.confidence === "number", `${where}: claimType, claimText and confidence are required`);
       else need(claim?.appendText?.trim(), `${where}: amend needs appendText`);
-      need(Array.isArray(claim?.evidence) && claim.evidence.length > 0, `${where}: evidence quotes are required`);
+      // A wording-only correction may keep its quotes (keepEvidenceIds) without adding new ones.
+      need(Array.isArray(claim?.evidence) && (claim.evidence.length > 0 || (claim?.action === "correct" && claim?.keepAllEvidence === true)), `${where}: evidence quotes are required`);
+      need(claim?.keepAllEvidence === undefined || (claim.action === "correct" && claim.keepAllEvidence === true && !claim.keepEvidenceIds && claim.evidence.length === 0), `${where}: keepAllEvidence is for a wording-only correction (no new evidence, no keepEvidenceIds)`);
       for (const evidence of claim?.evidence ?? []) problems.push(...evidenceProblems(evidence, captures, where));
     }
     for (const tool of school?.tools ?? []) for (const evidence of [...(tool?.evidence ?? []), ...(tool?.replaceEvidence ?? [])]) problems.push(...evidenceProblems(evidence, captures, `${slug}/tool ${tool?.match}`));
@@ -224,7 +228,7 @@ export function applyClaims(decisions: CorrectionDecisions, slug: string, summar
       const keep = decision.keepEvidenceIds ?? [];
       const missing = keep.filter(id => !old.evidence.some((item: Json) => item.id === id));
       if (missing.length) fail(`Kept evidence missing for ${slug}/${decision.id}: ${missing.join(", ")}`);
-      next.evidence = [...fresh, ...old.evidence.filter((item: Json) => keep.includes(item.id))];
+      next.evidence = decision.keepAllEvidence ? clone(old.evidence) : [...fresh, ...old.evidence.filter((item: Json) => keep.includes(item.id))];
     }
     next.reviewState = "agent_reviewed"; next.lastCheckedAt = newestRetrieved(next.evidence); next.lastChangedAt = publishedAt;
     claims[at] = orderedClaim(next);
@@ -245,6 +249,8 @@ export function applyClaims(decisions: CorrectionDecisions, slug: string, summar
   summary.summary = recount(summary.summary);
   summary.lastChangedAt = publishedAt;
   summary.lastCheckedAt = later(summary.lastCheckedAt, newestRetrieved([...used].map(key => decisions.captures[key])));
+  // A record is never checked before the evidence its corrected claims keep (wording-only corrections add no capture).
+  for (const id of updated) summary.lastCheckedAt = later(summary.lastCheckedAt, claims.find(item => item.id === id)?.lastCheckedAt);
   return { added, updated };
 }
 
