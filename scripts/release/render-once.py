@@ -69,8 +69,11 @@ def page_store_path(path):
 
 
 def not_cached(path):
-    """True for paths nginx never stores (API, MCP, internal, search): nothing to refresh."""
-    return bool(_NOT_CACHED.match(path.split('?', 1)[0]))
+    """True for paths nginx never stores (API, MCP, internal, search): nothing to refresh. The skip
+    map applies only to the generic `location /`; the page-store location (school and changes
+    documents) stores whatever matches it, e.g. /universities/search-…, so those are never skipped."""
+    path = path.split('?', 1)[0]
+    return bool(_NOT_CACHED.match(path)) and not page_store_path(strip_locale(path)[1])
 
 
 def strip_locale(path):

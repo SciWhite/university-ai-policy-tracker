@@ -308,10 +308,17 @@ class RefreshTests(unittest.TestCase):
         self.assertEqual(rows, [{'path': '/a', 'skipped': 'time budget'}, ro._not_refreshed('/api/public/v1/x.json')])
 
     def test_not_cached_matches_the_nginx_skip_map(self):
+        # The skip map is used by the generic `location /` only (outside the page store).
         for uri in ('/api/public/v1/universities/mit.json', '/api/internal/content/refresh', '/mcp', '/mcp/sse', '/internal',
-                    '/search', '/zh/search', '/zh-Hant/search', '/universities/mit', '/zh/universities/mit', '/changes',
-                    '/', '/zh', '/apis', '/research', '/universities/search-university', '/sitemaps/core.xml'):
+                    '/search', '/zh/search', '/zh-Hant/search', '/', '/zh', '/apis', '/research', '/sitemaps/core.xml', '/about'):
+            self.assertFalse(ro.page_store_path(ro.strip_locale(uri)[1]), uri)
             self.assertEqual(ro.not_cached(uri), evaluate(MAPS, 'uapt_html_cache_skip', {'uri': uri}) == '1', uri)
+
+    def test_page_store_paths_are_refreshed_even_when_they_look_like_search(self):
+        # /search… matches the skip map, but the page-store location stores these for 30 days.
+        for uri in ('/universities/mit', '/zh/universities/mit', '/changes', '/universities/search-university',
+                    '/changes/search', '/zh/changes/search'):
+            self.assertFalse(ro.not_cached(uri), uri)
 
     def test_origin_must_be_loopback(self):
         for origin in ('https://eduaipolicy.org', 'http://10.0.0.5:3101', 'https://127.0.0.1/x'):
