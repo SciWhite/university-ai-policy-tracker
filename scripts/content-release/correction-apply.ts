@@ -230,7 +230,7 @@ export function applyClaims(decisions: CorrectionDecisions, slug: string, summar
       if (missing.length) fail(`Kept evidence missing for ${slug}/${decision.id}: ${missing.join(", ")}`);
       next.evidence = decision.keepAllEvidence ? clone(old.evidence) : [...fresh, ...old.evidence.filter((item: Json) => keep.includes(item.id))];
     }
-    next.reviewState = "agent_reviewed"; next.lastCheckedAt = newestRetrieved(next.evidence); next.lastChangedAt = publishedAt;
+    next.reviewState = "agent_reviewed"; next.lastCheckedAt = newestRetrieved(next.evidence) ?? old.lastCheckedAt; // older evidence can lack retrievedAt next.lastChangedAt = publishedAt;
     claims[at] = orderedClaim(next);
     updated.push(decision.id);
   }
@@ -298,7 +298,7 @@ function refreshTopicSources(topic: Json, before: Set<string>) {
   for (const k of after) if (!topic.sources.some((s: Json) => sourceKey(s.url, s.hash) === k)) { const [url, hash] = k.split("\u0000"); topic.sources.push({ url, hash }); }
 }
 
-export interface PageContext { slug: string; revision: string; summary: Json; tools: Json[]; changed: Set<string>; added: string[]; renamed: Record<string, string>; ps: PresentationDecision; projection?: Json }
+export interface PageContext { slug: string; revision: string; summary: Json; tools: Json[]; changed: Set<string>; added: string[]; renamed: Record<string, string>; ps: PresentationDecision; projection?: Json; toolsTouched?: boolean }
 
 export function updateSchoolTopics(ctx: PageContext, school: Json, language: "en" | "zh") {
   const claims = new Map<string, Json>(ctx.summary.claims.map((c: Json) => [c.id, c]));
@@ -344,7 +344,8 @@ export function updateView(ctx: PageContext, view: Json, school: Json, oldFinger
   view.claims = clone(ctx.summary.claims); view.sources = clone(ctx.summary.officialSources);
   if (view.sourceBundleSha256 === oldFingerprint || ctx.ps.convertToView) view.sourceBundleSha256 = school.fingerprint;
   // Tool cards keep their directory label; source-bearing fields follow the canonical record.
-  view.tools = ctx.tools.map(t => { const old = view.tools?.find((x: Json) => x.rawToolName === t.rawToolName || ctx.renamed[x.rawToolName] === t.rawToolName); return old?.relationship ? { ...clone(t), relationship: old.relationship } : clone(t); });
+  // A view keeps its own tool cards (pipeline V6 pages curate them) unless this correction changes tools.
+  if (ctx.toolsTouched !== false || !Array.isArray(view.tools)) view.tools = ctx.tools.map(t => { const old = view.tools?.find((x: Json) => x.rawToolName === t.rawToolName || ctx.renamed[x.rawToolName] === t.rawToolName); return old?.relationship ? { ...clone(t), relationship: old.relationship } : clone(t); });
   if (Array.isArray(view.scopedToolNames)) view.scopedToolNames = view.scopedToolNames.map((n: string) => ctx.renamed[n] ?? n);
   if (view.claimScopes || ctx.ps.claimScopes) {
     const missing = Object.entries(ctx.ps.claimScopes ?? {}).filter(([id, scope]) => scope === null && !Object.hasOwn(view.claimScopes ?? {}, id)).map(([id]) => id);
@@ -479,7 +480,7 @@ export function buildCandidate(selected: Selected, decisions: CorrectionDecision
     const ps: PresentationDecision = clone(decisions.schools[slug].presentation ?? {});
     for (const claim of decisions.schools[slug].claims) for (const key of claim.topics ?? []) (ps.addTopicClaims ??= {})[key] = [...new Set([...(ps.addTopicClaims[key] ?? []), claim.id])];
     presentation[slug] = ps; touched[slug] = [...added, ...updated];
-    const ctx: PageContext = { slug, revision, summary, tools, changed: new Set(touched[slug]), added, renamed, ps, projection: options.projections[slug] };
+    const ctx: PageContext = { slug, revision, summary, tools, changed: new Set(touched[slug]), added, renamed, ps, projection: options.projections[slug], toolsTouched: (decisions.schools[slug].tools?.length ?? 0) > 0 };
     const converted = ps.convertToView ? convertToView(ctx, selected.pages.locales.en.schools.find((s: Json) => s.slug === slug), selected.pages.locales.zh.schools.find((s: Json) => s.slug === slug), selected.pages.locales.en.views[slug]) : undefined;
     for (const [locale, data] of Object.entries(pages.locales) as [string, Json][]) {
       const language = locale === "zh" ? "zh" : "en";
