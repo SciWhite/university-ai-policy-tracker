@@ -39,7 +39,7 @@ Host phases never purge Cloudflare (the token stays on the operator machine) and
 notifies search engines.
 Python 3.10, standard library only.
 """
-import argparse, fcntl, hashlib, json, os, re, runpy, shlex, stat, subprocess, sys, tempfile, threading, time
+import argparse, fcntl, hashlib, json, os, re, runpy, shlex, shutil, stat, subprocess, sys, tempfile, threading, time
 import urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -978,11 +978,18 @@ def cmd_cloudflare_purge(args, *, post=http_post_json, sleep=time.sleep):
     return 0
 
 
-def host_command(args, command):
+# Every ssh call from the operator machine (here and in remote-bg.sh, which must stay in step) sends
+# keepalives, so a dead session fails within about a minute instead of hanging until TCP notices
+# (2026-11-26, V6 batch 9: a silent wait session died while the Mac slept and ssh reported it
+# ~2 h 20 min later, which held back the Cloudflare purge).
+SSH_OPTIONS = ('-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=15', '-o', 'ServerAliveCountMax=4')
+
+
+def host_command(args, command, *, run=subprocess.run):
     """Run a read-only shell command on the host (UAPT_HOST=local runs it locally): (exit, stdout, stderr)."""
     host = args.host or os.environ.get('UAPT_HOST') or 'hermes-agent-prod'
-    argv = ['bash', '-c', command] if host == 'local' else ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', host, command]
-    result = subprocess.run(argv, capture_output=True, text=True)
+    argv = ['bash', '-c', command] if host == 'local' else ['ssh', *SSH_OPTIONS, host, command]
+    result = run(argv, capture_output=True, text=True)
     return result.returncode, result.stdout, result.stderr
 
 
@@ -1051,8 +1058,24 @@ def verify_cloudflare_token(env_file, *, get=http_get_bearer):
                       'fix it before the switch, nothing ran')
 
 
+def keep_operator_awake(*, platform=sys.platform, which=shutil.which, popen=subprocess.Popen, pid=None):
+    """macOS: hold an idle-sleep assertion (`caffeinate -i -w <pid>`) until this process ends, so the
+    operator machine does not sleep between activate and the Cloudflare purge. It cannot stop a
+    lid-close sleep on battery (docs/content-release.md §5.1). Returns what it did, for finish.json."""
+    if platform != 'darwin':
+        return 'not-macos'
+    path = which('caffeinate')
+    if not path:
+        return 'caffeinate-missing'
+    try:
+        popen([path, '-i', '-w', str(pid or os.getpid())], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except OSError as error:
+        return f'caffeinate-failed: {str(error)[:200]}'
+    return 'caffeinate -i'
+
+
 def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=None, verify=None,
-               job_state=None, rewait=None, live_content=None, sleep=time.sleep):
+               job_state=None, rewait=None, live_content=None, sleep=time.sleep, keep_awake=None):
     """Operator machine: the whole content release in one command, so no step waits on a session
     waking up: token preflight → activate → refresh receipt check → Cloudflare purge → paced public
     readback → complete. Stops at the first failure and names the next action; nothing after it
@@ -1066,6 +1089,7 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
     job_state = job_state or remote_job_state
     rewait = rewait or remote_rewait
     live_content = live_content or host_live_content
+    keep_awake = keep_awake or keep_operator_awake
     if not OP_ID.match(args.op_id):
         raise Refused('Invalid op id')
     op_dir = Path(args.op_dir)
@@ -1079,7 +1103,7 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
     cid = bundle['contentId']
     finish_path = op_dir / 'receipts/finish.json'
     state = {'schemaVersion': FINISH_SCHEMA, 'opId': args.op_id, 'contentId': cid, 'bundleSha256': args.bundle_sha256,
-             'startedAt': now().isoformat(), 'steps': []}
+             'startedAt': now().isoformat(), 'keepAwake': keep_awake(), 'steps': []}
     retry = f' with a new --attempt (remote-bg.sh keeps one run per job)'
 
     def record(step, status, **detail):

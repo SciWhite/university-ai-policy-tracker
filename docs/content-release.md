@@ -326,7 +326,12 @@ after a refresh or warm-up is a finding, not a retry case.
 The pid, exit code and log go to the deploy user's `~/uapt-ops/<op-id>/`; commands needing
 root use `sudo` inside the command. Do not write pidfiles into root-owned
 `/srv/uapt/operations/<op>/` (2026-11-21: "Permission denied", the wait loop never got the
-PID and had to be stopped by hand).
+PID and had to be stopped by hand). `wait` asks the host for the job's state in one short SSH
+call every 30 s (`UAPT_BG_POLL_SECONDS`) instead of holding one silent session open; a failed
+call is retried, and after 10 failures in a row (`UAPT_BG_MAX_MISSES`) `wait` exits 255. Every
+SSH call from `remote-bg.sh` and `content-release.py` uses `BatchMode=yes`,
+`ConnectTimeout=20`, `ServerAliveInterval=15` and `ServerAliveCountMax=4`, so a dead session
+fails within about a minute.
 
 **Public readback (paced).** Public reads go through Cloudflare, whose rate limit allows 60
 requests per 10 s per IP on `*/universities/*` and `*/changes/*` (the 2026-11-22 program
@@ -395,10 +400,26 @@ phase with an exact-PID wait from the operator machine):
 
 ```bash
 python3 scripts/release/content-release.py remote check --op-id <op> --helper <program-root>/release-helper
-# then everything else in one command (run it in the background and wait on it):
-python3 scripts/release/content-release.py finish --op-id <op> --op-dir <local op dir> \
+# then everything else in one command (run it in the background and wait on it), with the
+# operator Mac kept awake:
+caffeinate -i python3 scripts/release/content-release.py finish --op-id <op> --op-dir <local op dir> \
     --helper <program-root>/release-helper --bundle-sha256 <sha>
 ```
+
+**Keep the operator machine awake for the whole `finish` run.** Run it under `caffeinate -i`
+(macOS), or on a machine that does not sleep, and on macOS keep the lid open or the Mac on
+power with an external display: `caffeinate -i` stops idle sleep, not the sleep that closing
+the lid on battery forces. `finish` also starts `caffeinate -i -w <its pid>` itself on macOS
+and records the result as `keepAwake` in `receipts/finish.json` (`caffeinate -i`,
+`not-macos`, `caffeinate-missing` or `caffeinate-failed: …`). Why: the Cloudflare purge runs
+on the operator machine right after `activate` ends, so while that machine sleeps nothing
+purges the edge. On 2026-11-26 (V6 batch 9, the first `finish` run) the Mac went into clamshell
+sleep during `activate`; the wait's SSH session, then one long silent `ssh … while kill -0`,
+died, and ssh reported it ("Connection reset by peer", exit 255) only at a wake about 2 h 20
+min later. The host job had ended at 05:57Z, `finish` went on at 08:14Z (its recovery saw exit 0
+and continued), and the edge served pre-switch HTML for about 2 h 22 min. SSH keepalives and
+the short polls make a lost session show within about a minute of the machine running again;
+only keeping the machine awake prevents the gap.
 
 `finish` first checks that the Cloudflare token is active (`GET /user/tokens/verify`, read-only),
 then runs `remote activate`, reads the host's `receipts/refresh.json` (status `ok`, or
