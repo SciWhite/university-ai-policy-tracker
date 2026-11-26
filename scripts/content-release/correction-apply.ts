@@ -49,11 +49,13 @@ export interface PresentationDecision {
   topicSummaries?: Record<string, Bilingual>;
   topicScopes?: Record<string, Bilingual>;
   statusOverrides?: Record<string, Bilingual & { status: string }>;
-  claimScopes?: Record<string, string>;
+  /** `null` removes the scope note of that claim. */
+  claimScopes?: Record<string, string | null>;
   addTopicClaims?: Record<string, string[]>;
   replacePresentationEvidence?: Json[];
   presentationTitles?: Record<string, string>;
-  gaps?: Record<string, string>;
+  /** Replace a gap sentence by its exact text; `null` removes it. */
+  gaps?: Record<string, string | null>;
   addGaps?: string[];
   dispositionReasons?: Record<string, string>;
   /** Dispositions for added claims, where the school's view dispositions every claim. */
@@ -338,11 +340,15 @@ export function updateView(ctx: PageContext, view: Json, school: Json, oldFinger
   // Tool cards keep their directory label; source-bearing fields follow the canonical record.
   view.tools = ctx.tools.map(t => { const old = view.tools?.find((x: Json) => x.rawToolName === t.rawToolName || ctx.renamed[x.rawToolName] === t.rawToolName); return old?.relationship ? { ...clone(t), relationship: old.relationship } : clone(t); });
   if (Array.isArray(view.scopedToolNames)) view.scopedToolNames = view.scopedToolNames.map((n: string) => ctx.renamed[n] ?? n);
-  if (view.claimScopes || ctx.ps.claimScopes) view.claimScopes = { ...(view.claimScopes ?? {}), ...(ctx.ps.claimScopes ?? {}) };
+  if (view.claimScopes || ctx.ps.claimScopes) {
+    const missing = Object.entries(ctx.ps.claimScopes ?? {}).filter(([id, scope]) => scope === null && !Object.hasOwn(view.claimScopes ?? {}, id)).map(([id]) => id);
+    if (missing.length) fail(`No claim scope to remove on ${ctx.slug}: ${missing[0]}`);
+    view.claimScopes = Object.fromEntries(Object.entries({ ...(view.claimScopes ?? {}), ...(ctx.ps.claimScopes ?? {}) }).filter(([, scope]) => scope !== null));
+  }
   if (ctx.ps.gaps) {
     const missing = Object.keys(ctx.ps.gaps).filter(gap => !(view.gaps as string[]).includes(gap));
     if (missing.length) fail(`Gap text to replace is not on ${ctx.slug}: ${missing[0].slice(0, 80)}`);
-    view.gaps = view.gaps.map((g: string) => ctx.ps.gaps![g] ?? g);
+    view.gaps = view.gaps.flatMap((g: string) => !Object.hasOwn(ctx.ps.gaps!, g) ? [g] : ctx.ps.gaps![g] === null ? [] : [ctx.ps.gaps![g]]);
   }
   if (ctx.ps.dispositions && Object.keys(ctx.ps.dispositions).length && !view.claimDispositions) fail(`${ctx.slug} does not disposition its claims; place added claims with claim.topics instead of presentation.dispositions`);
   if (view.claimDispositions) {

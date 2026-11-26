@@ -61,6 +61,7 @@ export function pagesZhProblems(pages: any, slugs?: string[], options: PagesZhOp
 const sha256 = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 
 interface ReadingRef { path: string; sha256: string }
+const EMPTY_BASIS = { recordSha256: "0".repeat(64), originalEvidenceSha256: "0".repeat(64) };
 interface ReadingBasis { recordSha256: string; originalEvidenceSha256: string }
 interface ReadingBundle extends Partial<ReadingBasis> { slug?: string; locale?: string; strings: Record<string, { source: string; translation: string }> }
 interface RecordDelta { receipt?: ReadingRef; schools?: Record<string, { parent?: ReadingBasis; record?: ReadingBasis; locales?: Record<string, ReadingRef> }> }
@@ -92,23 +93,28 @@ export function releaseZhReadingLookups(treeRoot: string, recordSha256BySlug: Re
   info.selection = ref.path;
   const shared = selection.shared?.zh ? verified<ReadingBundle>(selection.shared.zh) : undefined;
   for (const [slug, recordSha256] of Object.entries(recordSha256BySlug)) {
+    // A school outside the corpus starts from the empty basis (READING_EMPTY_BASIS); only record deltas serve it.
     const schoolRef = selection.schools?.[slug]?.zh;
-    if (!schoolRef) { info.missing.push(slug); continue; }
-    const bundle = verified<ReadingBundle>(schoolRef);
+    const bundle: ReadingBundle = schoolRef ? verified<ReadingBundle>(schoolRef) : { slug, ...EMPTY_BASIS, strings: {} };
     if (bundle.slug && bundle.slug !== slug) { info.basisMismatch.push(slug); continue; }
-    const deltas: ReadingBundle[] = [];
-    let basis = { recordSha256: bundle.recordSha256, originalEvidenceSha256: bundle.originalEvidenceSha256 };
+    const chain: { basis: ReadingBasis; bundle: ReadingBundle }[] = [];
+    let basis = { recordSha256: bundle.recordSha256, originalEvidenceSha256: bundle.originalEvidenceSha256 } as ReadingBasis;
     for (const delta of selection.supplemental?.recordDeltas ?? []) {
-      if (!recordSha256 || basis.recordSha256 === recordSha256) break;
       const entry = delta?.schools?.[slug];
       if (!entry?.parent || !entry.record || entry.parent.recordSha256 !== basis.recordSha256 || entry.parent.originalEvidenceSha256 !== basis.originalEvidenceSha256) continue;
-      if (!delta.receipt?.sha256 || !deltaPins.includes(delta.receipt.sha256) || !entry.locales?.zh) break; // unpinned or no zh: the page falls back
-      deltas.push(verified<ReadingBundle>(entry.locales.zh));
+      if (!entry.locales?.zh) continue; // a delta for other locales only (recordDeltaChain with a locale)
+      if (!delta.receipt?.sha256 || !deltaPins.includes(delta.receipt.sha256)) break; // unpinned: the page falls back
+      chain.push({ basis: entry.record, bundle: verified<ReadingBundle>(entry.locales.zh) });
       basis = entry.record;
     }
-    if (!recordSha256 || basis.recordSha256 !== recordSha256) { info.basisMismatch.push(slug); continue; }
+    // Up to the last delta that ends on the page's record (same-record deltas add display strings).
+    let end = -1;
+    chain.forEach((step, i) => { if (step.basis.recordSha256 === recordSha256) end = i; });
+    const reached = end >= 0 || (schoolRef && bundle.recordSha256 === recordSha256);
+    if (!recordSha256 || !reached) { (schoolRef ? info.basisMismatch : info.missing).push(slug); continue; }
+    const deltas = chain.slice(0, end + 1).map(step => step.bundle);
     if (deltas.length) info.viaRecordDelta.push(slug);
-    const bundles = [...deltas.reverse(), bundle, shared].filter(Boolean) as ReadingBundle[];
+    const bundles = [...deltas.reverse(), ...(schoolRef ? [bundle] : []), shared].filter(Boolean) as ReadingBundle[];
     lookups[slug] = (source: string) => {
       const key = sha256(source);
       return bundles.some(b => b.strings?.[key]?.source === source && text(b.strings[key].translation));
