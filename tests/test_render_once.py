@@ -290,6 +290,29 @@ class RefreshTests(unittest.TestCase):
         self.assertEqual(rows[-1], {'path': '/b', 'skipped': 'time budget'})
         self.assertTrue(ro.refresh_problems(rows))
 
+    def test_paths_nginx_never_caches_get_no_request(self):
+        # Batch 7/8: 20 school JSON files x 3 requests from loopback exhausted limit_req uapt_api
+        # (3 r/s, burst 30): nginx 503 -> refresh problems -> whole-cache epoch purge.
+        calls = []
+        def get(origin, path, headers, timeout):
+            calls.append(path); return self.nginx()(origin, path, headers, timeout)
+        skipped = ['/api/public/v1/universities/mit.json', '/zh/search', '/search', '/mcp', '/internal/x']
+        rows = ro.refresh('https://127.0.0.1', ['/universities/mit', *skipped], get=get)
+        self.assertEqual(set(calls), {'/universities/mit'})
+        self.assertEqual([r['path'] for r in rows if 'notRefreshed' in r], skipped)
+        self.assertEqual(ro.refresh_problems(rows), [])
+
+    def test_time_budget_still_lists_uncached_paths_without_a_problem(self):
+        ticks = iter([0, 5000, 5000])
+        rows = ro.refresh('https://127.0.0.1', ['/a', '/api/public/v1/x.json'], get=self.nginx(), max_seconds=10, clock=lambda: next(ticks))
+        self.assertEqual(rows, [{'path': '/a', 'skipped': 'time budget'}, ro._not_refreshed('/api/public/v1/x.json')])
+
+    def test_not_cached_matches_the_nginx_skip_map(self):
+        for uri in ('/api/public/v1/universities/mit.json', '/api/internal/content/refresh', '/mcp', '/mcp/sse', '/internal',
+                    '/search', '/zh/search', '/zh-Hant/search', '/universities/mit', '/zh/universities/mit', '/changes',
+                    '/', '/zh', '/apis', '/research', '/universities/search-university', '/sitemaps/core.xml'):
+            self.assertEqual(ro.not_cached(uri), evaluate(MAPS, 'uapt_html_cache_skip', {'uri': uri}) == '1', uri)
+
     def test_origin_must_be_loopback(self):
         for origin in ('https://eduaipolicy.org', 'http://10.0.0.5:3101', 'https://127.0.0.1/x'):
             with self.assertRaises(ValueError): ro.parse_origin(origin)

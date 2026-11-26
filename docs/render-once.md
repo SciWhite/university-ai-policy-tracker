@@ -221,7 +221,12 @@ uapt-render-once.py refresh --plan <release>/switch-<time>.json --path <readback
 listed UI-locale school URLs and those of record and reading changes, then the plan's other paths) and the `probe`
 list (the other UI-locale school URLs; refreshed only when the store holds a native page); `refresh` fetches each through nginx (`https://127.0.0.1`, SNI
 `eduaipolicy.org`) with `X-UAPT-Refresh: 1` for the gzip and identity entries (one retry), then
-reads it back and requires `HIT`/`STATIC` for stored pages. 404/410 count as answered.
+reads it back and requires `HIT`/`STATIC` for stored pages. 404/410 count as answered. Paths
+nginx never caches (`$uapt_html_cache_skip`: `/api/`, `/mcp`, `/internal`, search) get a
+`notRefreshed` receipt row and no request: their locations ignore `X-UAPT-Refresh`, and the API
+and search locations are rate limited per client (`limit_req`, 3 r/s burst 30 and 1 r/s), so a
+loopback refresh of 20 school JSON files drew nginx 503s and forced the epoch-purge fallback in
+batches 7 and 8 (2026-11-22/23). The public readback still checks those URLs.
 
 Program release: `cutover` already sets a new epoch. With a tree: capture the full indexable set
 for the candidate's build (offline, then `verify --origin http://127.0.0.1:<candidate>

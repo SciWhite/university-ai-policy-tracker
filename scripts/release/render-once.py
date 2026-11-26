@@ -41,6 +41,15 @@ CONTENT_LOCALES = ('en', 'zh')
 PAGE_STORE_PATTERN = r'^/(?:(?:' + _LOCALES + r')/)?(?:universities/[a-z0-9]+(?:-[a-z0-9]+)*|changes(?:/[A-Za-z0-9._-]+){0,2})$'
 PAGE_STORE_LOCATION = '"' + PAGE_STORE_PATTERN + '"'  # quoted: the pattern contains braces
 _PAGE_STORE = re.compile(PAGE_STORE_PATTERN)
+# Paths nginx never caches (infra/nginx/uapt-page-store.conf `$uapt_html_cache_skip`, matched
+# against $uri; a test keeps them equal). The API and search locations keep their own short proxy
+# cache, which `X-UAPT-Refresh` does not bypass, and they are rate limited per client address
+# (limit_req uapt_api 3 r/s burst 30, uapt_search 1 r/s; a loopback refresh is one client). A
+# refresh cannot overwrite them; fetching them only spent that budget: batch 7 and 8 sent 20 school
+# JSON paths x 3 requests in two seconds, nginx answered the rest 503 (`limiting requests`) and the
+# release fell back to the whole-cache epoch purge. refresh() lists them without a request.
+NOT_CACHED_PATTERN = r'^/internal|^/api/|^/mcp|^/(?:[a-zA-Z-]+/)?search'
+_NOT_CACHED = re.compile(NOT_CACHED_PATTERN)
 _LOCALE_PREFIX = re.compile(r'^/(' + _LOCALES + r')(?=/|$)')
 # What the app sends for `revalidate = false` pages; the tree answers with the same value.
 TREE_CACHE_CONTROL = 's-maxage=31536000'
@@ -57,6 +66,11 @@ SHA = re.compile(r'^[0-9a-f]{64}$')
 def page_store_path(path):
     """True for paths the nginx page store keeps until a release refreshes them."""
     return bool(_PAGE_STORE.match(path))
+
+
+def not_cached(path):
+    """True for paths nginx never stores (API, MCP, internal, search): nothing to refresh."""
+    return bool(_NOT_CACHED.match(path.split('?', 1)[0]))
 
 
 def strip_locale(path):
@@ -209,17 +223,24 @@ def _attempt(get, origin, path, headers, timeout):
 
 # ---------------------------------------------------------------- page store refresh
 
+def _not_refreshed(path):
+    return {'path': path, 'pageStore': False, 'notRefreshed': 'not cached by nginx (API, MCP, internal or search location)'}
+
+
 def refresh(origin, paths, *, probe=(), timeout=180.0, max_seconds=3600.0, get=http_get, clock=time.monotonic):
     """One request at a time (the app renders on one thread). For each URL: the gzip and the
     identity entry with `X-UAPT-Refresh: 1`, one retry each, then a plain gzip read that must be
     answered by nginx (HIT) for a 200 in the page store. A `probe` URL is first read as stored
-    (both encodings, no refresh header) and refreshed only when a stored entry is a 200.
+    (both encodings, no refresh header) and refreshed only when a stored entry is a 200. A path
+    nginx never caches (not_cached) gets a `notRefreshed` row and no request.
     Returns receipt rows."""
     started, rows = clock(), []
     queue = [(p, False) for p in paths] + [(p, True) for p in probe]
     for index, (path, probing) in enumerate(queue):
+        if not_cached(path):
+            rows.append(_not_refreshed(path)); continue
         if clock() - started > max_seconds:
-            rows += [{'path': p, 'skipped': 'time budget'} for p, _ in queue[index:]]
+            rows += [_not_refreshed(p) if not_cached(p) else {'path': p, 'skipped': 'time budget'} for p, _ in queue[index:]]
             break
         row = {'path': path, 'pageStore': page_store_path(strip_locale(path)[1])}
         if probing:
@@ -566,10 +587,11 @@ def main(argv=None, *, get=http_get):
         problems = refresh_problems(rows)
         receipt = {'schemaVersion': REFRESH_SCHEMA, 'startedAt': begun, 'finishedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
                    'origin': args.origin, 'plans': args.plan, 'requested': len(paths), 'probed': len(probe),
-                   'probeRefreshed': sum(1 for r in rows if 'probe' in r and 'gzip' in r), 'problems': problems,
+                   'probeRefreshed': sum(1 for r in rows if 'probe' in r and 'gzip' in r),
+                   'notRefreshed': sum(1 for r in rows if 'notRefreshed' in r), 'problems': problems,
                    'slowest': sorted(({'path': r['path'], 'seconds': r['gzip']['seconds']} for r in rows if 'gzip' in r and r['gzip']['seconds']), key=lambda r: -r['seconds'])[:10], 'rows': rows}
         _write(args.receipt, receipt)
-        print(json.dumps({k: receipt[k] for k in ('origin', 'requested', 'probed', 'probeRefreshed')} | {'problems': len(problems), 'firstProblems': problems[:5]}, indent=2))
+        print(json.dumps({k: receipt[k] for k in ('origin', 'requested', 'probed', 'probeRefreshed', 'notRefreshed')} | {'problems': len(problems), 'firstProblems': problems[:5]}, indent=2))
         return 1 if problems else 0
     if args.command == 'generation':
         print(json.dumps(write_generation(args.content_id, file=args.file, log=args.log or None, reason=args.reason, dry_run=args.dry_run), indent=2)); return 0
