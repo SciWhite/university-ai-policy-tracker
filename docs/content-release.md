@@ -784,6 +784,20 @@ another school or a changed number is refused (`unapproved` or
 only the unchanged strings; it is never re-signed. Deltas chain across
 corrections; a rollback selects the earlier release and its selection.
 
+Two more kinds of record delta use the same receipts and pins (since 2026-11-26):
+
+- **From the empty basis** (`READING_EMPTY_BASIS`, all zeros): a school or locale the sampled corpus never
+  covered (V6 schools added by the pipeline, own-language pages of the 32 schools in `index-languages.md`).
+  The delta carries every display string of that school and locale.
+- **Same record** (`parent` = `record`): display text changed while the record did not (a page-only update),
+  so the delta adds the new strings and field uses.
+
+Chains are per locale: a delta counts for a locale only when it carries that locale, so a school's locales can
+arrive in separate releases. The loader takes every delta up to the last one that ends on the requested record.
+Plan them on a release as it is with `content:correct translations plan --content-root <root> --content-id <id>
+--targets <{slug: [locale]}> --revision <id> --out plan.json`; `template` and `build` are unchanged. This needs a
+program with the 2026-11-26 loader; an older program ignores both kinds (the page stays on its fallback).
+
 `translations plan` lists, per locale, the strings to translate, accepted
 pairs reusable from other bundles and new field uses. `build` hard-links the
 old package, writes the deltas, the receipt (hashes only) and a new selection,
