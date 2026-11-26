@@ -409,9 +409,16 @@ writes `<local op dir>/receipts/finish.json` with every step and the next action
 nothing after the failed step, with one exception:
 
 - **`activate` did not return 0.** If the SSH session dropped or the wait timed out while
-  `activate` still runs on the host, `finish` waits again (up to three times). If it then
-  failed, `finish` reads the live pointer: when it already names this release, the switch is
-  live, so `finish` still purges Cloudflare before it stops. Otherwise nothing was switched.
+  `activate` still runs on the host (or the host could not be asked), `finish` waits again, up
+  to three times. Then:
+  - still running or unknown: it stops with "wait for the job, then check the pointer"; no purge;
+  - ended, and the live pointer cannot be read: it stops with "the switch MAY be live";
+  - ended before the switch (pointer still the parent): nothing was switched;
+  - ended after the switch: it purges Cloudflare only if `receipts/refresh.json` is `ok` or
+    `incomplete` (otherwise the edge would refill from the previous HTML) and names the rest:
+    refresh if needed, then `cloudflare-purge`, readback and `remote complete`.
+  The pointer is read from `--content-root` (default `/srv/uapt/content/runtime`, the host's
+  `UAPT_CONTENT_ROOT_PATH`).
 - **Readback findings** stop it before `complete`: read `receipts/public-readback.json`, record
   each finding, then run `remote complete`.
 - **Rerunning a remote phase** needs a new `--attempt` (remote-bg.sh keeps one run per job name;

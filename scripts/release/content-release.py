@@ -981,7 +981,7 @@ def host_receipt(args, name):
 
 def host_live_content(args):
     """contentId of the live content pointer on the host, or None when it cannot be read."""
-    code, out, _ = host_command(args, 'sudo -n cat /srv/uapt/content/runtime/current.json')
+    code, out, _ = host_command(args, 'sudo -n cat ' + shlex.quote(f'{args.content_root}/current.json'))
     try:
         return json.loads(out).get('contentId') if code == 0 else None
     except (ValueError, AttributeError):
@@ -1089,27 +1089,42 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
         return error
 
     (op_dir / 'receipts').mkdir(parents=True, exist_ok=True)
+    record('token-preflight', 'ok')
     code, error = attempt(remote, phase('activate'))
-    # A lost SSH session (255) or a wait timeout (124) leaves activate running on the host: wait again.
+    # A lost SSH session (255) or a wait timeout (124) leaves activate running on the host: wait
+    # again. An unreachable host ('' state) is retried the same way, never read as "not running".
     for _ in range(3):
         if code == 0 and error is None:
             break
-        if not job_state(args, 'activate').startswith('running'):
+        state_now = job_state(args, 'activate')
+        if state_now and not state_now.startswith('running'):
             break
-        record('activate-wait', 'ok', note=f'wait returned {code if error is None else error}; activate still running, waiting again')
+        record('activate-wait', 'ok', note=f'wait returned {code if error is None else error}; job state {state_now or "unknown"}; waiting again')
         code, error = attempt(rewait, args, 'activate')
     if code != 0 or error is not None:
+        state_now = job_state(args, 'activate')
         live = live_content(args)
-        detail = {'exit': code, **({'error': error} if error else {}), 'liveContentId': live,
-                  'jobState': job_state(args, 'activate')}
-        if live == cid:  # the switch happened: never leave the edge on the previous HTML
-            purge_error = purge_step(' after a failed activate')
-            return stop('activate', f'The switch IS live but activate did not finish (log: remote-bg.sh tail {remote_job(args, "activate")}). '
-                        + ('Cloudflare was purged. ' if not purge_error else f'Cloudflare purge FAILED ({purge_error}); run cloudflare-purge now. ')
-                        + 'Fix the cause, run refresh if receipts/refresh.json is missing or not ok, then readback and remote complete' + retry, **detail,
-                        cloudflarePurge='ok' if not purge_error else 'failed')
-        return stop('activate', f'The live pointer is {live!r}, not {cid}: read remote-bg.sh tail {remote_job(args, "activate")}. '
-                    'If the job is still running, wait for it; otherwise nothing was switched', **detail)
+        job = remote_job(args, 'activate')
+        detail = {'exit': code, **({'error': error} if error else {}), 'liveContentId': live, 'jobState': state_now or 'unknown'}
+        after = 'then refresh (unless receipts/refresh.json is ok or incomplete), cloudflare-purge, readback and remote complete' + retry
+        if not state_now or state_now.startswith('running'):
+            return stop('activate', f'activate may still be running on the host (job state {state_now or "unknown"}; live pointer {live!r}). '
+                        f'Wait for job {job} to end (remote-bg.sh status/wait), then: if the live pointer is {cid}, {after}', **detail)
+        if live is None:
+            return stop('activate', f'activate failed and the live pointer could not be read: the switch MAY be live. Read the pointer and '
+                        f'remote-bg.sh tail {job}; if it names {cid}, {after}', **detail)
+        if live != cid:
+            return stop('activate', f'activate failed before the switch (live pointer {live!r}); nothing was switched. Read remote-bg.sh tail {job}', **detail)
+        # The switch is live and activate has ended with a failure. Purge the edge only when the
+        # origin cache step finished; otherwise the edge would refill from the previous HTML.
+        refresh, refresh_error = attempt(read_receipt, args, 'refresh.json')
+        origin_ok = refresh_error is None and refresh.get('status') in ('ok', 'incomplete')
+        purge_error = purge_step(' after a failed activate') if origin_ok else 'not run: the origin cache step did not finish'
+        purged = purge_error is None
+        return stop('activate', f'The switch IS live but activate failed (remote-bg.sh tail {job}). '
+                    + ('Cloudflare was purged after the origin refresh. Fix the cause, then readback and remote complete' + retry if purged
+                       else f'Cloudflare was NOT purged ({purge_error}). Fix the cause, {after}'),
+                    **detail, cloudflarePurge='ok' if purged else 'not-run-or-failed')
     record('activate', 'ok')
     refresh, error = attempt(read_receipt, args, 'refresh.json')
     if error is not None:
@@ -1176,6 +1191,7 @@ def main(argv=None, host=None):
     f.add_argument('--timeout', type=int, default=7200); f.add_argument('--attempt', default='')
     f.add_argument('--legacy-helper-reason'); f.add_argument('--env-file', default=str(DEFAULT_ENV_FILE))
     f.add_argument('--origin', default=PUBLIC_ORIGIN); f.add_argument('--settle-seconds', type=float, default=CLOUDFLARE_SETTLE_SECONDS)
+    f.add_argument('--content-root', default='/srv/uapt/content/runtime', help="the host's UAPT_CONTENT_ROOT_PATH (live pointer current.json)")
     args = parser.parse_args(argv)
     if args.phase_cmd == 'remote':
         return cmd_remote(args)

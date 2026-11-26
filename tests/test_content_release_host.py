@@ -618,7 +618,7 @@ class FinishTest(unittest.TestCase):
     def args(self, **kw):
         base = dict(op_id='content-new-op', op_dir=str(self.dir), helper='/srv/uapt/releases/p/release-helper', bundle_sha256=self.sha, host='local',
                     ops_root='/srv/uapt/operations', timeout=60, attempt='', legacy_helper_reason=None, env_file=str(self.env),
-                    origin='https://eduaipolicy.org', settle_seconds=10.0)
+                    origin='https://eduaipolicy.org', settle_seconds=10.0, content_root='/srv/uapt/content/runtime')
         return self.module['argparse'].Namespace(**{**base, **kw})
 
     def run_finish(self, *, codes=None, refresh=None, purge_fails=False, readback_code=0, raises=None, states=None, rewait_codes=None, live='c-parent', **kw):
@@ -645,7 +645,7 @@ class FinishTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge', 'sleep:10', 'readback', 'complete'])
         self.assertEqual(receipt['status'], 'complete')
-        self.assertEqual([s['step'] for s in receipt['steps']], ['activate', 'refresh-receipt', 'cloudflare-purge', 'readback', 'complete'])
+        self.assertEqual([s['step'] for s in receipt['steps']], ['token-preflight', 'activate', 'refresh-receipt', 'cloudflare-purge', 'readback', 'complete'])
 
     def test_failed_activate_before_the_switch_stops_without_a_purge(self):
         code, receipt = self.run_finish(codes={'activate': 3})
@@ -653,16 +653,31 @@ class FinishTest(unittest.TestCase):
         self.assertEqual(receipt['status'], 'stopped'); self.assertIn('nothing was switched', receipt['steps'][-1]['next'])
 
     def test_failed_activate_after_the_switch_still_purges_cloudflare(self):
-        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new')
-        self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate', 'purge'])
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback'}})
+        self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge'])
         last = receipt['steps'][-1]
         self.assertEqual(last['cloudflarePurge'], 'ok'); self.assertIn('IS live', last['next']); self.assertNotIn('readback', self.order)
+
+    def test_live_switch_without_origin_refresh_is_not_purged_yet(self):
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'refused', 'origin': {'mode': 'page-store'}})
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order)
+        self.assertIn('cloudflare-purge', receipt['steps'][-1]['next']); self.assertIn('refresh', receipt['steps'][-1]['next'])
+
+    def test_still_running_after_the_waits_is_not_a_failure_and_not_purged(self):
+        code, receipt = self.run_finish(codes={'activate': 124}, states=['running pid=1'] * 5, rewait_codes=[124, 124, 124], live='c-new')
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order); self.assertEqual(self.order.count('rewait'), 3)
+        self.assertIn('may still be running', receipt['steps'][-1]['next'])
+
+    def test_unreachable_host_is_unknown_not_nothing_switched(self):
+        code, receipt = self.run_finish(codes={'activate': 255}, states=['', '', '', 'finished exit=255'], rewait_codes=[255, 255, 255], live=None)
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order)
+        self.assertIn('MAY be live', receipt['steps'][-1]['next']); self.assertNotIn('nothing was switched', receipt['steps'][-1]['next'])
 
     def test_lost_ssh_waits_again_and_continues(self):
         code, receipt = self.run_finish(codes={'activate': 255}, states=['running pid=1'], rewait_codes=[0])
         self.assertEqual(code, 0)
         self.assertEqual(self.order[:3], ['verify', 'activate', 'rewait']); self.assertIn('purge', self.order)
-        self.assertEqual(receipt['steps'][0]['step'], 'activate-wait')
+        self.assertEqual([s['step'] for s in receipt['steps'][:2]], ['token-preflight', 'activate-wait'])
 
     def test_exceptions_become_recorded_stops(self):
         code, receipt = self.run_finish(raises={'complete': self.module['Refused']('op already started')})
@@ -681,7 +696,7 @@ class FinishTest(unittest.TestCase):
 
     def test_fallback_refresh_still_purges(self):
         code, receipt = self.run_finish(refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback', 'fallbackReason': '503'}})
-        self.assertEqual(code, 0); self.assertEqual(receipt['steps'][1]['fallbackReason'], '503')
+        self.assertEqual(code, 0); self.assertEqual(receipt['steps'][2]['fallbackReason'], '503')
 
     def test_failed_purge_stops_before_readback(self):
         code, receipt = self.run_finish(purge_fails=True)
