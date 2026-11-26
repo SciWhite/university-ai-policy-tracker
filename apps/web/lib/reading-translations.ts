@@ -110,6 +110,12 @@ export interface ReadingTranslationSelection {
  * keeps covering only the unchanged strings.
  */
 export interface ReadingRecordBasis { recordSha256: string; originalEvidenceSha256: string }
+/**
+ * Where a school/locale without a corpus bundle starts: a record delta whose `parent` is this basis adds
+ * a school or locale the sampled corpus never covered (new V6 schools, own-language pages). Its strings
+ * are accepted only through that delta's independent every-pair review, like any other delta.
+ */
+export const READING_EMPTY_BASIS: ReadingRecordBasis = Object.freeze({ recordSha256: "0".repeat(64), originalEvidenceSha256: "0".repeat(64) });
 export interface ReadingRecordDelta {
   schemaVersion: "uapt-reading-record-delta-v1";
   revision: string;
@@ -387,12 +393,17 @@ async function verifiedFaCorrection(root: string, selection: ReadingTranslationS
 }
 
 /** Deltas that apply, in selection order, starting from a bundle's own record basis. */
-export function recordDeltaChain(selection: Pick<ReadingTranslationSelection, "supplemental">, slug: string, start: ReadingRecordBasis): { chain: Array<{ delta: ReadingRecordDelta; entry: ReadingRecordDelta["schools"][string] }>; basis: ReadingRecordBasis } {
+/**
+ * With `locale`, only deltas that carry that locale count: a school outside the corpus can gain its locales
+ * in separate releases, each starting from the empty basis or from the record its earlier deltas reached.
+ */
+export function recordDeltaChain(selection: Pick<ReadingTranslationSelection, "supplemental">, slug: string, start: ReadingRecordBasis, locale?: ReadingLocale): { chain: Array<{ delta: ReadingRecordDelta; entry: ReadingRecordDelta["schools"][string] }>; basis: ReadingRecordBasis } {
   const chain: Array<{ delta: ReadingRecordDelta; entry: ReadingRecordDelta["schools"][string] }> = [];
   let basis = start;
   for (const delta of selection.supplemental?.recordDeltas ?? []) {
     const entry = delta?.schools?.[slug];
     if (!entry?.parent || !entry.record || entry.parent.recordSha256 !== basis.recordSha256 || entry.parent.originalEvidenceSha256 !== basis.originalEvidenceSha256) continue;
+    if (locale && !entry.locales?.[locale]) continue;
     chain.push({ delta, entry });
     basis = entry.record;
   }
@@ -456,6 +467,22 @@ export function checkReadingTranslationDelta(input: {
   return undefined;
 }
 
+// One frozen empty base per selection/school/locale, so caches keyed by the base object stay valid.
+const emptyBases = new Map<string, ReadingTranslationBundle>();
+let emptyBasesSelection = "";
+function emptyBaseBundle(selectionSha256: string, corpusSourceSha256: string, slug: string, locale: ReadingLocale): ReadingTranslationBundle {
+  // Bases of an earlier selection are dropped when another selection is read (content switches without a restart).
+  if (emptyBasesSelection !== selectionSha256) { emptyBases.clear(); emptyBasesSelection = selectionSha256; }
+  const key = `${slug}\0${locale}`;
+  const cached = emptyBases.get(key);
+  if (cached) return cached;
+  if (emptyBases.size >= 2048) emptyBases.clear();
+  const bundle = freezeJson<ReadingTranslationBundle>({ schemaVersion: "uapt-reading-translations-v1", sourceSha256: corpusSourceSha256, locale, slug, ...READING_EMPTY_BASIS,
+    review: { status: "accepted", receiptSha256: READING_EMPTY_BASIS.recordSha256 }, protectedClaimIds: [], requiredSourceHashes: [], strings: {}, sourceFieldUses: {} });
+  emptyBases.set(key, bundle);
+  return bundle;
+}
+
 // Composed views (accepted bundle + its delta chain) keep a stable identity per
 // base bundle, so coverage caches keyed by bundle objects stay valid.
 const composedBundleCache = new WeakMap<ReadingTranslationBundle, ByteLru<ReadingTranslationBundle>>();
@@ -464,9 +491,12 @@ export function readingRecordDeltaStats() { return { compositions: recordDeltaCo
 
 async function composeRecordDeltas(root: string, selection: ReadingTranslationSelection, selectionSha256: string, slug: string, locale: ReadingLocale, base: ReadingTranslationBundle, basis: ReadingRecordBasis, options: Parameters<typeof validateReadingTranslationBundle>[2]): Promise<ReadingTranslationBundle | "stale_record" | "unapproved" | "invalid_package"> {
   // Stop at the first delta that reaches the requested record (a later one may already be in the package).
-  const full = recordDeltaChain(selection, slug, { recordSha256: base.recordSha256, originalEvidenceSha256: base.originalEvidenceSha256 }).chain;
-  const end = full.findIndex(({ entry }) => entry.record.recordSha256 === basis.recordSha256 && entry.record.originalEvidenceSha256 === basis.originalEvidenceSha256);
-  if (end < 0) return "stale_record";
+  // Take every delta up to the last one that ends on the requested record: a same-record delta (parent ===
+  // record) adds display strings for a record whose page text changed while its record did not.
+  const full = recordDeltaChain(selection, slug, { recordSha256: base.recordSha256, originalEvidenceSha256: base.originalEvidenceSha256 }, locale).chain;
+  let end = -1;
+  full.forEach(({ entry }, i) => { if (entry.record.recordSha256 === basis.recordSha256 && entry.record.originalEvidenceSha256 === basis.originalEvidenceSha256) end = i; });
+  if (end < 0) return base.recordSha256 === basis.recordSha256 && base.originalEvidenceSha256 === basis.originalEvidenceSha256 && base.recordSha256 !== READING_EMPTY_BASIS.recordSha256 ? base : "stale_record";
   const chain = full.slice(0, end + 1);
   // The release (or the environment fallback) pins every delta review it accepts.
   const pins = readingPackageSelection().recordDeltaAcceptanceSha256s;
@@ -527,8 +557,10 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
     if ((selection.publicationApproved !== true || selection.candidateOnly) && !sampledPreview) return { state: "unapproved" };
     const faCorrection = await verifiedFaCorrection(root, selection, sampledPreview, approvedSampledPublication);
     const sharedRef = selection.shared[locale], schoolRef = selection.schools[slug]?.[locale];
-    if (!sharedRef || !schoolRef) return { state: "unavailable" };
-    const [shared, school] = await Promise.all([verifiedJson<ReadingTranslationBundle>(root, sharedRef, 4 * 1024 * 1024), verifiedJson<ReadingTranslationBundle>(root, schoolRef, 4 * 1024 * 1024)]);
+    // Without a corpus bundle, only record deltas that start from the empty basis can serve the school.
+    const fromEmpty = !schoolRef && recordDeltaChain(selection, slug, READING_EMPTY_BASIS, locale).chain.length > 0;
+    if (!sharedRef || (!schoolRef && !fromEmpty)) return { state: "unavailable" };
+    const [shared, school] = await Promise.all([verifiedJson<ReadingTranslationBundle>(root, sharedRef, 4 * 1024 * 1024), schoolRef ? verifiedJson<ReadingTranslationBundle>(root, schoolRef, 4 * 1024 * 1024) : Promise.resolve(emptyBaseBundle(ref.sha256, selection.sourceSha256, slug, locale))]);
     const exceptions = sampledContract ? selection.samplingAcceptance?.statusEnumExceptions ?? [] : [];
     const sceneDelta = selection.supplemental?.sceneDelta;
     if (sceneDelta) {
@@ -551,7 +583,7 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
     }
     const validationOptions = { statusEnumExceptions: exceptions, matchAcceptedBrandVocabulary: sampledContract };
     validateCachedBundle(shared, { sourceSha256: selection.sourceSha256, locale, slug: "_shared" }, validationOptions, ref.sha256);
-    validateCachedBundle(school, { sourceSha256: selection.sourceSha256, locale, slug }, validationOptions, ref.sha256);
+    if (schoolRef) validateCachedBundle(school, { sourceSha256: selection.sourceSha256, locale, slug }, validationOptions, ref.sha256);
     if (faCorrection && slug === faCorrection.slug && locale === faCorrection.locale) {
       const unit = school.strings[faCorrection.sourceSha256];
       const actualFields = school.sourceFieldUses?.[faCorrection.sourceSha256] ?? [];
@@ -570,8 +602,8 @@ export async function getReadingTranslations(slug: string, locale: ReadingLocale
       if (expectedHashes.length && (!supplement || supplement.sourceSha256 !== displayAddendum.sourceSha256 || supplement.acceptanceSha256 !== displayAddendum.acceptanceSha256 || [...supplement.sourceHashes].sort().join(",") !== expectedHashes.join(",") || JSON.stringify(Object.fromEntries(Object.entries(supplement.fieldUses ?? {}).sort(([a], [b]) => a.localeCompare(b)))) !== JSON.stringify(Object.fromEntries(Object.entries(expectedUses).sort(([a], [b]) => a.localeCompare(b)))))) return { state: "invalid_package" };
       if (!expectedHashes.length && supplement) return { state: "invalid_package" };
     }
-    if (school.recordSha256 === basis.recordSha256 && school.originalEvidenceSha256 === basis.originalEvidenceSha256) return { state: "ready", revision: selection.revision, shared, school };
-    // A changed record is readable only through reviewed, pinned record deltas.
+    // A changed record, a school outside the corpus, and display strings added for an unchanged record are
+    // readable only through reviewed, pinned record deltas.
     const composed = await composeRecordDeltas(root, selection, ref.sha256, slug, locale, school, basis, validationOptions);
     return typeof composed === "string" ? { state: composed } : { state: "ready", revision: selection.revision, shared, school: composed };
   } catch { return { state: "invalid_package" }; }

@@ -26,12 +26,12 @@ import { policySceneDisplaySources, v6DisplayRequirements } from "../../apps/web
 import { getUniversityToolRecords } from "../../apps/web/lib/tool-records";
 import { selectContentForTools, type ContentReleaseManifest } from "../../apps/web/lib/content-runtime";
 import {
-  checkReadingTranslationDelta, getReadingTranslations, recordDeltaChain,
+  checkReadingTranslationDelta, getReadingTranslations, recordDeltaChain, READING_EMPTY_BASIS,
   type ReadingDeltaReviewPair, type ReadingDeltaReviewReceipt, type ReadingRecordBasis, type ReadingRecordDelta,
   type ReadingTranslation, type ReadingTranslationBundle, type ReadingTranslationDelta, type ReadingTranslationSelection
 } from "../../apps/web/lib/reading-translations";
 import type { ReadingLocale } from "../../apps/web/lib/language-catalog";
-import { readManifest, releaseDir } from "./lib";
+import { readManifest, releaseDir, selectTree } from "./lib";
 import { MergedTree, newDir } from "./correct";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -53,10 +53,13 @@ function openPackage(ref: PackageRef) {
 
 /** Strings and fields accepted for one school/locale: its bundle plus the record deltas that chain from it. */
 function acceptedStrings(pkg: ReturnType<typeof openPackage>, slug: string, locale: ReadingLocale) {
-  const base = pkg.file<ReadingTranslationBundle>(pkg.selection.schools[slug][locale]!);
+  // A school or locale outside the corpus starts empty, from READING_EMPTY_BASIS.
+  const ref0 = pkg.selection.schools[slug]?.[locale];
+  const base: Pick<ReadingTranslationBundle, "strings" | "sourceFieldUses" | "recordSha256" | "originalEvidenceSha256" | "protectedClaimIds"> = ref0
+    ? pkg.file<ReadingTranslationBundle>(ref0) : { strings: {}, sourceFieldUses: {}, ...READING_EMPTY_BASIS, protectedClaimIds: [] };
   const strings: Record<string, ReadingTranslation> = { ...base.strings };
   const uses: Record<string, string[]> = Object.fromEntries(Object.entries(base.sourceFieldUses ?? {}).map(([k, v]) => [k, [...v]]));
-  const { chain, basis } = recordDeltaChain(pkg.selection, slug, { recordSha256: base.recordSha256, originalEvidenceSha256: base.originalEvidenceSha256 });
+  const { chain, basis } = recordDeltaChain(pkg.selection, slug, { recordSha256: base.recordSha256, originalEvidenceSha256: base.originalEvidenceSha256 }, locale);
   for (const { entry } of chain) {
     const ref = entry.locales[locale];
     if (!ref) return { strings, uses, basis: undefined };
@@ -123,7 +126,9 @@ export async function planRecordDeltas(options: { finalized: string; out: string
       package: { dir: ref.dir, pointer: ref.pointer, selectionSha256: pkg.selectionSha256, corpusSourceSha256: pkg.selection.sourceSha256, parentSelectionRevision: pkg.selection.revision },
       schools: {}, requests: {} as Record<string, Record<string, string>> };
     for (const slug of slugs) {
-      const locales = Object.keys(pkg.selection.schools[slug] ?? {}).filter(locale => locale !== "en") as ReadingLocale[];
+      // Corpus locales and locales served only through record deltas (empty basis or added later).
+      const deltaLocales = (pkg.selection.supplemental?.recordDeltas ?? []).flatMap(delta => Object.keys(delta?.schools?.[slug]?.locales ?? {}));
+      const locales = [...new Set([...Object.keys(pkg.selection.schools[slug] ?? {}), ...deltaLocales])].filter(locale => locale !== "en") as ReadingLocale[];
       if (!locales.length) continue;
       const need = await requiredStrings(slug);
       const school: Json = { record: need.basis, parent: undefined, protectedClaimIds: need.claimIds, sourceScopeComplete: need.sourceScopeComplete,
@@ -155,6 +160,70 @@ export async function planRecordDeltas(options: { finalized: string; out: string
     writeFileSync(options.out, JSON.stringify(plan, null, 1) + "\n", { flag: "wx" });
     return { out: options.out, ...plan.totals, requestFiles: Object.fromEntries(Object.entries(plan.requests as Record<string, Json>).map(([l, r]) => [l, Object.keys(r).length])) };
   } finally { tree.remove(); }
+}
+
+/**
+ * Display delta: translations for a release as it is, without a claim correction. Covers schools and locales
+ * outside the sampled corpus (the delta starts from READING_EMPTY_BASIS) and pages whose display text changed
+ * while the record did not (a same-record delta, parent === record). `targets` is {slug: [locale, ...]}.
+ * Template and build are the same as for correction deltas; the review covers every delta pair.
+ */
+export async function planDisplayDeltas(options: { contentRoot: string; contentId: string; targets: string; revision: string; out: string }) {
+  const { manifest } = readManifest(options.contentRoot, options.contentId);
+  if (!manifest.translations) fail("The release carries no translation package");
+  const tree = path.join(releaseDir(options.contentRoot, options.contentId), "tree");
+  const pointerFile = path.join(tree, manifest.translations!.pointer);
+  const ref: PackageRef = { dir: path.dirname(pointerFile), pointer: path.basename(pointerFile) };
+  const pkg = openPackage(ref);
+  if (!/^[a-z0-9][a-z0-9.-]{2,120}$/.test(options.revision) || (pkg.selection.supplemental?.recordDeltas ?? []).some(delta => delta.revision === options.revision)) fail(`Bad or reused delta revision: ${options.revision}`);
+  const targets = readJson(options.targets) as Record<string, string[]>;
+  selectTree(options.contentId, tree, manifest);
+  const plan: Json = { schemaVersion: "uapt-reading-record-delta-plan-v1", kind: "display", revision: options.revision, correctionRevision: null,
+    source: { contentRoot: path.resolve(options.contentRoot), contentId: options.contentId },
+    package: { dir: ref.dir, pointer: ref.pointer, selectionSha256: pkg.selectionSha256, corpusSourceSha256: pkg.selection.sourceSha256, parentSelectionRevision: pkg.selection.revision },
+    schools: {}, requests: {} as Record<string, Record<string, string>> };
+  const pools = new Map<string, Map<string, string>>();
+  const pool = (locale: ReadingLocale) => {
+    if (!pools.has(locale)) {
+      const map = new Map<string, string>();
+      for (const refs of [pkg.selection.shared, ...Object.values(pkg.selection.schools)]) {
+        const item = refs[locale]; if (!item) continue;
+        for (const [k, unit] of Object.entries(pkg.file<ReadingTranslationBundle>(item).strings)) if (!map.has(k)) map.set(k, unit.translation);
+      }
+      pools.set(locale, map);
+    }
+    return pools.get(locale)!;
+  };
+  for (const [slug, locales] of Object.entries(targets)) {
+    if (!Array.isArray(locales) || !locales.length || locales.some(locale => locale === "en" || !pkg.selection.shared[locale as ReadingLocale])) fail(`${slug}: bad target locales ${JSON.stringify(locales)}`);
+    const need = await requiredStrings(slug);
+    const school: Json = { record: need.basis, parent: undefined, protectedClaimIds: need.claimIds, sourceScopeComplete: need.sourceScopeComplete,
+      strings: Object.fromEntries([...need.strings].map(([k, v]) => [k, { source: v.source, fields: [...v.fields].sort() }])), locales: {} };
+    for (const locale of locales as ReadingLocale[]) {
+      const accepted = acceptedStrings(pkg, slug, locale);
+      const start = accepted.basis ?? fail(`${slug}/${locale}: an earlier record delta does not cover this locale; repack the school first`);
+      if (school.parent && (school.parent.recordSha256 !== start.recordSha256 || school.parent.originalEvidenceSha256 !== start.originalEvidenceSha256)) fail(`${slug}: target locales start from different record bases; plan them in separate deltas`);
+      school.parent = start;
+      const row: Json = { missing: [], reused: {}, fieldUseAdditions: {} };
+      for (const [key, { fields }] of need.strings) {
+        if (accepted.strings[key]) {
+          const added = [...fields].filter(field => !(accepted.uses[key] ?? []).includes(field)).sort();
+          if (added.length) row.fieldUseAdditions[key] = added;
+        } else if (pool(locale).has(key)) row.reused[key] = pool(locale).get(key);
+        else { row.missing.push(key); ((plan.requests[locale] ??= {}) as Record<string, string>)[key] = need.strings.get(key)!.source; }
+      }
+      if (row.missing.length || Object.keys(row.reused).length || Object.keys(row.fieldUseAdditions).length) school.locales[locale] = row;
+    }
+    if (Object.keys(school.locales).length) plan.schools[slug] = school;
+  }
+  plan.totals = {
+    schools: Object.keys(plan.schools).length,
+    newPairs: Object.values(plan.requests as Record<string, Record<string, string>>).reduce((n, r) => n + Object.keys(r).length, 0),
+    reusedPairs: Object.values(plan.schools as Record<string, Json>).reduce((n, s) => n + Object.values(s.locales as Record<string, Json>).reduce((m, l) => m + Object.keys(l.reused).length, 0), 0),
+    fieldUseAdditions: Object.values(plan.schools as Record<string, Json>).reduce((n, s) => n + Object.values(s.locales as Record<string, Json>).reduce((m, l) => m + Object.keys(l.fieldUseAdditions).length, 0), 0)
+  };
+  writeFileSync(options.out, JSON.stringify(plan, null, 1) + "\n", { flag: "wx" });
+  return { out: options.out, ...plan.totals, requestFiles: Object.fromEntries(Object.entries(plan.requests as Record<string, Json>).map(([l, r]) => [l, Object.keys(r).length])) };
 }
 
 /** Every delta item of the plan with its translation and the fields it is shown in. */

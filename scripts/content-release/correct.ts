@@ -250,7 +250,8 @@ function writeReviewPacket(out: string, sel: Json, candidate: Json, decisions: C
     for (const [key, s] of Object.entries(ps.topicScopes ?? {}) as [string, Json][]) lines.push(`### Topic scope: ${key}`, "", "EN:", q(s.en), "", "ZH:", q(s.zh), "");
     if (ps.entitySummary) lines.push("### Entity summary", "", "EN:", q(ps.entitySummary.en), "", "ZH:", q(ps.entitySummary.zh), "");
     for (const [k, ids] of Object.entries(ps.addTopicClaims ?? {}) as [string, string[]][]) lines.push(`### Shown in topic ${k}: ${ids.map(i => "`" + i + "`").join(", ")}`, "");
-    for (const [id, s] of Object.entries(ps.claimScopes ?? {})) lines.push(`### Claim scope: \`${id}\``, "", q(String(s)), "");
+    for (const [id, s] of Object.entries(ps.claimScopes ?? {})) lines.push(`### Claim scope: \`${id}\``, "", s === null ? "(removed)" : q(String(s)), "");
+    for (const [gap, next] of Object.entries(ps.gaps ?? {})) lines.push("### Gap", "", "Before:", q(gap), "", "After:", next === null ? "(removed)" : q(String(next)), "");
   }
   writeFileSync(path.join(out, "review-packet.md"), lines.join("\n") + "\n", { flag: "wx" });
 }
@@ -424,6 +425,8 @@ const USAGE = `usage:
   content:correct prepare  --decisions <file> --out <NEW dir> [--source <dir> | --content-root <root> [--source-release <id>]]
   content:correct finalize --candidate <prepare dir> --review <review.json> --out <NEW dir> [--locale-index-policy <file>]
   content:correct translations plan     --candidate <finalize dir> --out <plan.json> [--package <dir> --pointer <file>]
+  content:correct translations plan     --content-root <root> --content-id <id> --targets <{slug:[locale]}.json> --revision <id> --out <plan.json>
+                                        (display delta: schools outside the corpus, or display text changed on an unchanged record)
   content:correct translations template --plan <plan.json> --translations <dir> --translator <id> --out <review.json>
   content:correct translations build    --plan <plan.json> --translations <dir> --review <review.json> --out <NEW package dir>`;
 
@@ -441,7 +444,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       console.log(JSON.stringify(await finalizeCorrection({ candidate: need("--candidate"), reviewFile: need("--review"), out: need("--out"), localeIndexPolicy: arg("--locale-index-policy") }), null, 2));
     } else if (command === "translations") {
       const delta = await import("./reading-delta");
-      if (sub === "plan") console.log(JSON.stringify(await delta.planRecordDeltas({ finalized: need("--candidate"), out: need("--out"), packageDir: arg("--package"), pointer: arg("--pointer") }), null, 2));
+      if (sub === "plan" && arg("--targets")) console.log(JSON.stringify(await delta.planDisplayDeltas({ contentRoot: need("--content-root"), contentId: need("--content-id"), targets: need("--targets"), revision: need("--revision"), out: need("--out") }), null, 2));
+      else if (sub === "plan") console.log(JSON.stringify(await delta.planRecordDeltas({ finalized: need("--candidate"), out: need("--out"), packageDir: arg("--package"), pointer: arg("--pointer") }), null, 2));
       else if (sub === "template") console.log(JSON.stringify(delta.reviewTemplate({ plan: need("--plan"), translations: need("--translations"), translator: need("--translator"), out: need("--out") }), null, 2));
       else if (sub === "build") console.log(JSON.stringify(await delta.buildRecordDeltaPackage({ plan: need("--plan"), translations: need("--translations"), review: need("--review"), out: need("--out") }), null, 2));
       else { console.error(USAGE); process.exitCode = 2; }

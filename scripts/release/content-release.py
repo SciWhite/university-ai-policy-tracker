@@ -48,6 +48,7 @@ from urllib.request import Request, urlopen
 BUNDLE_SCHEMA = 'uapt-content-release-bundle-v1'
 CHANGED_URLS_SCHEMA = 'uapt-changed-urls-v1'
 RECEIPT_SCHEMA = 'uapt-content-release-receipt-v1'
+ISR_EXPIRY_MAX_ITEMS = 2000
 HELPER_SCHEMA = 'uapt-release-helper-v1'
 CONTENT_ID = re.compile(r'^[a-z0-9][a-z0-9.-]{2,95}$')
 OP_ID = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$')
@@ -467,8 +468,24 @@ def expire_pages(host, op, slot):
     body = read_json(op.dir / rel)
     if body.get('expectedContentId') != op.cid:
         raise Refused('isr-expiry request names another release')
-    response = host.http_json(f'http://127.0.0.1:{slot["port"]}/api/internal/content/refresh', token=slot['token'], body=body, timeout=180)
-    return {'status': 'expired', 'tags': len(body.get('tags', [])), 'paths': len(body.get('paths', [])), 'response': response}
+    # The endpoint takes at most ISR_EXPIRY_MAX_ITEMS tags and paths per request (MAX_ITEMS in
+    # apps/web/app/api/internal/content/refresh/route.ts); a 171-school correction listed 5,817 paths.
+    tags, paths = list(body.get('tags', [])), list(body.get('paths', []))
+    chunks = []
+    for start in range(0, max(len(tags), len(paths), 1), ISR_EXPIRY_MAX_ITEMS):
+        part = {'expectedContentId': op.cid, 'tags': tags[start:start + ISR_EXPIRY_MAX_ITEMS], 'paths': paths[start:start + ISR_EXPIRY_MAX_ITEMS]}
+        if not part['tags'] and not part['paths']:
+            continue
+        try:
+            response = host.http_json(f'http://127.0.0.1:{slot["port"]}/api/internal/content/refresh', token=slot['token'], body=part, timeout=180)
+            if not response.get('ok'):
+                raise ValueError('response without ok: ' + json.dumps(response)[:300])
+        except Exception as error:  # the switch is live: record what expired, then stop with a named retry
+            op.write('isr-expiry-partial.json', {'sent': chunks, 'failedChunk': len(chunks) + 1, 'error': str(error)[:500]})
+            raise Refused(f'ISR expiry request {len(chunks) + 1} failed after the switch ({error}); resending every request is safe '
+                          '(expiring twice is harmless); see receipts/isr-expiry-partial.json')
+        chunks.append({'tags': len(part['tags']), 'paths': len(part['paths']), 'ok': True})
+    return {'status': 'expired', 'tags': len(tags), 'paths': len(paths), 'chunks': chunks}
 
 
 def switch_plan(host, op):
@@ -681,6 +698,8 @@ def cmd_status(host, op, args):
 # (the 2026-11-22 program completion was refused on 429s; program-release.py fetch(), PR #53).
 # Public reads are paced at <= 5 requests/s and a 429 waits out the block.
 PUBLIC_MIN_INTERVAL_SECONDS = 0.2
+# nginx limits /api/public/v1/ to 3 requests/s per client (limit_req zone uapt_api, burst 30); API reads stay below it.
+PUBLIC_API_MIN_INTERVAL_SECONDS = 0.4
 RATE_LIMIT_WAIT_SECONDS = 12
 RATE_LIMIT_RETRIES = 3
 RATE_LIMIT_MAX_WAIT_SECONDS = 60
@@ -713,7 +732,7 @@ def is_loopback(base):
 
 
 class PublicReader:
-    """Thread-safe paced GET. Public origins: request starts at least 0.2 s apart (<= 5/s, also
+    """Thread-safe paced GET. Public origins: request starts at least 0.2 s apart (<= 5/s; /api/ reads 0.4 s, under nginx's 3/s), also
     across threads), a 429 sleeps Retry-After (at least 12 s) and retries up to 3 times; 5xx and
     network errors retry up to `attempts` times. Loopback origins are not paced. Never follows
     redirects (a 301/308 is an answer). scripts/v6-pipeline/readback.py uses it too."""
@@ -725,19 +744,19 @@ class PublicReader:
         self.requests = 0; self.rate_limited = 0
         self.retried = {}  # path (without query) -> statuses answered before the final one (5xx, 0, 429)
 
-    def _pace(self):
+    def _pace(self, path=''):
         with self.lock:
             self.requests += 1
             if not self.paced: return
             now = self.clock()
             wait = self.next_at - now
-            self.next_at = max(now, self.next_at) + PUBLIC_MIN_INTERVAL_SECONDS
+            self.next_at = max(now, self.next_at) + (PUBLIC_API_MIN_INTERVAL_SECONDS if path.startswith('/api/') else PUBLIC_MIN_INTERVAL_SECONDS)
         if wait > 0: self.sleep(wait)
 
     def __call__(self, path, headers=None):
         limited, attempt = RATE_LIMIT_RETRIES, 0
         while True:
-            self._pace()
+            self._pace(path)
             status, body, response_headers, seconds = self.get(self.base + path, headers, self.timeout)
             if status == 429 and limited > 0:
                 limited -= 1
@@ -807,7 +826,7 @@ def cmd_readback(args, *, get=http_get, sleep=time.sleep, clock=time.monotonic):
             row.setdefault('problems', []).append(f'answered only after {earlier} (retried)')
     problems = [r for r in rows if r.get('problems')]
     receipt = {'schemaVersion': PUBLIC_READBACK_SCHEMA, 'opId': bundle['opId'], 'contentId': bundle['contentId'], 'origin': reader.base,
-               'startedAt': started, 'checkedAt': now().isoformat(), 'paced': reader.paced, 'minIntervalSeconds': PUBLIC_MIN_INTERVAL_SECONDS,
+               'startedAt': started, 'checkedAt': now().isoformat(), 'paced': reader.paced, 'minIntervalSeconds': PUBLIC_MIN_INTERVAL_SECONDS, 'apiMinIntervalSeconds': PUBLIC_API_MIN_INTERVAL_SECONDS,
                'requests': reader.requests, 'rateLimited': reader.rate_limited, 'rows': rows, 'problems': [{'path': r['path'], 'problems': r['problems']} for r in problems]}
     (op_dir / 'receipts').mkdir(exist_ok=True)
     atomic_json(op_dir / 'receipts/public-readback.json', receipt, mode=0o644)

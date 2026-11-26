@@ -86,7 +86,7 @@ class FakeHost:
     def http_json(self, url, *, token=None, body=None, timeout=30):
         live = json.loads((self.content_root / 'current.json').read_text())['contentId']
         if body is not None:
-            self.posts.append((url, body)); return {'expired': len(body.get('paths', []))}
+            self.posts.append((url, body)); return {'ok': True, 'expired': len(body.get('paths', []))}
         return {'contentId': live}
 
     def run(self, argv, **kw):
@@ -194,6 +194,18 @@ class ContentReleaseHostTest(unittest.TestCase):
         # The proof was materialized as a hard link to the content store object.
         linked = self.op / 'sync/content-candidate/proof/public-change-history/objects/x.json'
         self.assertGreater(linked.stat().st_nlink, 1)
+
+    def test_isr_expiry_is_sent_in_chunks_the_endpoint_accepts(self):
+        # 2026-11-26: a 171-school correction listed 5,817 paths; the endpoint takes at most 2,000 per request.
+        paths = [f'/universities/school-{i}' for i in range(4500)]
+        (self.op / 'isr-expiry-request.json').write_text(json.dumps({'expectedContentId': 'c-new', 'tags': ['school:alpha-university'], 'paths': paths}))
+        op = self.module['Operation'](self.host, str(self.op))
+        result = self.module['expire_pages'](self.host, op, {'port': 3101, 'token': 't' * 40})
+        sizes = [len(body['paths']) for _, body in self.host.posts]
+        self.assertEqual(sizes, [2000, 2000, 500])
+        self.assertTrue(all(len(body['tags']) <= 2000 and body['expectedContentId'] == 'c-new' for _, body in self.host.posts))
+        self.assertEqual(sum(sizes), 4500)
+        self.assertEqual((result['paths'], len(result['chunks'])), (4500, 3))
 
     # ---- refresh: page store first, epoch purge as the fallback (docs/render-once.md §6)
 
@@ -510,6 +522,27 @@ class PublicReadbackTest(unittest.TestCase):
                                              sleep=self.sleep, clock=self.clock)
         self.assertEqual(reader('/universities/alpha-university?uapt_readback=b4')[0], 200)
         self.assertEqual(reader.retried, {'/universities/alpha-university': [524]})
+
+    def test_api_reads_stay_under_the_nginx_api_limit(self):
+        # nginx limit_req uapt_api is 3 requests/s; 171 API rows at 5/s answered 503 after the burst (2026-11-26).
+        reader = self.module['PublicReader']('https://eduaipolicy.org', get=self.site(), sleep=self.sleep, clock=self.clock)
+        for _ in range(3): reader('/api/public/v1/universities/alpha-university.json')
+        self.assertEqual([round(s, 3) for s in self.sleeps], [0.39, 0.39])  # 0.4 s apart; each fake read takes 0.01 s
+        self.sleeps.clear()
+        page = self.module['PublicReader']('https://eduaipolicy.org', get=self.site(), sleep=self.sleep, clock=self.clock)
+        for _ in range(3): page('/universities/alpha-university')
+        self.assertEqual([round(s, 3) for s in self.sleeps], [0.19, 0.19])
+
+    def test_mixed_page_and_api_reads_keep_api_reads_apart(self):
+        site, seen = self.site(), []
+        def get(url, headers, timeout):
+            seen.append((url.split('eduaipolicy.org', 1)[1], self.clock())); return site(url, headers, timeout)
+        reader = self.module['PublicReader']('https://eduaipolicy.org', get=get, sleep=self.sleep, clock=self.clock)
+        for path in ['/api/public/v1/a.json', '/universities/alpha-university', '/api/public/v1/b.json', '/api/public/v1/c.json']: reader(path)
+        api = [t for p, t in seen if p.startswith('/api/')]
+        self.assertTrue(all(b - a >= 0.4 - 1e-9 for a, b in zip(api, api[1:])), api)
+        pages = [t for p, t in seen]
+        self.assertTrue(all(b - a >= 0.2 - 1e-9 for a, b in zip(pages, pages[1:])), pages)
 
     def test_loopback_reads_are_not_paced(self):
         reader = self.module['PublicReader']('http://127.0.0.1:3102', get=self.site(), sleep=self.sleep, clock=self.clock)

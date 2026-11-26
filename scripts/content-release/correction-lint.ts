@@ -214,6 +214,7 @@ export function lintCorrection(input: LintInput): LintFinding[] {
       }
     }
     for (const [id, scope] of Object.entries(presentation.claimScopes ?? {})) {
+      if (scope === null) continue; // removal
       const problem = placeholderScope(scope, "en");
       if (problem) add("error", "placeholder-scope", slug, `claimScopes/${id}`, problem);
     }

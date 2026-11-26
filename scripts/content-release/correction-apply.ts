@@ -36,6 +36,8 @@ export interface ClaimDecision {
   evidence: EvidenceDecision[];
   /** correct: earlier evidence IDs to keep after the new evidence. */
   keepEvidenceIds?: string[];
+  /** correct: a wording-only correction keeps every earlier quote as it is (some older evidence has no ID). */
+  keepAllEvidence?: true;
   /** add: place after this Claim ID (default: end). */
   insertAfter?: string;
   /** amend: text appended to the claim; claimValue follows when it mirrored the text. */
@@ -49,11 +51,13 @@ export interface PresentationDecision {
   topicSummaries?: Record<string, Bilingual>;
   topicScopes?: Record<string, Bilingual>;
   statusOverrides?: Record<string, Bilingual & { status: string }>;
-  claimScopes?: Record<string, string>;
+  /** `null` removes the scope note of that claim. */
+  claimScopes?: Record<string, string | null>;
   addTopicClaims?: Record<string, string[]>;
   replacePresentationEvidence?: Json[];
   presentationTitles?: Record<string, string>;
-  gaps?: Record<string, string>;
+  /** Replace a gap sentence by its exact text; `null` removes it. */
+  gaps?: Record<string, string | null>;
   addGaps?: string[];
   dispositionReasons?: Record<string, string>;
   /** Dispositions for added claims, where the school's view dispositions every claim. */
@@ -109,7 +113,9 @@ export function checkDecisions(value: Json): string[] {
       need(["add", "correct", "amend"].includes(claim?.action), `${where}: action must be add, correct or amend`);
       if (claim?.action !== "amend") need(claim?.claimType && claim?.claimText?.trim() && typeof claim?.confidence === "number", `${where}: claimType, claimText and confidence are required`);
       else need(claim?.appendText?.trim(), `${where}: amend needs appendText`);
-      need(Array.isArray(claim?.evidence) && claim.evidence.length > 0, `${where}: evidence quotes are required`);
+      // A wording-only correction may keep its quotes (keepEvidenceIds) without adding new ones.
+      need(Array.isArray(claim?.evidence) && (claim.evidence.length > 0 || (claim?.action === "correct" && claim?.keepAllEvidence === true)), `${where}: evidence quotes are required`);
+      need(claim?.keepAllEvidence === undefined || (claim.action === "correct" && claim.keepAllEvidence === true && !claim.keepEvidenceIds && Array.isArray(claim.evidence) && claim.evidence.length === 0), `${where}: keepAllEvidence is for a wording-only correction (no new evidence, no keepEvidenceIds)`);
       for (const evidence of claim?.evidence ?? []) problems.push(...evidenceProblems(evidence, captures, where));
     }
     for (const tool of school?.tools ?? []) for (const evidence of [...(tool?.evidence ?? []), ...(tool?.replaceEvidence ?? [])]) problems.push(...evidenceProblems(evidence, captures, `${slug}/tool ${tool?.match}`));
@@ -222,9 +228,9 @@ export function applyClaims(decisions: CorrectionDecisions, slug: string, summar
       const keep = decision.keepEvidenceIds ?? [];
       const missing = keep.filter(id => !old.evidence.some((item: Json) => item.id === id));
       if (missing.length) fail(`Kept evidence missing for ${slug}/${decision.id}: ${missing.join(", ")}`);
-      next.evidence = [...fresh, ...old.evidence.filter((item: Json) => keep.includes(item.id))];
+      next.evidence = decision.keepAllEvidence ? clone(old.evidence) : [...fresh, ...old.evidence.filter((item: Json) => keep.includes(item.id))];
     }
-    next.reviewState = "agent_reviewed"; next.lastCheckedAt = newestRetrieved(next.evidence); next.lastChangedAt = publishedAt;
+    next.reviewState = "agent_reviewed"; next.lastCheckedAt = newestRetrieved(next.evidence) ?? old.lastCheckedAt; next.lastChangedAt = publishedAt; // older evidence can lack retrievedAt
     claims[at] = orderedClaim(next);
     updated.push(decision.id);
   }
@@ -243,6 +249,8 @@ export function applyClaims(decisions: CorrectionDecisions, slug: string, summar
   summary.summary = recount(summary.summary);
   summary.lastChangedAt = publishedAt;
   summary.lastCheckedAt = later(summary.lastCheckedAt, newestRetrieved([...used].map(key => decisions.captures[key])));
+  // A record is never checked before the evidence its corrected claims keep (wording-only corrections add no capture).
+  for (const id of updated) summary.lastCheckedAt = later(summary.lastCheckedAt, claims.find(item => item.id === id)?.lastCheckedAt);
   return { added, updated };
 }
 
@@ -290,7 +298,7 @@ function refreshTopicSources(topic: Json, before: Set<string>) {
   for (const k of after) if (!topic.sources.some((s: Json) => sourceKey(s.url, s.hash) === k)) { const [url, hash] = k.split("\u0000"); topic.sources.push({ url, hash }); }
 }
 
-export interface PageContext { slug: string; revision: string; summary: Json; tools: Json[]; changed: Set<string>; added: string[]; renamed: Record<string, string>; ps: PresentationDecision; projection?: Json }
+export interface PageContext { slug: string; revision: string; summary: Json; tools: Json[]; changed: Set<string>; added: string[]; renamed: Record<string, string>; ps: PresentationDecision; projection?: Json; toolsTouched?: boolean; touchedTools?: Set<string> }
 
 export function updateSchoolTopics(ctx: PageContext, school: Json, language: "en" | "zh") {
   const claims = new Map<string, Json>(ctx.summary.claims.map((c: Json) => [c.id, c]));
@@ -336,13 +344,27 @@ export function updateView(ctx: PageContext, view: Json, school: Json, oldFinger
   view.claims = clone(ctx.summary.claims); view.sources = clone(ctx.summary.officialSources);
   if (view.sourceBundleSha256 === oldFingerprint || ctx.ps.convertToView) view.sourceBundleSha256 = school.fingerprint;
   // Tool cards keep their directory label; source-bearing fields follow the canonical record.
-  view.tools = ctx.tools.map(t => { const old = view.tools?.find((x: Json) => x.rawToolName === t.rawToolName || ctx.renamed[x.rawToolName] === t.rawToolName); return old?.relationship ? { ...clone(t), relationship: old.relationship } : clone(t); });
+  // A view keeps its own tool cards (pipeline V6 pages curate them); only cards of tools this correction changes follow
+  // the canonical record. A view without cards (new or converted) gets the record's tools.
+  const fromRecords = (): Json[] => ctx.tools.map(t => { const old = view.tools?.find((x: Json) => x.rawToolName === t.rawToolName || ctx.renamed[x.rawToolName] === t.rawToolName); return old?.relationship ? { ...clone(t), relationship: old.relationship } : clone(t); });
+  if (!Array.isArray(view.tools) || (!view.tools.length && ctx.tools.length) || ctx.toolsTouched === undefined) view.tools = fromRecords();
+  else if (ctx.touchedTools?.size) {
+    const rebuilt = fromRecords();
+    view.tools = view.tools.map((card: Json) => {
+      const name = ctx.renamed[card.rawToolName] ?? card.rawToolName;
+      return ctx.touchedTools!.has(name) ? rebuilt.find((t: Json) => t.rawToolName === name) ?? card : card;
+    });
+  }
   if (Array.isArray(view.scopedToolNames)) view.scopedToolNames = view.scopedToolNames.map((n: string) => ctx.renamed[n] ?? n);
-  if (view.claimScopes || ctx.ps.claimScopes) view.claimScopes = { ...(view.claimScopes ?? {}), ...(ctx.ps.claimScopes ?? {}) };
+  if (view.claimScopes || ctx.ps.claimScopes) {
+    const missing = Object.entries(ctx.ps.claimScopes ?? {}).filter(([id, scope]) => scope === null && !Object.hasOwn(view.claimScopes ?? {}, id)).map(([id]) => id);
+    if (missing.length) fail(`No claim scope to remove on ${ctx.slug}: ${missing[0]}`);
+    view.claimScopes = Object.fromEntries(Object.entries({ ...(view.claimScopes ?? {}), ...(ctx.ps.claimScopes ?? {}) }).filter(([, scope]) => scope !== null));
+  }
   if (ctx.ps.gaps) {
     const missing = Object.keys(ctx.ps.gaps).filter(gap => !(view.gaps as string[]).includes(gap));
     if (missing.length) fail(`Gap text to replace is not on ${ctx.slug}: ${missing[0].slice(0, 80)}`);
-    view.gaps = view.gaps.map((g: string) => ctx.ps.gaps![g] ?? g);
+    view.gaps = view.gaps.flatMap((g: string) => !Object.hasOwn(ctx.ps.gaps!, g) ? [g] : ctx.ps.gaps![g] === null ? [] : [ctx.ps.gaps![g]]);
   }
   if (ctx.ps.dispositions && Object.keys(ctx.ps.dispositions).length && !view.claimDispositions) fail(`${ctx.slug} does not disposition its claims; place added claims with claim.topics instead of presentation.dispositions`);
   if (view.claimDispositions) {
@@ -467,7 +489,7 @@ export function buildCandidate(selected: Selected, decisions: CorrectionDecision
     const ps: PresentationDecision = clone(decisions.schools[slug].presentation ?? {});
     for (const claim of decisions.schools[slug].claims) for (const key of claim.topics ?? []) (ps.addTopicClaims ??= {})[key] = [...new Set([...(ps.addTopicClaims[key] ?? []), claim.id])];
     presentation[slug] = ps; touched[slug] = [...added, ...updated];
-    const ctx: PageContext = { slug, revision, summary, tools, changed: new Set(touched[slug]), added, renamed, ps, projection: options.projections[slug] };
+    const ctx: PageContext = { slug, revision, summary, tools, changed: new Set(touched[slug]), added, renamed, ps, projection: options.projections[slug], toolsTouched: (decisions.schools[slug].tools?.length ?? 0) > 0, touchedTools: new Set((decisions.schools[slug].tools ?? []).map(t => renamed[t.match] ?? (t.set?.rawToolName as string | undefined) ?? t.match)) };
     const converted = ps.convertToView ? convertToView(ctx, selected.pages.locales.en.schools.find((s: Json) => s.slug === slug), selected.pages.locales.zh.schools.find((s: Json) => s.slug === slug), selected.pages.locales.en.views[slug]) : undefined;
     for (const [locale, data] of Object.entries(pages.locales) as [string, Json][]) {
       const language = locale === "zh" ? "zh" : "en";

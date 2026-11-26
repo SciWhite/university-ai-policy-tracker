@@ -84,6 +84,8 @@ authors en and zh only (every other locale part is a copy of the English view).
   Groningen, VU Amsterdam, Wageningen · sv Chalmers, Stockholm · ar Khalifa · zh-Hant NTHU.
 - **A package exists but no longer covers the text batch 7 rewrote (2):** fr PSL, zh-Hant CUHK. They need
   new translations.
+- Since 2026-11-26 the reading package can carry these as record deltas from the empty basis or on the same
+  record (`docs/content-release.md` §12.4); the 71 view-decided zh pages use the same route.
 
 ## Open for the owner
 

@@ -555,15 +555,17 @@ def http_get(url, headers=None, timeout=120):
 # A 2026-11-22 program completion was refused because its API reads got 429. Public reads are
 # therefore paced below that limit, and a 429 waits out the block (Retry-After, at least 12 s).
 PUBLIC_MIN_INTERVAL_SECONDS = 0.2
+# nginx limit_req uapt_api: 3 requests/s per client on /api/public/v1/ (burst 30); API reads stay below it.
+PUBLIC_API_MIN_INTERVAL_SECONDS = 0.4
 RATE_LIMIT_WAIT_SECONDS = 12
 _public_pace = {'lock': threading.Lock(), 'next': 0.0}
 
 
-def _pace_public(sleep=time.sleep, clock=time.monotonic):
+def _pace_public(sleep=time.sleep, clock=time.monotonic, path=''):
     with _public_pace['lock']:
         now = clock()
         wait = _public_pace['next'] - now
-        _public_pace['next'] = max(now, _public_pace['next']) + PUBLIC_MIN_INTERVAL_SECONDS
+        _public_pace['next'] = max(now, _public_pace['next']) + (PUBLIC_API_MIN_INTERVAL_SECONDS if path.startswith('/api/') else PUBLIC_MIN_INTERVAL_SECONDS)
     if wait > 0:
         sleep(wait)
 
@@ -581,7 +583,7 @@ def fetch(base, path, *, candidate, attempts=3, timeout=120, get=http_get, sleep
     attempt = 0
     while True:
         if not candidate:
-            _pace_public(sleep=sleep)
+            _pace_public(sleep=sleep, path=path)
         status, body, response_headers, seconds = get(base + path, headers, timeout)
         if status == 429 and rate_limited_retries > 0:
             rate_limited_retries -= 1
