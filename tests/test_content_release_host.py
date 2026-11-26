@@ -523,6 +523,16 @@ class PublicReadbackTest(unittest.TestCase):
         self.assertEqual(reader('/universities/alpha-university?uapt_readback=b4')[0], 200)
         self.assertEqual(reader.retried, {'/universities/alpha-university': [524]})
 
+    def test_api_reads_stay_under_the_nginx_api_limit(self):
+        # nginx limit_req uapt_api is 3 requests/s; 171 API rows at 5/s answered 503 after the burst (2026-11-26).
+        reader = self.module['PublicReader']('https://eduaipolicy.org', get=self.site(), sleep=self.sleep, clock=self.clock)
+        for _ in range(3): reader('/api/public/v1/universities/alpha-university.json')
+        self.assertEqual([round(s, 3) for s in self.sleeps], [0.39, 0.39])  # 0.4 s apart; each fake read takes 0.01 s
+        self.sleeps.clear()
+        page = self.module['PublicReader']('https://eduaipolicy.org', get=self.site(), sleep=self.sleep, clock=self.clock)
+        for _ in range(3): page('/universities/alpha-university')
+        self.assertEqual([round(s, 3) for s in self.sleeps], [0.19, 0.19])
+
     def test_loopback_reads_are_not_paced(self):
         reader = self.module['PublicReader']('http://127.0.0.1:3102', get=self.site(), sleep=self.sleep, clock=self.clock)
         for _ in range(10): reader('/universities/alpha-university')

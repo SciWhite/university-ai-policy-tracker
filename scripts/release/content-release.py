@@ -698,6 +698,8 @@ def cmd_status(host, op, args):
 # (the 2026-11-22 program completion was refused on 429s; program-release.py fetch(), PR #53).
 # Public reads are paced at <= 5 requests/s and a 429 waits out the block.
 PUBLIC_MIN_INTERVAL_SECONDS = 0.2
+# nginx limits /api/public/v1/ to 3 requests/s per client (limit_req zone uapt_api, burst 30); API reads stay below it.
+PUBLIC_API_MIN_INTERVAL_SECONDS = 0.4
 RATE_LIMIT_WAIT_SECONDS = 12
 RATE_LIMIT_RETRIES = 3
 RATE_LIMIT_MAX_WAIT_SECONDS = 60
@@ -742,19 +744,19 @@ class PublicReader:
         self.requests = 0; self.rate_limited = 0
         self.retried = {}  # path (without query) -> statuses answered before the final one (5xx, 0, 429)
 
-    def _pace(self):
+    def _pace(self, path=''):
         with self.lock:
             self.requests += 1
             if not self.paced: return
             now = self.clock()
             wait = self.next_at - now
-            self.next_at = max(now, self.next_at) + PUBLIC_MIN_INTERVAL_SECONDS
+            self.next_at = max(now, self.next_at) + (PUBLIC_API_MIN_INTERVAL_SECONDS if path.startswith('/api/') else PUBLIC_MIN_INTERVAL_SECONDS)
         if wait > 0: self.sleep(wait)
 
     def __call__(self, path, headers=None):
         limited, attempt = RATE_LIMIT_RETRIES, 0
         while True:
-            self._pace()
+            self._pace(path)
             status, body, response_headers, seconds = self.get(self.base + path, headers, self.timeout)
             if status == 429 and limited > 0:
                 limited -= 1
