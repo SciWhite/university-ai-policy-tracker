@@ -394,20 +394,66 @@ other bytes.
 phase with an exact-PID wait from the operator machine):
 
 ```bash
-python3 scripts/release/content-release.py remote check    --op-id <op> --helper <program-root>/release-helper
+python3 scripts/release/content-release.py remote check --op-id <op> --helper <program-root>/release-helper
+# then everything else in one command (run it in the background and wait on it):
+python3 scripts/release/content-release.py finish --op-id <op> --op-dir <local op dir> \
+    --helper <program-root>/release-helper --bundle-sha256 <sha>
+```
+
+`finish` first checks that the Cloudflare token is active (`GET /user/tokens/verify`, read-only),
+then runs `remote activate`, reads the host's `receipts/refresh.json` (status `ok`, or
+`incomplete` after a fallback whose origin purge succeeded; origin mode `page-store`,
+`epoch-purge-fallback` or `epoch-purge`), purges Cloudflare (`purge_everything`), waits 10 s,
+runs the paced public readback and then `remote complete`. It stops at the first failure,
+writes `<local op dir>/receipts/finish.json` with every step and the next action, and runs
+nothing after the failed step, with one exception:
+
+- **`activate` did not return 0.** If the SSH session dropped or the wait timed out while
+  `activate` still runs on the host (or the host could not be asked), `finish` waits again, up
+  to three times. Then:
+  - the wait was lost but the job recorded exit 0: it carries on as if the wait had returned 0;
+  - still running or unknown: it stops with "wait for the job, then check the pointer"; no purge;
+  - ended, and the live pointer cannot be read: it stops with "the switch MAY be live";
+  - ended before the switch (pointer still the parent): nothing was switched;
+  - ended after the switch: it purges Cloudflare only if `receipts/refresh.json` is `ok`, or
+    `incomplete` with a successful origin purge (otherwise the edge would refill from the
+    previous HTML), and names the rest:
+    refresh if needed, then `cloudflare-purge`, readback and `remote complete`.
+  The pointer is read from `--content-root` (default `/srv/uapt/content/runtime`, the host's
+  `UAPT_CONTENT_ROOT_PATH`).
+- **Readback findings** stop it before `complete`: read `receipts/public-readback.json`, record
+  each finding, then run `remote complete`.
+- **Rerunning a remote phase** needs a new `--attempt` (remote-bg.sh keeps one run per job name;
+  `finish` names jobs `<op>-<phase>[-<attempt>]`).
+
+**Why one command (2026-11-25).** The Cloudflare purge used to be a hand-sent request after
+`activate`. Twice (batch 4+6, batch 8) the session waiting on `activate` was not woken when it
+ended, and the edge served the previous HTML for about two hours after the switch.
+
+The single steps stay available when a run stops part-way:
+
+```bash
 python3 scripts/release/content-release.py remote activate --op-id <op> --helper <program-root>/release-helper --bundle-sha256 <sha>
-# check receipts/refresh.json: origin.mode page-store (or epoch-purge-fallback + fallbackReason)
-# operator: Cloudflare purge_everything, then the paced public readback:
+python3 scripts/release/content-release.py cloudflare-purge --op-dir <local op dir> --reason "content switch <contentId>"
 python3 scripts/release/content-release.py readback --op-dir <local op dir>
-# complete sync event into sync/content-complete/
 python3 scripts/release/content-release.py remote complete --op-id <op> --helper <program-root>/release-helper
 ```
+
+`cloudflare-purge` reads `CLOUDFLARE_ZONE_ID` and `CLOUDFLARE_CACHE_PURGE_TOKEN` from the
+environment or `.env.agents.local` next to the checkout's `scripts/` (from a git worktree,
+pass `--env-file <main checkout>/.env.agents.local`), never prints them, makes up to three
+attempts on network errors, 429 and 5xx, and writes `receipts/cloudflare-purge.json` (time,
+reason, HTTP status, Cloudflare error codes, a 12-character hash of the zone id; no token). A
+missing or inactive token stops `finish` before the switch; a token that is active but may not
+purge is only found by the purge itself.
 
 | Phase | What it does (refuses at the first failed gate, nothing after it runs) |
 |---|---|
 | `check` | read-only: retention gate, helper pin, bundle/basis/event identity, uploaded objects, live pointer is the parent |
 | `activate` | retention + transaction + disk gates; uploaded objects verified; proofs materialized; candidate sync gate; web and MCP serve the parent; objects linked; tree installed (`install-tree.py`); hold registered with its first clock; `switch` from the helper; switch result checked against the bundle; page-only ISR expiry; then `refresh` (§5.2) unless `--no-refresh` |
 | `refresh` | page store: `render-once.py generation`, then `render-once.py refresh` of the changed content-language URLs; fallback warm + `purge-html-cache` (§5.2) |
+| `cloudflare-purge` | operator machine: `purge_everything` on the zone; token from `.env.agents.local`, never printed; `receipts/cloudflare-purge.json` |
+| `finish` | operator machine: `remote activate` → refresh receipt check → `cloudflare-purge` → `readback` → `remote complete`, stopping at the first failure; `receipts/finish.json` |
 | `readback` | operator machine, after the Cloudflare purge: paced public readback (≤ 5 requests/s, waits out 429) of `changed-urls.json`; `receipts/public-readback.json` in the local op dir |
 | `complete` | complete sync gate; web and MCP serve the release; register `contentActive`/`contentRollback`, hold removed; `classify-content-releases` when the policy names `contentReleaseRoot`; governed `rescan` (refreshes the receipt's `checkedAt`, so the next release does not stop at "stale receipt"); `hold-status --write`; proofs dehydrated |
 | `status` | pointer, runtime and MCP readback |
@@ -461,7 +507,8 @@ Steps, in order:
 3. Receipt `receipts/refresh.json`: `origin.mode` is `page-store`, `epoch-purge-fallback` (with
    `fallbackReason` and the page-store step's exit codes and output) or `epoch-purge`.
 
-Cloudflare stays an operator step after `refresh`, because its token never reaches the host.
+Cloudflare stays an operator step after `refresh`, because its token never reaches the host;
+`finish` runs it right after `activate` (§5 above).
 Keep `purge_everything` until the edge bypasses `?_rsc=` (`docs/render-once.md` §2).
 
 ### 5.3 Sync proofs as hash manifests

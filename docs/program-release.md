@@ -368,6 +368,7 @@ and the next one.
 | `ledger` | Contract 2.1.0 `audit` event for the program basis (7.3). Candidate readback, MCP catalog and runtime content state. Ends with the release helper's `verify-sync … candidate`. | `sync/program/`, `ledger.log` |
 | `plan` | Retention receipt (register + new root as `candidate`); refuses unclassified roots or temporary artifacts. Lifecycle plan with a fresh transaction id per attempt (`<op>`, then `<op>-p2`, …: the controller keeps `transactions/<id>` even after a failed cutover). Expiry is bounded by the plan window and by the candidate's start time plus `candidateTtlHours`. Peak budgets are at least the measured peaks and the previous plan's, never above policy. `publicChecks` is the BUILD_ID `_buildManifest.js` hash only: it shows the new assets are served from the shared static alias, not that routing switched (the completion readback's BUILD_ID-in-HTML and the controller's `nginx -T` check prove that); cold renders stay out of the cutover window. Then the controller `gate`. | `retention.json`, `plan.json`, `gate.log` |
 | `cutover` | Checks routing drift first, then controller `cutover` (journal, candidate checks, routing switch, nginx reload, static public check). | `cutover.log` |
+| Cloudflare (operator machine, right after `cutover`) | `python3 scripts/release/content-release.py cloudflare-purge --receipt <local dir>/cloudflare-purge.json --reason "program cutover <sha12>"`. The controller never purges a CDN (the token stays on the operator machine). Run it as soon as `cutover` returns, before `mcp` and `complete`: Cloudflare keeps HTML for 7 days. | local `cloudflare-purge.json` (no token) |
 | `complete` | Public readback of the same scope on `https://eduaipolicy.org` (pages carry `?uapt_readback=<plan id>` against stale CDN HTML; `--no-cache-bust` turns this off). Completion event and `verify-sync … complete`. Controller `complete`: a retired slot that ended `failed` is `reset-failed` and completion retried once. Confirms that the controller updated the retention register (7.4), then runs the read-only `retention` check. | `sync/program-complete/`, `complete-*.log`, `retention.log`, `RESULT.json` |
 | `mcp` (after `cutover`, before `complete`) | Moves the MCP unit onto this release's `apps/mcp/server.mjs`, reading the runtime content root (7.7). A trial process on 127.0.0.1:3162 must report the selected `contentId`, manifest and catalog hashes on `/healthz` and list the three tools. The unit then gets a managed drop-in and one restart, with the same checks; on failure the previous drop-in is restored and the unit restarted. `--trial-only`, `--rollback`. | `mcp/trial.json`, `mcp/mcp.env`, `mcp/dropin.conf`, `mcp/dropin-before-*` |
 
@@ -434,6 +435,13 @@ its scope instead of claiming 132 while reading back 20.
   names. That event is located under `/srv/uapt/operations/*/sync/*/` and
   checked, including every referenced artifact hash. The artifacts are then
   restricted to the scope. Proof files are hard-linked, not copied.
+- **Dehydrated proofs.** Since §5.3 of `docs/content-release.md`, a completed content release
+  keeps its proofs as `proof-manifest.json` only, so `ledger` refuses with a missing proof
+  directory. Before `ledger`, rebuild them with the active helper:
+  `sudo python3 <active program>/release-helper/scripts/content-release/sync-proof.py materialize <sync dir> --store /srv/uapt/content/runtime/objects`
+  (every file is a hard link to a verified object, so this costs no space). After `complete`,
+  run `sync-proof.py dehydrate <sync dir>` again. (2026-11-23, program d0f1038f: the manifest was
+  unchanged before and after.)
 - **Fresh observations.** Candidate pages, API Claim IDs, MCP Claim IDs and the
   runtime content manifest are observed for every school in scope. Each set
   must equal the synchronized Claim ID set exactly, which also proves that no

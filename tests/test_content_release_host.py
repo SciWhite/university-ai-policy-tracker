@@ -523,6 +523,219 @@ class PublicReadbackTest(unittest.TestCase):
         self.assertNotIn('urlopen', text)
 
 
+TOKEN = 'tok-' + 'x' * 36
+ZONE = 'ab' * 16
+
+
+class CloudflarePurgeTest(unittest.TestCase):
+    """Operator-side zone purge: the token never appears in output or receipts."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(); self.dir = Path(self.tmp.name)
+        self.module = runpy.run_path(str(TOOL))
+        self.env = self.dir / '.env.agents.local'
+        self.env.write_text(f'# local secrets\nexport CLOUDFLARE_ZONE_ID="{ZONE}"\nCLOUDFLARE_CACHE_PURGE_TOKEN={TOKEN}\nOTHER=1\n')
+        self.saved = {k: os.environ.pop(k, None) for k in ('CLOUDFLARE_ZONE_ID', 'CLOUDFLARE_CACHE_PURGE_TOKEN')}
+        self.calls, self.sleeps = [], []
+
+    def tearDown(self):
+        for k, v in self.saved.items():
+            if v is not None: os.environ[k] = v
+        self.tmp.cleanup()
+
+    def poster(self, *answers):
+        answers = list(answers)
+        def post(url, body, token, timeout=60):
+            self.calls.append((url, body, token))
+            return answers.pop(0)
+        return post
+
+    def purge(self, post, receipt=None):
+        out = io.StringIO()
+        with redirect_stdout(out):
+            self.module['purge_cloudflare']('test', receipt or self.dir / 'r/purge.json', env_file=self.env, post=post, sleep=self.sleeps.append)
+        return out.getvalue()
+
+    def test_sends_purge_everything_and_keeps_the_token_out(self):
+        out = self.purge(self.poster((200, json.dumps({'success': True, 'result': {'id': ZONE}}).encode())))
+        url, body, token = self.calls[0]
+        self.assertEqual(url, f'https://api.cloudflare.com/client/v4/zones/{ZONE}/purge_cache')
+        self.assertEqual(body, {'purge_everything': True}); self.assertEqual(token, TOKEN)
+        text = (self.dir / 'r/purge.json').read_text()
+        receipt = json.loads(text)
+        self.assertTrue(receipt['ok']); self.assertEqual(receipt['schemaVersion'], 'uapt-cloudflare-purge-v1')
+        for secret in (TOKEN, ZONE):
+            self.assertNotIn(secret, text); self.assertNotIn(secret, out)
+
+    def test_retries_5xx_then_succeeds(self):
+        self.purge(self.poster((502, b'bad gateway'), (200, b'{"success": true}')))
+        self.assertEqual(len(self.calls), 2); self.assertEqual(self.sleeps, [5])
+
+    def test_auth_failure_is_final_refused_and_scrubbed(self):
+        answer = json.dumps({'success': False, 'errors': [{'code': 10000, 'message': f'Authentication error for {TOKEN}'}]}).encode()
+        with self.assertRaisesRegex(self.module['Refused'], 'Cloudflare purge failed'):
+            self.purge(self.poster((403, answer)))
+        self.assertEqual(len(self.calls), 1)
+        text = (self.dir / 'r/purge.json').read_text()
+        self.assertNotIn(TOKEN, text); self.assertIn('10000', text); self.assertFalse(json.loads(text)['ok'])
+
+    def test_200_without_success_is_a_failure(self):
+        with self.assertRaises(self.module['Refused']):
+            self.purge(self.poster(*[(200, b'{"success": false}')] * 3))
+
+    def test_missing_credentials_name_the_key_only(self):
+        self.env.write_text(f'CLOUDFLARE_ZONE_ID={ZONE}\n')
+        with self.assertRaisesRegex(self.module['Refused'], 'CLOUDFLARE_CACHE_PURGE_TOKEN'):
+            self.purge(self.poster())
+        self.assertEqual(self.calls, [])
+
+    def test_cli_writes_the_op_receipt(self):
+        with redirect_stdout(io.StringIO()):
+            self.module['cmd_cloudflare_purge'](self.module['argparse'].Namespace(op_dir=str(self.dir / 'op'), receipt=None, reason='r', env_file=str(self.env)),
+                                                post=self.poster((200, b'{"success": true}')), sleep=self.sleeps.append)
+        self.assertTrue(json.loads((self.dir / 'op/receipts/cloudflare-purge.json').read_text())['ok'])
+
+
+class FinishTest(unittest.TestCase):
+    """`finish`: activate → refresh receipt → Cloudflare purge → readback → complete, stopping at the first failure."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(); self.dir = Path(self.tmp.name) / 'local-op'
+        self.module = runpy.run_path(str(TOOL))
+        bundle = {'schemaVersion': 'uapt-content-release-bundle-v1', 'opId': 'content-new-op', 'contentId': 'c-new', 'parentContentId': 'c-parent',
+                  'manifestSha256': '1' * 64, 'parentManifestSha256': '2' * 64, 'requiredSyncContract': '2.1.0', 'changedSchools': ['alpha-university'],
+                  'files': {'syncCandidate': 'sync/content-candidate/event.json', 'changedUrls': 'changed-urls.json'},
+                  'hold': {'reason': 'r'}, 'authorization': 'User: "publish it"'}
+        write_json(self.dir / 'bundle.json', bundle)
+        self.sha = sha((self.dir / 'bundle.json').read_bytes())
+        self.env = Path(self.tmp.name) / '.env'; self.env.write_text(f'CLOUDFLARE_ZONE_ID={ZONE}\nCLOUDFLARE_CACHE_PURGE_TOKEN={TOKEN}\n')
+        self.saved = {k: os.environ.pop(k, None) for k in ('CLOUDFLARE_ZONE_ID', 'CLOUDFLARE_CACHE_PURGE_TOKEN')}
+        self.order = []
+
+    def tearDown(self):
+        for k, v in self.saved.items():
+            if v is not None: os.environ[k] = v
+        self.tmp.cleanup()
+
+    def args(self, **kw):
+        base = dict(op_id='content-new-op', op_dir=str(self.dir), helper='/srv/uapt/releases/p/release-helper', bundle_sha256=self.sha, host='local',
+                    ops_root='/srv/uapt/operations', timeout=60, attempt='', legacy_helper_reason=None, env_file=str(self.env),
+                    origin='https://eduaipolicy.org', settle_seconds=10.0, content_root='/srv/uapt/content/runtime')
+        return self.module['argparse'].Namespace(**{**base, **kw})
+
+    def run_finish(self, *, codes=None, refresh=None, purge_fails=False, readback_code=0, raises=None, states=None, rewait_codes=None, live='c-parent', **kw):
+        codes = dict(codes or {}); raises = dict(raises or {}); states = list(states or []); rewait_codes = list(rewait_codes or [])
+        def remote(a):
+            self.order.append(a.phase)
+            if a.phase in raises: raise raises[a.phase]
+            return codes.get(a.phase, 0)
+        def read_receipt(a, name): self.order.append('read:' + name); return refresh if refresh is not None else {'status': 'ok', 'origin': {'mode': 'page-store'}}
+        def purge(reason, path, env_file):
+            self.order.append('purge')
+            if purge_fails: raise self.module['Refused']('Cloudflare purge failed')
+        def readback(a): self.order.append('readback'); return readback_code
+        def verify(env_file): self.order.append('verify')
+        def job_state(a, phase): return states.pop(0) if states else 'finished exit=3'
+        def rewait(a, phase): self.order.append('rewait'); return rewait_codes.pop(0)
+        with redirect_stdout(io.StringIO()):
+            code = self.module['cmd_finish'](self.args(**kw), remote=remote, read_receipt=read_receipt, purge=purge, readback=readback, verify=verify,
+                                             job_state=job_state, rewait=rewait, live_content=lambda a: live, sleep=lambda s: self.order.append(f'sleep:{s:g}'))
+        return code, json.loads((self.dir / 'receipts/finish.json').read_text())
+
+    def test_runs_every_step_in_order(self):
+        code, receipt = self.run_finish()
+        self.assertEqual(code, 0)
+        self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge', 'sleep:10', 'readback', 'complete'])
+        self.assertEqual(receipt['status'], 'complete')
+        self.assertEqual([s['step'] for s in receipt['steps']], ['token-preflight', 'activate', 'refresh-receipt', 'cloudflare-purge', 'readback', 'complete'])
+
+    def test_failed_activate_before_the_switch_stops_without_a_purge(self):
+        code, receipt = self.run_finish(codes={'activate': 3})
+        self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate'])
+        self.assertEqual(receipt['status'], 'stopped'); self.assertIn('nothing was switched', receipt['steps'][-1]['next'])
+
+    def test_failed_activate_after_the_switch_still_purges_cloudflare(self):
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback', 'purge': {'exit': 0}}})
+        self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge'])
+        last = receipt['steps'][-1]
+        self.assertEqual(last['cloudflarePurge'], 'ok'); self.assertIn('IS live', last['next']); self.assertNotIn('readback', self.order)
+
+    def test_live_switch_without_origin_refresh_is_not_purged_yet(self):
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'refused', 'origin': {'mode': 'page-store'}})
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order)
+        self.assertIn('cloudflare-purge', receipt['steps'][-1]['next']); self.assertIn('refresh', receipt['steps'][-1]['next'])
+
+    def test_failed_origin_purge_after_the_switch_is_not_purged_at_the_edge(self):
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback', 'purge': {'exit': 1}}})
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order); self.assertIn('NOT purged', receipt['steps'][-1]['next'])
+
+    def test_lost_wait_on_a_successful_job_continues(self):
+        code, receipt = self.run_finish(codes={'activate': 255}, states=['finished exit=0', 'finished exit=0'])
+        self.assertEqual(code, 0); self.assertEqual(receipt['status'], 'complete'); self.assertIn('complete', self.order)
+
+    def test_still_running_after_the_waits_is_not_a_failure_and_not_purged(self):
+        code, receipt = self.run_finish(codes={'activate': 124}, states=['running pid=1'] * 5, rewait_codes=[124, 124, 124], live='c-new')
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order); self.assertEqual(self.order.count('rewait'), 3)
+        self.assertIn('may still be running', receipt['steps'][-1]['next'])
+
+    def test_unreachable_host_is_unknown_not_nothing_switched(self):
+        code, receipt = self.run_finish(codes={'activate': 255}, states=['', '', '', 'finished exit=255'], rewait_codes=[255, 255, 255], live=None)
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order)
+        self.assertIn('MAY be live', receipt['steps'][-1]['next']); self.assertNotIn('nothing was switched', receipt['steps'][-1]['next'])
+
+    def test_lost_ssh_waits_again_and_continues(self):
+        code, receipt = self.run_finish(codes={'activate': 255}, states=['running pid=1'], rewait_codes=[0])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.order[:3], ['verify', 'activate', 'rewait']); self.assertIn('purge', self.order)
+        self.assertEqual([s['step'] for s in receipt['steps'][:2]], ['token-preflight', 'activate-wait'])
+
+    def test_exceptions_become_recorded_stops(self):
+        code, receipt = self.run_finish(raises={'complete': self.module['Refused']('op already started')})
+        self.assertEqual(code, 1); self.assertEqual(receipt['status'], 'stopped')
+        self.assertIn('op already started', receipt['steps'][-1]['error']); self.assertIn('--attempt', receipt['steps'][-1]['next'])
+
+    def test_failed_token_preflight_runs_nothing(self):
+        def verify(env_file): raise self.module['Refused']('did not verify')
+        with redirect_stdout(io.StringIO()), self.assertRaisesRegex(self.module['Refused'], 'did not verify'):
+            self.module['cmd_finish'](self.args(), remote=lambda a: self.order.append(a.phase), verify=verify)
+        self.assertEqual(self.order, [])
+
+    def test_refused_refresh_stops_before_the_purge(self):
+        code, receipt = self.run_finish(refresh={'status': 'refused', 'origin': {'mode': 'page-store'}})
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order)
+
+    def test_fallback_refresh_still_purges(self):
+        code, receipt = self.run_finish(refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback', 'fallbackReason': '503'}})
+        self.assertEqual(code, 0); self.assertEqual(receipt['steps'][2]['fallbackReason'], '503')
+
+    def test_failed_purge_stops_before_readback(self):
+        code, receipt = self.run_finish(purge_fails=True)
+        self.assertEqual(code, 1); self.assertEqual(self.order[-1], 'purge')
+        self.assertIn('cloudflare-purge', receipt['steps'][-1]['next']); self.assertIn('Cloudflare purge failed', receipt['steps'][-1]['error'])
+
+    def test_readback_findings_stop_before_complete(self):
+        code, receipt = self.run_finish(readback_code=1)
+        self.assertEqual(code, 1); self.assertNotIn('complete', self.order)
+
+    def test_refuses_other_bundle_bytes_before_any_step(self):
+        with self.assertRaisesRegex(self.module['Refused'], 'not the approved bundle'):
+            self.run_finish(bundle_sha256='f' * 64)
+        self.assertEqual(self.order, [])
+
+    def test_refuses_without_credentials_before_the_switch(self):
+        self.env.write_text('')
+        with redirect_stdout(io.StringIO()), self.assertRaisesRegex(self.module['Refused'], 'CLOUDFLARE_ZONE_ID'):
+            self.module['cmd_finish'](self.args(), remote=lambda a: self.order.append(a.phase))
+        self.assertEqual(self.order, [])
+
+    def test_token_verify_needs_an_active_token(self):
+        verify = self.module['verify_cloudflare_token']
+        verify(str(self.env), get=lambda url, token: (200, b'{"success": true, "result": {"status": "active"}}'))
+        with self.assertRaisesRegex(self.module['Refused'], 'did not verify'):
+            verify(str(self.env), get=lambda url, token: (200, b'{"success": true, "result": {"status": "disabled"}}'))
+        with self.assertRaisesRegex(self.module['Refused'], 'did not verify') as caught:
+            verify(str(self.env), get=lambda url, token: (401, b'{"success": false}'))
+        self.assertNotIn(TOKEN, str(caught.exception))
+
+
 class SyncProofTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.base = Path(self.tmp.name)
