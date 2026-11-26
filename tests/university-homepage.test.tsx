@@ -4,7 +4,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { PublicEntitySummary } from "@uapt/shared";
 import { UniversityHomepageMark } from "../apps/web/components/university-homepage-mark";
-import { validateOfficialHomepage, validateOfficialHomepages } from "../apps/web/lib/university-homepage";
+import { validateOfficialHomepage, validateOfficialHomepages } from "../apps/web/lib/university-homepage-validate";
 import { validateHomepageInput, validateHomepageOnlyInput } from "../scripts/v6-pipeline/homepage";
 
 const slug = "harvard-university";

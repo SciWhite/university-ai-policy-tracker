@@ -1,4 +1,4 @@
-import { validateOfficialHomepage } from '../../apps/web/lib/university-homepage';
+import { validateOfficialHomepage } from '../../apps/web/lib/university-homepage-validate';
 import type { PublicEntitySummary } from '@uapt/shared';
 import type { Batch } from './batch';
 

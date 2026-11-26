@@ -11,7 +11,7 @@ import { policyClaimSchema, sourceAttributionSchema, universityToolRecordSchema,
 import type { LabSchool } from "./policy-v6";
 import type { PageToolRecord } from "@/components/university-ai-tools";
 import type { PolicyScenePilot, PolicySceneQuickCheck } from "./policy-scene-pilot";
-import { validateOfficialHomepage, type OfficialHomepage } from "./university-homepage";
+import { validateOfficialHomepage, type OfficialHomepage } from "./university-homepage-validate";
 import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */

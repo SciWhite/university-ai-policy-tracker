@@ -195,7 +195,7 @@ pnpm v6:openclaw-enroll --workspace <ws> status     # local receipt only
 Put `"officialHomepage": {"url": "https://www.example.edu/", "checkedAt": "2026-11-26"}`
 in `inputs/<abbr>.json` after checking the institution's main site. Use a plain HTTPS root
 or a short homepage path on a host corroborated by the school's recorded official sources
-or existing homepage entry. A policy, IT or faculty site is only a verification lead. The
+(the same rule runs in the pipeline and in the host release tools, which carry no registry). A policy, IT or faculty site is only a verification lead. The
 independent reviewer checks the institution and destination and records `homepageCheck: {url, evidence}` in the
 school's findings. An `add` batch needs this field or a nonempty `homepageGap` reason that the
 reviewer can assess. An ordinary `update` with no new value carries forward the current entry.

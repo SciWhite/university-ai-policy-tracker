@@ -1,4 +1,4 @@
-import { validateOfficialHomepages } from '../../apps/web/lib/university-homepage';
+import { validateOfficialHomepages } from '../../apps/web/lib/university-homepage-validate';
 import {createHash} from 'node:crypto';
 import {publicEntitySummarySchema, policySnapshotSchema, universityToolRecordSchema} from '@uapt/shared';
 import type {PublishedV6Package} from '../../apps/web/lib/policy-v6-published';

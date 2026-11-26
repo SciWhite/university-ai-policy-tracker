@@ -4,7 +4,8 @@ import { setTimeout } from 'node:timers/promises';
 import { parseArgs } from 'node:util';
 import type { PublicEntitySummary } from '@uapt/shared';
 import { loadSelected } from '../content-release/correct';
-import { isOfficialHomepageCandidate, legacyUniversityHomepage } from '../../apps/web/lib/university-homepage';
+import { isOfficialHomepageCandidate } from '../../apps/web/lib/university-homepage-validate';
+import { legacyUniversityHomepage } from '../../apps/web/lib/university-homepage';
 
 function propose(summary: PublicEntitySummary) {
   const counts = new Map<string, number>();

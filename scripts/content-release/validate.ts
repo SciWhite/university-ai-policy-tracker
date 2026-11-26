@@ -1,4 +1,4 @@
-import { validateOfficialHomepages } from '../../apps/web/lib/university-homepage';
+import { validateOfficialHomepages } from '../../apps/web/lib/university-homepage-validate';
 import { existsSync, lstatSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
