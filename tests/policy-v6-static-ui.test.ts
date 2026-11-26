@@ -29,6 +29,17 @@ test("reviewed compact-guide labels cover all 33 reading locales and incorporate
   assert.deepEqual(policyV6StaticUiText("en"), {});
 });
 
+test("V6 page header labels are translated for every reading locale (zh and own-language pages showed English)", () => {
+  const header = ["Search universities", "Independent · Open access · Not an official university page", "Advice and precautions"];
+  for (const locale of READING_LOCALES) {
+    if (locale === "en") continue;
+    for (const source of header) assert(policyV6StaticUiText(locale)[source], `${locale}: ${source}`);
+  }
+  assert.equal(policyV6StaticUiText("zh")["Search universities"], "搜索大学");
+  assert.equal(policyV6StaticUiText("zh")["Independent · Open access · Not an official university page"], "独立整理 · 免费开放 · 非学校官方页面");
+  assert.equal(policyV6StaticUiText("zh")["Advice and precautions"], "建议与注意事项");
+});
+
 test("compact guide fallback notice follows accepted field coverage and target language", () => {
   const text = policyV6StaticUiText("fr");
   const readyGuide = { ...guide, scope: { en: "Vérifiez la règle du cours.", zh: scope.zh } };

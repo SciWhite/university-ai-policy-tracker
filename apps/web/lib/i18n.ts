@@ -38,6 +38,15 @@ const uiStrings = {
     nl: "Gelokaliseerde weergave",
     ms: "Paparan setempat"
   },
+  localizedDisplayOnly: {
+    en: "Localized display only",
+    zh: "仅为本地化显示",
+    fr: "Affichage localisé uniquement",
+    pl: "Tylko widok lokalny",
+    es: "Solo vista localizada",
+    nl: "Alleen gelokaliseerde weergave",
+    ms: "Paparan setempat sahaja"
+  },
   sourceLanguage: {
     en: "Source language",
     zh: "来源语言",

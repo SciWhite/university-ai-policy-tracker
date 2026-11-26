@@ -198,8 +198,7 @@ function EvidenceBlock({
       {evidence.evidenceSnippetDisplay ? (
         <div className="localized-evidence">
           <p>
-            {getUiString("localizedDisplay", locale)}{" "}
-            {translateSurfaceText("only", locale)}
+            {getUiString("localizedDisplayOnly", locale)}
           </p>
           <p>{evidence.evidenceSnippetDisplay}</p>
         </div>
