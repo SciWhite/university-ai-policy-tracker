@@ -41,7 +41,7 @@ V6 完整档的完整数据 = 已发布 V6 页面输入（`CompleteV6Bundle` 及
 - 已验证 view/来源对象中每条证据自带的版本直接保留；canonical Claim 投影漏掉版本时，只按 Claim ID + URL/原文/标题/语言/定位/取回日期完整匹配原始证据。禁止使用 `topic.sources`、URL 唯一哈希或“当前版本”替缺失证据猜版本。完整来源引文与 canonical 分段 Claim 不是同一对象，不能强行覆盖已绑定版本。
 - 来源版本默认折叠，展开显示完整哈希；单条及共享引文的取回/主张核查日期均在引文下方显示。多个日期分别列出，不合成日期；来源检查、取回、主张检查与政策生效日期不互相替代。
 - Ctrl/Cmd+F 命中关闭面板的原文时展开对应阅读器并保留选区；同时处理原生 `beforematch`。打印和禁用 JS 必须保留完整原文与关联。真实 Safari/iOS、读屏和菜单查找仍要候选阶段人工验收；自动化不代替这些结果。
-- `?layout=v6` 为共享入口；旧 Harvard `?layout=harvard-ui-lab` 只保留已有开发入口兼容，分享、对比和语言切换统一输出 `layout=v6`。非 V6 学校及 V4/V5 不接入阅读标记或新 CSS。
+- 公开入口为 `/universities/<slug>` 和 `/zh/universities/<slug>`。`?layout=` 仅供本地 `next dev` 预览。非 V6 学校及 V4/V5 不接入阅读标记或新 CSS。
 
 通用接入不得复制 Harvard 的 HLS/HMS 规则或工具表。来源数据仍使用各校通过原合同的输入；改正文/状态/范围等内容仍须走 2026-10-25 完整性及独立审核合同。只改共享展示不重写 frozen 包或重算内容批准 hash。
 
@@ -175,7 +175,7 @@ git diff --check
 
 上述 shell 变量须由调用线程设置，不执行 model 提供的命令或历史 publisher。Python 3.9+，推荐当前 Homebrew Python；系统 Python 3.8 不支持 Path.is_relative_to。
 
-预览 EN `/universities/<slug>?layout=v6`，ZH `/zh/universities/<slug>?layout=v6`。语言切换保留 layout/compare/view/differences；对比搜索复用 `/api/public/v1/search.json`，点击加选不跳学校页，最多四校。仅本地 `/api/local/policy-v6/compare` 不作为公开服务。
+公开验收 EN `/universities/<slug>`、ZH `/zh/universities/<slug>`。语言切换保留 `compare`、`view`、`differences`、`guide` 和证据锚点。对比搜索复用 `/api/public/v1/search.json`，点击加选不跳学校页，最多四校。仅本地 `/api/local/policy-v6/compare` 不作为公开服务。
 
 ## 响应式与图像规范
 
@@ -298,4 +298,4 @@ PDF 从同一保存原件完成文件类型检查、原始哈希、文本提取�
 
 北京大学现在接入共享 compact-evidence V6，公开 V6 名单为 14 校；此前 13 校/V5 北大说明是历史状态，以新页面指针为准。北大 63 Claim、33 工具、48 来源和政策修订 `pku-v5-20261014-r3` 均不因此改号或刷新核查日期。新页面版本独立于政策版本。纪律申诉 10 日、校内处理 15 日及复杂案件延长、外部申诉 15 日、学位复核处理 30 日分别保留完整范围与起算条件，不合并成通用申诉期限。
 
-所有 V6 标题校徽由 `UniversityHomepageMark` 共享组件链接大学正式首页，URL 取自 `lib/university-homepages.json` 的逐校显式映射。不能直接继承 catalog.website（现有部分值为 IT/图书馆/政策单位）。仅标题校徽添加链接，不把对比按钮内部的校徽做成嵌套链接。默认同标签页，保留 Ctrl/Cmd 点击原生行为、明确无障碍名称及可见焦点；无正式首页映射时保持普通校徽，不猜 URL。新增学校应联网核对正式根站并加入映射及浏览器 href/点击验收。政策、原文、日期和审核状态不因导航变化修改。
+标题校徽使用共享组件 `UniversityHomepageMark`，正式首页的输入、独立复核和回填以 [V6 pipeline §2.5](v6-pipeline.md#25-official-university-homepages) 为准。对比按钮内的校徽保留在原按钮中。公开验收检查校徽的链接目标、无障碍名称和键盘焦点。

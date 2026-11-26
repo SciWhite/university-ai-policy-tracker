@@ -12,7 +12,8 @@ import gates  # noqa: E402
 
 P, args = Bt.workspace_from_argv()
 BATCH = Bt.load(P)
-gates.require(P, BATCH, 'locale')  # no review receipts for a page whose /zh/ rows are not all Chinese
+if not BATCH.get('homepageOnly'):
+    gates.require(P, BATCH, 'locale')  # no review receipts for a changed policy view whose /zh/ rows are not all Chinese
 R = P / (args[0] if args else BATCH.get('reviewDir', 'review'))
 man = json.loads((R / 'manifest.json').read_text())
 now = datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z')
@@ -31,7 +32,14 @@ for slug, sha in man['schoolPacketSha256'].items():
     if fd.get('decision') != 'accept' or open_items:
         problems.append(f"{slug}: decision {fd.get('decision')} with {len(open_items)} open blocker/fix")
         continue
-    req = json.loads(raw)['requiredAcceptance']
+    packet = json.loads(raw)
+    if 'officialHomepage' in packet:
+        checked = fd.get('homepageCheck') or {}
+        evidence = checked.get('evidence')
+        if checked.get('url') != packet['officialHomepage']['url'] or not isinstance(evidence, str) or not evidence.strip():
+            problems.append(f"{slug}: record homepageCheck with the packet URL and independent verification evidence")
+            continue
+    req = packet['requiredAcceptance']
     receipts[slug] = {**req, 'reviewer': reviewer, 'reviewedAt': now}
     rounds[slug] = {'findingsSha256': hashlib.sha256(f.read_bytes()).hexdigest(), 'minorOpen': sum(1 for x in fd.get('findings', []) if x.get('severity') == 'minor')}
 if problems:

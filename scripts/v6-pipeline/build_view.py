@@ -19,6 +19,8 @@ import gates  # noqa: E402
 
 P, args = Bt.workspace_from_argv()
 BATCH = Bt.load(P)
+if BATCH.get("homepageOnly"):
+    sys.exit("Homepage-only update: run v6:packets against the parent release")
 W = Bt.REPO
 override = os.environ.get('UAPT_V6_DRAFT_WITHOUT_DISCOVERY_GATE', '').strip()
 if override:
@@ -174,6 +176,8 @@ for school in Bt.schools(BATCH, args):
     put(d / 'mapping.json', mapping)
     subprocess.run(['python3', str(W / 'scripts/prepare-v6-local-bundle.py'), '--bundle-root', str(bundle), '--mapping', str(d / 'mapping.json'), '--output', str(d / 'view-adapted.json')], check=True)
     view = get(d / 'view-adapted.json'); view['localPreviewLanguage'] = 'en'; view['candidateOnly'] = True
+    if 'officialHomepage' in cfg:
+        view['officialHomepage'] = cfg['officialHomepage']
     for topic in view['school']['topics'] + view['school']['additionalTopics']:
         for group in topic['claims']:
             group['checkedAt'] = NOW

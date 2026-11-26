@@ -1,5 +1,6 @@
 import {existsSync, readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
+import type {OfficialHomepage} from './university-homepage';
 import type {SupportedLocale} from './i18n';
 import type {LabSchool} from './policy-v6';
 import type {LocalV6Bundle} from './policy-v6-bundle';
@@ -10,7 +11,7 @@ import {getLocalQACandidatePages} from './v6-qa-candidate';
 import {readContentJson} from './content-runtime';
 export {publishedV6Slugs,isPublishedV6Slug,publishedV6Enabled} from './policy-v6-published-gate';
 interface LocaleData {schools:LabSchool[];views:Record<string,LocalV6Bundle>;localEvidence:Record<string,LocalV6Evidence>;entities:Record<string,unknown>;related:Record<string,unknown>}
-export type PublishedV6Package={schemaVersion:string;publicationApproved:boolean;candidateOnly?:true;releaseId:string;slugs:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
+export type PublishedV6Package={schemaVersion:string;publicationApproved:boolean;candidateOnly?:true;releaseId:string;slugs:string[];officialHomepages?:Record<string,OfficialHomepage>;v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
 type PagesPointer={path:string;sha256:string;releaseId:string;slugs:string[];v5Slugs?:string[]};
 /** Pointer, registry and shard index come from the active content release, never the build. */
 const currentPointer=()=>readContentJson<PagesPointer>('data/public-v6-pages/current.json');
@@ -91,4 +92,11 @@ export function publishedV6Evidence(slug:string,revision=publishedV6ReleaseId())
   const selected=readPublishedV6Revision(revision);
   if(!selected)return undefined;
   return useShards(revision) ? store().field<LocalV6Evidence>(revision,['locales','en','localEvidence',slug]) : structuredClone(selected.locales.en.localEvidence[slug]);
+}
+
+/** Page metadata is shared by every locale and independent of the policy view. */
+export function publishedV6Homepage(slug: string): OfficialHomepage | undefined {
+  const selected = readPublishedV6();
+  const homepages = selected?.officialHomepages;
+  return homepages && Object.hasOwn(homepages, slug) ? homepages[slug] : undefined;
 }

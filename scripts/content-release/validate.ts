@@ -1,3 +1,4 @@
+import { validateOfficialHomepages } from '../../apps/web/lib/university-homepage-validate';
 import { existsSync, lstatSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -202,6 +203,7 @@ export async function validateContentRelease(contentRoot: string, contentId: str
     if (!pages) throw new Error("No published V6 pages");
     const records = readV6RecordCorrections();
     if (!records) throw new Error("No V6 records");
+    validateOfficialHomepages(pages.officialHomepages, pages.slugs, records.summaries);
     for (const slug of v6RecordSlugs()) v6FrozenHistory(slug);
     const { manifest: history } = await historyManifest();
     stats.v6Schools = pages.slugs.length;

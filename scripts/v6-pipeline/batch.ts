@@ -6,6 +6,7 @@ import path from "node:path";
 export interface BatchSchool { slug: string; rank: string | number; abbr: string; language: string }
 export interface Batch {
   schemaVersion: "uapt-v6-batch-v1"; batchId: string; mode: "add" | "update"; revision: string; contentId?: string;
+  homepageOnly?: true;
   parentRelease: string; schools: BatchSchool[]; englishOnlySlugs?: string[]; reviewDir?: string; outDir?: string;
   sourceMetadataFile?: string; changeSummary?: { en: string; zh: string }; pageUpdate?: string;
   deploymentAuthorizedBy?: string | null; deploymentNote?: string; rankingEdition?: string;
@@ -25,6 +26,8 @@ export function loadBatch(ws: string): Batch {
   if (!existsSync(file)) throw Error(`No batch.json in ${ws}`);
   const batch = JSON.parse(readFileSync(file, "utf8")) as Batch;
   if (batch.schemaVersion !== "uapt-v6-batch-v1" || !batch.batchId || !batch.revision || !["add", "update"].includes(batch.mode)) throw Error("Invalid batch.json (schemaVersion, batchId, revision, mode)");
+  if (batch.homepageOnly !== undefined && (batch.homepageOnly !== true || batch.mode !== 'update')) throw Error("homepageOnly requires update mode");
+  if (batch.homepageOnly && batch.sourceMetadataFile !== undefined) throw Error("homepageOnly reuses the parent's source metadata");
   if (!Array.isArray(batch.schools) || !batch.schools.length) throw Error("batch.json needs schools");
   if (!batch.parentRelease) throw Error("batch.json needs parentRelease (a release directory with manifest.json and tree/)");
   batch.parentRelease = path.resolve(ws, batch.parentRelease);

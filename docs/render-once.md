@@ -376,8 +376,9 @@ a GSC sitemap resubmission stay separate authorizations.
   directly with one pattern location (school pages excluded) to save the first hit per URL.
 - `zh-Hant` is a UI preference on the English page (its content would be Simplified Chinese on
   `/zh/`); revisit if Traditional Chinese readers should land on `/zh/` instead.
-- The switcher adds `?layout=v6` to published V6 school links (`preservePolicyReferenceSearch`,
-  pre-existing); the page store ignores the query, Cloudflare does not.
+- Published V6 links use the clean school paths. On old shared URLs the page removes `layout`
+  through `history.replaceState` while keeping the other parameters and fragment. Local `next dev`
+  can still propagate an explicit preview flag.
 - Pre-existing test failures (same on the parent commit, not caused by this branch):
   `index-measurement-repair` (1), `index-recovery-pilot` (4), `public-change-history` (1, historical
   row reconstruction), `p1-change-crawl-perf` (release-diff cache source check), and

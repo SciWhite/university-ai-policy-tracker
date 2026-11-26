@@ -1,4 +1,5 @@
 "use client";
+import { stripV6Layout, v6RecordHref, v6ShareUrl, v6TopicUrl } from "@/lib/policy-v6-urls";
 import { policyV6ReaderCopy } from "@/lib/policy-v6-reader-copy";
 import {v6ChangesCopy} from "@/lib/v6-changes-copy";
 
@@ -69,14 +70,6 @@ const Context = createContext<LabContext | undefined>(undefined);
 const useLab = () => useContext(Context);
 const schoolPath = (slug: string, locale: string) =>
   `${locale === "en" ? "" : `/${locale}`}/universities/${slug}`;
-const topicUrl = (key: string) => {
-  const url = new URL(window.location.href);
-  url.hash = `snapshot-evidence-${key}`;
-  url.searchParams.set("layout", "v6");
-  url.searchParams.delete("compare");
-  url.searchParams.delete("view");
-  return url.href;
-};
 const domain = (url: string) => new URL(url).hostname;
 function overlayCopy<T>(value: T, sharedUiText: Readonly<Record<string, string>>): T {
   if (typeof value === "string") return (sharedUiText[value] ?? value) as T;
@@ -89,11 +82,13 @@ export function PolicyV6Provider({
   data,
   children,
   readingLayout = true,
+  previewLayout,
   sharedUiText = {},
 }: {
   data?: PolicyV6ClientData;
   children: ReactNode;
   readingLayout?: boolean;
+  previewLayout?: string;
   sharedUiText?: Readonly<Record<string, string>>;
 }) {
   const [compareOpen, setCompareOpen] = useState(false);
@@ -114,6 +109,7 @@ export function PolicyV6Provider({
   useEffect(() => {
     if (!data) return;
     const restore = () => {
+      stripV6Layout(window.location.href, window.history);
       const url = new URL(window.location.href);
       const values = canonicalUniversitySlugs(
         (url.searchParams.get("compare") ?? "")
@@ -264,18 +260,7 @@ export function PolicyV6Provider({
       return false;
     }
   }
-  function shareUrl() {
-    const url = new URL(window.location.href);
-    url.searchParams.set("layout", "v6");
-    if (selected.length > 1) {
-      url.searchParams.set("compare", selected.join(","));
-      url.searchParams.set("view", "compare");
-    } else {
-      url.searchParams.delete("compare");
-      url.searchParams.delete("view");
-    }
-    return url.href;
-  }
+  const shareUrl = () => v6ShareUrl(window.location.href, selected);
   function exportComparison() {
     const rows = [
       [
@@ -436,7 +421,7 @@ export function PolicyV6Provider({
                           {ui.sourceDate}: {s.checkedAt.slice(0, 10)}
                         </small>
                         <a
-                          href={`${schoolPath(s.slug, data.locale)}${data.schools.some((known) => known.slug === s.slug) || ["local_reviewed_bundle_not_public_snapshot","published_reviewed_page_supplement"].includes(s.snapshotStatus) ? "?layout=v6" : ""}`}
+                          href={v6RecordHref(schoolPath(s.slug, data.locale), s.slug, previewLayout)}
                         >
                           {ui.openRecord} ↗
                         </a>
@@ -686,7 +671,7 @@ export function PolicyV6TopicControls({
         className={`policy-v6-textAction${lab.readingLayout ? " policy-v6-copyIcon" : ""}`}
         title={`${lab.ui.copy}: ${topic.title}`}
         aria-label={`${lab.ui.copy}: ${topic.title}`}
-        onClick={() => lab.copy(topicUrl(topic.key))}
+        onClick={() => lab.copy(v6TopicUrl(window.location.href, topic.key))}
       >
         <PolicyV6ActionIcon kind="copy" />
         {!lab.readingLayout ? lab.ui.copy : null}

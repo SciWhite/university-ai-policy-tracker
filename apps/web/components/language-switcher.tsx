@@ -102,26 +102,29 @@ function LanguageMenu({ search }: { search: string }) {
       <nav className="language-switcher__panel" id={panelId} aria-label={messages.label}>
         <p className="language-switcher__heading">{messages.label}</p>
         <ul className="language-switcher__links">
-          {locales.map((target) => (
-            <li key={target}>
-              <a
-                aria-current={target === locale ? "page" : undefined}
-                href={readingLanguageHref(pathname, target, search, hash, declared)}
-                hrefLang={target}
-                lang={target}
-                onClick={(event) => {
-                  const href = readingLanguageHref(pathname, target, window.location.search, window.location.hash, declared);
-                  if (!href) return;
-                  event.currentTarget.href = preservePolicyReferenceSearch(href, window.location.search);
-                  rememberChoice(target);
-                  if (detailsRef.current) detailsRef.current.open = false;
-                }}
-              >
-                <span dir={readingDirection(target)}>{LANGUAGE_NAMES[target]}</span>
-                {target === locale ? <span aria-hidden="true">✓</span> : null}
-              </a>
-            </li>
-          ))}
+          {locales.map((target) => {
+            const href = readingLanguageHref(pathname, target, search, hash, declared);
+            return (
+              <li key={target}>
+                <a
+                  aria-current={target === locale ? "page" : undefined}
+                  href={href && preservePolicyReferenceSearch(href, search)}
+                  hrefLang={target}
+                  lang={target}
+                  onClick={(event) => {
+                    const href = readingLanguageHref(pathname, target, window.location.search, window.location.hash, declared);
+                    if (!href) return;
+                    event.currentTarget.href = preservePolicyReferenceSearch(href, window.location.search);
+                    rememberChoice(target);
+                    if (detailsRef.current) detailsRef.current.open = false;
+                  }}
+                >
+                  <span dir={readingDirection(target)}>{LANGUAGE_NAMES[target]}</span>
+                  {target === locale ? <span aria-hidden="true">✓</span> : null}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </details>

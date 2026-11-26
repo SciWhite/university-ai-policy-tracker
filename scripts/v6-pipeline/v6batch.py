@@ -69,6 +69,10 @@ def validate(batch):
             raise BatchError('batch.json needs ' + key)
     if batch.get('mode') not in ('add', 'update'):
         raise BatchError('batch.json mode must be "add" (new V6 schools) or "update" (page-only update of V6 schools)')
+    if 'homepageOnly' in batch and (batch['homepageOnly'] is not True or batch['mode'] != 'update'):
+        raise BatchError('homepageOnly requires update mode')
+    if batch.get('homepageOnly') and 'sourceMetadataFile' in batch:
+        raise BatchError("homepageOnly reuses the parent's source metadata")
     schools = batch.get('schools')
     if not isinstance(schools, list) or not schools:
         raise BatchError('batch.json needs a non-empty schools list')

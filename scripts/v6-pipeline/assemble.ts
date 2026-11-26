@@ -25,6 +25,7 @@ import { exportMcpCatalog } from '../../scripts/export-mcp-catalog';
 import { loadSelected,MergedTree } from '../../scripts/content-release/correct';
 import { selectTree } from '../../scripts/content-release/lib';
 import { buildContentRelease } from '../../scripts/content-release/build';
+import { validateHomepageInput } from './homepage';
 import { loadBatch, requireGatePassed, workspaceFromArgv } from './batch';
 import { pagesZhProblems } from './locale-gate';
 
@@ -57,7 +58,7 @@ function shard(family:string,revision:string,value:any,pointerKey:string,extras=
 }
 
 async function main() {
-  requireGatePassed(P,'locale');
+  if (!BATCH.homepageOnly) requireGatePassed(P,'locale');
   // English-only V6 presentations need the capability on codex/v6-english-first-20261117 (ea719b70), not merged.
   if((BATCH.englishOnlySlugs??[]).length)throw Error('englishOnlySlugs needs the English-only V6 capability, which is not in main');
   if(!BATCH.changeSummary?.en||!BATCH.changeSummary?.zh)throw Error('batch.json needs changeSummary.en and changeSummary.zh');
@@ -66,6 +67,9 @@ async function main() {
   const expected=read(reviewRoot+'/manifest.json');
   const approval=read(reviewRoot+'/independent-review.json');
   assert.equal(expected.parentContentId,manifest.contentId);
+  assert.equal(expected.revision,BATCH.revision);
+  assert.equal(expected.mode,BATCH.mode);
+  assert.equal(expected.homepageOnly,BATCH.homepageOnly);
   assert.equal(approval.decision,'accepted');
   assert.ok(approval.reviewer&&Number.isFinite(Date.parse(approval.reviewedAt)));
   assert.deepEqual(approval.packetSha256,expected.schoolPacketSha256);
@@ -77,7 +81,8 @@ async function main() {
   const pages=structuredClone(parent.pages),records=structuredClone(parent.records),history=structuredClone(parent.history);
   const revision=expected.revision,at=new Date().toISOString();
   const changeSummary=BATCH.changeSummary;
-  Object.assign(pages,{releaseId:revision,publishedAt:at,parentRevisionId:parent.revision,publicationKind:'v6_presentation_integration',englishOnlySlugs:expected.englishOnlySlugs,changeSummary});
+  Object.assign(pages,{releaseId:revision,publishedAt:at,parentRevisionId:parent.revision,changeSummary});
+  if (!BATCH.homepageOnly) Object.assign(pages,{publicationKind:'v6_presentation_integration',englishOnlySlugs:expected.englishOnlySlugs});
   Object.assign(records,{revision,publishedAt:at,parentRevisionId:parent.revision,changeSummary});
   history.basisRevision=revision;
   const oldChanges=new ChangeEventStore(data+'/public-change-history',read(data+'/public-change-history/current.json'));
@@ -90,22 +95,25 @@ async function main() {
     assert.equal(receipt.reviewer,approval.reviewer);
     assert.equal(receipt.reviewedAt,approval.reviewedAt);
     assert.equal(pages.slugs.includes(slug),UPDATE,slug+(UPDATE?': update mode needs a V6 school of the parent':': add mode needs a school that is not V6 yet'));
-    const accepted=acceptPresentationEvidence(packet.candidate,revision,receipt);
-    assert.deepEqual(accepted.claims,packet.canonical.claims);
-    assert.deepEqual(accepted.sources,packet.canonical.officialSources);
+    const officialHomepage = validateHomepageInput(packet, BATCH, packet.canonical);
+    if (officialHomepage) (pages.officialHomepages ??= {})[slug] = officialHomepage;
+    const accepted = BATCH.homepageOnly ? undefined : acceptPresentationEvidence(packet.candidate,revision,receipt);
     const englishOnly=expected.englishOnlySlugs.includes(slug);
-    assert.equal((accepted as {presentationLocale?:string}).presentationLocale??null,englishOnly?'en':null);
-    const keyed={
-      schemaVersion:'uapt-v6-tool-presentation-acceptance-v1' as const,
-      canonicalToolsSha256:jsha(packet.tools),displaySha256:toolPresentationHash(accepted),
-      reviewer:approval.reviewer,reviewedAt:approval.reviewedAt,scope:'presentation_only' as const,
-    };
-    accepted.toolPresentationAcceptance=keyed;
+    if (accepted) {
+      assert.deepEqual(accepted.claims,packet.canonical.claims);
+      assert.deepEqual(accepted.sources,packet.canonical.officialSources);
+      assert.equal((accepted as {presentationLocale?:string}).presentationLocale??null,englishOnly?'en':null);
+      accepted.toolPresentationAcceptance={
+        schemaVersion:'uapt-v6-tool-presentation-acceptance-v1',
+        canonicalToolsSha256:jsha(packet.tools),displaySha256:toolPresentationHash(accepted),
+        reviewer:approval.reviewer,reviewedAt:approval.reviewedAt,scope:'presentation_only',
+      };
+    }
     let entry:any, previousRevision:string;
     if(!UPDATE){
     pages.slugs.push(slug);
     records.summaries.push(packet.canonical);
-    const excluded=accepted.claimDispositions!.filter(row=>row.mode!=='scoped_reference').map(row=>row.claimId);
+    const excluded=accepted!.claimDispositions!.filter(row=>row.mode!=='scoped_reference').map(row=>row.claimId);
     if (excluded.length) (records.mcpPresentationExclusions??={})[slug]=excluded;
     records.toolsBySlug[slug]=packet.tools;
     records.heldBySlug[slug]=[];
@@ -127,8 +135,10 @@ async function main() {
     } else {
     const idx=records.summaries.findIndex((x:any)=>x.entity.slug===slug);
     assert.deepEqual(records.summaries[idx],packet.canonical);
-    const excludedU=accepted.claimDispositions!.filter(row=>row.mode!=='scoped_reference').map(row=>row.claimId);
-    if (excludedU.length) (records.mcpPresentationExclusions??={})[slug]=excludedU;
+    if (accepted) {
+      const excluded = accepted.claimDispositions!.filter(row=>row.mode!=='scoped_reference').map(row=>row.claimId);
+      if (excluded.length) (records.mcpPresentationExclusions??={})[slug]=excluded;
+    }
     assert.deepEqual(records.toolsBySlug[slug],packet.tools);
     const prior=records.recordRevisions[slug];
     assert.equal(prior.recordSha256,jsha(packet.canonical));
@@ -142,12 +152,13 @@ async function main() {
     }
     entry.currentRevision=revision;
     entry.currentClaimIds=packet.canonical.claims.map((c:any)=>c.id);
-    entry.themeOrder=[...accepted.school.topics,...accepted.school.additionalTopics].map(t=>t.key);
+    if (accepted) entry.themeOrder=[...accepted.school.topics,...accepted.school.additionalTopics].map(t=>t.key);
     entry.sources.unshift({
       kind:'scoped',slug,revision,previousRevision,publishedAt:at,
       current:packet.canonical,before:packet.canonical,held:[],changes:records.changesBySlug[slug],gaps:[],
-      metadataChanged:true,pageUpdate:BATCH.pageUpdate??(UPDATE?'Updated the English and Simplified Chinese V6 policy guide with newer official sources.':englishOnly?'Added the English V6 policy guide.':'Added the English and Simplified Chinese V6 policy guides.'),
+      metadataChanged:true,pageUpdate:BATCH.pageUpdate??(BATCH.homepageOnly?'Updated the official university homepage link.':UPDATE?'Updated the English and Simplified Chinese V6 policy guide with newer official sources.':englishOnly?'Added the English V6 policy guide.':'Added the English and Simplified Chinese V6 policy guides.'),
     });
+    if (!accepted) continue; // Homepage-only updates reuse every localized view and its review unchanged.
     for(const [locale,part] of Object.entries(pages.locales) as [string,any][]) {
       const view=structuredClone(accepted);
       if (locale==='zh'&&!englishOnly) {
@@ -176,7 +187,8 @@ async function main() {
   }
 
   // G3 on what will be published: every /zh/ row of every batch school has Chinese (englishOnlySlugs exempt).
-  const zhProblems=pagesZhProblems(pages,slugs);
+  const zhProblems = BATCH.homepageOnly ? {} : pagesZhProblems(pages,slugs);
+  if (BATCH.homepageOnly) assert.deepEqual(pages.locales, parent.pages.locales);
   if(Object.keys(zhProblems).length)throw Error('Chinese coverage gate failed; nothing built:\n'+JSON.stringify(zhProblems,null,1).slice(0,4000));
   const coverage=acceptV6Release(pages,records);
   mkdirSync(out,{mode:0o700});
@@ -237,7 +249,11 @@ async function main() {
   merged.apply(overlay);
   merged.select();
   for(const slug of slugs) {
-    for(const locale of Object.keys(pages.locales))assert.equal(getV6PageInput(slug,locale as any).kind,'bundle');
+    for (const locale of Object.keys(pages.locales)) {
+      const input = getV6PageInput(slug,locale as any);
+      if (!BATCH.homepageOnly) assert.equal(input.kind,'bundle');
+      assert.deepEqual(input.officialHomepage,pages.officialHomepages?.[slug]);
+    }
     assert.deepEqual(v6FrozenHistory(slug),history.records[slug]);
   }
   const diff=await getScopedRecordReleaseDiff(revision);
@@ -261,7 +277,7 @@ async function main() {
   }
   await buildContentRelease({contentRoot:runtime,contentId:CONTENT_ID,source:parentRoot,overlay,
     parentContentId:manifest.contentId,mcpCatalog:out+'/catalog.json'});
-  write(out+'/assembly-receipt.json',{revision,mode:BATCH.mode,batchId:BATCH.batchId,coverage,changeRef,overviewRef,claimScope:slugs,reviewer:approval.reviewer,parentId:manifest.contentId,zhCoverage:'passed',productionChanged:false});
+  write(out+'/assembly-receipt.json',{revision,mode:BATCH.mode,batchId:BATCH.batchId,coverage,changeRef,overviewRef,claimScope:slugs,reviewer:approval.reviewer,parentId:manifest.contentId,zhCoverage:BATCH.homepageOnly?'parent-views-identical':'passed',productionChanged:false});
   console.log('Candidate built and validated',revision);
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

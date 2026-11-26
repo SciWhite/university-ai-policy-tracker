@@ -18,6 +18,7 @@ script takes `--workspace <dir>` (or `UAPT_V6_WORKSPACE`) and reads
 |---|---|
 | `batchId`, `revision`, `contentId` | workspace id, V6 revision id, content release id |
 | `mode` | `add` (new V6 schools) or `update` (page-only update of V6 schools; public claims unchanged) |
+| `homepageOnly` | optional `true` in `update` mode for homepage-only changes (§2.5) |
 | `parentRelease` | a local release directory (`manifest.json` + `tree/`) equal to the live release |
 | `schools[]` | `slug`, `rank`, `abbr`, `language`, optional `extraDomains` (parent bodies), `extraSources`, `firecrawl` {`domain`, `mapQuery`, `queries`} |
 | `englishOnlySlugs` | must stay empty: English-only V6 is on the unmerged branch `codex/v6-english-first-20261117` |
@@ -54,7 +55,7 @@ S1a, S1b, S1c's lead queueing, S1d and G1 run as one command, `v6:run` (§2.1).
 | S7 bundle | `pnpm content:bundle` | op dir + bundle SHA256 for the owner |
 | S8 release | `content-release.py remote check/activate` (its `refresh` step: page-store `generation` + `refresh`, fallback `purge-html-cache`; check `receipts/refresh.json`), Cloudflare `purge_everything`, `content-release.py readback`, then `v6:readback` (public, 1 worker, each paced ≤ 5 requests/s, wait out 429), `v6:event complete`, `remote complete` | live release, receipts |
 | **S8b OpenClaw enrollment** | after `remote complete`: `v6:openclaw-enroll --workspace <ws>` (plan: live API + read-only monitor state + payload), `… dry-run`, owner approves the payload SHA256, `… install --approve <sha> --authorization "<quote>"`, `… readback` (§2.4) | `openclaw/<contentId>/receipt.json`, `payload/coverage.json`, `host/*.json` |
-| S9 live check | ChatGPT check of the live pages → findings into the next batch (`update` mode only for high-severity findings). A page-only `update` release that cites new sources runs S8b again under its own contentId (adds only the missing watches and bindings) | `chatgpt-live-check.md` |
+| S9 live check | ChatGPT check of the live pages → findings into the next batch (`update` mode for high-severity findings or homepage maintenance). A page-only `update` release that cites new sources runs S8b again under its own contentId (adds only the missing watches and bindings) | `chatgpt-live-check.md` |
 
 ### 2.1 S1–G1 in one command: `v6:run` (since 2026-11-22)
 
@@ -188,6 +189,42 @@ pnpm v6:openclaw-enroll --workspace <ws> status     # local receipt only
 - **After readback.** Record the counts in the batch `RESULT.md` and in the OpenClaw notes
   (`~/Documents/OpenClaw/docs/UAPT_DEDICATED_MONITOR_20261025.md`, `AGENTS.md`). The enrollment never
   approves a policy, a package or a publication (`publicationApproved` stays false).
+
+### 2.5 Official university homepages
+
+Put `"officialHomepage": {"url": "https://www.example.edu/", "checkedAt": "2026-11-26"}`
+in `inputs/<abbr>.json` after checking the institution's main site. Use a plain HTTPS root
+or a short homepage path on a host corroborated by the school's recorded official sources
+(the same rule runs in the pipeline and in the host release tools, which carry no registry). A policy, IT or faculty site is only a verification lead. The
+independent reviewer checks the institution and destination and records `homepageCheck: {url, evidence}` in the
+school's findings. An `add` batch needs this field or a nonempty `homepageGap` reason that the
+reviewer can assess. An ordinary `update` with no new value carries forward the current entry.
+
+The draft view carries the field to the review packet. Assembly publishes the reviewed
+object in `data/public-v6-pages` as `officialHomepages[slug]` for all locales. The shared
+header uses the package value, or the existing registry for schools without an entry.
+Read back the mark's href on the school's clean English and Simplified Chinese URLs.
+
+For a homepage-only backfill or correction, set `mode: "update"` and `homepageOnly: true`
+in `batch.json`. Use the same parent release, school list, new revision/content IDs, and
+bilingual change summary as any other `update`. Each `inputs/<abbr>.json` contains only
+`officialHomepage`. Start at `v6:packets` against the parent, get the independent review,
+run `v6:receipts` and `v6:assemble`, then follow the normal candidate, locale-index, and
+contract 2.1.0 content release gates. This path checks that every localized policy view
+matches the parent, validates the full release contract, and emits a page-update event with
+zero affected Claims. It needs no policy redraft, new source metadata, or new OpenClaw watch.
+
+Generate a candidate list from a local release with this command.
+
+```sh
+pnpm exec tsx --tsconfig apps/web/tsconfig.json scripts/v6-pipeline/propose-homepages.ts \
+  --data-root <release>/tree/data --out .local/policy-v6/homepage-candidates.json
+```
+
+Omit `--data-root` for the checkout's `data/` and `--out` for stdout. The helper lists
+published V6 schools without a package or registry homepage and suggests a root from official
+source domains. It runs offline by default. `--verify` performs paced GETs and records final
+URLs and statuses. A candidate needs independent review before use in a school input.
 
 ## 3. Gates
 

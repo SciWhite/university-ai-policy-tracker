@@ -1,3 +1,4 @@
+import { v6RecordHref } from "@/lib/policy-v6-urls";
 import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
 import { withLocalePrefix, type SupportedLocale } from "@/lib/i18n";
 import type { RelatedUniversityRef } from "@/lib/related-universities";
@@ -8,6 +9,7 @@ interface RelatedUniversitiesProps {
   locale?: SupportedLocale;
   localizeUi?: boolean;
   uiLab?: boolean;
+  previewLayout?: string;
   sharedUiText?: Readonly<Record<string, string>>;
 }
 
@@ -22,6 +24,7 @@ export function RelatedUniversities({
   locale = "en",
   localizeUi = false,
   uiLab = false,
+  previewLayout,
   sharedUiText = {},
 }: RelatedUniversitiesProps) {
   if (!universities.length) return null;
@@ -47,7 +50,7 @@ export function RelatedUniversities({
         {universities.map((university) => (
           <li key={university.slug}>
             <a
-              href={`${localizeUi ? withLocalePrefix(`/universities/${university.slug}`, locale) : `/universities/${university.slug}`}${uiLab && ["harvard-university", "university-of-cambridge", "massachusetts-institute-of-technology", "imperial-college-london", "stanford-university", "university-of-oxford"].includes(university.slug) ? "?layout=v6" : ""}`}
+              href={v6RecordHref(localizeUi ? withLocalePrefix(`/universities/${university.slug}`, locale) : `/universities/${university.slug}`, university.slug, uiLab ? previewLayout : undefined)}
             >
               <UniversityMark slug={university.slug} />
               <span>

@@ -2,7 +2,7 @@
 
 为 `<canonical-slug>` 用最新已验收本地爬取资料制作 V6 **本地预览**。先读取 `docs/policy-v6-integration-guide.md` 和 AGENTS.md，确认 checkout 真正含 V6 实现；只阅读目标单校材料及必要组件，保留共享脏工作树。
 
-使用当前已由 Harvard R3 验收行为抽取的共享阅读模板，入口统一 `?layout=v6`；固定四问为作业/披露/数据/工具，自然高度卡片、覆盖面板、来源版本、日期、搜索与手机单行操作均复用共享实现。各校数据和范围独立，不复制 Harvard 规则。逐条版本来自原证据，缺失/歧义不从主题来源猜测、不合并。
+使用当前已由 Harvard R3 验收行为抽取的共享阅读模板，公开入口为 `/universities/<slug>` 和 `/zh/universities/<slug>`，`?layout=` 仅供本地 `next dev` 预览。固定四问为作业/披露/数据/工具，自然高度卡片、覆盖面板、来源版本、日期、搜索与手机单行操作均复用共享实现。各校数据和范围独立，不复制 Harvard 规则。逐条版本来自原证据，缺失/歧义不从主题来源猜测、不合并。
 
 使用 `PolicyV6BundlePage`、`PolicyV6Provider`、`PolicyV6RecordTopics`、`UniversityAiTools`、`PolicyV6ClaimGroups` 等现有组件，不根据截图重写前端、不新增学校专属CSS。填单校输入清单和显式mapping，执行 `scripts/prepare-v6-local-bundle.py` 生成新版本private view。未知输入格式先验证适配；不要静默改源包或放宽验收。
 

@@ -28,6 +28,10 @@ do not revive them as guidance.
   decisions. Never relax the quote/hash gates or the validators. A quote match does not prove
   meaning or currency; a failed fetch does not prove a policy is absent.
 - Languages: English, then Simplified Chinese, then the school's country language.
+- **Translation runs on low-cost models only** (owner, 2026-11-26): crawl and draft in English
+  first, then translate (zh, own language) with Haiku subagents (`model: haiku`) or the local
+  `agy -p` CLI. Never spend Opus/Fable/Codex-high on translation; stronger models only settle
+  what the translation validators and the review sample flag.
 - Crawl, review and repair follow `docs/policy-evidence-integration-runbook.md`. Check
   the private inventory first (`scripts/policy-inventory-status.py`); a host without it
   records `inventory_not_available_on_host` and cannot complete an audit.
