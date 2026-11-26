@@ -48,6 +48,7 @@ from urllib.request import Request, urlopen
 BUNDLE_SCHEMA = 'uapt-content-release-bundle-v1'
 CHANGED_URLS_SCHEMA = 'uapt-changed-urls-v1'
 RECEIPT_SCHEMA = 'uapt-content-release-receipt-v1'
+ISR_EXPIRY_MAX_ITEMS = 2000
 HELPER_SCHEMA = 'uapt-release-helper-v1'
 CONTENT_ID = re.compile(r'^[a-z0-9][a-z0-9.-]{2,95}$')
 OP_ID = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$')
@@ -467,8 +468,17 @@ def expire_pages(host, op, slot):
     body = read_json(op.dir / rel)
     if body.get('expectedContentId') != op.cid:
         raise Refused('isr-expiry request names another release')
-    response = host.http_json(f'http://127.0.0.1:{slot["port"]}/api/internal/content/refresh', token=slot['token'], body=body, timeout=180)
-    return {'status': 'expired', 'tags': len(body.get('tags', [])), 'paths': len(body.get('paths', [])), 'response': response}
+    # The endpoint takes at most ISR_EXPIRY_MAX_ITEMS tags and paths per request (MAX_ITEMS in
+    # apps/web/app/api/internal/content/refresh/route.ts); a 171-school correction listed 5,817 paths.
+    tags, paths = list(body.get('tags', [])), list(body.get('paths', []))
+    chunks = []
+    for start in range(0, max(len(tags), len(paths), 1), ISR_EXPIRY_MAX_ITEMS):
+        part = {'expectedContentId': op.cid, 'tags': tags[start:start + ISR_EXPIRY_MAX_ITEMS], 'paths': paths[start:start + ISR_EXPIRY_MAX_ITEMS]}
+        if not part['tags'] and not part['paths']:
+            continue
+        response = host.http_json(f'http://127.0.0.1:{slot["port"]}/api/internal/content/refresh', token=slot['token'], body=part, timeout=180)
+        chunks.append({'tags': len(part['tags']), 'paths': len(part['paths']), 'ok': bool(response.get('ok'))})
+    return {'status': 'expired', 'tags': len(tags), 'paths': len(paths), 'chunks': chunks}
 
 
 def switch_plan(host, op):

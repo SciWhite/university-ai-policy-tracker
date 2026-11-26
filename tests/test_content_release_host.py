@@ -195,6 +195,18 @@ class ContentReleaseHostTest(unittest.TestCase):
         linked = self.op / 'sync/content-candidate/proof/public-change-history/objects/x.json'
         self.assertGreater(linked.stat().st_nlink, 1)
 
+    def test_isr_expiry_is_sent_in_chunks_the_endpoint_accepts(self):
+        # 2026-11-26: a 171-school correction listed 5,817 paths; the endpoint takes at most 2,000 per request.
+        paths = [f'/universities/school-{i}' for i in range(4500)]
+        (self.op / 'isr-expiry-request.json').write_text(json.dumps({'expectedContentId': 'c-new', 'tags': ['school:alpha-university'], 'paths': paths}))
+        op = self.module['Operation'](self.host, str(self.op))
+        result = self.module['expire_pages'](self.host, op, {'port': 3101, 'token': 't' * 40})
+        sizes = [len(body['paths']) for _, body in self.host.posts]
+        self.assertEqual(sizes, [2000, 2000, 500])
+        self.assertTrue(all(len(body['tags']) <= 2000 and body['expectedContentId'] == 'c-new' for _, body in self.host.posts))
+        self.assertEqual(sum(sizes), 4500)
+        self.assertEqual((result['paths'], len(result['chunks'])), (4500, 3))
+
     # ---- refresh: page store first, epoch purge as the fallback (docs/render-once.md §6)
 
     def install_page_store(self):
