@@ -68,7 +68,8 @@ is-active`) and MCP on 3161.
   only runtime files. Accept cold renders, not just warm hits.
 - Memory: MemoryHigh = MemoryMax = 8 GiB per slot, heap 4608 MiB, no swap. Raise only with the owner.
 - After a switch: `purge-html-cache`, then purge the whole Cloudflare zone (HTML is
-  cached at the edge for 7 days), then do public readback.
+  cached at the edge for 7 days), then do public readback. Content releases run all of it with
+  `content-release.py finish`; program releases run `content-release.py cloudflare-purge` right after `cutover`.
 - **Retention:** holds keep their first `heldSince`/`reviewBefore`/`nextAction`. A hold blocks
   after 14 days (7 if it started before 2026-11-21). Read `hold-status.json` (the early warning) first; `rescan`
   refreshes only a stale receipt. Delete only by exact allowlist, after a hash-verified off-server archive.

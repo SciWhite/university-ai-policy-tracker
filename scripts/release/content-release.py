@@ -13,9 +13,16 @@ the running program (scripts/program-build.mjs bundles it into release-helper/):
   sudo python3 ... complete --op <op-dir>                         # complete gate, register, classify, rescan
   sudo python3 ... status   --op <op-dir>
 
-On the operator machine, after the Cloudflare purge (paced <= 5 requests/s, waits out 429):
+On the operator machine, `finish` runs the whole release in one command, so no step waits on a
+session waking up: activate → refresh receipt check → Cloudflare purge_everything → paced public
+readback (<= 5 requests/s, waits out 429) → complete. It stops at the first failure and names
+the next action (<op-dir>/receipts/finish.json):
 
-  python3 scripts/release/content-release.py readback --op-dir <local op dir>
+  python3 scripts/release/content-release.py finish --op-id <id> --op-dir <local op dir> \
+      --bundle-sha256 <sha> --helper <program-root>/release-helper
+
+The single steps stay available: `cloudflare-purge --op-dir <dir> --reason <text>` (the token is
+read from .env.agents.local and never printed) and `readback --op-dir <local op dir>`.
 
 On the operator machine, `remote` runs one host phase in the background through
 scripts/release/remote-bg.sh and waits on its exact PID (never `pgrep -f`):
@@ -28,7 +35,8 @@ generation (`render-once.py generation`: nginx -t, reload, restore on failure), 
 nginx with the loopback `X-UAPT-Refresh` header. If the page store is not installed, or either
 step fails, it falls back to warming the changed pages and the whole-cache epoch purge
 (`uapt-program-release.py purge-html-cache`); receipts/refresh.json records which path ran.
-Never purges Cloudflare and never notifies search engines (those stay operator steps).
+Host phases never purge Cloudflare (the token stays on the operator machine) and nothing here
+notifies search engines.
 Python 3.10, standard library only.
 """
 import argparse, fcntl, hashlib, json, os, re, runpy, shlex, stat, subprocess, sys, tempfile, threading, time
@@ -838,6 +846,204 @@ def cmd_remote(args):
     return waited.returncode
 
 
+# ---------------------------------------------------------------- local: Cloudflare purge
+
+# The token never reaches the host, so the zone purge runs on the operator machine. Until
+# 2026-11-25 every session sent it by hand after `activate`; a session that slept through the
+# end of `activate` left the edge serving the previous HTML for about two hours (batch 4+6 and
+# batch 8). `cloudflare-purge` is that request as a tool, and `finish` runs it right after the
+# switch. The token is read from .env.agents.local (or the environment) and never printed,
+# logged or written: the receipt keeps the time, the HTTP status and Cloudflare's error codes.
+CLOUDFLARE_API = 'https://api.cloudflare.com/client/v4'
+CLOUDFLARE_PURGE_SCHEMA = 'uapt-cloudflare-purge-v1'
+CLOUDFLARE_ZONE_KEY, CLOUDFLARE_TOKEN_KEY = 'CLOUDFLARE_ZONE_ID', 'CLOUDFLARE_CACHE_PURGE_TOKEN'
+DEFAULT_ENV_FILE = Path(__file__).resolve().parents[2] / '.env.agents.local'
+CLOUDFLARE_ATTEMPTS = 3
+CLOUDFLARE_SETTLE_SECONDS = 10.0
+FINISH_SCHEMA = 'uapt-content-release-finish-v1'
+
+
+def read_env_file(path):
+    """KEY=value lines (optional `export`, optional quotes); comments and other lines are ignored."""
+    values = {}
+    if not path.is_file():
+        return values
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith('#') or '=' not in line:
+            continue
+        key, value = line.split('=', 1)
+        key, value = key.strip().removeprefix('export ').strip(), value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in '"\'':
+            value = value[1:-1]
+        values[key] = value
+    return values
+
+
+def cloudflare_credentials(env_file):
+    """(zone id, token) from the environment, else the env file. Errors name the keys, never values."""
+    values = read_env_file(Path(env_file))
+    zone = os.environ.get(CLOUDFLARE_ZONE_KEY) or values.get(CLOUDFLARE_ZONE_KEY, '')
+    token = os.environ.get(CLOUDFLARE_TOKEN_KEY) or values.get(CLOUDFLARE_TOKEN_KEY, '')
+    missing = [k for k, v in ((CLOUDFLARE_ZONE_KEY, zone), (CLOUDFLARE_TOKEN_KEY, token)) if not v]
+    if missing:
+        raise Refused(f'Cloudflare purge needs {" and ".join(missing)} in the environment or {env_file}')
+    if not re.fullmatch(r'[0-9a-f]{32}', zone):
+        raise Refused(f'{CLOUDFLARE_ZONE_KEY} is not a 32-character hex zone id')
+    if re.search(r'\s', token):
+        raise Refused(f'{CLOUDFLARE_TOKEN_KEY} contains whitespace')
+    return zone, token
+
+
+def http_post_json(url, body, token, timeout=60):
+    """POST JSON with a bearer token: (status, body bytes); status 0 on a network error."""
+    request = Request(url, data=json.dumps(body).encode(), method='POST',
+                      headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'User-Agent': 'uapt-content-release/1.0'})
+    try:
+        with urlopen(request, timeout=timeout) as response:
+            return response.status, response.read()
+    except urllib.error.HTTPError as error:
+        return error.code, (error.read() if error.fp else b'')
+    except (urllib.error.URLError, OSError) as error:
+        return 0, json.dumps({'errors': [{'code': 'network', 'message': str(error)[:300]}]}).encode()
+
+
+def _scrub(text, *secrets):
+    for secret in secrets:
+        if secret:
+            text = text.replace(secret, '[redacted]')
+    return text
+
+
+def purge_cloudflare(reason, receipt_path, *, env_file=DEFAULT_ENV_FILE, post=http_post_json, sleep=time.sleep):
+    """purge_everything on the zone (docs/content-release.md §5: keep it until the edge bypasses
+    ?_rsc=). Retries network errors and 5xx/429 up to 3 times; a 4xx other than 429 is final.
+    Writes the receipt either way; raises Refused when the purge did not succeed."""
+    zone, token = cloudflare_credentials(env_file)
+    attempts, ok = [], False
+    for attempt in range(CLOUDFLARE_ATTEMPTS):
+        status, raw = post(f'{CLOUDFLARE_API}/zones/{zone}/purge_cache', {'purge_everything': True}, token)
+        try:
+            answer = json.loads(raw)
+        except (ValueError, TypeError):
+            answer = {}
+        answer = answer if isinstance(answer, dict) else {}
+        ok = status == 200 and answer.get('success') is True
+        errors = [{'code': e.get('code'), 'message': _scrub(str(e.get('message', ''))[:200], token, zone)}
+                  for e in (answer.get('errors') or []) if isinstance(e, dict)]
+        attempts.append({'status': status, 'success': answer.get('success') is True, **({'errors': errors} if errors else {})})
+        if ok or (400 <= status < 500 and status != 429):
+            break
+        if attempt + 1 < CLOUDFLARE_ATTEMPTS:
+            sleep(5)
+    receipt = {'schemaVersion': CLOUDFLARE_PURGE_SCHEMA, 'at': now().isoformat(), 'reason': reason,
+               'zoneSha256': sha256_bytes(zone.encode())[:12], 'request': {'purge_everything': True},
+               'ok': ok, 'attempts': attempts}
+    receipt_path = Path(receipt_path)
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    atomic_json(receipt_path, receipt, mode=0o644)
+    print(json.dumps({'cloudflarePurge': 'ok' if ok else 'failed', 'receipt': str(receipt_path), 'attempts': attempts}, ensure_ascii=False))
+    if not ok:
+        raise Refused(f'Cloudflare purge failed (receipt {receipt_path}); the switch is live, so purge again before the readback')
+    return receipt
+
+
+def cmd_cloudflare_purge(args, *, post=http_post_json, sleep=time.sleep):
+    """Operator machine: purge the whole zone now. Content releases pass --op-dir (receipt in
+    <op-dir>/receipts/cloudflare-purge.json); program releases pass --receipt."""
+    if not args.op_dir and not args.receipt:
+        raise Refused('cloudflare-purge needs --op-dir or --receipt')
+    receipt = Path(args.receipt) if args.receipt else Path(args.op_dir) / 'receipts/cloudflare-purge.json'
+    purge_cloudflare(args.reason, receipt, env_file=args.env_file, post=post, sleep=sleep)
+    return 0
+
+
+def host_receipt(args, name):
+    """Read <ops-root>/<op>/receipts/<name> on the host (UAPT_HOST=local reads the local path)."""
+    path = f'{args.ops_root}/{args.op_id}/receipts/{name}'
+    host = args.host or os.environ.get('UAPT_HOST') or 'hermes-agent-prod'
+    if host == 'local':
+        argv = ['cat', path]
+    else:
+        argv = ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', host, 'sudo -n cat ' + shlex.quote(path)]
+    result = subprocess.run(argv, capture_output=True, text=True)
+    if result.returncode:
+        raise Refused(f'Could not read {path} on the host: {result.stderr.strip()[:300]}')
+    return json.loads(result.stdout)
+
+
+def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=None, sleep=time.sleep):
+    """Operator machine: the whole content release in one command, so no step waits on a session
+    waking up: activate → refresh receipt check → Cloudflare purge → paced public readback →
+    complete. Stops at the first failure and names the next action; nothing after it runs.
+    <op-dir>/receipts/finish.json records every step."""
+    remote = remote or cmd_remote
+    read_receipt = read_receipt or host_receipt
+    purge = purge or purge_cloudflare
+    readback = readback or cmd_readback
+    if not OP_ID.match(args.op_id):
+        raise Refused('Invalid op id')
+    op_dir = Path(args.op_dir)
+    raw = (op_dir / 'bundle.json').read_bytes()
+    bundle = validate_bundle(json.loads(raw), str(json.loads(raw).get('opId')))
+    if bundle['opId'] != args.op_id:
+        raise Refused(f'Local bundle.json is for {bundle["opId"]}, not {args.op_id}')
+    if sha256_bytes(raw) != args.bundle_sha256:
+        raise Refused('Local bundle.json is not the approved bundle (SHA256 differs)')
+    cloudflare_credentials(args.env_file)  # refuse before the switch, not after it
+    finish_path = op_dir / 'receipts/finish.json'
+    state = {'schemaVersion': FINISH_SCHEMA, 'opId': args.op_id, 'contentId': bundle['contentId'], 'bundleSha256': args.bundle_sha256,
+             'startedAt': now().isoformat(), 'steps': []}
+
+    def record(step, status, **detail):
+        state['steps'].append({'step': step, 'status': status, 'at': now().isoformat(), **detail})
+        state['status'] = 'running' if status == 'ok' else 'stopped'
+        atomic_json(finish_path, state, mode=0o644)
+
+    def stop(step, next_action, **detail):
+        record(step, 'failed', next=next_action, **detail)
+        state['finishedAt'] = now().isoformat(); atomic_json(finish_path, state, mode=0o644)
+        print(json.dumps({'finish': 'stopped', 'step': step, 'next': next_action}, ensure_ascii=False))
+        return 1
+
+    def phase(name):
+        return argparse.Namespace(**{**vars(args), 'phase': name, 'attempt': args.attempt})
+
+    (op_dir / 'receipts').mkdir(parents=True, exist_ok=True)
+    code = remote(phase('activate'))
+    if code:
+        return stop('activate', f'Read the activate log (remote-bg.sh tail {args.op_id}-activate); nothing after activate ran', exit=code)
+    record('activate', 'ok')
+    try:
+        refresh = read_receipt(args, 'refresh.json')
+    except (Refused, ValueError) as error:
+        return stop('refresh-receipt', 'The switch is live: read receipts/refresh.json on the host, then run cloudflare-purge, readback and remote complete', error=str(error)[:300])
+    origin = refresh.get('origin') or {}
+    if refresh.get('status') not in ('ok', 'incomplete') or origin.get('mode') not in ('page-store', 'epoch-purge-fallback', 'epoch-purge'):
+        return stop('refresh-receipt', 'The switch is live but the origin cache step did not finish: run refresh again, then cloudflare-purge, readback and remote complete',
+                    refreshStatus=refresh.get('status'), originMode=origin.get('mode'))
+    record('refresh-receipt', 'ok', refreshStatus=refresh['status'], originMode=origin['mode'],
+           **({'fallbackReason': origin['fallbackReason']} if origin.get('fallbackReason') else {}))
+    try:
+        purge(f'content switch {bundle["contentId"]} ({args.op_id})', op_dir / 'receipts/cloudflare-purge.json', env_file=args.env_file)
+    except Refused as error:
+        return stop('cloudflare-purge', 'The switch is live: run cloudflare-purge --op-dir again, then readback and remote complete', error=str(error)[:300])
+    record('cloudflare-purge', 'ok')
+    sleep(args.settle_seconds)
+    code = readback(argparse.Namespace(op_dir=str(op_dir), origin=args.origin))
+    if code:
+        return stop('readback', 'Read receipts/public-readback.json; when every finding is understood and recorded, run remote complete', exit=code)
+    record('readback', 'ok')
+    code = remote(phase('complete'))
+    if code:
+        return stop('complete', f'Read the complete log (remote-bg.sh tail {args.op_id}-complete) and run remote complete again', exit=code)
+    record('complete', 'ok')
+    state['status'] = 'complete'; state['finishedAt'] = now().isoformat()
+    atomic_json(finish_path, state, mode=0o644)
+    print(json.dumps({'finish': 'complete', 'receipt': str(finish_path)}))
+    return 0
+
+
 # ---------------------------------------------------------------- entry
 
 def main(argv=None, host=None):
@@ -859,11 +1065,27 @@ def main(argv=None, host=None):
     b = sub.add_parser('readback', help='operator machine, after the Cloudflare purge: paced public readback of changed-urls.json')
     b.add_argument('--op-dir', required=True, help='the local operation directory (bundle.json, changed-urls.json)')
     b.add_argument('--origin', default=PUBLIC_ORIGIN)
+    c = sub.add_parser('cloudflare-purge', help='operator machine: purge_everything on the zone; the token is read from the env file and never printed')
+    c.add_argument('--reason', required=True, help='recorded in the receipt, e.g. "content switch c-20261125-x"')
+    c.add_argument('--op-dir', help='content release: receipt in <op-dir>/receipts/cloudflare-purge.json')
+    c.add_argument('--receipt', help='receipt path (program releases)')
+    c.add_argument('--env-file', default=str(DEFAULT_ENV_FILE))
+    f = sub.add_parser('finish', help='operator machine: activate, Cloudflare purge, paced readback and complete in one command')
+    f.add_argument('--op-id', required=True); f.add_argument('--op-dir', required=True, help='the local operation directory')
+    f.add_argument('--helper', required=True, help='release-helper directory on the host'); f.add_argument('--bundle-sha256', required=True)
+    f.add_argument('--host'); f.add_argument('--ops-root', default='/srv/uapt/operations')
+    f.add_argument('--timeout', type=int, default=7200); f.add_argument('--attempt', default='')
+    f.add_argument('--legacy-helper-reason'); f.add_argument('--env-file', default=str(DEFAULT_ENV_FILE))
+    f.add_argument('--origin', default=PUBLIC_ORIGIN); f.add_argument('--settle-seconds', type=float, default=CLOUDFLARE_SETTLE_SECONDS)
     args = parser.parse_args(argv)
     if args.phase_cmd == 'remote':
         return cmd_remote(args)
     if args.phase_cmd == 'readback':
         return cmd_readback(args)
+    if args.phase_cmd == 'cloudflare-purge':
+        return cmd_cloudflare_purge(args)
+    if args.phase_cmd == 'finish':
+        return cmd_finish(args)
     host = host or Host()
     op = Operation(host, args.op)
     {'check': cmd_check, 'activate': cmd_activate, 'refresh': cmd_refresh, 'complete': cmd_complete, 'status': cmd_status}[args.phase_cmd](host, op, args)
