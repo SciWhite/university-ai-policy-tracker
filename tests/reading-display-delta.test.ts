@@ -133,6 +133,15 @@ test("a same-record delta adds display strings to a corpus bundle; a tampered on
       assert.match(after.school.strings[sha(NEWGAP)].translation, /2026/);
     });
     await withPins([], async () => assert.equal((await getReadingTranslations("ucl", "zh", REC, s1.pointer)).state, "unapproved", "an unpinned same-record delta is not silently ignored"));
+    // The release gate agrees: an unpinned delta up to the page's record means no package coverage.
+    const tree = mkdtempSync(path.join(os.tmpdir(), "uapt-display-tree-"));
+    try {
+      const { cpSync, readFileSync } = await import("node:fs");
+      cpSync(root, path.join(tree, "translations"), { recursive: true });
+      writeFileSync(path.join(tree, "translations/current.json"), readFileSync(s1.pointer));
+      assert.equal(releaseZhReadingLookups(tree, { ucl: REC.recordSha256 }, []).info.schools, 0);
+      assert.equal(releaseZhReadingLookups(tree, { ucl: REC.recordSha256 }, [good.receiptSha256]).info.schools, 1);
+    } finally { rmSync(tree, { recursive: true, force: true }); }
     for (const [name, options] of [["self review", { reviewer: "sonnet-translator" }], ["tampered target", { tamper: true }]] as const) {
       const bad = delta(put, `bad-${name.replace(/ /g, "-")}`, parent.sha256, "ucl", REC, { zh: [unit(NEWGAP, "2026 年考试规则尚未公布。")] }, options);
       const s = select(put, root, { ...sel, revision: "bad", supplemental: { recordDeltas: [bad.recordDelta] } }, `bad-${name.replace(/ /g, "-")}`);

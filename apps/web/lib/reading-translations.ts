@@ -469,8 +469,11 @@ export function checkReadingTranslationDelta(input: {
 
 // One frozen empty base per selection/school/locale, so caches keyed by the base object stay valid.
 const emptyBases = new Map<string, ReadingTranslationBundle>();
+let emptyBasesSelection = "";
 function emptyBaseBundle(selectionSha256: string, corpusSourceSha256: string, slug: string, locale: ReadingLocale): ReadingTranslationBundle {
-  const key = `${selectionSha256}\0${slug}\0${locale}`;
+  // Bases of an earlier selection are dropped when another selection is read (content switches without a restart).
+  if (emptyBasesSelection !== selectionSha256) { emptyBases.clear(); emptyBasesSelection = selectionSha256; }
+  const key = `${slug}\0${locale}`;
   const cached = emptyBases.get(key);
   if (cached) return cached;
   if (emptyBases.size >= 2048) emptyBases.clear();

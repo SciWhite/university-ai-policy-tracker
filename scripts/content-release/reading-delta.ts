@@ -126,7 +126,9 @@ export async function planRecordDeltas(options: { finalized: string; out: string
       package: { dir: ref.dir, pointer: ref.pointer, selectionSha256: pkg.selectionSha256, corpusSourceSha256: pkg.selection.sourceSha256, parentSelectionRevision: pkg.selection.revision },
       schools: {}, requests: {} as Record<string, Record<string, string>> };
     for (const slug of slugs) {
-      const locales = Object.keys(pkg.selection.schools[slug] ?? {}).filter(locale => locale !== "en") as ReadingLocale[];
+      // Corpus locales and locales served only through record deltas (empty basis or added later).
+      const deltaLocales = (pkg.selection.supplemental?.recordDeltas ?? []).flatMap(delta => Object.keys(delta?.schools?.[slug]?.locales ?? {}));
+      const locales = [...new Set([...Object.keys(pkg.selection.schools[slug] ?? {}), ...deltaLocales])].filter(locale => locale !== "en") as ReadingLocale[];
       if (!locales.length) continue;
       const need = await requiredStrings(slug);
       const school: Json = { record: need.basis, parent: undefined, protectedClaimIds: need.claimIds, sourceScopeComplete: need.sourceScopeComplete,

@@ -97,22 +97,22 @@ export function releaseZhReadingLookups(treeRoot: string, recordSha256BySlug: Re
     const schoolRef = selection.schools?.[slug]?.zh;
     const bundle: ReadingBundle = schoolRef ? verified<ReadingBundle>(schoolRef) : { slug, ...EMPTY_BASIS, strings: {} };
     if (bundle.slug && bundle.slug !== slug) { info.basisMismatch.push(slug); continue; }
-    const chain: { basis: ReadingBasis; bundle: ReadingBundle }[] = [];
+    // The zh chain (recordDeltaChain with a locale), cut at the last delta that ends on the page's record, as the loader
+    // does; any unpinned delta up to that point makes the page fall back.
+    const chain: { basis: ReadingBasis; pinned: boolean; ref: ReadingRef }[] = [];
     let basis = { recordSha256: bundle.recordSha256, originalEvidenceSha256: bundle.originalEvidenceSha256 } as ReadingBasis;
     for (const delta of selection.supplemental?.recordDeltas ?? []) {
       const entry = delta?.schools?.[slug];
       if (!entry?.parent || !entry.record || entry.parent.recordSha256 !== basis.recordSha256 || entry.parent.originalEvidenceSha256 !== basis.originalEvidenceSha256) continue;
-      if (!entry.locales?.zh) continue; // a delta for other locales only (recordDeltaChain with a locale)
-      if (!delta.receipt?.sha256 || !deltaPins.includes(delta.receipt.sha256)) break; // unpinned: the page falls back
-      chain.push({ basis: entry.record, bundle: verified<ReadingBundle>(entry.locales.zh) });
+      if (!entry.locales?.zh) continue;
+      chain.push({ basis: entry.record, pinned: Boolean(delta.receipt?.sha256 && deltaPins.includes(delta.receipt.sha256)), ref: entry.locales.zh });
       basis = entry.record;
     }
-    // Up to the last delta that ends on the page's record (same-record deltas add display strings).
     let end = -1;
     chain.forEach((step, i) => { if (step.basis.recordSha256 === recordSha256) end = i; });
     const reached = end >= 0 || (schoolRef && bundle.recordSha256 === recordSha256);
-    if (!recordSha256 || !reached) { (schoolRef ? info.basisMismatch : info.missing).push(slug); continue; }
-    const deltas = chain.slice(0, end + 1).map(step => step.bundle);
+    if (!recordSha256 || !reached || chain.slice(0, end + 1).some(step => !step.pinned)) { (schoolRef ? info.basisMismatch : info.missing).push(slug); continue; }
+    const deltas = chain.slice(0, end + 1).map(step => verified<ReadingBundle>(step.ref));
     if (deltas.length) info.viaRecordDelta.push(slug);
     const bundles = [...deltas.reverse(), ...(schoolRef ? [bundle] : []), shared].filter(Boolean) as ReadingBundle[];
     lookups[slug] = (source: string) => {
