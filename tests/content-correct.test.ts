@@ -6,7 +6,7 @@ import path from "node:path";
 import { checkDecisions, jsha, resolvePreviousRevision, resolvePublishedAt, type CorrectionDecisions } from "../scripts/content-release/correction-apply";
 import { isGenericCountSummary, lintCorrection, placeholderScope, resolveLint, unsupportedSentences, zhFactGaps } from "../scripts/content-release/correction-lint";
 import { checkReview, finalizeCorrection, MergedTree, prepareCorrection } from "../scripts/content-release/correct";
-import { checkRecordRevisions, staleCatalogRecords, staleLocaleIndexEntries } from "../scripts/content-release/validate";
+import { checkRecordRevisions, cloudflareEmailPlaceholders, staleCatalogRecords, staleLocaleIndexEntries } from "../scripts/content-release/validate";
 import { resetContentRuntimeForTests } from "../apps/web/lib/content-runtime";
 
 const repoRoot = process.cwd();
@@ -166,4 +166,10 @@ test("content:correct prepares and finalizes a real one-school correction as a c
     resetContentRuntimeForTests();
     rmSync(work, { recursive: true, force: true });
   }
+});
+
+test("content:validate counts Cloudflare email placeholders in every spelling", () => {
+  assert.equal(cloudflareEmailPlaceholders('{"t":"send to [email protected] or [email&#160;protected]"}'), 2);
+  assert.equal(cloudflareEmailPlaceholders('{"t":"[email\\u00a0protected] and [email\u00a0protected]"}'), 2);
+  assert.equal(cloudflareEmailPlaceholders('{"t":"help@alpha.edu; email protected data"}'), 0);
 });

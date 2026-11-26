@@ -30,6 +30,13 @@ export interface ValidationReport {
 
 const baseline = JSON.parse(readFileSync(new URL("./private-field-baseline.json", import.meta.url), "utf8")) as { entries: { path: string; sha256: string; fields: string[] }[] };
 
+/** Count of Cloudflare's "[email protected]" stand-ins (plain, &#160;, &nbsp;, U+00A0 or JSON  ). A source captured
+ *  without decoding its obfuscated addresses shows this to readers instead of the address (ASU, Berkeley, Caltech,
+ *  2026-11-26). Checked on new objects only, like private fields. */
+export function cloudflareEmailPlaceholders(text: string): number {
+  return text.match(/\[email(?:\s|&#160;|&nbsp;| |\\u00a0)+protected\]/gi)?.length ?? 0;
+}
+
 function walkTree(root: string, rel = "", out: string[] = []): string[] {
   for (const entry of readdirSync(path.join(root, rel), { withFileTypes: true })) {
     const child = rel ? `${rel}/${entry.name}` : entry.name;
@@ -171,6 +178,8 @@ export async function validateContentRelease(contentRoot: string, contentId: str
     // 3. Private-field exclusion. Objects already validated in the parent release are not rescanned.
     if (rel.endsWith(".json") && !parentFiles.has(sha)) {
       scanned++;
+      const placeholders = cloudflareEmailPlaceholders(raw.toString("utf8"));
+      if (placeholders) errors.push(`Cloudflare email placeholder ("[email protected]") in public content: ${rel} (${placeholders}); recapture the source with capture.py's decoding`);
       const allowed = baseline.entries.find(item => item.path === rel && item.sha256 === sha)?.fields ?? [];
       let value: unknown;
       try { value = JSON.parse(raw.toString("utf8")); } catch { errors.push(`Invalid JSON: ${rel}`); continue; }

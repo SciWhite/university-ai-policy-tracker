@@ -10,6 +10,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 TOOL = REPO / 'scripts/release/content-release.py'
 PROOF = REPO / 'scripts/content-release/sync-proof.py'
+REMOTE_BG = REPO / 'scripts/release/remote-bg.sh'
 sha = lambda b: hashlib.sha256(b).hexdigest()
 
 FAKE_CONTROLLER = '''
@@ -670,7 +671,8 @@ class FinishTest(unittest.TestCase):
         def rewait(a, phase): self.order.append('rewait'); return rewait_codes.pop(0)
         with redirect_stdout(io.StringIO()):
             code = self.module['cmd_finish'](self.args(**kw), remote=remote, read_receipt=read_receipt, purge=purge, readback=readback, verify=verify,
-                                             job_state=job_state, rewait=rewait, live_content=lambda a: live, sleep=lambda s: self.order.append(f'sleep:{s:g}'))
+                                             job_state=job_state, rewait=rewait, live_content=lambda a: live, sleep=lambda s: self.order.append(f'sleep:{s:g}'),
+                                             keep_awake=lambda: 'caffeinate -i')
         return code, json.loads((self.dir / 'receipts/finish.json').read_text())
 
     def test_runs_every_step_in_order(self):
@@ -678,6 +680,7 @@ class FinishTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge', 'sleep:10', 'readback', 'complete'])
         self.assertEqual(receipt['status'], 'complete')
+        self.assertEqual(receipt['keepAwake'], 'caffeinate -i')
         self.assertEqual([s['step'] for s in receipt['steps']], ['token-preflight', 'activate', 'refresh-receipt', 'cloudflare-purge', 'readback', 'complete'])
 
     def test_failed_activate_before_the_switch_stops_without_a_purge(self):
@@ -767,6 +770,104 @@ class FinishTest(unittest.TestCase):
         with self.assertRaisesRegex(self.module['Refused'], 'did not verify') as caught:
             verify(str(self.env), get=lambda url, token: (401, b'{"success": false}'))
         self.assertNotIn(TOKEN, str(caught.exception))
+
+
+FAKE_SSH = r"""#!/usr/bin/env bash
+# Records argv, fails with 255 while FAIL_FIRST > calls so far (or always when FAIL_ALWAYS is set), else runs the command locally.
+n=$(( $(cat "$SSH_DIR/count" 2>/dev/null || echo 0) + 1 )); echo "$n" > "$SSH_DIR/count"
+all="$*"; printf '%s\n' "${all//$'\n'/ }" >> "$SSH_DIR/argv"  # one line per call
+if [[ -n "${FAIL_ALWAYS:-}" || $n -le ${FAIL_FIRST:-0} ]]; then echo 'Connection reset by peer' >&2; exit 255; fi
+exec bash -c "${@: -1}"
+"""
+
+
+class RemoteBgTest(unittest.TestCase):
+    """remote-bg.sh: `wait` polls in short calls; every ssh call carries the keepalive options."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(); root = Path(self.tmp.name)
+        self.home = root / 'home'; self.home.mkdir(); self.bin = root / 'bin'; self.bin.mkdir(); self.ssh_dir = root / 'ssh'; self.ssh_dir.mkdir()
+        (self.bin / 'ssh').write_text(FAKE_SSH); (self.bin / 'ssh').chmod(0o755)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def bg(self, *argv, host='local', **env):
+        full = {**os.environ, 'HOME': str(self.home), 'UAPT_HOST': host, 'UAPT_BG_POLL_SECONDS': '0.1', 'PATH': f'{self.bin}:{os.environ["PATH"]}',
+                'SSH_DIR': str(self.ssh_dir), **env}
+        return subprocess.run(['bash', str(REMOTE_BG), *argv], env=full, capture_output=True, text=True, timeout=60)
+
+    def ssh_calls(self):
+        path = self.ssh_dir / 'argv'
+        return path.read_text().splitlines() if path.exists() else []
+
+    def test_wait_returns_the_job_exit_code(self):
+        self.assertEqual(self.bg('start', 'j1', '--', 'bash', '-c', 'sleep 0.5; exit 7').returncode, 0)
+        waited = self.bg('wait', 'j1', '20')
+        self.assertEqual(waited.returncode, 7, waited.stderr)
+        self.assertEqual(self.bg('status', 'j1').stdout.strip(), 'finished exit=7')
+
+    def test_wait_times_out_with_124_and_an_unknown_job_is_125(self):
+        self.bg('start', 'j2', '--', 'sleep', '5')
+        timed_out = self.bg('wait', 'j2', '1')
+        self.assertEqual(timed_out.returncode, 124); self.assertIn('still running after 1s', timed_out.stderr)
+        missing = self.bg('wait', 'nope', '5')
+        self.assertEqual(missing.returncode, 125); self.assertIn('no such job', missing.stderr)
+
+    def test_every_ssh_call_is_short_and_keeps_alive(self):
+        self.assertEqual(self.bg('start', 'j3', '--', 'bash', '-c', 'sleep 0.6; exit 0', host='fakehost').returncode, 0)
+        waited = self.bg('wait', 'j3', '20', host='fakehost')
+        self.assertEqual(waited.returncode, 0, waited.stderr)
+        calls = self.ssh_calls()
+        self.assertGreaterEqual(len(calls), 3)  # start + several polls, not one held session
+        for call in calls:
+            for option in ('BatchMode=yes', 'ConnectTimeout=20', 'ServerAliveInterval=15', 'ServerAliveCountMax=4'):
+                self.assertIn('-o ' + option, call)
+            self.assertIn(' fakehost ', call)
+            self.assertNotIn('while kill', call)
+
+    def test_lost_polls_are_retried_then_the_wait_goes_on(self):
+        self.bg('start', 'j4', '--', 'true')
+        waited = self.bg('wait', 'j4', '20', host='fakehost', FAIL_FIRST='3')
+        self.assertEqual(waited.returncode, 0, waited.stderr)
+        self.assertIn('status poll failed (exit 255, 3 in a row)', waited.stderr)
+        self.assertEqual(len(self.ssh_calls()), 4)
+
+    def test_an_unreachable_host_ends_the_wait_with_255(self):
+        self.bg('start', 'j5', '--', 'sleep', '5')
+        waited = self.bg('wait', 'j5', '60', host='fakehost', FAIL_ALWAYS='1', UAPT_BG_MAX_MISSES='4')
+        self.assertEqual(waited.returncode, 255); self.assertIn('may still be running', waited.stderr)
+        self.assertEqual(len(self.ssh_calls()), 4)
+
+    def test_python_and_shell_use_the_same_ssh_options(self):
+        module = runpy.run_path(str(TOOL))
+        line = next(l for l in REMOTE_BG.read_text().splitlines() if l.startswith('SSH_OPTS=('))
+        self.assertEqual(tuple(line[len('SSH_OPTS=('):-1].split()), module['SSH_OPTIONS'])
+        seen = []
+        def run(argv, **kw): seen.append(argv); return subprocess.CompletedProcess(argv, 0, 'out', '')
+        args = module['argparse'].Namespace(host='hermes-agent-prod')
+        self.assertEqual(module['host_command'](args, 'true', run=run), (0, 'out', ''))
+        self.assertEqual(seen, [['ssh', *module['SSH_OPTIONS'], 'hermes-agent-prod', 'true']])
+        self.assertIn('ServerAliveInterval=15', module['SSH_OPTIONS'])
+        self.assertIn('ServerAliveCountMax=4', module['SSH_OPTIONS'])
+
+
+class KeepAwakeTest(unittest.TestCase):
+    """`finish` holds a macOS idle-sleep assertion for its own lifetime."""
+    def setUp(self):
+        self.fn = runpy.run_path(str(TOOL))['keep_operator_awake']
+
+    def test_macos_starts_caffeinate_bound_to_this_process(self):
+        started = []
+        result = self.fn(platform='darwin', which=lambda name: '/usr/bin/' + name, popen=lambda argv, **kw: started.append(argv), pid=4242)
+        self.assertEqual(result, 'caffeinate -i')
+        self.assertEqual(started, [['/usr/bin/caffeinate', '-i', '-w', '4242']])
+
+    def test_other_platforms_and_failures_are_recorded_not_raised(self):
+        never = lambda *a, **kw: self.fail('must not start anything')
+        self.assertEqual(self.fn(platform='linux', which=lambda n: '/x', popen=never), 'not-macos')
+        self.assertEqual(self.fn(platform='darwin', which=lambda n: None, popen=never), 'caffeinate-missing')
+        def broken(argv, **kw): raise OSError('no such file')
+        self.assertTrue(self.fn(platform='darwin', which=lambda n: '/x', popen=broken).startswith('caffeinate-failed: '))
 
 
 class SyncProofTest(unittest.TestCase):

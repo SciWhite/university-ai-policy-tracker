@@ -44,8 +44,37 @@ class HTML(HTMLParser):
         if not self.skip: self.parts.append(t)
 
 
+# Cloudflare Email Address Obfuscation on an official site replaces each address with "[email protected]" plus a
+# data-cfemail (or /cdn-cgi/l/email-protection#<hex>) XOR encoding that only the browser's script decodes. Without this,
+# the literal placeholder became evidence text (ASU, Berkeley, Caltech, 2026-11-26). Decode it before extraction.
+CF_EMAIL_ELEMENT = re.compile(r'<(a|span)\b[^>]*\bdata-cfemail="([0-9a-fA-F]+)"[^>]*>.*?</\1>', re.I | re.S)
+CF_EMAIL_HREF = re.compile(r'(href=")/cdn-cgi/l/email-protection#([0-9a-fA-F]+)(")', re.I)
+CF_EMAIL_PLACEHOLDER = re.compile(r'\[email(?:\s|&#160;|&nbsp;|\xa0)+protected\]', re.I)
+
+
+def cf_decode(hexed: str):
+    """Cloudflare's encoding: first byte is the key, each following byte XOR key. None when malformed."""
+    try:
+        data = bytes.fromhex(hexed)
+        if len(data) < 2: return None
+        text = bytes(b ^ data[0] for b in data[1:]).decode('utf-8')
+    except (ValueError, UnicodeDecodeError):
+        return None
+    return text if re.fullmatch(r'[^\s@<>"]+@[^\s@<>"]+', text) else None
+
+
+def decode_cf_emails(html: str) -> str:
+    def element(m):
+        email = cf_decode(m.group(2))
+        return _html.escape(email) if email else m.group(0)
+    def href(m):
+        email = cf_decode(m.group(2))
+        return f'{m.group(1)}mailto:{_html.escape(email)}{m.group(3)}' if email else m.group(0)
+    return CF_EMAIL_HREF.sub(href, CF_EMAIL_ELEMENT.sub(element, html))
+
+
 def html_lines(b: bytes) -> str:
-    h = HTML(); h.feed(b.decode('utf-8', 'replace'))
+    h = HTML(); h.feed(decode_cf_emails(b.decode('utf-8', 'replace')))
     return '\n'.join(l for l in (re.sub(r'\s+', ' ', p).strip() for p in ''.join(h.parts).splitlines()) if l) + '\n'
 
 

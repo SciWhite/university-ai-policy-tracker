@@ -161,6 +161,17 @@ class StageTest(Workspace):
             z.writestr('word/document.xml', '<w:document><w:p><w:r><w:t>Rule &amp; one</w:t></w:r></w:p><w:p><w:r><w:t>Two</w:t></w:r></w:p></w:document>')
         self.assertEqual(capture.docx_lines(buf.getvalue()), 'Rule & one\nTwo\n')
 
+    def test_capture_decodes_cloudflare_obfuscated_emails(self):
+        enc = '5a323f362a1a3b362a323b743f3e2f'  # help@alpha.edu, key 0x5a
+        page = (f'<p>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="{enc}">[email&#160;protected]</a> now.</p>'
+                f'<p><a href="/cdn-cgi/l/email-protection#{enc}"><span class="__cf_email__" data-cfemail="{enc}">[email&#160;protected]</span></a></p>'
+                f'<p><a href="/cdn-cgi/l/email-protection#{enc}">Contact us</a></p>'
+                '<p><span data-cfemail="zz">[email&#160;protected]</span></p>')
+        text = capture.html_lines(page.encode())
+        self.assertEqual(text.splitlines()[:3], ['Email help@alpha.edu now.', 'help@alpha.edu', 'Contact us'])
+        self.assertEqual(len(capture.CF_EMAIL_PLACEHOLDER.findall(text)), 1, 'a malformed encoding stays visible, never guessed')
+        self.assertIsNone(capture.cf_decode('5a'))
+
     def test_status_reports_g0_inputs_and_next_step(self):
         sys.path.insert(0, str(PIPE))
         import status
