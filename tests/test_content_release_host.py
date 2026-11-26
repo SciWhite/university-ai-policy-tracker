@@ -86,7 +86,7 @@ class FakeHost:
     def http_json(self, url, *, token=None, body=None, timeout=30):
         live = json.loads((self.content_root / 'current.json').read_text())['contentId']
         if body is not None:
-            self.posts.append((url, body)); return {'expired': len(body.get('paths', []))}
+            self.posts.append((url, body)); return {'ok': True, 'expired': len(body.get('paths', []))}
         return {'contentId': live}
 
     def run(self, argv, **kw):

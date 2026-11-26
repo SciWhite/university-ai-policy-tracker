@@ -476,8 +476,15 @@ def expire_pages(host, op, slot):
         part = {'expectedContentId': op.cid, 'tags': tags[start:start + ISR_EXPIRY_MAX_ITEMS], 'paths': paths[start:start + ISR_EXPIRY_MAX_ITEMS]}
         if not part['tags'] and not part['paths']:
             continue
-        response = host.http_json(f'http://127.0.0.1:{slot["port"]}/api/internal/content/refresh', token=slot['token'], body=part, timeout=180)
-        chunks.append({'tags': len(part['tags']), 'paths': len(part['paths']), 'ok': bool(response.get('ok'))})
+        try:
+            response = host.http_json(f'http://127.0.0.1:{slot["port"]}/api/internal/content/refresh', token=slot['token'], body=part, timeout=180)
+            if not response.get('ok'):
+                raise ValueError('response without ok: ' + json.dumps(response)[:300])
+        except Exception as error:  # the switch is live: record what expired, then stop with a named retry
+            op.write('isr-expiry-partial.json', {'sent': chunks, 'failedChunk': len(chunks) + 1, 'error': str(error)[:500]})
+            raise Refused(f'ISR expiry request {len(chunks) + 1} failed after the switch ({error}); resending every request is safe '
+                          '(expiring twice is harmless); see receipts/isr-expiry-partial.json')
+        chunks.append({'tags': len(part['tags']), 'paths': len(part['paths']), 'ok': True})
     return {'status': 'expired', 'tags': len(tags), 'paths': len(paths), 'chunks': chunks}
 
 
