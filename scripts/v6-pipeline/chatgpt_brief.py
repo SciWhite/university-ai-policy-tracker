@@ -21,11 +21,22 @@ for school in BATCH['schools']:
     f = R / f'{slug}.json'
     if not f.exists():
         continue
-    t = json.loads(f.read_text())['target']
+    packet = json.loads(f.read_text())
+    homepage = packet.get('officialHomepage')
+    homepage_line = (
+        f"**Official university homepage:** {homepage['url']} (checked {homepage['checkedAt']})"
+        if homepage else f"**Homepage gap:** {packet.get('homepageGap', 'No homepage change requested.')}"
+    )
+    if BATCH.get('homepageOnly'):
+        md = f"# {packet['canonical']['entity']['name']} — homepage-only update\n\n{homepage_line}\n"
+        (OUT / f'{abbr}.md').write_text(md)
+        allmd.append(md)
+        continue
+    t = packet['target']
     s = t['school']
     L = [f"# {s['name']} ({EDITION} {rank}) — page text to check", '',
          f"**Title:** {t['hero']['title']['en']}  ", f"**Overall scope:** {t['hero']['scope']['en']}  ",
-         f"**Chinese scope:** {t['hero']['scope']['zh']}", '']
+         f"**Chinese scope:** {t['hero']['scope']['zh']}", homepage_line, '']
     L.append('## Topics')
     for tp in s['topics'] + s['additionalTopics']:
         zh = t['topicSummaries'].get(tp['key'], {})

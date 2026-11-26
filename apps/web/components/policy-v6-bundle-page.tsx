@@ -1,3 +1,4 @@
+import type {OfficialHomepage} from '@/lib/university-homepage';
 import { registerClaimCardTexts } from "@/lib/evidence-dedup";
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import { policyV6ClientData } from "@/lib/policy-v6-client-data";
@@ -33,12 +34,14 @@ import { v6SourceMetadataByUrl } from "@/lib/v6-source-metadata";
 import { RelatedUniversities } from "./related-universities";
 
 /** One composition for normalized local crawl bundles, rather than one layout per school. */
-export function PolicyV6BundlePage({ university, data, view, locale, relatedUniversities, sharedUiText = {} }: {
+export function PolicyV6BundlePage({ university, data, view, locale, relatedUniversities, previewLayout, officialHomepage, sharedUiText = {} }: {
   university: { slug: string; name: string; region: string; country: string };
   data: PolicyV6Data; view: LocalV6Bundle; locale: SupportedLocale; relatedUniversities: RelatedUniversityRef[];
+  previewLayout?: string;
+  officialHomepage?: OfficialHomepage;
   sharedUiText?: Readonly<Record<string, string>>;
 }) {
-  if (view.publication && view.publication.kind !== "v6_presentation_integration") return <PolicyV6BundlePageLegacy university={university} data={data} view={view} locale={locale} relatedUniversities={relatedUniversities} sharedUiText={sharedUiText} />;
+  if (view.publication && view.publication.kind !== "v6_presentation_integration") return <PolicyV6BundlePageLegacy university={university} officialHomepage={officialHomepage} previewLayout={previewLayout} data={data} view={view} locale={locale} relatedUniversities={relatedUniversities} sharedUiText={sharedUiText} />;
   data = bindPolicyV6ReadingEvidence(data, view.claims);
   // #claims below holds the full texts; topic evidence shows excerpts (lib/evidence-dedup.ts).
   registerClaimCardTexts(currentReferenceClaims(view));
@@ -49,8 +52,8 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   const onlyScopedTools = scopedTools.length > 0 && unscopedTools.length === 0;
   const scopeNote = locale === "zh" ? "以下工具限特定对象、账户、模式或用途；不代表全体学生获得使用许可，也不代表考核许可。请核对每项获取条件。" : "These tools have audience, account, mode or purpose limits; access is not established for all students and does not grant assessment permission. Check each access condition.";
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
-    <PolicyV6Provider data={policyV6ClientData(data)} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
-      <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
+    <PolicyV6Provider data={policyV6ClientData(data)} previewLayout={previewLayout} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
+      <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} officialHomepage={officialHomepage} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} sharedUiText={sharedUiText} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />
       <PolicyV6Intro />
@@ -69,7 +72,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
       </section>
       <PolicyV6PublicClaimDisposition view={view} locale={locale} /><PolicyV6PrivateContext view={view} locale={locale} kind="claim" />
       <PolicyV6HeldRecords slug={university.slug} locale={locale} sharedUiText={sharedUiText}/><section id="sources" className="student-record-section student-record-section--compact"><h2>{t("Official sources")}</h2><PolicyV6Sources sources={view.sources} metadata={v6SourceMetadataByUrl(university.slug)} slug={university.slug} locale={locale} sharedUiText={sharedUiText} /></section>
-      <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi uiLab sharedUiText={sharedUiText} />
+      <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi uiLab previewLayout={previewLayout} sharedUiText={sharedUiText} />
       <section id="record-info" className="student-record-info"><details><summary>{t("Record information, JSON & citation")}</summary>
         <PolicyV6RecordLinks slug={university.slug} locale={locale} publicTraceability={Boolean(view.claimDispositions)}/>
         <p>{locale === "zh" ? (view.publication && !view.candidateOnly ? "已发布 V6 展示；JSON 与 MCP 保留原公开记录。补充引文及范围提示待核实；本地候选更正、工具和学生摘要未获公开批准。整校审计仍为 PARTIAL。" : "本地资料预览；公开 JSON 仍为原发布基线。整校审计仍为 PARTIAL。") : (view.publication && !view.candidateOnly ? "Published V6 presentation; JSON and MCP retain the existing public record. Supplementary quotations and scope notes remain pending review. Local candidate corrections, tools and student summaries are not approved for publication. Institution-wide audit remains PARTIAL." : "Local evidence preview; public JSON retains its published baseline. Institution-wide audit remains PARTIAL.")}</p>

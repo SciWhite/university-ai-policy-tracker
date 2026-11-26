@@ -1,3 +1,4 @@
+import { v6PreviewLayout } from '@/lib/policy-v6-urls';
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "@/components/policy-v6-changes";
@@ -316,6 +317,7 @@ export default async function UniversityPage({
   const baseTier = !v6Preview && isPolicyV6BaseTier(slug);
   const uiLab = v6Preview || baseTier;
   const fullV6 = v6Preview;
+  const previewLayout = v6PreviewLayout(pageQuery?.layout);
   // Preserve the pre-existing seven-locale V6 cache only when no complete
   // accepted reading package is selected. New reading locales stay English based.
   const fallbackV6Locale = readingLocale === locale ? locale : "en";
@@ -340,7 +342,7 @@ export default async function UniversityPage({
     const fallbackData = displayV6 ? undefined : fallbackV6Locale === "en" ? rawData : await getPolicyV6Data(fallbackV6Locale, slug);
     const data = displayV6 ? { ...readingDisplayView(rawData, displayV6, readingLocale), locale, readingLocale, studentGuideTranslated: isStudentGuideTranslated(rawData, displayV6, readingLocale) } : fallbackData ?? rawData;
     const view = displayV6 ? readingDisplayView(localBundle, displayV6, readingLocale) : fallbackV6Input?.bundle ?? localBundle;
-    return <>{v6JsonLd}<PolicyV6BundlePage university={identity} data={data} view={view} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : {}} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} /></>;
+    return <>{v6JsonLd}<PolicyV6BundlePage university={identity} officialHomepage={v6Input.officialHomepage} previewLayout={previewLayout} data={data} view={view} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : {}} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} /></>;
   }
   const localEvidence = v6Input?.evidence;
   if (localEvidence) {
@@ -352,7 +354,7 @@ export default async function UniversityPage({
     const fallbackData = displayV6 ? undefined : fallbackV6Locale === "en" ? rawData : await getPolicyV6Data(fallbackV6Locale, slug);
     const localData = displayV6 ? { ...readingDisplayView(rawData, displayV6, readingLocale), locale, readingLocale, studentGuideTranslated: isStudentGuideTranslated(rawData, displayV6, readingLocale) } : fallbackData ?? rawData;
     const evidence = displayV6 ? readingDisplayView(localEvidence, displayV6, readingLocale) : fallbackV6Input?.evidence ?? localEvidence;
-    return <>{v6JsonLd}<PolicyV6LocalPage university={localUniversity} data={localData} evidence={evidence} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : {}} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/></>;
+    return <>{v6JsonLd}<PolicyV6LocalPage university={localUniversity} officialHomepage={v6Input.officialHomepage} previewLayout={previewLayout} data={localData} evidence={evidence} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : {}} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/></>;
   }
 
   const [university, rawPublicSummary, loadedSnapshot] = await Promise.all([
@@ -438,7 +440,7 @@ export default async function UniversityPage({
   const readingUiText = readyTranslations ? acceptedV6UiText(readyTranslations, readingLocale, reviewedClaims.length) : {};
   const LabProvider = labData
     ? function PolicyV6PageProvider({ children }: { children: ReactNode }) {
-        return <PolicyV6Provider data={policyV6ClientData(labData)} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
+        return <PolicyV6Provider data={policyV6ClientData(labData)} previewLayout={previewLayout} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
       }
     : Fragment;
   // Record framework labels follow the page language even when the record itself is English.
@@ -533,7 +535,7 @@ export default async function UniversityPage({
       {draftPreview ? <aside data-i18n="preserve" role="status">LOCAL CANDIDATE PREVIEW — pending review; not published. All evidence remains in its original language.</aside> : null}
       <EntityHeader
         actions={uiLab ? <div id="v6-header-actions"><PolicyV6Actions /></div> : undefined}
-        leading={uiLab ? <UniversityHomepageMark slug={slug} name={displayName} locale={locale} /> : undefined}
+        leading={uiLab ? <UniversityHomepageMark slug={slug} name={displayName} locale={locale} officialHomepage={v6Input?.officialHomepage} /> : undefined}
         eyebrow={uiLab ? <PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={publicSummary.lastCheckedAt} changedAt={publicSummary.lastChangedAt} locale={locale} sharedUiText={readingUiText} /> : `${university.region}, ${university.country}`}
         metadata={fullV6 ? undefined : baseTier ? (
           <MetaLabel label="Ranking">
@@ -663,7 +665,7 @@ export default async function UniversityPage({
       </section>
 
       {relatedUniversities?.length ? (
-        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={localizeFramework} uiLab={uiLab} sharedUiText={readingUiText} />
+        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={localizeFramework} uiLab={uiLab} previewLayout={previewLayout} sharedUiText={readingUiText} />
       ) : null}
 
       <section className="student-record-info" id="record-info">

@@ -15,6 +15,7 @@ import { acceptV6SchoolInput } from '../../apps/web/lib/policy-v6-input';
 import { validateV6Completeness } from '../../apps/web/lib/policy-v6-completeness';
 import { selectTree } from '../../scripts/content-release/lib';
 import { loadSelected } from '../../scripts/content-release/correct';
+import { validateHomepageInput, validateHomepageOnlyInput } from './homepage';
 import { loadBatch, requireGatePassed, workspaceFromArgv } from './batch';
 
 const { ws: P } = workspaceFromArgv();
@@ -31,23 +32,36 @@ const revision = BATCH.revision;
 const topics = (v: any) => [...v.school.topics, ...v.school.additionalTopics];
 
 async function main() {
-  requireGatePassed(P, 'locale');
+  if (!BATCH.homepageOnly) requireGatePassed(P, 'locale');
   process.env.NEXT_PUBLIC_SITE_URL = 'https://eduaipolicy.org';
   const manifest = read(PARENT + '/manifest.json');
   selectTree(manifest.contentId, PARENT + '/tree', manifest);
-  const dataset = await getStagedPublicDataset();
-  const catalog = read(PARENT + '/tree/mcp/catalog.json').payload.records;
+  const dataset = BATCH.homepageOnly ? undefined : await getStagedPublicDataset();
+  const catalog = BATCH.homepageOnly ? undefined : read(PARENT + '/tree/mcp/catalog.json').payload.records;
   // mode "update": the school is already V6. Its record, tools and held claims stay exactly as the parent stores them
   // (same objects, same key order), so the record fingerprint and tool hash the release checks are unchanged.
   const parentData: any = BATCH.mode === 'update' ? loadSelected(PARENT + '/tree/data') : null;
   const parentViews = parentData ? parentData.pages.locales.en.views : {};
-  const selection = read(P + '/selection.json');
+  const selection = BATCH.homepageOnly ? {} : read(P + '/selection.json');
   const frozen: Record<string, unknown> = {};
-  for (const [slug, ref] of (Object.entries(selection) as [string, { path: string; sha256: string; sourceBundleSha256: string }][]).filter(([slug]) => SLUGS.includes(slug))) {
+  for (const {slug, abbr} of BATCH.schools) {
+    const input = read(P + '/inputs/' + abbr + '.json');
+    if (BATCH.homepageOnly) {
+      assert.ok(parentData.pages.slugs.includes(slug), slug + ': homepageOnly needs a V6 school of the parent');
+      const canonical = parentData.records.summaries.find((record: any) => record.entity.slug === slug);
+      assert.ok(canonical, slug + ': parent record missing');
+      const officialHomepage = validateHomepageOnlyInput(input, BATCH, canonical);
+      const previousHomepage = parentData.pages.officialHomepages?.[slug];
+      assert.notDeepEqual(officialHomepage, previousHomepage, slug + ': homepage is unchanged');
+      frozen[slug] = { officialHomepage, previousHomepage, canonical, tools: parentData.records.toolsBySlug[slug], requiredAcceptance: {} };
+      continue;
+    }
+    const ref = selection[slug];
+    assert.ok(ref, slug + ': selection.json entry missing');
     const localBytes = readFileSync(P + '/' + ref.path);
     assert.equal(hash(localBytes), ref.sha256);
     const view = JSON.parse(localBytes.toString());
-    let canonical = JSON.parse(JSON.stringify(publicEntitySummarySchema.parse(dataset.publicSummaries.find(s => s.entity.slug === slug))));
+    let canonical = JSON.parse(JSON.stringify(publicEntitySummarySchema.parse(dataset!.publicSummaries.find(s => s.entity.slug === slug))));
     // The universities API route adds `policySnapshot` (a link to the school's policy snapshot) at serve time; it is not
     // part of the release record, so it is left out of the comparison.
     const { policySnapshot: _servedLink, ...liveRecord } = read(P + '/' + slug + '/public.json').data;
@@ -63,6 +77,9 @@ async function main() {
       canonical = structuredClone(stored);
       tools = structuredClone(storedTools);
     }
+    const officialHomepage = validateHomepageInput(input, BATCH, canonical);
+    assert.deepEqual(view.officialHomepage, officialHomepage, slug + ': homepage input changed; rebuild the view');
+    delete view.officialHomepage;
     const audited = read(P + '/' + slug + '/audit.json').recordAudit;
     const canonicalHash = jhash(canonical);
     const decisions = canonical.claims.map((c: any) => {
@@ -126,7 +143,7 @@ async function main() {
     assert.equal(accepted.kind, 'bundle');
     validateV6Completeness(accepted, 'en', false);
     const { target, requiredAcceptance } = preparePresentationEvidence(view, revision);
-    frozen[slug] = { candidate: view, target, requiredAcceptance, canonical, tools, localDraftSha256: ref.sha256,
+    frozen[slug] = { officialHomepage, homepageGap: input.homepageGap, candidate: view, target, requiredAcceptance, canonical, tools, localDraftSha256: ref.sha256,
       dispositionCounts: Object.fromEntries([...new Set(decisions.map((x: any) => x.mode))].map(mode => [mode, decisions.filter((x: any) => x.mode === mode).length])) };
   }
   assert.deepEqual(Object.keys(frozen).sort(), SLUGS.slice().sort(), 'selection.json must cover every school of the batch');
@@ -137,7 +154,7 @@ async function main() {
     write(to, bundle);
     hashes[slug] = hash(readFileSync(to));
   }
-  write(OUT + '/manifest.json', { revision, mode: BATCH.mode, parentContentId: manifest.contentId, schoolPacketSha256: hashes, englishOnlySlugs: BATCH.englishOnlySlugs ?? [], deploymentAuthorizedBy: BATCH.deploymentAuthorizedBy ?? null, deploymentNote: BATCH.deploymentNote ?? 'Prepared to accepted/release-ready only; a release needs its own request (AGENTS.md).' });
+  write(OUT + '/manifest.json', { revision, mode: BATCH.mode, ...(BATCH.homepageOnly ? {homepageOnly: true} : {}), parentContentId: manifest.contentId, schoolPacketSha256: hashes, englishOnlySlugs: BATCH.englishOnlySlugs ?? [], deploymentAuthorizedBy: BATCH.deploymentAuthorizedBy ?? null, deploymentNote: BATCH.deploymentNote ?? 'Prepared to accepted/release-ready only; a release needs its own request (AGENTS.md).' });
   console.log(JSON.stringify(hashes, null, 1));
 }
 main().catch(e => { console.error(e); process.exitCode = 1; });

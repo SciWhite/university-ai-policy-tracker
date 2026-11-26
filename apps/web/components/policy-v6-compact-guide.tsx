@@ -1,4 +1,5 @@
 'use client';
+import {v6NavigationUrl} from '@/lib/policy-v6-urls';
 import React,{useEffect,useRef,useState}from'react';
 import type{V6StudentGuideView,StudentGuideClaim}from'@/lib/policy-v6-student-actions';
 import type{SupportedLocale}from'@/lib/i18n';
@@ -21,22 +22,22 @@ export function PolicyV6CompactGuide({guide,locale,readingLocale,sharedUiText={}
  const[copied,setCopied]=useState(false);
  const copyLink=async()=>{try{await navigator.clipboard.writeText(shareUrl);setCopied(true);}catch{const input=dialog.current?.querySelector<HTMLInputElement>('.v6-compact-share-url');input?.focus();input?.select();}};
  useEffect(()=>{
-  const sync=()=>{const url=new URL(location.href);setOpen(url.searchParams.get('guide')==='concerns');url.searchParams.set('guide','concerns');setShareUrl(url.href);};sync();addEventListener('popstate',sync);return()=>removeEventListener('popstate',sync);
+  const sync=()=>{const url=v6NavigationUrl(location.href);setOpen(url.searchParams.get('guide')==='concerns');url.searchParams.set('guide','concerns');setShareUrl(url.href);};sync();addEventListener('popstate',sync);return()=>removeEventListener('popstate',sync);
  },[]);
  useEffect(()=>{
   const node=dialog.current;if(!node)return;
   if(open){if(!node.open)node.showModal();const previous=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=previous;if(node.open)node.close();};}
   if(node.open)node.close();
  },[open]);
- const show=(event:React.MouseEvent<HTMLAnchorElement>)=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();const url=new URL(location.href);url.searchParams.set('guide','concerns');history.pushState(null,'',url);setShareUrl(url.href);setOpen(true);};
- const close=()=>{const url=new URL(location.href);url.searchParams.delete('guide');history.replaceState(null,'',url);setOpen(false);requestAnimationFrame(()=>trigger.current?.focus());};
+ const show=(event:React.MouseEvent<HTMLAnchorElement>)=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();const url=v6NavigationUrl(location.href);url.searchParams.set('guide','concerns');history.pushState(null,'',url);setShareUrl(url.href);setOpen(true);};
+ const close=()=>{const url=v6NavigationUrl(location.href);url.searchParams.delete('guide');history.replaceState(null,'',url);setOpen(false);requestAnimationFrame(()=>trigger.current?.focus());};
  const print=()=>{const items=Array.from(dialog.current?.querySelectorAll('details')??[]),values=items.map(item=>item.open);items.forEach(item=>item.open=true);const restore=()=>items.forEach((item,i)=>item.open=values[i]);addEventListener('afterprint',restore,{once:true});window.print();};
  return <section className="v6-student-guide v6-compact-guide" id="v6-submission-guide" data-student-guide-basis={guide.recordSha256}>
   <span id="submission-checklist" className="v6-compact-anchor"/>
   <header className="v6-student-guide__header"><div><h2>{t.title}</h2></div></header>
   {displayLanguage!=='zh'&&displayLanguage!=='en'&&!studentGuideTranslated?<p className="policy-v6-muted" lang={t.enFallback===rawText.enFallback?'en':displayLanguage}>{t.enFallback}</p>:null}
   <div className="v6-student-guide__actions" id="v6-ai-use-guidance">{(['do','dont']as const).map((kind,index)=><article key={kind} className={`v6-student-guide__column v6-student-guide__column--${kind}`}><h3 data-policy-tone={kind==='do'?'allowed':'prohibited'}>{index===0?t.do:t.dont}</h3><ul>{guide[kind].map((action,i)=><li key={action.en}><div><span className="v6-compact-action-text" lang={guideLanguage} data-i18n="preserve">{action[language]}</span><div className="v6-compact-action-meta"><small data-action-kind={action.kind} lang={displayLanguage}>{action.kind==='requirement'?t.requirement:action.kind==='source_guidance'?t.guidance:t.advice}</small><PolicyV6Popover id={`${detailId}-action-${kind}-${i}`} label={t.source} accessibleLabel={`${action[language]} — ${uiText['View official evidence']??(zh?'查看官方依据':'View official evidence')}`} title={action[language]} mobileReading className="v6-compact-action-evidence" closeLabel={uiText.Close??(zh?'关闭':'Close')} width={560}><details className="v6-compact-action-scope"><summary lang={displayLanguage}>{t.scope}</summary><p lang={guideLanguage}>{guide.scope[language]}</p></details>{action.claimIds.map(id=><CompactEvidence key={id} row={guide.claims[id]} zh={zh} zhFallback={zh&&!studentGuideTranslated} displayLanguage={displayLanguage} guideLanguage={guideLanguage} sharedUiText={uiText} defaultOpen/>)}</PolicyV6Popover></div></div></li>)}</ul></article>)}</div>
-  <div className="v6-student-guide__concern" id="v6-ai-concerns"><a className="v6-student-guide__concern-button" href={shareUrl || (guide.privatePreview ? "?layout=v6&guide=concerns" : "?guide=concerns")} onClick={show} ref={trigger}><strong>{t.concern}</strong><span>{t.hint}</span><span aria-hidden="true">↗</span></a></div>
+  <div className="v6-student-guide__concern" id="v6-ai-concerns"><a className="v6-student-guide__concern-button" href={shareUrl || "?guide=concerns"} onClick={show} ref={trigger}><strong>{t.concern}</strong><span>{t.hint}</span><span aria-hidden="true">↗</span></a></div>
   <dialog ref={dialog} className="v6-compact-concern" id={`${detailId}-concern-details`} aria-labelledby={`${detailId}-concern-title`} onCancel={event=>{event.preventDefault();close();}}>
    <header><div><h2 id={`${detailId}-concern-title`}>{t.concern}</h2><p lang={language}>{guide.name}</p></div><div className="v6-compact-concern__header-actions"><button type="button" className="v6-compact-share-top" onClick={copyLink} aria-label={copied?t.copied:t.share} title={copied?t.copied:t.share}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></svg></button><button type="button" onClick={close}>{t.close} ×</button></div></header>
    <span className="v6-compact-live-status" role="status">{copied?t.copied:''}</span><div className="v6-compact-concern__body"><p lang={guideLanguage} data-i18n="preserve">{guide.scope[language]}</p>

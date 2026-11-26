@@ -27,6 +27,10 @@ selector is re-checked against the captured text, so a wrong line number fails t
   `unclear`, `insufficient_public_evidence`.
 - Summaries: 1–3 sentences, at most about 60 words. Labels: 2–6 words. Scopes: one sentence on who/what it covers.
 
+The batch integrator supplies `officialHomepage` or `homepageGap` per
+[V6 pipeline §2.5](../../../docs/v6-pipeline.md#25-official-university-homepages).
+Carry that field through unchanged when drafting or translating the school input.
+
 ## Shape
 
 ```json

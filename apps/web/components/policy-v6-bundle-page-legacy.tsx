@@ -1,3 +1,4 @@
+import type {OfficialHomepage} from '@/lib/university-homepage';
 import { bindPolicyV6ReadingEvidence } from "@/lib/policy-v6-reading-evidence";
 import { policyV6ClientData } from "@/lib/policy-v6-client-data";
 import {PolicyV6Changes} from "./policy-v6-changes";
@@ -26,9 +27,11 @@ import { v6SourceMetadataByUrl } from "@/lib/v6-source-metadata";
 import { RelatedUniversities } from "./related-universities";
 
 /** One composition for normalized local crawl bundles, rather than one layout per school. */
-export function PolicyV6BundlePageLegacy({ university, data, view, locale, relatedUniversities, sharedUiText = {} }: {
+export function PolicyV6BundlePageLegacy({ university, data, view, locale, relatedUniversities, previewLayout, officialHomepage, sharedUiText = {} }: {
   university: { slug: string; name: string; region: string; country: string };
   data: PolicyV6Data; view: LocalV6Bundle; locale: SupportedLocale; relatedUniversities: RelatedUniversityRef[];
+  previewLayout?: string;
+  officialHomepage?: OfficialHomepage;
   sharedUiText?: Readonly<Record<string, string>>;
 }) {
   data = bindPolicyV6ReadingEvidence(data, view.claims);
@@ -41,8 +44,8 @@ export function PolicyV6BundlePageLegacy({ university, data, view, locale, relat
   const localizedScopeNote = t(scopeNote);
   const localizedScopedToolNote = t("These tools have audience, mode or purpose limits; access is not established for all students.");
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
-    <PolicyV6Provider data={policyV6ClientData(data)} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
-      <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
+    <PolicyV6Provider data={policyV6ClientData(data)} previewLayout={previewLayout} sharedUiText={sharedUiText}><PolicyReferenceLayout changes enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools sharedUiText={sharedUiText}>
+      <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} officialHomepage={officialHomepage} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} sharedUiText={sharedUiText} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />
       <PolicyV6Intro />
@@ -60,7 +63,7 @@ export function PolicyV6BundlePageLegacy({ university, data, view, locale, relat
         <PolicyV6ClaimGroups entitySlug={university.slug} groups={groupReviewedClaimsByClaimType(view.claims)} locale={locale} claimScopes={view.claimScopes} sharedUiText={sharedUiText} />
       </section>
       <PolicyV6HeldRecords slug={university.slug} locale={locale} sharedUiText={sharedUiText}/><section id="sources" className="student-record-section student-record-section--compact"><h2>{t("Official sources")}</h2><PolicyV6Sources sources={view.sources} metadata={v6SourceMetadataByUrl(university.slug)} slug={university.slug} locale={locale} sharedUiText={sharedUiText} /></section>
-      <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi uiLab sharedUiText={sharedUiText} />
+      <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi uiLab previewLayout={previewLayout} sharedUiText={sharedUiText} />
       <section id="record-info" className="student-record-info"><details><summary>{t("Record information, JSON & citation")}</summary>
         <PolicyV6RecordLinks slug={university.slug} locale={locale}/>
         <p>{locale === "zh" ? (view.publication ? "已发布的范围限定规则修订；当前 JSON 与 MCP 使用同一已审核记录，旧基线另存历史。整校审计仍为 PARTIAL。" : "本地资料预览；公开 JSON 仍为原发布基线。整校审计仍为 PARTIAL。") : (view.publication ? "Published scoped record correction; current JSON and MCP use the same reviewed record, while the previous baseline is retained in history. Institution-wide audit remains PARTIAL." : "Local evidence preview; public JSON retains its published baseline. Institution-wide audit remains PARTIAL.")}</p>

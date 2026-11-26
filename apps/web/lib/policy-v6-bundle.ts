@@ -11,10 +11,13 @@ import { policyClaimSchema, sourceAttributionSchema, universityToolRecordSchema,
 import type { LabSchool } from "./policy-v6";
 import type { PageToolRecord } from "@/components/university-ai-tools";
 import type { PolicyScenePilot, PolicySceneQuickCheck } from "./policy-scene-pilot";
+import { validateOfficialHomepage, type OfficialHomepage } from "./university-homepage";
 import type { SupportedLocale } from "./i18n";
 
 /** Private, normalized display input. This is not a public policy/snapshot schema. */
 export interface LocalV6Bundle {
+  /** Draft-only school metadata; published separately from localized views. */
+  officialHomepage?: OfficialHomepage;
   completenessReview?: {schemaVersion:'uapt-v6-completeness-review-v1';contentSha256:string;reviewer:string;reviewedAt:string;scope:'presentation_only';policySemanticsApproved:false};
   candidateOnly?: true;
   presentationEvidenceAcceptance?: PresentationEvidenceAcceptance;
@@ -111,6 +114,7 @@ export function parseLocalV6Bundle(raw: Buffer, slug: string, entry: { sha256: s
   if (createHash("sha256").update(raw).digest("hex") !== entry.sha256) throw new Error("V6 local view changed; revalidate before selecting it");
   const view = JSON.parse(raw.toString()) as LocalV6Bundle;
   if (view.schemaVersion !== "uapt-v6-local-view-v1" || view.publicationApproved !== false || view.school.slug !== slug || view.sourceBundleSha256 !== entry.sourceBundleSha256 || view.school.fingerprint !== entry.sourceBundleSha256) throw new Error("V6 local view identity mismatch");
+  if (view.officialHomepage !== undefined) validateOfficialHomepage(view.officialHomepage, slug);
   view.claims.forEach((claim) => policyClaimSchema.parse(claim));
   view.sources.forEach((source) => sourceAttributionSchema.parse(source));
   for (const tool of view.tools) {

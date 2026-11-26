@@ -88,10 +88,10 @@ test("strong snapshot adapter preserves roles and original policy while using sh
   }
 });
 
-test("locale navigation normalizes old pilot links and keeps comparison state on every V6 school", () => {
+test("public locale navigation removes preview layouts and keeps comparison state on every V6 school", () => {
   for (const slug of ["harvard-university", "purdue-university", "peking-university", "university-of-toronto"]) {
     const url = new URL(preservePolicyReferenceSearch(`/zh/universities/${slug}`, "?layout=v6&compare=harvard-university,purdue-university&view=compare&differences=1", "production"), "https://example.invalid");
-    assert.equal(url.searchParams.get("layout"), "v6");
+    assert.equal(url.searchParams.has("layout"), false);
     assert.equal(url.searchParams.get("differences"), "1");
     assert.equal(url.searchParams.get("view"), "compare");
   }

@@ -52,6 +52,13 @@ class BatchConfigTest(Workspace):
             with self.assertRaises(B.BatchError):
                 B.validate(bad)
 
+    def test_homepage_only_batches_require_update_mode_and_frozen_sources(self):
+        for bad in (batch_json(homepageOnly=True), batch_json(mode='update', homepageOnly=False),
+                    batch_json(mode='update', homepageOnly=True, sourceMetadataFile='metadata.json')):
+            with self.assertRaises(B.BatchError):
+                B.validate(bad)
+        self.assertTrue(B.validate(batch_json(mode='update', homepageOnly=True))['homepageOnly'])
+
     def test_official_domains_include_declared_parent_bodies(self):
         self.batch['schools'][0]['extraDomains'] = ['parent.ac.jp']
         self.assertEqual(B.official_domains(self.batch, self.batch['schools'][0]), {'alpha.edu', 'parent.ac.jp'})

@@ -1,3 +1,4 @@
+import { v6PreviewLayout } from './policy-v6-urls';
 import {isPublishedV6Slug, publishedV6Enabled} from "./policy-v6-published-gate";
 import { isPolicyV6Preview } from './policy-v6-gate';
 import type { PolicyScenePilot, PolicySceneStoryCard } from "@/lib/policy-scene-pilot";
@@ -84,24 +85,31 @@ function isHomeTarget(pathname: string): boolean {
   return clean === "" || clean === "/";
 }
 
-/** Keep local V4 comparison when a reader clicks the switcher's initial Suspense fallback. */
+/** Preserve reading state and propagate preview flags only from an explicit development URL. */
 export function preservePolicyReferenceSearch(href: string, currentSearch: string, environment = process.env.NODE_ENV): string {
   const target = new URL(href, "https://preview.invalid");
-  const layout = new URLSearchParams(currentSearch).get("layout");
+  const source = new URLSearchParams(currentSearch);
+  const layout = source.get("layout");
+  const hadLayout = target.searchParams.has("layout");
+  target.searchParams.delete("layout");
+  const relative = () => `${target.pathname}${target.search}${target.hash}`;
   if (isHomeTarget(target.pathname) && isHomeV4Preview(layout, environment)) {
     target.searchParams.set("layout", "home-v4");
-    return `${target.pathname}${target.search}${target.hash}`;
+    return relative();
   }
-  const slug = target.pathname.split("/").at(-1) ?? "";
-  if (isPolicyV6Preview(slug, layout, environment)) {
-    target.searchParams.set('layout', "v6");
-    const source = new URLSearchParams(currentSearch);
-    for (const key of ['compare', 'view', 'differences']) {
-      const value = source.get(key); if (value) target.searchParams.set(key, value);
+  const slug = getPathnameWithoutLocale(target.pathname).match(/^\/universities\/([^/]+)\/?$/)?.[1];
+  const preview = v6PreviewLayout(layout, environment);
+  if (slug && isPolicyV6Preview(slug, preview, environment)) {
+    if (preview) target.searchParams.set("layout", preview);
+    for (const key of ["compare", "view", "differences", "guide"]) {
+      const value = source.get(key);
+      if (value !== null) target.searchParams.set(key, value);
     }
-    return `${target.pathname}${target.search}${target.hash}`;
+    return relative();
   }
-  if (!isPolicyReferencePreview(slug, layout, environment)) return href;
-  target.searchParams.set("layout", "reference-v4");
-  return `${target.pathname}${target.search}${target.hash}`;
+  if (slug && isPolicyReferencePreview(slug, layout, environment)) {
+    target.searchParams.set("layout", "reference-v4");
+    return relative();
+  }
+  return hadLayout ? relative() : href;
 }

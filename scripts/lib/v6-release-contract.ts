@@ -1,3 +1,4 @@
+import { validateOfficialHomepages } from '../../apps/web/lib/university-homepage';
 import {createHash} from 'node:crypto';
 import {publicEntitySummarySchema, policySnapshotSchema, universityToolRecordSchema} from '@uapt/shared';
 import type {PublishedV6Package} from '../../apps/web/lib/policy-v6-published';
@@ -12,6 +13,7 @@ import {acceptedToolPresentation} from '../../apps/web/lib/policy-v6-tool-presen
 export function acceptV6Release(pages: PublishedV6Package, records: V6RecordPackage, options: {candidateOnly?:boolean} = {}) {
   const sameSet = (a: string[], b: string[]) => new Set(a).size === a.length && new Set(b).size === b.length && [...a].sort().join(',') === [...b].sort().join(',');
   if (pages.schemaVersion !== 'uapt-v6-published-pages-v1' || records.schemaVersion !== 'uapt-v6-effective-records-v1' || (options.candidateOnly ? pages.candidateOnly!==true || records.candidateOnly!==true || pages.publicationApproved!==false || records.publicationApproved!==false : !pages.publicationApproved || !records.publicationApproved || pages.candidateOnly===true || records.candidateOnly===true) || pages.releaseId !== records.revision) throw Error('Unpaired V6 release identity');
+  validateOfficialHomepages(pages.officialHomepages, pages.slugs, records.summaries);
   const scope = [...pages.slugs, ...(pages.v5Slugs ?? [])];
   if (!sameSet(scope, records.summaries.map(s => s.entity.slug)) || !sameSet(Object.keys(pages.locales), [...SUPPORTED_LOCALES])) throw Error('Incomplete V6 school/locale coverage');
   for (const [slug, ids] of Object.entries(records.mcpPresentationExclusions ?? {})) {

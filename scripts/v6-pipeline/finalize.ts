@@ -9,10 +9,12 @@ import path from 'node:path';
 import { parseLocalV6Bundle, getLocalV6StudentActions } from '../../apps/web/lib/policy-v6-bundle';
 import { acceptV6SchoolInput } from '../../apps/web/lib/policy-v6-input';
 import { validateV6Completeness } from '../../apps/web/lib/policy-v6-completeness';
+import { validateHomepageInput } from './homepage';
 import { loadBatch, workspaceFromArgv } from './batch';
 
 const { ws: P, args } = workspaceFromArgv();
 const BATCH = loadBatch(P);
+if (BATCH.homepageOnly) throw Error('Homepage-only update: run v6:packets against the parent release');
 const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'));
 const hash = (b: Buffer | string) => createHash('sha256').update(b).digest('hex');
 const zhTitles = ['课程作业', '考试与考核', '披露与引用', '隐私与数据', '工具与获取方式', '研究与出版', '学术诚信', '教学指引', '安全与工具审批'];
@@ -24,7 +26,11 @@ const results = [];
 for (const { slug, abbr } of BATCH.schools) {
   if (only.size && !only.has(abbr)) continue;
   const view = read(`${P}/${slug}/view-prehash.json`);
-  const zh = read(`${P}/inputs/${abbr}.json`).zh;
+  const input = read(`${P}/inputs/${abbr}.json`);
+  const publicRecord = read(`${P}/${slug}/public.json`).data;
+  const homepage = validateHomepageInput(input, BATCH, publicRecord);
+  assert.deepEqual(view.officialHomepage, homepage, abbr + ': homepage input changed; rebuild the view');
+  const zh = input.zh;
   const topics = [...view.school.topics, ...view.school.additionalTopics];
   assert.equal(zh.topics.length, topics.length, abbr + ' zh topics');
   delete view.localPreviewLanguage;
@@ -55,8 +61,7 @@ for (const { slug, abbr } of BATCH.schools) {
   })) };
   // Chinese text for every evidence row linked from Do/Don't/procedures (rendered as summaryZh on /zh/).
   {
-    const input = read(`${P}/inputs/${abbr}.json`);
-    const pub = read(`${P}/${slug}/public.json`).data.claims as { id: string }[];
+    const pub = publicRecord.claims as { id: string }[];
     const rid = (ref: string) => /^p\d+$/.test(ref) ? pub[Number(ref.slice(1)) - 1].id : 'local-' + abbr + '-v6-' + ref;
     const refs = new Set<string>([...input.do, ...input.dont].flatMap((a: { refs: string[] }) => a.refs)
       .concat(Object.values(input.procedures ?? {}).flat() as string[]));

@@ -102,3 +102,9 @@ test('Chinese tool prose binds the unchanged canonical tool and rejects stale or
  tool.howToObtain='Different account condition.';assert.throws(()=>parse(f),/Unbound Chinese tool display copy/);
  tool.howToObtain='Use the university account.';f.toolDisplayCopy.zh['Unlisted tool']=f.toolDisplayCopy.zh['Microsoft Copilot'];assert.throws(()=>parse(f),/Unbound Chinese tool display copy/);
 });
+
+test('local view retains the checked homepage and rejects invalid URLs after hash verification', () => {
+  const officialHomepage = { url: 'https://example.edu/en', checkedAt: '2026-11-26' };
+  assert.deepEqual(parse({...fixture(), officialHomepage}).officialHomepage, officialHomepage);
+  assert.throws(() => parse({...fixture(), officialHomepage: {...officialHomepage, url: 'https://user@example.edu'}}), /invalid officialHomepage/);
+});

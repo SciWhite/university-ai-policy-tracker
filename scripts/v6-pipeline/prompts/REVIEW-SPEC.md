@@ -11,6 +11,11 @@ Inputs (under this directory):
 - `captures/<abbr>/*.txt` are the captured official texts the quotes come from (quotes are already verified to be
   verbatim; do not re-check that).
 
+If the packet contains `officialHomepage`, independently verify that the URL serves the
+named university's main site. Record `homepageCheck` with the exact packet `url` and
+what you checked in `evidence`. For a homepage-only packet, this is the only new
+presentation to review. If the packet carries `homepageGap`, check its reason.
+
 Check every displayed statement against its cited quotes (and the surrounding captured text when needed):
 1. Meaning: the summary/action says what the quote says — no stronger modality (may → must, recommended → required),
    no dropped condition or exception, no invented rule, deadline, penalty, price, entitlement or tool permission.
@@ -26,6 +31,7 @@ Check every displayed statement against its cited quotes (and the surrounding ca
 Output: write `review/findings/<slug>.json`:
 ```json
 {"slug": "...", "decision": "accept|reject", "reviewedAt": "<ISO time>",
+ "homepageCheck": {"url": "<packet URL, when supplied>", "evidence": "<independent check>"},
  "findings": [{"severity": "blocker|fix|minor", "where": "topic:exams.summary.en | do[1].zh | tools[0] ...",
                "problem": "...", "evidence": "quote or capture key:line", "suggestedText": "..."}]}
 ```
