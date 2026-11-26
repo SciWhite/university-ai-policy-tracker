@@ -340,7 +340,7 @@ export default async function UniversityPage({
     const fallbackData = displayV6 ? undefined : fallbackV6Locale === "en" ? rawData : await getPolicyV6Data(fallbackV6Locale, slug);
     const data = displayV6 ? { ...readingDisplayView(rawData, displayV6, readingLocale), locale, readingLocale, studentGuideTranslated: isStudentGuideTranslated(rawData, displayV6, readingLocale) } : fallbackData ?? rawData;
     const view = displayV6 ? readingDisplayView(localBundle, displayV6, readingLocale) : fallbackV6Input?.bundle ?? localBundle;
-    return <>{v6JsonLd}<PolicyV6BundlePage university={identity} data={data} view={view} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : {}} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} /></>;
+    return <>{v6JsonLd}<PolicyV6BundlePage university={identity} data={data} view={view} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : policyV6StaticUiText(readingLocale)} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} /></>;
   }
   const localEvidence = v6Input?.evidence;
   if (localEvidence) {
@@ -352,7 +352,7 @@ export default async function UniversityPage({
     const fallbackData = displayV6 ? undefined : fallbackV6Locale === "en" ? rawData : await getPolicyV6Data(fallbackV6Locale, slug);
     const localData = displayV6 ? { ...readingDisplayView(rawData, displayV6, readingLocale), locale, readingLocale, studentGuideTranslated: isStudentGuideTranslated(rawData, displayV6, readingLocale) } : fallbackData ?? rawData;
     const evidence = displayV6 ? readingDisplayView(localEvidence, displayV6, readingLocale) : fallbackV6Input?.evidence ?? localEvidence;
-    return <>{v6JsonLd}<PolicyV6LocalPage university={localUniversity} data={localData} evidence={evidence} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : {}} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/></>;
+    return <>{v6JsonLd}<PolicyV6LocalPage university={localUniversity} data={localData} evidence={evidence} locale={locale} sharedUiText={displayV6 ? acceptedV6UiText(displayV6, readingLocale, Object.keys(rawData.studentActions?.claims ?? {}).length) : policyV6StaticUiText(readingLocale)} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/></>;
   }
 
   const [university, rawPublicSummary, loadedSnapshot] = await Promise.all([
@@ -435,7 +435,8 @@ export default async function UniversityPage({
     (strongSnapshot || pilotClaimsSummary || policyScene?.claimsOnly || Boolean(policyScene?.snapshotNotice) || enforcementPage) &&
     (isPublished || isPreview)
   );
-  const readingUiText = readyTranslations ? acceptedV6UiText(readyTranslations, readingLocale, reviewedClaims.length) : {};
+  // Without an accepted package the reviewed static V6 labels still apply (as in the compact guide).
+  const readingUiText = readyTranslations ? acceptedV6UiText(readyTranslations, readingLocale, reviewedClaims.length) : policyV6StaticUiText(readingLocale);
   const LabProvider = labData
     ? function PolicyV6PageProvider({ children }: { children: ReactNode }) {
         return <PolicyV6Provider data={policyV6ClientData(labData)} sharedUiText={readingUiText}>{children}</PolicyV6Provider>;
