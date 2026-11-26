@@ -1101,6 +1101,10 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
             break
         record('activate-wait', 'ok', note=f'wait returned {code if error is None else error}; job state {state_now or "unknown"}; waiting again')
         code, error = attempt(rewait, args, 'activate')
+    if (code != 0 or error is not None) and job_state(args, 'activate') == 'finished exit=0':
+        # the wait was lost (SSH), but the job itself recorded success
+        record('activate-wait', 'ok', note=f'wait returned {code if error is None else error}; the job recorded exit 0')
+        code, error = 0, None
     if code != 0 or error is not None:
         state_now = job_state(args, 'activate')
         live = live_content(args)
@@ -1118,7 +1122,10 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
         # The switch is live and activate has ended with a failure. Purge the edge only when the
         # origin cache step finished; otherwise the edge would refill from the previous HTML.
         refresh, refresh_error = attempt(read_receipt, args, 'refresh.json')
-        origin_ok = refresh_error is None and refresh.get('status') in ('ok', 'incomplete')
+        # 'incomplete' also covers a failed fallback purge-html-cache: require its exit 0.
+        purge_record = (refresh.get('origin') or {}).get('purge') if refresh_error is None and isinstance(refresh.get('origin'), dict) else None
+        origin_ok = refresh_error is None and (refresh.get('status') == 'ok' or (
+            refresh.get('status') == 'incomplete' and isinstance(purge_record, dict) and purge_record.get('exit') == 0))
         purge_error = purge_step(' after a failed activate') if origin_ok else 'not run: the origin cache step did not finish'
         purged = purge_error is None
         return stop('activate', f'The switch IS live but activate failed (remote-bg.sh tail {job}). '

@@ -653,7 +653,7 @@ class FinishTest(unittest.TestCase):
         self.assertEqual(receipt['status'], 'stopped'); self.assertIn('nothing was switched', receipt['steps'][-1]['next'])
 
     def test_failed_activate_after_the_switch_still_purges_cloudflare(self):
-        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback'}})
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback', 'purge': {'exit': 0}}})
         self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge'])
         last = receipt['steps'][-1]
         self.assertEqual(last['cloudflarePurge'], 'ok'); self.assertIn('IS live', last['next']); self.assertNotIn('readback', self.order)
@@ -662,6 +662,14 @@ class FinishTest(unittest.TestCase):
         code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'refused', 'origin': {'mode': 'page-store'}})
         self.assertEqual(code, 1); self.assertNotIn('purge', self.order)
         self.assertIn('cloudflare-purge', receipt['steps'][-1]['next']); self.assertIn('refresh', receipt['steps'][-1]['next'])
+
+    def test_failed_origin_purge_after_the_switch_is_not_purged_at_the_edge(self):
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new', refresh={'status': 'incomplete', 'origin': {'mode': 'epoch-purge-fallback', 'purge': {'exit': 1}}})
+        self.assertEqual(code, 1); self.assertNotIn('purge', self.order); self.assertIn('NOT purged', receipt['steps'][-1]['next'])
+
+    def test_lost_wait_on_a_successful_job_continues(self):
+        code, receipt = self.run_finish(codes={'activate': 255}, states=['finished exit=0', 'finished exit=0'])
+        self.assertEqual(code, 0); self.assertEqual(receipt['status'], 'complete'); self.assertIn('complete', self.order)
 
     def test_still_running_after_the_waits_is_not_a_failure_and_not_purged(self):
         code, receipt = self.run_finish(codes={'activate': 124}, states=['running pid=1'] * 5, rewait_codes=[124, 124, 124], live='c-new')
