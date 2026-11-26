@@ -732,7 +732,7 @@ def is_loopback(base):
 
 
 class PublicReader:
-    """Thread-safe paced GET. Public origins: request starts at least 0.2 s apart (<= 5/s, also
+    """Thread-safe paced GET. Public origins: request starts at least 0.2 s apart (<= 5/s; /api/ reads 0.4 s, under nginx's 3/s), also
     across threads), a 429 sleeps Retry-After (at least 12 s) and retries up to 3 times; 5xx and
     network errors retry up to `attempts` times. Loopback origins are not paced. Never follows
     redirects (a 301/308 is an answer). scripts/v6-pipeline/readback.py uses it too."""
@@ -826,7 +826,7 @@ def cmd_readback(args, *, get=http_get, sleep=time.sleep, clock=time.monotonic):
             row.setdefault('problems', []).append(f'answered only after {earlier} (retried)')
     problems = [r for r in rows if r.get('problems')]
     receipt = {'schemaVersion': PUBLIC_READBACK_SCHEMA, 'opId': bundle['opId'], 'contentId': bundle['contentId'], 'origin': reader.base,
-               'startedAt': started, 'checkedAt': now().isoformat(), 'paced': reader.paced, 'minIntervalSeconds': PUBLIC_MIN_INTERVAL_SECONDS,
+               'startedAt': started, 'checkedAt': now().isoformat(), 'paced': reader.paced, 'minIntervalSeconds': PUBLIC_MIN_INTERVAL_SECONDS, 'apiMinIntervalSeconds': PUBLIC_API_MIN_INTERVAL_SECONDS,
                'requests': reader.requests, 'rateLimited': reader.rate_limited, 'rows': rows, 'problems': [{'path': r['path'], 'problems': r['problems']} for r in problems]}
     (op_dir / 'receipts').mkdir(exist_ok=True)
     atomic_json(op_dir / 'receipts/public-readback.json', receipt, mode=0o644)

@@ -533,6 +533,17 @@ class PublicReadbackTest(unittest.TestCase):
         for _ in range(3): page('/universities/alpha-university')
         self.assertEqual([round(s, 3) for s in self.sleeps], [0.19, 0.19])
 
+    def test_mixed_page_and_api_reads_keep_api_reads_apart(self):
+        site, seen = self.site(), []
+        def get(url, headers, timeout):
+            seen.append((url.split('eduaipolicy.org', 1)[1], self.clock())); return site(url, headers, timeout)
+        reader = self.module['PublicReader']('https://eduaipolicy.org', get=get, sleep=self.sleep, clock=self.clock)
+        for path in ['/api/public/v1/a.json', '/universities/alpha-university', '/api/public/v1/b.json', '/api/public/v1/c.json']: reader(path)
+        api = [t for p, t in seen if p.startswith('/api/')]
+        self.assertTrue(all(b - a >= 0.4 - 1e-9 for a, b in zip(api, api[1:])), api)
+        pages = [t for p, t in seen]
+        self.assertTrue(all(b - a >= 0.2 - 1e-9 for a, b in zip(pages, pages[1:])), pages)
+
     def test_loopback_reads_are_not_paced(self):
         reader = self.module['PublicReader']('http://127.0.0.1:3102', get=self.site(), sleep=self.sleep, clock=self.clock)
         for _ in range(10): reader('/universities/alpha-university')
