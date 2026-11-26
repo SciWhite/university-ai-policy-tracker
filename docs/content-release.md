@@ -400,13 +400,22 @@ python3 scripts/release/content-release.py finish --op-id <op> --op-dir <local o
     --helper <program-root>/release-helper --bundle-sha256 <sha>
 ```
 
-`finish` runs `remote activate`, reads the host's `receipts/refresh.json` (status `ok`, or
+`finish` first checks that the Cloudflare token is active (`GET /user/tokens/verify`, read-only),
+then runs `remote activate`, reads the host's `receipts/refresh.json` (status `ok`, or
 `incomplete` after a fallback whose origin purge succeeded; origin mode `page-store`,
 `epoch-purge-fallback` or `epoch-purge`), purges Cloudflare (`purge_everything`), waits 10 s,
 runs the paced public readback and then `remote complete`. It stops at the first failure,
 writes `<local op dir>/receipts/finish.json` with every step and the next action, and runs
-nothing after the failed step. Readback findings stop it before `complete`: read
-`receipts/public-readback.json`, record each finding, then run `remote complete`.
+nothing after the failed step, with one exception:
+
+- **`activate` did not return 0.** If the SSH session dropped or the wait timed out while
+  `activate` still runs on the host, `finish` waits again (up to three times). If it then
+  failed, `finish` reads the live pointer: when it already names this release, the switch is
+  live, so `finish` still purges Cloudflare before it stops. Otherwise nothing was switched.
+- **Readback findings** stop it before `complete`: read `receipts/public-readback.json`, record
+  each finding, then run `remote complete`.
+- **Rerunning a remote phase** needs a new `--attempt` (remote-bg.sh keeps one run per job name;
+  `finish` names jobs `<op>-<phase>[-<attempt>]`).
 
 **Why one command (2026-11-25).** The Cloudflare purge used to be a hand-sent request after
 `activate`. Twice (batch 4+6, batch 8) the session waiting on `activate` was not woken when it
@@ -422,10 +431,12 @@ python3 scripts/release/content-release.py remote complete --op-id <op> --helper
 ```
 
 `cloudflare-purge` reads `CLOUDFLARE_ZONE_ID` and `CLOUDFLARE_CACHE_PURGE_TOKEN` from the
-environment or `.env.agents.local` (`--env-file`), never prints them, retries network errors,
-429 and 5xx three times, and writes `receipts/cloudflare-purge.json` (time, reason, HTTP status,
-Cloudflare error codes, a 12-character hash of the zone id; no token). `finish` checks the
-credentials before `activate`, so a missing token stops it before the switch.
+environment or `.env.agents.local` next to the checkout's `scripts/` (from a git worktree,
+pass `--env-file <main checkout>/.env.agents.local`), never prints them, makes up to three
+attempts on network errors, 429 and 5xx, and writes `receipts/cloudflare-purge.json` (time,
+reason, HTTP status, Cloudflare error codes, a 12-character hash of the zone id; no token). A
+missing or inactive token stops `finish` before the switch; a token that is active but may not
+purge is only found by the purge itself.
 
 | Phase | What it does (refuses at the first failed gate, nothing after it runs) |
 |---|---|

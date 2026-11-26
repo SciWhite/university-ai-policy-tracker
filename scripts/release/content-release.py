@@ -917,7 +917,8 @@ def _scrub(text, *secrets):
 
 def purge_cloudflare(reason, receipt_path, *, env_file=DEFAULT_ENV_FILE, post=http_post_json, sleep=time.sleep):
     """purge_everything on the zone (docs/content-release.md §5: keep it until the edge bypasses
-    ?_rsc=). Retries network errors and 5xx/429 up to 3 times; a 4xx other than 429 is final.
+    ?_rsc=). Up to 3 attempts on network errors, 5xx and 429 (5 s apart; 12 s after a 429);
+    a 4xx other than 429 is final.
     Writes the receipt either way; raises Refused when the purge did not succeed."""
     zone, token = cloudflare_credentials(env_file)
     attempts, ok = [], False
@@ -935,7 +936,7 @@ def purge_cloudflare(reason, receipt_path, *, env_file=DEFAULT_ENV_FILE, post=ht
         if ok or (400 <= status < 500 and status != 429):
             break
         if attempt + 1 < CLOUDFLARE_ATTEMPTS:
-            sleep(5)
+            sleep(RATE_LIMIT_WAIT_SECONDS if status == 429 else 5)
     receipt = {'schemaVersion': CLOUDFLARE_PURGE_SCHEMA, 'at': now().isoformat(), 'reason': reason,
                'zoneSha256': sha256_bytes(zone.encode())[:12], 'request': {'purge_everything': True},
                'ok': ok, 'attempts': attempts}
@@ -958,29 +959,94 @@ def cmd_cloudflare_purge(args, *, post=http_post_json, sleep=time.sleep):
     return 0
 
 
-def host_receipt(args, name):
-    """Read <ops-root>/<op>/receipts/<name> on the host (UAPT_HOST=local reads the local path)."""
-    path = f'{args.ops_root}/{args.op_id}/receipts/{name}'
+def host_command(args, command):
+    """Run a read-only shell command on the host (UAPT_HOST=local runs it locally): (exit, stdout, stderr)."""
     host = args.host or os.environ.get('UAPT_HOST') or 'hermes-agent-prod'
-    if host == 'local':
-        argv = ['cat', path]
-    else:
-        argv = ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', host, 'sudo -n cat ' + shlex.quote(path)]
+    argv = ['bash', '-c', command] if host == 'local' else ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', host, command]
     result = subprocess.run(argv, capture_output=True, text=True)
-    if result.returncode:
-        raise Refused(f'Could not read {path} on the host: {result.stderr.strip()[:300]}')
-    return json.loads(result.stdout)
+    return result.returncode, result.stdout, result.stderr
 
 
-def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=None, sleep=time.sleep):
+def host_receipt(args, name):
+    """Read <ops-root>/<op>/receipts/<name> on the host as a JSON object."""
+    path = f'{args.ops_root}/{args.op_id}/receipts/{name}'
+    code, out, err = host_command(args, 'sudo -n cat ' + shlex.quote(path))
+    if code:
+        raise Refused(f'Could not read {path} on the host: {err.strip()[:300]}')
+    value = json.loads(out)
+    if not isinstance(value, dict):
+        raise Refused(f'{path} is not a JSON object')
+    return value
+
+
+def host_live_content(args):
+    """contentId of the live content pointer on the host, or None when it cannot be read."""
+    code, out, _ = host_command(args, 'sudo -n cat /srv/uapt/content/runtime/current.json')
+    try:
+        return json.loads(out).get('contentId') if code == 0 else None
+    except (ValueError, AttributeError):
+        return None
+
+
+def remote_job(args, phase):
+    return f'{args.op_id}-{phase}' + (f'-{args.attempt}' if args.attempt else '')
+
+
+def remote_job_state(args, phase, *, run=subprocess.run):
+    """'running' | 'finished exit=N' | other text from remote-bg.sh status ('' when unreachable)."""
+    bg = Path(__file__).resolve().parent / 'remote-bg.sh'
+    env = {**os.environ, **({'UAPT_HOST': args.host} if args.host else {})}
+    result = run([str(bg), 'status', remote_job(args, phase)], env=env, capture_output=True, text=True)
+    return result.stdout.strip() if result.returncode == 0 else ''
+
+
+def remote_rewait(args, phase, *, run=subprocess.run):
+    bg = Path(__file__).resolve().parent / 'remote-bg.sh'
+    env = {**os.environ, **({'UAPT_HOST': args.host} if args.host else {})}
+    return run([str(bg), 'wait', remote_job(args, phase), str(args.timeout)], env=env).returncode
+
+
+def http_get_bearer(url, token, timeout=30):
+    request = Request(url, headers={'Authorization': 'Bearer ' + token, 'User-Agent': 'uapt-content-release/1.0'})
+    try:
+        with urlopen(request, timeout=timeout) as response:
+            return response.status, response.read()
+    except urllib.error.HTTPError as error:
+        return error.code, (error.read() if error.fp else b'')
+    except (urllib.error.URLError, OSError) as error:
+        return 0, b''
+
+
+def verify_cloudflare_token(env_file, *, get=http_get_bearer):
+    """Read-only preflight before the switch: the token must be active (GET /user/tokens/verify).
+    Whether it may purge is only known from the purge itself."""
+    _, token = cloudflare_credentials(env_file)
+    status, raw = get(f'{CLOUDFLARE_API}/user/tokens/verify', token)
+    try:
+        answer = json.loads(raw)
+    except (ValueError, TypeError):
+        answer = {}
+    result = answer.get('result') if isinstance(answer, dict) and isinstance(answer.get('result'), dict) else {}
+    if status != 200 or answer.get('success') is not True or result.get('status') != 'active':
+        raise Refused(f'The Cloudflare token did not verify as active (HTTP {status}, status {result.get("status")!r}); '
+                      'fix it before the switch, nothing ran')
+
+
+def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=None, verify=None,
+               job_state=None, rewait=None, live_content=None, sleep=time.sleep):
     """Operator machine: the whole content release in one command, so no step waits on a session
-    waking up: activate → refresh receipt check → Cloudflare purge → paced public readback →
-    complete. Stops at the first failure and names the next action; nothing after it runs.
-    <op-dir>/receipts/finish.json records every step."""
+    waking up: token preflight → activate → refresh receipt check → Cloudflare purge → paced public
+    readback → complete. Stops at the first failure and names the next action; nothing after it
+    runs, except that a switch found live after a failed or lost activate is still purged at the
+    edge. <op-dir>/receipts/finish.json records every step."""
     remote = remote or cmd_remote
     read_receipt = read_receipt or host_receipt
     purge = purge or purge_cloudflare
     readback = readback or cmd_readback
+    verify = verify or verify_cloudflare_token
+    job_state = job_state or remote_job_state
+    rewait = rewait or remote_rewait
+    live_content = live_content or host_live_content
     if not OP_ID.match(args.op_id):
         raise Refused('Invalid op id')
     op_dir = Path(args.op_dir)
@@ -990,10 +1056,12 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
         raise Refused(f'Local bundle.json is for {bundle["opId"]}, not {args.op_id}')
     if sha256_bytes(raw) != args.bundle_sha256:
         raise Refused('Local bundle.json is not the approved bundle (SHA256 differs)')
-    cloudflare_credentials(args.env_file)  # refuse before the switch, not after it
+    verify(args.env_file)  # refuse before the switch, not after it
+    cid = bundle['contentId']
     finish_path = op_dir / 'receipts/finish.json'
-    state = {'schemaVersion': FINISH_SCHEMA, 'opId': args.op_id, 'contentId': bundle['contentId'], 'bundleSha256': args.bundle_sha256,
+    state = {'schemaVersion': FINISH_SCHEMA, 'opId': args.op_id, 'contentId': cid, 'bundleSha256': args.bundle_sha256,
              'startedAt': now().isoformat(), 'steps': []}
+    retry = f' with a new --attempt (remote-bg.sh keeps one run per job)'
 
     def record(step, status, **detail):
         state['steps'].append({'step': step, 'status': status, 'at': now().isoformat(), **detail})
@@ -1007,36 +1075,67 @@ def cmd_finish(args, *, remote=None, read_receipt=None, purge=None, readback=Non
         return 1
 
     def phase(name):
-        return argparse.Namespace(**{**vars(args), 'phase': name, 'attempt': args.attempt})
+        return argparse.Namespace(**{**vars(args), 'phase': name})
+
+    def attempt(fn, *a):
+        """(value, error text): any exception becomes a recorded stop, never a bare traceback."""
+        try:
+            return fn(*a), None
+        except Exception as error:  # Refused, OSError, ValueError, ...
+            return None, f'{type(error).__name__}: {str(error)[:300]}'
+
+    def purge_step(reason_suffix=''):
+        _, error = attempt(lambda: purge(f'content switch {cid} ({args.op_id}){reason_suffix}', op_dir / 'receipts/cloudflare-purge.json', env_file=args.env_file))
+        return error
 
     (op_dir / 'receipts').mkdir(parents=True, exist_ok=True)
-    code = remote(phase('activate'))
-    if code:
-        return stop('activate', f'Read the activate log (remote-bg.sh tail {args.op_id}-activate); nothing after activate ran', exit=code)
+    code, error = attempt(remote, phase('activate'))
+    # A lost SSH session (255) or a wait timeout (124) leaves activate running on the host: wait again.
+    for _ in range(3):
+        if code == 0 and error is None:
+            break
+        if not job_state(args, 'activate').startswith('running'):
+            break
+        record('activate-wait', 'ok', note=f'wait returned {code if error is None else error}; activate still running, waiting again')
+        code, error = attempt(rewait, args, 'activate')
+    if code != 0 or error is not None:
+        live = live_content(args)
+        detail = {'exit': code, **({'error': error} if error else {}), 'liveContentId': live,
+                  'jobState': job_state(args, 'activate')}
+        if live == cid:  # the switch happened: never leave the edge on the previous HTML
+            purge_error = purge_step(' after a failed activate')
+            return stop('activate', f'The switch IS live but activate did not finish (log: remote-bg.sh tail {remote_job(args, "activate")}). '
+                        + ('Cloudflare was purged. ' if not purge_error else f'Cloudflare purge FAILED ({purge_error}); run cloudflare-purge now. ')
+                        + 'Fix the cause, run refresh if receipts/refresh.json is missing or not ok, then readback and remote complete' + retry, **detail,
+                        cloudflarePurge='ok' if not purge_error else 'failed')
+        return stop('activate', f'The live pointer is {live!r}, not {cid}: read remote-bg.sh tail {remote_job(args, "activate")}. '
+                    'If the job is still running, wait for it; otherwise nothing was switched', **detail)
     record('activate', 'ok')
-    try:
-        refresh = read_receipt(args, 'refresh.json')
-    except (Refused, ValueError) as error:
-        return stop('refresh-receipt', 'The switch is live: read receipts/refresh.json on the host, then run cloudflare-purge, readback and remote complete', error=str(error)[:300])
-    origin = refresh.get('origin') or {}
+    refresh, error = attempt(read_receipt, args, 'refresh.json')
+    if error is not None:
+        purge_error = purge_step(' (refresh receipt unreadable)')
+        return stop('refresh-receipt', 'The switch is live: read receipts/refresh.json on the host, then readback and remote complete'
+                    + ('' if not purge_error else f'; the Cloudflare purge also failed ({purge_error}), run cloudflare-purge first'), error=error)
+    origin = refresh.get('origin') if isinstance(refresh.get('origin'), dict) else {}
     if refresh.get('status') not in ('ok', 'incomplete') or origin.get('mode') not in ('page-store', 'epoch-purge-fallback', 'epoch-purge'):
-        return stop('refresh-receipt', 'The switch is live but the origin cache step did not finish: run refresh again, then cloudflare-purge, readback and remote complete',
+        return stop('refresh-receipt', 'The switch is live but the origin cache step did not finish: run refresh, then cloudflare-purge, readback and remote complete',
                     refreshStatus=refresh.get('status'), originMode=origin.get('mode'))
     record('refresh-receipt', 'ok', refreshStatus=refresh['status'], originMode=origin['mode'],
            **({'fallbackReason': origin['fallbackReason']} if origin.get('fallbackReason') else {}))
-    try:
-        purge(f'content switch {bundle["contentId"]} ({args.op_id})', op_dir / 'receipts/cloudflare-purge.json', env_file=args.env_file)
-    except Refused as error:
-        return stop('cloudflare-purge', 'The switch is live: run cloudflare-purge --op-dir again, then readback and remote complete', error=str(error)[:300])
+    purge_error = purge_step()
+    if purge_error:
+        return stop('cloudflare-purge', 'The switch is live: run cloudflare-purge --op-dir again, then readback and remote complete', error=purge_error)
     record('cloudflare-purge', 'ok')
     sleep(args.settle_seconds)
-    code = readback(argparse.Namespace(op_dir=str(op_dir), origin=args.origin))
-    if code:
-        return stop('readback', 'Read receipts/public-readback.json; when every finding is understood and recorded, run remote complete', exit=code)
+    code, error = attempt(readback, argparse.Namespace(op_dir=str(op_dir), origin=args.origin))
+    if code != 0 or error is not None:
+        return stop('readback', 'Read receipts/public-readback.json; when every finding is understood and recorded, run remote complete',
+                    exit=code, **({'error': error} if error else {}))
     record('readback', 'ok')
-    code = remote(phase('complete'))
-    if code:
-        return stop('complete', f'Read the complete log (remote-bg.sh tail {args.op_id}-complete) and run remote complete again', exit=code)
+    code, error = attempt(remote, phase('complete'))
+    if code != 0 or error is not None:
+        return stop('complete', f'Read remote-bg.sh tail {remote_job(args, "complete")}, fix the cause and run remote complete' + retry,
+                    exit=code, **({'error': error} if error else {}))
     record('complete', 'ok')
     state['status'] = 'complete'; state['finishedAt'] = now().isoformat()
     atomic_json(finish_path, state, mode=0o644)

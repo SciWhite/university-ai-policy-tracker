@@ -621,30 +621,59 @@ class FinishTest(unittest.TestCase):
                     origin='https://eduaipolicy.org', settle_seconds=10.0)
         return self.module['argparse'].Namespace(**{**base, **kw})
 
-    def run_finish(self, *, codes=None, refresh=None, purge_fails=False, readback_code=0, **kw):
-        codes = dict(codes or {})
-        def remote(a): self.order.append(a.phase); return codes.get(a.phase, 0)
+    def run_finish(self, *, codes=None, refresh=None, purge_fails=False, readback_code=0, raises=None, states=None, rewait_codes=None, live='c-parent', **kw):
+        codes = dict(codes or {}); raises = dict(raises or {}); states = list(states or []); rewait_codes = list(rewait_codes or [])
+        def remote(a):
+            self.order.append(a.phase)
+            if a.phase in raises: raise raises[a.phase]
+            return codes.get(a.phase, 0)
         def read_receipt(a, name): self.order.append('read:' + name); return refresh if refresh is not None else {'status': 'ok', 'origin': {'mode': 'page-store'}}
         def purge(reason, path, env_file):
             self.order.append('purge')
             if purge_fails: raise self.module['Refused']('Cloudflare purge failed')
         def readback(a): self.order.append('readback'); return readback_code
+        def verify(env_file): self.order.append('verify')
+        def job_state(a, phase): return states.pop(0) if states else 'finished exit=3'
+        def rewait(a, phase): self.order.append('rewait'); return rewait_codes.pop(0)
         with redirect_stdout(io.StringIO()):
-            code = self.module['cmd_finish'](self.args(**kw), remote=remote, read_receipt=read_receipt, purge=purge, readback=readback,
-                                             sleep=lambda s: self.order.append(f'sleep:{s:g}'))
+            code = self.module['cmd_finish'](self.args(**kw), remote=remote, read_receipt=read_receipt, purge=purge, readback=readback, verify=verify,
+                                             job_state=job_state, rewait=rewait, live_content=lambda a: live, sleep=lambda s: self.order.append(f'sleep:{s:g}'))
         return code, json.loads((self.dir / 'receipts/finish.json').read_text())
 
     def test_runs_every_step_in_order(self):
         code, receipt = self.run_finish()
         self.assertEqual(code, 0)
-        self.assertEqual(self.order, ['activate', 'read:refresh.json', 'purge', 'sleep:10', 'readback', 'complete'])
+        self.assertEqual(self.order, ['verify', 'activate', 'read:refresh.json', 'purge', 'sleep:10', 'readback', 'complete'])
         self.assertEqual(receipt['status'], 'complete')
         self.assertEqual([s['step'] for s in receipt['steps']], ['activate', 'refresh-receipt', 'cloudflare-purge', 'readback', 'complete'])
 
-    def test_failed_activate_stops_before_the_purge(self):
+    def test_failed_activate_before_the_switch_stops_without_a_purge(self):
         code, receipt = self.run_finish(codes={'activate': 3})
-        self.assertEqual(code, 1); self.assertEqual(self.order, ['activate'])
-        self.assertEqual(receipt['status'], 'stopped'); self.assertIn('activate', receipt['steps'][-1]['next'])
+        self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate'])
+        self.assertEqual(receipt['status'], 'stopped'); self.assertIn('nothing was switched', receipt['steps'][-1]['next'])
+
+    def test_failed_activate_after_the_switch_still_purges_cloudflare(self):
+        code, receipt = self.run_finish(codes={'activate': 3}, live='c-new')
+        self.assertEqual(code, 1); self.assertEqual(self.order, ['verify', 'activate', 'purge'])
+        last = receipt['steps'][-1]
+        self.assertEqual(last['cloudflarePurge'], 'ok'); self.assertIn('IS live', last['next']); self.assertNotIn('readback', self.order)
+
+    def test_lost_ssh_waits_again_and_continues(self):
+        code, receipt = self.run_finish(codes={'activate': 255}, states=['running pid=1'], rewait_codes=[0])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.order[:3], ['verify', 'activate', 'rewait']); self.assertIn('purge', self.order)
+        self.assertEqual(receipt['steps'][0]['step'], 'activate-wait')
+
+    def test_exceptions_become_recorded_stops(self):
+        code, receipt = self.run_finish(raises={'complete': self.module['Refused']('op already started')})
+        self.assertEqual(code, 1); self.assertEqual(receipt['status'], 'stopped')
+        self.assertIn('op already started', receipt['steps'][-1]['error']); self.assertIn('--attempt', receipt['steps'][-1]['next'])
+
+    def test_failed_token_preflight_runs_nothing(self):
+        def verify(env_file): raise self.module['Refused']('did not verify')
+        with redirect_stdout(io.StringIO()), self.assertRaisesRegex(self.module['Refused'], 'did not verify'):
+            self.module['cmd_finish'](self.args(), remote=lambda a: self.order.append(a.phase), verify=verify)
+        self.assertEqual(self.order, [])
 
     def test_refused_refresh_stops_before_the_purge(self):
         code, receipt = self.run_finish(refresh={'status': 'refused', 'origin': {'mode': 'page-store'}})
@@ -657,7 +686,7 @@ class FinishTest(unittest.TestCase):
     def test_failed_purge_stops_before_readback(self):
         code, receipt = self.run_finish(purge_fails=True)
         self.assertEqual(code, 1); self.assertEqual(self.order[-1], 'purge')
-        self.assertIn('cloudflare-purge', receipt['steps'][-1]['next'])
+        self.assertIn('cloudflare-purge', receipt['steps'][-1]['next']); self.assertIn('Cloudflare purge failed', receipt['steps'][-1]['error'])
 
     def test_readback_findings_stop_before_complete(self):
         code, receipt = self.run_finish(readback_code=1)
@@ -670,9 +699,18 @@ class FinishTest(unittest.TestCase):
 
     def test_refuses_without_credentials_before_the_switch(self):
         self.env.write_text('')
-        with self.assertRaisesRegex(self.module['Refused'], 'CLOUDFLARE_ZONE_ID'):
-            self.run_finish()
+        with redirect_stdout(io.StringIO()), self.assertRaisesRegex(self.module['Refused'], 'CLOUDFLARE_ZONE_ID'):
+            self.module['cmd_finish'](self.args(), remote=lambda a: self.order.append(a.phase))
         self.assertEqual(self.order, [])
+
+    def test_token_verify_needs_an_active_token(self):
+        verify = self.module['verify_cloudflare_token']
+        verify(str(self.env), get=lambda url, token: (200, b'{"success": true, "result": {"status": "active"}}'))
+        with self.assertRaisesRegex(self.module['Refused'], 'did not verify'):
+            verify(str(self.env), get=lambda url, token: (200, b'{"success": true, "result": {"status": "disabled"}}'))
+        with self.assertRaisesRegex(self.module['Refused'], 'did not verify') as caught:
+            verify(str(self.env), get=lambda url, token: (401, b'{"success": false}'))
+        self.assertNotIn(TOKEN, str(caught.exception))
 
 
 class SyncProofTest(unittest.TestCase):
